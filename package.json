@@ -7,7 +7,8 @@
     "typecheck": "tsc -p .",
     "test": "node --experimental-transform-types --test \"core/**/*.test.ts\" \"host-pi/**/*.test.ts\"",
     "test:skeleton": "node --experimental-transform-types --test \"core/authority/tests/*.test.ts\" \"host-pi/*.test.ts\"",
-    "verify": "npm run typecheck && npm test"
+    "verify": "npm run typecheck && npm test",
+    "example:ch07": "node --experimental-transform-types --disable-warning=ExperimentalWarning examples/ch07-record/ch07.ts"
   },
   "dependencies": {
     "@earendil-works/pi-agent-core": "1.0.4",

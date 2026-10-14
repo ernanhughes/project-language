@@ -21,8 +21,11 @@ The host supplies model access and the request path. These modules work on what 
 | Piece | State |
 |---|---|
 | `core/authority` + `host-pi/authority.ts` | **Walking skeleton.** A Pi `tool_call` is turned into a proposal, evaluated against a policy, and blocked, approved or allowed. Run through a real Pi session with a faux model. |
+| `core/language` + `host-pi/language.ts` + `examples/ch07-record` | **Adapter built and tested in a real Pi session** (Chapter 7). `before_agent_start` hands the model the rendered projection of a verified record, once per turn, read-only. Unverified state (torn, corrupt, unaccepted human edit, missing thread) is never injected; the turn proceeds without it and the outcome is recorded as a session entry. Run `npm run example:ch07`. |
 | Other `core/*` modules (compiler, lens, relate, radar, evidence, verify, proof, work, vfs, language, transport, remembering) | **Lifted, not yet qualified.** Copied from the earlier plugin repos minus their OpenCode-SDK files; see `PROVENANCE.md`. Typecheck is clean and their own tests pass (see `PROVENANCE.md` for the 3 skips and the retired packaging tests). None has been exercised against Pi yet; passing their own tests says nothing about behaviour inside a Pi session. |
 | `opencode-expertise`, `opencode-observability` | **Not lifted.** They have no TypeScript `src/` of the same shape (CLI/library and Python harness). Decide separately. |
+
+Today the only rendering `core/language` produces is the record itself, wrapped in a notice and delimiters. It shows the source / record / rendering distinction, but not yet one record rendered several ways; that needs `core/lens`.
 
 A faux-model test shows that the gate fires and blocks. It says nothing about real-model behaviour.
 

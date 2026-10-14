@@ -14,7 +14,8 @@
   "include": [
     "core/**/*.ts",
     "host-pi/**/*.ts",
-    "harness/**/*.ts"
+    "harness/**/*.ts",
+    "examples/**/*.ts"
   ],
   "exclude": [
     "node_modules"
