@@ -69,3 +69,7 @@ The first lift left 39 failing tests, all from environment and layout. Fixed by 
 - **Retired** (they tested the original plugin packaging, which this project does not have): compiler `dist-freshness`; remembering `packaging` and `no-python-runtime`; transport `entry`.
 
 Result: 687 tests, 684 pass, 3 skipped, 0 fail; typecheck clean.
+
+## New (not lifted)
+
+- `core/sidecar`, `host-pi/sidecar.ts`, `host-pi/language.ts`, `host-pi/authority.ts`, `harness/bun-test.ts` were written for this project. `core/sidecar` exists because no provider in the registry covers the Chapter 8 rules; it reuses `core/lens` (`render`, `splitSentences`) for derivation.
