@@ -1,0 +1,20 @@
+{
+  "battery": "radar-v0.1",
+  "note": "gold disposition (+resolution) = authored policy expectation. Tests policy-implementation correctness, NOT policy optimality.",
+  "cases": [
+    { "id": "expiring-breakage", "candidate": { "id": "c1", "kind": "advisory", "task_relevance": "high", "novelty": "NEW", "evidential_validity": "confirmed", "urgency": "expiring", "cost": "low" }, "gold_disposition": "SHOW", "gold_resolution": "BRIEF" },
+    { "id": "unverified-urgent", "candidate": { "id": "c2", "kind": "report", "task_relevance": "high", "novelty": "NEW", "evidential_validity": "unconfirmed", "urgency": "expiring", "cost": "low" }, "gold_disposition": "SHOW", "gold_resolution": "DETAIL" },
+    { "id": "refuted-claim", "candidate": { "id": "c3", "kind": "paper", "task_relevance": "high", "novelty": "NEW", "evidential_validity": "refuted", "urgency": "soon", "cost": "low" }, "gold_disposition": "SKIP", "gold_resolution": "SOURCE" },
+    { "id": "duplicate-warning", "candidate": { "id": "c4", "kind": "alert", "task_relevance": "medium", "novelty": "ACCESSIBLE", "evidential_validity": "confirmed", "urgency": "routine", "cost": "low" }, "gold_disposition": "SKIP", "gold_resolution": "SOURCE" },
+    { "id": "new-test-failure", "candidate": { "id": "c5", "kind": "test-result", "task_relevance": "high", "novelty": "NEW", "evidential_validity": "confirmed", "urgency": "soon", "cost": "low" }, "gold_disposition": "SHOW", "gold_resolution": "BRIEF" },
+    { "id": "useful-nonurgent-note", "candidate": { "id": "c6", "kind": "arch-note", "task_relevance": "high", "novelty": "NEW", "evidential_validity": "confirmed", "urgency": "routine", "cost": "high" }, "gold_disposition": "SHOW", "gold_resolution": "GLANCE" },
+    { "id": "uncertain-novelty", "candidate": { "id": "c7", "kind": "paper", "task_relevance": "high", "novelty": "UNCERTAIN", "evidential_validity": "confirmed", "urgency": "soon", "cost": "low" }, "gold_disposition": "SIDECAR", "gold_resolution": "GLANCE" },
+    { "id": "unknown-novelty", "candidate": { "id": "c8", "kind": "thread", "task_relevance": "high", "novelty": "UNKNOWN", "evidential_validity": "unconfirmed", "urgency": "routine", "cost": "low" }, "gold_disposition": "SIDECAR", "gold_resolution": "GLANCE" },
+    { "id": "stale-context", "candidate": { "id": "c9", "kind": "doc", "task_relevance": "medium", "novelty": "STALE", "evidential_validity": "confirmed", "urgency": "routine", "cost": "low" }, "gold_disposition": "QUEUE", "gold_resolution": "GLANCE" },
+    { "id": "low-routine", "candidate": { "id": "c10", "kind": "newsletter", "task_relevance": "low", "novelty": "NEW", "evidential_validity": "confirmed", "urgency": "routine", "cost": "low" }, "gold_disposition": "SKIP", "gold_resolution": "SOURCE" },
+    { "id": "low-expiring", "candidate": { "id": "c11", "kind": "notice", "task_relevance": "low", "novelty": "NEW", "evidential_validity": "confirmed", "urgency": "expiring", "cost": "low" }, "gold_disposition": "QUEUE", "gold_resolution": "GLANCE" },
+    { "id": "safe-default-all-unknown", "candidate": { "id": "c12", "kind": "item", "task_relevance": "medium", "novelty": "UNKNOWN", "evidential_validity": "unknown", "urgency": "routine", "cost": "low" }, "gold_disposition": "QUEUE", "gold_resolution": "GLANCE" },
+    { "id": "safe-default-high-relevance-unknown", "candidate": { "id": "c13", "kind": "item", "task_relevance": "high", "novelty": "UNKNOWN", "evidential_validity": "unknown", "urgency": "routine", "cost": "low" }, "gold_disposition": "SIDECAR", "gold_resolution": "GLANCE" },
+    { "id": "medium-routine", "candidate": { "id": "c14", "kind": "post", "task_relevance": "medium", "novelty": "NEW", "evidential_validity": "confirmed", "urgency": "routine", "cost": "low" }, "gold_disposition": "QUEUE", "gold_resolution": "GLANCE" }
+  ]
+}

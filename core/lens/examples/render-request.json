@@ -1,0 +1,10 @@
+{
+  "source": {
+    "id": "example:test-log:1",
+    "kind": "text",
+    "scope": "example-project"
+  },
+  "purpose": "Identify the decisive failure, preserve exact identifiers, and omit repetitive successful output.",
+  "mode": "BRIEF",
+  "content": "917 tests passed. Test migration_tenant_1847 failed with UniqueViolation on lineage_group_id deb226a9. The same failure is repeated three times in retry output."
+}

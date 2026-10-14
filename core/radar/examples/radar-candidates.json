@@ -1,0 +1,33 @@
+{
+  "task": {
+    "id": "debug-migration",
+    "objective": "Explain and fix the failing migration without repeating superseded approaches."
+  },
+  "candidates": [
+    {
+      "id": "c1",
+      "text": "Migration failed for tenant 1847 with UniqueViolation.",
+      "task_relevance": "high",
+      "novelty": "new",
+      "evidential_validity": "direct_tool_result",
+      "urgency": "high"
+    },
+    {
+      "id": "c2",
+      "text": "Earlier note: migration completed successfully.",
+      "task_relevance": "high",
+      "novelty": "accessible",
+      "evidential_validity": "possibly_superseded",
+      "urgency": "medium"
+    },
+    {
+      "id": "c3",
+      "text": "Architecture note: event history is append-only.",
+      "task_relevance": "medium",
+      "novelty": "new",
+      "evidential_validity": "project_rule",
+      "urgency": "low"
+    }
+  ],
+  "expected_shape": "Return disposition, resolution, reasons, and uncertainty per candidate. Do not force a single aggregate importance score."
+}

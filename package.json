@@ -1,0 +1,31 @@
+{
+  "name": "project-language",
+  "private": true,
+  "type": "module",
+  "description": "Runnable capabilities for the Language book: host-independent core, thin Pi host adapter.",
+  "scripts": {
+    "typecheck": "tsc -p .",
+    "test": "node --experimental-transform-types --test \"core/**/*.test.ts\" \"host-pi/**/*.test.ts\"",
+    "test:skeleton": "node --experimental-transform-types --test \"core/authority/tests/*.test.ts\" \"host-pi/*.test.ts\"",
+    "verify": "npm run typecheck && npm run test:skeleton"
+  },
+  "dependencies": {
+    "@earendil-works/pi-agent-core": "1.0.4",
+    "@earendil-works/pi-ai": "1.0.4",
+    "@earendil-works/pi-coding-agent": "1.0.4",
+    "zod": "4.1.8"
+  },
+  "devDependencies": {
+    "@types/node": "22.20.5",
+    "@types/pg": "^8.23.1",
+    "typescript": "5.9.3"
+  },
+  "allowScripts": {
+    "@google/genai@2.21.0": true,
+    "esbuild@0.28.2": true,
+    "protobufjs@7.6.6": true
+  },
+  "optionalDependencies": {
+    "pg": "^8.23.1"
+  }
+}

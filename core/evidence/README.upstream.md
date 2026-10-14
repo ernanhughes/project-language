@@ -1,0 +1,234 @@
+# opencode-evidence
+
+**One job:** turn an observable event or state into a normalized,
+provenance-bearing `EvidenceRecord`.
+
+```text
+observable event/state
+        ↓
+opencode-evidence
+        ↓
+EvidenceRecord
+```
+
+It answers **"What was actually observed?"** Nothing more.
+
+## The model may propose. The world must provide observations.
+
+A language model saying "the tests pass" is **not** test evidence.
+An observed test execution — `command = "bun test"`, `exit_code = 0`,
+`stdout = "…43 passed…"` — **can be** evidence.
+
+Likewise, "I changed package.json" is not evidence. An observed file hash,
+content excerpt, diff, or repository state can be evidence.
+
+This plugin makes that distinction difficult to accidentally erase.
+
+## Core distinctions
+
+```text
+model output      != evidence
+observation       != verification
+verification      != proof
+hash integrity    != truth
+command success   != task success
+```
+
+An `EvidenceRecord` carries **no verdict fields**: no `verified`, no
+`verdict`, no `confidence`, no `task_success`. Schema validation rejects
+records that contain them (`EVIDENCE_VERDICT_FIELD`). A caller may store
+words like "claim" or "confidence" *inside* `observation` as inert data;
+the core never reads them as judgments.
+
+## Composition (separate providers)
+
+```text
+world/tool
+    ↓
+EVIDENCE  (this plugin: observation → EvidenceRecord)
+    ↓
+VERIFY    (opencode-verify: Claim + Criterion + EvidenceRecord[] → PASS | FAIL | INCONCLUSIVE)
+    ↓
+PROOF     (opencode-proof: durable, replayable ProofArtifact)
+```
+
+Evidence can later feed context compilation, remembering, debugging,
+experiments, authority decisions, and acceptance gates — with no runtime
+dependency on any of them.
+
+## Install
+
+Prerequisites: [Bun](https://bun.sh) ≥ 1.0 (Node ≥ 22 also works for the built output).
+
+```sh
+bun install
+bun run check   # typecheck + tests
+bun run build
+```
+
+Add the plugin to OpenCode:
+
+```json
+{ "plugins": ["file:///absolute/path/to/opencode-evidence"] }
+```
+
+The package entry (`dist/index.js`) exports the plugin. Zero LLM inference
+is required at any point — capture, hashing, storage, and health are pure
+runtime work.
+
+For Windows, the built checkout URL is `file:///C:/Projects/opencode-evidence`.
+For Linux/WSL use its absolute checkout URL, such as
+`file:///home/<user>/projects/opencode-evidence`. These are **OpenCode 2** `plugins`
+entries; build `dist/index.js` before host loading. The following first-use
+example uses source modules and does not prove host loading.
+
+## First use: observe a real file
+
+Run from this source checkout after `bun install`. The PowerShell here-string
+below executes the existing tool directly with Bun; on Linux/WSL save its
+TypeScript body as `first-use.ts` in this checkout and run `bun run first-use.ts`.
+No OpenCode session, model or network is involved. Output stores are newly
+created temporary directories, printed for inspection. To keep that isolation,
+run without an `OPENCODE_*_DIR` store override (environment overrides take precedence).
+```powershell
+@'
+import {mkdtempSync} from "node:fs";
+import {tmpdir} from "node:os";
+import {join} from "node:path";
+import {EvidenceClient} from "./src/client";
+import {EvidenceFileTool, EvidenceHealthTool} from "./src/tools";
+const root = mkdtempSync(join(tmpdir(), "evidence-docs-"));
+const client = new EvidenceClient(process.cwd(), {store_dir: root});
+const health = await EvidenceHealthTool(client).execute({}, undefined as never);
+console.log(health.content);
+const input = {path: "README.md", subject: "provider-readme", include_content: false};
+const result = JSON.parse((await EvidenceFileTool(client).execute(input, undefined as never)).content);
+if (!result.ok) throw new Error(result.error);
+console.log(JSON.stringify({input, store: client.storeDir, ...result}, null, 2));
+'@ | bun run -
+```
+
+Expected: `ok: true`, `record` with `schema: "opencode.evidence.v1"`, generated
+`evidence_id`, `kind: "file_observation"`, subject, observed file metadata/hash,
+source locator, `observed_at`, record `content_hash` and producer; plus stored
+`path` and `duplicate`. The input names the actual checkout README. No command
+is executed. File existence/hash observation is not a verdict about its contents.
+In a configured host invoke `evidence_file` with the same input; the host's
+configured store replaces this example's temporary store.
+
+**`evidence_command` never executes its command string.** It records values you
+already observed (`command`, `exit_code`, optional stdout/stderr/times/cwd).
+Only an external process runner can produce those observations. Exit 0 remains
+data, not task success. Caller-supplied text is not independently observed truth.
+
+## Health check and troubleshooting
+
+Call `evidence_health` with `{}`, or run `bun run health`. It reports version,
+schema, store location/writability and `model_inference: "none"`. Store probing
+creates/removes a sentinel; this is local readiness, not truth or host-load proof.
+
+- Tool absent: build `dist/index.js`, check the V2 `plugins` URL and restart; `bun run load-check` uses an offline host stub.
+- `exists: false` from `evidence_file` is a valid missing-file observation; check the path relative to the project before interpreting it.
+- `EVIDENCE_ID_COLLISION` rejects divergent bytes under one ID; retain the failure rather than rewriting the record. Store/config failures require a writable, correctly configured directory.
+- `EVIDENCE_VERDICT_FIELD`: remove verdict-shaped record fields; verification belongs to Verify.
+
+## Tools
+
+| Tool | Purpose |
+|---|---|
+| `evidence_record` | Preserve a structured observation as an `EvidenceRecord`. |
+| `evidence_command` | Turn an **already-observed** command result into evidence. Does **not** execute commands — observe first with the shell, then record. `exit_code` stays data. |
+| `evidence_file` | Observe a file (existence, size, hash, bounded excerpt). Missing files are valid `exists: false` observations. |
+| `evidence_get` | Retrieve a record by id. Read-only. |
+| `evidence_explain` | Explain a record's fields, provenance, and integrity — plus what it does **not** establish. |
+| `evidence_health` | Readiness probe. Runtime checks only, `model_inference: "none"`. |
+
+## EvidenceRecord
+
+Schema id: `opencode.evidence.v1` (see `evidence.example.json`).
+
+```ts
+type EvidenceRecord = {
+  schema: "opencode.evidence.v1";
+  evidence_id: string;          // "ev_" + content_hash[0:32], deterministic
+  kind: EvidenceKind;           // command_result | file_observation | test_result
+                                // | http_observation | git_observation
+                                // | structured_observation | other
+  subject?: string;             // label, not a claim
+  observation: unknown;         // the observed material. Data only.
+  source: { kind: string; locator?: string; version?: string };
+  observed_at: string;          // provenance; excluded from identity
+  content_hash: string;         // sha256 over canonical {kind,subject,observation,source}
+  producer: { plugin: "opencode-evidence"; version: string };
+  metadata?: Record<string, unknown>;
+};
+```
+
+**Identity semantics:** `content_hash = sha256(canonical({kind, subject,
+observation, source}))`; `evidence_id` derives from it. Re-capturing the
+same observation later yields the same id (idempotent). Copying a record to
+another store never changes its identity. `observed_at` and `producer`
+describe preservation, not content, and are excluded from the hash.
+
+A content hash gives **integrity/identity**: "this stored record is
+byte-identical to what was captured." It does **not** establish who is
+trustworthy, whether the observation is true, whether the observer was
+compromised, or whether any claim is proved.
+
+## Storage
+
+Default: a user-data location **outside the repository**, namespaced per
+project by a hash of the project path:
+
+- Windows: `%APPDATA%\opencode-evidence\projects\ev-<hash12>\records\<id>.json`
+- Other: `$XDG_DATA_HOME` or `~/.local/share`, same layout
+
+Evidence can contain secrets and runtime output; it must not become
+committed source by accident. Override with `OPENCODE_EVIDENCE_DIR` or
+`{ "store_dir": ... }` in `<project>/.opencode/evidence.json`
+(project-local stores are explicit opt-in).
+
+Store guarantees: deterministic retrieval by id, atomic write
+(tmp + rename), idempotent re-store, `EVIDENCE_ID_COLLISION` instead of
+silent overwrite, clear failures for malformed records, read-only
+retrieval, 1 MiB per-record cap, human-inspectable JSON files.
+
+## Privacy and limits
+
+- Never records environment variables or secrets; only what the caller passes or the file contains.
+- `stdout`/`stderr` capped at 16,000 chars each (flagged `*_truncated`).
+- File excerpts capped at 8 KiB; files over 20 MiB get metadata-only records.
+- Structured observations capped at 256 KiB canonical.
+- Everything stays local. Nothing is uploaded anywhere.
+
+## Checks
+
+```sh
+bun run typecheck   # tsc --noEmit
+bun test            # 50 tests across 6 files
+bun run build       # dist/index.js
+bun src/dev-cli.ts load    # plugin loads, 6 tools register, health works
+bun src/dev-cli.ts smoke   # file + command demos with hash re-verification
+```
+
+A full OpenCode-runtime load (plugin inside a live session) is **UNVERIFIED**
+in this environment; the offline `load` check proves module load, tool
+registration, and health structurally without inference.
+
+## Boundaries (non-goals)
+
+Truth engine, claim verifier, proof system, RAG, memory system, knowledge
+graph, authority engine, shell replacement, LLM judge, embeddings, remote
+upload, signing infrastructure. See `DESIGN.md` and `AGENTS.md`.
+
+## Capability provider
+
+- **Capability:** capturing observations as hash-pinned, provenance-bearing EvidenceRecords.
+- **Interfaces:** OpenCode plugin: evidence_record, evidence_command, evidence_file, evidence_get, evidence_explain and evidence_health; no hooks. evidence_command records an already-observed result and never executes commands.
+- **Current maturity:** TESTED; live OpenCode runtime UNVERIFIED.
+- **Evidence:** Six test files; README records 50 tests and offline load/smoke checks. These were not rerun in this documentation pass.
+- **Known limitations:** EvidenceRecord != verdict; hash integrity != truth. Dedicated HTTP/Git constructors remain future work; structured observations and bounded record sizes are implemented.
+- **Used by:** opencode-verify and opencode-proof (pinned vendored contracts); opencode-work (local runtime adapter).
+- **Registry:** Language `planning/capability-providers/` (Language-side availability index; this repository is the source of truth for itself).
+- **Evidence snapshot:** Audited 2026-10-02 against commit 88cc2e67.
+  See repository history and current status for later changes.

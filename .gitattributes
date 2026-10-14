@@ -1,0 +1,5 @@
+# Byte-exact goldens and fixtures must not be line-ending converted.
+core/**/conformance/** -text
+core/**/fixtures/** -text
+core/**/examples/** -text
+* text=auto eol=lf

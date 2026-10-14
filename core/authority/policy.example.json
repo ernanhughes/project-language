@@ -1,0 +1,35 @@
+{
+  "version": "example-v1",
+  "data_use": [
+    {
+      "id": "calendar-for-travel",
+      "purpose": "book-travel",
+      "data_scope": [
+        "calendar:travel-window"
+      ],
+      "permitted_operations": [
+        "ACCESS",
+        "PROCESS"
+      ],
+      "retention": "session-only"
+    }
+  ],
+  "actions": [
+    {
+      "id": "travel-search",
+      "action_scope": [
+        "search-flights"
+      ],
+      "approval": "none",
+      "purpose": "book-travel"
+    },
+    {
+      "id": "travel-purchase",
+      "action_scope": [
+        "purchase-flight"
+      ],
+      "approval": "required",
+      "purpose": "book-travel"
+    }
+  ]
+}
