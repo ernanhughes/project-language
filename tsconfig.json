@@ -7,8 +7,16 @@
     "noEmit": true,
     "allowImportingTsExtensions": true,
     "skipLibCheck": true,
-    "types": ["node"]
+    "types": [
+      "node"
+    ]
   },
-  "include": ["core/**/*.ts", "host-pi/**/*.ts", "harness/**/*.ts"],
-  "exclude": ["node_modules"]
+  "include": [
+    "core/**/*.ts",
+    "host-pi/**/*.ts",
+    "harness/**/*.ts"
+  ],
+  "exclude": [
+    "node_modules"
+  ]
 }

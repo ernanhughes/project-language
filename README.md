@@ -21,7 +21,7 @@ The host supplies model access and the request path. These modules work on what 
 | Piece | State |
 |---|---|
 | `core/authority` + `host-pi/authority.ts` | **Walking skeleton.** A Pi `tool_call` is turned into a proposal, evaluated against a policy, and blocked, approved or allowed. Run through a real Pi session with a faux model. |
-| Other `core/*` modules (compiler, lens, relate, radar, evidence, verify, proof, work, vfs, language, transport, remembering) | **Lifted, not yet qualified.** Copied from the earlier plugin repos minus their OpenCode-SDK files; see `PROVENANCE.md`. Typecheck is clean. Their own tests: 653 of 695 pass, 39 fail from environment and layout causes (`KNOWN-FAILURES.md`). None has been exercised against Pi yet. |
+| Other `core/*` modules (compiler, lens, relate, radar, evidence, verify, proof, work, vfs, language, transport, remembering) | **Lifted, not yet qualified.** Copied from the earlier plugin repos minus their OpenCode-SDK files; see `PROVENANCE.md`. Typecheck is clean and their own tests pass (see `PROVENANCE.md` for the 3 skips and the retired packaging tests). None has been exercised against Pi yet; passing their own tests says nothing about behaviour inside a Pi session. |
 | `opencode-expertise`, `opencode-observability` | **Not lifted.** They have no TypeScript `src/` of the same shape (CLI/library and Python harness). Decide separately. |
 
 A faux-model test shows that the gate fires and blocks. It says nothing about real-model behaviour.

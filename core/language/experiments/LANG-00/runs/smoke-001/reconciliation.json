@@ -1,0 +1,20 @@
+{
+  "project_id": "demo_project-bc8bed830d51e3be",
+  "thread_id": "smoke-01",
+  "revision": "rev_fb149ae0b0e4e41df3d5472adf417a1b",
+  "state_sha256": "ce9757290287b2c92cce6e16188cda44a6fd3e966d2a6d9b817f4f05713c3f1a",
+  "rendered_block_sha256": "e2788c2d0bb7c2984b9d59b0541f5cb806757e24cca8672e661d2a4db4ca5418",
+  "hook_emitted_sha256": "e2788c2d0bb7c2984b9d59b0541f5cb806757e24cca8672e661d2a4db4ca5418",
+  "hook_emitted_basis": "derived: isolated config loaded no other plugin; exactly one owned block observed with the verified revision; hook is the only possible writer; determinism via the pure renderer",
+  "observer_extracted_sha256": "e2788c2d0bb7c2984b9d59b0541f5cb806757e24cca8672e661d2a4db4ca5418",
+  "expected_length": 1253,
+  "observed_length": 1253,
+  "block_count": 1,
+  "canary_count": 1,
+  "wrapper_start_count": 1,
+  "wrapper_end_count": 1,
+  "host_role": "system array element {type:text}",
+  "evidence_source": "runs/smoke-001/observer-captures.jsonl (request_kind=context, 1 record, 1 session)",
+  "transformation": "NONE (host/plugin/observer). NOTE: the smoke script's own expected-block.txt copy carries CRLF (+43 bytes) from PowerShell capture; canonical LF bytes reconcile exactly. Script artifact, not a transport finding.",
+  "verdict": "PASS"
+}

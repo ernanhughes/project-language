@@ -24,12 +24,12 @@ describe("inter-process locking", () => {
     const { writeFileSync } = await import("node:fs");
     writeFileSync(
       holder,
-      `import { acquireThreadLock } from ${JSON.stringify(new URL("../src/lock.js", import.meta.url).href)};\n` +
+      `import { acquireThreadLock } from ${JSON.stringify(new URL("../src/lock.ts", import.meta.url).href)};\n` +
         `const lock = await acquireThreadLock(${JSON.stringify(paths.locks_dir)}, { timeoutMs: 50 });\n` +
         `await new Promise((r) => setTimeout(r, 3000));\nlock.release();\n`,
       "utf8",
     );
-    const child = (await import("node:child_process")).spawn(process.execPath, [holder], { stdio: "ignore" });
+    const child = (await import("node:child_process")).spawn(process.execPath, ["--experimental-transform-types", holder], { stdio: "ignore" });
     try {
       await new Promise((r) => setTimeout(r, 800));
       const info = describeThreadLock(paths.locks_dir);

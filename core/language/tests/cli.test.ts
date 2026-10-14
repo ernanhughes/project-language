@@ -7,11 +7,11 @@ import { promisify } from "node:util";
 import { makeProject, tempDir } from "./helpers.ts";
 
 const run = promisify(execFile);
-const CLI = fileURLToPath(new URL("../src/cli.js", import.meta.url));
+const CLI = fileURLToPath(new URL("../src/cli.ts", import.meta.url));
 
 async function cli(storeRoot: string, args: string[]): Promise<{ code: number; stdout: string; stderr: string }> {
   try {
-    const { stdout, stderr } = await run(process.execPath, [CLI, "--store-root", storeRoot, ...args], { cwd: tempDir("lang-cwd-") });
+    const { stdout, stderr } = await run(process.execPath, ["--experimental-transform-types", CLI, "--store-root", storeRoot, ...args], { cwd: tempDir("lang-cwd-") });
     return { code: 0, stdout: stdout as string, stderr: stderr as string };
   } catch (err) {
     const e = err as { stdout?: string; stderr?: string; code?: number };

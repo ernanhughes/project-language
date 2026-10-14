@@ -1,0 +1,28 @@
+{
+  "instrument": "project-context-opencode",
+  "role": "Independent experimental instrument for post-injection observation and byte reconciliation. Not a production dependency. Not modified, fetched, or imported by opencode-language.",
+  "repository_path": "C:\\Projects\\project-context-opencode",
+  "head_commit": "2d124072dbb3d808a76f4a90187d2aa59244bb8a",
+  "head_tree": "7c03f258cc2a7541896dffaeb1e437336d63e423",
+  "head_subject": "fix: deduplicate fs imports in sequence store",
+  "remote_containment": "NOT ON REMOTE: local HEAD is absent from origin/main (4da9f273ee77b0e8c96c59644d8eebf47be82fe2); branch -r --contains HEAD is empty. Required observer behavior exists only in this local tree. origin/main must not be cited for it.",
+  "working_tree": "clean (git status empty; git diff --binary empty)",
+  "local_patch": "none (no binary patch; tree used as-is)",
+  "relied_files_sha256": {
+    "src/index.ts": "6bd2823f9462d1912fbd8f31b3ef9173a1b35f69a5d470ac28cd56a095afd252",
+    "src/runtime/hook.ts": "fe3526a7aefa3668142d1982b7dce08aea1b8fa5fa2245a17db87a953faf26af",
+    "src/runtime/blocks.ts": "b60c81b204c12f1925d0d4e8c7bc746d859c9d3aae63da9bf85d0aadf1d96348",
+    "src/observer/capture.ts": "8a0beafb24b8a3b7c86acfbbaa84e0ea981aba19681bea95e2a696cfa0b2b6b0",
+    "src/observer/hooks.ts": "003d20c4bbf2ff38acaa12c4695ec053f20cb39911ef928889ff3b7629fd5e83",
+    "package.json": "30057c1ebef6263ed556f0a048d6d14e4e825386046c36de3e41860facf595e0"
+  },
+  "package_api_family": "@opencode/plugin ^2.0.16 (resolved 2.0.16 line per its lockfile; our repo resolves 2.0.21)",
+  "capabilities_relied_upon": [
+    "session.hook(\"context\") registration after the runtime hook so captures observe post-injection bytes",
+    "read-only copy-out of system/messages/tools/options with sha256 integrity over canonical JSON",
+    "session/agent/model identity capture per request",
+    "compaction and generate hook observation (request_kind labelling)",
+    "exact hook-boundary reconciliation procedure (trace + capture + marker)"
+  ],
+  "non_admission_note": "A same-module test double must never be substituted for this instrument and called independent evidence. A local development observer is diagnostic only."
+}

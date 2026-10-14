@@ -1,0 +1,21 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "LANG-00 byte-reconciliation record",
+  "type": "object",
+  "required": ["project_id", "thread_id", "revision", "state_sha256", "rendered_block_sha256", "block_count", "verdict"],
+  "properties": {
+    "project_id": { "type": "string" },
+    "thread_id": { "type": "string" },
+    "revision": { "type": "string" },
+    "state_sha256": { "type": "string", "pattern": "^[0-9a-f]{64}$" },
+    "rendered_block_sha256": { "type": "string", "pattern": "^[0-9a-f]{64}$" },
+    "hook_emitted_sha256": { "type": ["string", "null"] },
+    "observer_extracted_sha256": { "type": ["string", "null"] },
+    "block_count": { "type": "integer" },
+    "host_role": { "type": ["string", "null"] },
+    "evidence_source": { "type": "string" },
+    "recorded_at": { "type": "string" },
+    "verdict": { "type": "string", "enum": ["PASS", "FAIL", "PENDING"] }
+  },
+  "additionalProperties": false
+}

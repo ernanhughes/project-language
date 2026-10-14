@@ -17,9 +17,9 @@ function sha(text: string): string {
 describe("LANG-00 fixture reproducibility", () => {
   it("regeneration reproduces every frozen golden byte", async () => {
     const out = mkdtempSync(join(tmpdir(), "lang00-repro-"));
-    const script = fileURLToPath(new URL("../../experiments/LANG-00/scripts/make-fixture.mjs", import.meta.url));
-    await run(process.execPath, [script, out]);
-    const hashesPath = fileURLToPath(new URL("../../experiments/LANG-00/expected/hashes.json", import.meta.url));
+    const script = fileURLToPath(new URL("../experiments/LANG-00/scripts/make-fixture.mjs", import.meta.url));
+    await run(process.execPath, ["--experimental-transform-types", script, out]);
+    const hashesPath = fileURLToPath(new URL("../experiments/LANG-00/expected/hashes.json", import.meta.url));
     const frozen = JSON.parse(readFileSync(hashesPath, "utf8")) as { files: Record<string, string> };
     for (const [rel, expected] of Object.entries(frozen.files)) {
       assert.equal(sha(readFileSync(join(out, rel), "utf8")), expected, rel);

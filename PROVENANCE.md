@@ -57,3 +57,15 @@ Also removed because they test the plugin shell, not the capability: `plugin-loa
 - Tests run with `--experimental-transform-types` because the lifted code uses TypeScript parameter properties.
 - `core/authority` was restructured to `src/` and `tests/`, and its OpenCode tool-wrapper tests were dropped.
 - No logic was edited. If a lifted test passes, it passes against the original logic.
+
+## Test repairs (2026-10-14, after the first commit)
+
+The first lift left 39 failing tests, all from environment and layout. Fixed by class; no capability logic was changed:
+
+- **language:** CLI, lock and LANG-00 tests spawned `src/*.js` that the original repository built. They now run the `.ts` sources with `--experimental-transform-types`. The frozen `experiments/LANG-00/` directory (protocol, fixtures, expected hashes) was copied from `opencode-language` so the fixture-reproducibility test runs; its generator script imports `src/index.ts` instead of `dist/src/index.js` (one line changed).
+- **work:** adapters imported sibling checkouts by absolute path, which Node on Windows rejects. They now use `file://` URLs, and also resolve siblings under the unified `core/` layout (`core/evidence`, not `opencode-evidence`). One test assertion that named the old layout was updated.
+- **remembering:** `sql/` was copied so the SQL-to-client contract tests run.
+- **transport:** the architecture test no longer asserts a declared package dependency on the compiler; the compiler is now `core/compiler`. The "no vendored compiler sources" check is kept.
+- **Retired** (they tested the original plugin packaging, which this project does not have): compiler `dist-freshness`; remembering `packaging` and `no-python-runtime`; transport `entry`.
+
+Result: 687 tests, 684 pass, 3 skipped, 0 fail; typecheck clean.

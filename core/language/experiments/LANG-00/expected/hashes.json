@@ -1,0 +1,13 @@
+{
+  "project_path": "C:/lang00/demo project",
+  "thread_id": "lang00-static-01",
+  "project_id": "demo_project-394700a8647b619b",
+  "revision": "rev_e4205420d5b928806ce2bf685e761e07",
+  "canary": "CANARY-LANG00-7F3A",
+  "files": {
+    "fixtures/state.md": "e003d5125da350e30380d5cf9173bfc190192e7ce7450ddc5661abaeaacb8107",
+    "fixtures/state.meta.json": "6476cb8c6e26f87e87b0784c4006fed44dfaa9262fe9201e3f9d09013f87914c",
+    "fixtures/receipt.json": "c46b6fa1614c3eabfa5d60c188d2e56dd9975d69f8193c97ebcfaac979c1835d",
+    "expected/rendered-block.txt": "6a8ba8f1ce963723774025d3174983e4dfd9c4dc654a81fd87b4bba8a0314c43"
+  }
+}

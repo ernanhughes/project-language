@@ -28,10 +28,7 @@ test("no vendored compiler sources", () => {
   ]) {
     equal(existsSync(join(root, "src", "compiler", name)), false, name);
   }
-  const pkg = JSON.parse(readFileSync(join(root, "package.json"), "utf-8")) as {
-    dependencies: Record<string, string>;
-  };
-  ok(pkg.dependencies["project-context-compiler"], "declared dependency");
+  // The original also asserted a declared package dependency; in this project the compiler is core/compiler.
 });
 
 test("composition imports only the canonical core entry", () => {

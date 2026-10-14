@@ -1,6 +1,6 @@
 import { existsSync, readFileSync } from "node:fs";
 import { dirname, join, resolve } from "node:path";
-import { fileURLToPath } from "node:url";
+import { fileURLToPath, pathToFileURL } from "node:url";
 
 /**
  * Adapter seam between the Work runtime and the three sibling plugins.
@@ -82,8 +82,11 @@ export class UpstreamError extends Error {
 function resolvePkgDir(envVar: string, sibling: string, marker: string): string {
   // Source lives in src/ and the host bundle in dist/. In both cases sibling
   // checkouts are adjacent to this package, not the calling application's cwd.
-  const adjacent = resolve(dirname(fileURLToPath(import.meta.url)), "..", "..", sibling);
-  const candidates = [process.env[envVar], adjacent, resolve(join(process.cwd(), "..", sibling))].filter(
+  const here = dirname(fileURLToPath(import.meta.url));
+  // In project-language the providers sit side by side under core/, named without the opencode- prefix.
+  const unified = resolve(here, "..", "..", sibling.replace(/^opencode-/, ""));
+  const adjacent = resolve(here, "..", "..", sibling);
+  const candidates = [process.env[envVar], unified, adjacent, resolve(join(process.cwd(), "..", sibling))].filter(
     (p): p is string => typeof p === "string" && p.length > 0,
   );
   for (const dir of candidates) {
@@ -131,8 +134,8 @@ export function localEvidenceAdapter(): EvidenceAdapter {
   let mod: EvidenceMod | null = null;
   const load = async (): Promise<EvidenceMod> => {
     if (!mod) {
-      const capture = (await import(join(pkg, "src", "capture.ts"))) as unknown as EvidenceMod;
-      const store = (await import(join(pkg, "src", "store.ts"))) as unknown as EvidenceMod;
+      const capture = (await import(pathToFileURL(join(pkg, "src", "capture.ts")).href)) as unknown as EvidenceMod;
+      const store = (await import(pathToFileURL(join(pkg, "src", "store.ts")).href)) as unknown as EvidenceMod;
       mod = {
         normalizeCommandResult: capture.normalizeCommandResult,
         buildRecord: capture.buildRecord,
@@ -163,12 +166,12 @@ export function localVerifyAdapter(): VerifyAdapter {
   return {
     pkg,
     async check(input, ctx) {
-      const m = (await import(join(pkg, "src", "engine.ts"))) as unknown as VerifyMod;
+      const m = (await import(pathToFileURL(join(pkg, "src", "engine.ts")).href)) as unknown as VerifyMod;
       const engine = new m.VerificationEngine(ctx.projectDir, { store_dir: ctx.storeDir });
       return engine.check({ ...input }) as { receipt: JsonObject };
     },
     async get(verification_id, ctx) {
-      const m = (await import(join(pkg, "src", "engine.ts"))) as unknown as VerifyMod;
+      const m = (await import(pathToFileURL(join(pkg, "src", "engine.ts")).href)) as unknown as VerifyMod;
       return new m.VerificationEngine(ctx.projectDir, { store_dir: ctx.storeDir }).get(verification_id) as JsonObject;
     },
   };
@@ -176,7 +179,7 @@ export function localVerifyAdapter(): VerifyAdapter {
 
 export async function normalizeClaimViaVerify(input: unknown): Promise<JsonObject> {
   const pkg = resolvePkgDir("OPENCODE_VERIFY_PKG", "opencode-verify", join("src", "claim.ts"));
-  const m = (await import(join(pkg, "src", "claim.ts"))) as unknown as VerifyMod;
+  const m = (await import(pathToFileURL(join(pkg, "src", "claim.ts")).href)) as unknown as VerifyMod;
   const result = m.normalizeClaim(input);
   if (!result.ok || !result.claim) {
     throw new UpstreamError(result.code ?? "INVALID_CLAIM", result.message ?? "claim invalid");
@@ -189,7 +192,7 @@ export function localProofAdapter(): ProofAdapter {
   return {
     pkg,
     async build(input, ctx) {
-      const m = (await import(join(pkg, "src", "engine.ts"))) as unknown as ProofMod;
+      const m = (await import(pathToFileURL(join(pkg, "src", "engine.ts")).href)) as unknown as ProofMod;
       const engine = new m.ProofEngine(ctx.projectDir, { store_dir: ctx.storeDir });
       return engine.build({ ...input }) as unknown as {
         artifact: JsonObject;
@@ -197,11 +200,11 @@ export function localProofAdapter(): ProofAdapter {
       };
     },
     async get(proof_id, ctx) {
-      const m = (await import(join(pkg, "src", "engine.ts"))) as unknown as ProofMod;
+      const m = (await import(pathToFileURL(join(pkg, "src", "engine.ts")).href)) as unknown as ProofMod;
       return new m.ProofEngine(ctx.projectDir, { store_dir: ctx.storeDir }).get(proof_id) as JsonObject;
     },
     async replay(input, ctx) {
-      const m = (await import(join(pkg, "src", "engine.ts"))) as unknown as ProofMod;
+      const m = (await import(pathToFileURL(join(pkg, "src", "engine.ts")).href)) as unknown as ProofMod;
       const engine = new m.ProofEngine(ctx.projectDir, { store_dir: ctx.storeDir });
       return engine.replay({ ...input }) as unknown as JsonObject;
     },

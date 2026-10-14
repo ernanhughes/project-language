@@ -3,3 +3,4 @@ core/**/conformance/** -text
 core/**/fixtures/** -text
 core/**/examples/** -text
 * text=auto eol=lf
+core/**/experiments/** -text

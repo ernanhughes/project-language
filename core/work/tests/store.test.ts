@@ -63,6 +63,6 @@ describe("adapters", () => {
       else process.env["OPENCODE_EVIDENCE_PKG"] = prev;
     }
     // Without override, the adjacent sibling resolves.
-    expect(localEvidenceAdapter().pkg.endsWith("opencode-evidence")).toBe(true);
+    expect(localEvidenceAdapter().pkg.replaceAll("\\", "/").endsWith("/core/evidence")).toBe(true);
   });
 });

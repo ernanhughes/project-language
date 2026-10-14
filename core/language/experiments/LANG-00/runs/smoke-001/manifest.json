@@ -1,0 +1,16 @@
+{
+  "run_id": "lang00-smoke-001",
+  "date": "2026-10-02",
+  "host": { "binary": "opencode v2.0.21", "mode": "run --standalone", "config": "fully isolated temp OPENCODE_CONFIG_DIR (only opencode-language + project-context-opencode file:// entries)", "project_dir": "<temp>/demo project (contains a space)" },
+  "plugin_entry": "file:///C:/Projects/opencode-language/index.ts -> dist/src/plugin.js",
+  "model_requested": "opencode/muse-spark-1.3-contributor-free",
+  "model_observed": { "provider_id": "opencode", "id": "muse-spark-1.3-contributor-free", "variant": "default" },
+  "output_token_cap": 32,
+  "model_call_count": 1,
+  "message": "From the provided communication projection only, repeat the LANG-00 canary value exactly.",
+  "thread": "smoke-01 (explicit)",
+  "fixture_revision": "rev_fb149ae0b0e4e41df3d5472adf417a1b",
+  "fixture_state_sha256": "ce9757290287b2c92cce6e16188cda44a6fd3e966d2a6d9b817f4f05713c3f1a",
+  "instrument": { "repo": "C:/Projects/project-context-opencode", "head": "2d124072dbb3d808a76f4a90187d2aa59244bb8a", "capture": "PROJECT_CONTEXT_CAPTURE=1, temp spool" },
+  "gates": "LANG00_AUTHORIZE_MODEL_CALL=YES, exact LANG00_MODEL, cap 32<=32; preconditions (floor, fixture, pin, config) verified before inference"
+}

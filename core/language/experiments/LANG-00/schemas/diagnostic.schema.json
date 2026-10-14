@@ -1,0 +1,30 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "LANG-00 hook diagnostic record",
+  "type": "object",
+  "required": ["code", "plugin", "pre_blocks", "post_blocks"],
+  "properties": {
+    "code": {
+      "type": "string",
+      "enum": ["LANG_DISABLED", "LANG_THREAD_REQUIRED", "LANG_PROJECT_MISMATCH", "LANG_STATE_MISSING", "LANG_STATE_INVALID", "LANG_HUMAN_EDIT_PENDING", "LANG_ALREADY_PRESENT", "LANG_CONFLICTING_PROJECTION", "LANG_INJECTED", "LANG_REPLACED", "LANG_API_UNSUPPORTED"]
+    },
+    "plugin": { "const": "opencode-language" },
+    "session_id": { "type": ["string", "null"] },
+    "agent": { "type": ["string", "null"] },
+    "model": {
+      "type": ["object", "null"],
+      "properties": {
+        "provider_id": { "type": ["string", "null"] },
+        "id": { "type": ["string", "null"] }
+      }
+    },
+    "project_id": { "type": ["string", "null"] },
+    "thread_id": { "type": ["string", "null"] },
+    "revision": { "type": ["string", "null"] },
+    "state_sha256": { "type": ["string", "null"] },
+    "block_sha256": { "type": ["string", "null"] },
+    "pre_blocks": { "type": "integer" },
+    "post_blocks": { "type": "integer" }
+  },
+  "additionalProperties": false
+}
