@@ -74,3 +74,4 @@ Result: 687 tests, 684 pass, 3 skipped, 0 fail; typecheck clean.
 
 - `core/sidecar`, `host-pi/sidecar.ts`, `host-pi/language.ts`, `host-pi/authority.ts`, `harness/bun-test.ts` were written for this project. `core/sidecar` exists because no provider in the registry covers the Chapter 8 rules; it reuses `core/lens` (`render`, `splitSentences`) for derivation.
 - `core/relations` and `host-pi/relations.ts`: new. `core/relate` classifies a pair but has no notion of route, standing, scope or adjudication; those rules of Chapter 9 are enforced here. Built on `core/relate` (`classifyPair`, `cosineScore`).
+- `core/preservation` and `host-pi/preservation.ts`: new. It composes `core/evidence` (`recordStructured`) and `core/verify` (`evaluate`) and adds declaration-before-output, the four outcomes, content versus function, the profile and instrument probing. It also probes `core/lens`'s `preservationReport`.

@@ -10,7 +10,8 @@
     "verify": "npm run typecheck && npm test",
     "example:ch07": "node --experimental-transform-types --disable-warning=ExperimentalWarning examples/ch07-record/ch07.ts",
     "example:ch08": "node --experimental-transform-types --disable-warning=ExperimentalWarning examples/ch08-sidecar/ch08.ts",
-    "example:ch09": "node --experimental-transform-types --disable-warning=ExperimentalWarning examples/ch09-relations/ch09.ts"
+    "example:ch09": "node --experimental-transform-types --disable-warning=ExperimentalWarning examples/ch09-relations/ch09.ts",
+    "example:ch10": "node --experimental-transform-types --disable-warning=ExperimentalWarning examples/ch10-preservation/ch10.ts"
   },
   "dependencies": {
     "@earendil-works/pi-agent-core": "1.0.4",
