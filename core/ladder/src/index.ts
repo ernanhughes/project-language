@@ -62,7 +62,9 @@ export function decision(input: { id: string; term: string; passage: string; opt
 export function bindingHash(d: Decision, optionId: string): string {
 	const o = d.options.find((x) => x.id === optionId);
 	if (!o) throw new LadderError("UNKNOWN_OPTION", `no option ${optionId} in decision ${d.id}`);
-	return sha({ decision: d.id, term: d.term, passage: d.passage.sha256, option: o });
+	// The passage hash is recomputed here, not read from the stored field, so editing the passage text invalidates every
+	// resolution made against the old words. A stored hash that no longer matches the text is the signal that it was edited.
+	return sha({ decision: d.id, term: d.term, passage: sha(d.passage.text), option: o });
 }
 
 export type ResolutionStatus = "proposed" | "settled" | "deferred";
@@ -110,8 +112,15 @@ export function defer(d: Decision, by: Actor, reason: string): Resolution {
  * carries still matches the declaration, so a relabelled or redefined option is not honoured.
  */
 export function inForce(d: Decision, history: readonly Resolution[]): { resolution?: Resolution; stale: boolean } {
-	const mine = history.filter((r) => r.decision_id === d.id);
-	const latest = mine.at(-1);
+	// Walk the history in order. A person's settling or deferring stays in force against any later PROPOSAL (a model asking
+	// again, or suggesting another reading): a proposal is not a decision and must not unseat one. Only another settle or
+	// defer replaces it. A proposal does replace an earlier proposal, and stands when nothing has been decided.
+	let latest: Resolution | undefined;
+	for (const r of history) {
+		if (r.decision_id !== d.id) continue;
+		if (r.status === "proposed" && latest && latest.status !== "proposed") continue;
+		latest = r;
+	}
 	if (!latest) return { stale: false };
 	if (latest.option_id && latest.binding_sha256 !== bindingHash(d, latest.option_id)) return { stale: true };
 	return { resolution: latest, stale: false };
@@ -182,8 +191,22 @@ export interface Translation {
 	/** Interpretations removed by the settled choices: each settled decision removes (options - 1). */
 	interpretations_removed: number;
 	unsettled: string[];
+	/** A hash of the readings this translation rests on. A confirmation is only about the translation it was given for. */
+	fingerprint: string;
 	/** What the person said when the explained-back version was put to them. */
-	intent: { status: IntentStatus; by?: Actor; note?: string };
+	intent: { status: IntentStatus; by?: Actor; note?: string; /** The fingerprint of the translation they answered about. */ for?: string; stale?: boolean };
+}
+
+/** The readings a translation rests on: each decision with the binding of its settled option, or "open". */
+export function translationFingerprint(decisions: readonly Decision[], history: readonly Resolution[]): string {
+	return sha(
+		[...decisions]
+			.sort((a, b) => (a.id < b.id ? -1 : 1))
+			.map((d) => {
+				const { resolution } = inForce(d, history);
+				return d.id + ":" + (resolution?.status === "settled" && resolution.option_id ? bindingHash(d, resolution.option_id) : "open");
+			}),
+	);
 }
 
 export function translation(input: { id: string; from: Rung; to: Rung; claimed: TranslationRelation; decisions: readonly Decision[]; history: readonly Resolution[] }): Translation {
@@ -197,13 +220,23 @@ export function translation(input: { id: string; from: Rung; to: Rung; claimed: 
 	// A translation with open choices cannot claim to preserve or to have narrowed cleanly.
 	const open = unsettled.length > 0;
 	const relation: TranslationRelation = open && (input.claimed === "preserves" || input.claimed === "narrows") ? "still_ambiguous" : input.claimed;
-	return { id: input.id, from: input.from, to: input.to, relation, interpretations_removed: removed, unsettled, intent: { status: "unasked" } };
+	return { id: input.id, from: input.from, to: input.to, relation, interpretations_removed: removed, unsettled, fingerprint: translationFingerprint(input.decisions, input.history), intent: { status: "unasked" } };
 }
 
 /** Whether the more explicit version still says what the person meant is theirs to say. */
 export function confirmIntent(t: Translation, by: Actor, confirmed: boolean, note: string): Translation {
 	if (by.type !== "human") throw new LadderError("NOT_A_PERSON", `only a person can say whether the translation kept their intent; got ${by.type}`);
-	return { ...t, intent: { status: confirmed ? "confirmed" : "rejected", by, note } };
+	return { ...t, intent: { status: confirmed ? "confirmed" : "rejected", by, note, for: t.fingerprint } };
+}
+
+/**
+ * A confirmation counts only for the translation it was given for. If the readings have changed since, the answer is about
+ * something that no longer exists: it is reported as unasked and stale, not carried over.
+ */
+export function currentIntent(t: Translation, recorded: Translation["intent"] | undefined): Translation["intent"] {
+	if (!recorded || recorded.status === "unasked") return { status: "unasked" };
+	if (recorded.for !== t.fingerprint) return { status: "unasked", stale: true, note: "your earlier answer was about a different reading" };
+	return recorded;
 }
 
 /** Plain language, for the person to read back: each choice, in their own words, with what was set aside. */
@@ -244,7 +277,7 @@ export interface BindingProbe {
  * selector keeps choosing the same DEFINITION. A selector that follows names instead
  * of definitions will change its answer when only the names change.
  */
-export function probeBinding(d: Decision, selector: Selector): { baseline: string | null; stable: boolean; variants: BindingProbe[] } {
+export function probeBinding(d: Decision, selector: Selector): { baseline: string | null; stable: boolean; invalid_selection: boolean; variants: BindingProbe[] } {
 	const present = (labels: string[], order: number[]): Presented[] => order.map((i) => ({ label: labels[i]!, definition: d.options[i]!.definition }));
 	const pick = (p: Presented[]): string | null => {
 		const label = selector(d.term, d.passage.text, p);
@@ -267,5 +300,7 @@ export function probeBinding(d: Decision, selector: Selector): { baseline: strin
 		const chosen = pick(present(labels, order));
 		return { variant, chosen_definition: chosen, agrees_with_baseline: chosen === baseline };
 	});
-	return { baseline, stable: results.every((r) => r.agrees_with_baseline), variants: results };
+	// A selector that names no valid option under some presentation has not been stable; null equals null only by accident.
+	const invalid = baseline === null || results.some((r) => r.chosen_definition === null);
+	return { baseline, stable: !invalid && results.every((r) => r.agrees_with_baseline), invalid_selection: invalid, variants: results };
 }

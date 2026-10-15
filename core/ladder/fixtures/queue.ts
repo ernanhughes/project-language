@@ -46,14 +46,21 @@ export const AT_MOST_ONCE: Requirement<QueueTrace> = {
 	},
 };
 
-/** R2: no job is retried after a transient failure more than three times. Needs no decision. */
+/**
+ * R2: no job is retried after a transient failure more than three times. Needs no decision.
+ * A retry is an attempt after the first, so a job may have up to four attempts. Attempts must be numbered 1..n in order;
+ * a trace that is not is refused as malformed, not counted.
+ */
 export const RETRY_LIMIT: Requirement<QueueTrace> = {
 	id: "R2",
 	text: "a job that fails for a transient reason is retried at most 3 times",
 	depends_on: [],
 	holds: (trace) => {
-		const offenders = [...new Set(trace.map((e) => e.job))].filter((j) => trace.filter((e) => e.job === j && e.status === "failed_transient").length > 3);
-		return offenders.length === 0 ? { ok: true, detail: "no job was retried more than 3 times" } : { ok: false, detail: `retried too often: ${offenders.join(", ")}` };
+		const jobs = [...new Set(trace.map((e) => e.job))];
+		const malformed = jobs.filter((j) => !trace.filter((e) => e.job === j).every((e, i) => e.attempt === i + 1));
+		if (malformed.length > 0) return { ok: false, detail: "attempts are not numbered 1..n in order for: " + malformed.join(", ") };
+		const offenders = jobs.filter((j) => trace.filter((e) => e.job === j).length - 1 > 3);
+		return offenders.length === 0 ? { ok: true, detail: "no job was retried more than 3 times" } : { ok: false, detail: "retried too often: " + offenders.join(", ") };
 	},
 };
 

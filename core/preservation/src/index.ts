@@ -18,6 +18,7 @@ import { createHash } from "node:crypto";
 import { recordStructured } from "../../evidence/src/capture.ts";
 import type { EvidenceRecord } from "../../evidence/src/schema.ts";
 import { evaluate } from "../../verify/src/evaluate.ts";
+import { anchorOverlap, bestAnchorSegment, segmentsOf, splitKeepingSeparators, stuffTokens } from "./anchors.ts";
 import type { EvidenceFieldCriterion, VerificationCriterion } from "../../verify/src/criterion.ts";
 
 export type Dimension = "claim" | "relation" | "qualifier" | "number" | "uncertainty" | "provenance";
@@ -38,6 +39,10 @@ export interface Obligation {
 	patterns: string[];
 	/** Relation obligations: the three parts, kept so a reversal can be tried. */
 	parts?: { subject: string; verb: string; object: string };
+	/** Anchored obligations: a short key phrase whose adjacent word pairs must survive, in order, within one sentence or line. */
+	anchor?: { passage: string; min: number };
+	/** mustNotSay only: a sample of the forbidden claim, so the instrument can be shown to notice it. */
+	violation?: string;
 }
 
 const FIELD = "observation.output_lower";
@@ -50,6 +55,19 @@ export function mustSay(id: string, dimension: Dimension, statement: string, ...
 	return { id, dimension, statement, criterion: all(lower.map((p) => leaf("MATCHES", p))), patterns: lower };
 }
 
+/**
+ * Keep a key phrase. The output must carry at least `min` of the phrase's adjacent word pairs inside one
+ * sentence or line, so a bag of the same words does not count. Optional patterns must also match.
+ * This defeats bag-of-words stuffing. It does not stop a producer copying the phrase and changing what surrounds it.
+ */
+export function mustKeep(id: string, dimension: Dimension, statement: string, passage: string, opts: { min?: number; patterns?: string[] } = {}): Obligation {
+	if (id.includes(".")) throw new Error("an anchored obligation id cannot contain a dot: " + id);
+	const min = opts.min ?? 0.66;
+	const patterns = (opts.patterns ?? []).map((p) => p.toLowerCase());
+	const anchorLeaf: EvidenceFieldCriterion = { kind: "evidence_field", path: "observation.anchors." + id, operator: "GTE", expected: min, evidence_kind: "structured_observation" };
+	return { id, dimension, statement, criterion: all([anchorLeaf, ...patterns.map((p) => leaf("MATCHES", p))]), patterns, anchor: { passage, min } };
+}
+
 /** Subject, verb and object, in that order, close together. "A acquired B" is not "B acquired A". */
 export function mustRelate(id: string, statement: string, parts: { subject: string; verb: string; object: string }): Obligation {
 	const s = parts.subject.toLowerCase();
@@ -60,8 +78,8 @@ export function mustRelate(id: string, statement: string, parts: { subject: stri
 }
 
 /** The output must NOT match. For a claim the author has ruled out in advance. */
-export function mustNotSay(id: string, dimension: Dimension, statement: string, pattern: string): Obligation {
-	return { id, dimension, statement, criterion: { kind: "not", criterion: leaf("MATCHES", pattern.toLowerCase()) }, patterns: [] };
+export function mustNotSay(id: string, dimension: Dimension, statement: string, pattern: string, violation?: string): Obligation {
+	return { id, dimension, statement, criterion: { kind: "not", criterion: leaf("MATCHES", pattern.toLowerCase()) }, patterns: [], ...(violation !== undefined ? { violation } : {}) };
 }
 
 /** Function: can the recipient still do the thing the representation was for? */
@@ -76,6 +94,8 @@ export interface Probe {
 export interface Declaration {
 	declaration_id: string;
 	declared_at: string;
+	/** A hash of the obligations alone (not the time). An instrument validation is bound to this, so it cannot be asserted for obligations it never probed. */
+	obligations_sha256: string;
 	obligations: Obligation[];
 	probes: Probe[];
 	/** Set when this replaces an earlier declaration. */
@@ -85,9 +105,14 @@ export interface Declaration {
 const sha = (x: unknown) => createHash("sha256").update(JSON.stringify(x), "utf8").digest("hex");
 
 /** Declare what must survive. Do this before the transformation; the id is a hash of the content. */
+export function assertTime(label: string, value: string): void {
+	if (typeof value !== "string" || Number.isNaN(Date.parse(value))) throw new Error("INVALID_TIME: " + label + " is not a parseable timestamp: " + String(value));
+}
+
 export function declare(input: { obligations: Obligation[]; probes?: Probe[]; at: string; supersedes?: string }): Declaration {
+	assertTime("declaration time", input.at);
 	const body = { obligations: input.obligations, probes: input.probes ?? [], declared_at: input.at, ...(input.supersedes ? { supersedes: input.supersedes } : {}) };
-	return { declaration_id: `decl_${sha(body).slice(0, 16)}`, declared_at: input.at, obligations: input.obligations, probes: input.probes ?? [], ...(input.supersedes ? { supersedes: input.supersedes } : {}) };
+	return { declaration_id: `decl_${sha(body).slice(0, 16)}`, declared_at: input.at, obligations_sha256: sha(input.obligations), obligations: input.obligations, probes: input.probes ?? [], ...(input.supersedes ? { supersedes: input.supersedes } : {}) };
 }
 
 // ─── Observing the transformation ──────────────────────────────────────────
@@ -100,10 +125,13 @@ export interface Transformation {
 	output_at: string;
 }
 
-export function observe(t: Transformation): EvidenceRecord {
+export function observe(t: Transformation, declaration?: Declaration): EvidenceRecord {
+	// For each anchored obligation, how much of its key phrase's word order the best single segment of the output carries.
+	const anchors: Record<string, number> = {};
+	for (const o of declaration?.obligations ?? []) if (o.anchor) anchors[o.id] = anchorOverlap(o.anchor.passage, t.output);
 	return recordStructured(
 		"structured_observation",
-		{ source_sha256: sha(t.source), output: t.output, output_lower: t.output.toLowerCase() },
+		{ source_sha256: sha(t.source), output: t.output, output_lower: t.output.toLowerCase(), anchors },
 		{ subject: `transformation:${t.id}`, source: { kind: "transformation" }, observed_at: t.output_at },
 	);
 }
@@ -185,8 +213,18 @@ export function evaluateObligations(declaration: Declaration, records: EvidenceR
 	});
 }
 
-export function assess(declaration: Declaration, t: Transformation, instrument: InstrumentStatus = "not_checked"): Profile {
-	const record = observe(t);
+/**
+ * An instrument's standing is not something a caller can assert. A bare "validated" is not believed; "validated" comes only
+ * from an actual validation (validateInstrument) whose probes were run against these same obligations.
+ */
+export function resolveInstrument(declaration: Declaration, instrument: InstrumentStatus | InstrumentValidation): InstrumentStatus {
+	if (typeof instrument === "string") return instrument === "validated" ? "unvalidated" : instrument;
+	return instrument.obligations_sha256 === declaration.obligations_sha256 ? instrument.status : "unvalidated";
+}
+
+export function assess(declaration: Declaration, t: Transformation, instrument: InstrumentStatus | InstrumentValidation = "not_checked"): Profile {
+	assertTime("output time", t.output_at);
+	const record = observe(t, declaration);
 	const obligations = evaluateObligations(declaration, [record]);
 	const by_dimension: Profile["by_dimension"] = {};
 	for (const r of obligations) {
@@ -204,7 +242,7 @@ export function assess(declaration: Declaration, t: Transformation, instrument: 
 		by_dimension,
 		possible_additions: possibleAdditions(t.source, t.output),
 		function: assessFunction(declaration.probes, t.source, t.output),
-		instrument,
+		instrument: resolveInstrument(declaration, instrument),
 		not_covered: NOT_COVERED,
 		scope: SCOPE_NOTE,
 	};
@@ -270,9 +308,49 @@ export const changeNumber: Mutation = {
 	dimension: "number",
 	apply: (text) => {
 		const m = text.match(NUMBER);
-		return m ? text.replace(NUMBER, (n) => String(Number(n.replace(",", ".")) + 1)) : null;
+		// Only the first number, so what is probed is one change at a time.
+		return m ? text.replace(new RegExp(NUMBER.source), (n) => String(Number(n.replace(",", ".")) + 1)) : null;
 	},
 };
+
+/** The segment of a text that carries an obligation: the first matching one of its patterns, else the best anchor segment. */
+function targetIndex(o: Obligation, text: string): number {
+	const segs = segmentsOf(text);
+	if (o.patterns.length > 0) return segs.findIndex((seg) => o.patterns.some((p) => new RegExp(p, "i").test(seg)));
+	if (o.anchor) return bestAnchorSegment(o.anchor.passage, text).index;
+	return -1;
+}
+
+function replaceSegment(text: string, index: number, replacement: string | null): string {
+	const parts = splitKeepingSeparators(text);
+	const at = index * 2;
+	if (replacement === null) parts.splice(at, at + 1 < parts.length ? 2 : 1);
+	else parts[at] = replacement;
+	return parts.join("").trim();
+}
+
+/** Remove the sentence or line that carries this obligation, however it is expressed. */
+export const dropCarrier = (o: Obligation): Mutation => ({
+	name: "drop the sentence that carries it",
+	dimension: "any",
+	apply: (text) => {
+		const i = targetIndex(o, text);
+		return i < 0 ? null : replaceSegment(text, i, null);
+	},
+});
+
+/**
+ * Keep every word of the carrying sentence and destroy its order and punctuation: what a keyword-stuffer
+ * produces. An obligation that still passes was never testing the content, only the vocabulary.
+ */
+export const stuffCarrier = (o: Obligation): Mutation => ({
+	name: "keep the words, destroy the sentence (keyword-stuffing)",
+	dimension: "any",
+	apply: (text) => {
+		const i = targetIndex(o, text);
+		return i < 0 ? null : replaceSegment(text, i, stuffTokens(segmentsOf(text)[i]!));
+	},
+});
 
 export interface MutationResult {
 	mutation: string;
@@ -296,7 +374,11 @@ export function probeMeasure(faithful: string, mutations: readonly Mutation[], f
 
 export interface InstrumentValidation {
 	status: InstrumentStatus;
+	/** The obligations these probes were run against. */
+	obligations_sha256: string;
 	faithful_passes: boolean;
+	/** Obligations no mutation could be applied to. An obligation never probed has not been shown to notice anything. */
+	unprobed: string[];
 	probes: { obligation: string; results: MutationResult[] }[];
 }
 
@@ -308,7 +390,8 @@ export function validateInstrument(declaration: Declaration, source: string, fai
 	const base = assess(declaration, { id: "faithful", source, output: faithful, output_at: at });
 	const faithful_passes = base.obligations.every((o) => o.outcome === "SURVIVED");
 	const probes = declaration.obligations.map((o) => {
-		const mutations: Mutation[] = [dropSentenceMatching(o.patterns)];
+		const mutations: Mutation[] = o.patterns.length > 0 || o.anchor ? [dropCarrier(o), stuffCarrier(o)] : [];
+		if (o.violation !== undefined) mutations.push({ name: "add the forbidden claim", dimension: "any", apply: (text) => text + "\n" + o.violation });
 		if (o.dimension === "uncertainty" || o.dimension === "qualifier") mutations.push(strengthen);
 		if (o.dimension === "relation" && o.parts) mutations.push(reverseRelation(o.parts));
 		if (o.dimension === "number") mutations.push(changeNumber);
@@ -318,8 +401,9 @@ export function validateInstrument(declaration: Declaration, source: string, fai
 		return { obligation: o.id, results };
 	});
 	const applied = probes.flatMap((p) => p.results.filter((r) => r.applied));
-	const status: InstrumentStatus = faithful_passes && applied.length > 0 && applied.every((r) => r.detected) ? "validated" : "unvalidated";
-	return { status, faithful_passes, probes };
+	const unprobed = probes.filter((p) => !p.results.some((r) => r.applied)).map((p) => p.obligation);
+	const status: InstrumentStatus = faithful_passes && applied.length > 0 && applied.every((r) => r.detected) && unprobed.length === 0 ? "validated" : "unvalidated";
+	return { status, obligations_sha256: declaration.obligations_sha256, faithful_passes, unprobed, probes };
 }
 
 /** One line per obligation, with no total. */

@@ -15,6 +15,7 @@ import {
 	renderView,
 	validateGate,
 	validateRecord,
+	viewState,
 	type DocumentRecord,
 	type Task,
 } from "../src/index.ts";
@@ -93,7 +94,7 @@ describe("checking before showing", () => {
 	it("the tidy-and-wrong table: the third row loses its condition, the check sees it, and the table is repaired or the source ships", () => {
 		const lossy = renderTable(RECORD).split("\n").map((l) => (l.includes("H3 stale") ? "| H3 stale replica promoted | none cited |  | uncertain |" : l)).join("\n");
 		const validation = validateGate("approve_fix", "table", RECORD, source, AT);
-		const profile = checkRendering("approve_fix", "table", RECORD, source, lossy, AT, validation.status);
+		const profile = checkRendering("approve_fix", "table", RECORD, source, lossy, AT, validation);
 		assert.deepEqual(profile.obligations.filter((o) => o.outcome === "LOST").map((o) => o.id), ["row-condition-q1"]);
 		assert.equal(gateDecision(profile, 1, 2).decision, "REPAIR");
 		const out = gateDecision(profile, 2, 2);
@@ -145,7 +146,7 @@ describe("the false skip", () => {
 		const honest = renderView("decide_to_open", "preview", RECORD, source, opts).text;
 		const dropped = honest.split("\n").filter((l) => !l.startsWith("Affects your service")).join("\n");
 		const validation = validateGate("decide_to_open", "preview", RECORD, source, AT, opts);
-		const p = checkRendering("decide_to_open", "preview", RECORD, source, dropped, AT, validation.status, opts);
+		const p = checkRendering("decide_to_open", "preview", RECORD, source, dropped, AT, validation, opts);
 		assert.ok(p.obligations.some((o) => o.id === "names-ledger" && o.outcome === "LOST"), "'ledger' is still in the components line, and the check is not fooled");
 	});
 
@@ -193,9 +194,122 @@ describe("beside the page", () => {
 });
 
 describe("the cost is visible", () => {
-	it("the pipeline lists its stages; the plain page has none", () => {
+	it("the pipeline lists its stages. This counts stages; it measures no cost and no plain-page baseline", () => {
 		const b = browse("approve_fix", RECORD, source, AT);
 		assert.ok(b.trace.length >= 7, "record, choose, and for each view: render, validate, check");
 		assert.ok(b.trace.some((t) => t.stage.startsWith("validate the check")));
+	});
+});
+
+describe("review findings: the gate checks the condition it claims to preserve, and the evidence", () => {
+	const validation = () => validateGate("approve_fix", "table", RECORD, source, AT);
+	const faithfulTable = renderTable(RECORD);
+	const check = (text: string, view: "table" | "diagram" = "table") =>
+		checkRendering("approve_fix", view, RECORD, source, text, AT, view === "table" ? validation() : validateGate("approve_fix", "diagram", RECORD, source, AT));
+	const lost = (p: ReturnType<typeof check>) => p.obligations.filter((o) => o.outcome === "LOST").map((o) => o.id);
+
+	it("the reviewer's reproduction: the threshold and the gap are altered, the cue words stay, and the row is now refused", () => {
+		const altered = faithfulTable.replace("replication lag was under one second", "replication lag was over ten seconds").replace("09:00 to 09:06", "12:00 to 15:00");
+		assert.notEqual(altered, faithfulTable);
+		assert.ok(lost(check(altered)).includes("row-condition-q1"));
+		assert.equal(check(altered).instrument, "validated", "and the check that refuses it is still one that was shown to notice a loss");
+	});
+
+	it("the instrument was probed by altering a condition's value, and noticed", () => {
+		const row = validation().probes.find((p) => p.obligation === "row-condition-q1")!;
+		for (const m of ["keep the row, remove its condition", "alter the condition, keeping its words", "alter the gap interval"]) {
+			const r = row.results.find((x) => x.mutation === m)!;
+			assert.ok(r.applied && r.detected, m);
+		}
+	});
+
+	it("removing the evidence from the table is refused: the source cited it, the manager needs it", () => {
+		const bare = faithfulTable.replace("volume graph (supports)", "none cited").replace("migration lock logs (supports)", "none cited").replace("partition report (contradicts)", "none cited");
+		assert.deepEqual(lost(check(bare)).sort(), ["row-evidence-r1", "row-evidence-r2", "row-evidence-r3"]);
+	});
+
+	it("reversing an arrow in the diagram is refused", () => {
+		const diagram = renderDiagram(RECORD);
+		const reversed = diagram.replace("[volume graph] --supports--> [H1 disk full]", "[H1 disk full] --supports--> [volume graph]");
+		assert.ok(lost(check(reversed, "diagram")).includes("diagram-rel-r2"));
+		assert.deepEqual(lost(check(diagram, "diagram")), []);
+	});
+
+	it("both views still validate with the stronger obligations", () => {
+		assert.equal(validateGate("approve_fix", "table", RECORD, source, AT).status, "validated");
+		assert.equal(validateGate("approve_fix", "diagram", RECORD, source, AT).status, "validated");
+	});
+});
+
+describe("review findings: the lifecycle of a view", () => {
+	const sub = (decision: "SHOW" | "REPAIR" | "FALL_BACK_TO_SOURCE", task: Task = "approve_fix", view: "table" | "diagram" = "table") => ({ type: "submission" as const, task, view, decision });
+	const reset = (task: Task = "approve_fix") => ({ type: "reset" as const, task });
+
+	it("an accepted view stays accepted: a later rejected attempt does not unseat it (the reviewer's sequence)", () => {
+		const st = viewState([sub("SHOW"), sub("FALL_BACK_TO_SOURCE")], "approve_fix", "table");
+		assert.equal(st.state, "accepted");
+		assert.equal(st.attempts, 1, "the later submission was not taken");
+	});
+
+	it("a view handed back to the source stays handed back: a later acceptance does not undo it", () => {
+		assert.equal(viewState([sub("REPAIR"), sub("FALL_BACK_TO_SOURCE"), sub("SHOW")], "approve_fix", "table").state, "handed_back");
+	});
+
+	it("while the gate is still asking for repairs the view is open, and counts its attempts", () => {
+		const st = viewState([sub("REPAIR")], "approve_fix", "table");
+		assert.deepEqual({ state: st.state, attempts: st.attempts }, { state: "open", attempts: 1 });
+	});
+
+	it("only the reader reopens a task, and only that task", () => {
+		const events = [sub("SHOW"), sub("REPAIR", "decide_to_open", "diagram" as never)];
+		assert.equal(viewState([...events, reset()], "approve_fix", "table").state, "open");
+		assert.equal(viewState([...events, reset("look_up_fact")], "approve_fix", "table").state, "accepted");
+	});
+
+	it("views are independent of each other", () => {
+		const events = [sub("SHOW", "approve_fix", "table")];
+		assert.equal(viewState(events, "approve_fix", "diagram").state, "open");
+	});
+});
+
+describe("review findings: a record that does not trace to its source is not delivered, and neither are invented annotations", () => {
+	const broken: DocumentRecord = { ...RECORD, claims: RECORD.claims.map((c) => (c.id === "H1" ? { ...c, passage: "" } : c)) };
+
+	it("every view falls back to the source when the record fails validation", () => {
+		const b = browse("approve_fix", broken, source, AT);
+		assert.deepEqual(b.views.map((v) => v.decision.decision), ["FALL_BACK_TO_SOURCE", "FALL_BACK_TO_SOURCE"]);
+		assert.match(b.views[0]!.decision.why, /the record does not trace to the source \(EMPTY_PASSAGE:H1\)/);
+		assert.ok(b.views.every((v) => v.shown.text === SOURCE && v.shown.is_source));
+		assert.ok(b.trace.some((t) => t.stage === "validate the record" && /FAILS/.test(t.note)));
+	});
+
+	it("the reviewer's reproduction: an invented qualifier cannot ride in as an annotation, because its condition is not in its passage", () => {
+		const invented: DocumentRecord = {
+			...RECORD,
+			qualifiers: [...RECORD.qualifiers, { id: "q-invented", applies_to: "H1", condition: "restart the primary before approving", effect: "instruction", status: "holds", passage: "H1 disk full on the primary: the volume was at 98 percent at 08:50" }],
+		};
+		const b = browse("follow_procedure", invented, source, AT);
+		assert.equal(b.views[0]!.decision.decision, "FALL_BACK_TO_SOURCE");
+		assert.equal(b.views[0]!.shown.text, SOURCE, "the source alone; no annotation block");
+		assert.ok(!b.views[0]!.shown.text.includes("restart the primary"));
+	});
+
+	it("a valid record's annotations carry only the condition and gap that lie inside the cited passage", () => {
+		const b = browse("follow_procedure", RECORD, source, AT);
+		const text = b.views[0]!.shown.text;
+		assert.match(text, /=> condition: replication lag was under one second \(unknown: the lag data has a gap from 09:00 to 09:06\)/);
+		assert.ok(!text.includes("is ruled out only if this holds"), "the system's gloss is left out");
+	});
+
+	it("looking up a fact needs no record and says where the passage is", () => {
+		const b = browse("look_up_fact", broken, source, AT, { query: "failover completed" });
+		assert.equal(b.views[0]!.decision.decision, "SHOW");
+		const h = b.views[0]!.shown.highlight!;
+		assert.equal(SOURCE.slice(h.start, h.end).toLowerCase(), "failover completed");
+	});
+
+	it("a query that is not in the source, or an empty one, is reported as not found rather than located at the start", () => {
+		assert.equal(browse("look_up_fact", RECORD, source, AT, { query: "nothing like this" }).views[0]!.shown.highlight, null);
+		assert.equal(browse("look_up_fact", RECORD, source, AT, { query: "" }).views[0]!.shown.highlight, null);
 	});
 });

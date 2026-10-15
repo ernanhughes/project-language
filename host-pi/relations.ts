@@ -9,10 +9,12 @@
 //     record for a pair is the one in force, and the earlier ones stay in the history.
 import { Type } from "@earendil-works/pi-ai";
 import { defineTool, type ExtensionAPI, type ExtensionCommandContext, type ExtensionFactory } from "@earendil-works/pi-coding-agent";
+import type { Direction } from "../core/relations/src/index.ts";
 import {
 	RelationError,
 	adjudicate,
 	classifyRelation,
+	effectiveRecords,
 	findCandidates,
 	shownAs,
 	worthShowing,
@@ -34,16 +36,9 @@ const RELATIONS: readonly Relation[] = ["SUPPORTS", "CONTRADICTS", "UPDATES", "I
 
 type EntryLike = { type: string; customType?: string; data?: unknown };
 
-/** The record in force for each pair: the latest one. Earlier records remain in the session. */
+/** The records in force. The rule (a person's adjudication is not displaced by a later non-adjudication) lives in the core. */
 function inForce(entries: readonly EntryLike[]): RelationRecord[] {
-	const byPair = new Map<string, RelationRecord>();
-	for (const e of entries) {
-		if (e.type === "custom" && e.customType === RECORD) {
-			const r = e.data as RelationRecord;
-			byPair.set(`${r.a.id}|${r.b.id}`, r);
-		}
-	}
-	return [...byPair.values()];
+	return effectiveRecords(entries.filter((e) => e.type === "custom" && e.customType === RECORD).map((e) => e.data as RelationRecord));
 }
 
 export function relations(options: RelationsOptions): ExtensionFactory {
@@ -73,9 +68,13 @@ export function relations(options: RelationsOptions): ExtensionFactory {
 					"Ask the relation classifier how a candidate relates to what the reader is reading. The result is recorded as a proposal from an uncalibrated classifier. " +
 					"You cannot confirm it; only the reader can. Unknown is a normal answer.",
 				parameters: Type.Object({ candidate_id: Type.String() }),
-				async execute(_id, params) {
+				async execute(_id, params, _signal, _onUpdate, ctx) {
 					const candidate = byId.get(params.candidate_id);
 					if (!candidate) return { content: [{ type: "text", text: `No such candidate: ${params.candidate_id}` }], details: { id: null, relation: null, standing: null, caveats: [] as string[] } };
+					const held = current(ctx).find((r) => r.a.id === options.subject.id && r.b.id === candidate.id);
+					if (held?.route === "adjudicated") {
+						return { content: [{ type: "text", text: `${candidate.id}: a person has already ruled on this pair (${shownAs(held)}). Your label is not recorded and does not change it.` }], details: { id: held.id as string | null, relation: held.relation as string | null, standing: held.standing as string | null, caveats: held.caveats as string[] } };
+					}
 					const record = classifyRelation(options.subject, candidate);
 					pi.appendEntry(RECORD, record);
 					return {
@@ -93,12 +92,21 @@ export function relations(options: RelationsOptions): ExtensionFactory {
 			handler: async (args, ctx) => {
 				const [first, ...rest] = args.trim().split(/\s+/).filter(Boolean);
 				if (first === "adjudicate") {
-					const [candidateId, relation, ...reason] = rest;
+					const [candidateId, relation, ...afterRelation] = rest;
+					// Optional flags, then the reason: `dir=left_to_right` sets the direction; `scope-confirmed` says the two items share their scope.
+					let direction: Direction | undefined;
+					let confirmsScope = false;
+					const reason: string[] = [];
+					for (const t of afterRelation) {
+						if (reason.length === 0 && t === "scope-confirmed") confirmsScope = true;
+						else if (reason.length === 0 && t.startsWith("dir=")) direction = t.slice(4) as Direction;
+						else reason.push(t);
+					}
 					const prior = current(ctx).find((r) => r.b.id === candidateId);
 					if (!candidateId || !relation || !prior) return say(ctx, "usage: /relations adjudicate <candidate_id> <RELATION|keep> <reason>  (the candidate must have been labelled first)");
 					if (relation !== "keep" && !RELATIONS.includes(relation as Relation)) return say(ctx, `relation must be one of ${RELATIONS.join(", ")} or keep`);
 					try {
-						const next = adjudicate(prior, { type: "human", id: "reader" }, { ...(relation === "keep" ? {} : { relation: relation as Relation }), reason: reason.join(" ") });
+						const next = adjudicate(prior, { type: "human", id: "reader" }, { ...(relation === "keep" ? {} : { relation: relation as Relation }), ...(direction ? { direction } : {}), confirms_scope: confirmsScope, reason: reason.join(" ") });
 						pi.appendEntry(RECORD, next);
 						return say(ctx, `${candidateId}: ${shownAs(next)}`);
 					} catch (error) {

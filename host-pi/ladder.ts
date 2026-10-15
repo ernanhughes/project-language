@@ -15,6 +15,7 @@ import {
 	RUNGS,
 	check,
 	confirmIntent,
+	currentIntent,
 	defer,
 	explainBack,
 	inForce,
@@ -49,8 +50,8 @@ export function ladder<Trace>(options: LadderOptions<Trace>): ExtensionFactory {
 
 		const currentTranslation = (ctx: Ctx): Translation => {
 			const t = translation({ id: "prose-to-structured", from: RUNGS[0], to: RUNGS[2], claimed: "narrows", decisions: options.decisions, history: history(ctx) });
-			const i = intent(ctx);
-			return i ? { ...t, intent: i } : t;
+			// A confirmation is about the reading it was given for. If the readings have moved on, it no longer counts.
+			return { ...t, intent: currentIntent(t, intent(ctx)) };
 		};
 
 		pi.registerTool(
@@ -116,7 +117,7 @@ export function ladder<Trace>(options: LadderOptions<Trace>): ExtensionFactory {
 					}
 					if (sub === "explain") {
 						const t = currentTranslation(ctx);
-						return say(`${explainBack(options.decisions, history(ctx))}\n\nprose → structured: ${t.relation}; readings set aside: ${t.interpretations_removed}; still open: ${t.unsettled.join(", ") || "none"}; your confirmation: ${t.intent.status}`);
+						return say(`${explainBack(options.decisions, history(ctx))}\n\nprose → structured: ${t.relation}; readings set aside: ${t.interpretations_removed}; still open: ${t.unsettled.join(", ") || "none"}; your confirmation: ${t.intent.status}${t.intent.stale ? " (your earlier answer was about a different reading)" : ""}`);
 					}
 				} catch (error) {
 					if (error instanceof LadderError) return say(`Not done: ${error.message}`);

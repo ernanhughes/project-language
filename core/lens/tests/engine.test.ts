@@ -85,3 +85,39 @@ void describe("stableId", () => {
     assert.notEqual(stableId(["a", "b"]), stableId(["a", "c"]));
   });
 });
+
+void describe("preservation report: order, negation and hedges", () => {
+  const src = "Acme acquired Beta in 2023. The effect may reduce errors by 20 percent. The test did not pass.";
+  const claim = (out: string) => preservationReport(src, out, "BRIEF");
+
+  void it("a verbatim copy is preserved on every axis", () => {
+    const r = claim(src);
+    assert.equal(r.claim_survival, "preserved");
+    assert.equal(r.qualifier_survival, "preserved");
+  });
+
+  void it("a reversed relation is no longer read as preserved, though every word survives", () => {
+    const r = claim("Beta acquired Acme in 2023. The effect may reduce errors by 20 percent. The test did not pass.");
+    assert.notEqual(r.claim_survival, "preserved");
+  });
+
+  void it("a hedge turned into a certainty is caught as a lost qualifier", () => {
+    const r = claim("Acme acquired Beta in 2023. The effect does reduce errors by 20 percent. The test did not pass.");
+    assert.equal(r.qualifier_survival, "lost");
+  });
+
+  void it("a dropped negation is caught", () => {
+    const r = claim("Acme acquired Beta in 2023. The effect may reduce errors by 20 percent. The test did pass.");
+    assert.notEqual(r.claim_survival, "preserved");
+  });
+
+  void it("known blind spot: swapping one word for its opposite inside a long sentence is not noticed", () => {
+    const r = claim("Acme acquired Beta in 2023. The effect may increase errors by 20 percent. The test did not pass.");
+    assert.equal(r.claim_survival, "preserved", "the report cannot see that 'reduce' became 'increase'");
+  });
+
+  void it("known false alarm: a faithful paraphrase reads as lost, because the report is for extractive output", () => {
+    const r = preservationReport("The effect may reduce errors by 20 percent.", "Errors may fall by 20 percent because of the effect.", "BRIEF");
+    assert.notEqual(r.claim_survival, "preserved");
+  });
+});

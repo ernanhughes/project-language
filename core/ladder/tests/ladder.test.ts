@@ -6,6 +6,7 @@ import {
 	bindingHash,
 	check,
 	confirmIntent,
+	currentIntent,
 	decision,
 	defer,
 	explainBack,
@@ -165,4 +166,64 @@ describe("does the name override the definition?", () => {
 		assert.equal(rotated.agrees_with_baseline, false);
 	});
 
+});
+
+describe("review findings: what a later proposal, an edit, or a change of reading must not do", () => {
+	it("a model proposing another reading does not unseat a reading a person settled", () => {
+		const history = [...settledAs("effect"), propose(EXECUTED, "completed", gpt, "most natural")];
+		assert.equal(inForce(EXECUTED, history).resolution?.option_id, "effect");
+		const r = run(history);
+		assert.equal(r.verdict, "FAIL", "still checked under the settled reading, not rendered inconclusive by the proposal");
+		assert.deepEqual(r.readings, { executed: "effect" });
+	});
+
+	it("a proposal does not unseat a deferral either, and does stand when nothing has been decided", () => {
+		assert.equal(inForce(EXECUTED, [defer(EXECUTED, priya, "ask the owner"), propose(EXECUTED, "completed", gpt)]).resolution?.status, "deferred");
+		assert.equal(inForce(EXECUTED, [propose(EXECUTED, "completed", gpt)]).resolution?.status, "proposed");
+		assert.equal(inForce(EXECUTED, [propose(EXECUTED, "completed", gpt), propose(EXECUTED, "effect", gpt)]).resolution?.option_id, "effect", "a later proposal replaces an earlier proposal");
+	});
+
+	it("a person's later settling or deferring does replace an earlier one", () => {
+		assert.equal(inForce(EXECUTED, [...settledAs("completed"), settle(EXECUTED, "effect", priya, "on reflection")]).resolution?.option_id, "effect");
+		assert.equal(inForce(EXECUTED, [...settledAs("completed"), defer(EXECUTED, priya, "not sure after all")]).resolution?.status, "deferred");
+	});
+
+	it("a confirmation is about the reading it was given for: change the reading and it no longer counts", () => {
+		const mk = (history: Resolution[]) => translation({ id: "t", from: RUNGS[0], to: RUNGS[2], claimed: "narrows", decisions: [EXECUTED], history });
+		const asCompleted = mk(settledAs("completed"));
+		const confirmed = confirmIntent(asCompleted, priya, true, "yes, that is what I meant");
+		assert.equal(currentIntent(asCompleted, confirmed.intent).status, "confirmed");
+		// The reviewer's reproduction: settle completed, confirm, then settle effect.
+		const asEffect = mk([...settledAs("completed"), settle(EXECUTED, "effect", priya, "no, the double charge")]);
+		assert.notEqual(asEffect.fingerprint, asCompleted.fingerprint);
+		const carried = currentIntent(asEffect, confirmed.intent);
+		assert.equal(carried.status, "unasked");
+		assert.equal(carried.stale, true);
+	});
+
+	it("a probe that never gets a valid answer from the selector is not 'stable'", () => {
+		const r = probeBinding(EXECUTED, () => "no-such-label");
+		assert.equal(r.stable, false);
+		assert.equal(r.invalid_selection, true);
+	});
+
+	it("editing a decision's passage invalidates what was settled against the old words", () => {
+		const edited = { ...EXECUTED, passage: { ...EXECUTED.passage, text: EXECUTED.passage.text + " (a later clause)" } };
+		const r = check(AT_MOST_ONCE, TRACE, [edited], settledAs("completed"));
+		assert.equal(r.verdict, "INCONCLUSIVE");
+		assert.equal(r.reason, "STALE_BINDING");
+	});
+
+	it("the retry limit counts retries, not attempts: four attempts is three retries and is allowed, five is not", () => {
+		const attempts = (n: number) => Array.from({ length: n }, (_, i) => ({ job: "J9", attempt: i + 1, status: "failed_transient" as const, external_effect: false }));
+		assert.equal(check(RETRY_LIMIT, attempts(4), [EXECUTED], []).verdict, "PASS");
+		assert.equal(check(RETRY_LIMIT, attempts(5), [EXECUTED], []).verdict, "FAIL");
+	});
+
+	it("a trace whose attempts are not numbered 1..n in order is refused rather than counted", () => {
+		const bad = [{ job: "J9", attempt: 2, status: "failed_transient" as const, external_effect: false }, { job: "J9", attempt: 1, status: "completed" as const, external_effect: false }];
+		const r = check(RETRY_LIMIT, bad, [EXECUTED], []);
+		assert.equal(r.verdict, "FAIL");
+		assert.match(r.detail, /not numbered 1\.\.n/);
+	});
 });

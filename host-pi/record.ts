@@ -29,6 +29,11 @@ export function documentRecord(options: RecordOptions): ExtensionFactory {
 					"The record is a reading of the source, not the source and not the truth.",
 				parameters: Type.Object({ view: Type.String({ description: "diagram | table | timeline" }) }),
 				async execute(_id, params) {
+					// A record that does not trace to its source is not rendered: a view of it would look as consistent as a faithful one.
+					const problems = validateRecord(options.source, options.record);
+					if (problems.length > 0) {
+						return { content: [{ type: "text", text: "Not rendered: the record does not trace to its source (" + problems.map((p) => p.problem + ":" + p.id).join(", ") + ")." }], details: { view: null as string | null } };
+					}
 					const view = VIEWS.find((v) => v === params.view);
 					if (!view) return { content: [{ type: "text", text: `No such view: ${params.view}. Choose one of ${VIEWS.join(", ")}.` }], details: { view: null as string | null } };
 					const text = view === "diagram" ? renderRecordDiagram(options.record) : view === "table" ? renderRecordTable(options.record) : renderRecordTimeline(options.record);

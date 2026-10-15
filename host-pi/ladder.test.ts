@@ -120,3 +120,32 @@ test("nothing notifies while the model works", async () => {
 	assert.equal(ui.notifications.length, 0);
 	h.dispose();
 });
+
+test("review finding: a confirmation does not survive a change of reading", async () => {
+	const { h, ui } = await start();
+	await h.session.prompt("/interpretation settle executed completed we only care that it finished once");
+	await h.session.prompt("/interpretation confirm yes that is what I meant");
+	await h.session.prompt("/interpretation explain");
+	assert.match(ui.notifications.at(-1)!.message, /your confirmation: confirmed/);
+
+	await h.session.prompt("/interpretation settle executed effect no, the fear was a double charge");
+	await h.session.prompt("/interpretation explain");
+	const view = ui.notifications.at(-1)!.message;
+	assert.match(view, /"executed" is read as: external effect/);
+	assert.match(view, /your confirmation: unasked \(your earlier answer was about a different reading\)/);
+	h.dispose();
+});
+
+test("review finding: a model proposal after a person settled does not make the check inconclusive", async () => {
+	const { h } = await start();
+	await h.session.prompt("/interpretation settle executed effect the fear was a double charge");
+	h.faux.setResponses([
+		call("interpretation_propose", { decision_id: "executed", option_id: "completed", reason: "actually the most natural reading" }),
+		call("check_requirement", { requirement_id: "R1" }),
+		done(),
+	]);
+	await h.session.prompt("go");
+	assert.match(toolTexts(h)[1]!, /R1: FAIL \(readings: executed=effect\)/, "still checked under the person's reading");
+	assert.equal(resolutions(h).filter((r: any) => r.status === "proposed").length, 1, "the proposal is recorded in the history");
+	h.dispose();
+});

@@ -125,3 +125,80 @@ test("a task that leaves the source unchanged is shown as the source", async () 
 	assert.ok(view.includes(SOURCE));
 	h.dispose();
 });
+
+test("review finding: the obligations are declared before the submission, and a submission dated earlier than the declaration is flagged", async () => {
+	const times = ["2026-10-15T10:00:00.000Z", "2026-10-15T09:00:00.000Z"]; // factory (declaration), then the submission, which is earlier
+	let i = 0;
+	const ui = new UiRecorder();
+	const h = await makeSession({
+		ui,
+		extensions: [browser({ source: { id: SOURCE_ID, text: SOURCE }, record: RECORD, corpus: [EARLIER], thisScope: THIS_SCOPE, about: "H2", audienceServices: ["ledger"], components: COMPONENTS, now: () => times[Math.min(i++, times.length - 1)]! })],
+	});
+	h.faux.setResponses([submit("approve_fix", "table", FAITHFUL_TABLE), done()]);
+	await h.session.prompt("go");
+	assert.match(texts(h)[0]!, /FLAG OBLIGATIONS_DECLARED_AFTER_OUTPUT/);
+	h.dispose();
+});
+
+test("review finding: when the obligations were declared first, as they are in a real session, no late flag appears", async () => {
+	const { h } = await start();
+	h.faux.setResponses([submit("approve_fix", "table", FAITHFUL_TABLE), done()]);
+	await h.session.prompt("go");
+	assert.doesNotMatch(texts(h)[0]!, /FLAG/);
+	h.dispose();
+});
+
+test("review finding: an accepted view is not replaced by a later attempt, and /browser show keeps showing it", async () => {
+	const { h, ui } = await start();
+	h.faux.setResponses([submit("approve_fix", "table", FAITHFUL_TABLE), submit("approve_fix", "table", LOSSY_TABLE), done()]);
+	await h.session.prompt("go");
+	assert.match(texts(h)[0]!, /^SHOW/);
+	assert.match(texts(h)[1]!, /This view is already accepted\. Further submissions are not taken/);
+	assert.equal(submissions(h).length, 1, "the refused submission is not recorded as an attempt");
+	await h.session.prompt("/browser show approve_fix");
+	assert.match(ui.notifications.at(-1)!.message, /── table: the model's rendering, checked/);
+	h.dispose();
+});
+
+test("review finding: a view handed back to the source stays handed back, and only the reader can reopen it", async () => {
+	const { h, ui } = await start();
+	h.faux.setResponses([submit("approve_fix", "table", LOSSY_TABLE), submit("approve_fix", "table", LOSSY_TABLE), submit("approve_fix", "table", FAITHFUL_TABLE), done()]);
+	await h.session.prompt("go");
+	assert.match(texts(h)[1]!, /^FALL_BACK_TO_SOURCE/);
+	assert.match(texts(h)[2]!, /already handed back to the source/);
+	await h.session.prompt("/browser show approve_fix");
+	assert.match(ui.notifications.at(-1)!.message, /── table: the SOURCE/);
+
+	await h.session.prompt("/browser reset approve_fix");
+	assert.match(ui.notifications.at(-1)!.message, /Reopened approve_fix/);
+	h.faux.setResponses([submit("approve_fix", "table", FAITHFUL_TABLE), done()]);
+	await h.session.prompt("try again");
+	assert.match(texts(h).at(-1)!, /^SHOW/);
+	assert.equal(submissions(h).length, 3, "the earlier submissions stay in the record");
+	h.dispose();
+});
+
+test("review finding: a record that does not trace to the source sends every submission, and the view, back to the source", async () => {
+	const broken = { ...RECORD, claims: RECORD.claims.map((c) => (c.id === "H1" ? { ...c, passage: "" } : c)) };
+	const ui = new UiRecorder();
+	const h = await makeSession({ ui, extensions: [browser({ source: { id: SOURCE_ID, text: SOURCE }, record: broken, corpus: [EARLIER], thisScope: THIS_SCOPE, about: "H2", audienceServices: ["ledger"], components: COMPONENTS, now: () => T })] });
+	h.faux.setResponses([submit("approve_fix", "table", FAITHFUL_TABLE), done()]);
+	await h.session.prompt("go");
+	assert.match(texts(h)[0]!, /^FALL_BACK_TO_SOURCE: the record does not trace to the source \(EMPTY_PASSAGE:H1\)/);
+	await h.session.prompt("/browser show approve_fix");
+	const view = ui.notifications.at(-1)!.message;
+	assert.match(view, /── table: the SOURCE/);
+	assert.ok(!view.includes("beside the page"), "no margin is built from a record that does not trace");
+	h.dispose();
+});
+
+test("review finding: looking up a fact shows the source and says where the passage is", async () => {
+	const { h, ui } = await start();
+	await h.session.prompt("/browser show look_up_fact failover completed");
+	const view = ui.notifications.at(-1)!.message;
+	assert.match(view, /\(passage located at characters \d+-\d+: "failover completed"\)/);
+	assert.ok(view.includes(SOURCE));
+	await h.session.prompt("/browser show look_up_fact there is no such passage");
+	assert.match(ui.notifications.at(-1)!.message, /\(passage not found: "there is no such passage"\)/);
+	h.dispose();
+});

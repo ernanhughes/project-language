@@ -19,6 +19,7 @@
 //
 //   source ≠ record ≠ rendering      record ≠ source of truth
 //   retrieval ≠ verification         preference ≠ benefit
+import { validateRecord as checkRecord } from "../../record/src/index.ts";
 import { classifyRelation, type RelationRecord } from "../../relations/src/index.ts";
 import { derivedItem, retrievedItem, type SidecarItem } from "../../sidecar/src/index.ts";
 import {
@@ -27,6 +28,7 @@ import {
 	mustSay,
 	validateInstrument,
 	type Declaration,
+	type InstrumentStatus,
 	type InstrumentValidation,
 	type Mutation,
 	type Obligation,
@@ -73,6 +75,8 @@ export interface Rendering {
 	text: string;
 	/** True when `text` is the source byte for byte. */
 	is_source: boolean;
+	/** Source-highlight only: where the passage was found, or null if it was not. */
+	highlight?: { start: number; end: number } | null;
 }
 
 export interface RenderOptions {
@@ -127,12 +131,14 @@ export function renderTable(record: DocumentRecord): string {
 
 /** The source, byte for byte, then a list of annotations keyed by the passage they refer to. */
 export function renderAnnotated(record: DocumentRecord, source: Source): string {
-	const notes = record.qualifiers.map((q) => `- "${q.passage}" => ${q.effect}: ${q.condition}${q.status === "unknown" ? ` (unknown: ${q.gap})` : ""}`);
+	// Only text the record validated as lying inside the passage: the condition and the gap. The system's own gloss is left out.
+	const notes = record.qualifiers.map((q) => `- "${q.passage}" => condition: ${q.condition}${q.status === "unknown" && q.gap ? ` (unknown: ${q.gap})` : ""}`);
 	return `${source.text}\n\n--- annotations (the text above is the source, unchanged) ---\n${notes.join("\n")}`;
 }
 
 /** The source unchanged, with the location of the passage. */
 export function renderHighlight(source: Source, query: string): { text: string; found: { start: number; end: number } | null } {
+	if (query.trim() === "") return { text: source.text, found: null };
 	const start = source.text.toLowerCase().indexOf(query.toLowerCase());
 	return { text: source.text, found: start < 0 ? null : { start, end: start + query.length } };
 }
@@ -148,8 +154,10 @@ export function renderView(task: Task, view: Representation, record: DocumentRec
 			return { ...base, text: renderTable(record), is_source: false };
 		case "annotated_source":
 			return { ...base, text: renderAnnotated(record, source), is_source: false };
-		case "source_highlight":
-			return { ...base, text: renderHighlight(source, opts.query ?? "").text, is_source: true };
+		case "source_highlight": {
+			const h = renderHighlight(source, opts.query ?? "");
+			return { ...base, text: h.text, is_source: true, highlight: h.found };
+		}
 	}
 }
 
@@ -166,26 +174,43 @@ export function obligationsFor(task: Task, view: Representation, record: Documen
 	const hyps = claims.filter((c) => c.kind === "hypothesis");
 	const disputes = claims.filter((c) => c.kind === "conclusion" && c.standing === "disputed");
 	const fix = claims.find((c) => c.kind === "proposal");
-	const gaps = record.qualifiers.filter((q) => q.status === "unknown");
 	const gapAt = (q: Qualifier) => claims.find((c) => c.id === q.applies_to)!;
 	if (view === "preview") {
 		const o = [mustSay("failed", "claim", "what failed", esc(claims.find((c) => c.kind === "fact")!.label))];
-		if (disputes.length) o.push(mustSay("disputed", "uncertainty", "that the cause is disputed", "disputed"));
+		if (disputes.length) o.push(mustSay("disputed", "uncertainty", "that the cause is disputed, and who holds which view", "disputed:[^\\n]*\\bholds\\b[^\\n]*\\bholds\\b"));
 		// A false skip must not happen: if her service is named in the source, the preview says so.
 		for (const s of (opts.audienceServices ?? []).filter((x) => (opts.source?.text ?? "").includes(x))) o.push(mustSay(`names-${s}`, "claim", `says it affects ${s}, which is her service`, sameLine("affects your service", esc(s.toLowerCase()))));
 		return o;
 	}
 	if (view === "diagram") {
-		const o = hyps.map((h) => mustSay(`diagram-${h.id}`, "claim", `candidate cause in the diagram: ${h.label}`, esc(h.label)));
+		// The node, in brackets. The label alone survives being shredded into a bag of words; the node does not.
+		const o = hyps.map((h) => mustSay(`diagram-${h.id}`, "claim", `candidate cause in the diagram: ${h.label}`, "\\[" + esc(h.label.toLowerCase()) + "\\]"));
 		if (disputes.length) o.push(mustSay("diagram-disputed", "uncertainty", `the conclusion is disputed, and by whom (${disputes.map((d) => d.holder).join(", ")})`, sameLine("disputed", ...disputes.map((d) => esc(d.holder!.toLowerCase())))));
-		for (const q of gaps) o.push(mustSay(`diagram-gap-${q.id}`, "qualifier", `${gapAt(q).label}: ${q.effect} only if ${q.condition}; ${q.gap}`, sameLine(gapAt(q).label, "replication lag", "unknown")));
+		// The node, then its condition and (if there is one) its gap, on the same line: the actual words, not cue words.
+		for (const q of record.qualifiers.filter((x) => claims.find((c) => c.id === x.applies_to)?.kind === "hypothesis")) {
+			o.push(mustSay("diagram-gap-" + q.id, "qualifier", gapAt(q).label + ": " + q.effect + " only if " + q.condition + (q.gap ? "; " + q.gap : ""), "\\[" + esc(gapAt(q).label.toLowerCase()) + "\\][^\\n]*" + esc(q.condition.toLowerCase()) + (q.gap ? "[^\\n]*" + esc(q.gap.toLowerCase()) : "")));
+		}
+		// Every evidence relation toward a hypothesis keeps its direction and its type.
+		for (const r of record.relations.filter((x) => claims.find((c) => c.id === x.to)?.kind === "hypothesis")) {
+			const from = claims.find((c) => c.id === r.from)!;
+			const to = claims.find((c) => c.id === r.to)!;
+			o.push(mustSay("diagram-rel-" + r.id, "relation", from.label + " " + r.type.toLowerCase() + " " + to.label, "\\[" + esc(from.label.toLowerCase()) + "\\] --" + r.type.toLowerCase() + "--> \\[" + esc(to.label.toLowerCase()) + "\\]"));
+		}
 		if (fix) o.push(mustSay("diagram-proposer", "provenance", `who proposed the fix (${fix.holder}) and what it is (${fix.label})`, sameLine("proposed fix", esc(fix.holder!.toLowerCase()), esc(fix.label.toLowerCase()))));
 		return o;
 	}
 	if (view === "table") {
 		const o: Obligation[] = hyps.map((h) => mustSay(`row-${h.id}`, "claim", `a row for ${h.label}`, `\\|\\s*${esc(h.label.toLowerCase())}`));
 		// The condition has to be on the same row as the hypothesis it conditions. This is the tidy-and-wrong case.
-		for (const q of gaps) o.push(mustSay(`row-condition-${q.id}`, "qualifier", `the ${gapAt(q).label} row carries its condition (${q.condition}) and the gap`, sameLine(`| ${gapAt(q).label}`, "replication lag", "unknown")));
+		for (const q of record.qualifiers.filter((x) => claims.find((c) => c.id === x.applies_to)?.kind === "hypothesis")) {
+			o.push(mustSay("row-condition-" + q.id, "qualifier", "the " + gapAt(q).label + " row carries its condition (" + q.condition + ")" + (q.gap ? " and the gap (" + q.gap + ")" : ""), "\\| " + esc(gapAt(q).label.toLowerCase()) + "[^\\n]*" + esc(q.condition.toLowerCase()) + (q.gap ? "[^\\n]*" + esc(q.gap.toLowerCase()) : "")));
+		}
+		// Each hypothesis keeps the evidence the source cited for it, on its own row, with its type.
+		for (const r of record.relations.filter((x) => claims.find((c) => c.id === x.to)?.kind === "hypothesis")) {
+			const from = claims.find((c) => c.id === r.from)!;
+			const to = claims.find((c) => c.id === r.to)!;
+			o.push(mustSay("row-evidence-" + r.id, "relation", to.label + " keeps its evidence: " + from.label + " (" + r.type.toLowerCase() + ")", "\\| " + esc(to.label.toLowerCase()) + "[^\\n]*" + esc(from.label.toLowerCase()) + " \\(" + r.type.toLowerCase() + "\\)"));
+		}
 		return o;
 	}
 	// annotated_source, source_highlight: the source is shown; what must survive is the source.
@@ -198,23 +223,57 @@ export function declarationFor(task: Task, view: Representation, record: Documen
 
 /** Ways to break a rendering that only someone who knows its shape can name. */
 export function domainMutations(record: DocumentRecord): (o: Obligation) => Mutation[] {
-	const conditions = record.qualifiers.map((q) => q.condition);
-	return (o) =>
-		o.dimension === "qualifier"
-			? [
-					{
-						name: "keep the row, remove its condition",
+	const label = (id: string) => record.claims.find((c) => c.id === id)?.label ?? id;
+	return (o) => {
+		const out: Mutation[] = [];
+		if (o.dimension === "qualifier") {
+			for (const q of record.qualifiers) {
+				const lead = q.condition.split(" ").slice(0, 2).join(" ");
+				out.push({
+					name: "keep the row, remove its condition",
+					dimension: "qualifier",
+					apply: (text) => (new RegExp("\\b" + esc(lead) + "[^|\\n]*", "i").test(text) ? text.replace(new RegExp("\\b" + esc(lead) + "[^|\\n]*", "i"), "") : null),
+				});
+				// The reviewer's case: the cue words survive and the VALUE changes. A check that only looks for the cue words does not notice.
+				out.push({
+					name: "alter the condition, keeping its words",
+					dimension: "qualifier",
+					apply: (text) => {
+						const altered = q.condition.split(" ").reverse().join(" ");
+						return text.toLowerCase().includes(q.condition.toLowerCase()) ? text.replace(new RegExp(esc(q.condition), "i"), altered) : null;
+					},
+				});
+				if (q.gap) {
+					out.push({
+						name: "alter the gap interval",
 						dimension: "qualifier",
 						apply: (text) => {
-							for (const c of conditions) {
-								const re = new RegExp(`\\b${esc(c.split(" ").slice(0, 2).join(" "))}[^|\\n]*`, "i");
-								if (re.test(text)) return text.replace(re, "");
-							}
-							return null;
+							const moved = q.gap!.replace(/\d/g, (d) => String((Number(d) + 3) % 10));
+							return text.toLowerCase().includes(q.gap!.toLowerCase()) ? text.replace(new RegExp(esc(q.gap!), "i"), moved) : null;
 						},
-					},
-				]
-			: [];
+					});
+				}
+			}
+		}
+		const evidence = /^row-evidence-(.+)$/.exec(o.id);
+		if (evidence) {
+			const r = record.relations.find((x) => x.id === evidence[1]);
+			if (r) {
+				const cell = label(r.from) + " (" + r.type.toLowerCase() + ")";
+				out.push({ name: "replace its evidence with 'none cited'", dimension: "relation", apply: (text) => (text.includes(cell) ? text.replace(cell, "none cited") : null) });
+			}
+		}
+		const arrow = /^diagram-rel-(.+)$/.exec(o.id);
+		if (arrow) {
+			const r = record.relations.find((x) => x.id === arrow[1]);
+			if (r) {
+				const forward = "[" + label(r.from) + "] --" + r.type.toLowerCase() + "--> [" + label(r.to) + "]";
+				const backward = "[" + label(r.to) + "] --" + r.type.toLowerCase() + "--> [" + label(r.from) + "]";
+				out.push({ name: "reverse the arrow", dimension: "relation", apply: (text) => (text.includes(forward) ? text.replace(forward, backward) : null) });
+			}
+		}
+		return out;
+	};
 }
 
 // ─── The gate ──────────────────────────────────────────────────────────────
@@ -245,8 +304,39 @@ export function validateGate(task: Task, view: Representation, record: DocumentR
 	return validateInstrument(declarationFor(task, view, record, at, o), source.text, faithful, at, domainMutations(record));
 }
 
-export function checkRendering(task: Task, view: Representation, record: DocumentRecord, source: Source, text: string, at: string, instrument: Profile["instrument"], opts: RenderOptions = {}): Profile {
-	return assess(declarationFor(task, view, record, at, { ...opts, source }), { id: `${task}/${view}`, source: source.text, output: text, output_at: at }, instrument);
+/**
+ * `declaredAt` is when the obligations were declared. A caller that declares them once, up front, and checks later can have
+ * the late-declaration flag mean something; if it is omitted they are declared at the moment of checking, which cannot.
+ */
+export function checkRendering(task: Task, view: Representation, record: DocumentRecord, source: Source, text: string, at: string, instrument: InstrumentStatus | InstrumentValidation, opts: RenderOptions = {}, declaredAt?: string): Profile {
+	return assess(declarationFor(task, view, record, declaredAt ?? at, { ...opts, source }), { id: `${task}/${view}`, source: source.text, output: text, output_at: at }, instrument);
+}
+
+/**
+ * What the reader is to be given for one view, from the order of events. A view is OPEN until it is ACCEPTED (a submission passed the
+ * gate) or HANDED BACK (the gate gave up and the source ships). Both are terminal: later submissions are not accepted, so a good
+ * view cannot be replaced by a worse one, and a fallback cannot be undone by a later acceptance. Only the reader can reopen a task.
+ */
+export type BrowserEvent = { type: "submission"; task: Task; view: Representation; decision: GateDecision["decision"] } | { type: "reset"; task: Task };
+
+export function viewState<E extends BrowserEvent>(events: readonly E[], task: Task, view: Representation): { state: "open" | "accepted" | "handed_back"; attempts: number; accepted?: E } {
+	let state: "open" | "accepted" | "handed_back" = "open";
+	let attempts = 0;
+	let accepted: E | undefined;
+	for (const e of events) {
+		if (e.type === "reset" && e.task === task) {
+			state = "open";
+			attempts = 0;
+			accepted = undefined;
+		} else if (e.type === "submission" && e.task === task && e.view === view && state === "open") {
+			attempts += 1;
+			if (e.decision === "SHOW") {
+				state = "accepted";
+				accepted = e;
+			} else if (e.decision === "FALL_BACK_TO_SOURCE") state = "handed_back";
+		}
+	}
+	return accepted ? { state, attempts, accepted } : { state, attempts };
 }
 
 /** Refusals are worth watching. A gate that never refuses is either perfect or decorative, and perfect is unlikely. */
@@ -282,7 +372,7 @@ const words = (s: string) => new Set(s.toLowerCase().match(/[a-z]{4,}/g) ?? []);
  * relation it claims, labelled as a proposal and flagged where the scopes are not declared shared.
  */
 export function buildMargin(source: Source, record: DocumentRecord, corpus: readonly CorpusDoc[], thisScope: string, about: string): Margin {
-	const derived = record.qualifiers.map((q) => derivedItem({ id: source.id, content: source.text }, q.passage, `${q.effect}: ${q.condition}${q.status === "unknown" ? ` (unknown: ${q.gap})` : ""}`, "record"));
+	const derived = record.qualifiers.map((q) => derivedItem({ id: source.id, content: source.text }, q.passage, "record", `${q.effect}: ${q.condition}${q.status === "unknown" ? ` (unknown: ${q.gap})` : ""}`));
 	const subject = record.claims.find((c) => c.id === about)!;
 	const retrieved: SidecarItem[] = [];
 	const relations: RelationRecord[] = [];
@@ -310,7 +400,7 @@ export interface ViewResult {
 	profile: Profile | null;
 	decision: GateDecision;
 	/** What the reader is actually given for this view. */
-	shown: { text: string; is_source: boolean };
+	shown: { text: string; is_source: boolean; highlight?: { start: number; end: number } | null };
 }
 
 export interface Browsed {
@@ -324,17 +414,26 @@ export interface Browsed {
 export function browse(task: Task, record: DocumentRecord, source: Source, at: string, opts: RenderOptions = {}): Browsed {
 	const trace: Stage[] = [{ stage: "record", note: `${record.claims.length} claims, ${record.relations.length} relations, ${record.qualifiers.length} qualifiers, each citing the source` }];
 	const choice = choose(task);
+	// Nothing built from the record is delivered if the record does not trace to its source. Looking up a fact uses no record.
+	const recordProblems = task === "look_up_fact" ? [] : checkRecord(source, record);
+	trace.push({ stage: "validate the record", note: task === "look_up_fact" ? "not needed: no record is used" : recordProblems.length === 0 ? "traces to the source" : "FAILS: " + recordProblems.map((p) => p.problem + ":" + p.id).join(", ") });
 	trace.push({ stage: "choose", note: `${choice.representations.join(" + ")}${choice.transforms_source ? "" : " (source unchanged)"}: ${choice.why}` });
 	const views: ViewResult[] = choice.representations.map((view) => {
+		if (recordProblems.length > 0) {
+			const why = "the record does not trace to the source (" + recordProblems.map((p) => p.problem + ":" + p.id).join(", ") + ")";
+			const rendering = { task, representation: view, text: "", is_source: true } satisfies Rendering;
+			trace.push({ stage: "deliver " + view, note: "FALL_BACK_TO_SOURCE: " + why });
+			return { rendering, validation: null, profile: null, decision: { decision: "FALL_BACK_TO_SOURCE" as const, why, lost: [] }, shown: { text: source.text, is_source: true } };
+		}
 		const rendering = renderView(task, view, record, source, opts);
 		trace.push({ stage: `render ${view}`, note: `${rendering.text.length} characters${rendering.is_source ? ", the source itself" : ""}` });
 		if (!choice.transforms_source) {
 			trace.push({ stage: `check ${view}`, note: "skipped: nothing was transformed" });
-			return { rendering, validation: null, profile: null, decision: { decision: "SHOW", why: "the source is shown as it is" }, shown: { text: rendering.text, is_source: true } };
+			return { rendering, validation: null, profile: null, decision: { decision: "SHOW", why: "the source is shown as it is" }, shown: { text: rendering.text, is_source: true, ...(rendering.highlight !== undefined ? { highlight: rendering.highlight } : {}) } };
 		}
 		const validation = validateGate(task, view, record, source, at, opts);
 		trace.push({ stage: `validate the check for ${view}`, note: `${validation.status}; faithful reference passes: ${validation.faithful_passes}` });
-		const profile = checkRendering(task, view, record, source, rendering.text, at, validation.status, opts);
+		const profile = checkRendering(task, view, record, source, rendering.text, at, validation, opts);
 		const decision = gateDecision(profile, 1, 1);
 		trace.push({ stage: `check ${view}`, note: `${decision.decision}: ${decision.why}` });
 		return { rendering, validation, profile, decision, shown: decision.decision === "SHOW" ? { text: rendering.text, is_source: false } : { text: source.text, is_source: true } };

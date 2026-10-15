@@ -30,7 +30,7 @@ const items = (h: Awaited<ReturnType<typeof start>>["h"]) =>
 test("the model cannot choose its own layer: a self-declared layer is not honoured", async () => {
 	const { h } = await start();
 	h.faux.setResponses([
-		toolCall("sidecar_propose", { content: "The assumptions may not hold in this setting.", limits: "Not checked against the proof.", layer: "SEMANTIC_DERIVATION", status: "re-presented" }),
+		toolCall("sidecar_propose", { content: "The assumptions may not hold in this setting.", limits: "Not checked against the proof of the original theorem.", layer: "SEMANTIC_DERIVATION", status: "re-presented" }),
 		done(),
 	]);
 	await h.session.prompt("go");
@@ -39,6 +39,32 @@ test("the model cannot choose its own layer: a self-declared layer is not honour
 		assert.equal(item.status, "candidate");
 	}
 	assert.equal(items(h).length, 1, "the call was accepted and the extra fields were dropped, not obeyed");
+	h.dispose();
+});
+
+test("'None.' is refused, with the reason the model can act on", async () => {
+	const { h } = await start();
+	h.faux.setResponses([toolCall("sidecar_propose", { content: "The paper proves the protocol safe.", limits: "None." }), done()]);
+	await h.session.prompt("go");
+	assert.equal(items(h).length, 0);
+	const text = (h.session.messages.filter((m) => m.role === "toolResult").at(-1) as any).content[0].text as string;
+	assert.match(text, /Not placed:/);
+	assert.match(text, /LIMITS_VACUOUS: "none" and its relatives are not a statement of limits/);
+	h.dispose();
+});
+
+test("the same limits pasted onto a second answer in the session are refused as boilerplate", async () => {
+	const { h } = await start();
+	const same = "Not checked against any source document.";
+	h.faux.setResponses([
+		toolCall("sidecar_propose", { content: "The first answer may be wrong.", limits: same }),
+		toolCall("sidecar_propose", { content: "A different answer about something else entirely.", limits: same }),
+		done(),
+	]);
+	await h.session.prompt("go");
+	assert.equal(items(h).length, 1);
+	const text = (h.session.messages.filter((m) => m.role === "toolResult").at(-1) as any).content[0].text as string;
+	assert.match(text, /LIMITS_BOILERPLATE/);
 	h.dispose();
 });
 
@@ -94,7 +120,7 @@ test("available, not intrusive: placing items never notifies; only the reader's 
 	const { h, ui } = await start();
 	h.faux.setResponses([
 		toolCall("sidecar_search", { query: "consensus" }),
-		toolCall("sidecar_propose", { content: "Possibly inapplicable.", limits: "unchecked" }),
+		toolCall("sidecar_propose", { content: "Possibly inapplicable.", limits: "Not checked against any source document." }),
 		done(),
 	]);
 	await h.session.prompt("go");
@@ -109,9 +135,9 @@ test("available, not intrusive: placing items never notifies; only the reader's 
 	h.dispose();
 });
 
-test("the sidecar is not fed back into the model's context", async () => {
+test("the sidecar adds nothing to the system prompt (the model's own tool calls still contain what it wrote)", async () => {
 	const { h } = await start();
-	h.faux.setResponses([toolCall("sidecar_propose", { content: "ZEBRA-MARKER-7731", limits: "unchecked" }), done()]);
+	h.faux.setResponses([toolCall("sidecar_propose", { content: "ZEBRA-MARKER-7731", limits: "Not checked against any source document." }), done()]);
 	await h.session.prompt("go");
 	const system = await systemPromptSeenByProvider(h);
 	assert.ok(!system.includes("ZEBRA-MARKER-7731"), "sidecar content is for the reader, not injected into the system prompt");
@@ -159,5 +185,66 @@ test("a forged item in the session is hidden and reported, never shown", async (
 	const view = ui.notifications.at(-1)!.message;
 	assert.ok(!view.includes("proves the protocol is unsafe"), "the forged claim is not displayed");
 	assert.match(view, /failed validation and are hidden: sc_forged0000000000/);
+	h.dispose();
+});
+
+test("a model cannot claim to have drawn on something that does not exist", async () => {
+	const { h } = await start();
+	h.faux.setResponses([
+		toolCall("sidecar_propose", { content: "The theorem may not apply here.", limits: "Based on one passage and not checked against the proof.", drew_on: ["a-paper-i-invented"] }),
+		toolCall("sidecar_propose", { content: "The theorem may not apply here.", limits: "Based on one passage and not checked against the proof.", drew_on: ["fischer-1985"] }),
+		done(),
+	]);
+	await h.session.prompt("go");
+	const [first, second] = (h.session.messages.filter((m) => m.role === "toolResult") as any[]).map((m) => m.content[0].text as string);
+	assert.match(first!, /DREW_ON_UNKNOWN/);
+	assert.match(second!, /^Placed beside the source/);
+	assert.equal(items(h).length, 1);
+	h.dispose();
+});
+
+test("the margin will not be flooded: past its cap, proposals and searches are refused until the reader dismisses something", async () => {
+	const ui = new UiRecorder();
+	const h = await makeSession({ ui, extensions: [sidecar({ source: PAPER, corpus: CORPUS, maxOpen: 2 })] });
+	const propose = (n: number) => toolCall("sidecar_propose", { content: `Candidate number ${n} may be wrong.`, limits: `Candidate ${n} is based on one passage and not checked.` });
+	h.faux.setResponses([propose(1), propose(2), propose(3), toolCall("sidecar_search", { query: "consensus" }), done()]);
+	await h.session.prompt("go");
+	const texts = (h.session.messages.filter((m) => m.role === "toolResult") as any[]).map((m) => m.content[0].text as string);
+	assert.match(texts[2]!, /the margin already holds 2 candidates/);
+	assert.match(texts[3]!, /Nothing matched|Placed 0|Nothing was placed/, "no room for a retrieval either");
+	assert.equal(items(h).length, 2);
+	// Dismissing one makes room.
+	const id = items(h)[0]!.id;
+	await h.session.prompt(`/sidecar dismiss ${id}`);
+	h.faux.setResponses([propose(4), done()]);
+	await h.session.prompt("again");
+	assert.equal(items(h).length, 3);
+	h.dispose();
+});
+
+test("a stored object of the wrong shape is hidden and reported as malformed; it does not break the view", async () => {
+	const junk = (pi: ExtensionAPI) => {
+		pi.registerCommand("junk", {
+			description: "test only: append a malformed sidecar item",
+			handler: async () => {
+				pi.appendEntry("sidecar-item", { nonsense: true });
+				pi.appendEntry("sidecar-item", null);
+			},
+		});
+	};
+	const { h, ui } = await start([junk]);
+	await h.session.prompt("/junk");
+	await h.session.prompt("/sidecar");
+	assert.match(ui.notifications.at(-1)!.message, /failed validation and are hidden: .*MALFORMED/);
+	h.dispose();
+});
+
+test("a derived item shows its quotation and, separately, the system's reading of it", async () => {
+	const { h, ui } = await start();
+	await h.session.prompt("/sidecar derive");
+	await h.session.prompt("/sidecar");
+	const view = ui.notifications.at(-1)!.message;
+	assert.match(view, /\[DERIVED FROM THE SOURCE/);
+	for (const item of items(h)) assert.equal(item.content, item.anchor!.quote, "what is re-presented is the quotation");
 	h.dispose();
 });

@@ -12,6 +12,7 @@ const CORPUS: Item[] = [
 	{ id: "retry-old", text: "The retry budget is three attempts." },
 	{ id: "retry-new", text: "The retry budget has been updated to five attempts." },
 	{ id: "bread", text: "Bread rises because yeast produces carbon dioxide." },
+	{ id: "cache-new", text: "Writes leave stale entries in the cache until the next refresh." },
 ];
 
 const call = (name: string, args: Parameters<typeof fauxToolCall>[1]) => fauxAssistantMessage([fauxToolCall(name, args)], { stopReason: "toolUse" });
@@ -76,19 +77,28 @@ test("the same wording within a declared, shared scope stands as a proposed cont
 });
 
 test("a person corrects the classifier's miss; the earlier record stays in the history", async () => {
-	const { h, ui } = await start({ id: "retry-old", text: "The retry budget is three attempts." });
-	h.faux.setResponses([call("relations_label", { candidate_id: "retry-new" }), done()]);
+	const { h, ui } = await start({ id: "cache-old", text: "The cache is always invalidated on write.", scope: "the service" });
+	h.faux.setResponses([call("relations_label", { candidate_id: "cache-new" }), done()]);
 	await h.session.prompt("go");
-	assert.notEqual(records(h)[0]!.relation, "UPDATES", "the classifier's miss");
-	await h.session.prompt("/relations adjudicate retry-new UPDATES the new text states the budget and says it replaces the old one");
+	assert.equal(records(h)[0]!.relation, "RELATED", "the classifier's miss: a contradiction with no negation word");
+	await h.session.prompt("/relations adjudicate cache-new CONTRADICTS the first says always invalidated; the second describes stale entries surviving a write");
 	const all = records(h);
 	assert.equal(all.length, 2, "a correction is a new record, not an overwrite");
 	assert.equal(all[1]!.standing, "adjudicated");
 	assert.equal(all[1]!.by, "person:reader");
 	await h.session.prompt("/relations");
 	const view = ui.notifications.at(-1)!.message;
-	assert.match(view, /retry-new\s+updates \(confirmed by a person\)/);
-	assert.equal(view.split("retry-new").length - 1, 1, "only the record in force is shown");
+	assert.match(view, /cache-new\s+contradicts \(confirmed by a person\)/);
+	assert.equal(view.split("cache-new").length - 1, 1, "only the record in force is shown");
+	h.dispose();
+});
+
+test("an explicit revision is now recognised by the classifier, with no date or version needed", async () => {
+	const { h } = await start({ id: "retry-old", text: "The retry budget is three attempts." });
+	h.faux.setResponses([call("relations_label", { candidate_id: "retry-new" }), done()]);
+	await h.session.prompt("go");
+	assert.equal(records(h)[0]!.relation, "UPDATES");
+	assert.equal(records(h)[0]!.standing, "proposal", "recognised, and still only a proposal");
 	h.dispose();
 });
 
@@ -133,4 +143,39 @@ test("available, not intrusive: nothing notifies while the model works, and an u
 	assert.match(fresh.ui.notifications.at(-1)!.message, /No relations have been labelled\. Nothing is claimed/);
 	h.dispose();
 	fresh.h.dispose();
+});
+
+test("review finding: a model asking for another label cannot displace a person's ruling on the same pair", async () => {
+	const { h, ui } = await start({ id: "retry-old", text: "The retry budget is three attempts." });
+	h.faux.setResponses([call("relations_label", { candidate_id: "retry-new" }), done()]);
+	await h.session.prompt("go");
+	await h.session.prompt("/relations adjudicate retry-new UPDATES v2 states the new budget and says it replaces the old one");
+	assert.equal(records(h).length, 2);
+
+	// The reviewer's reproduction: the model labels the same pair again.
+	h.faux.setResponses([call("relations_label", { candidate_id: "retry-new" }), done()]);
+	await h.session.prompt("label it again");
+	assert.match(toolText(h), /a person has already ruled on this pair/);
+	assert.match(toolText(h), /Your label is not recorded and does not change it/);
+	assert.equal(records(h).length, 2, "the model's label was not even added to the record");
+
+	await h.session.prompt("/relations");
+	assert.match(ui.notifications.at(-1)!.message, /retry-new\s+updates \(confirmed by a person\)\s+\[adjudicated\]/);
+	h.dispose();
+});
+
+test("confirming a label in the command does not confirm the scope unless the reader says so", async () => {
+	const { h, ui } = await start();
+	h.faux.setResponses([call("relations_label", { candidate_id: "small-data" }), done()]);
+	await h.session.prompt("go");
+	await h.session.prompt("/relations adjudicate small-data keep looks right to me");
+	assert.match(ui.notifications.at(-1)!.message, /possible contradiction, unconfirmed: scope not declared as shared \(label confirmed by a person; scope still not confirmed\)/);
+
+	await h.session.prompt("/relations adjudicate small-data keep scope-confirmed dir=symmetric both are the same population");
+	const last = records(h).at(-1)!;
+	assert.deepEqual(last.caveats, []);
+	assert.equal(last.direction, "symmetric");
+	assert.equal(last.reason, "both are the same population");
+	assert.match(ui.notifications.at(-1)!.message, /small-data: contradicts \(confirmed by a person\)/);
+	h.dispose();
 });

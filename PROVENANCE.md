@@ -79,3 +79,23 @@ Result: 687 tests, 684 pass, 3 skipped, 0 fail; typecheck clean.
 - `core/browser` and `host-pi/browser.ts`: new. Composes `core/preservation`, `core/sidecar` and `core/relations`. `core/browser/fixtures/incident.ts` is a constructed incident report; every name, number and service in it is invented. `core/preservation` gained an optional `extra` argument to `validateInstrument` (domain-specific mutations) and a line-aware `dropSentenceMatching`, both needed by the browser's gate.
 - `core/record` and `host-pi/record.ts`: new. Chapter 7's document record. `core/browser` now imports its record types and `validateRecord` from here and re-exports them. `core/record/fixtures/retry-policy.ts` and `breakers.ts` are constructed for illustration; the "direct" renderings in `retry-policy.ts` are hand-written to show drift and are not model output.
 - Correction: `core/language` and its example were first labelled Chapter 7. That was wrong; see the README. The example is now `examples/conversation-state`.
+
+## Changes to lifted code after the first lift (weak-point fixes, 2026-10-15)
+
+The statement above that "no logic was edited" no longer holds for two modules. Both are heuristics, both changes follow a failure found by a probe, and the upstream tests for each still pass.
+
+- `core/relate/src/engine/classify.ts`: added explicit revision language ("has been updated to", "replaces", "no longer", and a weaker "is now" that counts only when a number differs) as an UPDATES cue, with direction from the side that announces the revision. It was added after the Chapter 9 probe showed an explicit update labelled as support, and tightened after a false positive ("is now running") on a regression set.
+- `core/lens/src/engine/render.ts`: `preservationReport` is now order-, negation- and hedge-aware. The Chapter 10 instrument probe showed the upstream report (word overlap only) could not tell a reversed relation or a hedge turned into a certainty from the original. It remains a heuristic proxy for extractive output; two limits are pinned by tests (a one-word antonym swap in a long sentence is not noticed; a faithful paraphrase reads as lost).
+
+Other changes in this pass are to code written for this project: `core/sidecar` (specific limits), `core/relations` (novelty), `core/preservation` (anchored obligations, the shredding probe, unprobed obligations, `anchors.ts`) and `core/browser` (obligations bound to structure).
+
+## Changes after the cross-review (2026-10-15)
+
+A second AI reviewed commit `3239630`. The code changes that answered it are listed in `REVIEW-RESPONSE.md`. Beyond that file:
+
+- `core/record` gained schema enforcement, empty-passage and source checks, condition-in-passage checks, table ids and qualifier rendering on every claim; its `ClaimKind` gained `provenance`.
+- `core/sidecar`: `derivedItem(source, quote, producer?, gloss?)` replaces `derivedItem(source, quote, content?, producer?)`. The content is the quotation; the old third argument is gone. Existing callers were updated.
+- `core/relations`: `effectiveRecords` and the `confirms_scope` option are new.
+- `core/ladder`: `translationFingerprint` and `currentIntent` are new; `Translation` gained a `fingerprint`; `probeBinding` gained `invalid_selection`.
+- `core/preservation`: `Declaration` gained `obligations_sha256`; `InstrumentValidation` gained `obligations_sha256`; `assess` accepts an `InstrumentStatus` or an `InstrumentValidation` and believes only the latter; times are validated.
+- `core/browser`: the view lifecycle (`viewState`) is in the core; `checkRendering` takes the validation object and an optional `declaredAt`.

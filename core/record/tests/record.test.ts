@@ -48,12 +48,80 @@ describe("a record is a traceable reading of a source", () => {
 		assert.equal(locate(retry.RECORD, rSource, "no-such-id"), undefined);
 	});
 
-	it("the record holds nothing about renderings or readers", () => {
+	it("the two fixtures carry only schema fields (the enforcement is the next test)", () => {
 		const allowed = new Set(["id", "kind", "label", "cues", "passage", "standing", "holder", "order", "from", "to", "type", "rejects", "applies_to", "condition", "effect", "status", "gap"]);
 		for (const entry of [...retry.RECORD.claims, ...retry.RECORD.relations, ...retry.RECORD.qualifiers, ...breakers.RECORD.claims, ...breakers.RECORD.relations, ...breakers.RECORD.qualifiers]) {
 			for (const key of Object.keys(entry)) assert.ok(allowed.has(key), `unexpected field ${key}`);
 		}
 		for (const forbidden of ["view", "audience", "reader", "format", "layout", "novelty", "relevance"]) assert.ok(!allowed.has(forbidden));
+	});
+});
+
+describe("review findings: validation that was missing", () => {
+	const base = retry.RECORD;
+	const withClaim = (extra: Record<string, unknown>) => ({ ...base, claims: [...base.claims, { id: "z", kind: "fact", label: "z", passage: "The policy follows ADR-17", standing: "stated", ...extra }] }) as unknown as DocumentRecord;
+
+	it("an empty passage is refused: every string contains the empty string", () => {
+		const problems = validateRecord(rSource, withClaim({ passage: "" }));
+		assert.ok(problems.some((p) => p.problem === "EMPTY_PASSAGE" && p.id === "z"));
+		assert.ok(validateRecord(rSource, withClaim({ passage: "   " })).some((p) => p.problem === "EMPTY_PASSAGE"));
+	});
+
+	it("a record for a different source is refused", () => {
+		const problems = validateRecord({ id: "some-other-document", text: retry.SOURCE }, retry.RECORD);
+		assert.ok(problems.some((p) => p.problem === "SOURCE_MISMATCH"));
+	});
+
+	it("a reader or rendering field cannot ride along on any record: the schema is enforced, not assumed", () => {
+		for (const field of ["audience", "view", "reader", "novelty", "layout"]) {
+			const problems = validateRecord(rSource, withClaim({ [field]: "x" }));
+			assert.ok(problems.some((p) => p.problem === "UNKNOWN_FIELD" && p.id === "z." + field), field);
+		}
+	});
+
+	it("a qualifier's condition has to appear in the passage it cites: a condition cannot be invented", () => {
+		const bad: DocumentRecord = { ...breakers.RECORD, qualifiers: [{ ...breakers.RECORD.qualifiers[0]!, condition: "the customer is an adult" }] };
+		assert.ok(validateRecord(bSource, bad).some((p) => p.problem === "CONDITION_NOT_IN_PASSAGE"));
+		assert.deepEqual(validateRecord(bSource, breakers.RECORD), []);
+	});
+});
+
+describe("review findings: qualifiers and ids in the renderings", () => {
+	// The reviewer's reproduction: a qualifier on a claim that is also the end of a relation.
+	const withAdults: DocumentRecord = {
+		...breakers.RECORD,
+		qualifiers: [...breakers.RECORD.qualifiers, { id: "qadult", applies_to: "caffeine", condition: "only when sleep is adequate", effect: "applies", status: "holds", passage: "only when sleep is adequate" }],
+	};
+
+	it("a condition attached to a claim that is a relation endpoint now appears in the diagram", () => {
+		assert.match(renderRecordDiagram(withAdults), /\[caffeine\] only if: .*only when sleep is adequate.*\(qadult\)/);
+	});
+
+	it("conditions on ordered claims and on exceptions appear in the timeline", () => {
+		const rec: DocumentRecord = {
+			...retry.RECORD,
+			qualifiers: [
+				{ id: "q-r3", applies_to: "r3", condition: "after 1 minute", effect: "timing", status: "holds", passage: "after 1 minute, 5 minutes and 30 minutes" },
+				{ id: "q-x1", applies_to: "x1", condition: "network partition", effect: "applies when", status: "holds", passage: "If the failure is a network partition, the payment is not retried" },
+			],
+		};
+		assert.deepEqual(validateRecord(rSource, rec), []);
+		const t = renderRecordTimeline(rec);
+		assert.match(t, /3\. retry 3 after 30 minutes {3}\(r3\)\n {6}only if: .*after 1 minute.*\(q-r3\)/);
+		assert.match(t, /exception: partition exception applies to up to three retries {3}\(x1\)\n {6}only if: .*network partition.*\(q-x1\)/);
+	});
+
+	it("every row of the table names its record entry, so a reader can ask for it", () => {
+		const table = renderRecordTable(retry.RECORD);
+		for (const entry of [...retry.RECORD.claims, ...retry.RECORD.relations]) assert.match(table, new RegExp("\\| " + entry.id + " \\|"), entry.id);
+	});
+
+	it("every line of the diagram, the timeline and every table row names a record id", () => {
+		for (const text of [renderRecordDiagram(retry.RECORD), renderRecordTimeline(retry.RECORD)]) {
+			for (const line of text.split("\n").filter((l) => l.trim() && l.trim() !== "graph")) assert.match(line, /\([a-z0-9-]+\)/, line);
+		}
+		const rows = renderRecordTable(retry.RECORD).split("\n").filter((l) => l.startsWith("| ") && !l.startsWith("| id") && !l.startsWith("|---"));
+		for (const row of rows) assert.ok(retry.RECORD.claims.concat(retry.RECORD.relations as never[]).some((e) => row.startsWith("| " + (e as { id: string }).id + " |")), row);
 	});
 });
 

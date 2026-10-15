@@ -70,19 +70,56 @@ export interface Source {
 	text: string;
 }
 
-export type RecordProblem = "PASSAGE_NOT_IN_SOURCE" | "UNKNOWN_CLAIM" | "DUPLICATE_ID" | "SELF_RELATION" | "GAP_WITHOUT_PASSAGE" | "DISPUTE_WITHOUT_HOLDER";
+export type RecordProblem =
+	| "PASSAGE_NOT_IN_SOURCE"
+	| "EMPTY_PASSAGE"
+	| "SOURCE_MISMATCH"
+	| "UNKNOWN_FIELD"
+	| "UNKNOWN_CLAIM"
+	| "DUPLICATE_ID"
+	| "SELF_RELATION"
+	| "CONDITION_NOT_IN_PASSAGE"
+	| "GAP_WITHOUT_PASSAGE"
+	| "DISPUTE_WITHOUT_HOLDER";
 
-/** The record is a reading of the source and a reading can be wrong. This checks only that it is traceable. */
+/**
+ * The only fields an entry may carry. A record is a reading of a source; it holds nothing about renderings or readers,
+ * and this list is what enforces that for any record, not just the fixtures.
+ */
+const ALLOWED_FIELDS = {
+	claim: new Set(["id", "kind", "label", "cues", "passage", "standing", "holder", "order"]),
+	relation: new Set(["id", "from", "to", "type", "passage", "rejects"]),
+	qualifier: new Set(["id", "applies_to", "condition", "effect", "status", "gap", "passage"]),
+} as const;
+
+/**
+ * The record is a reading of the source and a reading can be wrong. This checks that it is traceable and well formed:
+ * it is for THIS source, every entry cites a non-empty passage the source contains, no entry carries a field outside the
+ * schema (so no reader or rendering information can ride along), relations and qualifiers point at things that exist, and
+ * a qualifier's condition (and gap) appear in the passage it cites, so a condition cannot be invented.
+ * It does not check that a label means what its passage means.
+ */
 export function validateRecord(source: Source, record: DocumentRecord): { problem: RecordProblem; id: string }[] {
 	const out: { problem: RecordProblem; id: string }[] = [];
 	const ids = new Set<string>();
 	const claimIds = new Set(record.claims.map((c) => c.id));
 	const targetIds = new Set([...claimIds, ...record.relations.map((r) => r.id)]);
 	const add = (problem: RecordProblem, id: string) => out.push({ problem, id });
-	for (const entry of [...record.claims, ...record.relations, ...record.qualifiers]) {
-		if (ids.has(entry.id)) add("DUPLICATE_ID", entry.id);
-		ids.add(entry.id);
-		if (!source.text.includes(entry.passage)) add("PASSAGE_NOT_IN_SOURCE", entry.id);
+	if (record.source_id !== source.id) add("SOURCE_MISMATCH", record.source_id);
+
+	const kinds: [string, readonly { id: string; passage: string }[], ReadonlySet<string>][] = [
+		["claim", record.claims, ALLOWED_FIELDS.claim],
+		["relation", record.relations, ALLOWED_FIELDS.relation],
+		["qualifier", record.qualifiers, ALLOWED_FIELDS.qualifier],
+	];
+	for (const [, entries, allowed] of kinds) {
+		for (const entry of entries) {
+			if (ids.has(entry.id)) add("DUPLICATE_ID", entry.id);
+			ids.add(entry.id);
+			if (typeof entry.passage !== "string" || entry.passage.trim() === "") add("EMPTY_PASSAGE", entry.id);
+			else if (!source.text.includes(entry.passage)) add("PASSAGE_NOT_IN_SOURCE", entry.id);
+			for (const key of Object.keys(entry)) if (!allowed.has(key)) add("UNKNOWN_FIELD", entry.id + "." + key);
+		}
 	}
 	for (const r of record.relations) {
 		if (!claimIds.has(r.from) || !claimIds.has(r.to)) add("UNKNOWN_CLAIM", r.id);
@@ -90,7 +127,9 @@ export function validateRecord(source: Source, record: DocumentRecord): { proble
 	}
 	for (const q of record.qualifiers) {
 		if (!targetIds.has(q.applies_to)) add("UNKNOWN_CLAIM", q.id);
-		if (q.status === "unknown" && q.gap && !source.text.includes(q.gap)) add("GAP_WITHOUT_PASSAGE", q.id);
+		const passage = q.passage.toLowerCase();
+		if (!passage.includes(q.condition.toLowerCase())) add("CONDITION_NOT_IN_PASSAGE", q.id);
+		if (q.status === "unknown" && (!q.gap || !passage.includes(q.gap.toLowerCase()))) add("GAP_WITHOUT_PASSAGE", q.id);
 	}
 	for (const c of record.claims) if (c.kind === "conclusion" && c.standing === "disputed" && !c.holder) add("DISPUTE_WITHOUT_HOLDER", c.id);
 	return out;
@@ -142,41 +181,47 @@ export function renderRecordDiagram(record: DocumentRecord): string {
 	for (const r of record.relations) {
 		inGraph.add(r.from).add(r.to);
 		const verb = r.type.toLowerCase().replaceAll("_", " ");
-		lines.push(`  [${c.get(r.from)!.label}] --${verb}${r.rejects ? ` (the source REJECTS ${r.rejects})` : ""}--> [${c.get(r.to)!.label}]   (${r.id})`);
-		for (const q of qualifiersOn(record, r.id)) lines.push(`      only if: ${conditionText(q)}   (${q.id})`);
+		lines.push("  [" + c.get(r.from)!.label + "] --" + verb + (r.rejects ? " (the source REJECTS " + r.rejects + ")" : "") + "--> [" + c.get(r.to)!.label + "]   (" + r.id + ")");
+		for (const q of qualifiersOn(record, r.id)) lines.push("      only if: " + conditionText(q) + "   (" + q.id + ")");
 	}
-	for (const claim of record.claims) {
-		if (inGraph.has(claim.id)) continue;
-		const qs = qualifiersOn(record, claim.id).map((q) => `; ${conditionText(q)} (${q.id})`).join("");
-		lines.push(`  [${claim.label}]${qs}   (${claim.id})`);
-	}
+	// Nodes that are in no relation still appear.
+	for (const claim of record.claims) if (!inGraph.has(claim.id)) lines.push("  [" + claim.label + "]   (" + claim.id + ")");
+	// Conditions attached to a claim are shown whether or not the claim is also the end of a relation.
+	for (const claim of record.claims) for (const q of qualifiersOn(record, claim.id)) lines.push("  [" + claim.label + "] only if: " + conditionText(q) + "   (" + q.id + ")");
 	return lines.join("\n");
 }
 
-/** One row per claim, then one row per relation, with the conditions on each and whether the source cited anything. */
+/** One row per claim, then one row per relation, with their ids, the conditions on each and whether the source cited anything. */
 export function renderRecordTable(record: DocumentRecord): string {
 	const c = claimOf(record);
-	const rows = ["| claim | kind | conditions | evidence | standing |", "|---|---|---|---|---|"];
+	const rows = ["| id | claim | kind | conditions | evidence | standing |", "|---|---|---|---|---|---|"];
 	for (const claim of record.claims) {
 		const cond = qualifiersOn(record, claim.id).map(conditionText).join("; ");
-		const excs = record.relations.filter((r) => r.type === "EXCEPTION_TO" && r.to === claim.id).map((r) => `exception: ${c.get(r.from)!.label}`).join("; ");
-		rows.push(`| ${claim.label} | ${claim.kind} | ${[cond, excs].filter(Boolean).join("; ")} | ${OWES_EVIDENCE.has(claim.kind) ? evidenceStatus(record, claim.id).replace("_", " ") : "n/a"} | ${claim.standing} |`);
+		const excs = record.relations.filter((r) => r.type === "EXCEPTION_TO" && r.to === claim.id).map((r) => "exception: " + c.get(r.from)!.label + " (" + r.id + ")").join("; ");
+		const ev = OWES_EVIDENCE.has(claim.kind) ? evidenceStatus(record, claim.id).replace("_", " ") : "n/a";
+		rows.push("| " + claim.id + " | " + claim.label + " | " + claim.kind + " | " + [cond, excs].filter(Boolean).join("; ") + " | " + ev + " | " + claim.standing + " |");
 	}
-	rows.push("", "| relation | conditions |", "|---|---|");
+	rows.push("", "| id | relation | conditions |", "|---|---|---|");
 	for (const r of record.relations) {
-		const verb = phrase(r.type);
-		const conds = [...qualifiersOn(record, r.id).map(conditionText), ...(r.rejects ? [`the source REJECTS ${r.rejects}`] : [])].join("; ");
-		rows.push(`| ${c.get(r.from)!.label} ${verb} ${c.get(r.to)!.label} | ${conds} |`);
+		const conds = [...qualifiersOn(record, r.id).map((q) => conditionText(q) + " (" + q.id + ")"), ...(r.rejects ? ["the source REJECTS " + r.rejects] : [])].join("; ");
+		rows.push("| " + r.id + " | " + c.get(r.from)!.label + " " + phrase(r.type) + " " + c.get(r.to)!.label + " | " + conds + " |");
 	}
 	return rows.join("\n");
 }
 
-/** The claims that carry an order, in order, then the exceptions that bear on them: a timeline without those is the drift to avoid. */
+/** The claims that carry an order, in order, with the conditions on them, then the exceptions that bear on them and theirs. A timeline without those is the drift to avoid. */
 export function renderRecordTimeline(record: DocumentRecord): string {
 	const c = claimOf(record);
 	const ordered = record.claims.filter((x) => x.order !== undefined).sort((p, q) => p.order! - q.order!);
-	const lines = ordered.map((x) => `${x.order}. ${x.label}   (${x.id})`);
-	for (const r of record.relations.filter((x) => x.type === "EXCEPTION_TO")) lines.push(`   exception: ${c.get(r.from)!.label} applies to ${c.get(r.to)!.label}   (${r.id})`);
+	const lines: string[] = [];
+	for (const x of ordered) {
+		lines.push(x.order + ". " + x.label + "   (" + x.id + ")");
+		for (const q of qualifiersOn(record, x.id)) lines.push("      only if: " + conditionText(q) + "   (" + q.id + ")");
+	}
+	for (const r of record.relations.filter((x) => x.type === "EXCEPTION_TO")) {
+		lines.push("   exception: " + c.get(r.from)!.label + " applies to " + c.get(r.to)!.label + "   (" + r.id + ")");
+		for (const q of qualifiersOn(record, r.id)) lines.push("      only if: " + conditionText(q) + "   (" + q.id + ")");
+	}
 	return lines.join("\n");
 }
 

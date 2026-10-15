@@ -15,6 +15,8 @@ import {
 	changeNumber,
 	declare,
 	dropSentenceMatching,
+	mustKeep,
+	mustNotSay,
 	mustRelate,
 	mustSay,
 	probeMeasure,
@@ -38,21 +40,24 @@ rule("1. Declare what must survive, BEFORE the transformation");
 const declaration = declare({
 	at: T0,
 	obligations: [
-		mustSay("limit", "number", "retries stop after three attempts", "\\b3\\b"),
-		mustSay("exception", "claim", "idempotent requests are exempt", "idempotent", "exempt"),
-		mustSay("uncertainty", "uncertainty", "it is unclear how a third-party timeout is handled", "unclear", "third-party"),
-		mustSay("source", "provenance", "the decision it comes from (ADR-17)", "adr-17"),
+		// Anchored: each names a short key phrase whose word order must survive within one sentence.
+		mustKeep("limit", "number", "retries stop after three attempts", "retried up to 3 times"),
+		mustKeep("exception", "claim", "idempotent requests are exempt", "idempotent requests are exempt"),
+		mustKeep("uncertainty", "uncertainty", "it is unclear how a third-party timeout is handled", "third-party timeout", { patterns: ["unclear"] }),
+		mustKeep("source", "provenance", "the decision it comes from (ADR-17)", "ADR-17"),
 	],
 });
+const validation = validateInstrument(declaration, SOURCE, FAITHFUL, T1);
 console.log(`declaration ${declaration.declaration_id}, declared ${declaration.declared_at}`);
 for (const o of declaration.obligations) console.log(`  [${o.dimension}] ${o.statement}`);
+console.log(`\nthe check, probed by breaking a faithful output (drop its sentence, shred it into a bag of words, change a number, ...): ${validation.status}`);
 
 rule("2. The fluent one-liner, assessed");
 console.log(`"${ONE_LINER}"\n`);
-console.log(renderProfile(assess(declaration, { id: "one-liner", source: SOURCE, output: ONE_LINER, output_at: T1 })));
+console.log(renderProfile(assess(declaration, { id: "one-liner", source: SOURCE, output: ONE_LINER, output_at: T1 }, validation)));
 
 rule("3. A faithful rendering, assessed (a profile, not a score)");
-console.log(renderProfile(assess(declaration, { id: "faithful", source: SOURCE, output: FAITHFUL, output_at: T1 })));
+console.log(renderProfile(assess(declaration, { id: "faithful", source: SOURCE, output: FAITHFUL, output_at: T1 }, validation.status)));
 
 rule("4. Gain is not addition");
 const fn = declare({
@@ -71,7 +76,8 @@ for (const c of cases) {
 	console.log(`${c.id.padEnd(12)} content: ${p.obligations[0]!.outcome.padEnd(9)} easier: ${JSON.stringify(p.function.easier).padEnd(15)} harder: ${JSON.stringify(p.function.harder).padEnd(15)} additions: ${p.possible_additions.length}   (${c.note})`);
 	for (const a of p.possible_additions) console.log(`             possible addition, for review: ${a}`);
 }
-console.log(`\nText-to-text comparison would score "scrambled" as perfect. Function says otherwise.`);
+console.log(`\nA check that looks for the words would score "scrambled" as perfect. The function measure says otherwise, as a proxy: it compares where`);
+console.log(`the answer first appears, which is not the same as showing a reader finds it harder.`);
 
 rule("5. The check is an instrument too: does it notice a loss?");
 const lensSource = "Acme acquired Beta in 2023. The effect may reduce errors by 20 percent. Latency is bounded under partial synchrony.";
@@ -79,25 +85,55 @@ const fingerprint = (text: string) => {
 	const { notes: _notes, ...rest } = preservationReport(lensSource, text, "BRIEF");
 	return rest;
 };
-console.log("The preservation report that ships in core/lens, probed with four ways of breaking a faithful text:\n");
-for (const r of probeMeasure(lensSource, [dropSentenceMatching(["bounded"]), reverseRelation({ subject: "Acme", object: "Beta" }), strengthen, changeNumber], fingerprint)) {
+const antonym = { name: "swap a word for its opposite", dimension: "any" as const, apply: (t: string) => t.replace("reduce", "increase") };
+console.log("The preservation report that ships in core/lens, probed with five ways of breaking a faithful text:\n");
+for (const r of probeMeasure(lensSource, [dropSentenceMatching(["bounded"]), reverseRelation({ subject: "Acme", object: "Beta" }), strengthen, changeNumber, antonym], fingerprint)) {
 	console.log(`  ${r.applied ? (r.detected ? "noticed     " : "NOT NOTICED ") : "n/a         "} ${r.mutation}`);
 }
-console.log("\nIt cannot tell \"Acme acquired Beta\" from \"Beta acquired Acme\", or \"may\" from \"does\". Its own notes call it a proxy.");
-console.log("A pass from it would mean nothing for those losses.\n");
+console.log("\nThe first time this probe was run, the report missed the reversed relation and the hedge turned into a certainty: it counted");
+console.log("overlapping words and could not tell \"Acme acquired Beta\" from \"Beta acquired Acme\". The report was then made sensitive to word");
+console.log("order, negation and hedges, and the same probe now notices both. It still cannot see one word swapped for its opposite inside a");
+console.log("long sentence, and it reads a faithful paraphrase as lost. It is a cheap proxy, and the probe is how we know what it misses.\n");
 
-console.log("The same test on this chapter's own obligations, with a deliberately weak one added:");
-const weak = declare({
+console.log("The same test on obligations written as plain patterns, and on the anchored ones above:");
+const patternOnly = declare({
 	at: T0,
 	obligations: [
-		mustSay("limit", "number", "retries stop after 3 attempts (checked only by the digit 3)", "\\b3\\b"),
+		mustSay("limit", "number", "retries stop after three attempts", "\\b3\\b"),
+		mustSay("exception", "claim", "idempotent requests are exempt", "idempotent", "exempt"),
 		mustRelate("acq", "Acme acquired Beta", { subject: "Acme", verb: "acquired", object: "Beta" }),
 	],
 });
-const weakSource = "Retries stop after 3 attempts. The service has 3 replicas. Acme acquired Beta.";
-const v = validateInstrument(weak, weakSource, weakSource, T1);
-for (const p of v.probes) for (const r of p.results) console.log(`  ${p.obligation.padEnd(6)} ${r.applied ? (r.detected ? "noticed     " : "NOT NOTICED ") : "n/a         "} ${r.mutation}`);
-console.log(`\ninstrument: ${v.status}. The digit-3 check passes when the limit has been removed, because "3" appears elsewhere.`);
+const weakSource = SOURCE + " Acme acquired Beta.";
+const weakFaithful = FAITHFUL + " Acme acquired Beta.";
+const vWeak = validateInstrument(patternOnly, weakSource, weakFaithful, T1);
+for (const p of vWeak.probes) for (const r of p.results) console.log(`  ${p.obligation.padEnd(10)} ${r.applied ? (r.detected ? "noticed     " : "NOT NOTICED ") : "n/a         "} ${r.mutation}`);
+console.log(`instrument for the pattern-only obligations: ${vWeak.status}. Shredding a sentence into a bag of its own words leaves the \\b3\\b and the`);
+console.log(`"idempotent" and "exempt" patterns satisfied, so those obligations were testing the vocabulary, not the content.`);
+console.log(`instrument for the anchored obligations above: ${validation.status}, with an unprobed list of ${JSON.stringify(validation.unprobed)}.\n`);
+
+rule("5b. Keyword-stuffing, directly");
+const bag = "3 idempotent exempt unclear third-party adr-17";
+const asPatterns = assess(patternOnly, { id: "bag", source: weakSource, output: bag, output_at: T1 });
+const anchored = assess(declaration, { id: "bag", source: SOURCE, output: bag, output_at: T1 });
+console.log(`output: "${bag}"`);
+console.log(`pattern-only: ${asPatterns.obligations.filter((o) => o.id !== "acq").map((o) => `${o.id}=${o.outcome}`).join(", ")}`);
+console.log(`anchored:     ${anchored.obligations.map((o) => `${o.id}=${o.outcome}`).join(", ")}`);
+console.log(`(The anchored "source" obligation is the reference ADR-17 itself, so a bag that contains it has kept what that obligation names.)`);
+const phrases = "Failed payments are retried up to 3 times. Banana idempotent requests are exempt banana. Third-party timeout unclear. ADR-17.";
+console.log(`\nBut copying the key phrases in order, around nonsense, still passes: ${assess(declaration, { id: "p", source: SOURCE, output: phrases, output_at: T1 }).obligations.every((o) => o.outcome === "SURVIVED") ? "all SURVIVED" : "some lost"}.`);
+console.log("Anchoring defeats a bag of words. It cannot tell what the sentence around a copied phrase now says.");
+console.log("\nAn instrument's standing is not something a caller can assert:");
+console.log(`  assess(..., "validated") with no validation behind it      → ${assess(declaration, { id: "x", source: SOURCE, output: FAITHFUL, output_at: T1 }, "validated").instrument}`);
+console.log(`  assess(..., <validation of different obligations>)         → ${assess(declaration, { id: "x", source: SOURCE, output: FAITHFUL, output_at: T1 }, vWeak).instrument}`);
+console.log(`  assess(..., <validation of these obligations>)             → ${assess(declaration, { id: "x", source: SOURCE, output: FAITHFUL, output_at: T1 }, validation).instrument}`);
+const forbidden = declare({ at: T0, obligations: [mustNotSay("no-unlimited", "claim", "must not say retries are unlimited", "unlimited|forever")] });
+const forbiddenWithSample = declare({ at: T0, obligations: [mustNotSay("no-unlimited", "claim", "must not say retries are unlimited", "unlimited|forever", "Retries continue forever.")] });
+console.log(`\nA forbidden-claim obligation has nothing to drop or shred, so with no sample of the forbidden claim it cannot be probed:`);
+const vNo = validateInstrument(forbidden, SOURCE, FAITHFUL, T1);
+const vYes = validateInstrument(forbiddenWithSample, SOURCE, FAITHFUL, T1);
+console.log(`  no sample:   status ${vNo.status}, unprobed ${JSON.stringify(vNo.unprobed)}`);
+console.log(`  with sample: status ${vYes.status}, unprobed ${JSON.stringify(vYes.unprobed)}`);
 
 rule("6. Preservation is not truth");
 const falseSource = "Failed payments are retried up to 30 times.";

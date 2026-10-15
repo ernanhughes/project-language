@@ -7,6 +7,7 @@ import {
 	changeNumber,
 	declare,
 	dropSentenceMatching,
+	mustKeep,
 	mustNotSay,
 	mustRelate,
 	mustSay,
@@ -28,11 +29,12 @@ const SOURCE =
 	"Failed payments are retried up to 3 times. Idempotent requests are exempt from retry limits. " +
 	"It is unclear how a third-party timeout should be handled. The policy comes from a 2024 design decision, ADR-17.";
 
+// Anchored: each obligation names a short key phrase whose word order must survive within one sentence.
 const OBLIGATIONS = [
-	mustSay("limit", "number", "retries stop after three attempts", "\\b3\\b"),
-	mustSay("exception", "claim", "idempotent requests are exempt", "idempotent", "exempt"),
-	mustSay("uncertainty", "uncertainty", "it is unclear how a third-party timeout is handled", "unclear", "third-party"),
-	mustSay("source", "provenance", "the decision it comes from (ADR-17)", "adr-17"),
+	mustKeep("limit", "number", "retries stop after three attempts", "retried up to 3 times"),
+	mustKeep("exception", "claim", "idempotent requests are exempt", "idempotent requests are exempt"),
+	mustKeep("uncertainty", "uncertainty", "it is unclear how a third-party timeout is handled", "third-party timeout", { patterns: ["unclear"] }),
+	mustKeep("source", "provenance", "the decision it comes from (ADR-17)", "ADR-17"),
 ];
 const decl = (at = T0): Declaration => declare({ obligations: OBLIGATIONS, at });
 
@@ -181,13 +183,65 @@ describe("the check is an instrument too", () => {
 	});
 });
 
-describe("known limit: obligations written as patterns can be satisfied without preserving anything", () => {
-	it("keyword stuffing passes every obligation, and no instrument probe can catch it", () => {
-		const stuffed = "3 idempotent exempt unclear third-party adr-17";
-		const p = profile(stuffed);
-		assert.ok(p.obligations.every((o) => o.outcome === "SURVIVED"), "all four obligations are met by a list of words");
-		// The mutation probes start from a faithful output and break it; they never try to game it.
-		assert.equal(validateInstrument(decl(), SOURCE, FAITHFUL, T1).status, "validated");
+describe("keyword-stuffing", () => {
+	const survives = (d: Declaration, source: string, output: string) =>
+		Object.fromEntries(assess(d, { id: "t", source, output, output_at: T1 }).obligations.map((o) => [o.id, o.outcome]));
+	const stuffed = "3 idempotent exempt unclear third-party adr-17";
+	const patternOnly = declare({
+		at: T0,
+		obligations: [
+			mustSay("limit", "number", "retries stop after three attempts", "\\b3\\b"),
+			mustSay("exception", "claim", "idempotent requests are exempt", "idempotent", "exempt"),
+			mustSay("uncertainty", "uncertainty", "it is unclear how a third-party timeout is handled", "unclear", "third-party"),
+			mustSay("source", "provenance", "the decision it comes from (ADR-17)", "adr-17"),
+		],
+	});
+
+	it("a bag of the right words satisfies pattern-only obligations (this is the weakness)", () => {
+		const out = survives(patternOnly, SOURCE, stuffed);
+		assert.ok(Object.values(out).every((o) => o === "SURVIVED"));
+	});
+
+	it("the instrument probe now says so: pattern-only obligations are reported as not noticing stuffing, and the check is unvalidated", () => {
+		const v = validateInstrument(patternOnly, SOURCE, FAITHFUL, T1);
+		assert.equal(v.status, "unvalidated");
+		const missed = v.probes.filter((p) => p.results.some((r) => r.applied && !r.detected && r.mutation.includes("keyword-stuffing"))).map((p) => p.obligation);
+		// Plain-word patterns survive being shredded. Hyphenated ones ("third-party", "adr-17") happen to be broken by the shredding itself.
+		assert.deepEqual(missed.sort(), ["exception", "limit"], "these obligations were testing the vocabulary, not the content");
+	});
+
+	it("anchored obligations about content are not met by the same bag of words", () => {
+		const out = survives(decl(), SOURCE, stuffed);
+		assert.deepEqual({ limit: out["limit"], exception: out["exception"], uncertainty: out["uncertainty"] }, { limit: "LOST", exception: "LOST", uncertainty: "LOST" });
+		// The source obligation IS the reference "ADR-17". A bag that contains it has kept exactly what that obligation names.
+		assert.equal(out["source"], "SURVIVED");
+	});
+
+	it("and the anchored declaration validates, stuffing probe included", () => {
+		const v = validateInstrument(decl(), SOURCE, FAITHFUL, T1);
+		assert.equal(v.status, "validated");
+		assert.deepEqual(v.unprobed, []);
+		assert.ok(v.probes.every((p) => p.results.some((r) => r.mutation.includes("keyword-stuffing") && r.applied && r.detected)));
+	});
+
+	it("known limit: copying the key phrases in order, around nonsense, still passes. The check keeps phrases; it cannot tell what the sentence around them now says", () => {
+		const phrasesOnly = "Failed payments are retried up to 3 times. Banana idempotent requests are exempt banana. Third-party timeout unclear. ADR-17.";
+		const out = survives(decl(), SOURCE, phrasesOnly);
+		assert.ok(Object.values(out).every((o) => o === "SURVIVED"));
+	});
+
+	it("an obligation no probe can be applied to is reported as unprobed and keeps the check unvalidated", () => {
+		const d = declare({ at: T0, obligations: [mustNotSay("no-unlimited", "claim", "must not say retries are unlimited", "unlimited|forever")] });
+		const v = validateInstrument(d, SOURCE, FAITHFUL, T1);
+		assert.deepEqual(v.unprobed, ["no-unlimited"]);
+		assert.equal(v.status, "unvalidated");
+	});
+
+	it("a forbidden-claim obligation given a sample of the forbidden claim can be probed and validated", () => {
+		const d = declare({ at: T0, obligations: [mustNotSay("no-unlimited", "claim", "must not say retries are unlimited", "unlimited|forever", "Retries continue forever.")] });
+		const v = validateInstrument(d, SOURCE, FAITHFUL, T1);
+		assert.deepEqual(v.unprobed, []);
+		assert.equal(v.status, "validated");
 	});
 });
 
@@ -199,15 +253,62 @@ describe("probing a measure the lifted code already contains", () => {
 		return rest;
 	};
 
-	it("lens's overlap report notices a dropped sentence but not a reversed relation or a hedge turned into a certainty", () => {
+	it("lens's report, as it stood when this test was first written, missed a reversed relation and a hedge turned into a certainty; it now notices both", () => {
 		const results = probeMeasure(src, [dropSentenceMatching(["bounded"]), reverseRelation({ subject: "Acme", object: "Beta" }), strengthen], fingerprint);
 		const by = Object.fromEntries(results.map((r) => [r.mutation, r.detected]));
 		assert.equal(by["drop the sentence that carries it"], true);
-		assert.equal(by["reverse the direction of the relation"], false, "same words, opposite meaning: invisible to token overlap");
-		assert.equal(by["turn a hedge into a certainty"], false, "qualifier_survival is computed from overlap, so 'may' → 'does' goes unnoticed");
+		assert.equal(by["reverse the direction of the relation"], true, "the report is now order-aware");
+		assert.equal(by["turn a hedge into a certainty"], true, "the report is now hedge-aware");
+	});
+
+	it("it still cannot see a one-word substitution inside a long sentence: the instrument test finds what remains", () => {
+		const antonym = { name: "swap a word for its opposite", dimension: "any" as const, apply: (t: string) => t.replace("reduce", "increase") };
+		assert.equal(probeMeasure(src, [antonym], fingerprint)[0]!.detected, false);
 	});
 
 	it("a changed number is noticed by its numeric check", () => {
 		assert.equal(probeMeasure(src, [changeNumber], fingerprint)[0]!.detected, true);
+	});
+});
+
+describe("review findings: what an instrument's standing may be", () => {
+	it("a check cannot be labelled validated while one of its obligations has no probe (the reviewer's reproduction)", () => {
+		const d = declare({
+			at: T0,
+			obligations: [mustSay("positive", "claim", "says alpha", "alpha"), mustNotSay("negative", "claim", "must not say forbidden", "forbidden")],
+		});
+		const v = validateInstrument(d, "Alpha.", "Alpha.", T1);
+		assert.notEqual(v.status, "validated");
+		assert.ok(v.unprobed.includes("negative"), "the forbidden-claim obligation was never shown to notice anything");
+	});
+
+	it("a caller cannot assert that an instrument is validated: a bare 'validated' is not believed", () => {
+		const p = assess(decl(), { id: "t", source: SOURCE, output: FAITHFUL, output_at: T1 }, "validated");
+		assert.equal(p.instrument, "unvalidated");
+	});
+
+	it("only a validation of THESE obligations counts; one for other obligations is not believed", () => {
+		const other = declare({ at: T0, obligations: [mustKeep("elsewhere", "claim", "something else", "retried up to 3 times")] });
+		const forOther = validateInstrument(other, SOURCE, FAITHFUL, T1);
+		assert.equal(forOther.status, "validated");
+		const p = assess(decl(), { id: "t", source: SOURCE, output: FAITHFUL, output_at: T1 }, forOther);
+		assert.equal(p.instrument, "unvalidated", "its probes were run against different obligations");
+	});
+
+	it("the same obligations declared at a different time still carry their validation", () => {
+		const v = validateInstrument(decl(T0), SOURCE, FAITHFUL, T1);
+		const later = declare({ obligations: OBLIGATIONS, at: "2026-10-15T09:30:00.000Z" });
+		assert.notEqual(later.declaration_id, decl(T0).declaration_id);
+		assert.equal(assess(later, { id: "t", source: SOURCE, output: FAITHFUL, output_at: T1 }, v).instrument, "validated");
+	});
+
+	it("an unparseable timestamp is refused rather than silently compared", () => {
+		assert.throws(() => declare({ obligations: OBLIGATIONS, at: "yesterday-ish" }), /INVALID_TIME/);
+		assert.throws(() => assess(decl(), { id: "t", source: SOURCE, output: FAITHFUL, output_at: "not a time" }), /INVALID_TIME/);
+	});
+
+	it("the number mutation changes only the first number, as it says", () => {
+		const out = changeNumber.apply("Retries: 3 times, then 30 minutes, then 300 seconds.")!;
+		assert.equal(out, "Retries: 4 times, then 30 minutes, then 300 seconds.");
 	});
 });

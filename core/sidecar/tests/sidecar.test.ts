@@ -44,7 +44,7 @@ describe("constructors fix the layer", () => {
 	it("only derived content is 're-presented'; everything else is a candidate", () => {
 		assert.equal(derivedItem(PAPER, "Latency is bounded under partial synchrony.").status, "re-presented");
 		assert.equal(retrievedItem(THEOREM, "No deterministic consensus protocol").status, "candidate");
-		assert.equal(generatedItem({ content: "x", producer: "m", limits: "l" }).status, "candidate");
+		assert.equal(generatedItem({ content: "x", producer: "m", limits: "Not checked against anything at all." }).status, "candidate");
 	});
 });
 
@@ -83,9 +83,56 @@ describe("interactive: never authoritative", () => {
 	});
 });
 
+describe("limits must be specific, not merely present", () => {
+	const place = (limits: string, prior: string[] = []) => generatedItem({ content: "The theorem may not apply here.", producer: "m", limits, prior_limits: prior });
+	const problemsOf = (fn: () => unknown) => {
+		try {
+			fn();
+		} catch (e) {
+			return e instanceof SidecarError ? e.problems : ["THREW"];
+		}
+		return [];
+	};
+
+	it("'None.' and its relatives are refused", () => {
+		for (const vacuous of ["None.", "No limits.", "none known", "N/A", "Nothing to note here at all", "No known limitations whatever"]) {
+			assert.ok(problemsOf(() => place(vacuous)).includes("LIMITS_VACUOUS"), vacuous);
+		}
+	});
+
+	it("a stub is refused", () => {
+		assert.ok(problemsOf(() => place("unchecked")).includes("LIMITS_TOO_SHORT"));
+	});
+
+	it("a sentence with nothing limiting in it is refused", () => {
+		assert.ok(problemsOf(() => place("This answer is correct and complete overall")).includes("LIMITS_NO_LIMITING_CONSTRUCTION"));
+	});
+
+	it("the same limit pasted onto a second answer is refused as boilerplate", () => {
+		const first = "Not checked against the theorem's original proof.";
+		assert.deepEqual(problemsOf(() => place(first)), []);
+		assert.deepEqual(problemsOf(() => place("not checked against the THEOREM'S original proof", [first])), ["LIMITS_BOILERPLATE"]);
+	});
+
+	it("a specific limit is accepted", () => {
+		assert.equal(place("Based on two short passages; not checked against the proof.").status, "candidate");
+	});
+
+	it("is re-checked on the way back out, so a stored item with a vacuous limit is rejected", () => {
+		const g = place("Not checked against the theorem's original proof.");
+		const { id: _id, ...rest } = g;
+		const hollow = reseal({ ...rest, limits: "None." });
+		assert.ok(validateItem(hollow).includes("LIMITS_VACUOUS"));
+	});
+
+	it("known limit: a well-formed but hollow limit passes. Presence and specificity are checked, honesty is not", () => {
+		assert.equal(place("This answer may be fully trusted without any checking at all.").status, "candidate");
+	});
+});
+
 describe("validation on the way back out", () => {
 	it("catches a forged layer even when the id was recomputed", () => {
-		const g = generatedItem({ content: "A claim.", producer: "m", limits: "unchecked" });
+		const g = generatedItem({ content: "A claim.", producer: "m", limits: "Not checked against any source document." });
 		const { id: _id, ...rest } = g;
 		const forged = reseal({ ...rest, layer: "SEMANTIC_DERIVATION" });
 		assert.ok(validateItem(forged).includes("LAYER_KIND_MISMATCH"));
@@ -98,7 +145,7 @@ describe("validation on the way back out", () => {
 	});
 
 	it("catches an edit to content as an id mismatch", () => {
-		const g = generatedItem({ content: "A claim.", producer: "m", limits: "unchecked" });
+		const g = generatedItem({ content: "A claim.", producer: "m", limits: "Not checked against any source document." });
 		assert.ok(validateItem({ ...g, content: "A different claim." }).includes("ID_MISMATCH"));
 	});
 
@@ -114,14 +161,14 @@ describe("rendering", () => {
 		const items = [
 			derivedItem(PAPER, "The protocol is safe."),
 			retrievedItem(THEOREM, "No deterministic consensus protocol"),
-			generatedItem({ content: "Possibly inapplicable.", producer: "model-x", drew_on: ["fischer-1985"], limits: "Not a proof." }),
+			generatedItem({ content: "Possibly inapplicable.", producer: "model-x", drew_on: ["fischer-1985"], limits: "Not a proof, and based on two passages only." }),
 		];
 		const text = renderSidecar(items);
 		assert.match(text, /^BESIDE THE SOURCE \(not the source\)/);
 		assert.match(text, /\[DERIVED FROM THE SOURCE/);
 		assert.match(text, /\[FROM ELSEWHERE · candidate, not verified\]/);
 		assert.match(text, /\[MODEL ANSWER · candidate, may be wrong\]/);
-		assert.match(text, /limits: Not a proof\./);
+		assert.match(text, /limits: Not a proof, and based on two passages only\./);
 		assert.match(text, /drew on fischer-1985/);
 		for (const item of items) assert.ok(text.includes(item.id));
 	});
@@ -144,5 +191,64 @@ describe("the ledger has two columns and no total", () => {
 		assert.deepEqual(cols.benefit, { used: 1, opened: 0 });
 		assert.deepEqual(cols.cost, { shown: 2, dismissed: 1, distracting: 1, manual_searches_still_needed: 1 });
 		for (const key of ["net", "score", "total"]) assert.ok(!(key in cols));
+	});
+});
+
+describe("review findings: what 'derived' may carry, and what re-validation must refuse", () => {
+	const SRC: TextDoc = { id: "memo", content: "Retries stop after three attempts. The service has two replicas." };
+	const sources = new Map([[SRC.id, SRC]]);
+
+	it("a derived item's content IS its quotation; a claim cannot be given the derived label by being written into content", () => {
+		const d = derivedItem(SRC, "Retries stop after three attempts.");
+		assert.equal(d.content, "Retries stop after three attempts.");
+		// The reviewer's reproduction: the quotation is real, the content is not what the source says.
+		const { id: _id, ...rest } = d;
+		const forged = reseal({ ...rest, content: "Retries continue forever." });
+		assert.ok(validateItem(forged, sources).includes("CONTENT_NOT_QUOTE"));
+		assert.deepEqual(validateItem(d, sources), []);
+	});
+
+	it("the system's reading of a quotation travels separately as a labelled gloss and changes the item's identity", () => {
+		const plain = derivedItem(SRC, "Retries stop after three attempts.");
+		const glossed = derivedItem(SRC, "Retries stop after three attempts.", "record", "limit on retries");
+		assert.equal(glossed.content, plain.content);
+		assert.notEqual(glossed.id, plain.id);
+		const view = renderSidecar([glossed]);
+		assert.match(view, /Retries stop after three attempts\./);
+		assert.match(view, /record's reading \(the system's words, not checked against the source\): limit on retries/);
+	});
+
+	it("an anchor whose source cannot be consulted is a failure, not a pass", () => {
+		const d = derivedItem(SRC, "Retries stop after three attempts.");
+		assert.ok(validateItem(d).includes("SOURCE_UNAVAILABLE"), "the default empty map must not wave it through");
+		assert.ok(validateItem(d, new Map()).includes("SOURCE_UNAVAILABLE"));
+	});
+
+	it("a retrieved item whose content is not its pinned excerpt is refused", () => {
+		const r = retrievedItem(THEOREM, "No deterministic consensus protocol");
+		const { id: _id, ...rest } = r;
+		const forged = reseal({ ...rest, content: "Consensus is always possible." });
+		assert.ok(validateItem(forged).includes("EXTERNAL_MISMATCH"));
+		const badHash = reseal({ ...rest, origin: { ...rest.origin, external: { ...rest.origin.external!, sha256: "not-a-hash" } } });
+		assert.ok(validateItem(badHash).includes("EXTERNAL_MISMATCH"));
+	});
+
+	it("a stored object of the wrong shape is reported as malformed and does not throw", () => {
+		for (const junk of [{}, { id: "x" }, { id: "x", content: "c", kind: "derived" }, null, "text", 42]) {
+			assert.deepEqual(validateItem(junk as never), ["MALFORMED"], JSON.stringify(junk));
+		}
+	});
+
+	it("a model answer may only say it drew on something that exists", () => {
+		const base = { content: "The theorem may not apply.", producer: "m", limits: "Based on one passage and not checked against the proof." };
+		const try_ = (drew_on: string[]) => {
+			try {
+				return generatedItem({ ...base, drew_on, known_ids: ["flp-1985", "sc_abc"] }).id;
+			} catch (e) {
+				return e instanceof SidecarError ? e.problems : ["THREW"];
+			}
+		};
+		assert.deepEqual(try_(["made-up-source"]), ["DREW_ON_UNKNOWN"]);
+		assert.equal(typeof try_(["flp-1985"]), "string");
 	});
 });

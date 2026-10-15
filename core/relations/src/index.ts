@@ -131,7 +131,11 @@ export function assertedRelation(a: Item, b: Item, relation: Relation, direction
 }
 
 /** A person confirms or corrects a label. Nothing else can adjudicate. */
-export function adjudicate(record: RelationRecord, by: { type: "human" | "model" | "classifier"; id: string }, input: { relation?: Relation; direction?: Direction; reason: string }): RelationRecord {
+export function adjudicate(
+	record: RelationRecord,
+	by: { type: "human" | "model" | "classifier"; id: string },
+	input: { relation?: Relation; direction?: Direction; reason: string; /** The person asserts the two items share the scope in which the relation holds. Without it, a scope flag stays. */ confirms_scope?: boolean },
+): RelationRecord {
 	if (by.type !== "human") throw new RelationError("NOT_A_PERSON", `only a person adjudicates; got ${by.type}`);
 	if (input.reason.trim() === "") throw new RelationError("NO_REASON", "adjudication needs a reason");
 	const { id: _id, ...rest } = record;
@@ -142,10 +146,29 @@ export function adjudicate(record: RelationRecord, by: { type: "human" | "model"
 		route: "adjudicated",
 		standing: (input.relation ?? record.relation) === "UNKNOWN" ? "unknown" : "adjudicated",
 		by: `person:${by.id}`,
-		// A person who adjudicates takes responsibility for the scope question too.
-		caveats: [],
+		// Confirming a label is not confirming a scope. The flag clears only if the person says the scope is shared, or if the
+		// relation they settle on is not one that depends on scope at all.
+		caveats: SCOPE_BOUND.has(input.relation ?? record.relation) && !input.confirms_scope ? record.caveats : [],
 		reason: input.reason,
 	});
+}
+
+// ─── Which record is in force for a pair ───────────────────────────────────
+
+/**
+ * The records in force: the latest per pair, except that a person's adjudication is not displaced by a later
+ * record that is not itself an adjudication. A model that asks for another classification adds nothing to the
+ * pair once a person has ruled on it. Earlier records are history, not deleted.
+ */
+export function effectiveRecords(history: readonly RelationRecord[]): RelationRecord[] {
+	const byPair = new Map<string, RelationRecord>();
+	for (const r of history) {
+		const key = r.a.id + "|" + r.b.id;
+		const held = byPair.get(key);
+		if (held?.route === "adjudicated" && r.route !== "adjudicated") continue;
+		byPair.set(key, r);
+	}
+	return [...byPair.values()];
 }
 
 // ─── How a label may be shown ───────────────────────────────────────────────
@@ -177,8 +200,9 @@ const NOUN: Readonly<Record<Relation, string>> = { SUPPORTS: "support", CONTRADI
 export function shownAs(r: RelationRecord): string {
 	if (r.relation === "UNKNOWN") return "relationship unknown";
 	const name = r.relation.toLowerCase();
-	const standing = r.standing === "proposal" ? "proposed" : r.standing === "asserted" ? "asserted by the source" : "confirmed by a person";
-	if (r.caveats.includes("SCOPE_UNCONFIRMED")) return `possible ${NOUN[r.relation]}, unconfirmed: scope not declared as shared (${standing})`;
+	const caveat = r.caveats.includes("SCOPE_UNCONFIRMED");
+	const standing = r.standing === "proposal" ? "proposed" : r.standing === "asserted" ? "asserted by the source" : caveat ? "label confirmed by a person; scope still not confirmed" : "confirmed by a person";
+	if (caveat) return `possible ${NOUN[r.relation]}, unconfirmed: scope not declared as shared (${standing})`;
 	return `${name} (${standing})`;
 }
 
@@ -191,9 +215,42 @@ export function worthShowing(r: RelationRecord, task: Task): boolean {
 	return group !== "none" && WANTED[task].includes(group);
 }
 
+// ─── "Adds nothing" is not a relation ──────────────────────────────────────
+//
+// The chapter opens on a paper that is the nearest thing in the corpus and contributes nothing.
+// No label in the vocabulary says that, because it is not a relation between two items: it is a
+// property of a candidate relative to what the reader already has. Here "what the reader already
+// has" is only the text they are reading. Their wider knowledge is a later question.
+
+export interface Novelty {
+	/** Fraction of the candidate's content terms (words of four letters or more, and numbers) not found in the subject. */
+	novelty: number;
+	new_terms: string[];
+	adds_nothing: boolean;
+}
+
+const STOP = new Set(
+	"this,that,these,those,with,from,have,been,were,which,their,there,than,then,them,into,over,such,also,when,what,while,about,would,could,should,using,uses,used,based,while".split(","),
+);
+const contentTerms = (text: string): Set<string> => new Set((text.toLowerCase().match(/[a-z]{4,}|\d[\d.,]*/g) ?? []).filter((t) => !STOP.has(t)));
+
+/** Relations that carry information of their own, whatever the vocabulary overlap. A negation is new even when every other word repeats. */
+const CARRIES_NEWS: ReadonlySet<Relation> = new Set(["CONTRADICTS", "UPDATES", "IMPLEMENTS"]);
+
+export function novelty(subject: Item, candidate: Item, threshold = 0.25): Novelty {
+	const have = contentTerms(subject.text);
+	const terms = [...contentTerms(candidate.text)];
+	const fresh = terms.filter((t) => !have.has(t));
+	const n = terms.length === 0 ? 0 : fresh.length / terms.length;
+	return { novelty: n, new_terms: fresh, adds_nothing: terms.length >= 4 && n < threshold };
+}
+
 export interface Discovery {
 	candidate: Candidate;
 	record: RelationRecord;
+	novelty: Novelty;
+	/** Held back because it adds nothing beyond the text being read AND its relation carries no news of its own. */
+	redundant: boolean;
 	shown_as: string;
 	show: boolean;
 }
@@ -202,6 +259,11 @@ export interface Discovery {
 export function discover(subject: Item, corpus: readonly Item[], task: Task, k = 5): Discovery[] {
 	return findCandidates(subject, corpus, k).map((candidate) => {
 		const record = classifyRelation(subject, candidate.item);
-		return { candidate, record, shown_as: shownAs(record), show: worthShowing(record, task) };
+		const nov = novelty(subject, candidate.item);
+		// A contradiction, update or implementation is news even when the wording barely differs. Only a bare
+		// support or resemblance that repeats the subject is redundant.
+		const redundant = nov.adds_nothing && !CARRIES_NEWS.has(record.relation) && record.relation !== "UNKNOWN";
+		const shown_as = redundant ? `adds nothing beyond what you are reading (${shownAs(record)}; ${Math.round(nov.novelty * 100)}% new terms)` : shownAs(record);
+		return { candidate, record, novelty: nov, redundant, shown_as, show: !redundant && worthShowing(record, task) };
 	});
 }

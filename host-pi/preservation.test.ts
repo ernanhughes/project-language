@@ -3,7 +3,7 @@ import assert from "node:assert/strict";
 import { fauxAssistantMessage, fauxText, fauxToolCall } from "@earendil-works/pi-ai";
 import { makeSession, UiRecorder } from "../harness/session.ts";
 import { preservation } from "./preservation.ts";
-import { declare, mustSay } from "../core/preservation/src/index.ts";
+import { declare, mustKeep, mustSay } from "../core/preservation/src/index.ts";
 
 const T0 = "2026-10-15T09:00:00.000Z";
 const T1 = "2026-10-15T10:00:00.000Z";
@@ -17,10 +17,10 @@ const ONE_LINER = "Failed payments are retried up to 3 times.";
 const DECLARATION = declare({
 	at: T0,
 	obligations: [
-		mustSay("limit", "number", "retries stop after three attempts", "\\b3\\b"),
-		mustSay("exception", "claim", "idempotent requests are exempt", "idempotent", "exempt"),
-		mustSay("uncertainty", "uncertainty", "it is unclear how a third-party timeout is handled", "unclear", "third-party"),
-		mustSay("source", "provenance", "the decision it comes from (ADR-17)", "adr-17"),
+		mustKeep("limit", "number", "retries stop after three attempts", "retried up to 3 times"),
+		mustKeep("exception", "claim", "idempotent requests are exempt", "idempotent requests are exempt"),
+		mustKeep("uncertainty", "uncertainty", "it is unclear how a third-party timeout is handled", "third-party timeout", { patterns: ["unclear"] }),
+		mustKeep("source", "provenance", "the decision it comes from (ADR-17)", "ADR-17"),
 	],
 	probes: [{ id: "limit-visible", question: "how many retries?", answer: "\\b3\\b" }],
 });

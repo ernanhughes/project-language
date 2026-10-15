@@ -35,10 +35,10 @@ type EntryLike = { type: string; customType?: string; data?: unknown };
 export function preservation(options: PreservationOptions): ExtensionFactory {
 	const clock = options.now ?? (() => new Date().toISOString());
 	let validation: InstrumentValidation | undefined;
-	let instrument: InstrumentStatus = "not_checked";
+	let instrument: InstrumentStatus | InstrumentValidation = "not_checked";
 	if (options.faithfulReference !== undefined) {
 		validation = validateInstrument(options.declaration, options.source, options.faithfulReference, clock());
-		instrument = validation.status;
+		instrument = validation;
 	}
 
 	return (pi: ExtensionAPI) => {
@@ -59,7 +59,7 @@ export function preservation(options: PreservationOptions): ExtensionFactory {
 					const stored: StoredProfile = { attempt: n, output_sha256: createHash("sha256").update(params.output, "utf8").digest("hex"), profile };
 					pi.appendEntry(PROFILE, stored);
 					const lost = profile.obligations.filter((o) => o.outcome !== "SURVIVED").map((o) => o.id);
-					return { content: [{ type: "text", text: renderProfile(profile) }], details: { attempt: n, lost, instrument } };
+					return { content: [{ type: "text", text: renderProfile(profile) }], details: { attempt: n, lost, instrument: profile.instrument } };
 				},
 			}),
 		);

@@ -81,3 +81,12 @@ test("nothing notifies while the model works", async () => {
 	assert.equal(ui.notifications.length, 0);
 	h.dispose();
 });
+
+test("a record that does not trace to its source is not rendered, so its views cannot look as consistent as a faithful one", async () => {
+	const bad: DocumentRecord = { ...retry.RECORD, claims: retry.RECORD.claims.map((c) => (c.id === "limit" ? { ...c, passage: "" } : c)) };
+	const { h } = await start(bad);
+	h.faux.setResponses([call("render_from_record", { view: "table" }), done()]);
+	await h.session.prompt("go");
+	assert.match(texts(h)[0]!, /^Not rendered: the record does not trace to its source \(EMPTY_PASSAGE:limit\)/);
+	h.dispose();
+});

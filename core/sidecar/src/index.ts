@@ -50,6 +50,12 @@ export interface SidecarItem {
 	content: string;
 	/** Derived items only. */
 	anchor?: Anchor;
+	/**
+	 * Derived items only: how the record reads the quotation, in the system's words. NOT part of what is re-presented,
+	 * and not checked against the source. It is shown separately and labelled, so an unsupported claim cannot be given the
+	 * derived label by being written into `content`.
+	 */
+	gloss?: string;
 	origin: {
 		producer: string;
 		/** Retrieved items only: where it came from, pinned by hash. */
@@ -62,6 +68,11 @@ export interface SidecarItem {
 }
 
 export type SidecarProblem =
+	| "MALFORMED"
+	| "CONTENT_NOT_QUOTE"
+	| "SOURCE_UNAVAILABLE"
+	| "EXTERNAL_MISMATCH"
+	| "DREW_ON_UNKNOWN"
 	| "LAYER_KIND_MISMATCH"
 	| "ID_MISMATCH"
 	| "ANCHOR_MISSING"
@@ -71,6 +82,10 @@ export type SidecarProblem =
 	| "EXCERPT_NOT_IN_EXTERNAL"
 	| "STATUS_OVERCLAIMS"
 	| "LIMITS_MISSING"
+	| "LIMITS_TOO_SHORT"
+	| "LIMITS_VACUOUS"
+	| "LIMITS_NO_LIMITING_CONSTRUCTION"
+	| "LIMITS_BOILERPLATE"
 	| "EMPTY_CONTENT";
 
 export class SidecarError extends Error {
@@ -90,17 +105,19 @@ function seal(item: Omit<SidecarItem, "id">): SidecarItem {
 }
 
 /** Re-presents a passage of the source. It must be checkable against the source and nothing more. */
-export function derivedItem(source: TextDoc, quote: string, content: string = quote, producer = "derivation"): SidecarItem {
+export function derivedItem(source: TextDoc, quote: string, producer = "derivation", gloss?: string): SidecarItem {
 	if (quote.trim() === "") throw new SidecarError(["EMPTY_CONTENT"], "a derived item needs the passage it re-presents");
 	if (!source.content.includes(quote)) throw new SidecarError(["ANCHOR_NOT_IN_SOURCE"], "the quoted passage is not in the source");
 	return seal({
 		kind: "derived",
 		layer: LAYER_OF.derived,
 		status: "re-presented",
-		content,
+		// What is re-presented is the quotation, verbatim. Nothing else can carry the derived label.
+		content: quote,
 		anchor: { source_id: source.id, source_sha256: sha256(source.content), quote },
 		origin: { producer },
 		drew_on: [],
+		...(gloss !== undefined && gloss.trim() !== "" ? { gloss } : {}),
 	});
 }
 
@@ -118,11 +135,35 @@ export function retrievedItem(external: TextDoc, excerpt: string, producer = "re
 	});
 }
 
-/** A model's own answer. Always a candidate, and it must say what it cannot be trusted for. */
-export function generatedItem(input: { content: string; producer: string; drew_on?: string[]; limits: string }): SidecarItem {
+const normalise = (s: string) => s.toLowerCase().replace(/[^a-z0-9\s']/g, " ").replace(/\s+/g, " ").trim();
+const VACUOUS = /^(no|none|nothing|nil|n a|na|unknown|not applicable|no limits?|no limitations?|no caveats?|no known (limits?|limitations?|caveats?))\b/;
+const LIMITING = /\b(not|only|without|unchecked|unverified|untested|assum\w*|based on|depends?|may|might|could|cannot|can't|unable|limited|partial|incomplete|approximat\w*|estimate\w*|a single|just one|from (a|one|two|three|the))\b/;
+
+/**
+ * What a statement of limits has to be to count. This is lexical and cheap, and it is
+ * deliberately honest about what it is: it rejects "None.", a stub, a limit with nothing
+ * limiting in it, and the same limit pasted onto every answer. It does NOT make a limit true.
+ * A determined producer can write "may be fully trusted" and pass. Presence and specificity,
+ * not honesty.
+ */
+export function checkLimits(limits: string, prior: readonly string[] = []): SidecarProblem[] {
+	const n = normalise(limits);
+	if (n === "") return ["LIMITS_MISSING"];
+	const out: SidecarProblem[] = [];
+	if (VACUOUS.test(n)) out.push("LIMITS_VACUOUS");
+	if (n.split(" ").length < 5) out.push("LIMITS_TOO_SHORT");
+	if (!LIMITING.test(n)) out.push("LIMITS_NO_LIMITING_CONSTRUCTION");
+	if (prior.some((p) => normalise(p) === n)) out.push("LIMITS_BOILERPLATE");
+	return out;
+}
+
+/** A model's own answer. Always a candidate, and it must say, specifically, what it cannot be trusted for. */
+export function generatedItem(input: { content: string; producer: string; drew_on?: string[]; limits: string; prior_limits?: readonly string[]; known_ids?: readonly string[] }): SidecarItem {
 	const problems: SidecarProblem[] = [];
+	// If the caller says what exists to be drawn on, a reference to something else is refused.
+	if (input.known_ids !== undefined && (input.drew_on ?? []).some((id) => !input.known_ids!.includes(id))) problems.push("DREW_ON_UNKNOWN");
 	if (input.content.trim() === "") problems.push("EMPTY_CONTENT");
-	if (input.limits.trim() === "") problems.push("LIMITS_MISSING");
+	problems.push(...checkLimits(input.limits, input.prior_limits));
 	if (problems.length > 0) throw new SidecarError(problems, `cannot place a model answer beside the source: ${problems.join(", ")}`);
 	return seal({
 		kind: "interactive",
@@ -141,25 +182,47 @@ export function generatedItem(input: { content: string; producer: string; drew_o
  * edited, forged or built by hand cannot present itself as something it is not.
  */
 export function validateItem(item: SidecarItem, sources: ReadonlyMap<string, TextDoc> = new Map()): SidecarProblem[] {
+	// A stored object may be anything. Check its shape before trusting a field of it.
+	if (typeof item !== "object" || item === null) return ["MALFORMED"];
+	const it = item as unknown as Record<string, unknown>;
+	const origin = it["origin"] as Record<string, unknown> | undefined;
+	if (
+		typeof it["id"] !== "string" || typeof it["content"] !== "string" ||
+		typeof it["kind"] !== "string" || !(it["kind"] in LAYER_OF) ||
+		typeof it["layer"] !== "string" || typeof it["status"] !== "string" ||
+		typeof origin !== "object" || origin === null || typeof origin["producer"] !== "string" ||
+		!Array.isArray(it["drew_on"])
+	) {
+		return ["MALFORMED"];
+	}
 	const problems: SidecarProblem[] = [];
 	if (LAYER_OF[item.kind] !== item.layer) problems.push("LAYER_KIND_MISMATCH");
 	const { id, ...rest } = item;
-	if (id !== `sc_${sha256(JSON.stringify(rest)).slice(0, 16)}`) problems.push("ID_MISMATCH");
+	if (id !== "sc_" + sha256(JSON.stringify(rest)).slice(0, 16)) problems.push("ID_MISMATCH");
 	if (item.content.trim() === "") problems.push("EMPTY_CONTENT");
 	if (item.kind === "derived") {
 		if (item.status !== "re-presented") problems.push("STATUS_OVERCLAIMS");
 		if (!item.anchor) problems.push("ANCHOR_MISSING");
 		else {
+			// What is derived is the quotation and nothing else.
+			if (item.content !== item.anchor.quote) problems.push("CONTENT_NOT_QUOTE");
 			const source = sources.get(item.anchor.source_id);
-			if (source) {
+			// A source that cannot be consulted is a failure, not a pass: an unchecked anchor is not a checked one.
+			if (!source) problems.push("SOURCE_UNAVAILABLE");
+			else {
 				if (sha256(source.content) !== item.anchor.source_sha256) problems.push("SOURCE_HASH_MISMATCH");
 				if (!source.content.includes(item.anchor.quote)) problems.push("ANCHOR_NOT_IN_SOURCE");
 			}
 		}
 	} else {
 		if (item.status !== "candidate") problems.push("STATUS_OVERCLAIMS");
-		if (item.kind === "retrieved" && !item.origin.external) problems.push("EXTERNAL_ORIGIN_MISSING");
-		if (item.kind === "interactive" && (!item.limits || item.limits.trim() === "")) problems.push("LIMITS_MISSING");
+		if (item.kind === "retrieved") {
+			const ext = item.origin.external;
+			if (!ext) problems.push("EXTERNAL_ORIGIN_MISSING");
+			else if (item.content !== ext.excerpt || ext.id.trim() === "" || !/^[0-9a-f]{64}$/.test(ext.sha256)) problems.push("EXTERNAL_MISMATCH");
+		}
+		// The context-free rules are re-checked on the way back out. Boilerplate repetition needs the other items and is checked where they are known.
+		if (item.kind === "interactive") problems.push(...checkLimits(item.limits ?? "").filter((p) => p !== "LIMITS_BOILERPLATE"));
 	}
 	return problems;
 }
@@ -182,6 +245,7 @@ export function renderSidecar(items: readonly SidecarItem[]): string {
 	for (const item of items) {
 		lines.push("", `[${LABEL[item.layer]}]  ${item.id}`, `  ${item.content}`);
 		if (item.anchor) lines.push(`  source ${item.anchor.source_id} ${item.anchor.source_sha256.slice(0, 12)}…: "${item.anchor.quote}"`);
+		if (item.gloss) lines.push(`  record's reading (the system's words, not checked against the source): ${item.gloss}`);
 		if (item.origin.external) lines.push(`  from ${item.origin.external.id} ${item.origin.external.sha256.slice(0, 12)}…`);
 		if (item.kind === "interactive") {
 			lines.push(`  produced by ${item.origin.producer}${item.drew_on.length ? `; drew on ${item.drew_on.join(", ")}` : "; drew on: not recorded"}`);

@@ -70,19 +70,27 @@ console.log(JSON.stringify(ledgerColumns([
 	{ item_id: answer.id, event: "dismissed" },
 ]), null, 2));
 console.log("A useful item and a distracting one are not the same kind of thing, so there is no net score to compute.");
+console.log("(These events are supplied by hand. The Pi adapter itself records only shown, used and dismissed; it does not observe whether an item");
+console.log("distracted anyone, so nothing here measures a reader.)");
 
 rule("PART 2: in a Pi session, the door decides the layer");
 const ui = new UiRecorder();
 const h = await makeSession({ ui, extensions: [sidecar({ source: paper, corpus: [theorem] })] });
 h.faux.setResponses([
-	// The scripted model tries to pass its answer off as a derivation of the source.
+	// The scripted model first tries to pass its answer off as a derivation of the source, with "None." as its limits.
 	fauxAssistantMessage([fauxToolCall("sidecar_propose", { content: "The paper proves the protocol safe.", limits: "None.", layer: "SEMANTIC_DERIVATION", status: "re-presented" })], { stopReason: "toolUse" }),
+	// Told why, it tries again with a specific limit.
+	fauxAssistantMessage([fauxToolCall("sidecar_propose", { content: "The paper claims the protocol is safe but cites no proof.", limits: "Based only on the paper's own wording; I have not checked any proof.", layer: "SEMANTIC_DERIVATION", status: "re-presented" })], { stopReason: "toolUse" }),
 	fauxAssistantMessage([fauxToolCall("sidecar_search", { query: "consensus crash" })], { stopReason: "toolUse" }),
 	fauxAssistantMessage([fauxText("done")]),
 ]);
 await h.session.prompt("help me read this");
+const replies = h.session.messages.filter((m) => m.role === "toolResult").map((m: any) => m.content[0].text as string);
+console.log(`first attempt, limits "None." → ${replies[0]}`);
 console.log(`notifications while the model worked: ${ui.notifications.length}   (nothing interrupted the reader)`);
 await h.session.prompt("/sidecar");
 console.log(ui.notifications.at(-1)!.message);
 console.log("\nThe model asked for SEMANTIC_DERIVATION and re-presented. It got MODEL_GENERATION and candidate.");
+console.log("\nWhat the limits rule checks: length, vacuity ('None.' and its relatives), that something limiting is said, and that the");
+console.log("same limit is not pasted onto every answer. It does not check that the limit is TRUE: \"may be fully trusted\" would pass.");
 h.dispose();

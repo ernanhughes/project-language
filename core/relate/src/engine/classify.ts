@@ -13,6 +13,12 @@ export const TAXONOMY_V1: readonly Relation[] = ["SUPPORTS", "CONTRADICTS", "UPD
 
 const NEG_RE = /\b(not|no|never|n't|non|cannot|can't|unable|fails?|failed|failure|violates?|rejects?|denies|denied|prohibits?|forbids?|forbidden|without|except|refutes?)\b/gi;
 const TEMPORAL_RE = /\b(20\d\d[-./]\d\d?[-./]\d\d?|20\d\d|v\d+(?:\.\d+)+|version\s+\d+|firmware\s+(?:below|above|<|>|<=|>=)?\s*\d[\d.]*)\b/gi;
+// Explicit revision language: one text says it is changing, replacing or updating the thing the other describes.
+// Added in project-language (the upstream classifier recognised an update only by a date or version marker).
+const REVISION_STRONG_RE = /\b(?:has|have)\s+been\s+(?:updated|changed|revised|replaced|raised|lowered|increased|reduced|amended)|\b(?:updated?|changed?|revised?)\s+to\b|\breplaces?\b|\breplaced\s+by\b|\bsupersedes?\b|\bsuperseded\b|\bno\s+longer\b/gi;
+// "is now" alone is weak ("the cluster is now running"); it counts only when a number differs between the texts.
+const REVISION_WEAK_RE = /\b(?:is|are)\s+now\b|\bnow\s+(?:set|uses?|requires?)\b/gi;
+const NUMBER_TOKEN_RE = /\b\d[\d.,]*\b/g;
 const REQUIRE_RE = /\b(requires?|must|shall|should|mandat\w*|policy|prohibit\w*|forbid\w*|never\s+\w+\s+in\s+place)\b/gi;
 const MECHANISM_RE = /\b(appends?|implements?|enforces?|performs?|executes?|writes?|immutable|never\s+updates?|redirects?|batches?|queues?)\b/gi;
 const ENTITY_RE = /\b([A-Z][A-Za-z0-9_]*(?:[._-][A-Za-z0-9_]+)+|[A-Z]{2,}[A-Za-z0-9_]*|\b\d[\d.,_-]*\b)\b/g;
@@ -202,6 +208,17 @@ export function classifyPair(leftText: string, rightText: string, left: SourceRe
     // temporal markers, else record direction uncertainty in notes.
     const direction: Direction = rt.length !== lt.length ? (rt.length > lt.length ? "right_to_left" : "left_to_right") : "symmetric";
     return finish("UPDATES", direction, 0.45, evidence);
+  }
+
+  // 2b. Update by revision language: shared referents, and exactly one side announces a revision.
+  // The side that announces it updates the other. A date or version marker is not needed.
+  const numbersDiffer = [...(leftText.match(NUMBER_TOKEN_RE) ?? [])].sort().join("|") !== [...(rightText.match(NUMBER_TOKEN_RE) ?? [])].sort().join("|");
+  const revises = (text: string): boolean => [...text.matchAll(REVISION_STRONG_RE)].length > 0 || (numbersDiffer && [...text.matchAll(REVISION_WEAK_RE)].length > 0);
+  const lRev = revises(leftText);
+  const rRev = revises(rightText);
+  if (shared.length > 0 && lRev !== rRev) {
+    const evidence = [...entityEvidence, ...spans(lRev ? leftText : rightText, REVISION_STRONG_RE, "temporal", 2), ...spans(lRev ? leftText : rightText, REVISION_WEAK_RE, "temporal", 2)].slice(0, 4);
+    return finish("UPDATES", lRev ? "left_to_right" : "right_to_left", 0.5, evidence);
   }
 
   // 3. Implements: requirement language on one side, mechanism on the other.

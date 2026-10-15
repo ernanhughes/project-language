@@ -29,9 +29,20 @@ export interface SidecarOptions {
 	source: TextDoc;
 	/** Other material the host may retrieve from. */
 	corpus?: TextDoc[];
+	/** The most candidates (retrieved or model-written) that may be open beside the source at once. Default 8. Flooding the margin is a cost. */
+	maxOpen?: number;
 }
 
 const ITEM = "sidecar-item";
+
+const LIMITS_HELP: Record<string, string> = {
+	LIMITS_MISSING: "say what this cannot be trusted for",
+	LIMITS_TOO_SHORT: "be specific: at least a short sentence",
+	LIMITS_VACUOUS: "\"none\" and its relatives are not a statement of limits",
+	LIMITS_NO_LIMITING_CONSTRUCTION: "say what it is not, what it rests on, or what it assumes",
+	LIMITS_BOILERPLATE: "this is word for word what an earlier answer said; limits belong to the answer they describe",
+	DREW_ON_UNKNOWN: "you named something to have drawn on that is not in the margin or the reference material; name only what exists",
+};
 const EVENT = "sidecar-event";
 
 type EntryLike = { type: string; customType?: string; data?: unknown };
@@ -45,9 +56,14 @@ function load(entries: readonly EntryLike[], options: SidecarOptions) {
 		if (e.type !== "custom") continue;
 		if (e.customType === ITEM) {
 			const item = e.data as SidecarItem;
-			const problems = validateItem(item, sources);
+			let problems: string[];
+			try {
+				problems = validateItem(item, sources);
+			} catch {
+				problems = ["MALFORMED"];
+			}
 			if (problems.length === 0) items.push(item);
-			else rejected.push({ id: item?.id ?? "(no id)", problems });
+			else rejected.push({ id: typeof item?.id === "string" ? item.id : "(no id)", problems });
 		} else if (e.customType === EVENT) events.push(e.data as SidecarEvent);
 	}
 	const dismissed = new Set(events.filter((x) => x.event === "dismissed").map((x) => x.item_id));
@@ -58,6 +74,7 @@ const terms = (query: string) => query.toLowerCase().split(/[^a-z0-9]+/).filter(
 
 export function sidecar(options: SidecarOptions): ExtensionFactory {
 	return (pi: ExtensionAPI) => {
+		const cap = options.maxOpen ?? 8;
 		const current = (ctx: { sessionManager: { getEntries(): readonly unknown[] } }) => load(ctx.sessionManager.getEntries() as EntryLike[], options);
 		const addItem = (item: SidecarItem) => {
 			pi.appendEntry(ITEM, item);
@@ -81,7 +98,19 @@ export function sidecar(options: SidecarOptions): ExtensionFactory {
 				}),
 				async execute(_id, params, _signal, _onUpdate, ctx) {
 					try {
+						// Limits already used on earlier answers in this session: pasting the same ones onto every answer is boilerplate.
+						const open = current(ctx).visible.filter((i) => i.kind !== "derived").length;
+						if (open >= cap) {
+							return { content: [{ type: "text", text: `Not placed: the margin already holds ${open} candidates, the most it will hold at once. Ask the reader to dismiss some first.` }], details: { problems: ["MARGIN_FULL"] } };
+						}
+						const known = [options.source.id, ...(options.corpus ?? []).map((d) => d.id), ...current(ctx).items.map((i) => i.id)];
+						const prior = (ctx.sessionManager.getEntries() as EntryLike[])
+							.filter((e) => e.type === "custom" && e.customType === ITEM)
+							.map((e) => (e.data as SidecarItem).limits)
+							.filter((l): l is string => typeof l === "string");
 						const item = generatedItem({
+							prior_limits: prior,
+							known_ids: known,
 							content: params.content,
 							limits: params.limits,
 							...(params.drew_on ? { drew_on: params.drew_on } : {}),
@@ -91,7 +120,8 @@ export function sidecar(options: SidecarOptions): ExtensionFactory {
 						return { content: [{ type: "text", text: `Placed beside the source as a ${item.layer} candidate: ${item.id}` }], details: { id: item.id, layer: item.layer } };
 					} catch (error) {
 						if (error instanceof SidecarError) {
-							return { content: [{ type: "text", text: `Not placed: ${error.problems.join(", ")}` }], details: { problems: error.problems } };
+							const help = error.problems.map((p) => (LIMITS_HELP[p] ? `${p}: ${LIMITS_HELP[p]}` : p)).join("; ");
+							return { content: [{ type: "text", text: `Not placed: ${help}` }], details: { problems: error.problems } };
 						}
 						throw error;
 					}
@@ -106,16 +136,19 @@ export function sidecar(options: SidecarOptions): ExtensionFactory {
 				label: "Sidecar: search",
 				description: "Look for passages in the available reference material that match a query, and place any matches beside the source as unverified candidates. Returns nothing if nothing matches.",
 				parameters: Type.Object({ query: Type.String() }),
-				async execute(_id, params) {
+				async execute(_id, params, _signal, _onUpdate, ctx) {
 					const wanted = terms(params.query);
 					const placed: SidecarItem[] = [];
+					let room = cap - current(ctx).visible.filter((i) => i.kind !== "derived").length;
 					for (const doc of options.corpus ?? []) {
+						if (room <= 0) break;
 						const hit = splitSentences(doc.content).find((s) => wanted.some((t) => s.toLowerCase().includes(t)));
 						if (!hit) continue;
 						try {
 							const item = retrievedItem(doc, hit);
 							addItem(item);
 							placed.push(item);
+							room -= 1;
 						} catch (error) {
 							if (!(error instanceof SidecarError)) throw error;
 						}
@@ -140,7 +173,7 @@ export function sidecar(options: SidecarOptions): ExtensionFactory {
 					let n = 0;
 					for (const sentence of splitSentences(brief.representation)) {
 						if (have.has(sentence) || !options.source.content.includes(sentence)) continue;
-						addItem(derivedItem(options.source, sentence, sentence, `lens@${brief.producer.version}`));
+						addItem(derivedItem(options.source, sentence, `lens@${brief.producer.version}`));
 						n += 1;
 					}
 					return say(ctx, n === 0 ? "Nothing new to derive." : `Derived ${n} passage(s) from the source.`);
