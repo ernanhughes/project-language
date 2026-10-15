@@ -16,6 +16,7 @@
     "example:ch11": "node --experimental-transform-types --disable-warning=ExperimentalWarning examples/ch11-ladder/ch11.ts",
     "example:ch12": "node --experimental-transform-types --disable-warning=ExperimentalWarning examples/ch12-browser/ch12.ts",
     "example:admission": "node --experimental-transform-types --disable-warning=ExperimentalWarning examples/part-two-admission/run.ts",
+    "example:personal": "node --experimental-transform-types --disable-warning=ExperimentalWarning examples/part-three-personal/run.ts",
     "example:radar": "node --experimental-transform-types --disable-warning=ExperimentalWarning examples/part-two-radar/run.ts",
     "examples": "node scripts/run-examples.mjs",
     "test:postgres": "node scripts/test-postgres.mjs",
