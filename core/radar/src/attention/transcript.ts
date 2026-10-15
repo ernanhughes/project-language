@@ -20,7 +20,12 @@ export interface TranscriptLine {
   start: number;
   end: number;
 }
-export interface ParsedTranscript { source: SourceVersion; lines: TranscriptLine[] }
+export interface ParsedTranscript {
+  source: SourceVersion;
+  lines: TranscriptLine[];
+  /** Things that are well-formed but implausible. The text is still usable; its timestamps may not be. */
+  warnings: string[];
+}
 
 const LINE = /^\[(?:(\d+):)?(\d{1,2}):(\d{2})\]\s+(.+)$/;
 
@@ -42,7 +47,12 @@ export function parseTranscript(raw: string, id: string, version = "v1"): Parsed
     lines.push({ n: k + 1, seconds, stamp, text: body!, start, end: start + body!.length });
     offset += row.length + 1;
   });
-  return { source: { id, version, text, sha256: sha256(text) }, lines };
+  const warnings: string[] = [];
+  const span = lines[lines.length - 1]!.seconds - lines[0]!.seconds;
+  // A real caption track averages a second or more per line. Hundreds of lines inside a couple of seconds means the
+  // times are in the wrong unit (the published youtube-transcript skill divided seconds by 1000), so units cannot walk back to moments.
+  if (lines.length >= 20 && span < lines.length * 0.25) warnings.push(`TIMESTAMPS_IMPLAUSIBLE: ${lines.length} lines span only ${span} seconds; the times are probably in the wrong unit`);
+  return { source: { id, version, text, sha256: sha256(text) }, lines, warnings };
 }
 
 export interface UnitProposal {

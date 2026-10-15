@@ -5,7 +5,7 @@
   "description": "Runnable capabilities for the Language book: host-independent core, thin Pi host adapter.",
   "scripts": {
     "typecheck": "tsc -p .",
-    "test": "node --experimental-transform-types --test \"core/**/*.test.ts\" \"host-pi/**/*.test.ts\"",
+    "test": "node --experimental-transform-types --test \"core/**/*.test.ts\" \"host-pi/**/*.test.ts\" \"tmy/**/*.test.ts\"",
     "test:skeleton": "node --experimental-transform-types --test \"core/authority/tests/*.test.ts\" \"host-pi/*.test.ts\"",
     "verify": "npm run typecheck && npm test",
     "example:ch07": "node --experimental-transform-types --disable-warning=ExperimentalWarning examples/ch07-record/ch07.ts",
@@ -19,7 +19,9 @@
     "example:radar": "node --experimental-transform-types --disable-warning=ExperimentalWarning examples/part-two-radar/run.ts",
     "examples": "node scripts/run-examples.mjs",
     "test:postgres": "node scripts/test-postgres.mjs",
-    "example:talk": "node --experimental-transform-types --disable-warning=ExperimentalWarning examples/part-two-talk/run.ts"
+    "example:talk": "node --experimental-transform-types --disable-warning=ExperimentalWarning examples/part-two-talk/run.ts",
+    "tmy": "node --experimental-transform-types --disable-warning=ExperimentalWarning tmy/src/cli.ts",
+    "example:tmy": "node --experimental-transform-types --disable-warning=ExperimentalWarning tmy/src/cli.ts scan --subscriptions tmy/sample/subscriptions.json --interest tmy/sample/interest.txt --fixtures tmy/sample/feeds"
   },
   "dependencies": {
     "@earendil-works/pi-agent-core": "1.0.4",

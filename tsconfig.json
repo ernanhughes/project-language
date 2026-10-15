@@ -15,7 +15,8 @@
     "core/**/*.ts",
     "host-pi/**/*.ts",
     "harness/**/*.ts",
-    "examples/**/*.ts"
+    "examples/**/*.ts",
+    "tmy/**/*.ts"
   ],
   "exclude": [
     "node_modules"

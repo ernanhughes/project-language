@@ -30,6 +30,14 @@ test("a malformed line, an impossible time, time going backwards and an empty tr
   assert.throws(() => parseTranscript("\n\n", "x"), /TRANSCRIPT_EMPTY/);
 });
 
+test("well-formed but implausible timestamps are warned about: 900 lines inside two seconds is a unit error, not a talk", () => {
+  const collapsed = Array.from({ length: 900 }, (_, k) => `[0:0${Math.floor(k / 450)}] line ${k}`).join("\n");
+  assert.match(parseTranscript(collapsed, "x").warnings[0]!, /TIMESTAMPS_IMPLAUSIBLE/);
+  assert.deepEqual(parsed.warnings, [], "the invented talk is fine");
+  const honest = Array.from({ length: 900 }, (_, k) => `[${Math.floor(k * 1.5 / 60)}:${String(Math.floor(k * 1.5) % 60).padStart(2, "0")}] line ${k}`).join("\n");
+  assert.deepEqual(parseTranscript(honest, "x").warnings, []);
+});
+
 // ─── decomposition: structure may be proposed, content may not ──────────────────────────────────────
 test("units are exact spans of the pinned transcript, and every one walks back to timestamps", () => {
   assert.deepEqual(validateUnits(units, parsed.source), []);

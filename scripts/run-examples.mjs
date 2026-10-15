@@ -18,6 +18,7 @@ const examples = [
 	["example:admission", ["--", "--output", join(evidence, "admission")]],
 	["example:radar", []],
 	["example:talk", []],
+	["example:tmy", []],
 ];
 const npm = process.platform === "win32" ? "npm.cmd" : "npm";
 let failed = 0;

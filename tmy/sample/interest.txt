@@ -1,0 +1,4 @@
+purpose: Advance my AI agent work: evaluation, memory and context control.
+terms: agent, evaluation, memory, context, retrieval, prompt engineering
+avoid: giveaway
+known: prompt engineering

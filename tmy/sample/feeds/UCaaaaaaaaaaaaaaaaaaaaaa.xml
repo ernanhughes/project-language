@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns:yt="http://www.youtube.com/xml/schemas/2015" xmlns:media="http://search.yahoo.com/mrss/" xmlns="http://www.w3.org/2005/Atom">
+  <yt:channelId>UCaaaaaaaaaaaaaaaaaaaaaa</yt:channelId>
+  <title>Agent Lab</title>
+  <author><name>Agent Lab</name></author>
+  <entry>
+    <id>yt:video:aaaaaaaaa01</id>
+    <yt:videoId>aaaaaaaaa01</yt:videoId>
+    <yt:channelId>UCaaaaaaaaaaaaaaaaaaaaaa</yt:channelId>
+    <title>Evaluating agents: a memory benchmark</title>
+    <published>2026-10-14T09:00:00+00:00</published>
+    <author><name>Agent Lab</name></author>
+    <media:group><media:description>We build an evaluation for agent memory and context control &amp; compare retrieval strategies.</media:description></media:group>
+  </entry>
+  <entry>
+    <id>yt:video:aaaaaaaaa02</id>
+    <yt:videoId>aaaaaaaaa02</yt:videoId>
+    <yt:channelId>UCaaaaaaaaaaaaaaaaaaaaaa</yt:channelId>
+    <title>Prompt engineering basics</title>
+    <published>2026-10-13T09:00:00+00:00</published>
+    <author><name>Agent Lab</name></author>
+    <media:group><media:description>A tour of prompt engineering for beginners.</media:description></media:group>
+  </entry>
+  <entry>
+    <id>yt:video:aaaaaaaaa03</id>
+    <yt:videoId>aaaaaaaaa03</yt:videoId>
+    <yt:channelId>UCaaaaaaaaaaaaaaaaaaaaaa</yt:channelId>
+    <title>GIVEAWAY: win a GPU</title>
+    <published>2026-10-12T09:00:00+00:00</published>
+    <author><name>Agent Lab</name></author>
+    <media:group><media:description>Enter now. Also mentions agent hardware.</media:description></media:group>
+  </entry>
+</feed>

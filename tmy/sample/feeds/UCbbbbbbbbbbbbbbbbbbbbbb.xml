@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns:yt="http://www.youtube.com/xml/schemas/2015" xmlns:media="http://search.yahoo.com/mrss/" xmlns="http://www.w3.org/2005/Atom">
+  <yt:channelId>UCbbbbbbbbbbbbbbbbbbbbbb</yt:channelId>
+  <title>Cooking Daily</title>
+  <author><name>Cooking Daily</name></author>
+  <entry>
+    <id>yt:video:bbbbbbbbb01</id>
+    <yt:videoId>bbbbbbbbb01</yt:videoId>
+    <yt:channelId>UCbbbbbbbbbbbbbbbbbbbbbb</yt:channelId>
+    <title>Ten-minute pasta</title>
+    <published>2026-10-14T10:00:00+00:00</published>
+    <author><name>Cooking Daily</name></author>
+    <media:group><media:description>Dinner in ten minutes.</media:description></media:group>
+  </entry>
+  <entry>
+    <id>yt:video:bbbbbbbbb02</id>
+    <yt:videoId>bbbbbbbbb02</yt:videoId>
+    <yt:channelId>UCbbbbbbbbbbbbbbbbbbbbbb</yt:channelId>
+    <title>Context for dummies</title>
+    <published>2026-10-13T10:00:00+00:00</published>
+    <author><name>Cooking Daily</name></author>
+    <media:group><media:description>A cooking channel using the word context once.</media:description></media:group>
+  </entry><entry><title>no id here</title></entry>
+</feed>
