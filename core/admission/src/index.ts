@@ -203,7 +203,7 @@ export function planContext(task: Task, sources: readonly Source[], input: {
       : stage === "selected" ? selectedIds.includes(s.id) : stage === "assembled" ? assembledIds.includes(s.id) : false;
     return { id: s.id, sourceRef: s.source.ref, sourceSha256: s.source.sha256, stage,
       outcome: stage === "delivered" ? "not_observed" : member ? "yes" : "no",
-      reason: stage === "delivered" ? "provider observation required" : stage === "eligible" ? d.admissionReason
+      reason: stage === "delivered" ? "provider observation required" : stage === "eligible" ? retrievedIds.includes(s.id) ? d.admissionReason : "not retrieved"
         : member ? stage === "selected" && strategy !== "constrained" ? "BASELINE_BYPASS" : stage : failure ?? "not in this stage" };
   }));
   return { strategy, task: structuredClone(task), decisions, retrievedIds, selectedIds, assembledIds, packet,
@@ -214,12 +214,20 @@ export function planContext(task: Task, sources: readonly Source[], input: {
 /** Pure observer: only the actual provider-visible text can establish delivery. */
 export function observeDelivery(plan: Plan, providerText: string) {
   const count = plan.packet ? providerText.split(plan.packet).length - 1 : 0;
-  const confirmed = plan.packet !== "" && count === 1;
+  const confirmed = plan.packet !== "" && count === 1 && observedPacket(providerText) === plan.packet;
   return { confirmed, packetSha256: plan.packetSha256, observedTextSha256: digest(providerText),
     deliveredIds: confirmed ? [...plan.assembledIds] : [],
     transitions: plan.transitions.map(t => t.stage === "delivered" ? { ...t,
       outcome: (confirmed && plan.assembledIds.includes(t.id) ? "yes" : "no") as Transition["outcome"],
       reason: confirmed ? "exact managed block observed once at provider callback" : "managed delivery not confirmed" } : t) };
+}
+
+/** Parse framing from observed provider text without consulting the expected plan. */
+export function observedPacket(text: string): string {
+  const start = "[CONTEXT BUNDLE]\n"; const end = "[/CONTEXT BUNDLE]\n";
+  if (text.split(start).length !== 2 || text.split(end).length !== 2) return "";
+  const from = text.indexOf(start); const to = text.indexOf(end, from);
+  return to < from ? "" : text.slice(from, to + end.length);
 }
 
 /** Toy reader, independent of admission decisions. Never calls a model or sees the oracle. */
@@ -244,11 +252,19 @@ export function evaluateDelivery(plan: Plan, providerText: string, expected: num
   const decisions = new Map(plan.decisions.map(d => [d.id, d]));
   const delivered = delivery.deliveredIds.map(id => decisions.get(id)!);
   const answer = readAnswer(delivery.confirmed ? plan.packet : "", plan.task);
+  const items: PacketItem[] = [];
+  if (delivery.confirmed) for (const line of observedPacket(providerText).split("\n")) {
+    try {
+      const item = JSON.parse(line) as PacketItem;
+      if (item && typeof item.raw === "string" && typeof item.id === "string") items.push(item);
+    } catch { /* framing */ }
+  }
   return { delivery, answer, dimensions: {
     permissionViolations: delivered.filter(d => !d.permission).map(d => d.id),
     currentnessViolations: delivered.filter(d => !d.current).map(d => d.id),
     scopeOrSchemaViolations: delivered.filter(d => !d.scope || !d.data || !d.standing).map(d => d.id),
-    provenanceCovered: delivered.every(d => Boolean(d.admissionReason)),
+    provenanceCovered: delivery.deliveredIds.every(id => items.some(i => i.id === id && Boolean(i.sourceRef) && i.sourceSha256 === digest(i.raw))),
+    admissionReasonsCovered: delivered.every(d => d.eligible && items.some(i => i.id === d.id && i.admissionReason === d.admissionReason)),
     budgetFits: plan.budgetFits, bytes: plan.bytes, estimatedTokens: plan.estimatedTokens,
     taskCorrect: answer.outcome === "answer" ? answer.value === expected : null,
     abstained: answer.outcome === "abstain", realModelUse: "unobserved", helpfulness: "unmeasured",

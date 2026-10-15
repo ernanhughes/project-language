@@ -1,0 +1,18 @@
+{
+  "id": "context-admission-v1",
+  "unit": "II-02",
+  "status": "implemented; observations stored in separate results directories",
+  "projectLanguageBase": "3239630af2755bead748c1a674fde515041e592a",
+  "languagePlanningBase": "3de3aea",
+  "piVersion": "1.0.4",
+  "protocol": "PROTOCOL.md",
+  "fixtures": "../../core/admission/fixtures/retry-context.ts",
+  "example": "../../examples/part-two-admission/run.ts",
+  "coreTests": "../../core/admission/tests/admission.test.ts",
+  "hostTests": "../../host-pi/admission.test.ts",
+  "conditions": ["indiscriminate", "similarity_only", "constrained"],
+  "provider": "pi-ai faux provider through real Pi AgentSession",
+  "realModelEvaluation": false,
+  "claim": "Host-held admission gates determine which requested synthetic configurations enter the managed provider-visible block.",
+  "notEstablished": ["general semantic relevance", "authenticated authority", "arbitrary prompt-injection resistance", "memory quality", "whole-prompt token bound", "real-model use", "real-model benefit"]
+}

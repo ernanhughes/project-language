@@ -4,3 +4,5 @@ core/**/fixtures/** -text
 core/**/examples/** -text
 * text=auto eol=lf
 core/**/experiments/** -text
+# Preserved evidence is byte-exact on every platform: no line-ending conversion. (Must follow the catch-all rule above.)
+experiments/context-admission-v1/results/** -text -whitespace

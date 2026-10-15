@@ -1,0 +1,116 @@
+{
+  "recordedAt": "2026-10-15T10:02:00.437Z",
+  "status": "passed",
+  "unit": "II-02",
+  "logs": {
+    "live-baseline": {
+      "file": "verification/live-baseline.log",
+      "sha256": "ba9eca7ffac19aed631b54265e677e69f4b7a343345225eb6b2643d0dbd21804",
+      "exitCode": 0,
+      "tests": 952,
+      "pass": 949,
+      "fail": 0,
+      "skipped": 3
+    },
+    "live-after": {
+      "file": "verification/live-after.log",
+      "sha256": "69e4f9302ea77aa67dc0ff2c5420dc249bbf0a17098dfbf9cf886dbec8a020da",
+      "exitCode": 0,
+      "tests": 968,
+      "pass": 965,
+      "fail": 0,
+      "skipped": 3
+    },
+    "pinned-after": {
+      "file": "verification/pinned-after.log",
+      "sha256": "7a8daef5e9b105f465eefd6aba84d86bd014b84642041048550d9f35e2ad8872",
+      "exitCode": 0,
+      "tests": 871,
+      "pass": 868,
+      "fail": 0,
+      "skipped": 3
+    },
+    "hugo": {
+      "file": "verification/hugo.log",
+      "sha256": "8d8a01b01600abb35490ce1f967e897736dc4efe8f859b31f05518568426d670",
+      "exitCode": 0
+    }
+  },
+  "commands": {
+    "live": "npm run verify",
+    "pinned": "npm run verify in clean git archive of 3239630 plus Part II overlay, using installed 1.0.4 dependencies via junction",
+    "example": "npm run example:admission",
+    "hugo": "hugo --destination TEMP_DIRECTORY --cleanDestinationDir"
+  },
+  "newTests": 16,
+  "pinnedExistingTests": 855,
+  "unchangedExistingSkips": 3,
+  "pinnedExport": "C:\\Users\\ernan\\AppData\\Local\\Temp\\language-part-two-pinned-d47b27e9b85b40cca2675e5cf432bcff",
+  "audit": {
+    "recordedTextFingerprintsMatch": true,
+    "fingerprintMethod": "sha256 over UTF-8 decoded text (run.ts); tracked Python bytecode entries are not source provenance",
+    "newCoreHasNoPiImports": true,
+    "sharedCompilerCosineHarnessLockUnchangedFromPinned": true,
+    "pinnedOverlayFiles": [
+      "core/admission/src/index.ts",
+      "core/admission/fixtures/retry-context.ts",
+      "core/admission/tests/admission.test.ts",
+      "host-pi/admission.ts",
+      "host-pi/admission-harness.ts",
+      "host-pi/admission.test.ts",
+      "examples/part-two-admission/run.ts"
+    ],
+    "scopedDiffAndWhitespaceChecks": "passed",
+    "scopedFilesReviewed": [
+      "core/admission/fixtures/retry-context.ts",
+      "core/admission/src/index.ts",
+      "core/admission/tests/admission.test.ts",
+      "host-pi/admission.ts",
+      "host-pi/admission-harness.ts",
+      "host-pi/admission.test.ts",
+      "examples/part-two-admission/README.md",
+      "examples/part-two-admission/run.ts",
+      "experiments/context-admission-v1/manifest.json",
+      "experiments/context-admission-v1/PROTOCOL.md",
+      "experiments/context-admission-v1/results/2026-10-15T09-55-43-168Z-892aabc5/inputs.json",
+      "experiments/context-admission-v1/results/2026-10-15T09-55-43-168Z-892aabc5/provenance.json",
+      "experiments/context-admission-v1/results/2026-10-15T09-55-43-168Z-892aabc5/provider-requests.json",
+      "experiments/context-admission-v1/results/2026-10-15T09-55-43-168Z-892aabc5/report.json",
+      "experiments/context-admission-v1/results/2026-10-15T09-55-43-168Z-892aabc5/verification/development-notes.md",
+      "experiments/context-admission-v1/RESULTS.md"
+    ]
+  },
+  "workspaceAudit": {
+    "C:/Projects/language": {
+      "existingFilesChecked": 168,
+      "changed": [
+        "content/books/language/08-chapter.md",
+        "content/books/language/10-chapter.md",
+        "content/books/language/11-chapter.md",
+        "content/books/language/12-chapter.md",
+        "planning/rewrite-prompt-part-one.md"
+      ],
+      "missing": [],
+      "head": "7798abdb8b8358329a43fcf8cdd0c131860b6a98"
+    },
+    "C:/Projects/project-language": {
+      "existingFilesChecked": 427,
+      "changed": [
+        "package.json"
+      ],
+      "missing": [],
+      "head": "6c286e08fba0ce6ec44aef94f6894a4ec6e1cadf"
+    }
+  },
+  "auditInterpretation": {
+    "code": "Only pre-existing package.json contents changed: one added example script.",
+    "book": "Concurrent authorial changes to Chapters 8,10,11,12 and rewrite prompt. No chapter or concept file was edited by this increment."
+  },
+  "concurrentHeads": {
+    "code": "6c286e08fba0ce6ec44aef94f6894a4ec6e1cadf",
+    "book": "7798abdb8b8358329a43fcf8cdd0c131860b6a98"
+  },
+  "realModelEvaluation": false,
+  "commitsOrPushesByThisIncrement": false,
+  "developmentFailures": "verification/development-notes.md"
+}

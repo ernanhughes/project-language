@@ -1,0 +1,12 @@
+{
+  "inputs.json": "f8269fa038170fc704ede73351cb474cca2efb5b400dc63d949dafa97d9ac0c3",
+  "provenance.json": "14d10787a200ed260df9a3a52ea39578595ee63a69c2db90fa2af627a9a2f82b",
+  "provider-requests.json": "9dc9df681b74a2d9a69f534504101f8d70d1c70e233a720c4a989ac03039cb11",
+  "report.json": "2ed2cafc8c8bcc9a77274c9e0777f47e46ccef20786e9acbf99357f9b979dbce",
+  "verification/development-notes.md": "f3060ce19da64b3729236efbd36ad1f88033844de1b26783993b469aa490a24b",
+  "verification/hugo.log": "8d8a01b01600abb35490ce1f967e897736dc4efe8f859b31f05518568426d670",
+  "verification/live-after.log": "69e4f9302ea77aa67dc0ff2c5420dc249bbf0a17098dfbf9cf886dbec8a020da",
+  "verification/live-baseline.log": "ba9eca7ffac19aed631b54265e677e69f4b7a343345225eb6b2643d0dbd21804",
+  "verification/pinned-after.log": "7a8daef5e9b105f465eefd6aba84d86bd014b84642041048550d9f35e2ad8872",
+  "verification.json": "9f670c62998404ab19fd97134f06961927f1c36027618ef619f88d77cf9f5343"
+}
