@@ -8,3 +8,6 @@ export * from "./receipts.ts";
 export * from "./coverage.ts";
 export * from "./decision.ts";
 export * from "./scope.ts";
+export * from "./transcript.ts";
+export * from "./relevance.ts";
+export * from "./knowledge.ts";

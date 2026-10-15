@@ -38,3 +38,30 @@ export const EVIDENCE_SCOPE: EvidenceScope = {
   model_mode: "scripted faux provider; demonstrates control flow and gates, not model quality",
   fixture_scope: "one invented afternoon, five invented candidates (core/radar/fixtures/afternoon.ts); expected results are written in the tests, not the fixture",
 };
+
+/** The same discipline for the Chapter 14 to 16 example (`npm run example:talk`). */
+export const TALK_SCOPE: EvidenceScope = {
+  establishes: [
+    "a transcript in the youtube-transcript format becomes a hash-pinned source; a unit is one or more exact spans of it and walks back to timestamps",
+    "a proposer can suggest which lines form a unit, its role and its dependencies, but cannot supply content; a proposal naming a missing line, no line, a duplicate, or an unaccepted dependency is refused with its reason",
+    "a unit can join spans far apart (minute 4 and minute 53)",
+    "fixed windows scored on their own words drop a qualifier that governs the loud result; whole units with dependencies keep it (a constructed contrast)",
+    "a relevance judgement belongs to one purpose, needs a reason and a real citation, and a model's judgement waits for a person",
+    "an inferred purpose is a suggestion beside the declared one and never replaces it",
+    "a unit judged not relevant still travels with the unit that depends on it, with the reason; everything else is withheld with a reason and can be reopened",
+    "a knowledge grade is derived from dated evidence, decays, treats exposure as no evidence of knowing, and treats a later mistake as a conflict",
+    "a familiar term in another sense is not a known meaning; omission needs known in this sense AND not needed by anything shown",
+    "the person can see the state with its evidence, correct it and forget it",
+  ],
+  does_not_establish: [
+    "that any proposer, model or otherwise, finds good units; the proposals here are scripted",
+    "that the judgements are right or that any system could make them; they are written by hand",
+    "that the knowledge state is correct about any person, or how it would be kept between sessions; it is a value passed in",
+    "anything about video, audio, slides or what nobody said; the input is a text transcript",
+    "that readers would choose these boundaries, find the records usable, or read less as a result",
+    "relevance, which is supplied; or concept extraction, which is supplied",
+  ],
+  observation_boundary: ["none: no host, no interface and no model are involved"],
+  model_mode: "none; the proposer is a scripted function",
+  fixture_scope: "one invented talk of 17 lines, nine units, three purposes (core/radar/fixtures/talk.ts); expected results are in the tests",
+};

@@ -3,7 +3,7 @@
 import { cosineScore } from "../../../relate/src/engine/compatibility.ts";
 import {
   AttentionError, parseTime,
-  type Bridge, type CandidateItem, type Reason, type Subscription, type Task, type Unit,
+  type Bridge, type CandidateItem, type Reason, type Subscription, type Task,
 } from "./types.ts";
 
 const R = (dimension: Reason["dimension"], origin: Reason["origin"], ref: string, text: string): Reason => ({ dimension, origin, ref, text });
@@ -114,15 +114,4 @@ export function qualify(sub: Subscription, c: CandidateItem, elig: Eligibility, 
   if (relation.status === "NOT_RELATED") return { outcome: "NOT_QUALIFIED", worth: "NOTHING", match, relation, reasons: relation.reasons };
   if (relation.status === "UNRESOLVED") return { outcome: "UNRESOLVED", worth: "ATTENTION_WORTHY", match, relation, reasons: relation.reasons };
   return { outcome: "QUALIFIED", worth: "ATTENTION_WORTHY", match, relation, reasons: [...match.reasons, ...relation.reasons] };
-}
-
-// ─── novelty / knowledge: a minimal, fixture-level state. Not a ledger. ─────────────────────────
-export type Knowledge = "KNOWN" | "PARTIAL" | "UNKNOWN";
-export interface KnowledgeFact { unit_id: string; state: Knowledge; evidence: string; origin: "declared_context" | "observed_context" }
-/** Omission needs probably-known AND not needed to interpret what is shown. Ties go to showing. */
-export function omissible(unitId: string, units: readonly Unit[], shownIds: readonly string[], facts: readonly KnowledgeFact[]): { omit: boolean; why: string } {
-  const f = facts.find(x => x.unit_id === unitId);
-  if (!f || f.state !== "KNOWN") return { omit: false, why: "not known with evidence; ties go to showing" };
-  const needed = units.some(u => shownIds.includes(u.id) && u.dependsOn.includes(unitId));
-  return needed ? { omit: false, why: "known, but a shown unit depends on it" } : { omit: true, why: "known (" + f.evidence + ") and nothing shown depends on it" };
 }

@@ -18,7 +18,8 @@
     "example:admission": "node --experimental-transform-types --disable-warning=ExperimentalWarning examples/part-two-admission/run.ts",
     "example:radar": "node --experimental-transform-types --disable-warning=ExperimentalWarning examples/part-two-radar/run.ts",
     "examples": "node scripts/run-examples.mjs",
-    "test:postgres": "node scripts/test-postgres.mjs"
+    "test:postgres": "node scripts/test-postgres.mjs",
+    "example:talk": "node --experimental-transform-types --disable-warning=ExperimentalWarning examples/part-two-talk/run.ts"
   },
   "dependencies": {
     "@earendil-works/pi-agent-core": "1.0.4",

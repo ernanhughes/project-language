@@ -17,6 +17,7 @@ const examples = [
 	// the admission example writes an evidence directory; keep it out of the repository
 	["example:admission", ["--", "--output", join(evidence, "admission")]],
 	["example:radar", []],
+	["example:talk", []],
 ];
 const npm = process.platform === "win32" ? "npm.cmd" : "npm";
 let failed = 0;

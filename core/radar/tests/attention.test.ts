@@ -3,7 +3,7 @@ import assert from "node:assert/strict";
 import {
   DELIVERY_MODES, RESOLUTIONS, STAGES, STATUSES, assertContext, attend, chooseResolution, coverageReport, current,
   deliverySurface, establishRelation, firstRevision, humanReceipt, markDelivered, matchSubscription, minimumFor,
-  modelReceipt, omissible, presentationEstablished, observedStage, reevaluate, reopen, retrieve, schedule, selectUnits,
+  modelReceipt, presentationEstablished, observedStage, reevaluate, reopen, retrieve, schedule, selectUnits,
   validateHistory, validateReceipt, validateRevision, validateUnits, LEGACY_EQUIVALENCE,
   type AttendInput, type CandidateItem, type Revision, type Unit,
 } from "../src/attention/index.ts";
@@ -412,16 +412,6 @@ test("a history chain must be numbered, adjacent and stop at a settled state", (
   const exp = reevaluate({ history: h, circumstance: { kind: "deadline_passed", at: "2026-10-15T18:05:00.000Z" }, timing: tm, standing: ok, acts_by: T_DEPLOY });
   const after: Revision = { ...exp, revision: 3, prior: { decision_id: exp.decision_id, revision: 2 }, status: "PENDING", mode: "NOW" };
   assert.ok(validateHistory([h[0]!, exp, after]).some(p => p.code === "AFTER_TERMINAL"));
-});
-
-// ─── novelty: known is not safe to omit ─────────────────────────────────────────────────────────────
-test("a known unit is omitted only if nothing shown depends on it; unknown or unevidenced ties go to showing", () => {
-  const u = contradiction.units!;
-  const known = [{ unit_id: "c-qual", state: "KNOWN" as const, evidence: "she used it correctly in 2025", origin: "declared_context" as const }];
-  assert.equal(omissible("c-qual", u, ["c-claim"], known).omit, false, "the shown claim depends on it");
-  assert.equal(omissible("c-qual", u, [], known).omit, true);
-  assert.equal(omissible("c-qual", u, [], []).omit, false);
-  assert.equal(omissible("c-qual", u, [], [{ ...known[0]!, state: "PARTIAL" }]).omit, false);
 });
 
 // ─── the evidence scope is part of the deliverable ──────────────────────────────────────────────────
