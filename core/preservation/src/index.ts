@@ -225,15 +225,20 @@ const HEDGES: [RegExp, string][] = [
 	[/\bis uncertain\b/i, "is certain"],
 ];
 
-/** Remove the sentence containing the first match of any pattern. */
+/** Remove the sentence or line containing the first match of any pattern. Lines count: a table row has no full stop. */
 export const dropSentenceMatching = (patterns: string[]): Mutation => ({
 	name: "drop the sentence that carries it",
 	dimension: "any",
 	apply: (text) => {
-		const sentences = text.split(/(?<=[.!?])\s+/);
-		const at = sentences.findIndex((s) => patterns.some((p) => new RegExp(p, "i").test(s)));
-		if (at < 0) return null;
-		return sentences.filter((_, i) => i !== at).join(" ");
+		// Split on sentence ends and on line breaks, keeping the separators so the rest is untouched.
+		const parts = text.split(/(\n+|(?<=[.!?])[ \t]+)/);
+		for (let i = 0; i < parts.length; i += 2) {
+			if (patterns.some((p) => new RegExp(p, "i").test(parts[i]!))) {
+				parts.splice(i, i + 1 < parts.length ? 2 : 1);
+				return parts.join("").trim();
+			}
+		}
+		return null;
 	},
 });
 
@@ -299,7 +304,7 @@ export interface InstrumentValidation {
  * Validate the obligations as an instrument. For each obligation, break the faithful output in the ways
  * that obligation is supposed to catch, and require that THAT obligation turns from SURVIVED to LOST.
  */
-export function validateInstrument(declaration: Declaration, source: string, faithful: string, at: string): InstrumentValidation {
+export function validateInstrument(declaration: Declaration, source: string, faithful: string, at: string, extra?: (o: Obligation) => Mutation[]): InstrumentValidation {
 	const base = assess(declaration, { id: "faithful", source, output: faithful, output_at: at });
 	const faithful_passes = base.obligations.every((o) => o.outcome === "SURVIVED");
 	const probes = declaration.obligations.map((o) => {
@@ -307,6 +312,8 @@ export function validateInstrument(declaration: Declaration, source: string, fai
 		if (o.dimension === "uncertainty" || o.dimension === "qualifier") mutations.push(strengthen);
 		if (o.dimension === "relation" && o.parts) mutations.push(reverseRelation(o.parts));
 		if (o.dimension === "number") mutations.push(changeNumber);
+		// Domain-specific ways to break this obligation, supplied by the caller who knows the rendering.
+		if (extra) mutations.push(...extra(o));
 		const results = probeMeasure(faithful, mutations, (text) => assess(declaration, { id: "m", source, output: text, output_at: at }).obligations.find((x) => x.id === o.id)!.outcome);
 		return { obligation: o.id, results };
 	});
