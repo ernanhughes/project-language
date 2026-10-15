@@ -4,6 +4,19 @@ Runnable capabilities for the book *Language: When Intelligence Enters the Chann
 
 The idea is that the book's claims should be something you can run. This repository collects the capabilities explored in the earlier `opencode-*` plugin projects into one project, built so the host is replaceable.
 
+## Quick start
+
+Windows or any system with Node 25. No model and no API key are needed.
+
+```text
+npm ci               install the pinned dependencies
+npm run verify       typecheck and the full test suite
+npm run examples     run every example (Part I and Part II) and report which ran
+npm run test:postgres  run the live-Postgres tests that are skipped by default
+```
+
+`npm run test:postgres` uses the local development database `postgresql://language:language@localhost:5432/language` unless `MEMORY_BASELINE_DSN` is set, and needs the `vector` and `pg_trgm` extensions. Individual examples are `npm run example:ch07` to `example:ch12`, `example:admission` and `example:radar`. `PART-TWO-CONTRACT.md` explains the Part II code.
+
 ## Shape
 
 ```text
