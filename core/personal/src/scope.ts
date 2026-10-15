@@ -27,7 +27,7 @@ export const EVIDENCE_SCOPE: EvidenceScope = {
     "that the consequence table, the time-per-token constant or the friction ordering are the right policies (they are declared policy, not measured)",
     "that any real service honours a boundary: the services are fakes, and a setting read back is not proof of future behaviour",
     "that physical erasure is possible: the durable backend retracts and keeps a tombstone",
-    "that session entries are tamper-proof: the checksum catches accidents and casual forgery, not a determined writer",
+    "that session entries are tamper-proof: the checksum is an integrity marker, not protection against a hostile writer",
     "that the correction vocabulary, the scope algebra or the communication dimensions cover real use",
   ],
   observation_boundary: "the Pi session entries and UI notify calls in the harness; fake services' own recorded state; the core/verify readback check",

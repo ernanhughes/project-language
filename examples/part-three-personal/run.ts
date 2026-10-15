@@ -44,7 +44,7 @@ if (sel === "all") {
   rule("Chapter 27: what is believed about her, and a correction");
   await say("/personal run ch27");
   await say("/personal why inf-001");
-  await say("/personal correct inf-001 I only want derivations expanded when the decision depends on them");
+  await say("/personal correct inf-001 wrong I only want derivations expanded when the decision depends on them");
   await say("/personal state");
   rule("The generic path, and the recomputed plan");
   await say("/personal generic");

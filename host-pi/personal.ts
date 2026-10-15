@@ -12,7 +12,7 @@ import { createHash } from "node:crypto";
 import { Type } from "@earendil-works/pi-ai";
 import { defineTool, type ExtensionAPI, type ExtensionFactory } from "@earendil-works/pi-coding-agent";
 import {
-  applyBoundary, blockRederivation, compile, compileGeneric, correctBelief, decideFriction, dependents, endOverlay, explainWithout, fitControl,
+  applyBoundary, blockRederivation, compile, compileGeneric, correctBelief, forgetBelief, invalidateDependents, decideFriction, dependents, endOverlay, explainWithout, fitControl,
   gateProposal, inspectBeliefs, planIsCurrent, proposeEscalation, recordOverride, reduce, revokeBoundary, subtract, validateEvent, validateRecord,
   verifyBoundary, assess, PersonalError,
   type BoundaryReceipt, type CompileInput, type DurablePort, type PersonalEvent, type PersonalRecord, type PersonalState, type PortableBoundary,
@@ -242,7 +242,7 @@ export function personal(options: PersonalOptions): ExtensionFactory {
     }
 
     pi.registerCommand("personal", {
-      description: "Personal mediation. /personal run [ch21..ch28|all] | state | why [id] | generic | correct <belief-id> <replacement> | override <friction-id> | apply|revoke|verify <boundary-id> <service-id> | end | receipts",
+      description: "Personal mediation. /personal run [ch21..ch28|all] | state | why [id] | generic | correct <belief-id> <wrong|forget> <reason> | override <friction-id> | apply|revoke|verify <boundary-id> <service-id> | end | receipts",
       handler: async (args, c) => {
         const ctx = c as unknown as Ctx;
         const say = (t: string) => (ctx.hasUI ? ctx.ui.notify(t, "info") : console.log(t));
@@ -284,19 +284,21 @@ export function personal(options: PersonalOptions): ExtensionFactory {
           }
           if (sub === "correct") {
             const l = await load(ctx);
-            const text = [a2, ...rest].filter(Boolean).join(" ");
-            if (!a1 || !text) return say("usage: /personal correct <belief-id> <what is actually true, in your words>");
+            const op = a2; const reason = rest.join(" ").trim();
+            const choices = "operations: wrong (the belief is false: it is rejected, history kept) | forget (retract the retained item) | narrowing its scope, stopping one use, and revising a standing policy are different operations and are not offered here; blocking re-derivation is /personal block";
+            if (!a1 || (op !== "wrong" && op !== "forget") || !reason) return say(`usage: /personal correct <belief-id> <wrong|forget> <reason>
+  ${choices}`);
             const b = l.state.entries.get(a1);
             if (!b || b.record.kind !== "inferred_belief") return say(`${a1} is not a belief`);
-            const replacement = validateRecord({
-              id: options.ids("decl"), kind: "declared_preference", origin: "declared", key: `correction:${a1}`, scope: b.record.scope, valid: { from: options.now(), until: null }, recorded_at: options.now(),
-              source: { by: "person", ref: personRef }, authority_ref: `utterance:${options.ids("correction")}`, dimension: "depth", setting: text,
-            });
-            const rep = correctBelief(l.state, { id: a1, now: options.now(), by: { by: "person", ref: personRef }, reason: text, replacement });
-            append(rep.events);
-            if (!sc.standing.some(r => r.id === replacement.id)) await options.durable.add(replacement);
-            return say([`corrected ${a1}: the revision was appended; the belief stays in history and stops being used.`, `  invalidated: ${rep.downstream.invalidated.join(", ") || "nothing"} (recomputed only when something recomputes it)`,
-              `  already shown or acted on: not reversed`, `  your words are recorded as ${replacement.id}, a declaration by you`].join("\n"));
+            const by = { by: "person" as const, ref: personRef };
+            let events: PersonalEvent[];
+            if (op === "wrong") events = correctBelief(l.state, { id: a1, now: options.now(), by, reason }).events;
+            else events = [...forgetBelief(l.state, a1, options.now(), by, reason).events, ...invalidateDependents(l.state, a1, options.now(), `belief ${a1} forgotten: ${reason}`).events];
+            append(events);
+            const inv = events.filter(e => e.type === "artifact_invalidated").map(e => (e as { id: string }).id);
+            return say([`${op === "wrong" ? "corrected" : "forgotten"} ${a1}. Operation: ${op === "wrong" ? "belief rejected as incorrect" : "retained item retracted"}; your reason is recorded with it and is not interpreted.`,
+              `  stopped being used: yes`, `  dependants invalidated: ${inv.join(", ") || "nothing"} (recomputed only when something recomputes it)`,
+              `  NOT done: scope narrowed, one use stopped, standing policy revised, re-derivation blocked${op === "forget" ? "" : ", item forgotten"}`, `  already shown or acted on: not reversed`].join("\n"));
           }
           if (sub === "override") {
             const l = await load(ctx);
@@ -327,7 +329,7 @@ export function personal(options: PersonalOptions): ExtensionFactory {
             });
             return say(lines.join("\n") || "no receipts yet");
           }
-          return say("usage: /personal run [ch21..ch28|all] | state | why [id] | generic | correct <belief-id> <replacement> | override <friction-id> | apply|revoke|verify <boundary-id> <service-id> | block <belief-id> | end | receipts");
+          return say("usage: /personal run [ch21..ch28|all] | state | why [id] | generic | correct <belief-id> <wrong|forget> <reason> | override <friction-id> | apply|revoke|verify <boundary-id> <service-id> | block <belief-id> | end | receipts");
         } catch (e) {
           return say(`refused (${(e as { code?: string }).code ?? "error"}): ${(e as Error).message}`);
         }

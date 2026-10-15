@@ -167,23 +167,43 @@ test("revocation goes through the same adapter path and removes the setting; ver
   s.h.dispose();
 });
 
-test("correcting a false belief appends the revision, invalidates the plan that used it, and a recompute no longer uses it", async () => {
+test("correcting a belief names the operation, appends the revision, invalidates the plan that used it, and records no new preference", async () => {
   const s = await startPersonal();
   await morning(s); await s.run("/personal run ch23");
   const planId = plans(s).at(-1).plan_id;
-  await s.run("/personal correct inf-001 I only want derivations expanded when the decision depends on them");
-  assert.match(s.last(), /corrected inf-001/);
-  assert.match(s.last(), new RegExp(`invalidated: .*${planId}`));
+  await s.run("/personal correct inf-001");
+  assert.match(s.last(), /usage: \/personal correct <belief-id> <wrong\|forget> <reason>/);
+  await s.run("/personal correct inf-001 narrow architecture-review:payments because");
+  assert.match(s.last(), /usage:/, "an operation that is not offered is not guessed at");
+  assert.equal(events(s).filter(e => e.type === "belief_rejected").length, 0);
+  await s.run("/personal correct inf-001 wrong I only expand derivations when the decision depends on them");
+  assert.match(s.last(), /Operation: belief rejected as incorrect/);
+  assert.match(s.last(), new RegExp(`dependants invalidated: .*${planId}`));
+  assert.match(s.last(), /NOT done: scope narrowed, one use stopped, standing policy revised, re-derivation blocked, item forgotten/);
   assert.match(s.last(), /already shown or acted on: not reversed/);
   await s.run("/personal state");
-  assert.match(s.last(), new RegExp(`${planId} \\[invalidated: belief inf-001 corrected`));
+  assert.ok(s.last().includes(`${planId} [invalidated: belief inf-001 corrected`));
   assert.match(s.last(), /inf-001\(rejected\)/, "history kept");
+  assert.ok(!events(s).some(e => e.type === "added" && e.record.key === "correction:inf-001"), "no preference was invented from the free text");
+  const rej = events(s).find(e => e.type === "belief_rejected");
+  assert.equal(rej.by.by, "person");
   await s.run("/personal run ch23");
-  const p = plans(s).at(-1);
-  assert.equal(p.used.includes("inf-001"), false);
+  assert.equal(plans(s).at(-1).used.includes("inf-001"), false);
   assert.match(s.last(), /library-release\s+visible/);
-  const decl = events(s).filter(e => e.type === "added").map(e => e.record).find(r => r.key === "correction:inf-001");
-  assert.deepEqual([decl.kind, decl.source.by], ["declared_preference", "person"]);
+  s.h.dispose();
+});
+
+test("forgetting is a different operation from correcting: the item is retracted, dependants invalidated, and re-derivation is not blocked", async () => {
+  const s = await startPersonal();
+  await morning(s); await s.run("/personal run ch23");
+  await s.run("/personal correct inf-001 forget not something I want kept");
+  assert.match(s.last(), /Operation: retained item retracted/);
+  assert.match(s.last(), /NOT done: .*re-derivation blocked/);
+  await s.run("/personal state");
+  assert.match(s.last(), /inf-001\(retracted\)/);
+  s.h.faux.setResponses([call("personal_propose", PROPOSE_USEFUL), done()]);
+  await s.h.session.prompt("again");
+  assert.match(toolTexts(s).at(-1)!, /Recorded inf-/, "forgetting does not stop the same proposal being made again");
   s.h.dispose();
 });
 
@@ -231,7 +251,7 @@ test("an unknown subcommand or chapter is refused with usage, and with no interf
   const s = await startPersonal();
   await s.run("/personal run ch99"); assert.match(s.last(), /unknown chapter ch99/);
   await s.run("/personal frobnicate"); assert.match(s.last(), /usage: \/personal run/);
-  await s.run("/personal correct inf-404 whatever"); assert.match(s.last(), /inf-404 is not a belief/);
+  await s.run("/personal correct inf-404 wrong whatever"); assert.match(s.last(), /inf-404 is not a belief/);
   s.h.dispose();
   const quiet = await startPersonal({ ui: false });
   await quiet.h.session.prompt("/personal state");
