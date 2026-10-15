@@ -6,14 +6,14 @@ import {
   type Judgement, type KnowledgeState, type Unit, type UnitProposal,
 } from "../src/attention/index.ts";
 import {
-  NOW, PRIYA_TERMS, TRANSCRIPT, conceptUses, judgements, mina, minaKnows, parsed, priya, priyaKnows, scriptedProposals, scriptedProposer, tom,
+  NOW, IRIS_TERMS, TRANSCRIPT, conceptUses, judgements, mina, minaKnows, parsed, iris, irisKnows, scriptedProposals, scriptedProposer, tom,
 } from "../fixtures/talk.ts";
 
 const dec = decompose(parsed, scriptedProposer);
 const units = dec.units;
 const byId = (id: string) => units.find(u => u.id === id)!;
 const BUDGET = 140;
-const plan = (p: typeof priya, b = BUDGET) => planForPurpose(units, parsed.source, p, judgements[p.id]!, b);
+const plan = (p: typeof iris, b = BUDGET) => planForPurpose(units, parsed.source, p, judgements[p.id]!, b);
 
 // ─── the transcript, in the skill's format ──────────────────────────────────────────────────────────
 test("the youtube-transcript format parses: minutes, hours, offsets that point back into the source", () => {
@@ -76,7 +76,7 @@ test("proposals naming no line, a missing line, a duplicate id or an unaccepted 
 
 // ─── why pieces cannot be judged one at a time ──────────────────────────────────────────────────────
 test("scoring fixed windows on their own words drops the quiet qualifier that governs the loud result", () => {
-  const w = selectWindowsLocally(parsed, 3, PRIYA_TERMS, 2);
+  const w = selectWindowsLocally(parsed, 3, IRIS_TERMS, 2);
   const kept = w.filter(x => x.kept).map(x => x.stamps);
   const minute4 = w.find(x => x.text.includes("a fault means a crash"))!;
   const minute53 = w.find(x => x.text.includes("bounded delays"))!;
@@ -84,16 +84,16 @@ test("scoring fixed windows on their own words drops the quiet qualifier that go
   assert.equal(minute53.kept, true);
   assert.ok(kept.length >= 1);
   // the same purpose over whole units keeps both halves, because they are one unit
-  const p = plan(priya);
+  const p = plan(iris);
   assert.ok(p.shown.includes("u-scope"));
   assert.equal(byId("u-scope").spans.length, 2);
 });
 
 // ─── relevance is a relation to a purpose ───────────────────────────────────────────────────────────
 test("the same units and the same budget give three readers three different results", () => {
-  const sets = [priya, tom, mina].map(p => plan(p).shown.slice().sort().join(","));
+  const sets = [iris, tom, mina].map(p => plan(p).shown.slice().sort().join(","));
   assert.equal(new Set(sets).size, 3);
-  assert.deepEqual(plan(priya).shown.slice().sort(), ["u-clock-sync", "u-proof", "u-quorum", "u-scope", "u-sync-sense"]);
+  assert.deepEqual(plan(iris).shown.slice().sort(), ["u-clock-sync", "u-proof", "u-quorum", "u-scope", "u-sync-sense"]);
   assert.deepEqual(plan(tom).shown.slice().sort(), ["u-benchmark", "u-history"]);
   assert.deepEqual(plan(mina).shown.slice().sort(), ["u-benchmark", "u-clock-sync", "u-quorum"]);
 });
@@ -116,7 +116,7 @@ test("a qualifier is attached only if the unit that needs it is actually shown",
 });
 
 test("everything not shown is withheld with a reason and can be reopened; nothing disappears", () => {
-  const p = plan(priya);
+  const p = plan(iris);
   assert.equal(p.decisions.length, units.length);
   for (const id of ["u-history", "u-intro"]) assert.equal(p.decisions.find(d => d.unit_id === id)!.disposition, "withheld");
   const bench = p.decisions.find(d => d.unit_id === "u-benchmark")!;
@@ -132,8 +132,8 @@ test("a decisive unit is required: it is never traded away for budget", () => {
 });
 
 test("a judgement needs a reason, a real citation and the right purpose, and a model's judgement waits for a person", () => {
-  const good = judgements[priya.id]![0]!;
-  const check = (j: Judgement) => validateJudgement(j, priya, units).map(p => p.code);
+  const good = judgements[iris.id]![0]!;
+  const check = (j: Judgement) => validateJudgement(j, iris, units).map(p => p.code);
   assert.deepEqual(check(good), []);
   assert.deepEqual(check({ ...good, reason: "  " }), ["NO_REASON"]);
   assert.deepEqual(check({ ...good, cites: ["u-proof"] }), ["BAD_CITATION"]);
@@ -142,23 +142,23 @@ test("a judgement needs a reason, a real citation and the right purpose, and a m
   assert.deepEqual(check({ ...good, unit_id: "ghost", cites: ["ghost"] }), ["UNKNOWN_UNIT", "BAD_CITATION"]);
   assert.deepEqual(check({ ...good, by: "model" }), ["MODEL_JUDGEMENT_NOT_ACCEPTED"]);
   assert.deepEqual(check({ ...good, by: "model", accepted_by: "person" }), []);
-  assert.throws(() => planForPurpose(units, parsed.source, priya, [{ ...good, by: "model" }], BUDGET), /INVALID_JUDGEMENTS/);
+  assert.throws(() => planForPurpose(units, parsed.source, iris, [{ ...good, by: "model" }], BUDGET), /INVALID_JUDGEMENTS/);
 });
 
 test("a judgement made for one purpose cannot be used for another", () => {
-  assert.throws(() => planForPurpose(units, parsed.source, tom, judgements[priya.id]!, BUDGET), (e: unknown) => e instanceof AttentionError && /WRONG_PURPOSE/.test(e.message));
+  assert.throws(() => planForPurpose(units, parsed.source, tom, judgements[iris.id]!, BUDGET), (e: unknown) => e instanceof AttentionError && /WRONG_PURPOSE/.test(e.message));
 });
 
 test("an inferred purpose is a suggestion beside the declared one, never a replacement; with none declared the person is asked", () => {
   const inferred = { text: "Decide whether to benchmark the protocol", by: "model" as const, why: "she mentioned speed once" };
-  const r = resolvePurpose(priya, inferred);
-  assert.equal(r.purpose, priya);
+  const r = resolvePurpose(iris, inferred);
+  assert.equal(r.purpose, iris);
   assert.equal(r.suggestion, inferred);
   assert.match(r.note, /does not replace/);
   const none = resolvePurpose(null, inferred);
   assert.equal(none.purpose, null);
   assert.match(none.note, /ask the person/);
-  assert.equal(resolvePurpose(priya, null).suggestion, null);
+  assert.equal(resolvePurpose(iris, null).suggestion, null);
 });
 
 // ─── what the person knows ──────────────────────────────────────────────────────────────────────────
@@ -181,19 +181,19 @@ test("a later mistake against an earlier demonstration is a conflict, and a conf
 });
 
 test("a familiar term in another sense is not a known meaning", () => {
-  const k = knows(priyaKnows, "partial synchrony", "the delay bound is known to the protocol", NOW);
+  const k = knows(irisKnows, "partial synchrony", "the delay bound is known to the protocol", NOW);
   assert.equal(k.grade, "UNKNOWN");
   assert.equal(k.sense_mismatch, true);
   assert.equal(k.known_sense, "the delay bound exists but is unknown");
-  assert.equal(knows(priyaKnows, "quorum", "a majority of the nodes", NOW).grade, "KNOWN");
+  assert.equal(knows(irisKnows, "quorum", "a majority of the nodes", NOW).grade, "KNOWN");
 });
 
-test("omission needs known in this sense AND not needed: the quorum definition goes for Priya and stays for Mina", () => {
-  const p = plan(priya);
-  const forPriya = omissionPlan(units.filter(u => p.shown.includes(u.id)), p.shown, units, conceptUses, priyaKnows, NOW);
-  const q = forPriya.find(d => d.unit_id === "u-quorum")!;
+test("omission needs known in this sense AND not needed: the quorum definition goes for Iris and stays for Mina", () => {
+  const p = plan(iris);
+  const forIris = omissionPlan(units.filter(u => p.shown.includes(u.id)), p.shown, units, conceptUses, irisKnows, NOW);
+  const q = forIris.find(d => d.unit_id === "u-quorum")!;
   assert.equal(q.treatment, "omit");
-  const s = forPriya.find(d => d.unit_id === "u-sync-sense")!;
+  const s = forIris.find(d => d.unit_id === "u-sync-sense")!;
   assert.equal(s.treatment, "keep");
   assert.equal(s.sense_mismatch, true, "the opening case of the chapter: a familiar word, a different meaning");
   const m = plan(mina);
@@ -216,15 +216,15 @@ test("known is not safe to omit: a known unit that a shown unit depends on stays
 });
 
 test("the person can see the state with its evidence, correct it, and forget it; the original is not mutated", () => {
-  const rows = visibleState(priyaKnows, NOW);
+  const rows = visibleState(irisKnows, NOW);
   assert.equal(rows.length, 2);
   assert.ok(rows.every(r => r.evidence.length > 0 && r.why.length > 0));
-  const corrected = correct(priyaKnows, "partial synchrony", "the delay bound exists but is unknown", "mistake", "2026-10-10T00:00:00.000Z");
+  const corrected = correct(irisKnows, "partial synchrony", "the delay bound exists but is unknown", "mistake", "2026-10-10T00:00:00.000Z");
   assert.equal(knows(corrected, "partial synchrony", "the delay bound exists but is unknown", NOW).grade, "UNKNOWN");
-  assert.equal(knows(priyaKnows, "partial synchrony", "the delay bound exists but is unknown", NOW).grade, "KNOWN", "the original is unchanged");
-  const gone = forget(priyaKnows, "quorum");
+  assert.equal(knows(irisKnows, "partial synchrony", "the delay bound exists but is unknown", NOW).grade, "KNOWN", "the original is unchanged");
+  const gone = forget(irisKnows, "quorum");
   assert.equal(gone.length, 1);
   assert.equal(knows(gone, "quorum", "a majority of the nodes", NOW).grade, "UNKNOWN");
-  assert.equal(priyaKnows.length, 2);
+  assert.equal(irisKnows.length, 2);
   assert.equal(correct([], "x", "y", "stated", NOW).length, 1);
 });

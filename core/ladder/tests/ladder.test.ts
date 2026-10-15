@@ -20,9 +20,9 @@ import {
 } from "../src/index.ts";
 import { AT_MOST_ONCE, EXECUTED, RETRY_LIMIT, TRACE } from "../fixtures/queue.ts";
 
-const priya = { type: "human", id: "priya" } as const;
+const iris = { type: "human", id: "iris" } as const;
 const gpt = { type: "model", id: "gpt" } as const;
-const settledAs = (optionId: string): Resolution[] => [settle(EXECUTED, optionId, priya, "the fear was a double charge")];
+const settledAs = (optionId: string): Resolution[] => [settle(EXECUTED, optionId, iris, "the fear was a double charge")];
 const run = (history: Resolution[]) => check(AT_MOST_ONCE, TRACE, [EXECUTED], history);
 
 describe("the same requirement, three readings of one word", () => {
@@ -60,7 +60,7 @@ describe("checks run only on what has been settled", () => {
 	});
 
 	it("a deferred decision stays open", () => {
-		assert.equal(run([defer(EXECUTED, priya, "ask the owner")]).verdict, "INCONCLUSIVE");
+		assert.equal(run([defer(EXECUTED, iris, "ask the owner")]).verdict, "INCONCLUSIVE");
 	});
 
 	it("a requirement that depends on no decision is checkable at once", () => {
@@ -71,7 +71,7 @@ describe("checks run only on what has been settled", () => {
 		for (const fn of [() => settle(EXECUTED, "completed", gpt, "x"), () => defer(EXECUTED, gpt, "x")]) {
 			assert.throws(fn, (e: unknown) => e instanceof LadderError && e.code === "NOT_A_PERSON");
 		}
-		assert.throws(() => settle(EXECUTED, "completed", priya, " "), (e: unknown) => e instanceof LadderError && e.code === "NO_REASON");
+		assert.throws(() => settle(EXECUTED, "completed", iris, " "), (e: unknown) => e instanceof LadderError && e.code === "NO_REASON");
 	});
 
 	it("the latest resolution is the one in force, and the earlier ones are not erased", () => {
@@ -132,7 +132,7 @@ describe("translating between rungs", () => {
 	it("whether the version kept the person's intent is theirs to say, and starts unasked", () => {
 		const t = translation({ ...base, claimed: "narrows", history: settledAs("effect") });
 		assert.equal(t.intent.status, "unasked");
-		const confirmed = confirmIntent(t, priya, true, "yes, that is the double charge I was worried about");
+		const confirmed = confirmIntent(t, iris, true, "yes, that is the double charge I was worried about");
 		assert.equal(confirmed.intent.status, "confirmed");
 		for (const type of ["model"] as const) {
 			assert.throws(() => confirmIntent(t, { type, id: "x" }, true, "looks right"), (e: unknown) => e instanceof LadderError && e.code === "NOT_A_PERSON");
@@ -178,23 +178,23 @@ describe("review findings: what a later proposal, an edit, or a change of readin
 	});
 
 	it("a proposal does not unseat a deferral either, and does stand when nothing has been decided", () => {
-		assert.equal(inForce(EXECUTED, [defer(EXECUTED, priya, "ask the owner"), propose(EXECUTED, "completed", gpt)]).resolution?.status, "deferred");
+		assert.equal(inForce(EXECUTED, [defer(EXECUTED, iris, "ask the owner"), propose(EXECUTED, "completed", gpt)]).resolution?.status, "deferred");
 		assert.equal(inForce(EXECUTED, [propose(EXECUTED, "completed", gpt)]).resolution?.status, "proposed");
 		assert.equal(inForce(EXECUTED, [propose(EXECUTED, "completed", gpt), propose(EXECUTED, "effect", gpt)]).resolution?.option_id, "effect", "a later proposal replaces an earlier proposal");
 	});
 
 	it("a person's later settling or deferring does replace an earlier one", () => {
-		assert.equal(inForce(EXECUTED, [...settledAs("completed"), settle(EXECUTED, "effect", priya, "on reflection")]).resolution?.option_id, "effect");
-		assert.equal(inForce(EXECUTED, [...settledAs("completed"), defer(EXECUTED, priya, "not sure after all")]).resolution?.status, "deferred");
+		assert.equal(inForce(EXECUTED, [...settledAs("completed"), settle(EXECUTED, "effect", iris, "on reflection")]).resolution?.option_id, "effect");
+		assert.equal(inForce(EXECUTED, [...settledAs("completed"), defer(EXECUTED, iris, "not sure after all")]).resolution?.status, "deferred");
 	});
 
 	it("a confirmation is about the reading it was given for: change the reading and it no longer counts", () => {
 		const mk = (history: Resolution[]) => translation({ id: "t", from: RUNGS[0], to: RUNGS[2], claimed: "narrows", decisions: [EXECUTED], history });
 		const asCompleted = mk(settledAs("completed"));
-		const confirmed = confirmIntent(asCompleted, priya, true, "yes, that is what I meant");
+		const confirmed = confirmIntent(asCompleted, iris, true, "yes, that is what I meant");
 		assert.equal(currentIntent(asCompleted, confirmed.intent).status, "confirmed");
 		// The reviewer's reproduction: settle completed, confirm, then settle effect.
-		const asEffect = mk([...settledAs("completed"), settle(EXECUTED, "effect", priya, "no, the double charge")]);
+		const asEffect = mk([...settledAs("completed"), settle(EXECUTED, "effect", iris, "no, the double charge")]);
 		assert.notEqual(asEffect.fingerprint, asCompleted.fingerprint);
 		const carried = currentIntent(asEffect, confirmed.intent);
 		assert.equal(carried.status, "unasked");

@@ -4,7 +4,7 @@ import {
   assess, authorizeUse, emptyState, findContradictions, personalPolicy, reduce, validateEvent, validateRecord,
   type PersonalEvent, type PersonalRecord,
 } from "../src/index.ts";
-import { T, SCOPE, policyStrict, policyReuseInference, records, asEvents, scenarioState } from "../fixtures/priya.ts";
+import { T, SCOPE, policyStrict, policyReuseInference, records, asEvents, scenarioState } from "../fixtures/iris.ts";
 
 const base = records();
 const code = (fn: () => unknown): string => { try { fn(); return "ACCEPTED"; } catch (e) { return (e as { code?: string }).code ?? String(e); } };
@@ -19,7 +19,7 @@ test("each kind has one origin, and a record claiming another origin is refused"
     ["a declaration made by a model", mutate("pol-arch-review", { source: { by: "model", ref: "faux-model" } }), "DECLARATION_REQUIRES_PERSON"],
     ["a declaration made by the system", mutate("pref-terse-triage", { source: { by: "system", ref: "observer" } }), "DECLARATION_REQUIRES_PERSON"],
     ["a declaration with no authority reference", mutate("pol-arch-review", { authority_ref: null }), "DECLARATION_REQUIRES_AUTHORITY"],
-    ["an inference authored by the person (that is a declaration)", mutate("inf-derivations-useful", { source: { by: "person", ref: "priya" } }), "INFERENCE_NOT_BY_PERSON"],
+    ["an inference authored by the person (that is a declaration)", mutate("inf-derivations-useful", { source: { by: "person", ref: "iris" } }), "INFERENCE_NOT_BY_PERSON"],
     ["an observation not made by the system", mutate("obs-expand-derivations", { source: { by: "model", ref: "faux-model" } }), "OBSERVATION_REQUIRES_SYSTEM"],
     ["an observation with no evidence record", mutate("obs-expand-derivations", { evidence_id: "ev_nothing" }), "OBSERVATION_NEEDS_EVIDENCE"],
   ];
@@ -41,7 +41,7 @@ test("a preference carries no performance or benefit field, and a profile cannot
 test("no stable person-type and no inner state can be stored, by kind or by the words of a proposition", () => {
   const kinds: [string, string][] = [["person_type", "PERSON_TYPE_REJECTED"], ["personality", "PERSON_TYPE_REJECTED"], ["learning_style", "PERSON_TYPE_REJECTED"], ["mood", "INNER_STATE_INFERENCE_REJECTED"], ["stress", "INNER_STATE_INFERENCE_REJECTED"], ["fatigue", "INNER_STATE_INFERENCE_REJECTED"], ["motivation", "INNER_STATE_INFERENCE_REJECTED"], ["telepathy", "UNKNOWN_BELIEF_KIND"]];
   for (const [k, want] of kinds) assert.equal(code(() => validateRecord(mutate("inf-derivations-useful", { belief_kind: k }))), want, k);
-  const props: [string, string][] = [["Priya is a visual learner", "PERSON_TYPE_REJECTED"], ["she is the kind of person who skims", "PERSON_TYPE_REJECTED"], ["Priya seems stressed before reviews", "INNER_STATE_INFERENCE_REJECTED"], ["she is tired", "INNER_STATE_INFERENCE_REJECTED"], ["she is probably comparing two interfaces", "ACCEPTED"]];
+  const props: [string, string][] = [["Iris is a visual learner", "PERSON_TYPE_REJECTED"], ["she is the kind of person who skims", "PERSON_TYPE_REJECTED"], ["Iris seems stressed before reviews", "INNER_STATE_INFERENCE_REJECTED"], ["she is tired", "INNER_STATE_INFERENCE_REJECTED"], ["she is probably comparing two interfaces", "ACCEPTED"]];
   for (const [p, want] of props) assert.equal(code(() => validateRecord(mutate("inf-derivations-useful", { proposition: p }))), want, p);
 });
 
@@ -78,7 +78,7 @@ test("supersession, correction, retraction, expiry, ending and rejection leave d
   const rec = (id: string) => validateRecord(mutate("pol-arch-review", { id, key: `k-${id}` }));
   const events: PersonalEvent[] = ["a", "b", "c", "d", "e"].map(id => ({ type: "added" as const, at: T.april, record: rec(id) }));
   events.push({ type: "superseded", at: T.now, id: "a", by: "x" }, { type: "corrected", at: T.now, id: "b", by: "y", reason: "fixed" },
-    { type: "retracted", at: T.now, id: "c", reason: "wrong", by: { by: "person", ref: "priya" } }, { type: "expired", at: T.now, id: "d" });
+    { type: "retracted", at: T.now, id: "c", reason: "wrong", by: { by: "person", ref: "iris" } }, { type: "expired", at: T.now, id: "d" });
   const s = reduce(events);
   const status = (id: string) => s.entries.get(id)!.status;
   assert.deepEqual(["a", "b", "c", "d", "e"].map(status), ["superseded", "corrected", "retracted", "expired", "active"]);

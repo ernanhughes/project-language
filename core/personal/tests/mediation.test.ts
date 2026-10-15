@@ -12,13 +12,13 @@ import {
 } from "../src/index.ts";
 import {
   T, SCOPE, SESSION, PURPOSE, BLOCKS, SOURCE, baseInput, boundary, compilePlan, newsService, offlineService, policyStrict, policyReuseInference,
-  priyaSays, records, scenarioState, videoService, asEvents,
-} from "../fixtures/priya.ts";
+  irisSays, records, scenarioState, videoService, asEvents,
+} from "../fixtures/iris.ts";
 import { VerificationEngine } from "../../verify/src/engine.ts";
 import { MemoryWriteStore } from "../../remembering/src/engine/write/store.ts";
 import { recordStructured } from "../../evidence/src/capture.ts";
 
-const person = { by: "person" as const, ref: "priya" };
+const person = { by: "person" as const, ref: "iris" };
 const model = { by: "model" as const, ref: "faux-model" };
 const code = (fn: () => unknown): string => { try { fn(); return "ACCEPTED"; } catch (e) { return (e as { code?: string }).code ?? String(e); } };
 const counter = () => { let n = 0; return (p: string) => `${p}-${++n}`; };
@@ -138,7 +138,7 @@ test("an overlay is scoped, expiring and never durable: it applies in its scope 
   assert.notEqual(at(T.now, `${SCOPE}:talk-q`, "another-session"), "used");
   assert.notEqual(at(T.now, "technical-triage", SESSION), "used");
   assert.equal(at(T.after, `${SCOPE}:talk-q`, SESSION), "expired");
-  assert.equal(code(() => createOverlay({ id: "o", session: "s", scope: SCOPE, now: T.now, person: priyaSays("x"), decisions: [], ends: {} })), "OVERLAY_NEEDS_END");
+  assert.equal(code(() => createOverlay({ id: "o", session: "s", scope: SCOPE, now: T.now, person: irisSays("x"), decisions: [], ends: {} })), "OVERLAY_NEEDS_END");
 });
 
 test("ending an overlay sheds its effects: a plan and a behaviour observed under it are invalidated, transitively, and nothing is promoted", () => {
@@ -170,10 +170,10 @@ test("behaviour seen under an overlay keeps its conditions and only a person can
   const obs = observeUnderOverlay({ id: "o1", scope: SCOPE, now: T.now, evidence_id: ev, behaviour: "read only the equation", overlay: ov, extra_conditions: ["ten minutes left"] });
   assert.ok(obs.conditions.includes("ten minutes left") && obs.conditions.some(c => c.startsWith("under overlay")));
   assert.equal(obs.produced_under, "ov-pre-meeting");
-  const proposal = proposeFromObservations({ id: "prop-1", now: T.now, scope: SCOPE, observations: [obs], proposition: "Priya prefers equations first before reviews", by: model });
+  const proposal = proposeFromObservations({ id: "prop-1", now: T.now, scope: SCOPE, observations: [obs], proposition: "Iris prefers equations first before reviews", by: model });
   assert.equal(proposal.standing, "proposed"); assert.equal(proposal.source.by, "model");
   assert.equal(code(() => proposeFromObservations({ id: "p", now: T.now, scope: SCOPE, observations: [], proposition: "x", by: model })), "NO_EVIDENCE");
-  const attempt = (actor: typeof model | typeof person) => code(() => promoteToPolicy({ id: "pol-new", now: T.now, scope: SCOPE, person: priyaSays("promote"), actor, settings: { depth: "equations first" }, preserve: [], from_proposal: "prop-1" }));
+  const attempt = (actor: typeof model | typeof person) => code(() => promoteToPolicy({ id: "pol-new", now: T.now, scope: SCOPE, person: irisSays("promote"), actor, settings: { depth: "equations first" }, preserve: [], from_proposal: "prop-1" }));
   assert.equal(attempt(model), "PROMOTION_REQUIRES_HUMAN_ACTION");
   assert.equal(attempt({ by: "system", ref: "observer" } as never), "PROMOTION_REQUIRES_HUMAN_ACTION");
   assert.equal(attempt(person), "ACCEPTED");
@@ -187,17 +187,17 @@ test("a task condition can be offered as correctable context, and an inner state
 
 // ─── Chapter 25: friction ───────────────────────────────────────────────────────────────────────────────
 test("a goal alone authorises no intervention, and the default is ordinary access", () => {
-  const goalOnly = createContract({ id: "fr-goal", scope: SCOPE, now: T.now, person: priyaSays("goal"), goal: "finish this paper", target_action: "open-another-paper", allowed_intervention: null, override: "open it", expires: { at: T.reviewEnds } });
+  const goalOnly = createContract({ id: "fr-goal", scope: SCOPE, now: T.now, person: irisSays("goal"), goal: "finish this paper", target_action: "open-another-paper", allowed_intervention: null, override: "open it", expires: { at: T.reviewEnds } });
   const s = reduce([{ type: "added", at: T.now, record: goalOnly }]);
   const d = decideFriction(s, "open-another-paper", { now: T.now, scope: SCOPE });
   assert.equal(d.intervention, "none"); assert.equal(d.message, null);
   assert.match(d.reasons.join(" "), /goal is not an authorisation/);
   assert.equal(decideFriction(s, "unrelated-action", { now: T.now, scope: SCOPE }).intervention, "none");
-  assert.equal(code(() => createContract({ id: "fr-x", scope: SCOPE, now: T.now, person: priyaSays("x"), goal: "g", target_action: "a", allowed_intervention: "reminder", override: "", expires: { at: T.reviewEnds } })), "MALFORMED");
+  assert.equal(code(() => createContract({ id: "fr-x", scope: SCOPE, now: T.now, person: irisSays("x"), goal: "g", target_action: "a", allowed_intervention: "reminder", override: "", expires: { at: T.reviewEnds } })), "MALFORMED");
 });
 
 test("friction applies the weakest authorised form and a stronger form needs its own decision, and only inside scope and time", () => {
-  const mk = (id: string, form: "reminder" | "confirmation" | "delay") => createContract({ id, scope: SCOPE, now: T.now, person: priyaSays(id), goal: "finish", target_action: "open-another-paper", allowed_intervention: form, override: "open it now", expires: { at: T.reviewEnds } });
+  const mk = (id: string, form: "reminder" | "confirmation" | "delay") => createContract({ id, scope: SCOPE, now: T.now, person: irisSays(id), goal: "finish", target_action: "open-another-paper", allowed_intervention: form, override: "open it now", expires: { at: T.reviewEnds } });
   const s = reduce([{ type: "added", at: T.now, record: mk("a", "confirmation") }, { type: "added", at: T.now, record: mk("b", "reminder") }]);
   const d = decideFriction(s, "open-another-paper", { now: T.now, scope: SCOPE });
   assert.equal(d.intervention, "reminder"); assert.equal(d.contract, "b");
@@ -206,7 +206,7 @@ test("friction applies the weakest authorised form and a stronger form needs its
   assert.equal(decideFriction(s, "open-another-paper", { now: T.now, scope: "casual-reading" }).intervention, "none", "out of scope");
   const esc = proposeEscalation(mk("b", "reminder"), "delay");
   assert.equal(esc.escalated, false); assert.match(esc.reason, /new explicit decision/);
-  assert.equal(proposeEscalation(createContract({ id: "g", scope: SCOPE, now: T.now, person: priyaSays("g"), goal: "g", target_action: "a", allowed_intervention: null, override: "o", expires: { at: T.reviewEnds } }), "reminder").escalated, false);
+  assert.equal(proposeEscalation(createContract({ id: "g", scope: SCOPE, now: T.now, person: irisSays("g"), goal: "g", target_action: "a", allowed_intervention: null, override: "o", expires: { at: T.reviewEnds } }), "reminder").escalated, false);
 });
 
 test("an override changes that action only, and repeated overrides can prompt a question but never raise the strength", () => {
@@ -237,7 +237,7 @@ test("the payload is minimal: the rule, its limits and its authority, with no ob
   const p = minimalPayload(boundary());
   assert.deepEqual(Object.keys(p).sort(), ["authority_ref", "boundary_id", "effect", "end", "override", "persistence", "preserve", "version"]);
   const text = JSON.stringify(p);
-  for (const leak of ["obs-expand", "inf-", "evidence", "pol-arch", "derivations", "priya"]) assert.ok(!text.includes(leak), leak);
+  for (const leak of ["obs-expand", "inf-", "evidence", "pol-arch", "derivations", "iris"]) assert.ok(!text.includes(leak), leak);
 });
 
 test("a boundary is applied faithfully where an exact control exists, and each stage is reported separately", async () => {

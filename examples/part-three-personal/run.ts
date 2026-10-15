@@ -21,7 +21,7 @@ let loud = sel === "all";
 const say = async (cmd: string) => { const n = s.ui!.notifications.length; await s.h.session.prompt(cmd); const out = s.ui!.notifications.slice(n).map(x => x.message).join("\n"); if (loud) console.log(out); return out; };
 const propose = async () => {
   s.h.faux.setResponses([call("personal_propose", PROPOSE_USEFUL), call("personal_propose", PROPOSE_FOUNDATIONS), done()]);
-  await s.h.session.prompt("Priya's review is at 09:30. Propose anything her history supports.");
+  await s.h.session.prompt("Iris's review is at 09:30. Propose anything her history supports.");
   if (loud) for (const m of s.h.session.messages.filter(m => m.role === "toolResult").map((m: any) => m.content[0].text as string)) console.log(`  model tool result: ${m}`);
 };
 

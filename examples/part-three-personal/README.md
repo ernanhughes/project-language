@@ -2,7 +2,7 @@
 
 Run: `npm run example:personal` (the full composed morning), or `npm run example:personal -- ch21` … `ch28` for one chapter (earlier chapters run first, silently). Focused tests: `node --experimental-transform-types --test core/personal/tests/*.test.ts host-pi/personal.test.ts`.
 
-One invented person (Priya), one invented architecture-review morning, one Pi session with a scripted model, three fake services. The code contract is [`PART-THREE-CONTRACT.md`](../../PART-THREE-CONTRACT.md); the fixture is `core/personal/fixtures/priya.ts`; expected results are written in the tests, not the fixture.
+One invented person (Iris), one invented architecture-review morning, one Pi session with a scripted model, three fake services. The code contract is [`PART-THREE-CONTRACT.md`](../../PART-THREE-CONTRACT.md); the fixture is `core/personal/fixtures/iris.ts`; expected results are written in the tests, not the fixture.
 
 The composed scenario: a review in ten minutes; a decisive qualifier that must survive every view; a declared standing policy; an observation; two model proposals (one scoped, one overbroad); a current instruction; an overlay; an accessibility requirement; a reminder-only friction contract; a portable boundary; a correction; the session ending.
 

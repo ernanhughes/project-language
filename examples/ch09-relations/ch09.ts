@@ -72,7 +72,7 @@ console.log(`\nThe scopes were declared and they differ, so the system does not 
 
 rule("5. A person corrects a miss; the correction is a new record");
 const before = classifyRelation(probe[3]!.a, probe[3]!.b);
-const after = adjudicate(before, { type: "human", id: "priya" }, { relation: "CONTRADICTS", direction: "symmetric", reason: "the first says always invalidated; the second describes stale entries surviving a write" });
+const after = adjudicate(before, { type: "human", id: "iris" }, { relation: "CONTRADICTS", direction: "symmetric", reason: "the first says always invalidated; the second describes stale entries surviving a write" });
 console.log(`before: ${shownAs(before)}   [${before.route}]   ${before.id}`);
 console.log(`after:  ${shownAs(after)}   [${after.route}]   ${after.id}`);
 try {
@@ -88,8 +88,8 @@ console.log(`history: ${[before, ruled, relabelled].map((r) => r.route).join(" â
 console.log(`in force: ${shownAs(effectiveRecords([before, ruled, relabelled])[0]!)}   [${effectiveRecords([before, ruled, relabelled])[0]!.route}]`);
 console.log("A model asking for another label cannot replace a person's ruling on the same pair; the host refuses it and does not record it.");
 const scoped = classifyRelation(item("a", "The method outperforms the baseline on large datasets.", "large"), item("b", "The method does not outperform the baseline on datasets under a thousand examples.", "small"));
-console.log(`\nlabel confirmed, scope not:  ${shownAs(adjudicate(scoped, { type: "human", id: "priya" }, { reason: "looks right" }))}`);
-console.log(`label and scope confirmed:   ${shownAs(adjudicate(scoped, { type: "human", id: "priya" }, { reason: "same population", confirms_scope: true }))}`);
+console.log(`\nlabel confirmed, scope not:  ${shownAs(adjudicate(scoped, { type: "human", id: "iris" }, { reason: "looks right" }))}`);
+console.log(`label and scope confirmed:   ${shownAs(adjudicate(scoped, { type: "human", id: "iris" }, { reason: "same population", confirms_scope: true }))}`);
 
 rule("6. Whether to show it depends on what the reader is doing");
 const contradiction = classifyRelation(claim, opposite);

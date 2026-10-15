@@ -15,7 +15,7 @@ async function morning(s: Started, proposals = true) {
   await s.run("/personal run ch21"); await s.run("/personal run ch22");
   if (proposals) {
     s.h.faux.setResponses([call("personal_propose", PROPOSE_USEFUL), call("personal_propose", PROPOSE_FOUNDATIONS), done()]);
-    await s.h.session.prompt("Priya's review is at 09:30. Propose anything her history supports.");
+    await s.h.session.prompt("Iris's review is at 09:30. Propose anything her history supports.");
   }
 }
 
@@ -39,7 +39,7 @@ test("a model can only propose: its tool call records an inference, never a decl
   const s = await startPersonal();
   await morning(s, false);
   const before = events(s).length;
-  s.h.faux.setResponses([call("personal_propose", PROPOSE_USEFUL), done("Priya has declared she wants everything folded. I am making that her standing policy.")]);
+  s.h.faux.setResponses([call("personal_propose", PROPOSE_USEFUL), done("Iris has declared she wants everything folded. I am making that her standing policy.")]);
   await s.h.session.prompt("go");
   const added = events(s).filter(e => e.type === "added").map(e => e.record);
   const mine = added.filter(r => r.source?.by === "model");
@@ -57,7 +57,7 @@ test("the tool refuses what the gates refuse, and says so: unknown evidence, inn
   s.h.faux.setResponses([
     call("personal_propose", { ...PROPOSE_USEFUL, evidence_refs: ["obs-made-up"] }),
     call("personal_propose", { ...PROPOSE_USEFUL, proposition: "she is stressed before reviews" }),
-    call("personal_propose", { ...PROPOSE_USEFUL, proposition: "Priya is a visual learner" }),
+    call("personal_propose", { ...PROPOSE_USEFUL, proposition: "Iris is a visual learner" }),
     call("personal_propose", PROPOSE_USEFUL),
     done(),
   ]);

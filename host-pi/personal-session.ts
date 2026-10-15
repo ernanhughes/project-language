@@ -7,7 +7,7 @@ import { fauxAssistantMessage, fauxText, fauxToolCall } from "@earendil-works/pi
 import { makeSession, UiRecorder } from "../harness/session.ts";
 import { personal } from "./personal.ts";
 import { RememberingDurable, engineVerifier } from "../core/personal/src/index.ts";
-import { priyaScenario, priyaServices, policyReuseInference, T } from "../core/personal/fixtures/scenario.ts";
+import { irisScenario, irisServices, policyReuseInference, T } from "../core/personal/fixtures/scenario.ts";
 import { VerificationEngine } from "../core/verify/src/engine.ts";
 import { MemoryWriteStore } from "../core/remembering/src/engine/write/store.ts";
 
@@ -28,14 +28,14 @@ export async function startPersonal(opts: StartOptions = {}) {
   const ui = opts.ui === false ? undefined : new UiRecorder();
   const clock = opts.clock ?? { now: T.now };
   const store = opts.store ?? new MemoryWriteStore();
-  const services = priyaServices();
+  const services = irisServices();
   let n = 0;
   const ids = (p: string) => `${p}-${String(++n).padStart(3, "0")}`;
   const durable = new RememberingDurable(store as never, () => clock.now);
   const verifier = engineVerifier(new VerificationEngine(mkdtempSync(join(tmpdir(), "personal-proj-")), { store_dir: mkdtempSync(join(tmpdir(), "personal-store-")) }) as never);
   const h = await makeSession({
     ...(ui ? { ui } : {}),
-    extensions: [personal({ scenario: priyaScenario(), durable, services, verifier, policy: policyReuseInference, now: () => clock.now, ids, person: { ref: "priya" } })],
+    extensions: [personal({ scenario: irisScenario(), durable, services, verifier, policy: policyReuseInference, now: () => clock.now, ids, person: { ref: "iris" } })],
   });
   const entries = <D>(type: string) => h.session.sessionManager.getEntries().filter((e: any) => e.customType === type).map((e: any) => e.data as D);
   const last = () => ui?.notifications.at(-1)?.message ?? "";

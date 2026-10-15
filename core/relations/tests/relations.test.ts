@@ -100,18 +100,18 @@ describe("adjudication: only a person confirms or corrects", () => {
 	it("a person still corrects a miss, with a reason: here the classifier reads a scope condition as a contradiction", () => {
 		const miss = classifyRelation(item("a", "The method outperforms the baseline on large datasets.", "large"), item("b", "The method does not outperform the baseline on datasets under a thousand examples.", "small"));
 		assert.equal(miss.relation, "CONTRADICTS", "the classifier's miss, kept visible");
-		const fixed = adjudicate(miss, { type: "human", id: "priya" }, { relation: "RELATED", reason: "different regimes; not a disagreement" });
+		const fixed = adjudicate(miss, { type: "human", id: "iris" }, { relation: "RELATED", reason: "different regimes; not a disagreement" });
 		assert.equal(fixed.relation, "RELATED");
 	});
 
 	it("a person corrects a miss that remains: a contradiction with no negation word", () => {
 		const before = wrong();
 		assert.equal(before.relation, "RELATED", "the classifier's miss, kept visible");
-		const after = adjudicate(before, { type: "human", id: "priya" }, { relation: "CONTRADICTS", direction: "symmetric", reason: "the first says always invalidated; the second describes stale entries surviving a write" });
+		const after = adjudicate(before, { type: "human", id: "iris" }, { relation: "CONTRADICTS", direction: "symmetric", reason: "the first says always invalidated; the second describes stale entries surviving a write" });
 		assert.equal(after.relation, "CONTRADICTS");
 		assert.equal(after.route, "adjudicated");
 		assert.equal(after.standing, "adjudicated");
-		assert.equal(after.by, "person:priya");
+		assert.equal(after.by, "person:iris");
 		assert.notEqual(after.id, before.id, "the correction is a new record, not an overwrite");
 	});
 
@@ -122,13 +122,13 @@ describe("adjudication: only a person confirms or corrects", () => {
 	});
 
 	it("adjudication without a reason is refused", () => {
-		assert.throws(() => adjudicate(wrong(), { type: "human", id: "priya" }, { relation: "UPDATES", reason: "" }), (e: unknown) => e instanceof RelationError && e.code === "NO_REASON");
+		assert.throws(() => adjudicate(wrong(), { type: "human", id: "iris" }, { relation: "UPDATES", reason: "" }), (e: unknown) => e instanceof RelationError && e.code === "NO_REASON");
 	});
 
 	it("a person who takes a scope-flagged contradiction on themselves clears the flag", () => {
 		const flagged = classifyRelation(item("a", "The method outperforms the baseline on large datasets."), item("b", "The method does not outperform the baseline on datasets under a thousand examples."));
 		assert.deepEqual(flagged.caveats, ["SCOPE_UNCONFIRMED"]);
-		const decided = adjudicate(flagged, { type: "human", id: "priya" }, { relation: "RELATED", reason: "different regimes; not a disagreement" });
+		const decided = adjudicate(flagged, { type: "human", id: "iris" }, { relation: "RELATED", reason: "different regimes; not a disagreement" });
 		assert.deepEqual(decided.caveats, []);
 		assert.equal(decided.relation, "RELATED");
 	});
@@ -237,7 +237,7 @@ describe("the three stages in order", () => {
 describe("review findings: a person's ruling is not displaced, and confirming a label is not confirming a scope", () => {
 	const old = item("retry-old", "The retry budget is three attempts.");
 	const neu = item("retry-new", "The retry budget has been updated to five attempts.");
-	const person = { type: "human", id: "priya" } as const;
+	const person = { type: "human", id: "iris" } as const;
 
 	it("a later classification does not displace a person's adjudication of the same pair", () => {
 		const classified = classifyRelation(old, neu);

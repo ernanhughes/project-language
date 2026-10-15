@@ -28,8 +28,8 @@ const rule = (title: string) => console.log(`\n── ${title} ${"─".repeat(Ma
 
 // 1. SOURCE ─ two messages. Nothing in this program edits them.
 const source = [
-	{ id: "m1", from: "Priya", text: "Let's keep the retry budget at three attempts." },
-	{ id: "m2", from: "Priya", text: "Actually, make it five for the payment service only." },
+	{ id: "m1", from: "Iris", text: "Let's keep the retry budget at three attempts." },
+	{ id: "m2", from: "Iris", text: "Actually, make it five for the payment service only." },
 ] as const;
 const cite = (id: (typeof source)[number]["id"]): SourceRef => ({
 	session_id: "conversation-1",
@@ -47,8 +47,8 @@ mkdirSync(join(projectPath, "src"));
 const threadId = "payments";
 const when = (n: number) => `2026-10-15T09:00:0${n}.000Z`;
 
-const d1: LanguageItem = { id: "d1", kind: "decision", text: "Retry budget is three attempts.", actor: "Priya", standing: "explicit", scope: "episode", sources: [cite("m1")] };
-const d2: LanguageItem = { id: "d2", kind: "decision", text: "Retry budget is five attempts for the payment service only.", actor: "Priya", standing: "explicit", scope: "episode", sources: [cite("m2")] };
+const d1: LanguageItem = { id: "d1", kind: "decision", text: "Retry budget is three attempts.", actor: "Iris", standing: "explicit", scope: "episode", sources: [cite("m1")] };
+const d2: LanguageItem = { id: "d2", kind: "decision", text: "Retry budget is five attempts for the payment service only.", actor: "Iris", standing: "explicit", scope: "episode", sources: [cite("m2")] };
 
 const init = await initThread({ storeRoot, projectPath, threadId, idempotencyKey: "init", producer: { type: "model" }, now: when(0) });
 const r1 = await applyMutation(

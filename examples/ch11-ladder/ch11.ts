@@ -16,7 +16,7 @@ import { AT_MOST_ONCE, EXECUTED, REQUEST, RETRY_LIMIT, TRACE, type QueueTrace } 
 import { RUNGS, check, confirmIntent, currentIntent, explainBack, inForce, probeBinding, propose, settle, translation, type Selector } from "../../core/ladder/src/index.ts";
 
 const rule = (title: string) => console.log(`\n── ${title} ${"─".repeat(Math.max(0, 66 - title.length))}`);
-const priya = { type: "human", id: "priya" } as const;
+const iris = { type: "human", id: "iris" } as const;
 const gpt = { type: "model", id: "gpt" } as const;
 
 rule("1. One requirement, four rungs of the ladder");
@@ -39,14 +39,14 @@ console.log(`R2 (depends on no reading): ${check(RETRY_LIMIT, TRACE, [EXECUTED],
 
 rule("4. The same requirement under each reading of 'executed'");
 for (const o of EXECUTED.options) {
-	const r = check(AT_MOST_ONCE, TRACE, [EXECUTED], [settle(EXECUTED, o.id, priya, "demonstration")]);
+	const r = check(AT_MOST_ONCE, TRACE, [EXECUTED], [settle(EXECUTED, o.id, iris, "demonstration")]);
 	console.log(`${o.label.padEnd(16)} ${r.verdict.padEnd(5)} ${r.detail}`);
 }
 console.log(`\nUnder "completed job" the verification is flawless and the customer was still charged twice.`);
 console.log(`It verified the wrong thing. Under "attempt" the requirement contradicts the retry rule it sits beside.`);
 
 rule("5. Moving between rungs with the choice visible");
-const history = [settle(EXECUTED, "effect", priya, "the fear was a customer being charged twice")];
+const history = [settle(EXECUTED, "effect", iris, "the fear was a customer being charged twice")];
 console.log(explainBack([EXECUTED], history));
 const t = translation({ id: "t1", from: RUNGS[0], to: RUNGS[2], claimed: "narrows", decisions: [EXECUTED], history });
 console.log(`\nprose → structured: ${t.relation}; readings set aside: ${t.interpretations_removed}; your confirmation: ${t.intent.status}`);
@@ -57,7 +57,7 @@ try {
 } catch (error) {
 	console.log(`a model tries to confirm it: ${(error as Error).message}`);
 }
-console.log(`a person: ${confirmIntent(t, priya, true, "yes, the double charge").intent.status}`);
+console.log(`a person: ${confirmIntent(t, iris, true, "yes, the double charge").intent.status}`);
 
 rule("6. Does the name override the definition?");
 const byDefinition: Selector = (_t, _p, options) => options.find((o) => /committed effect/.test(o.definition))!.label;
@@ -71,14 +71,14 @@ console.log(`\nThe second selector is invented to show that the probe can catch 
 console.log(`any real model. Whether a real selector follows names over definitions is a question to put to it.`);
 
 rule("6b. A later proposal does not unseat a decision, and a confirmation belongs to the reading it was given for");
-const decided = [settle(EXECUTED, "effect", priya, "the fear was a double charge"), propose(EXECUTED, "completed", gpt, "actually the most natural reading")];
+const decided = [settle(EXECUTED, "effect", iris, "the fear was a double charge"), propose(EXECUTED, "completed", gpt, "actually the most natural reading")];
 console.log(`person settled "effect", then a model proposed "completed": in force = ${inForce(EXECUTED, decided).resolution?.option_id} (${inForce(EXECUTED, decided).resolution?.status})`);
 console.log(`R1 under that: ${check(AT_MOST_ONCE, TRACE, [EXECUTED], decided).verdict}`);
 const mk = (history: typeof decided) => translation({ id: "t", from: RUNGS[0], to: RUNGS[2], claimed: "narrows", decisions: [EXECUTED], history });
-const asCompleted = mk([settle(EXECUTED, "completed", priya, "we only care that it finished once")]);
-const confirmedThen = confirmIntent(asCompleted, priya, true, "yes, that is what I meant");
+const asCompleted = mk([settle(EXECUTED, "completed", iris, "we only care that it finished once")]);
+const confirmedThen = confirmIntent(asCompleted, iris, true, "yes, that is what I meant");
 console.log(`confirmed for the "completed" reading: ${currentIntent(asCompleted, confirmedThen.intent).status}`);
-const nowEffect = mk([settle(EXECUTED, "completed", priya, "x"), settle(EXECUTED, "effect", priya, "no, the double charge")]);
+const nowEffect = mk([settle(EXECUTED, "completed", iris, "x"), settle(EXECUTED, "effect", iris, "no, the double charge")]);
 const carried = currentIntent(nowEffect, confirmedThen.intent);
 console.log(`after the reading changed to "effect": ${carried.status}${carried.stale ? " (stale: " + carried.note + ")" : ""}`);
 

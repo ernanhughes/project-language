@@ -43,7 +43,7 @@ export const scriptedProposals: UnitProposal[] = [
 export const scriptedProposer: Proposer = () => scriptedProposals;
 
 const person = (id: string, text: string, need: Purpose["need"]): Purpose => ({ id, declared_by: "person", text, need });
-export const priya = person("priya-safety-unbounded", "Determine whether this protocol remains safe when network delays become unbounded.", "safety_claim");
+export const iris = person("iris-safety-unbounded", "Determine whether this protocol remains safe when network delays become unbounded.", "safety_claim");
 export const tom = person("tom-history", "Write the history of consensus protocols for a literature review, starting with how fast this one is.", "triage");
 export const mina = person("mina-reproduce", "Reproduce the demonstration.", "implement");
 
@@ -51,16 +51,16 @@ const j = (purpose: Purpose, unit_id: string, verdict: Judgement["verdict"], rea
   ({ unit_id, purpose_id: purpose.id, verdict, reason, cites: [unit_id, ...extra], by: "person" });
 
 export const judgements: Record<string, Judgement[]> = {
-  [priya.id]: [
-    j(priya, "u-scope", "decisive", "states the condition the safety result depends on, and unbounded delay violates it"),
-    j(priya, "u-sync-sense", "relevant", "the sense of partial synchrony the result is stated in"),
-    j(priya, "u-proof", "relevant", "the safety argument itself"),
-    j(priya, "u-clock-sync", "relevant", "explains why the assumption held in practice, and so what would change if it did not"),
-    j(priya, "u-quorum", "low", "a definition the safety argument uses"),
-    j(priya, "u-benchmark", "low", "the headline, but it concerns speed, not safety under unbounded delay"),
-    j(priya, "u-round", "not_relevant", "mechanism detail, not part of the safety argument as she is reading it"),
-    j(priya, "u-history", "not_relevant", "an anecdote about the name"),
-    j(priya, "u-intro", "not_relevant", "introduction"),
+  [iris.id]: [
+    j(iris, "u-scope", "decisive", "states the condition the safety result depends on, and unbounded delay violates it"),
+    j(iris, "u-sync-sense", "relevant", "the sense of partial synchrony the result is stated in"),
+    j(iris, "u-proof", "relevant", "the safety argument itself"),
+    j(iris, "u-clock-sync", "relevant", "explains why the assumption held in practice, and so what would change if it did not"),
+    j(iris, "u-quorum", "low", "a definition the safety argument uses"),
+    j(iris, "u-benchmark", "low", "the headline, but it concerns speed, not safety under unbounded delay"),
+    j(iris, "u-round", "not_relevant", "mechanism detail, not part of the safety argument as she is reading it"),
+    j(iris, "u-history", "not_relevant", "an anecdote about the name"),
+    j(iris, "u-intro", "not_relevant", "introduction"),
   ],
   [tom.id]: [
     j(tom, "u-benchmark", "relevant", "the speed claim, which is what he is writing about"),
@@ -92,9 +92,9 @@ export const conceptUses: ConceptUse[] = [
   { unit_id: "u-quorum", concept: "quorum", sense: "a majority of the nodes" },
 ];
 
-/** What the system has evidence for, as of the talk. Priya has worked on consensus for two years; Mina is new to it. */
+/** What the system has evidence for, as of the talk. Iris has worked on consensus for two years; Mina is new to it. */
 export const NOW = "2026-10-15T09:00:00.000Z";
-export const priyaKnows: KnowledgeState = [
+export const irisKnows: KnowledgeState = [
   { concept: "partial synchrony", sense: "the delay bound exists but is unknown", evidence: [{ kind: "used_correctly", at: "2025-05-02T10:00:00.000Z", ref: "her design doc" }] },
   { concept: "quorum", sense: "a majority of the nodes", evidence: [{ kind: "stated", at: "2024-11-20T10:00:00.000Z", ref: "she said so" }] },
 ];
@@ -102,4 +102,4 @@ export const minaKnows: KnowledgeState = [
   { concept: "quorum", sense: "a majority of the nodes", evidence: [{ kind: "exposed", at: "2026-09-01T10:00:00.000Z", ref: "opened a page that mentions it" }] },
 ];
 
-export const PRIYA_TERMS = ["unbounded", "delay", "delays", "bounded", "safe", "safety"];
+export const IRIS_TERMS = ["unbounded", "delay", "delays", "bounded", "safe", "safety"];

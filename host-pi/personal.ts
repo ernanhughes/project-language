@@ -150,7 +150,7 @@ export function personal(options: PersonalOptions): ExtensionFactory {
     const steps: Record<Chapter, (ctx: Ctx) => Promise<string>> = {
       ch21: async ctx => {
         const l = await load(ctx);
-        const lines: string[] = ["Chapter 21: what Priya declared, kept apart from what was observed or inferred"];
+        const lines: string[] = ["Chapter 21: what Iris declared, kept apart from what was observed or inferred"];
         for (const r of sc.standing) {
           if (!l.state.entries.has(r.id)) { await options.durable.add(r); }
           const a = assess((await load(ctx)).state, r.id, { now: options.now(), scope: sc.use_scope, session: sc.session });
@@ -189,7 +189,7 @@ export function personal(options: PersonalOptions): ExtensionFactory {
         const d = decideFriction((await load(ctx)).state, sc.friction_action, { now: options.now(), scope: sc.use_scope, session: sc.session });
         pi.appendEntry(FRICTION_ENTRY, { action: sc.friction_action, intervention: d.intervention, contract: d.contract, receipt: d.receipt });
         const esc = proposeEscalation(sc.friction, "confirmation");
-        return ["Chapter 25: friction is a contract Priya wrote. The goal is hers; the form of help is only what she authorised",
+        return ["Chapter 25: friction is a contract Iris wrote. The goal is hers; the form of help is only what she authorised",
           `  action "${sc.friction_action}": ${d.intervention}${d.message ? ` — "${d.message}"` : ""}`, `  override: ${d.override ?? "-"}`, `  stronger form: ${esc.reason}`].join("\n");
       },
       ch26: async ctx => {

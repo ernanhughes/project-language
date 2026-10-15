@@ -23,8 +23,8 @@ export function unit(src: SourceVersion, id: string, phrase: string, role: Unit[
 }
 
 export const purpose: Purpose = { id: "decide-before-18:00", declared_by: "person", text: "Decide whether tonight's deployment still rests on a sound assumption.", need: "decide" };
-export const task: Task = { id: "afternoon", principal: "priya", purpose, scope: "distributed consensus", asOf: T_NOW };
-const grant = (id: string): Grant[] => [{ id, principal: "priya", purpose: purpose.id }];
+export const task: Task = { id: "afternoon", principal: "iris", purpose, scope: "distributed consensus", asOf: T_NOW };
+const grant = (id: string): Grant[] => [{ id, principal: "iris", purpose: purpose.id }];
 
 export const TRACKED_SCOPE = "protocol P, crash faults";
 
@@ -78,7 +78,7 @@ const contraUnits = [
 export const contradiction: CandidateItem = { ...item("contradiction", contraText, { standing: "peer_reviewed", scope: TRACKED_SCOPE }), source: contraSrc, units: contraUnits };
 export const contradictionBridge: Bridge = {
   id: "bridge-contra", supplied_by: "person", relation: "weakens", anchor_scope: TRACKED_SCOPE, candidate_scope: TRACKED_SCOPE,
-  asserts: "same protocol, same fault model: this is evidence against the bounded-delay assumption", argument_ref: "priya-note-7", preserves_scope: true,
+  asserts: "same protocol, same fault model: this is evidence against the bounded-delay assumption", argument_ref: "iris-note-7", preserves_scope: true,
 };
 export const contradictionRenderings: Rendering[] = [
   { level: "GLANCE", text: "Protocol P loses safety under crash faults when network delay is unbounded.", unit_ids: ["c-claim", "c-qual"] },

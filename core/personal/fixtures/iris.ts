@@ -1,4 +1,4 @@
-// Priya's architecture-review morning, from Chapters 21 to 28. Constructed for illustration: the people, the source, the
+// Iris's architecture-review morning, from Chapters 21 to 28. Constructed for illustration: the people, the source, the
 // records and the services are invented. Expected results are in the tests, not here.
 import { recordStructured } from "../../evidence/src/capture.ts";
 import { personalPolicy } from "../src/applicability.ts";
@@ -22,7 +22,7 @@ export const SCOPE = "architecture-review";
 export const SESSION = "review-0920";
 export const PURPOSE = "architecture-review-communication";
 
-export const priyaSays = (n: string) => ({ ref: "priya", utterance_ref: `utterance:${n}` });
+export const irisSays = (n: string) => ({ ref: "iris", utterance_ref: `utterance:${n}` });
 
 /** The decisive qualifier is an assumption in the INTRODUCTION: a renderer that folds "foundations" loses it. */
 export const BLOCKS: SourceBlock[] = [
@@ -51,18 +51,18 @@ const base = { valid: { from: T.april, until: null as string | null }, recorded_
 
 export function records(ids = counterIds()): Record<string, PersonalRecord> {
   void ids;
-  const evidence = (n: string, t: string) => recordStructured("structured_observation", { behaviour: n }, { subject: "priya", observed_at: t }).evidence_id;
-  const ov = createOverlay({ id: "ov-pre-meeting", session: SESSION, scope: SCOPE, now: T.now, person: priyaSays("ten-minutes"), decisions: ["fold:supporting", "first:decisive-equation"], ends: { at: T.reviewEnds, when: "the review ends" } });
+  const evidence = (n: string, t: string) => recordStructured("structured_observation", { behaviour: n }, { subject: "iris", observed_at: t }).evidence_id;
+  const ov = createOverlay({ id: "ov-pre-meeting", session: SESSION, scope: SCOPE, now: T.now, person: irisSays("ten-minutes"), decisions: ["fold:supporting", "first:decisive-equation"], ends: { at: T.reviewEnds, when: "the review ends" } });
   const out: Record<string, PersonalRecord> = {
-    "pol-arch-review": validateRecord({ id: "pol-arch-review", kind: "declared_policy", origin: "declared", key: "policy:architecture-review", scope: SCOPE, ...base, source: { by: "person", ref: "priya" }, authority_ref: "utterance:standing-policy", settings: { depth: "full-when-decision-relevant", explanation: "expand-derivations-when-the-decision-depends-on-them" }, preserve: ["implementation detail", "equations that affect the decision"] }),
-    "pref-terse-triage": validateRecord({ id: "pref-terse-triage", kind: "declared_preference", origin: "declared", key: "pref:triage", scope: "technical-triage", ...base, source: { by: "person", ref: "priya" }, authority_ref: "utterance:terse-first-views", dimension: "depth", setting: "terse first views" }),
-    "acc-keyboard": validateRecord({ id: "acc-keyboard", kind: "accessibility_requirement", origin: "declared", key: "accessibility", scope: "*", ...base, source: { by: "person", ref: "priya" }, authority_ref: "utterance:keyboard-and-text", requirement: "output must work with keyboard-only and text-only use", forbid_forms: ["interactive-diagram"], require_forms: [] }),
+    "pol-arch-review": validateRecord({ id: "pol-arch-review", kind: "declared_policy", origin: "declared", key: "policy:architecture-review", scope: SCOPE, ...base, source: { by: "person", ref: "iris" }, authority_ref: "utterance:standing-policy", settings: { depth: "full-when-decision-relevant", explanation: "expand-derivations-when-the-decision-depends-on-them" }, preserve: ["implementation detail", "equations that affect the decision"] }),
+    "pref-terse-triage": validateRecord({ id: "pref-terse-triage", kind: "declared_preference", origin: "declared", key: "pref:triage", scope: "technical-triage", ...base, source: { by: "person", ref: "iris" }, authority_ref: "utterance:terse-first-views", dimension: "depth", setting: "terse first views" }),
+    "acc-keyboard": validateRecord({ id: "acc-keyboard", kind: "accessibility_requirement", origin: "declared", key: "accessibility", scope: "*", ...base, source: { by: "person", ref: "iris" }, authority_ref: "utterance:keyboard-and-text", requirement: "output must work with keyboard-only and text-only use", forbid_forms: ["interactive-diagram"], require_forms: [] }),
     "obs-expand-derivations": validateRecord({ id: "obs-expand-derivations", kind: "observed_interaction", origin: "observed", key: "observed:expands-derivations", scope: SCOPE, valid: { from: T.yesterday, until: null }, recorded_at: T.yesterday, source: { by: "system", ref: "interaction-observer" }, authority_ref: null, evidence_id: evidence("expanded a derivation in an earlier architecture review", T.yesterday), behaviour: "expanded derivations in earlier architecture reviews", conditions: [], produced_under: null }),
     "inf-derivations-useful": validateRecord({ id: "inf-derivations-useful", kind: "inferred_belief", origin: "inferred", key: "belief:derivations-useful", scope: SCOPE, valid: { from: T.yesterday, until: null }, recorded_at: T.yesterday, source: { by: "model", ref: "faux-model" }, authority_ref: null, belief_kind: "preference", proposition: "expanded derivations may be useful in similar architecture reviews", evidence_refs: ["obs-expand-derivations"], supported_scope: SCOPE, applied_scope: SCOPE, standing: "provisional", confidence: "moderate", consequence: "low", depends_on: ["obs-expand-derivations"] }),
     "inf-foundations-known": validateRecord({ id: "inf-foundations-known", kind: "inferred_belief", origin: "inferred", key: "belief:consensus-foundations-known", scope: SCOPE, valid: { from: T.yesterday, until: null }, recorded_at: T.yesterday, source: { by: "model", ref: "faux-model" }, authority_ref: null, belief_kind: "knowledge", proposition: "consensus foundations are already known", evidence_refs: ["obs-expand-derivations"], supported_scope: `${SCOPE}:protocol-p1`, applied_scope: `${SCOPE}:talk-q`, standing: "provisional", confidence: "high", consequence: "high", depends_on: ["obs-expand-derivations"] }),
     "ov-pre-meeting": ov,
-    "fr-one-paper": createContract({ id: "fr-one-paper", scope: SCOPE, now: T.now, person: priyaSays("remind-me"), goal: "finish this review's paper before opening another", target_action: "opening another paper", allowed_intervention: "reminder", override: "open it now, without further confirmation", expires: { at: T.reviewEnds, when: "the review ends" } }),
-    "bd-quiet-feeds": validateRecord({ id: "bd-quiet-feeds", kind: "portable_boundary", origin: "declared", key: "boundary:quiet-feeds", scope: SCOPE, valid: { from: T.now, until: T.reviewEnds }, recorded_at: T.now, source: { by: "person", ref: "priya" }, authority_ref: "utterance:quiet-feeds", version: 1, destinations: ["video-service", "news-service", "offline-service"], effect: { action: "hold_out", category: "consensus-research", surfaces: ["recommendation_feed"] }, preserve: ["search", "direct-open"], override: "show recommendations now for this view", end: { at: T.reviewEnds, when: "the review ends" }, persistence: "no-promotion" }),
+    "fr-one-paper": createContract({ id: "fr-one-paper", scope: SCOPE, now: T.now, person: irisSays("remind-me"), goal: "finish this review's paper before opening another", target_action: "opening another paper", allowed_intervention: "reminder", override: "open it now, without further confirmation", expires: { at: T.reviewEnds, when: "the review ends" } }),
+    "bd-quiet-feeds": validateRecord({ id: "bd-quiet-feeds", kind: "portable_boundary", origin: "declared", key: "boundary:quiet-feeds", scope: SCOPE, valid: { from: T.now, until: T.reviewEnds }, recorded_at: T.now, source: { by: "person", ref: "iris" }, authority_ref: "utterance:quiet-feeds", version: 1, destinations: ["video-service", "news-service", "offline-service"], effect: { action: "hold_out", category: "consensus-research", surfaces: ["recommendation_feed"] }, preserve: ["search", "direct-open"], override: "show recommendations now for this view", end: { at: T.reviewEnds, when: "the review ends" }, persistence: "no-promotion" }),
   };
   return out;
 }
@@ -75,7 +75,7 @@ export function baseInput(state = scenarioState(), over: Partial<CompileInput> =
   return {
     plan_id: "plan-1", now: T.now, scope: `${SCOPE}:talk-q`, session: SESSION, source: SOURCE,
     task: { id: "architecture-review", purpose: PURPOSE, available_minutes: 10 },
-    current_instruction: { by: { by: "person", ref: "priya" }, ref: "utterance:ten-minutes", fold: ["supporting"], keep_visible: ["decisive-equation", "failure-assumptions"] },
+    current_instruction: { by: { by: "person", ref: "iris" }, ref: "utterance:ten-minutes", fold: ["supporting"], keep_visible: ["decisive-equation", "failure-assumptions"] },
     preservation: { must_keep_visible: ["intro-assumptions", "decisive-equation", "failure-assumptions"] },
     state, authority: { policy: policyReuseInference, purpose: PURPOSE }, conditioning: "full", ...over,
   };
