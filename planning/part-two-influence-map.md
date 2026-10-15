@@ -18,7 +18,7 @@ Available ≠ retrieved ≠ eligible ≠ selected ≠ assembled ≠ delivered �
 | II-02 | Which retrieved material may enter? | Compiler eligibility plus host admission records | Implemented and observed: context-admission-v1; see execution record |
 | II-03 | What durable memory may be projected now? | Remembering; conversation projection | Proposed; not run |
 | II-04 | What is current, superseded or contradictory? | Declared temporal records; remembering/relations | Temporal admission only in first fixture; broader mechanism proposed |
-| II-05 | What deserves attention? | Radar | Proposed; lifted tests alone do not qualify it |
+| II-05 | What deserves attention? | Radar | Human-side slice implemented over one invented afternoon (`core/radar/src/attention`, `PART-TWO-CONTRACT.md`); a separate path from admission. Scripted model, supplied bridge and units; no human or real-model observation |
 | II-06 | What admissible context fits the budget? | Compiler | Narrow composition exercised by first increment |
 | II-07 | What should each recipient receive? | Compiler projection; authority | Proposed |
 | II-08 | What was actually delivered? | Provider-boundary observation; transport reference | First increment observes a scripted Pi provider callback |

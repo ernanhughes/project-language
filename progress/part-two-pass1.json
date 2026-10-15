@@ -1,0 +1,38 @@
+{
+  "pass": "part-two-pass-1",
+  "updated": "2026-10-15",
+  "status": "repaired after cross-review; local commits only, nothing pushed",
+  "history": [
+    "first pass",
+    "repair 1: two-commit stack",
+    "repair 2: control-flow defects and evidence packaging"
+  ],
+  "repair_2": {
+    "fixed": [
+      "selection governs presentation",
+      "per-unit wording check",
+      "relation typed on bridge",
+      "reopen re-runs gates and validates",
+      "presentation text reconnects ledger",
+      "AVAILABLE items openable",
+      "context values validated, unknown calendar not free",
+      "admission logs committed, CRLF reconciliation, canonical hashing"
+    ],
+    "not_done": [
+      "LANG-00 fixture fails on Linux (separate hardening commit)"
+    ]
+  },
+  "counts": "see the review pack verify/ logs for exact test counts",
+  "reuse": {
+    "compiler": "selectUnits adapts units to ContextCandidate; dependency closure is the compiler's",
+    "admission": "observeDelivery output wrapped as ModelDeliveryReceipt; decide() not reused",
+    "preservation": "anchored mustKeep + validateInstrument + assess",
+    "relations": "cosineScore retrieval only",
+    "remembering": "audited, not reused",
+    "radar": "legacy decide() untouched; new axes beside it"
+  },
+  "mismatches_for_author": [
+    "Task chapter labels differ from the manuscript titles; implementation follows content",
+    "Chapter 17 subscription says peer-reviewed; Chapters 18 and 20 fire it on a preprint"
+  ]
+}
