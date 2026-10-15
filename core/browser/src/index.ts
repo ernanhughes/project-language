@@ -35,71 +35,11 @@ import {
 
 const esc = (s: string) => s.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
 
-// ─── The record ────────────────────────────────────────────────────────────
+// ─── The record (lives in core/record; re-exported here) ───────────────────
 
-export type ClaimKind = "fact" | "hypothesis" | "evidence" | "conclusion" | "proposal";
-export interface Claim {
-	id: string;
-	kind: ClaimKind;
-	/** A short, distinctive phrase a rendering must carry to be said to carry this claim. */
-	label: string;
-	/** Verbatim text from the source. */
-	passage: string;
-	standing: "stated" | "disputed" | "uncertain";
-	holder?: string;
-}
-export interface DocRelation {
-	id: string;
-	from: string;
-	to: string;
-	/** Direction is from → to. */
-	type: "SUPPORTS" | "CONTRADICTS" | "UPDATES" | "IMPLEMENTS";
-	passage: string;
-}
-export interface Qualifier {
-	id: string;
-	applies_to: string;
-	condition: string;
-	effect: string;
-	status: "holds" | "unknown";
-	gap?: string;
-	passage: string;
-}
-export interface DocumentRecord {
-	source_id: string;
-	claims: Claim[];
-	relations: DocRelation[];
-	qualifiers: Qualifier[];
-}
-export interface Source {
-	id: string;
-	text: string;
-}
-
-export type RecordProblem = "PASSAGE_NOT_IN_SOURCE" | "UNKNOWN_CLAIM" | "DUPLICATE_ID" | "SELF_RELATION" | "GAP_WITHOUT_PASSAGE" | "DISPUTE_WITHOUT_HOLDER";
-
-/** The record is a reading of the source and a reading can be wrong. This only checks that it is traceable. */
-export function validateRecord(source: Source, record: DocumentRecord): { problem: RecordProblem; id: string }[] {
-	const out: { problem: RecordProblem; id: string }[] = [];
-	const ids = new Set<string>();
-	const claimIds = new Set(record.claims.map((c) => c.id));
-	const add = (problem: RecordProblem, id: string) => out.push({ problem, id });
-	for (const entry of [...record.claims, ...record.relations, ...record.qualifiers]) {
-		if (ids.has(entry.id)) add("DUPLICATE_ID", entry.id);
-		ids.add(entry.id);
-		if (!source.text.includes(entry.passage)) add("PASSAGE_NOT_IN_SOURCE", entry.id);
-	}
-	for (const r of record.relations) {
-		if (!claimIds.has(r.from) || !claimIds.has(r.to)) add("UNKNOWN_CLAIM", r.id);
-		if (r.from === r.to) add("SELF_RELATION", r.id);
-	}
-	for (const q of record.qualifiers) {
-		if (!claimIds.has(q.applies_to)) add("UNKNOWN_CLAIM", q.id);
-		if (q.status === "unknown" && q.gap && !source.text.includes(q.gap)) add("GAP_WITHOUT_PASSAGE", q.id);
-	}
-	for (const c of record.claims) if (c.kind === "conclusion" && c.standing === "disputed" && !c.holder) add("DISPUTE_WITHOUT_HOLDER", c.id);
-	return out;
-}
+import type { DocumentRecord, Source, Qualifier } from "../../record/src/index.ts";
+export { validateRecord } from "../../record/src/index.ts";
+export type { Claim, ClaimKind, DocRelation, DocumentRecord, Qualifier, RecordProblem, Source } from "../../record/src/index.ts";
 
 // ─── Task → representation ─────────────────────────────────────────────────
 

@@ -1,88 +1,111 @@
 // Chapter 7: Meaning Becomes the Source.
 //
-// Three things that are easy to run together:
-//
-//   SOURCE          the conversation as it happened (never changed by anything below)
-//   SEMANTIC RECORD one structured interpretation of it, citing the source by hash
-//   RENDERING       a projection of the record, made for one task: briefing a model
+// If a source can be rendered many ways, each rendering has to reinterpret it. What would it mean
+// to keep one structured interpretation, and generate the renderings from that?
 //
 // Run:  npm run example:ch07
 //
-// No model is called. The record is written here by hand, standing in for a
-// maintainer; who writes the record is a separate question from what the record is.
-import { createHash } from "node:crypto";
-import { mkdirSync, mkdtempSync, readFileSync } from "node:fs";
-import { tmpdir } from "node:os";
-import { join } from "node:path";
-import { applyMutation, initThread, resolveStorePaths, type LanguageItem, type SourceRef } from "../../core/language/src/index.ts";
-import { makeSession, systemPromptSeenByProvider } from "../../harness/session.ts";
-import { languageProjection, loadProjection } from "../../host-pi/language.ts";
+// No model is called. The record is written by hand and every entry is checked to cite the source.
+// What is shown is the MECHANISM. The chapter's own prediction, that renderings made through a record
+// agree more, contradict less and trace back further than renderings made directly, is an empirical
+// bet this example cannot test. See "What this does not show" at the end.
+import { fauxAssistantMessage, fauxText, fauxToolCall } from "@earendil-works/pi-ai";
+import { makeSession, UiRecorder } from "../../harness/session.ts";
+import { documentRecord } from "../../host-pi/record.ts";
+import * as retry from "../../core/record/fixtures/retry-policy.ts";
+import * as breakers from "../../core/record/fixtures/breakers.ts";
+import { agreement, evidenceStatus, locate, renderRecordDiagram, renderRecordTable, renderRecordTimeline, validateRecord } from "../../core/record/src/index.ts";
+import { assess, declare, mustNotSay, mustSay } from "../../core/preservation/src/index.ts";
 
-const sha = (text: string) => createHash("sha256").update(text, "utf8").digest("hex");
 const rule = (title: string) => console.log(`\n── ${title} ${"─".repeat(Math.max(0, 66 - title.length))}`);
+const AT = "2026-10-15T10:00:00.000Z";
+const source = { id: retry.SOURCE_ID, text: retry.SOURCE };
+const exceptions = ["partition", "idempotent", "final"];
 
-// 1. SOURCE ─ two messages. Nothing in this program edits them.
-const source = [
-	{ id: "m1", from: "Priya", text: "Let's keep the retry budget at three attempts." },
-	{ id: "m2", from: "Priya", text: "Actually, make it five for the payment service only." },
-] as const;
-const cite = (id: (typeof source)[number]["id"]): SourceRef => ({
-	session_id: "conversation-1",
-	message_id: id,
-	sha256: sha(source.find((m) => m.id === id)!.text),
+rule("1. Direct generation: three renderings, three fresh readings of the same prose");
+console.log(`source: "${retry.SOURCE.replace("Payments retry policy (constructed for illustration). ", "")}"\n`);
+for (const r of retry.DIRECT) console.log(`${r.name}\n${r.text.split("\n").map((l) => "   " + l).join("\n")}\n`);
+console.log("(These three are CONSTRUCTED to show the drift the chapter describes. They are not model output.)");
+const direct = agreement(retry.RECORD, retry.DIRECT, exceptions);
+for (const p of direct.per_rendering) console.log(`  ${p.name.padEnd(22)} carries ${p.carried.length} of ${exceptions.length} exceptions; missing: ${p.missing.join(", ") || "none"}`);
+console.log(`\nEach is plausible alone. Together they describe three slightly different systems: ${direct.disagreements.length} of ${exceptions.length} exceptions are carried by some and not by others.`);
+
+rule("2. One interpretation, kept: the semantic record");
+console.log(`${retry.RECORD.claims.length} claims, ${retry.RECORD.relations.length} relations with direction, ${retry.RECORD.qualifiers.length} qualifiers; each cites the source verbatim.`);
+console.log(`traceability problems: ${JSON.stringify(validateRecord(source, retry.RECORD))}`);
+for (const r of retry.RECORD.relations) console.log(`  ${r.id}: ${retry.RECORD.claims.find((c) => c.id === r.from)!.label}  --${r.type}-->  ${retry.RECORD.claims.find((c) => c.id === r.to)!.label}`);
+
+rule("3. Renderings drawn from the record");
+const fromRecord = [
+	{ name: "diagram", text: renderRecordDiagram(retry.RECORD) },
+	{ name: "table", text: renderRecordTable(retry.RECORD) },
+	{ name: "timeline", text: renderRecordTimeline(retry.RECORD) },
+];
+for (const r of fromRecord) console.log(`${r.name}\n${r.text.split("\n").map((l) => "   " + l).join("\n")}\n`);
+const through = agreement(retry.RECORD, fromRecord, exceptions);
+for (const p of through.per_rendering) console.log(`  ${p.name.padEnd(10)} carries ${p.carried.length} of ${exceptions.length} exceptions`);
+console.log(`\nagree on the exceptions: ${through.agree}. That is by construction: the three are drawn from one reading.`);
+console.log(`The check is that a phrase is present, not that the rendering means the same thing.`);
+
+rule("4. Every element walks back to the words it came from");
+for (const id of ["partition", "x3", "final"]) {
+	const w = locate(retry.RECORD, source, id)!;
+	console.log(`  ${id.padEnd(10)} chars ${String(w.start).padStart(3)}-${String(w.end).padEnd(3)} "${w.passage}"`);
+}
+
+rule("5. The record is not the source of truth");
+const backlog = retry.RECORD.claims.find((c) => c.id === "backlog")!;
+console.log(`source asserts: "${backlog.passage}."`);
+console.log(`record keeps:   standing=${backlog.standing}, evidence=${evidenceStatus(retry.RECORD, "backlog")}`);
+console.log(`The source cites nothing for the causal link. The record does not correct it or rule on it; it keeps what was said and what backs it.`);
+
+rule("6. The sources that break the careless");
+console.log(`"${breakers.SOURCE}"\n`);
+const d = declare({
+	at: AT,
+	obligations: [
+		mustSay("condition", "qualifier", "caffeine causes recall, and only if sleep is adequate", "caffeine\\] --causes--> \\[recall\\][^\\n]*\\n\\s*only if:[^\\n]*sleep is adequate"),
+		mustSay("rejection", "claim", "screen time is only associated with poor sleep, source rejects causation", "screen time\\] --associated with \\(the source rejects causation\\)--> \\[poor sleep\\]"),
+		mustNotSay("no-upgrade", "claim", "association is not drawn as a cause", "screen time\\] --causes"),
+		mustSay("exception", "qualifier", "X outperformed Y, except in subgroup Z", "method x outperforms method y \\|[^\\n]*subgroup z"),
+	],
 });
+// Each obligation is checked against the view it belongs to. Pooling the views would let one mask another.
+const VIEW: Record<string, "diagram" | "table"> = { condition: "diagram", rejection: "diagram", "no-upgrade": "diagram", exception: "table" };
+const run = (label: string, diagram: string, table: string) => {
+	const o = (text: string) => assess(d, { id: label, source: breakers.SOURCE, output: text, output_at: AT }).obligations;
+	const byView = { diagram: o(diagram), table: o(table) };
+	return new Map(d.obligations.map((ob) => [ob.id, byView[VIEW[ob.id]!].find((x) => x.id === ob.id)!.outcome]));
+};
+const careless = run("careless", breakers.CARELESS.diagram, breakers.CARELESS.table);
+const viaRecord = run("record", renderRecordDiagram(breakers.RECORD), renderRecordTable(breakers.RECORD));
+console.log("careless pipeline:");
+console.log(breakers.CARELESS.diagram.split("\n").map((l) => "   " + l).join("\n"));
+console.log(breakers.CARELESS.table.split("\n").map((l) => "   " + l).join("\n"));
+for (const [id, outcome] of careless) console.log(`   ${outcome.padEnd(9)} ${id}`);
+console.log("\ndrawn from the record:");
+console.log(renderRecordDiagram(breakers.RECORD).split("\n").map((l) => "   " + l).join("\n"));
+for (const [id, outcome] of viaRecord) console.log(`   ${outcome.padEnd(9)} ${id}`);
+console.log("\nThe careless pipeline is convicted however polished it looks: the arrow has lost its condition, an association has become a cause,");
+console.log("and X beats Y with no footnote.");
 
-rule("SOURCE: what was said");
-for (const m of source) console.log(`${m.id} ${m.from}: ${m.text}\n   sha256 ${sha(m.text).slice(0, 16)}…`);
-
-// 2. SEMANTIC RECORD ─ an interpretation, not the source. Every item cites it.
-const storeRoot = mkdtempSync(join(tmpdir(), "ch07-store-"));
-const projectPath = mkdtempSync(join(tmpdir(), "ch07-project-"));
-mkdirSync(join(projectPath, "src"));
-const threadId = "payments";
-const when = (n: number) => `2026-10-15T09:00:0${n}.000Z`;
-
-const d1: LanguageItem = { id: "d1", kind: "decision", text: "Retry budget is three attempts.", actor: "Priya", standing: "explicit", scope: "episode", sources: [cite("m1")] };
-const d2: LanguageItem = { id: "d2", kind: "decision", text: "Retry budget is five attempts for the payment service only.", actor: "Priya", standing: "explicit", scope: "episode", sources: [cite("m2")] };
-
-const init = await initThread({ storeRoot, projectPath, threadId, idempotencyKey: "init", producer: { type: "model" }, now: when(0) });
-const r1 = await applyMutation(
-	{ storeRoot },
-	{ project_path: projectPath, thread_id: threadId, expected_parent: init.revision, idempotency_key: "r1", producer: { type: "model", id: "hand-written" }, source_event: { refs: [cite("m1")] }, operations: [{ op: "add", item: d1 }], now: when(1) },
-);
-
-rule("SEMANTIC RECORD: one interpretation, citing the source");
-const paths = resolveStorePaths(storeRoot, projectPath, threadId);
-console.log(readFileSync(paths.state_path, "utf8").trimEnd());
-console.log(`\nrevision ${r1.revision}  (Git-backed; every change is a new revision, none is an overwrite)`);
-
-// 3. RENDERING ─ made from the record, for one task.
-const first = await loadProjection(storeRoot, projectPath, threadId);
-if (!first.ok) throw new Error(`${first.code}: ${first.detail}`);
-rule("RENDERING: the record, made into a briefing block for a model");
-console.log(first.block.trimEnd());
-console.log(`\nblock sha256 ${first.block_sha256.slice(0, 16)}…`);
-
-// 4. The conversation moves on. The record changes; the source does not.
-const r2 = await applyMutation(
-	{ storeRoot },
-	{ project_path: projectPath, thread_id: threadId, expected_parent: r1.revision, idempotency_key: "r2", producer: { type: "model", id: "hand-written" }, source_event: { refs: [cite("m2")] }, operations: [{ op: "add", item: d2 }, { op: "supersede", id: "d1", by: "d2" }], now: when(2) },
-);
-const second = await loadProjection(storeRoot, projectPath, threadId);
-if (!second.ok) throw new Error(`${second.code}: ${second.detail}`);
-
-rule("AFTER THE CONVERSATION MOVES ON");
-console.log(`record     revision ${r1.revision.slice(0, 12)}… → ${r2.revision.slice(0, 12)}…   (changed)`);
-console.log(`rendering  sha256   ${first.block_sha256.slice(0, 12)}… → ${second.block_sha256.slice(0, 12)}…   (changed)`);
-console.log(`source     m1 ${sha(source[0].text).slice(0, 12)}…, m2 ${sha(source[1].text).slice(0, 12)}…   (unchanged: the citations still match)`);
-const d1Section = second.block.split("### item d1")[1]?.split("### item")[0] ?? "";
-console.log(`d1 in the new rendering (kept, not deleted):\n${d1Section.trim().replace(/^/gm, "   ")}`);
-
-// 5. In a real Pi session, the model is handed that rendering, once, read-only.
-rule("IN A PI SESSION: what the model is actually given");
-const h = await makeSession({ extensions: [languageProjection({ storeRoot, projectPath, threadId })] });
-const system = await systemPromptSeenByProvider(h);
-console.log(`system prompt: ${system.length} characters, ${system.split("language.render/v1").length - 1} projection block`);
-console.log(`contains the current rendering byte for byte: ${system.includes(second.block)}`);
-console.log(`(the model is a scripted stand-in here; this shows what is handed over, not that a model uses it)`);
+rule("7. In a Pi session: the model asks the record; it cannot write to it");
+const ui = new UiRecorder();
+const h = await makeSession({ ui, extensions: [documentRecord({ source, record: retry.RECORD })] });
+const call = (name: string, args: Parameters<typeof fauxToolCall>[1]) => fauxAssistantMessage([fauxToolCall(name, args)], { stopReason: "toolUse" });
+h.faux.setResponses([call("render_from_record", { view: "table" }), call("locate_in_source", { id: "partition" }), call("record_edit", { id: "limit", label: "unlimited retries" }), fauxAssistantMessage([fauxText("done")])]);
+await h.session.prompt("Show me the retry policy as a table, and where the partition exception comes from.");
+const results = h.session.messages.filter((m) => m.role === "toolResult").map((m: any) => m.content[0].text as string);
+console.log(`locate_in_source → ${results[1]}`);
+console.log(`record_edit      → ${results[2]!.split("\n")[0]}`);
+await h.session.prompt("/record");
+console.log("\n/record:\n" + ui.notifications.at(-1)!.message);
 h.dispose();
+
+rule("What this does not show");
+console.log("- The chapter's bet: that renderings made through a record agree more, contradict less and trace back further than renderings");
+console.log("  made directly. The 'direct' renderings above are constructed, and 'agreement' here is by construction. Untested.");
+console.log("- Whether a model can build a record that passes the traceability check. This one is written by hand.");
+console.log("- Whether the record's costs bite: a wrong record, omitted information, over-specified vague prose, false authority.");
+console.log("- Anything about a reader. The record holds nothing about one, by design, so nothing here measures benefit.");
+console.log("\nA separate example, examples/conversation-state, shows core/language, which keeps a CONVERSATION's state. It is a different record.");
