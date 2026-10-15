@@ -74,6 +74,8 @@ export function radar(options: RadarOptions): ExtensionFactory {
         const presentDue = (): string[] => [...histories].filter(([, h]) => current(h).status === "PENDING" && current(h).mode === "NOW").map(([id]) => presentOne(id));
 
         if (sub === "run") {
+          // Running twice must not start a second history for the same candidate: revisions are appended, never restarted.
+          if (histories.size > 0) return say("already run: the decisions exist and keep their history. /radar status shows them; /radar circumstance <kind> re-evaluates; /radar reopen <id> brings back a withheld one.");
           for (const input of options.inputs) {
             const r = attend(input);
             results.set(r.item_id, r); histories.set(r.item_id, [...r.history]);

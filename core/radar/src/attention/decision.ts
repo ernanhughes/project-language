@@ -56,6 +56,7 @@ export function attend(i: AttendInput): AttentionResult {
     const causes = [
       ...(elig && !elig.eligible ? elig.failed.map(r => `${r.dimension}:${r.ref}`) : []),
       ...(qual && qual.outcome === "NOT_QUALIFIED" ? [...qual.match.unmet.map(u => `evidence_standing:${u.condition} (candidate: ${u.observed})`), ...qual.match.excluded_by.map(x => `exclusion:${x}`)] : []),
+      ...(qual && qual.relation && qual.relation.status === "NOT_RELATED" ? [`relation:${qual.relation.why}`] : []),
       ...(!elig && !qual ? [why] : []),
     ];
     return { item_id: item.id, stages, eligibility: elig, qualification: qual, selection: sel, resolution: null, timing: null, content: null, causes,
@@ -91,8 +92,12 @@ export function attend(i: AttendInput): AttentionResult {
   const choice = chooseResolution({ units, source: item.source, renderings: i.renderings, selected: sel?.selected ?? [], minimum: minimumFor(i.task.purpose.need), declaredAt: i.declaredAt, outputAt: i.outputAt });
   stages.push(stage("safe_resolution", choice.basis === "authored" ? "yes" : "no", choice.reasons));
 
-  const nonInterruptive = qual.outcome === "UNRESOLVED" || i.timing.non_interruptive === true;
+  // When the source stands in place of a summary (no units, an empty selection, or nothing authored was acceptable), it is
+  // never pushed: it was not held to the budget or to the obligations, so it is kept available for the person to open.
+  const sourceStands = choice.basis === "source_stands";
+  const nonInterruptive = qual.outcome === "UNRESOLVED" || i.timing.non_interruptive === true || sourceStands;
   const timing = schedule({ ...i.timing, non_interruptive: nonInterruptive });
+  if (sourceStands) timing.reasons.push(note("the source stands in place of a summary, so it is kept available and not pushed", "source-stands", "timing"));
   stages.push(stage("delivery_timing", "yes", timing.reasons));
   for (const s of observedStage([], [], decision_id, 1, "")) stages.push(s);
 

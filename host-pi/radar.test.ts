@@ -152,3 +152,17 @@ test("an unknown context value cannot authorise an interruption: the host refuse
   assert.equal(presented(ui).length, 0);
   h.dispose();
 });
+
+test("running the Radar twice does not start a second history: each candidate keeps exactly one first revision", async () => {
+  const { h, ui } = await start();
+  await h.session.prompt("/radar run");
+  const once = entries<Revision>(h, REVISION_ENTRY).length;
+  await h.session.prompt("/radar run");
+  const twice = entries<Revision>(h, REVISION_ENTRY);
+  assert.equal(twice.length, once, "no revision was written by the second run");
+  const firsts = twice.filter(r => r.revision === 1).map(r => r.decision_id);
+  assert.equal(new Set(firsts).size, firsts.length, "no candidate has two r1");
+  assert.match(ui!.notifications.at(-1)!.message, /already run/);
+  assert.equal(entries(h, "radar-stages").length, 5, "stage records were not written again either");
+  h.dispose();
+});

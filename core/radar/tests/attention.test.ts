@@ -517,3 +517,31 @@ test("each named unit's own words are checked, not only the claim and qualifier 
   const empty = chooseResolution({ units: contradiction.units!, selected: ids(contradiction.units!), source: contradiction.source, renderings: [{ level: "BRIEF", text: "x", unit_ids: [] }], minimum: "BRIEF", declaredAt: "2026-10-15T09:00:00.000Z", outputAt: T_NOW });
   assert.equal(empty.attempts.find(x => x.level === "BRIEF")!.checks.find(x => x.name === "membership")!.ok, false, "refused at membership, not only later");
 });
+
+// ─── v2 review findings ─────────────────────────────────────────────────────────────────────────────
+test("a source that stands in place of a summary is never pushed: at a one-token budget it is kept available, not NOW", () => {
+  const free = { now: T_AFTER, acts_by: T_DEPLOY, context: meetingOver };
+  const control = attend(base(contradiction, { renderings: contradictionRenderings, bridge: contradictionBridge, timing: free }));
+  assert.equal(control.resolution!.basis, "authored");
+  assert.equal(control.timing!.mode, "NOW", "control: with a summary and a free calendar it is delivered now");
+  const starved = attend(base(contradiction, { renderings: contradictionRenderings, bridge: contradictionBridge, timing: free, budgetTokens: 1 }));
+  assert.equal(starved.resolution!.basis, "source_stands");
+  assert.equal(starved.timing!.mode, "AVAILABLE");
+  assert.ok(starved.timing!.reasons.some(r => r.ref === "source-stands"));
+  const rev = starved.history[0]!;
+  assert.deepEqual([rev.status, rev.mode, rev.non_interruptive], ["PENDING", "AVAILABLE", true]);
+  const undecomposed = attend(base({ ...contradiction, units: undefined }, { bridge: contradictionBridge, timing: free }));
+  assert.equal(undecomposed.timing!.mode, "AVAILABLE", "an undecomposed item is not pushed either");
+  // and it stays available when circumstances change
+  const next = reevaluate({ history: starved.history, circumstance: { kind: "meeting_ended", at: T_AFTER }, timing: free, standing: { permission: true, current: true, scope: true, standing: true }, acts_by: T_DEPLOY });
+  assert.equal(next.mode, "AVAILABLE");
+});
+
+test("a candidate whose bridge says it is not the subscribed relation is withheld with a cause, not with an empty list", () => {
+  const unrelated = { ...contradictionBridge, relation: "unrelated" as const };
+  const r = attend(base(contradiction, { renderings: contradictionRenderings, bridge: unrelated }));
+  assert.equal(r.qualification!.outcome, "NOT_QUALIFIED");
+  assert.equal(r.causes.length, 1);
+  assert.match(r.causes[0]!, /^relation:the bridge asserts "unrelated"; the subscription asks about "weakens"$/);
+  assert.equal(current(r.history).status, "WITHDRAWN");
+});
