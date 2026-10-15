@@ -142,3 +142,56 @@ test("the ledger persists to a file and reads back", async () => {
     assert.equal((await run(back)).decisions.length, 0);
   } finally { rmSync(dir, { recursive: true, force: true }); }
 });
+
+// ─── resolving handles to channel ids ───────────────────────────────────────────────────────────────
+import { channelIdFromHtml, parseHandleTsv, resolveHandles } from "../src/resolve.ts";
+const pageFor = (id: string) => `<html><link rel="alternate" type="application/rss+xml" href="https://www.youtube.com/feeds/videos.xml?channel_id=${id}"><a href="/channel/UCzzzzzzzzzzzzzzzzzzzzzz">recommended</a></html>`;
+
+test("handles parse from the tab-separated list; bad and duplicate handles are reported", () => {
+  const p = parseHandleTsv("handle\tname\tsubscribers\n@Alpha\tAlpha Channel\t1.2k\nnot-a-handle\tX\t1\n@alpha\tDup\t2\n@Beta_1\tBeta\t3m\n");
+  assert.deepEqual(p.rows.map(r => r.handle), ["@Alpha", "@Beta_1"]);
+  assert.deepEqual(p.refused.map(r => r.reason.replace(/:.*/, "")), ["not a handle", "duplicate handle"]);
+});
+
+test("the channel id comes from the page's own RSS link, not from a recommended channel elsewhere on it", () => {
+  assert.equal(channelIdFromHtml(pageFor(CH_A)), CH_A);
+  assert.equal(channelIdFromHtml("<html>nothing here</html>"), null);
+  assert.equal(channelIdFromHtml('<a href="/channel/UCzzzzzzzzzzzzzzzzzzzzzz">x</a>'), null);
+});
+
+test("resolving keeps what resolves, and reports a failure, a missing id and a duplicate channel by name", async () => {
+  const pages: Record<string, string> = { "@A": pageFor(CH_A), "@B": "<html>no id</html>", "@C": pageFor(CH_A) };
+  const rows = ["@A", "@B", "@C", "@D"].map(h => ({ handle: h, name: h.slice(1), subscribers: "" }));
+  const r = await resolveHandles(rows, async url => { const h = decodeURIComponent(url.split("youtube.com/")[1]!); if (!(h in pages)) throw new Error("HTTP 404"); return pages[h]!; });
+  assert.deepEqual(r.subscriptions, [{ channelId: CH_A, title: "A" }]);
+  assert.deepEqual(r.failed.map(f => [f.handle, f.reason.replace(/@\w+/, "@x")]), [["@B", "no channel id found on the page"], ["@C", "same channel as @x"], ["@D", "HTTP 404"]]);
+});
+
+test("a real feed writes the channel id without its UC prefix; the parser restores it", () => {
+  const p = parseFeed(FEED_A);
+  assert.match(FEED_A, new RegExp(`<yt:channelId>${CH_A.slice(2)}</yt:channelId>`));
+  assert.equal(p.channelId, CH_A);
+  assert.ok(p.entries.every(e => e.channelId === CH_A));
+});
+
+test("a window leaves older videos out of the screen, counts them, says so in the digest, and does not record them", async () => {
+  const ledger = new MemoryLedger();
+  const r = await scan({ subscriptions: [subs[0]!], interest, ledger, now: "2026-10-14T12:00:00.000Z", windowDays: 1, fetchText: async () => FEED_A });
+  const a = r.channels[0]!;
+  assert.deepEqual([a.entries, a.new, a.older], [3, 1, 2]);
+  assert.deepEqual(r.decisions.map(d => d.entry.videoId), ["aaaaaaaaa01"]);
+  assert.equal(ledger.all().length, 1, "older entries are not recorded as decided");
+  assert.match(renderDigest(r, interest, 1), /2 listed videos were older than the window/);
+  assert.equal(a.possible_gap, false);
+});
+
+test("boilerplate far down a description does not count, and two terms found only in the description are not enough to push", () => {
+  const e = (title: string, description: string) => ({ videoId: "z".repeat(11), title, published: NOW, channelId: CH_A, channelName: "c", url: "u", description });
+  const buried = screen(e("Weekly update", "x ".repeat(400) + "agent memory evaluation context"), interest);
+  assert.equal(buried.verdict, "WITHHOLD", "terms beyond the first 500 characters are not read");
+  const two = screen(e("Weekly update", "this week: agent memory"), interest);
+  assert.equal(two.verdict, "AVAILABLE", "two terms, none in the title");
+  const four = screen(e("Weekly update", "agent memory evaluation context"), interest);
+  assert.equal(four.verdict, "LOOK", "four terms in the part that is read");
+  assert.equal(screen(e("Agent memory update", "x"), interest).verdict, "LOOK", "two terms, both in the title");
+});

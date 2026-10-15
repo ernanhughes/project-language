@@ -7,7 +7,7 @@ export const entry = (videoId: string, title: string, published: string, descrip
   <entry>
     <id>yt:video:${videoId}</id>
     <yt:videoId>${videoId}</yt:videoId>
-    <yt:channelId>${channelId}</yt:channelId>
+    <yt:channelId>${channelId.slice(2)}</yt:channelId>
     <title>${title}</title>
     <published>${published}</published>
     <author><name>${channel}</name></author>
@@ -16,7 +16,7 @@ export const entry = (videoId: string, title: string, published: string, descrip
 
 export const feed = (channelId: string, channel: string, entries: string[]) => `<?xml version="1.0" encoding="UTF-8"?>
 <feed xmlns:yt="http://www.youtube.com/xml/schemas/2015" xmlns:media="http://search.yahoo.com/mrss/" xmlns="http://www.w3.org/2005/Atom">
-  <yt:channelId>${channelId}</yt:channelId>
+  <yt:channelId>${channelId.slice(2)}</yt:channelId>
   <title>${channel}</title>
   <author><name>${channel}</name></author>${entries.join("")}
 </feed>`;

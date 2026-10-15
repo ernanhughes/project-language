@@ -150,3 +150,4 @@ vite.config.ts.timestamp-*
 
 # The preserved admission observation keeps its verification logs under version control.
 !experiments/**/verification/*.log
+tmy/.data/

@@ -10,6 +10,8 @@ export interface ChannelReport {
   status: "ok" | "failed";
   error?: string;
   entries: number; refused: number; already_seen: number; new: number;
+  /** Entries older than the window. Counted, not screened, and not recorded. */
+  older: number;
   /** The feed shows only the latest videos. If it is full and all of it is new, older videos since the last scan may not appear. */
   possible_gap: boolean;
 }
@@ -23,16 +25,20 @@ export const FEED_SIZE = 15;
 
 export async function scan(i: {
   subscriptions: readonly Subscription[]; interest: Interest; ledger: Ledger; now: string;
+  /** Only videos published within this many days are screened. Omit for no window. */
+  windowDays?: number;
   fetchText: (url: string) => Promise<string>;
 }): Promise<ScanResult> {
   const sha = interestHash(i.interest);
   const decisions: Decision[] = []; const channels: ChannelReport[] = [];
   for (const sub of i.subscriptions) {
-    const report: ChannelReport = { channelId: sub.channelId, title: sub.title, status: "ok", entries: 0, refused: 0, already_seen: 0, new: 0, possible_gap: false };
+    const report: ChannelReport = { channelId: sub.channelId, title: sub.title, status: "ok", entries: 0, refused: 0, already_seen: 0, new: 0, older: 0, possible_gap: false };
     try {
       const feed = parseFeed(await i.fetchText(feedUrl(sub.channelId)));
       report.entries = feed.entries.length; report.refused = feed.refused.length;
+      const cutoff = i.windowDays === undefined ? -Infinity : Date.parse(i.now) - i.windowDays * 86_400_000;
       for (const entry of feed.entries) {
+        if (Date.parse(entry.published) < cutoff) { report.older++; continue; }
         const seen = i.ledger.get(entry.videoId);
         // seen and shown or listed: do not decide again. Seen and withheld: decide again only if the interest has changed.
         if (seen && (seen.verdict !== "WITHHOLD" || seen.interest_sha === sha)) { report.already_seen++; continue; }
@@ -40,7 +46,7 @@ export async function scan(i: {
         decisions.push(d); report.new++;
         i.ledger.put({ videoId: entry.videoId, channelId: entry.channelId || sub.channelId, title: entry.title, verdict: d.verdict, cause: d.cause, decided_at: i.now, interest_sha: sha, policy: d.policy });
       }
-      report.possible_gap = report.entries >= FEED_SIZE && report.already_seen === 0;
+      report.possible_gap = report.entries >= FEED_SIZE && report.already_seen === 0 && report.older === 0;
     } catch (e) {
       report.status = "failed"; report.error = String((e as Error).message ?? e).slice(0, 160);
     }

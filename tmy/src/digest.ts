@@ -27,6 +27,7 @@ export function renderDigest(r: ScanResult, interest: Interest, configuredChanne
   }
   out.push("## What this scan could not see", "",
     "- It covers only the channels you configured, and only the latest videos each feed lists.",
+    ...(r.channels.some(c => c.older) ? [`- ${r.channels.reduce((n, c) => n + c.older, 0)} listed videos were older than the window and were not screened.`] : []),
     "- It decided from titles and descriptions. It did not read any transcript, so a video that matters but does not say so in its title or description can be in the not-shown list.",
     ...failed.map(c => `- Could not read **${c.title}**: ${c.error}`),
     ...gaps.map(c => `- **${c.title}**: the feed was full and every entry was new, so older videos since the last scan may be missing.`),
