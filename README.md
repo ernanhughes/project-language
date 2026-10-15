@@ -51,7 +51,7 @@ Today the only rendering `core/language` produces is the record itself, wrapped 
 
 A faux-model test shows that the gate fires and blocks. It says nothing about real-model behaviour.
 
-Part I was cross-reviewed by a second AI at commit `3239630`; every finding, and what became of it (fixed with a test, left as a stated limit, or not built), is in [`REVIEW-RESPONSE.md`](REVIEW-RESPONSE.md). The same author wrote the code and fixed the findings, so the fixes are not independent validation.
+Part I was cross-reviewed by a second AI and every finding was fixed with a regression test or left as a stated limit; the same author wrote the code and fixed the findings, so the fixes are not independent validation. The current state of the book and the code, what is confident and what is not, is in `planning/STATUS.md` in the `language` repository.
 
 ## Run
 

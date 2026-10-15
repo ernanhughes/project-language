@@ -91,7 +91,7 @@ Other changes in this pass are to code written for this project: `core/sidecar` 
 
 ## Changes after the cross-review (2026-10-15)
 
-A second AI reviewed commit `3239630`. The code changes that answered it are listed in `REVIEW-RESPONSE.md`. Beyond that file:
+A second AI reviewed commit `3239630`. The changes that answered it, in code written for this project:
 
 - `core/record` gained schema enforcement, empty-passage and source checks, condition-in-passage checks, table ids and qualifier rendering on every claim; its `ClaimKind` gained `provenance`.
 - `core/sidecar`: `derivedItem(source, quote, producer?, gloss?)` replaces `derivedItem(source, quote, content?, producer?)`. The content is the quotation; the old third argument is gone. Existing callers were updated.
