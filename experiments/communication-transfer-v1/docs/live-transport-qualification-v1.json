@@ -1,0 +1,75 @@
+{
+  "schema": "transfer-01c-transport-review/1",
+  "checked_date": "2026-10-22",
+  "status": "LIVE_EXECUTION_NOT_AUTHORIZED",
+  "observations": "STATIC_CATALOGUE_AND_INJECTED_FIXTURES_ONLY",
+  "models": {
+    "A": {
+      "provider": "opencode-go",
+      "id": "deepseek-v4.1-flash",
+      "immutable_vendor_revision": "UNKNOWN",
+      "api": "openai-completions",
+      "base_url": "https://opencode.ai/zen/go/v1",
+      "context_window": 1000000,
+      "catalogue_max_output_tokens": 384000,
+      "comparative_proposed_max_output_tokens": 2048,
+      "catalogue_usd_per_million": {
+        "input": 0.15,
+        "output": 0.6,
+        "cacheRead": 0.003,
+        "cacheWrite": 0
+      }
+    },
+    "B": {
+      "provider": "opencode-go",
+      "id": "qwen3.8-flash",
+      "immutable_vendor_revision": "UNKNOWN",
+      "api": "anthropic-messages",
+      "base_url": "https://opencode.ai/zen/go",
+      "context_window": 1000000,
+      "catalogue_max_output_tokens": 131072,
+      "comparative_proposed_max_output_tokens": 2048,
+      "catalogue_usd_per_million": {
+        "input": 0.15,
+        "output": 0.47,
+        "cacheRead": 0.016,
+        "cacheWrite": 0.2
+      }
+    },
+    "C": {
+      "provider": "opencode-go",
+      "id": "glm-5.3",
+      "immutable_vendor_revision": "UNKNOWN",
+      "api": "openai-completions",
+      "base_url": "https://opencode.ai/zen/go/v1",
+      "context_window": 1000000,
+      "catalogue_max_output_tokens": 131072,
+      "comparative_proposed_max_output_tokens": 2048,
+      "catalogue_usd_per_million": {
+        "input": 1.4,
+        "output": 4.4,
+        "cacheRead": 0.26,
+        "cacheWrite": 0
+      }
+    }
+  },
+  "comparative_policy": {
+    "max_main_calls": 48,
+    "retries": 0,
+    "fallback": false,
+    "spending_approval": false
+  },
+  "sources": {
+    "node_modules/@earendil-works/pi-ai/package.json": "c4e921309a8d3a91ffce9bef0bd151463ad31f0f151a8534e39ae3528cc27834",
+    "node_modules/@earendil-works/pi-ai/dist/providers/data/opencode-go.json": "542a62ae86ec34d55b2927927a3fe007a54aab2729026e578d7ede1bab51e532",
+    "node_modules/@earendil-works/pi-ai/dist/providers/opencode-go.js": "0cbb90abb37ee3557b6668b178b381ec6086f57636a20bd87c199ca2ca0e75b2",
+    "node_modules/@earendil-works/pi-ai/dist/api/openai-completions.js": "5a79cc5aa41dee180692695e65771720d1ea556e9a978649dc2040278be51753",
+    "node_modules/@earendil-works/pi-ai/dist/api/anthropic-messages.js": "beb7ec1ad646151f73ee0199c2b30b944d4066e9ba0fa47421aa446ab3d7ec96"
+  },
+  "official_references": [
+    "https://dev.opencode.ai/v2/docs/console/go",
+    "https://dev.opencode.ai/v2/docs/console/api/inference/"
+  ],
+  "remote_availability": "NOT_PROBED",
+  "credential_access": false
+}

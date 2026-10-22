@@ -1,0 +1,170 @@
+{
+  "schema": "transfer-human-review/1",
+  "slot": "R1",
+  "pack_hash": "4322f3d31ca76f2f3d24f01c4c2139df748adc9a4ec9d7b58eb7a1dc84e6d01d",
+  "reviewer_identity": null,
+  "submitted_at": null,
+  "attestations": {
+    "human_origin": null,
+    "other_review_not_seen": null,
+    "author_key_not_seen_before_submission": null
+  },
+  "tasks": [
+    {
+      "id": "T001",
+      "source_hash": "5681810dc243fecb2efcb0049b98622d199f5b3426bff66e344343b4e38aaf8c",
+      "judgments": [
+        {
+          "question_id": "p1",
+          "decision": null,
+          "rationale": null,
+          "support_anchor_ids": [],
+          "critical_qualifications": [],
+          "acceptable_alternatives": [],
+          "unsupported_assertions": [],
+          "critical_omissions": [],
+          "abstention_conditions": [],
+          "question_ambiguous": null,
+          "uncertainty_notes": null,
+          "disagreement_notes": null
+        },
+        {
+          "question_id": "p2",
+          "decision": null,
+          "rationale": null,
+          "support_anchor_ids": [],
+          "critical_qualifications": [],
+          "acceptable_alternatives": [],
+          "unsupported_assertions": [],
+          "critical_omissions": [],
+          "abstention_conditions": [],
+          "question_ambiguous": null,
+          "uncertainty_notes": null,
+          "disagreement_notes": null
+        },
+        {
+          "question_id": "p3",
+          "decision": null,
+          "rationale": null,
+          "support_anchor_ids": [],
+          "critical_qualifications": [],
+          "acceptable_alternatives": [],
+          "unsupported_assertions": [],
+          "critical_omissions": [],
+          "abstention_conditions": [],
+          "question_ambiguous": null,
+          "uncertainty_notes": null,
+          "disagreement_notes": null
+        }
+      ]
+    },
+    {
+      "id": "T002",
+      "source_hash": "7f8ce50dea2177bcfc27a58a94a620715e019a8fb413da6088b9feae22f84297",
+      "judgments": [
+        {
+          "question_id": "r1",
+          "decision": null,
+          "rationale": null,
+          "support_anchor_ids": [],
+          "critical_qualifications": [],
+          "acceptable_alternatives": [],
+          "unsupported_assertions": [],
+          "critical_omissions": [],
+          "abstention_conditions": [],
+          "question_ambiguous": null,
+          "uncertainty_notes": null,
+          "disagreement_notes": null
+        },
+        {
+          "question_id": "r2",
+          "decision": null,
+          "rationale": null,
+          "support_anchor_ids": [],
+          "critical_qualifications": [],
+          "acceptable_alternatives": [],
+          "unsupported_assertions": [],
+          "critical_omissions": [],
+          "abstention_conditions": [],
+          "question_ambiguous": null,
+          "uncertainty_notes": null,
+          "disagreement_notes": null
+        },
+        {
+          "question_id": "r3",
+          "decision": null,
+          "rationale": null,
+          "support_anchor_ids": [],
+          "critical_qualifications": [],
+          "acceptable_alternatives": [],
+          "unsupported_assertions": [],
+          "critical_omissions": [],
+          "abstention_conditions": [],
+          "question_ambiguous": null,
+          "uncertainty_notes": null,
+          "disagreement_notes": null
+        }
+      ]
+    },
+    {
+      "id": "T003",
+      "source_hash": "de8398741079dd03df07a0397f907480a24df1e8344e13878cc0c47ab7e1260f",
+      "judgments": [
+        {
+          "question_id": "application",
+          "decision": null,
+          "rationale": null,
+          "support_anchor_ids": [],
+          "critical_qualifications": [],
+          "acceptable_alternatives": [],
+          "unsupported_assertions": [],
+          "critical_omissions": [],
+          "abstention_conditions": [],
+          "question_ambiguous": null,
+          "uncertainty_notes": null,
+          "disagreement_notes": null
+        }
+      ]
+    },
+    {
+      "id": "T004",
+      "source_hash": "5a1781443d2e07e20bcdb2d9be4234ce343c64e98a91200c6a769d6a2b165b33",
+      "judgments": [
+        {
+          "question_id": "application",
+          "decision": null,
+          "rationale": null,
+          "support_anchor_ids": [],
+          "critical_qualifications": [],
+          "acceptable_alternatives": [],
+          "unsupported_assertions": [],
+          "critical_omissions": [],
+          "abstention_conditions": [],
+          "question_ambiguous": null,
+          "uncertainty_notes": null,
+          "disagreement_notes": null
+        }
+      ]
+    },
+    {
+      "id": "T005",
+      "source_hash": "4738136a055d79c0017d3c51ab64e0cc3ae18cfbc49d28cf114625d9e8554215",
+      "judgments": [
+        {
+          "question_id": "application",
+          "decision": null,
+          "rationale": null,
+          "support_anchor_ids": [],
+          "critical_qualifications": [],
+          "acceptable_alternatives": [],
+          "unsupported_assertions": [],
+          "critical_omissions": [],
+          "abstention_conditions": [],
+          "question_ambiguous": null,
+          "uncertainty_notes": null,
+          "disagreement_notes": null
+        }
+      ]
+    }
+  ]
+}

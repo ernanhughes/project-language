@@ -1,0 +1,30 @@
+{
+  "baseline_head": "c0caa864fd14293a748ab962fe9a358d88cf38ac",
+  "modified_preexisting_files": [],
+  "added_authored_files": [
+    "experiments/communication-transfer-v1/docs/EXPERIMENT-FREEZE-V1.md",
+    "experiments/communication-transfer-v1/docs/HUMAN-ADJUDICATION-PACK.md",
+    "experiments/communication-transfer-v1/docs/human-review-v1/AUTHOR-KEY-DO-NOT-DISTRIBUTE-INITIALLY.json",
+    "experiments/communication-transfer-v1/docs/human-review-v1/manifest.json",
+    "experiments/communication-transfer-v1/docs/human-review-v1/public-pack.json",
+    "experiments/communication-transfer-v1/docs/human-review-v1/R1-initial-review.json",
+    "experiments/communication-transfer-v1/docs/human-review-v1/R2-initial-review.json",
+    "experiments/communication-transfer-v1/docs/human-review-v1/review.schema.json",
+    "experiments/communication-transfer-v1/docs/human-review-v1/SOURCE-PACK.md",
+    "experiments/communication-transfer-v1/docs/live-transport-qualification-v1.json",
+    "experiments/communication-transfer-v1/docs/LIVE-TRANSPORT-QUALIFICATION.md",
+    "experiments/communication-transfer-v1/docs/MANUAL-SMOKE-V3.md",
+    "experiments/communication-transfer-v1/docs/proposed-pilot-lock-v1.json",
+    "experiments/communication-transfer-v1/docs/ROLE-AND-RESOURCE-PARITY.md",
+    "experiments/communication-transfer-v1/docs/SMOKE-STREAM-FIX-V2.md",
+    "experiments/communication-transfer-v1/src/adjudication-v1/pack.mjs",
+    "experiments/communication-transfer-v1/src/local-three-model-v2.mjs",
+    "experiments/communication-transfer-v1/src/local-three-model-v3.mjs",
+    "experiments/communication-transfer-v1/tests/adjudication.test.mjs",
+    "experiments/communication-transfer-v1/tests/local-three-model-v2.test.mjs",
+    "experiments/communication-transfer-v1/tests/local-three-model-v3.test.mjs",
+    "experiments/communication-transfer-v1/TRANSFER-01C-REPORT.md"
+  ],
+  "external_user_evidence": "artifacts/live-smoke-20261022-190311 preserved; not rerun",
+  "diff": "transfer-01c-scoped.diff"
+}

@@ -1,0 +1,127 @@
+{
+  "schema": "transfer-pilot-task/1",
+  "id": "deployment-policy-v1",
+  "version": 1,
+  "family": "technical-policy",
+  "standing": "PROPOSED_UNADJUDICATED",
+  "source": "For production releases, deleting an audit log is prohibited even during an incident.\n\nA staging reset may delete synthetic logs only after the test owner approves; this exception never applies to production.\n\nEmergency production rollback is allowed without a new release review only when it restores the last approved build and preserves audit logs.\n\nWhether third-party archive copies may be erased is unresolved.\n\nThis invented policy is version P-8; the example service is named Cedar and has no real deployment endpoint.",
+  "source_hash": "5681810dc243fecb2efcb0049b98622d199f5b3426bff66e344343b4e38aaf8c",
+  "questions": [
+    {
+      "id": "p1",
+      "text": "May an incident responder delete production audit logs using the staging-reset exception?"
+    },
+    {
+      "id": "p2",
+      "text": "May an emergency rollback restore the last approved production build without a new release review if audit logs are preserved?"
+    },
+    {
+      "id": "p3",
+      "text": "Does this policy authorize erasing third-party archive copies?"
+    }
+  ],
+  "claims": [
+    {
+      "id": "c1",
+      "quote": "For production releases, deleting an audit log is prohibited even during an incident.",
+      "start": 0,
+      "end": 85
+    },
+    {
+      "id": "c2",
+      "quote": "A staging reset may delete synthetic logs only after the test owner approves; this exception never applies to production.",
+      "start": 87,
+      "end": 208
+    },
+    {
+      "id": "c3",
+      "quote": "Emergency production rollback is allowed without a new release review only when it restores the last approved build and preserves audit logs.",
+      "start": 210,
+      "end": 351
+    },
+    {
+      "id": "c4",
+      "quote": "Whether third-party archive copies may be erased is unresolved.",
+      "start": 353,
+      "end": 416
+    }
+  ],
+  "plain_message": "Production audit logs must survive incidents. Staging synthetic-log deletion needs test-owner approval and does not apply to production. An emergency rollback needs no new release review only if it restores the last approved build and keeps audit logs. Third-party archive erasure is unresolved.",
+  "reference": [
+    {
+      "question_id": "p1",
+      "supported_decisions": [
+        "NO"
+      ],
+      "rationale": "production versus staging; incident does not remove prohibition",
+      "permitted_alternatives": [
+        "Faithful paraphrase retaining each listed distinction; UNKNOWN means insufficient support, not a claim of falsity."
+      ],
+      "critical_distinctions": [
+        "production versus staging",
+        "incident does not remove prohibition"
+      ],
+      "unsupported_controls": [
+        "Emergency permits production-log deletion."
+      ],
+      "abstention_conditions": [
+        "Use UNKNOWN if the delivered representation omits a decisive source condition; record capacity limitation separately."
+      ]
+    },
+    {
+      "question_id": "p2",
+      "supported_decisions": [
+        "YES"
+      ],
+      "rationale": "rollback versus deletion; last approved build AND preserved logs",
+      "permitted_alternatives": [
+        "Faithful paraphrase retaining each listed distinction; UNKNOWN means insufficient support, not a claim of falsity."
+      ],
+      "critical_distinctions": [
+        "rollback versus deletion",
+        "last approved build AND preserved logs"
+      ],
+      "unsupported_controls": [
+        "Any rollback target is allowed."
+      ],
+      "abstention_conditions": [
+        "Use UNKNOWN if the delivered representation omits a decisive source condition; record capacity limitation separately."
+      ]
+    },
+    {
+      "question_id": "p3",
+      "supported_decisions": [
+        "UNKNOWN"
+      ],
+      "rationale": "unresolved versus permitted; third-party copies are separate",
+      "permitted_alternatives": [
+        "Faithful paraphrase retaining each listed distinction; UNKNOWN means insufficient support, not a claim of falsity."
+      ],
+      "critical_distinctions": [
+        "unresolved versus permitted",
+        "third-party copies are separate"
+      ],
+      "unsupported_controls": [
+        "Unmentioned archives may be erased."
+      ],
+      "abstention_conditions": [
+        "Source leaves the queried matter unresolved or unobserved."
+      ]
+    }
+  ],
+  "approvals": {
+    "task_author": {
+      "identity": "AI_DRAFT_TRANSFER_01B",
+      "approved": false,
+      "at": null,
+      "source_hash": null
+    },
+    "independent_reviewer": {
+      "identity": null,
+      "approved": false,
+      "at": null,
+      "source_hash": null
+    }
+  },
+  "training_absence": "NOT_KNOWN"
+}

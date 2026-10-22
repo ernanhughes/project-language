@@ -1,0 +1,197 @@
+{
+  "starting_head": "329660f679a5a87831f91fe1430c20ac9360dda8",
+  "current_head": "c0caa864fd14293a748ab962fe9a358d88cf38ac",
+  "external_commit_observed": true,
+  "agent_commits": 0,
+  "agent_pushes": 0,
+  "index_bytes_unchanged": false,
+  "staged": "",
+  "unstaged": "",
+  "status_porcelain": "?? experiments/communication-transfer-v1/TRANSFER-01A-REPORT.md\n?? experiments/communication-transfer-v1/evidence/final-inventory.json\n?? experiments/communication-transfer-v1/evidence/offline-source-lock.json\n",
+  "production_diff_since_start": "",
+  "preexisting_files": [
+    {
+      "path": "experiments/communication-transfer-v1/.gitignore",
+      "unchanged": true,
+      "intentional_update": false
+    },
+    {
+      "path": "experiments/communication-transfer-v1/artifacts/demo-traces.json",
+      "unchanged": true,
+      "intentional_update": false
+    },
+    {
+      "path": "experiments/communication-transfer-v1/artifacts/viewer.html",
+      "unchanged": true,
+      "intentional_update": false
+    },
+    {
+      "path": "experiments/communication-transfer-v1/docs/LOCAL-IMPLEMENTATION-HANDOFF.md",
+      "unchanged": true,
+      "intentional_update": false
+    },
+    {
+      "path": "experiments/communication-transfer-v1/EXPERIMENT.md",
+      "unchanged": true,
+      "intentional_update": false
+    },
+    {
+      "path": "experiments/communication-transfer-v1/fixtures/synthetic-policy-001.json",
+      "unchanged": true,
+      "intentional_update": false
+    },
+    {
+      "path": "experiments/communication-transfer-v1/package.json",
+      "unchanged": false,
+      "intentional_update": true
+    },
+    {
+      "path": "experiments/communication-transfer-v1/README.md",
+      "unchanged": false,
+      "intentional_update": true
+    },
+    {
+      "path": "experiments/communication-transfer-v1/src/analysis.mjs",
+      "unchanged": true,
+      "intentional_update": false
+    },
+    {
+      "path": "experiments/communication-transfer-v1/src/demo.mjs",
+      "unchanged": true,
+      "intentional_update": false
+    },
+    {
+      "path": "experiments/communication-transfer-v1/src/protocol.mjs",
+      "unchanged": true,
+      "intentional_update": false
+    },
+    {
+      "path": "experiments/communication-transfer-v1/src/viewer.mjs",
+      "unchanged": true,
+      "intentional_update": false
+    },
+    {
+      "path": "experiments/communication-transfer-v1/tests/protocol.test.mjs",
+      "unchanged": true,
+      "intentional_update": false
+    }
+  ],
+  "ignored_artifacts": [
+    {
+      "path": "experiments/communication-transfer-v1/artifacts/browser-002/browser.json",
+      "sha256": "3f1eef630ab3bfce7b8c86f1e1488fbca2f32e734d7abb16ce00a1f3725a0fec"
+    },
+    {
+      "path": "experiments/communication-transfer-v1/artifacts/browser-002/CONTEXT.png",
+      "sha256": "a9ea7baf9d0a9d96b4c4200380023e0979dfeb56a8a8d1e3a7c61881b4dc857e"
+    },
+    {
+      "path": "experiments/communication-transfer-v1/artifacts/browser-002/LINKED.png",
+      "sha256": "38bf07faebc168c7be1b76e9bd63089acc2cf2e0c878ec3576104dc3a538d4ea"
+    },
+    {
+      "path": "experiments/communication-transfer-v1/artifacts/browser-002/PLAIN.png",
+      "sha256": "9e4e943bc0e755419791b3dd73bee86890e628c2b65383b4c00e92a756ebf6e3"
+    },
+    {
+      "path": "experiments/communication-transfer-v1/artifacts/browser-002/SOURCE.png",
+      "sha256": "bb31772da51bf178e3dbb3a6ea4024fa03f7083287c9fee6cdf37d03522c7815"
+    },
+    {
+      "path": "experiments/communication-transfer-v1/artifacts/browser-003/browser.json",
+      "sha256": "9b91d47b9290df3fbc79ff18d4b091ea36fc4f6e6fe657e8fd4b56cc9a69df01"
+    },
+    {
+      "path": "experiments/communication-transfer-v1/artifacts/browser-003/CONTEXT.png",
+      "sha256": "2976f68ab3d80ec441119699c6acd7de374341c51fa6660f57de711a65b88ad7"
+    },
+    {
+      "path": "experiments/communication-transfer-v1/artifacts/browser-003/LINKED.png",
+      "sha256": "0e9fadc833685f993d1ad5725fc73d0ae87a8c37448694c0bed3ee504612be5e"
+    },
+    {
+      "path": "experiments/communication-transfer-v1/artifacts/browser-003/PLAIN.png",
+      "sha256": "f7edc0dd962a6c24d44dd077607b764e0dbc03e4651ad2f410842805b4f8e592"
+    },
+    {
+      "path": "experiments/communication-transfer-v1/artifacts/browser-003/SOURCE.png",
+      "sha256": "da7b5898529facce47189fd7a07e4010b32ff7b33c87c98be0b3713995beff01"
+    },
+    {
+      "path": "experiments/communication-transfer-v1/artifacts/browser-004/browser.json",
+      "sha256": "ae30526cf96ac3ca3d793142930d283d9e6405f69c084bb8e689944fc09ef885"
+    },
+    {
+      "path": "experiments/communication-transfer-v1/artifacts/browser-004/CONTEXT.png",
+      "sha256": "5cc1f37c494ee77e3ebdd5645c8db8ba05d71f61bbe9b755d0d360582be24c19"
+    },
+    {
+      "path": "experiments/communication-transfer-v1/artifacts/browser-004/LINKED.png",
+      "sha256": "d7154de1036d9b0d1068ad543ae7e8bb2d206a6865db15b72e723b03b73ca4d8"
+    },
+    {
+      "path": "experiments/communication-transfer-v1/artifacts/browser-004/PLAIN.png",
+      "sha256": "d70f3d3702d49e37a352225166b6a6e544e6698394829dfa05580a17e89866f6"
+    },
+    {
+      "path": "experiments/communication-transfer-v1/artifacts/browser-004/SOURCE.png",
+      "sha256": "bd01f0e3bd502fd1ec0879ab646462abaa0a09280190f3b23fcb0538fda6a27f"
+    },
+    {
+      "path": "experiments/communication-transfer-v1/artifacts/demo-traces.json",
+      "sha256": "d844de268756cb8426587c6de6fd73ff7b81590975216834e84c148e0ad073fb"
+    },
+    {
+      "path": "experiments/communication-transfer-v1/artifacts/transfer-01a-001/manifest.json",
+      "sha256": "3cb0a9c9d9dc38e97e312f4c1865ba81d0c92f68b64135bcce4e61b1b89fd95f"
+    },
+    {
+      "path": "experiments/communication-transfer-v1/artifacts/transfer-01a-001/receipts.json",
+      "sha256": "3dada9251773599a06822734e5c790bdd0d0d8c2d22615a5573ba31a34911a8b"
+    },
+    {
+      "path": "experiments/communication-transfer-v1/artifacts/transfer-01a-001/viewer.html",
+      "sha256": "09ada6ce8933a91079c79edf113733c495ed5621f66cae26c2b92a321a511164"
+    },
+    {
+      "path": "experiments/communication-transfer-v1/artifacts/transfer-01a-002/manifest.json",
+      "sha256": "a1eded7105ab07301c342b203c14ffea87c32b21a79df2c65d1fbac423f6d62f"
+    },
+    {
+      "path": "experiments/communication-transfer-v1/artifacts/transfer-01a-002/receipts.json",
+      "sha256": "3618e2f55779425980ba951aca6529729b24030ca8be22e963d19253a93cc3cd"
+    },
+    {
+      "path": "experiments/communication-transfer-v1/artifacts/transfer-01a-002/viewer.html",
+      "sha256": "aa8fe6e0aeec754681f60a3dacc1466a6e74f3f42473da9d46f177f232cf7400"
+    },
+    {
+      "path": "experiments/communication-transfer-v1/artifacts/transfer-01a-003/manifest.json",
+      "sha256": "7f7f2c8c4277c5c14affaf10e24cbb0462f5bf568c21d1028ae1f05c454ed4f1"
+    },
+    {
+      "path": "experiments/communication-transfer-v1/artifacts/transfer-01a-003/receipts.json",
+      "sha256": "e1d84a9b042df6b87986dde2491f475a97bb0be1ad62f6b4e61e0d45dd1b3794"
+    },
+    {
+      "path": "experiments/communication-transfer-v1/artifacts/transfer-01a-003/viewer.html",
+      "sha256": "2c986a4febc8f0f0b4dea6166f24d0bcfcb4e25ac2411a196751d286b1ca0f19"
+    },
+    {
+      "path": "experiments/communication-transfer-v1/artifacts/transfer-01a-004/manifest.json",
+      "sha256": "b7b5b891ccd8dd5a9421aebf67a4448e8fdc475092d0384a00a211306278771b"
+    },
+    {
+      "path": "experiments/communication-transfer-v1/artifacts/transfer-01a-004/receipts.json",
+      "sha256": "be5da50b243f57237b2ff0e99891e94039f518332aec82fa133212a1ada66e0f"
+    },
+    {
+      "path": "experiments/communication-transfer-v1/artifacts/transfer-01a-004/viewer.html",
+      "sha256": "30ec45e3d2e5e6dc5c3662c6a4f3a1084b8ad0f398b2f4fe33f7eda9163fac7b"
+    },
+    {
+      "path": "experiments/communication-transfer-v1/artifacts/viewer.html",
+      "sha256": "bc30bfe87290f32db326bb14a79196a02987209651cf67e6fe0847ac0a1f60f2"
+    }
+  ]
+}

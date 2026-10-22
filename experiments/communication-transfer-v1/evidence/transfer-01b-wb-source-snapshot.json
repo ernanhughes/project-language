@@ -1,0 +1,24 @@
+{
+  "schema": "transfer-negotiated-source-snapshot/1",
+  "live_authorized": false,
+  "source_files": {
+    "experiments/communication-transfer-v1/src/negotiated-v1/protocol.mjs": "c4c8103d61337e70df8d2ab53763f503c826a5a755fd3f4f0aa053a6b1833788",
+    "experiments/communication-transfer-v1/src/negotiated-v1/run.mjs": "2718db3501c0d1a9c0ceed2beb6fb7564abe00f4b68453eaca980328ed2dbb65",
+    "experiments/communication-transfer-v1/src/negotiated-v1/viewer.mjs": "00714dc1b5410165d331f60d3d674e8bf8a262f767e83b23adb0c4b49208355b",
+    "experiments/communication-transfer-v1/src/negotiated-v1/browser.mjs": "b9aefa40520ba58f8d761901487d5ac42b5733fb174f13b0298a9126de353afc",
+    "experiments/communication-transfer-v1/tests/negotiated.test.mjs": "ebba05113690f968d3bd14dcc7a75ce0a50000936f84bddb73eacde230f7a0a9",
+    "experiments/communication-transfer-v1/docs/WORKBENCH-CONTRACT-COMPARISON.md": "92fbcd9d8260b2bdca685975b2de4f0035ccf9db6ee401798a3d90d9b1dc73cd",
+    "experiments/communication-transfer-v1/docs/NEGOTIATED-PILOT-V1.md": "240298d711c19035dcfcd17524e9699b5028a918c3802a910da842e953cd5783"
+  },
+  "read_only_workbench_reference": {
+    "C:/Projects/language/experiments/language-workbench/CONTRACT.md": "6fa81703025233b5e0143b26f3eb48da73091503d72b16bf847d623b1014606b",
+    "C:/Projects/language/experiments/language-workbench/README.md": "232554b3eebae6a25c2f36f6eecbd0cfbed21203b8d1aceb7b9a138a0f2397bf",
+    "C:/Projects/language/experiments/language-workbench/workbench/model_contracts.py": "1177af166aa70d26d568f90795557ade46b8a7373967bf6ea41488ed44d1a6da",
+    "C:/Projects/language/experiments/language-workbench/workbench/model_runtime.py": "73e638885e02ef359ff288705dafe66fc7408f60d22fec8be127d46a11934f63",
+    "C:/Projects/language/experiments/language-workbench/workbench/model_provider.py": "e498321d45cf2c0a171e2e0a0ca5c4fd36df47eaf3ce20320456623aec8c36aa",
+    "C:/Projects/language/experiments/language-workbench/workbench/service.py": "60ebe29350ad4debdf0e4690695e51e286a1043ad9aa58d71ac5c38c10df278f",
+    "C:/Projects/language/experiments/language-workbench/workbench/walkthrough.py": "66df415f85ddb60f988c39012bf46140384062d6a80943ab9c08fd192f0311eb",
+    "C:/Projects/language/experiments/language-workbench/tests/test_negotiation_walkthrough.py": "9b90f651fab4a6dbffbe5011c45a58edf3e53d54aaef24a5e086fb8074e7c42c",
+    "C:/Projects/language/experiments/language-workbench/tests/test_model_runtime.py": "f47625e23f95cea63470d85e08bff34e2bdac35cf42bcb10d7ee845f5ae1ad13"
+  }
+}

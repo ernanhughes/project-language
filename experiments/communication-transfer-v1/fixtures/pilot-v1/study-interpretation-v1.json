@@ -1,0 +1,127 @@
+{
+  "schema": "transfer-pilot-task/1",
+  "id": "study-interpretation-v1",
+  "version": 1,
+  "family": "research-interpretation",
+  "standing": "PROPOSED_UNADJUDICATED",
+  "source": "In a constructed observational study, 18 volunteer teams using a new handoff template reported fewer clarification messages than 18 teams using their usual notes.\n\nTeams chose their own template; task difficulty and prior familiarity were not controlled, so the comparison does not establish that the template caused the difference.\n\nThe report permits describing the observed association within these teams, but not claiming a general productivity improvement.\n\nFor unfamiliar cross-domain tasks the report gives no observations, so comparative benefit remains unknown.\n\nA later randomized follow-up is a proposal, not a completed study; this fictional report has internal identifier R-12.",
+  "source_hash": "7f8ce50dea2177bcfc27a58a94a620715e019a8fb413da6088b9feae22f84297",
+  "questions": [
+    {
+      "id": "r1",
+      "text": "Does the reported comparison establish that the new template caused fewer clarification messages?"
+    },
+    {
+      "id": "r2",
+      "text": "May the finding be described as an observed association among the 36 participating teams, without generalizing productivity?"
+    },
+    {
+      "id": "r3",
+      "text": "Has the template been shown to benefit unfamiliar cross-domain tasks?"
+    }
+  ],
+  "claims": [
+    {
+      "id": "c1",
+      "quote": "In a constructed observational study, 18 volunteer teams using a new handoff template reported fewer clarification messages than 18 teams using their usual notes.",
+      "start": 0,
+      "end": 162
+    },
+    {
+      "id": "c2",
+      "quote": "Teams chose their own template; task difficulty and prior familiarity were not controlled, so the comparison does not establish that the template caused the difference.",
+      "start": 164,
+      "end": 332
+    },
+    {
+      "id": "c3",
+      "quote": "The report permits describing the observed association within these teams, but not claiming a general productivity improvement.",
+      "start": 334,
+      "end": 461
+    },
+    {
+      "id": "c4",
+      "quote": "For unfamiliar cross-domain tasks the report gives no observations, so comparative benefit remains unknown.",
+      "start": 463,
+      "end": 570
+    }
+  ],
+  "plain_message": "The invented observational comparison of 18 plus 18 self-selecting teams found an association with fewer clarification messages. Uncontrolled difficulty and familiarity preclude a causal claim. A scoped association can be reported; general productivity and unfamiliar cross-domain benefit are not established. The randomized follow-up is only proposed.",
+  "reference": [
+    {
+      "question_id": "r1",
+      "supported_decisions": [
+        "NO"
+      ],
+      "rationale": "association versus causation; self-selection and confounding",
+      "permitted_alternatives": [
+        "Faithful paraphrase retaining each listed distinction; UNKNOWN means insufficient support, not a claim of falsity."
+      ],
+      "critical_distinctions": [
+        "association versus causation",
+        "self-selection and confounding"
+      ],
+      "unsupported_controls": [
+        "The template causally improves productivity."
+      ],
+      "abstention_conditions": [
+        "Use UNKNOWN if the delivered representation omits a decisive source condition; record capacity limitation separately."
+      ]
+    },
+    {
+      "question_id": "r2",
+      "supported_decisions": [
+        "YES"
+      ],
+      "rationale": "36 observed teams versus general productivity; reporting scope",
+      "permitted_alternatives": [
+        "Faithful paraphrase retaining each listed distinction; UNKNOWN means insufficient support, not a claim of falsity."
+      ],
+      "critical_distinctions": [
+        "36 observed teams versus general productivity",
+        "reporting scope"
+      ],
+      "unsupported_controls": [
+        "All teams become more productive."
+      ],
+      "abstention_conditions": [
+        "Use UNKNOWN if the delivered representation omits a decisive source condition; record capacity limitation separately."
+      ]
+    },
+    {
+      "question_id": "r3",
+      "supported_decisions": [
+        "UNKNOWN"
+      ],
+      "rationale": "no observations versus evidence of no benefit; unknown cross-domain transfer",
+      "permitted_alternatives": [
+        "Faithful paraphrase retaining each listed distinction; UNKNOWN means insufficient support, not a claim of falsity."
+      ],
+      "critical_distinctions": [
+        "no observations versus evidence of no benefit",
+        "unknown cross-domain transfer"
+      ],
+      "unsupported_controls": [
+        "No cross-domain observations prove no benefit."
+      ],
+      "abstention_conditions": [
+        "Source leaves the queried matter unresolved or unobserved."
+      ]
+    }
+  ],
+  "approvals": {
+    "task_author": {
+      "identity": "AI_DRAFT_TRANSFER_01B",
+      "approved": false,
+      "at": null,
+      "source_hash": null
+    },
+    "independent_reviewer": {
+      "identity": null,
+      "approved": false,
+      "at": null,
+      "source_hash": null
+    }
+  },
+  "training_absence": "NOT_KNOWN"
+}

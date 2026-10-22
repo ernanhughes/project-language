@@ -1,0 +1,56 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "properties": {
+    "schema": {
+      "type": "string",
+      "const": "transfer-qualification-lock/1"
+    },
+    "version": {
+      "type": "string",
+      "const": "TRANSFER-01B/1"
+    },
+    "live_authorized": {
+      "type": "boolean",
+      "const": false
+    },
+    "corpus_status": {
+      "type": "string",
+      "const": "PROPOSED_UNADJUDICATED"
+    },
+    "policy": {},
+    "models": {},
+    "prompt_hashes": {
+      "type": "object",
+      "propertyNames": {
+        "type": "string"
+      },
+      "additionalProperties": {
+        "type": "string"
+      }
+    },
+    "settings": {},
+    "files": {
+      "type": "object",
+      "propertyNames": {
+        "type": "string"
+      },
+      "additionalProperties": {
+        "type": "string",
+        "pattern": "^[a-f0-9]{64}$"
+      }
+    }
+  },
+  "required": [
+    "schema",
+    "version",
+    "live_authorized",
+    "corpus_status",
+    "policy",
+    "models",
+    "prompt_hashes",
+    "settings",
+    "files"
+  ],
+  "additionalProperties": false
+}

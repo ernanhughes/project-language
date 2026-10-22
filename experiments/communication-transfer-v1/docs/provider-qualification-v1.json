@@ -1,0 +1,45 @@
+{
+  "schema": "transfer-provider-qualification/1",
+  "status": "OFFLINE_SERIALIZATION_QUALIFIED_REMOTE_COMPATIBILITY_UNQUALIFIED",
+  "real_requests": 0,
+  "records": [
+    {
+      "role": "A",
+      "model": "deepseek-v4.1-flash",
+      "api": "openai-completions",
+      "url": "https://opencode.ai/zen/go/v1/chat/completions",
+      "auth_mode": "BEARER",
+      "request_hash": "9de03db8500a5e1c4fd33bff5e350814c3f5b544f0497571a575a00685a88237",
+      "body_hash": "ee7d27b94ee226e614dafb70c495222121a552080e26b191d21a66dafb977272",
+      "status": "COMPLETED"
+    },
+    {
+      "role": "B",
+      "model": "qwen3.8-flash",
+      "api": "anthropic-messages",
+      "url": "https://opencode.ai/zen/go/v1/messages?beta=true",
+      "auth_mode": "X_API_KEY",
+      "request_hash": "fe9df3613582fb5beb69f832e88c01767e6b2d70101432e3e87afaa5d3a4cbb8",
+      "body_hash": "a6c0472c87da7a1da3b4d6618c672ce7cf6e7c64c9b1aaf2a449ca1ab9e36013",
+      "status": "COMPLETED"
+    },
+    {
+      "role": "C",
+      "model": "glm-5.3",
+      "api": "openai-completions",
+      "url": "https://opencode.ai/zen/go/v1/chat/completions",
+      "auth_mode": "BEARER",
+      "request_hash": "c2bd533de9052e5c3af756f416539c982d523ea851e635583b233fa1b41963e1",
+      "body_hash": "42df6b5d51805b3aa7e0647a1188b8c087a58ab1f26b5dbcd65916ce9b6e9334",
+      "status": "COMPLETED"
+    }
+  ],
+  "blocked": [
+    "INDEPENDENT_HUMAN_ADJUDICATION_PENDING",
+    "CURRENT_DOC_ENDPOINT_DIFFERS_FROM_INSTALLED_ROUTE",
+    "QWEN_INSTALLED_AUTH_HEADER_DIFFERS_FROM_CURRENT_BEARER_GUIDANCE",
+    "REAL_TOKENIZER_AND_PROVIDER_BILLING_NOT_QUALIFIED",
+    "LIVE_PILOT_NOT_AUTHORIZED",
+    "HALUEVAL_IMPORT_DISABLED"
+  ]
+}

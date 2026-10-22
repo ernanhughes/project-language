@@ -1,0 +1,12 @@
+{
+  "status": "HUMAN_REVIEW_PENDING",
+  "pack_hash": "4322f3d31ca76f2f3d24f01c4c2139df748adc9a4ec9d7b58eb7a1dc84e6d01d",
+  "files": {
+    "SOURCE-PACK.md": "67d5734cc5195c96782a9339e4d71bb91454401a3113525e9d3f8724ebc706ec",
+    "public-pack.json": "08a572b6ac71f59548be6462b474077bf4101512052e56872a28d360917504ae",
+    "R1-initial-review.json": "9ca6cc54f0c41f6ee650c109babfc358135c38c26f490cebe7b9b7de0de59eef",
+    "R2-initial-review.json": "07adae1e96ab87410a79e78ed2f2f632b7b2d483acba41b69f6d6d093e4f6e03",
+    "AUTHOR-KEY-DO-NOT-DISTRIBUTE-INITIALLY.json": "e60c1cf7e1e2877bc8ae68174f75b6334d235e0e6b6e28dbb36c3d389b64e887",
+    "review.schema.json": "ebe711374a6e67d12d42ba0b45deafc8da4b6c6f9150a888a95b17b5aeb3f491"
+  }
+}
