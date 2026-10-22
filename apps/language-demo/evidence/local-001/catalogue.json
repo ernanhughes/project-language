@@ -1,0 +1,1130 @@
+{
+  "models": [
+    {
+      "provider": "fixture",
+      "id": "fixture",
+      "local": false,
+      "api_family": "scripted",
+      "input_modalities": [
+        "text"
+      ],
+      "output_modalities": [
+        "text"
+      ],
+      "context_window": null,
+      "output_limit": 2048,
+      "structured_output": "JSON_SCHEMA_PROMPT_AND_VALIDATION",
+      "reasoning": "backend default; not inferred from tokens",
+      "timeout_ms": 60000,
+      "retries": 0,
+      "usage_accounting": "not model tokens",
+      "price_usd": 0,
+      "availability": "DISCOVERED_NOT_QUALIFIED"
+    },
+    {
+      "provider": "ollama",
+      "id": "mistral-small:latest",
+      "local": true,
+      "api_family": "ollama-chat",
+      "input_modalities": [
+        "text"
+      ],
+      "output_modalities": [
+        "text"
+      ],
+      "context_window": null,
+      "output_limit": 2048,
+      "structured_output": "JSON_SCHEMA_PROMPT_AND_VALIDATION",
+      "reasoning": "backend default; not inferred from tokens",
+      "timeout_ms": 60000,
+      "retries": 0,
+      "usage_accounting": "provider counters when available",
+      "price_usd": null,
+      "availability": "DISCOVERED_NOT_QUALIFIED",
+      "digest": "8039dd90c1138d772437a0779a33b7349efd5d9cca71edcd26e4dd463f90439d",
+      "size": 14333921662
+    },
+    {
+      "provider": "ollama",
+      "id": "ornith-1.5:9b",
+      "local": true,
+      "api_family": "ollama-chat",
+      "input_modalities": [
+        "text"
+      ],
+      "output_modalities": [
+        "text"
+      ],
+      "context_window": null,
+      "output_limit": 2048,
+      "structured_output": "JSON_SCHEMA_PROMPT_AND_VALIDATION",
+      "reasoning": "backend default; not inferred from tokens",
+      "timeout_ms": 60000,
+      "retries": 0,
+      "usage_accounting": "provider counters when available",
+      "price_usd": null,
+      "availability": "DISCOVERED_NOT_QUALIFIED",
+      "digest": "e5df7dcdd8a263994df62d610317e07be0d6af23f96fcbd8543273058fce575e",
+      "size": 6550813657
+    },
+    {
+      "provider": "ollama",
+      "id": "codegpt/replit-code-v1_5-3b:latest",
+      "local": true,
+      "api_family": "ollama-chat",
+      "input_modalities": [
+        "text"
+      ],
+      "output_modalities": [
+        "text"
+      ],
+      "context_window": null,
+      "output_limit": 2048,
+      "structured_output": "JSON_SCHEMA_PROMPT_AND_VALIDATION",
+      "reasoning": "backend default; not inferred from tokens",
+      "timeout_ms": 60000,
+      "retries": 0,
+      "usage_accounting": "provider counters when available",
+      "price_usd": null,
+      "availability": "DISCOVERED_NOT_QUALIFIED",
+      "digest": "efa8d4ceea257f37c486c950529944804880ebc35ceef3fcac6cb5f996c6c7d9",
+      "size": 1953055626
+    },
+    {
+      "provider": "ollama",
+      "id": "bge-m3:latest",
+      "local": true,
+      "api_family": "ollama-chat",
+      "input_modalities": [
+        "text"
+      ],
+      "output_modalities": [
+        "text"
+      ],
+      "context_window": null,
+      "output_limit": 2048,
+      "structured_output": "JSON_SCHEMA_PROMPT_AND_VALIDATION",
+      "reasoning": "backend default; not inferred from tokens",
+      "timeout_ms": 60000,
+      "retries": 0,
+      "usage_accounting": "provider counters when available",
+      "price_usd": null,
+      "availability": "DISCOVERED_NOT_QUALIFIED",
+      "digest": "7907646426070047a77226ac3e684fbbe8410524f7b4a74d02837e43f2146bab",
+      "size": 1157672605
+    },
+    {
+      "provider": "ollama",
+      "id": "batiai/qwen3.6-27b:q4",
+      "local": true,
+      "api_family": "ollama-chat",
+      "input_modalities": [
+        "text"
+      ],
+      "output_modalities": [
+        "text"
+      ],
+      "context_window": null,
+      "output_limit": 2048,
+      "structured_output": "JSON_SCHEMA_PROMPT_AND_VALIDATION",
+      "reasoning": "backend default; not inferred from tokens",
+      "timeout_ms": 60000,
+      "retries": 0,
+      "usage_accounting": "provider counters when available",
+      "price_usd": null,
+      "availability": "DISCOVERED_NOT_QUALIFIED",
+      "digest": "30824a1e4eaef7b2f603444477c24b3f5c23960c26cf2baf9d22462bc8651312",
+      "size": 16547401589
+    },
+    {
+      "provider": "ollama",
+      "id": "all-minilm:l6-v2",
+      "local": true,
+      "api_family": "ollama-chat",
+      "input_modalities": [
+        "text"
+      ],
+      "output_modalities": [
+        "text"
+      ],
+      "context_window": null,
+      "output_limit": 2048,
+      "structured_output": "JSON_SCHEMA_PROMPT_AND_VALIDATION",
+      "reasoning": "backend default; not inferred from tokens",
+      "timeout_ms": 60000,
+      "retries": 0,
+      "usage_accounting": "provider counters when available",
+      "price_usd": null,
+      "availability": "DISCOVERED_NOT_QUALIFIED",
+      "digest": "1b226e2802dbb772b5fc32a58f103ca1804ef7501331012de126ab22f67475ef",
+      "size": 45960996
+    },
+    {
+      "provider": "ollama",
+      "id": "qwen3-embedding:8b",
+      "local": true,
+      "api_family": "ollama-chat",
+      "input_modalities": [
+        "text"
+      ],
+      "output_modalities": [
+        "text"
+      ],
+      "context_window": null,
+      "output_limit": 2048,
+      "structured_output": "JSON_SCHEMA_PROMPT_AND_VALIDATION",
+      "reasoning": "backend default; not inferred from tokens",
+      "timeout_ms": 60000,
+      "retries": 0,
+      "usage_accounting": "provider counters when available",
+      "price_usd": null,
+      "availability": "DISCOVERED_NOT_QUALIFIED",
+      "digest": "64b933495768fbd3b87c20583d379728a07471e0c66733a9df87cd1901b3c44b",
+      "size": 4676805193
+    },
+    {
+      "provider": "ollama",
+      "id": "gemma4:latest",
+      "local": true,
+      "api_family": "ollama-chat",
+      "input_modalities": [
+        "text"
+      ],
+      "output_modalities": [
+        "text"
+      ],
+      "context_window": null,
+      "output_limit": 2048,
+      "structured_output": "JSON_SCHEMA_PROMPT_AND_VALIDATION",
+      "reasoning": "backend default; not inferred from tokens",
+      "timeout_ms": 60000,
+      "retries": 0,
+      "usage_accounting": "provider counters when available",
+      "price_usd": null,
+      "availability": "DISCOVERED_NOT_QUALIFIED",
+      "digest": "c6eb396dbd5992bbe3f5cdb947e8bbc0ee413d7c17e2beaae69f5d569cf982eb",
+      "size": 9608350718
+    },
+    {
+      "provider": "ollama",
+      "id": "mistral-nemo:latest",
+      "local": true,
+      "api_family": "ollama-chat",
+      "input_modalities": [
+        "text"
+      ],
+      "output_modalities": [
+        "text"
+      ],
+      "context_window": null,
+      "output_limit": 2048,
+      "structured_output": "JSON_SCHEMA_PROMPT_AND_VALIDATION",
+      "reasoning": "backend default; not inferred from tokens",
+      "timeout_ms": 60000,
+      "retries": 0,
+      "usage_accounting": "provider counters when available",
+      "price_usd": null,
+      "availability": "DISCOVERED_NOT_QUALIFIED",
+      "digest": "e7e06d107c6c86ed0cf45445f1790720b5092149c4c95f4d965844e9afbfdc89",
+      "size": 7071713227
+    },
+    {
+      "provider": "ollama",
+      "id": "qwen3.5:latest",
+      "local": true,
+      "api_family": "ollama-chat",
+      "input_modalities": [
+        "text"
+      ],
+      "output_modalities": [
+        "text"
+      ],
+      "context_window": null,
+      "output_limit": 2048,
+      "structured_output": "JSON_SCHEMA_PROMPT_AND_VALIDATION",
+      "reasoning": "backend default; not inferred from tokens",
+      "timeout_ms": 60000,
+      "retries": 0,
+      "usage_accounting": "provider counters when available",
+      "price_usd": null,
+      "availability": "DISCOVERED_NOT_QUALIFIED",
+      "digest": "6488c96fa5faab64bb65cbd30d4289e20e6130ef535a93ef9a49f42eda893ea7",
+      "size": 6594474711
+    },
+    {
+      "provider": "ollama",
+      "id": "qwen3.6:latest",
+      "local": true,
+      "api_family": "ollama-chat",
+      "input_modalities": [
+        "text"
+      ],
+      "output_modalities": [
+        "text"
+      ],
+      "context_window": null,
+      "output_limit": 2048,
+      "structured_output": "JSON_SCHEMA_PROMPT_AND_VALIDATION",
+      "reasoning": "backend default; not inferred from tokens",
+      "timeout_ms": 60000,
+      "retries": 0,
+      "usage_accounting": "provider counters when available",
+      "price_usd": null,
+      "availability": "DISCOVERED_NOT_QUALIFIED",
+      "digest": "07d35212591fc27746f0a317c975a6d68754fb38e9053d82e25f06057af28522",
+      "size": 23938333577
+    },
+    {
+      "provider": "ollama",
+      "id": "mistral:latest",
+      "local": true,
+      "api_family": "ollama-chat",
+      "input_modalities": [
+        "text"
+      ],
+      "output_modalities": [
+        "text"
+      ],
+      "context_window": null,
+      "output_limit": 2048,
+      "structured_output": "JSON_SCHEMA_PROMPT_AND_VALIDATION",
+      "reasoning": "backend default; not inferred from tokens",
+      "timeout_ms": 60000,
+      "retries": 0,
+      "usage_accounting": "provider counters when available",
+      "price_usd": null,
+      "availability": "DISCOVERED_NOT_QUALIFIED",
+      "digest": "6577803aa9a036369e481d648a2baebb381ebc6e897f2bb9a766a2aa7bfbc1cf",
+      "size": 4372824384
+    },
+    {
+      "provider": "ollama",
+      "id": "qwen3-coder-next:latest",
+      "local": true,
+      "api_family": "ollama-chat",
+      "input_modalities": [
+        "text"
+      ],
+      "output_modalities": [
+        "text"
+      ],
+      "context_window": null,
+      "output_limit": 2048,
+      "structured_output": "JSON_SCHEMA_PROMPT_AND_VALIDATION",
+      "reasoning": "backend default; not inferred from tokens",
+      "timeout_ms": 60000,
+      "retries": 0,
+      "usage_accounting": "provider counters when available",
+      "price_usd": null,
+      "availability": "DISCOVERED_NOT_QUALIFIED",
+      "digest": "ca06e9e4087c714d44355bf954099187890e63084b4a632b8e9956c4b9492074",
+      "size": 51741611823
+    },
+    {
+      "provider": "ollama",
+      "id": "deepseek-r1:latest",
+      "local": true,
+      "api_family": "ollama-chat",
+      "input_modalities": [
+        "text"
+      ],
+      "output_modalities": [
+        "text"
+      ],
+      "context_window": null,
+      "output_limit": 2048,
+      "structured_output": "JSON_SCHEMA_PROMPT_AND_VALIDATION",
+      "reasoning": "backend default; not inferred from tokens",
+      "timeout_ms": 60000,
+      "retries": 0,
+      "usage_accounting": "provider counters when available",
+      "price_usd": null,
+      "availability": "DISCOVERED_NOT_QUALIFIED",
+      "digest": "6995872bfe4c521a67b32da386cd21d5c6e819b6e0d62f79f64ec83be99f5763",
+      "size": 5225376047
+    },
+    {
+      "provider": "ollama",
+      "id": "llama3.1:8b",
+      "local": true,
+      "api_family": "ollama-chat",
+      "input_modalities": [
+        "text"
+      ],
+      "output_modalities": [
+        "text"
+      ],
+      "context_window": null,
+      "output_limit": 2048,
+      "structured_output": "JSON_SCHEMA_PROMPT_AND_VALIDATION",
+      "reasoning": "backend default; not inferred from tokens",
+      "timeout_ms": 60000,
+      "retries": 0,
+      "usage_accounting": "provider counters when available",
+      "price_usd": null,
+      "availability": "DISCOVERED_NOT_QUALIFIED",
+      "digest": "46e0c10c039e019119339687c3c1757cc81b9da49709a3b3924863ba87ca666e",
+      "size": 4920753328
+    },
+    {
+      "provider": "ollama",
+      "id": "ministral-3:8b",
+      "local": true,
+      "api_family": "ollama-chat",
+      "input_modalities": [
+        "text"
+      ],
+      "output_modalities": [
+        "text"
+      ],
+      "context_window": null,
+      "output_limit": 2048,
+      "structured_output": "JSON_SCHEMA_PROMPT_AND_VALIDATION",
+      "reasoning": "backend default; not inferred from tokens",
+      "timeout_ms": 60000,
+      "retries": 0,
+      "usage_accounting": "provider counters when available",
+      "price_usd": null,
+      "availability": "DISCOVERED_NOT_QUALIFIED",
+      "digest": "77300ee7514e14cacbee496270b49c5ce79a02acca789354eb37fa22197e0b72",
+      "size": 6022224665
+    },
+    {
+      "provider": "ollama",
+      "id": "t1c/deepseek-math-7b-rl:latest",
+      "local": true,
+      "api_family": "ollama-chat",
+      "input_modalities": [
+        "text"
+      ],
+      "output_modalities": [
+        "text"
+      ],
+      "context_window": null,
+      "output_limit": 2048,
+      "structured_output": "JSON_SCHEMA_PROMPT_AND_VALIDATION",
+      "reasoning": "backend default; not inferred from tokens",
+      "timeout_ms": 60000,
+      "retries": 0,
+      "usage_accounting": "provider counters when available",
+      "price_usd": null,
+      "availability": "DISCOVERED_NOT_QUALIFIED",
+      "digest": "5a7b7fcff0c2c3b0ddabb5152a65221c97765ee6692c0fa4c027012a5a70c037",
+      "size": 4223785222
+    },
+    {
+      "provider": "ollama",
+      "id": "mistral:7b-instruct",
+      "local": true,
+      "api_family": "ollama-chat",
+      "input_modalities": [
+        "text"
+      ],
+      "output_modalities": [
+        "text"
+      ],
+      "context_window": null,
+      "output_limit": 2048,
+      "structured_output": "JSON_SCHEMA_PROMPT_AND_VALIDATION",
+      "reasoning": "backend default; not inferred from tokens",
+      "timeout_ms": 60000,
+      "retries": 0,
+      "usage_accounting": "provider counters when available",
+      "price_usd": null,
+      "availability": "DISCOVERED_NOT_QUALIFIED",
+      "digest": "6577803aa9a036369e481d648a2baebb381ebc6e897f2bb9a766a2aa7bfbc1cf",
+      "size": 4372824384
+    },
+    {
+      "provider": "ollama",
+      "id": "qwen3:latest",
+      "local": true,
+      "api_family": "ollama-chat",
+      "input_modalities": [
+        "text"
+      ],
+      "output_modalities": [
+        "text"
+      ],
+      "context_window": null,
+      "output_limit": 2048,
+      "structured_output": "JSON_SCHEMA_PROMPT_AND_VALIDATION",
+      "reasoning": "backend default; not inferred from tokens",
+      "timeout_ms": 60000,
+      "retries": 0,
+      "usage_accounting": "provider counters when available",
+      "price_usd": null,
+      "availability": "DISCOVERED_NOT_QUALIFIED",
+      "digest": "500a1f067a9f782620b40bee6f7b0c89e17ae61f686b92c24933e4ca4b2b8b41",
+      "size": 5225388164
+    },
+    {
+      "provider": "ollama",
+      "id": "qwen2.5:0.5b",
+      "local": true,
+      "api_family": "ollama-chat",
+      "input_modalities": [
+        "text"
+      ],
+      "output_modalities": [
+        "text"
+      ],
+      "context_window": null,
+      "output_limit": 2048,
+      "structured_output": "JSON_SCHEMA_PROMPT_AND_VALIDATION",
+      "reasoning": "backend default; not inferred from tokens",
+      "timeout_ms": 60000,
+      "retries": 0,
+      "usage_accounting": "provider counters when available",
+      "price_usd": null,
+      "availability": "DISCOVERED_NOT_QUALIFIED",
+      "digest": "a8b0c51577010a279d933d14c2a8ab4b268079d44c5c8830c0a93900f1827c67",
+      "size": 397821319
+    },
+    {
+      "provider": "ollama",
+      "id": "gemma3:latest",
+      "local": true,
+      "api_family": "ollama-chat",
+      "input_modalities": [
+        "text"
+      ],
+      "output_modalities": [
+        "text"
+      ],
+      "context_window": null,
+      "output_limit": 2048,
+      "structured_output": "JSON_SCHEMA_PROMPT_AND_VALIDATION",
+      "reasoning": "backend default; not inferred from tokens",
+      "timeout_ms": 60000,
+      "retries": 0,
+      "usage_accounting": "provider counters when available",
+      "price_usd": null,
+      "availability": "DISCOVERED_NOT_QUALIFIED",
+      "digest": "a2af6cc3eb7fa8be8504abaf9b04e88f17a119ec3f04a3addf55f92841195f5a",
+      "size": 3338801804
+    },
+    {
+      "provider": "ollama",
+      "id": "smollm:latest",
+      "local": true,
+      "api_family": "ollama-chat",
+      "input_modalities": [
+        "text"
+      ],
+      "output_modalities": [
+        "text"
+      ],
+      "context_window": null,
+      "output_limit": 2048,
+      "structured_output": "JSON_SCHEMA_PROMPT_AND_VALIDATION",
+      "reasoning": "backend default; not inferred from tokens",
+      "timeout_ms": 60000,
+      "retries": 0,
+      "usage_accounting": "provider counters when available",
+      "price_usd": null,
+      "availability": "DISCOVERED_NOT_QUALIFIED",
+      "digest": "95f6557a0f0f1e1d08ba0d426e50de0927dd2b0861a384b193802c551b298c28",
+      "size": 990741362
+    },
+    {
+      "provider": "ollama",
+      "id": "exaone-deep:latest",
+      "local": true,
+      "api_family": "ollama-chat",
+      "input_modalities": [
+        "text"
+      ],
+      "output_modalities": [
+        "text"
+      ],
+      "context_window": null,
+      "output_limit": 2048,
+      "structured_output": "JSON_SCHEMA_PROMPT_AND_VALIDATION",
+      "reasoning": "backend default; not inferred from tokens",
+      "timeout_ms": 60000,
+      "retries": 0,
+      "usage_accounting": "provider counters when available",
+      "price_usd": null,
+      "availability": "DISCOVERED_NOT_QUALIFIED",
+      "digest": "106afe416a9effa9570d04231c25192fc254ac1b51f0f1cafed20a32060958c9",
+      "size": 4770665152
+    },
+    {
+      "provider": "ollama",
+      "id": "starcoder2:7b",
+      "local": true,
+      "api_family": "ollama-chat",
+      "input_modalities": [
+        "text"
+      ],
+      "output_modalities": [
+        "text"
+      ],
+      "context_window": null,
+      "output_limit": 2048,
+      "structured_output": "JSON_SCHEMA_PROMPT_AND_VALIDATION",
+      "reasoning": "backend default; not inferred from tokens",
+      "timeout_ms": 60000,
+      "retries": 0,
+      "usage_accounting": "provider counters when available",
+      "price_usd": null,
+      "availability": "DISCOVERED_NOT_QUALIFIED",
+      "digest": "1550ab21b10d3b3a53bcb13e628f3de773d9dbabe814d2315e5c0d8b9f3ef7e6",
+      "size": 4042813088
+    },
+    {
+      "provider": "ollama",
+      "id": "qwen2.5-coder:latest",
+      "local": true,
+      "api_family": "ollama-chat",
+      "input_modalities": [
+        "text"
+      ],
+      "output_modalities": [
+        "text"
+      ],
+      "context_window": null,
+      "output_limit": 2048,
+      "structured_output": "JSON_SCHEMA_PROMPT_AND_VALIDATION",
+      "reasoning": "backend default; not inferred from tokens",
+      "timeout_ms": 60000,
+      "retries": 0,
+      "usage_accounting": "provider counters when available",
+      "price_usd": null,
+      "availability": "DISCOVERED_NOT_QUALIFIED",
+      "digest": "dae161e27b0e90dd1856c8bb3209201fd6736d8eb66298e75ed87571486f4364",
+      "size": 4683087561
+    },
+    {
+      "provider": "ollama",
+      "id": "codellama:latest",
+      "local": true,
+      "api_family": "ollama-chat",
+      "input_modalities": [
+        "text"
+      ],
+      "output_modalities": [
+        "text"
+      ],
+      "context_window": null,
+      "output_limit": 2048,
+      "structured_output": "JSON_SCHEMA_PROMPT_AND_VALIDATION",
+      "reasoning": "backend default; not inferred from tokens",
+      "timeout_ms": 60000,
+      "retries": 0,
+      "usage_accounting": "provider counters when available",
+      "price_usd": null,
+      "availability": "DISCOVERED_NOT_QUALIFIED",
+      "digest": "8fdf8f752f6e80de33e82f381aba784c025982752cd1ae9377add66449d2225f",
+      "size": 3825910662
+    },
+    {
+      "provider": "ollama",
+      "id": "hf.co/ernanhughes/Fin-R1-Q8_0-GGUF:latest",
+      "local": true,
+      "api_family": "ollama-chat",
+      "input_modalities": [
+        "text"
+      ],
+      "output_modalities": [
+        "text"
+      ],
+      "context_window": null,
+      "output_limit": 2048,
+      "structured_output": "JSON_SCHEMA_PROMPT_AND_VALIDATION",
+      "reasoning": "backend default; not inferred from tokens",
+      "timeout_ms": 60000,
+      "retries": 0,
+      "usage_accounting": "provider counters when available",
+      "price_usd": null,
+      "availability": "DISCOVERED_NOT_QUALIFIED",
+      "digest": "d32443b1dfed554fb3e9b83d0809c594c06672e7a51c017876d0f99fb99d76b9",
+      "size": 8098527042
+    },
+    {
+      "provider": "ollama",
+      "id": "qwen2.5:1.5b",
+      "local": true,
+      "api_family": "ollama-chat",
+      "input_modalities": [
+        "text"
+      ],
+      "output_modalities": [
+        "text"
+      ],
+      "context_window": null,
+      "output_limit": 2048,
+      "structured_output": "JSON_SCHEMA_PROMPT_AND_VALIDATION",
+      "reasoning": "backend default; not inferred from tokens",
+      "timeout_ms": 60000,
+      "retries": 0,
+      "usage_accounting": "provider counters when available",
+      "price_usd": null,
+      "availability": "DISCOVERED_NOT_QUALIFIED",
+      "digest": "65ec06548149b04c096a120e4a6da9d4017ea809c91734ea5631e89f96ddc57b",
+      "size": 986061892
+    },
+    {
+      "provider": "ollama",
+      "id": "command-r7b:latest",
+      "local": true,
+      "api_family": "ollama-chat",
+      "input_modalities": [
+        "text"
+      ],
+      "output_modalities": [
+        "text"
+      ],
+      "context_window": null,
+      "output_limit": 2048,
+      "structured_output": "JSON_SCHEMA_PROMPT_AND_VALIDATION",
+      "reasoning": "backend default; not inferred from tokens",
+      "timeout_ms": 60000,
+      "retries": 0,
+      "usage_accounting": "provider counters when available",
+      "price_usd": null,
+      "availability": "DISCOVERED_NOT_QUALIFIED",
+      "digest": "ff4e9696ef9f19b62e3f7d7261c95dcc9bb15a7c0398493366d851119fe2e1ef",
+      "size": 5057031198
+    },
+    {
+      "provider": "ollama",
+      "id": "phi3:mini",
+      "local": true,
+      "api_family": "ollama-chat",
+      "input_modalities": [
+        "text"
+      ],
+      "output_modalities": [
+        "text"
+      ],
+      "context_window": null,
+      "output_limit": 2048,
+      "structured_output": "JSON_SCHEMA_PROMPT_AND_VALIDATION",
+      "reasoning": "backend default; not inferred from tokens",
+      "timeout_ms": 60000,
+      "retries": 0,
+      "usage_accounting": "provider counters when available",
+      "price_usd": null,
+      "availability": "DISCOVERED_NOT_QUALIFIED",
+      "digest": "4f222292793889a9a40a020799cfd28d53f3e01af25d48e06c5e708610fc47e9",
+      "size": 2176178913
+    },
+    {
+      "provider": "ollama",
+      "id": "openthinker:latest",
+      "local": true,
+      "api_family": "ollama-chat",
+      "input_modalities": [
+        "text"
+      ],
+      "output_modalities": [
+        "text"
+      ],
+      "context_window": null,
+      "output_limit": 2048,
+      "structured_output": "JSON_SCHEMA_PROMPT_AND_VALIDATION",
+      "reasoning": "backend default; not inferred from tokens",
+      "timeout_ms": 60000,
+      "retries": 0,
+      "usage_accounting": "provider counters when available",
+      "price_usd": null,
+      "availability": "DISCOVERED_NOT_QUALIFIED",
+      "digest": "4e61774f7d1cf8904be3dabb60ca353f0a431b3cd97b822b42ab9354ca355f86",
+      "size": 4683085261
+    },
+    {
+      "provider": "ollama",
+      "id": "llama3.2:latest",
+      "local": true,
+      "api_family": "ollama-chat",
+      "input_modalities": [
+        "text"
+      ],
+      "output_modalities": [
+        "text"
+      ],
+      "context_window": null,
+      "output_limit": 2048,
+      "structured_output": "JSON_SCHEMA_PROMPT_AND_VALIDATION",
+      "reasoning": "backend default; not inferred from tokens",
+      "timeout_ms": 60000,
+      "retries": 0,
+      "usage_accounting": "provider counters when available",
+      "price_usd": null,
+      "availability": "DISCOVERED_NOT_QUALIFIED",
+      "digest": "a80c4f17acd55265feec403c7aef86be0c25983ab279d83f3bcd3abbcb5b8b72",
+      "size": 2019393189
+    },
+    {
+      "provider": "ollama",
+      "id": "deepseek-r1:8b",
+      "local": true,
+      "api_family": "ollama-chat",
+      "input_modalities": [
+        "text"
+      ],
+      "output_modalities": [
+        "text"
+      ],
+      "context_window": null,
+      "output_limit": 2048,
+      "structured_output": "JSON_SCHEMA_PROMPT_AND_VALIDATION",
+      "reasoning": "backend default; not inferred from tokens",
+      "timeout_ms": 60000,
+      "retries": 0,
+      "usage_accounting": "provider counters when available",
+      "price_usd": null,
+      "availability": "DISCOVERED_NOT_QUALIFIED",
+      "digest": "6995872bfe4c521a67b32da386cd21d5c6e819b6e0d62f79f64ec83be99f5763",
+      "size": 5225376047
+    },
+    {
+      "provider": "ollama",
+      "id": "orca-mini:latest",
+      "local": true,
+      "api_family": "ollama-chat",
+      "input_modalities": [
+        "text"
+      ],
+      "output_modalities": [
+        "text"
+      ],
+      "context_window": null,
+      "output_limit": 2048,
+      "structured_output": "JSON_SCHEMA_PROMPT_AND_VALIDATION",
+      "reasoning": "backend default; not inferred from tokens",
+      "timeout_ms": 60000,
+      "retries": 0,
+      "usage_accounting": "provider counters when available",
+      "price_usd": null,
+      "availability": "DISCOVERED_NOT_QUALIFIED",
+      "digest": "2dbd9f439647093cf773c325b0b3081a11f1b1426d61dee8b946f8f6555a1755",
+      "size": 1979947443
+    },
+    {
+      "provider": "ollama",
+      "id": "zephyr:latest",
+      "local": true,
+      "api_family": "ollama-chat",
+      "input_modalities": [
+        "text"
+      ],
+      "output_modalities": [
+        "text"
+      ],
+      "context_window": null,
+      "output_limit": 2048,
+      "structured_output": "JSON_SCHEMA_PROMPT_AND_VALIDATION",
+      "reasoning": "backend default; not inferred from tokens",
+      "timeout_ms": 60000,
+      "retries": 0,
+      "usage_accounting": "provider counters when available",
+      "price_usd": null,
+      "availability": "DISCOVERED_NOT_QUALIFIED",
+      "digest": "bbe38b81adec6be8ff951d148864ed15a368aa2e8534a5092d444f184a56e354",
+      "size": 4109854934
+    },
+    {
+      "provider": "ollama",
+      "id": "mistral:7b-instruct-v0.2-q8_0",
+      "local": true,
+      "api_family": "ollama-chat",
+      "input_modalities": [
+        "text"
+      ],
+      "output_modalities": [
+        "text"
+      ],
+      "context_window": null,
+      "output_limit": 2048,
+      "structured_output": "JSON_SCHEMA_PROMPT_AND_VALIDATION",
+      "reasoning": "backend default; not inferred from tokens",
+      "timeout_ms": 60000,
+      "retries": 0,
+      "usage_accounting": "provider counters when available",
+      "price_usd": null,
+      "availability": "DISCOVERED_NOT_QUALIFIED",
+      "digest": "3f321fd2a1c310d57053a59cb9139809c7945ddf4437f8b21b8f450dea4f2d5e",
+      "size": 7696806087
+    },
+    {
+      "provider": "ollama",
+      "id": "llava:7b",
+      "local": true,
+      "api_family": "ollama-chat",
+      "input_modalities": [
+        "text"
+      ],
+      "output_modalities": [
+        "text"
+      ],
+      "context_window": null,
+      "output_limit": 2048,
+      "structured_output": "JSON_SCHEMA_PROMPT_AND_VALIDATION",
+      "reasoning": "backend default; not inferred from tokens",
+      "timeout_ms": 60000,
+      "retries": 0,
+      "usage_accounting": "provider counters when available",
+      "price_usd": null,
+      "availability": "DISCOVERED_NOT_QUALIFIED",
+      "digest": "8dd30f6b0cb19f555f2c7a7ebda861449ea2cc76bf1f44e262931f45fc81d081",
+      "size": 4733363377
+    },
+    {
+      "provider": "ollama",
+      "id": "nomic-embed-text:latest",
+      "local": true,
+      "api_family": "ollama-chat",
+      "input_modalities": [
+        "text"
+      ],
+      "output_modalities": [
+        "text"
+      ],
+      "context_window": null,
+      "output_limit": 2048,
+      "structured_output": "JSON_SCHEMA_PROMPT_AND_VALIDATION",
+      "reasoning": "backend default; not inferred from tokens",
+      "timeout_ms": 60000,
+      "retries": 0,
+      "usage_accounting": "provider counters when available",
+      "price_usd": null,
+      "availability": "DISCOVERED_NOT_QUALIFIED",
+      "digest": "0a109f422b47e3a30ba2b10eca18548e944e8a23073ee3f3e947efcf3c45e59f",
+      "size": 274302450
+    },
+    {
+      "provider": "ollama",
+      "id": "qwen2.5:latest",
+      "local": true,
+      "api_family": "ollama-chat",
+      "input_modalities": [
+        "text"
+      ],
+      "output_modalities": [
+        "text"
+      ],
+      "context_window": null,
+      "output_limit": 2048,
+      "structured_output": "JSON_SCHEMA_PROMPT_AND_VALIDATION",
+      "reasoning": "backend default; not inferred from tokens",
+      "timeout_ms": 60000,
+      "retries": 0,
+      "usage_accounting": "provider counters when available",
+      "price_usd": null,
+      "availability": "DISCOVERED_NOT_QUALIFIED",
+      "digest": "845dbda0ea48ed749caafd9e6037047aa19acfcfd82e704d7ca97d631a0b697e",
+      "size": 4683087332
+    },
+    {
+      "provider": "ollama",
+      "id": "mxbai-embed-large:latest",
+      "local": true,
+      "api_family": "ollama-chat",
+      "input_modalities": [
+        "text"
+      ],
+      "output_modalities": [
+        "text"
+      ],
+      "context_window": null,
+      "output_limit": 2048,
+      "structured_output": "JSON_SCHEMA_PROMPT_AND_VALIDATION",
+      "reasoning": "backend default; not inferred from tokens",
+      "timeout_ms": 60000,
+      "retries": 0,
+      "usage_accounting": "provider counters when available",
+      "price_usd": null,
+      "availability": "DISCOVERED_NOT_QUALIFIED",
+      "digest": "468836162de7f81e041c43663fedbbba921dcea9b9fefea135685a39b2d83dd8",
+      "size": 669615493
+    },
+    {
+      "provider": "ollama",
+      "id": "gemma:latest",
+      "local": true,
+      "api_family": "ollama-chat",
+      "input_modalities": [
+        "text"
+      ],
+      "output_modalities": [
+        "text"
+      ],
+      "context_window": null,
+      "output_limit": 2048,
+      "structured_output": "JSON_SCHEMA_PROMPT_AND_VALIDATION",
+      "reasoning": "backend default; not inferred from tokens",
+      "timeout_ms": 60000,
+      "retries": 0,
+      "usage_accounting": "provider counters when available",
+      "price_usd": null,
+      "availability": "DISCOVERED_NOT_QUALIFIED",
+      "digest": "a72c7f4d0a15522df81486d13ce432c79e191bda2558d024fbad4362c4f7cbf8",
+      "size": 5011853225
+    },
+    {
+      "provider": "ollama",
+      "id": "phi3:latest",
+      "local": true,
+      "api_family": "ollama-chat",
+      "input_modalities": [
+        "text"
+      ],
+      "output_modalities": [
+        "text"
+      ],
+      "context_window": null,
+      "output_limit": 2048,
+      "structured_output": "JSON_SCHEMA_PROMPT_AND_VALIDATION",
+      "reasoning": "backend default; not inferred from tokens",
+      "timeout_ms": 60000,
+      "retries": 0,
+      "usage_accounting": "provider counters when available",
+      "price_usd": null,
+      "availability": "DISCOVERED_NOT_QUALIFIED",
+      "digest": "4f222292793889a9a40a020799cfd28d53f3e01af25d48e06c5e708610fc47e9",
+      "size": 2176178913
+    },
+    {
+      "provider": "ollama",
+      "id": "phi4-mini:latest",
+      "local": true,
+      "api_family": "ollama-chat",
+      "input_modalities": [
+        "text"
+      ],
+      "output_modalities": [
+        "text"
+      ],
+      "context_window": null,
+      "output_limit": 2048,
+      "structured_output": "JSON_SCHEMA_PROMPT_AND_VALIDATION",
+      "reasoning": "backend default; not inferred from tokens",
+      "timeout_ms": 60000,
+      "retries": 0,
+      "usage_accounting": "provider counters when available",
+      "price_usd": null,
+      "availability": "DISCOVERED_NOT_QUALIFIED",
+      "digest": "78fad5d182a7c33065e153a5f8ba210754207ba9d91973f57dffa7f487363753",
+      "size": 2491876774
+    },
+    {
+      "provider": "ollama",
+      "id": "qwen:0.5b",
+      "local": true,
+      "api_family": "ollama-chat",
+      "input_modalities": [
+        "text"
+      ],
+      "output_modalities": [
+        "text"
+      ],
+      "context_window": null,
+      "output_limit": 2048,
+      "structured_output": "JSON_SCHEMA_PROMPT_AND_VALIDATION",
+      "reasoning": "backend default; not inferred from tokens",
+      "timeout_ms": 60000,
+      "retries": 0,
+      "usage_accounting": "provider counters when available",
+      "price_usd": null,
+      "availability": "DISCOVERED_NOT_QUALIFIED",
+      "digest": "b5dc5e784f2a3ee1582373093acf69a2f4e2ac1710b253a001712b86a61f88bb",
+      "size": 394998579
+    },
+    {
+      "provider": "ollama",
+      "id": "qwen3-coder:latest",
+      "local": true,
+      "api_family": "ollama-chat",
+      "input_modalities": [
+        "text"
+      ],
+      "output_modalities": [
+        "text"
+      ],
+      "context_window": null,
+      "output_limit": 2048,
+      "structured_output": "JSON_SCHEMA_PROMPT_AND_VALIDATION",
+      "reasoning": "backend default; not inferred from tokens",
+      "timeout_ms": 60000,
+      "retries": 0,
+      "usage_accounting": "provider counters when available",
+      "price_usd": null,
+      "availability": "DISCOVERED_NOT_QUALIFIED",
+      "digest": "06c1097efce0431c2045fe7b2e5108366e43bee1b4603a7aded8f21689e90bca",
+      "size": 18556700761
+    },
+    {
+      "provider": "ollama",
+      "id": "qwen3:0.6b",
+      "local": true,
+      "api_family": "ollama-chat",
+      "input_modalities": [
+        "text"
+      ],
+      "output_modalities": [
+        "text"
+      ],
+      "context_window": null,
+      "output_limit": 2048,
+      "structured_output": "JSON_SCHEMA_PROMPT_AND_VALIDATION",
+      "reasoning": "backend default; not inferred from tokens",
+      "timeout_ms": 60000,
+      "retries": 0,
+      "usage_accounting": "provider counters when available",
+      "price_usd": null,
+      "availability": "DISCOVERED_NOT_QUALIFIED",
+      "digest": "7df6b6e09427a769808717c0a93cadc4ae99ed4eb8bf5ca557c90846becea435",
+      "size": 522653767
+    },
+    {
+      "provider": "ollama",
+      "id": "smollm:1.7b",
+      "local": true,
+      "api_family": "ollama-chat",
+      "input_modalities": [
+        "text"
+      ],
+      "output_modalities": [
+        "text"
+      ],
+      "context_window": null,
+      "output_limit": 2048,
+      "structured_output": "JSON_SCHEMA_PROMPT_AND_VALIDATION",
+      "reasoning": "backend default; not inferred from tokens",
+      "timeout_ms": 60000,
+      "retries": 0,
+      "usage_accounting": "provider counters when available",
+      "price_usd": null,
+      "availability": "DISCOVERED_NOT_QUALIFIED",
+      "digest": "95f6557a0f0f1e1d08ba0d426e50de0927dd2b0861a384b193802c551b298c28",
+      "size": 990741362
+    },
+    {
+      "provider": "ollama",
+      "id": "llama3.2:1b",
+      "local": true,
+      "api_family": "ollama-chat",
+      "input_modalities": [
+        "text"
+      ],
+      "output_modalities": [
+        "text"
+      ],
+      "context_window": null,
+      "output_limit": 2048,
+      "structured_output": "JSON_SCHEMA_PROMPT_AND_VALIDATION",
+      "reasoning": "backend default; not inferred from tokens",
+      "timeout_ms": 60000,
+      "retries": 0,
+      "usage_accounting": "provider counters when available",
+      "price_usd": null,
+      "availability": "DISCOVERED_NOT_QUALIFIED",
+      "digest": "baf6a787fdffd633537aa2eb51cfd54cb93ff08e28040095462bb63daf552878",
+      "size": 1321098329
+    }
+  ],
+  "status": "DISCOVERED_NOT_QUALIFIED"
+}

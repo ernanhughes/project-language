@@ -1,0 +1,22 @@
+{
+  "status": "PASS",
+  "browser": "151.0.7922.34",
+  "checks": [
+    "configure",
+    "create",
+    "interpret",
+    "challenge",
+    "correct",
+    "accept",
+    "preview",
+    "deliver",
+    "deliver"
+  ],
+  "reload": true,
+  "download": true,
+  "narrow_screen_no_overflow": true,
+  "errors": [],
+  "external_requests": [],
+  "hosted_model_requests": 0,
+  "standing": "SCRIPTED_FIXTURE_NOT_REAL_MODEL_RESULT"
+}

@@ -1,0 +1,1 @@
+{"name":"language-studio","private":true,"type":"module","scripts":{"start":"node --experimental-transform-types server/app.mjs","test":"node --experimental-transform-types --test tests/*.test.mjs","browser":"node --experimental-transform-types tests/browser.mjs","local":"node --experimental-transform-types models/local-check.mjs"}}

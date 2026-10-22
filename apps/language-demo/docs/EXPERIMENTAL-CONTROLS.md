@@ -1,0 +1,7 @@
+# Controls and evidence standing
+
+SOURCE sends full source. PLAIN sends only the proposed/accepted interpretation text. MATCHED_PLAIN sends ordinary prose containing exactly the source information available in LANGUAGE. LANGUAGE renders accepted commitments and source-linked lineage. NEGOTIATED_LANGUAGE requires an accepted version created by correction. SOURCE, MATCHED_PLAIN, LANGUAGE and NEGOTIATED_LANGUAGE receive identical source bytes; differences in metadata and computation are displayed. PLAIN is intentionally unmatched and cannot establish a representation advantage.
+
+Sender calls are sealed before question exposure. Recipient requests have no transcript, challenges, host answer key or evaluator judgment. Context is disabled for all arms. Calls/tokens/latency/input bytes are reported per request; upstream interpretation/challenge calls remain visible and are not free. All arms use isolated calls. Model-role rotation is manual configuration, not a claim of independent models.
+
+Mechanical checks: schema validity, source/hash/span binding, version acceptance, exact source bytes, trace integrity, resource accounting. Commitment coverage is explicit IDs, not semantic preservation. Decision/reference comparisons are exposed development checks labelled UNADJUDICATED_REFERENCE. Explanation quality, unsupported additions and abstention appropriateness remain REQUIRES_REVIEW. No p-values, human benefit or Language advantage claim. No real-world actions.
