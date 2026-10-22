@@ -46,6 +46,6 @@
     "evidence/local-001/observation.json": "e780d8a76c646c0d8c623085a91c05fe3e85fde30fa692b26fef06c67692af8c",
     "evidence/local-001/report.html": "4ef8670b58ed0788f4abf3bfd71936bda84ec71374da78362abaeb5c248b5c1f",
     "evidence/fixture-communication-report.html": "236c3ce2f13eed26c446aae6022ec9b5d11e46c627b82c7a84fe866b2692679e",
-    ".gitattributes": "31583bb5a5c6dbd317a976e67fe246146ac7ce4c2ceb04e790f5fef21b822cc4"
+    ".gitattributes": "4034fedefe48c3ccab261d925c9651e2ffe399da703efbac2b328ea6a977ff25"
   }
 }
