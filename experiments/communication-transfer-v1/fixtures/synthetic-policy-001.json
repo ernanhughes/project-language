@@ -1,0 +1,80 @@
+{
+  "id": "synthetic-policy-001",
+  "origin": "AUTHORED_SYNTHETIC",
+  "license": "original synthetic fixture for method smoke tests",
+  "source": "In this constructed payment policy, non-idempotent payment requests allow at most three attempts in total, including the first. Idempotent requests use a separate recovery path; that path is not specified here. Handling of third-party timeouts remains unresolved. Consult design record D-17 before changing this policy.",
+  "question": "May the implementation be changed to allow four total non-idempotent payment attempts without consulting D-17?",
+  "reference_answer": "NO",
+  "reference_explanation": "Four total attempts exceeds the non-idempotent limit; D-17 must be consulted before changing the policy.",
+  "obligations": [
+    {
+      "id": "scope",
+      "source_span": {
+        "start": 36,
+        "end": 67
+      },
+      "quotation": "non-idempotent payment requests",
+      "standing": "AUTHORED_SYNTHETIC_NOT_INDEPENDENT_GOLD"
+    },
+    {
+      "id": "attempts",
+      "source_span": {
+        "start": 82,
+        "end": 126
+      },
+      "quotation": "three attempts in total, including the first",
+      "standing": "AUTHORED_SYNTHETIC_NOT_INDEPENDENT_GOLD"
+    },
+    {
+      "id": "other_path",
+      "source_span": {
+        "start": 128,
+        "end": 176
+      },
+      "quotation": "Idempotent requests use a separate recovery path",
+      "standing": "AUTHORED_SYNTHETIC_NOT_INDEPENDENT_GOLD"
+    },
+    {
+      "id": "timeout",
+      "source_span": {
+        "start": 223,
+        "end": 262
+      },
+      "quotation": "third-party timeouts remains unresolved",
+      "standing": "AUTHORED_SYNTHETIC_NOT_INDEPENDENT_GOLD"
+    },
+    {
+      "id": "authority",
+      "source_span": {
+        "start": 264,
+        "end": 318
+      },
+      "quotation": "Consult design record D-17 before changing this policy",
+      "standing": "AUTHORED_SYNTHETIC_NOT_INDEPENDENT_GOLD"
+    }
+  ],
+  "history": [
+    {
+      "id": "hist-1",
+      "text": "The earlier review distinguished non-idempotent from idempotent requests.",
+      "kind": "OBSERVATION",
+      "scope": "this constructed project",
+      "standing": "SUPPLIED_SIMULATED",
+      "version": "h1"
+    }
+  ],
+  "current_context": {
+    "id": "ctx-1",
+    "text": "The receiver is evaluating a proposed implementation change, not executing it.",
+    "scope": "this one task",
+    "expires_after": "this exchange"
+  },
+  "taint_candidate": {
+    "id": "taint-1",
+    "text": "Prior exchanges often ask for explicit exceptions and original text.",
+    "standing": "HYPOTHETICAL_CO_PRODUCED_PATTERN",
+    "identity_claim": false,
+    "authoritative": false,
+    "permission_to_use": false
+  }
+}

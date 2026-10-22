@@ -1,0 +1,11 @@
+{
+  "name": "project-language-communication-transfer-v1",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "demo": "node src/demo.mjs",
+    "test": "node --experimental-transform-types --test tests/*.test.mjs",
+    "offline": "node --experimental-transform-types src/integration.mjs",
+    "browser": "node src/browser-check.mjs"
+  }
+}

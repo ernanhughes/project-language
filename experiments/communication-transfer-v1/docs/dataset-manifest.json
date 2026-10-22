@@ -1,0 +1,16 @@
+{
+  "schema": "transfer-dataset-manifest/0.1",
+  "active_fixture": "synthetic-policy-001",
+  "active_standing": "AUTHORED_SYNTHETIC_NOT_INDEPENDENT_GOLD",
+  "external_import_status": "BLOCKED_CONTAMINATION_LEDGER_MISSING",
+  "dataset": "pminervini/HaluEval",
+  "revision": "12a856119f03975a94509091e8cada3e6be6ead7",
+  "config": "summarization",
+  "split": "data",
+  "license_declared_by_card": "apache-2.0",
+  "fields": ["document", "right_summary", "hallucinated_summary"],
+  "downloaded_files": [],
+  "selected_ids": [],
+  "prior_energy_use_ledger": null,
+  "human_adjudication": "NOT_PERFORMED"
+}

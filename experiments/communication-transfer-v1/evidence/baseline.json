@@ -1,0 +1,20 @@
+{
+  "head": "329660f679a5a87831f91fe1430c20ac9360dda8",
+  "status": "?? experiments/communication-transfer-v1/.gitignore\n?? experiments/communication-transfer-v1/EXPERIMENT.md\n?? experiments/communication-transfer-v1/README.md\n?? experiments/communication-transfer-v1/docs/LOCAL-IMPLEMENTATION-HANDOFF.md\n?? experiments/communication-transfer-v1/fixtures/synthetic-policy-001.json\n?? experiments/communication-transfer-v1/package.json\n?? experiments/communication-transfer-v1/src/analysis.mjs\n?? experiments/communication-transfer-v1/src/demo.mjs\n?? experiments/communication-transfer-v1/src/protocol.mjs\n?? experiments/communication-transfer-v1/src/viewer.mjs\n?? experiments/communication-transfer-v1/tests/protocol.test.mjs\n",
+  "index_sha256": "a93d89f40a3145eb9272dcd917bef6d0a73c4c432df106fa96f910fb34db39f5",
+  "files": {
+    "experiments/communication-transfer-v1/.gitignore": "3811351812416ec3d1aa5caa13981e2133c77a05b133a13ec73fda5742d977cf",
+    "experiments/communication-transfer-v1/artifacts/demo-traces.json": "d844de268756cb8426587c6de6fd73ff7b81590975216834e84c148e0ad073fb",
+    "experiments/communication-transfer-v1/artifacts/viewer.html": "bc30bfe87290f32db326bb14a79196a02987209651cf67e6fe0847ac0a1f60f2",
+    "experiments/communication-transfer-v1/docs/LOCAL-IMPLEMENTATION-HANDOFF.md": "1ccfd5059bbf5d9827b819b57fb192973114c0caaa4450d3d2af3508285f7867",
+    "experiments/communication-transfer-v1/EXPERIMENT.md": "bebb0a2fea79bd40ee0cfb41e6e6a8081d24d0cb3a784d66adc6e80e4bbeaa51",
+    "experiments/communication-transfer-v1/fixtures/synthetic-policy-001.json": "6ab6938a1035becb5331d448edbb501888717ea976b3b1284cd28659a18bd18e",
+    "experiments/communication-transfer-v1/package.json": "6a799e062d8c1330eb9c8b91715d941353e38770cde083b2ddef21a553295adb",
+    "experiments/communication-transfer-v1/README.md": "a1febe62d4ac42238aeb9e56ae5bbd431b496785680a973cc85ee0c3de17daf4",
+    "experiments/communication-transfer-v1/src/analysis.mjs": "d36dd6583d1f1df7a470c4fbf4d842e8699f80efa4cd1b8f4e987d7de470bcf0",
+    "experiments/communication-transfer-v1/src/demo.mjs": "79b89f15adccfd2701d2d63bd183f3d4c34699f639c03f803c21eb5fee896850",
+    "experiments/communication-transfer-v1/src/protocol.mjs": "8602c79b24fa77c362697f40194b564796f68fb9b602de84eb84a2a9f601237a",
+    "experiments/communication-transfer-v1/src/viewer.mjs": "c3bb49241bf323907f85e0057a222abc5dc40da91bc4d7eac7e07dc57fa36349",
+    "experiments/communication-transfer-v1/tests/protocol.test.mjs": "47d45989eded9ff739501bd8376ee54e0d7d4a897f75e52de615842e89ae73b6"
+  }
+}

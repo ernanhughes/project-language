@@ -1,0 +1,14 @@
+# Dataset provenance and disjoint selection — import blocked
+
+No dataset records were downloaded. The only executable fixture remains the supplied original synthetic policy. Public metadata was inspected on 2026-10-22.
+
+Prospective external source: [pminervini/HaluEval](https://huggingface.co/datasets/pminervini/HaluEval/tree/12a856119f03975a94509091e8cada3e6be6ead7). Immutable revision: `12a856119f03975a94509091e8cada3e6be6ead7`. The dataset card declares Apache-2.0, configuration `summarization`, split `data`, 10,000 rows, fields `document`, `right_summary`, `hallucinated_summary`. Preserve the license/card and original source provenance when importing; a dataset-card license does not adjudicate all underlying source rights or create independent semantic gold.
+
+1. Require a complete manifest of ALL prior Hallucination Energy fitting, development, calibration and evaluation records and source texts/hashes, including failed and parked use. No such complete ledger is supplied in this repository. Missing ledger blocks selection; an empty list is not evidence that nothing was used.
+2. Download only after a separate dataset preparation decision. Pin archive/parquet file names, SHA-256, row order, revision, acquisition time and attribution in a new manifest. Never use moving `main` as run identity.
+3. Stable record IDs: `pminervini/HaluEval@<revision>/summarization/data/<original-row-index>`. Preserve original row indexes before sorting. Pair both supplied summaries with their document; never split a document's adversarial pair.
+4. Normalize source with NFKC, lowercase and whitespace/punctuation folding. Exact normalized SHA-256 identity and connected components of five-word shingle Jaccard ≥0.8 are the initial exclusion rule. Exclude a whole component if any member overlaps prior use. Detect transitive bridges. Review remaining possible duplicates manually; this heuristic is not proof of semantic independence.
+5. Sort component identities deterministically; select 12 development components initially (maximum 20 only by separately approved plan). Keep all remaining eligible components prospective held-out. Hold out by source component, never summary row. Freeze selected IDs and exclusion reasons. Future independent adjudication creates task-specific obligations, not automatic gold from `right_summary`.
+6. No held-out tuning of prompts, rubrics, observer calibration or duplicate thresholds. Seen material must be relabelled exposed development. Retain selection failures and source contamination reports.
+
+`src/dataset-plan.mjs` is an offline selection helper, not a downloader. It rejects absent ledger attestation and missing immutable revision; regression tests check exact/near duplicates and prior-use exclusion. No real split IDs have been selected. Dataset execution status: BLOCKED_CONTAMINATION_LEDGER_MISSING.
