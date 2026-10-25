@@ -1,0 +1,13 @@
+{
+  "status": "PASS",
+  "create_exchange_local_only": true,
+  "persistent_disabled_create_explained": true,
+  "next_interpreter_enabled": true,
+  "model_identity_and_elapsed_progress": true,
+  "duplicate_buttons_disabled": true,
+  "completion_and_reload": true,
+  "scope_mismatch_explained_and_manual_approval_recovers": true,
+  "injected_model_requests": 1,
+  "real_model_requests": 0,
+  "errors": []
+}

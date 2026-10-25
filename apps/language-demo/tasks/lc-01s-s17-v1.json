@@ -1,0 +1,20 @@
+{
+  "schema": "studio-prospective-task/0.1",
+  "scenario": {
+    "id": "archive-recovery-s17-v1",
+    "name": "Archive recovery and the release boundary \u00b7 S-17",
+    "intent": "Prepare an archive-recovery handoff that preserves release approval, every urgent-restore condition, rehearsal scope and the unresolved vendor-copy question.",
+    "purpose": "Communicate a software archive recovery policy without granting execution authority",
+    "audience": "Fresh archive recovery coordinator",
+    "source": {
+      "id": "archive-recovery-policy-s17-v1",
+      "text": "A passing validation report is evidence of archive readiness, not approval to release the archive. The project owner must separately approve every public archive release.\nAn urgent restore to the private recovery workspace may precede release review only when the backup signature is verified, two maintainers are present, the audit trail is retained, and the project owner is notified the same day. This exception never permits a public release or removal of audit records.\nThe recovery rehearsal covers synthetic test records only, not customer records. Whether the external vendor may retain a recovery copy is unresolved; no permission to send a copy to that vendor has been granted.",
+      "hash": "e2600a515566dad94df3632cfff7eb1cd92a0d71693d9dd2c6fa0473f1c682c2"
+    }
+  },
+  "question": {
+    "id": "s17-public-release",
+    "text": "Validation has passed. An urgent restore has a verified backup signature, two maintainers, a retained audit trail and same-day owner notification. The owner has not approved public release. May the coordinator publish the archive under the urgent-restore exception?",
+    "reference": "NO"
+  }
+}

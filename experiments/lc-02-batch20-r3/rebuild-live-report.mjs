@@ -1,0 +1,24 @@
+import {readFileSync,writeFileSync,readdirSync} from 'node:fs';
+import {join,relative,resolve} from 'node:path';
+import {createHash} from 'node:crypto';
+import {writeFreshReports} from '../lc-02-batch20-r2/fresh-report.mjs';
+import {analyzeLive} from './analyze-live.mjs';
+
+const run='experiments/lc-02-batch20-r3/.runs/LIVE-V2-001';
+const design=JSON.parse(readFileSync('experiments/lc-02-batch20-r1/fixtures/fresh-evaluation-v2.json','utf8'));
+const results=JSON.parse(readFileSync(join(run,'results.json'),'utf8'));
+const manifest=JSON.parse(readFileSync(join(run,'manifest.json'),'utf8'));
+const ledgerLines=readFileSync(join(run,'LIVE-REQUEST-LEDGER.jsonl'),'utf8').trim().split('\n').filter(Boolean).length;
+const arms=['A_SOURCE_ONLY','B_AI_MEDIATED','C_UNDERSTANDING_ENHANCED'];
+const cases=design.cases.map(c=>({...c,split:'fresh_evaluation',source_id:c.id+'-source-v1',question_id:c.id+'-question-v1',question_scope:c.scope}));
+const records=results.rows.map(r=>({id:r.id,expected:r.expected,arms:Object.fromEntries(arms.map(a=>[a,{status:r.arms[a].status,output:r.arms[a].status==='VALID'?{decision:r.arms[a].decision,explanation:r.arms[a].explanation,citations:r.arms[a].citations}:undefined,mechanical:r.arms[a].mechanical,error:r.arms[a].error}]))}));
+const metadata={...manifest,mode:'live',standing:'EXPLORATORY_LIVE_UNADJUDICATED',maximum_requests:manifest.maximum_requests??80,planned_calls:80,absolute_request_ceiling:100};
+const report=writeFreshReports({out:run,frozen:design,cases,records,metadata});
+const analysis=analyzeLive(run);
+const actualRequests=report.requests;
+metadata.hosted_requests=actualRequests;metadata.reservations=ledgerLines;metadata.aborted_before_transport=ledgerLines-actualRequests;
+const resultData=JSON.parse(readFileSync(join(run,'results.json'),'utf8'));resultData.metadata.hosted_requests=actualRequests;resultData.metadata.reservations=ledgerLines;resultData.metadata.aborted_before_transport=ledgerLines-actualRequests;writeFileSync(join(run,'results.json'),JSON.stringify(resultData,null,2)+'\n');
+const sha=bytes=>createHash('sha256').update(bytes).digest('hex');
+writeFileSync(join(run,'manifest.json'),JSON.stringify({...metadata,mechanical:report.checks,analysis_summary:{unnecessary_abstention_candidates:analysis.unnecessary_abstention_candidates.length,missing_condition_candidates:analysis.missing_condition_candidates.length,c_only_better:analysis.c_only_better.length,c_only_worse:analysis.c_only_worse.length,ties_correct:analysis.ties_correct.length,ties_wrong:analysis.ties_wrong.length,mechanical_failures:analysis.mechanical_failures.length}},null,2)+'\n');
+const hashes={};const walk=p=>{for(const e of readdirSync(p,{withFileTypes:true})){const f=join(p,e.name);if(e.isDirectory())walk(f);else if(e.name!=='artifact-hashes.json')hashes[relative(run,f).replaceAll('\\','/')]=sha(readFileSync(f));}};walk(run);writeFileSync(join(run,'artifact-hashes.json'),JSON.stringify({schema:'lc02-r3-live-artifacts/0.1',files:hashes},null,2)+'\n');
+console.log(JSON.stringify({status:'LIVE_REPORT_REBUILT',checks:report.checks.map(c=>c.status+' '+c.check),analysis:{unnecessary:analysis.unnecessary_abstention_candidates.length,missing:analysis.missing_condition_candidates.length,cBetter:analysis.c_only_better.length,cWorse:analysis.c_only_worse.length,tiesCorrect:analysis.ties_correct.length,tiesWrong:analysis.ties_wrong.length,mechanical:analysis.mechanical_failures.length}},null,2));

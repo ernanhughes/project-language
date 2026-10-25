@@ -1,0 +1,358 @@
+{
+  "schema": "language-batch-comparison/1.0",
+  "id": "LC-02-BATCH20-2026-10-23",
+  "title": "Understanding-enhanced communication: 20 source-to-recipient cases",
+  "research_standing": "EXPLORATORY_NOT_CONFIRMATORY",
+  "purpose": "Compare ordinary source delivery, AI-mediated delivery, and Understanding-enhanced AI-mediated delivery using the same question and fresh recipients.",
+  "research_questions": [
+    "Does mediation improve decisions relative to direct source?",
+    "Does giving an unverified meaning inventory to the interpreter help or harm compared with interpretation alone?",
+    "Can independent analysis identify altered meaning without mistaking lexical matches for semantic equivalence?"
+  ],
+  "authoring_note": "All cases are synthetic, author-constructed. The oracle is separate and not independently adjudicated. Case examples must not be reused as training examples for evaluation cases.",
+  "arms": [
+    {
+      "id": "A_SOURCE_ONLY",
+      "description": "Exactly the source + question, with only a common task-neutral instruction to the recipient. No interpreter or compiler-derived hints."
+    },
+    {
+      "id": "B_AI_MEDIATED",
+      "description": "Source + intent/context to interpreter; source + its resulting proposal to fresh recipient. No Understanding inventory supplied to interpreter."
+    },
+    {
+      "id": "C_UNDERSTANDING_ENHANCED",
+      "description": "Source compiled locally; provisional inventory + source to interpreter; source + resulting proposal to fresh recipient."
+    }
+  ],
+  "execution": {
+    "development_before_evaluation": true,
+    "reuse_recipient_model_across_arms": true,
+    "fresh_recipient_session_each_case_and_arm": true,
+    "randomize_arm_order_per_case_with_saved_seed": true,
+    "no_chained_context_between_cases": true,
+    "no_tools_or_external_actions_by_recipients": true,
+    "allow_infrastructure_retry_only_if_separately_logged": true,
+    "no_semantic_autocorrection_on_evaluation_split": true,
+    "report_per_case_and_per_arm": true,
+    "no_evaluation_oracle_leakage": true
+  },
+  "interpretation_notes": "Use appropriate configured profile. The general profile for interview and fiction is exploratory and not domain-qualified. For B/C, no output may acquire action authority from source-described permissions.",
+  "cases": [
+    {
+      "id": "LC20-01",
+      "split": "development",
+      "domain": "technical-policy",
+      "profile": "technical-policy",
+      "topic": "Readiness versus authorisation",
+      "source_id": "lc20-01-source-v1",
+      "source": "The deployment rehearsal completed successfully and the readiness report is green. A green report establishes that the proposed package passed rehearsal checks; it does not authorise production rollout. Every production rollout requires separate sign-off from the service owner. No service-owner sign-off has been issued for release R17.",
+      "question_id": "lc20-01-question-v1",
+      "question": "Can the coordinator roll out release R17 to production now?",
+      "stressors": [
+        "readiness-versus-authority",
+        "negation"
+      ]
+    },
+    {
+      "id": "LC20-02",
+      "split": "development",
+      "domain": "technical-policy",
+      "profile": "technical-policy",
+      "topic": "Narrow emergency permission satisfied",
+      "source_id": "lc20-02-source-v1",
+      "source": "An incident operator may restore a service into the isolated recovery environment before the normal change review, but only if a signed known-good image is used and the audit log remains intact. Such a restore must not expose the recovery environment to customers. For incident I42 the image signature was verified, the audit log is intact, and the target is the isolated recovery environment. The operator is proposing only this private restore.",
+      "question_id": "lc20-02-question-v1",
+      "question": "May the operator perform the proposed private restore for incident I42 before normal review?",
+      "stressors": [
+        "permission",
+        "all-conditions-met",
+        "scope"
+      ]
+    },
+    {
+      "id": "LC20-03",
+      "split": "development",
+      "domain": "technical-policy",
+      "profile": "technical-policy",
+      "topic": "Unresolved vendor status",
+      "source_id": "lc20-03-source-v1",
+      "source": "The storage service may keep an encrypted on-premises recovery snapshot for fourteen days. Whether the outside replication vendor may retain its own recovery copy has not been decided. The current record contains neither an approval nor a denial of vendor retention. The service owner will decide after the privacy review.",
+      "question_id": "lc20-03-question-v1",
+      "question": "Has the outside replication vendor been approved to retain its recovery copy?",
+      "stressors": [
+        "unknown",
+        "permission-versus-uncertainty"
+      ]
+    },
+    {
+      "id": "LC20-04",
+      "split": "development",
+      "domain": "technical-policy",
+      "profile": "technical-policy",
+      "topic": "Synthetic data boundary",
+      "source_id": "lc20-04-source-v1",
+      "source": "The rehearsal dataset consists entirely of synthetic test accounts. The runbook permits the test team to copy those synthetic accounts to the validation environment. The permission does not cover customer accounts or production customer records. The requested copy contains twenty production customer records.",
+      "question_id": "lc20-04-question-v1",
+      "question": "Does this rehearsal permission allow the requested copy containing production customer records?",
+      "stressors": [
+        "scope-exception",
+        "data-category"
+      ]
+    },
+    {
+      "id": "LC20-05",
+      "split": "development",
+      "domain": "interview",
+      "profile": "general",
+      "topic": "Quoted instruction versus operative direction",
+      "source_id": "lc20-05-source-v1",
+      "source": "Interviewer: What did the old handbook say? Engineer: It said, “Delete all audit records after a rollback.” Interviewer: Is that instruction in force now? Engineer: No. The current policy requires preserving all audit records and the old handbook has been retired.",
+      "question_id": "lc20-05-question-v1",
+      "question": "Does the current policy instruct operators to delete audit records after rollback?",
+      "stressors": [
+        "attribution",
+        "quotation",
+        "supersession"
+      ]
+    },
+    {
+      "id": "LC20-06",
+      "split": "development",
+      "domain": "technical-policy",
+      "profile": "technical-policy",
+      "topic": "Missing evidence versus explicit failure",
+      "source_id": "lc20-06-source-v1",
+      "source": "The weekend deployment checklist requires an independent reviewer to sign the release note. The operations log records the build hash and the rehearsal result. It contains no reviewer-signature entry, but the operations log is not the repository where signatures are stored. No independent review status is provided in the available documents.",
+      "question_id": "lc20-06-question-v1",
+      "question": "Has the requirement for an independent reviewer signature been satisfied?",
+      "stressors": [
+        "absence-of-evidence",
+        "unknown",
+        "source-limit"
+      ]
+    },
+    {
+      "id": "LC20-07",
+      "split": "evaluation",
+      "domain": "technical-policy",
+      "profile": "technical-policy",
+      "topic": "Conjunctive approval conditions",
+      "source_id": "lc20-07-source-v1",
+      "source": "A release candidate can be sent to the staging cluster once security review and release-management review have both been accepted. Neither review may substitute for the other. The security review of candidate K8 is accepted. Release management recorded acceptance of K8 yesterday. Staging is separate from production and this policy makes no production deployment grant.",
+      "question_id": "lc20-07-question-v1",
+      "question": "May candidate K8 be sent to staging under this policy?",
+      "stressors": [
+        "conjunction",
+        "role-separation",
+        "scope"
+      ]
+    },
+    {
+      "id": "LC20-08",
+      "split": "evaluation",
+      "domain": "technical-policy",
+      "profile": "technical-policy",
+      "topic": "Security exception limited by later clause",
+      "source_id": "lc20-08-source-v1",
+      "source": "Routine credentials must remain in the encrypted vault. During an outage, operators may retrieve the backup credential into a temporary isolated terminal for diagnostics if an incident ticket is open. This exception does not allow posting the credential in a shared chat or copying it into a public issue. Incident ticket Q12 is open and an operator proposes posting the credential into the incident chat.",
+      "question_id": "lc20-08-question-v1",
+      "question": "Does the outage exception permit the operator to post the credential in the shared incident chat?",
+      "stressors": [
+        "cross-sentence-exception",
+        "scope",
+        "prohibition"
+      ]
+    },
+    {
+      "id": "LC20-09",
+      "split": "evaluation",
+      "domain": "technical-policy",
+      "profile": "technical-policy",
+      "topic": "Unspecified retention interval",
+      "source_id": "lc20-09-source-v1",
+      "source": "The backup policy requires weekly snapshots. Only the latest three weekly snapshots are guaranteed to remain accessible through the automated portal. The policy does not state how long older offline archives may be retained. An archive from six weeks ago is held off-site, and no retention schedule for that storage location is provided.",
+      "question_id": "lc20-09-question-v1",
+      "question": "Is the six-week-old off-site archive required to have been deleted by now?",
+      "stressors": [
+        "not-mentioned",
+        "scope",
+        "unknown"
+      ]
+    },
+    {
+      "id": "LC20-10",
+      "split": "evaluation",
+      "domain": "technical-policy",
+      "profile": "technical-policy",
+      "topic": "Conditional escalation threshold",
+      "source_id": "lc20-10-source-v1",
+      "source": "The incident desk may page the on-call database engineer when replication lag stays above twenty seconds for at least five continuous minutes. The dashboard shows lag above twenty seconds for the last seven uninterrupted minutes. The alert was measured on the production replica specified by the policy. Paging is permitted; restarting the replica still requires a separate incident command.",
+      "question_id": "lc20-10-question-v1",
+      "question": "May the incident desk page the on-call database engineer now?",
+      "stressors": [
+        "numeric-threshold",
+        "duration",
+        "action-specific-permission"
+      ]
+    },
+    {
+      "id": "LC20-11",
+      "split": "evaluation",
+      "domain": "technical-policy",
+      "profile": "technical-policy",
+      "topic": "Possibility versus permission",
+      "source_id": "lc20-11-source-v1",
+      "source": "A failed checksum may indicate that the replica is stale. The investigation note offers this as one possible explanation, not a verified cause. The note does not grant an operator permission to discard the replica. Replica deletion remains subject to the separate change-control policy, which is not included here.",
+      "question_id": "lc20-11-question-v1",
+      "question": "Does the investigation note authorise an operator to delete the replica?",
+      "stressors": [
+        "epistemic-may",
+        "authority",
+        "unknown-external-policy"
+      ]
+    },
+    {
+      "id": "LC20-12",
+      "split": "evaluation",
+      "domain": "technical-policy",
+      "profile": "technical-policy",
+      "topic": "Future decision explicitly unresolved",
+      "source_id": "lc20-12-source-v1",
+      "source": "The vendor asked to replicate an internal diagnostic snapshot next quarter. The source policy says the privacy team has not yet decided whether vendor replication will be authorised. The privacy team will announce its decision after completing a supplier assessment. No future decision or commitment is recorded.",
+      "question_id": "lc20-12-question-v1",
+      "question": "Will the privacy team approve the vendor replication request next quarter?",
+      "stressors": [
+        "future-unknown",
+        "prediction-versus-source"
+      ]
+    },
+    {
+      "id": "LC20-13",
+      "split": "evaluation",
+      "domain": "interview",
+      "profile": "general",
+      "topic": "Speaker attribution with qualified internal approval",
+      "source_id": "lc20-13-source-v1",
+      "source": "Reviewer: Can the draft go to the internal working group? Chair: Yes, I approve circulating the draft inside that group. Reviewer: Is it also approved for public publication? Chair: No. Publication requires a separate editorial vote that has not happened. Editor: I will prepare the group copy only.",
+      "question_id": "lc20-13-question-v1",
+      "question": "May the editor circulate the draft inside the internal working group?",
+      "stressors": [
+        "speaker-attribution",
+        "nested-scopes",
+        "approval"
+      ]
+    },
+    {
+      "id": "LC20-14",
+      "split": "evaluation",
+      "domain": "interview",
+      "profile": "general",
+      "topic": "Obsolete quoted rule",
+      "source_id": "lc20-14-source-v1",
+      "source": "Host: Someone posted “All candidates are automatically approved when tests pass.” Is that the present rule? Compliance lead: No, that was a discarded draft from last year. The current release policy requires a named approver for every deployment. Host: Does a clean test report waive that approver? Compliance lead: It does not.",
+      "question_id": "lc20-14-question-v1",
+      "question": "Under the current release policy, may a candidate be deployed solely because tests pass?",
+      "stressors": [
+        "reported-speech",
+        "supersession",
+        "negation"
+      ]
+    },
+    {
+      "id": "LC20-15",
+      "split": "evaluation",
+      "domain": "fiction",
+      "profile": "general",
+      "topic": "Narrative rule and event",
+      "source_id": "lc20-15-source-v1",
+      "source": "In the city of Halden, the night bridge may be crossed only while its blue lantern is burning. The keeper lit the blue lantern at midnight and guarded it until sunrise. Mara reached the bridge an hour after midnight, saw the lantern still burning, and walked across. Nothing else in the story restricts her crossing.",
+      "question_id": "lc20-15-question-v1",
+      "question": "Under the fictional city rule, was Mara permitted to cross when she did?",
+      "stressors": [
+        "fictional-world",
+        "temporal-state",
+        "permission"
+      ]
+    },
+    {
+      "id": "LC20-16",
+      "split": "evaluation",
+      "domain": "fiction",
+      "profile": "general",
+      "topic": "Unreliable witness and undetermined event",
+      "source_id": "lc20-16-source-v1",
+      "source": "Nera heard a crash somewhere beyond the locked conservatory. She thought the glass door might have broken, but she could not see the door from the corridor. In the next scene the narrator says only that the conservatory remained closed. No character inspected the glass and the narrator never confirmed its condition.",
+      "question_id": "lc20-16-question-v1",
+      "question": "Did the glass door definitely break?",
+      "stressors": [
+        "fiction",
+        "epistemic-uncertainty",
+        "narrator-vs-character"
+      ]
+    },
+    {
+      "id": "LC20-17",
+      "split": "evaluation",
+      "domain": "technical-policy",
+      "profile": "technical-policy",
+      "topic": "Distinct approval roles",
+      "source_id": "lc20-17-source-v1",
+      "source": "The change committee approved the release design and the security lead approved the test plan. Neither approval authorises deployment. A deployment is permitted only after the production owner signs a release grant for that particular version. No production-owner grant has been signed for version V9, although the other two approvals are recorded.",
+      "question_id": "lc20-17-question-v1",
+      "question": "May version V9 now be deployed to production?",
+      "stressors": [
+        "role-disambiguation",
+        "approval-authority",
+        "version-binding"
+      ]
+    },
+    {
+      "id": "LC20-18",
+      "split": "evaluation",
+      "domain": "technical-policy",
+      "profile": "technical-policy",
+      "topic": "Inclusive versus exclusive threshold",
+      "source_id": "lc20-18-source-v1",
+      "source": "The internal review queue accepts a batch if it contains no more than forty records. Batches with forty-one or more records must be split before submission. The proposed batch contains exactly forty records. The quota concerns this internal review queue and does not say anything about public release.",
+      "question_id": "lc20-18-question-v1",
+      "question": "May the exactly-forty-record batch be submitted to the internal review queue without splitting?",
+      "stressors": [
+        "threshold-inclusive",
+        "numbers",
+        "scope"
+      ]
+    },
+    {
+      "id": "LC20-19",
+      "split": "evaluation",
+      "domain": "technical-policy",
+      "profile": "technical-policy",
+      "topic": "Explicit deadline and time zone",
+      "source_id": "lc20-19-source-v1",
+      "source": "The service-owner-approved exception window closes at 17:00 UTC on 16 October 2026. Requests timestamped after the closing time are outside the exception and require fresh owner approval. The system recorded the proposed request at 18:00 UTC on 16 October 2026. No fresh approval has been recorded.",
+      "question_id": "lc20-19-question-v1",
+      "question": "Can this request use the original exception without new owner approval?",
+      "stressors": [
+        "time-order",
+        "expiry",
+        "approval"
+      ]
+    },
+    {
+      "id": "LC20-20",
+      "split": "evaluation",
+      "domain": "technical-policy",
+      "profile": "technical-policy",
+      "topic": "Unresolved contradictory provisions",
+      "source_id": "lc20-20-source-v1",
+      "source": "The current policy excerpt says, “After the readiness review passes, the operations lead may publish the internal report.” The next paragraph of the same version says, “The operations lead must never publish that internal report, including after a passed readiness review.” Both paragraphs carry the same effective date. The excerpt provides no precedence rule, correction notice, or authority to resolve the conflict.",
+      "question_id": "lc20-20-question-v1",
+      "question": "Does this policy unambiguously permit the operations lead to publish the internal report after a passed review?",
+      "stressors": [
+        "contradiction",
+        "same-scope",
+        "source-conflict"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,4211 @@
+{
+  "schema": "lc02-r7-three-way/0.1",
+  "standing": "OFFLINE_EXPLORATORY_PROVISIONAL_REFERENCES",
+  "split": "development",
+  "corpus_freeze": {
+    "development-cases.json": "686467eeee3af23f01eacfab958c6953a969c3734b2f2c58f8e3b11af8764963",
+    "evaluation-cases.json": "4a1d64ef4a0d26b7c68b23177052168b92862b93a451ccf17444ab20e6b0177a",
+    "development-references.json": "ca26544c699ff3d4fc6e1ef8d3b2dd52a54fa349a7468d9ada8cefa67d6dba84",
+    "evaluation-references.json": "9a1a4b6aec363cf3482af94d3f90fda7d738748e1e959768faec853624a32529"
+  },
+  "reviewer_mode": "scripted",
+  "reviewer_model": {
+    "provider": "scripted-reviewer",
+    "id": "scripted",
+    "digest": "SCRIPTED",
+    "size": null,
+    "parameter_size": null,
+    "quantization": null
+  },
+  "reviewer_prompt_version": "lc02-r7-review-prompt/0.2",
+  "deterministic_version": "lc02-r6-semantic-check/0.1",
+  "metrics": {
+    "A": {
+      "cases": 12,
+      "corruption_cases": 8,
+      "detected_corruptions": 7,
+      "missed_corruptions": [
+        "R7-D05"
+      ],
+      "detection_rate": 0.875,
+      "false_acceptances": [],
+      "faithful_cases": 3,
+      "faithful_accepted": 2,
+      "false_rejections": [
+        "R7-D07"
+      ],
+      "unnecessary_clarifications": [
+        "R7-D05"
+      ],
+      "ambiguity_cases": 1,
+      "ambiguity_correct": 1,
+      "justified_uncertainty_clean": [
+        "R7-D10"
+      ],
+      "invented_uncertainty_clean": [
+        "R7-D11"
+      ],
+      "missing_condition_correct": [
+        "R7-D04"
+      ],
+      "exception_scope_correct": [],
+      "causal_correct": [
+        "R7-D12"
+      ],
+      "epistemic_correct": [
+        "R7-D06"
+      ],
+      "source_grounded": 10,
+      "policy_correct": 10,
+      "policy_accuracy": 0.8333333333333334,
+      "latency_ms": {
+        "avg": 959.4980500000001,
+        "max": 994.9173000000001
+      },
+      "usage": null
+    },
+    "B": {
+      "cases": 12,
+      "corruption_cases": 8,
+      "detected_corruptions": 0,
+      "missed_corruptions": [
+        "R7-D01",
+        "R7-D02",
+        "R7-D03",
+        "R7-D04",
+        "R7-D05",
+        "R7-D06",
+        "R7-D11",
+        "R7-D12"
+      ],
+      "detection_rate": 0,
+      "false_acceptances": [],
+      "faithful_cases": 3,
+      "faithful_accepted": 0,
+      "false_rejections": [],
+      "unnecessary_clarifications": [
+        "R7-D01",
+        "R7-D02",
+        "R7-D03",
+        "R7-D04",
+        "R7-D05",
+        "R7-D06",
+        "R7-D07",
+        "R7-D08",
+        "R7-D09",
+        "R7-D11",
+        "R7-D12"
+      ],
+      "ambiguity_cases": 1,
+      "ambiguity_correct": 1,
+      "justified_uncertainty_clean": [],
+      "invented_uncertainty_clean": [],
+      "missing_condition_correct": [],
+      "exception_scope_correct": [],
+      "causal_correct": [],
+      "epistemic_correct": [],
+      "source_grounded": 0,
+      "policy_correct": 1,
+      "policy_accuracy": 0.08333333333333333,
+      "reviewer_errors": [
+        "R7-D01",
+        "R7-D02",
+        "R7-D03",
+        "R7-D04",
+        "R7-D05",
+        "R7-D06",
+        "R7-D07",
+        "R7-D08",
+        "R7-D09",
+        "R7-D10",
+        "R7-D11",
+        "R7-D12"
+      ],
+      "latency_ms": {
+        "avg": 0.24156666666669935,
+        "max": 1.2186000000001513
+      },
+      "usage": {
+        "input": 0,
+        "output": 0
+      }
+    },
+    "C": {
+      "cases": 12,
+      "corruption_cases": 8,
+      "detected_corruptions": 7,
+      "missed_corruptions": [
+        "R7-D05"
+      ],
+      "detection_rate": 0.875,
+      "false_acceptances": [],
+      "faithful_cases": 3,
+      "faithful_accepted": 0,
+      "false_rejections": [
+        "R7-D07"
+      ],
+      "unnecessary_clarifications": [
+        "R7-D05",
+        "R7-D08",
+        "R7-D09"
+      ],
+      "ambiguity_cases": 1,
+      "ambiguity_correct": 1,
+      "justified_uncertainty_clean": [
+        "R7-D10"
+      ],
+      "invented_uncertainty_clean": [
+        "R7-D11"
+      ],
+      "missing_condition_correct": [
+        "R7-D04"
+      ],
+      "exception_scope_correct": [],
+      "causal_correct": [
+        "R7-D12"
+      ],
+      "epistemic_correct": [
+        "R7-D06"
+      ],
+      "source_grounded": 10,
+      "policy_correct": 8,
+      "policy_accuracy": 0.6666666666666666,
+      "disagreements": 0,
+      "latency_ms": {
+        "avg": 0,
+        "max": 0
+      },
+      "usage": null
+    }
+  },
+  "rows": [
+    {
+      "id": "R7-D01",
+      "case_type": "CORRUPTION",
+      "corruption_class": "WRITTEN_NUMBER_CHANGE",
+      "expected_policy": "PRESERVE_SOURCE",
+      "expected_findings": [
+        {
+          "type": "CHANGED_CANDIDATE",
+          "distinction": "SCOPE_OR_QUANTITY_CHANGE",
+          "source_quote": "The reading room accepts reservations for at most ninety seats.",
+          "transformation_quote": "The reading room accepts reservations for at most one hundred seats.",
+          "severity": "MATERIAL"
+        }
+      ],
+      "deterministic": {
+        "policy": "PRESERVE_SOURCE",
+        "policy_class": "CORRECT",
+        "detected": true,
+        "matched": [
+          {
+            "expected": {
+              "type": "CHANGED_CANDIDATE",
+              "distinction": "SCOPE_OR_QUANTITY_CHANGE",
+              "source_quote": "The reading room accepts reservations for at most ninety seats.",
+              "transformation_quote": "The reading room accepts reservations for at most one hundred seats.",
+              "severity": "MATERIAL"
+            },
+            "source": true,
+            "transformation": true,
+            "matched": true
+          }
+        ],
+        "findings": [
+          {
+            "id": "f2",
+            "type": "CHANGED_CANDIDATE",
+            "distinction": "SCOPE_OR_QUANTITY_CHANGE",
+            "source_spans": [
+              {
+                "origin": "ORIGINAL_SOURCE",
+                "source_id": "R7-D01-source",
+                "source_hash": "749aedd7343b5561a534bf5725431a23be2e4bc12242629a48c634566022cea5",
+                "start": 42,
+                "end": 62,
+                "text": "at most ninety seats"
+              }
+            ],
+            "transformation_spans": [
+              {
+                "origin": "ORIGINAL_SOURCE",
+                "source_id": "R7-D01-transformation",
+                "source_hash": "b44aec4903c5a4053e078214acd317c7f82f293c63bec857f54eb9473db6c063",
+                "start": 42,
+                "end": 67,
+                "text": "at most one hundred seats"
+              }
+            ],
+            "method": "LEXICAL_RULE_HEURISTIC",
+            "standing": "CANDIDATE_REQUIRES_REVIEW",
+            "severity": "MATERIAL",
+            "confidence": "HIGH",
+            "reason": "Source constraint <= 90 seats; transformation <= 100 seats."
+          }
+        ],
+        "material": [
+          {
+            "id": "f2",
+            "type": "CHANGED_CANDIDATE",
+            "distinction": "SCOPE_OR_QUANTITY_CHANGE",
+            "source_spans": [
+              {
+                "origin": "ORIGINAL_SOURCE",
+                "source_id": "R7-D01-source",
+                "source_hash": "749aedd7343b5561a534bf5725431a23be2e4bc12242629a48c634566022cea5",
+                "start": 42,
+                "end": 62,
+                "text": "at most ninety seats"
+              }
+            ],
+            "transformation_spans": [
+              {
+                "origin": "ORIGINAL_SOURCE",
+                "source_id": "R7-D01-transformation",
+                "source_hash": "b44aec4903c5a4053e078214acd317c7f82f293c63bec857f54eb9473db6c063",
+                "start": 42,
+                "end": 67,
+                "text": "at most one hundred seats"
+              }
+            ],
+            "method": "LEXICAL_RULE_HEURISTIC",
+            "standing": "CANDIDATE_REQUIRES_REVIEW",
+            "severity": "MATERIAL",
+            "confidence": "HIGH",
+            "reason": "Source constraint <= 90 seats; transformation <= 100 seats."
+          }
+        ],
+        "constraints": {
+          "source": [
+            {
+              "id": "sc1",
+              "kind": "OTHER",
+              "operator": "<=",
+              "value": 90,
+              "unit": "seats",
+              "action": "the reading room accepts reservations for",
+              "source_spans": [
+                {
+                  "origin": "ORIGINAL_SOURCE",
+                  "source_id": "R7-D01-source",
+                  "source_hash": "749aedd7343b5561a534bf5725431a23be2e4bc12242629a48c634566022cea5",
+                  "start": 42,
+                  "end": 62,
+                  "text": "at most ninety seats"
+                }
+              ],
+              "transformation_spans": [],
+              "standing": "SOURCE_STATED",
+              "method": "LEXICAL_CONSTRAINT_HEURISTIC"
+            }
+          ],
+          "transformation": [
+            {
+              "id": "tc1",
+              "kind": "OTHER",
+              "operator": "<=",
+              "value": 100,
+              "unit": "seats",
+              "action": "the reading room accepts reservations for",
+              "source_spans": [],
+              "transformation_spans": [
+                {
+                  "origin": "ORIGINAL_SOURCE",
+                  "source_id": "R7-D01-transformation",
+                  "source_hash": "b44aec4903c5a4053e078214acd317c7f82f293c63bec857f54eb9473db6c063",
+                  "start": 42,
+                  "end": 67,
+                  "text": "at most one hundred seats"
+                }
+              ],
+              "standing": "TRANSFORMATION_STATED",
+              "method": "LEXICAL_CONSTRAINT_HEURISTIC"
+            }
+          ],
+          "comparisons": [
+            {
+              "id": "cc1",
+              "source_constraint": "sc1",
+              "transformation_constraint": "tc1",
+              "result": "CHANGED_CANDIDATE",
+              "distinction": "CONSTRAINT_CHANGE",
+              "reason": "Source constraint <= 90 seats; transformation <= 100 seats.",
+              "standing": "CANDIDATE_REQUIRES_REVIEW"
+            }
+          ]
+        },
+        "latency_ms": 994.9173000000001
+      },
+      "reviewer": {
+        "status": "SCRIPTED",
+        "error": null,
+        "policy": "REQUEST_CLARIFICATION",
+        "policy_class": "UNNECESSARY_CLARIFICATION",
+        "detected": false,
+        "matched": [
+          {
+            "expected": {
+              "type": "CHANGED_CANDIDATE",
+              "distinction": "SCOPE_OR_QUANTITY_CHANGE",
+              "source_quote": "The reading room accepts reservations for at most ninety seats.",
+              "transformation_quote": "The reading room accepts reservations for at most one hundred seats.",
+              "severity": "MATERIAL"
+            },
+            "source": false,
+            "transformation": false,
+            "matched": false
+          }
+        ],
+        "assessments": [],
+        "abstentions": [],
+        "summary": "Scripted reviewer: no material change proposed.",
+        "mapped": [],
+        "latency_ms": 1.2186000000001513,
+        "usage": null
+      },
+      "hybrid": {
+        "policy": "PRESERVE_SOURCE",
+        "policy_class": "CORRECT",
+        "detected": true,
+        "matched": [
+          {
+            "expected": {
+              "type": "CHANGED_CANDIDATE",
+              "distinction": "SCOPE_OR_QUANTITY_CHANGE",
+              "source_quote": "The reading room accepts reservations for at most ninety seats.",
+              "transformation_quote": "The reading room accepts reservations for at most one hundred seats.",
+              "severity": "MATERIAL"
+            },
+            "source": true,
+            "transformation": true,
+            "matched": true
+          }
+        ],
+        "primary_detected": true,
+        "primary_matched": [
+          {
+            "expected": {
+              "type": "CHANGED_CANDIDATE",
+              "distinction": "SCOPE_OR_QUANTITY_CHANGE",
+              "source_quote": "The reading room accepts reservations for at most ninety seats.",
+              "transformation_quote": "The reading room accepts reservations for at most one hundred seats.",
+              "severity": "MATERIAL"
+            },
+            "source": true,
+            "transformation": true,
+            "matched": true
+          }
+        ],
+        "findings": [
+          {
+            "id": "f2",
+            "origin": "DETERMINISTIC",
+            "reviewer_assessment_id": null,
+            "claim": "Source constraint <= 90 seats; transformation <= 100 seats.",
+            "change_kind": null,
+            "epistemic_direction": null,
+            "type": "CHANGED_CANDIDATE",
+            "distinction": "SCOPE_OR_QUANTITY_CHANGE",
+            "severity": "MATERIAL",
+            "confidence": "HIGH",
+            "source_spans": [
+              {
+                "origin": "ORIGINAL_SOURCE",
+                "source_id": "R7-D01-source",
+                "source_hash": "749aedd7343b5561a534bf5725431a23be2e4bc12242629a48c634566022cea5",
+                "start": 42,
+                "end": 62,
+                "text": "at most ninety seats"
+              }
+            ],
+            "transformation_spans": [
+              {
+                "origin": "ORIGINAL_SOURCE",
+                "source_id": "R7-D01-transformation",
+                "source_hash": "b44aec4903c5a4053e078214acd317c7f82f293c63bec857f54eb9473db6c063",
+                "start": 42,
+                "end": 67,
+                "text": "at most one hundred seats"
+              }
+            ],
+            "reason": "Source constraint <= 90 seats; transformation <= 100 seats.",
+            "status": "DETERMINISTIC_ONLY",
+            "dispute_reason": null,
+            "mapping_basis": null,
+            "standing": "CANDIDATE_REQUIRES_REVIEW"
+          }
+        ],
+        "primary_findings": [
+          {
+            "id": "f2",
+            "origin": "DETERMINISTIC",
+            "reviewer_assessment_id": null,
+            "claim": "Source constraint <= 90 seats; transformation <= 100 seats.",
+            "change_kind": null,
+            "epistemic_direction": null,
+            "type": "CHANGED_CANDIDATE",
+            "distinction": "SCOPE_OR_QUANTITY_CHANGE",
+            "severity": "MATERIAL",
+            "confidence": "HIGH",
+            "source_spans": [
+              {
+                "origin": "ORIGINAL_SOURCE",
+                "source_id": "R7-D01-source",
+                "source_hash": "749aedd7343b5561a534bf5725431a23be2e4bc12242629a48c634566022cea5",
+                "start": 42,
+                "end": 62,
+                "text": "at most ninety seats"
+              }
+            ],
+            "transformation_spans": [
+              {
+                "origin": "ORIGINAL_SOURCE",
+                "source_id": "R7-D01-transformation",
+                "source_hash": "b44aec4903c5a4053e078214acd317c7f82f293c63bec857f54eb9473db6c063",
+                "start": 42,
+                "end": 67,
+                "text": "at most one hundred seats"
+              }
+            ],
+            "reason": "Source constraint <= 90 seats; transformation <= 100 seats.",
+            "status": "DETERMINISTIC_ONLY",
+            "dispute_reason": null,
+            "mapping_basis": null,
+            "standing": "CANDIDATE_REQUIRES_REVIEW"
+          }
+        ],
+        "disagreements": [],
+        "reviewer_status": "SCRIPTED"
+      },
+      "source": {
+        "id": "R7-D01-source",
+        "text": "The reading room accepts reservations for at most ninety seats. A request for eighty seats is pending.",
+        "hash": "749aedd7343b5561a534bf5725431a23be2e4bc12242629a48c634566022cea5"
+      },
+      "transformation": {
+        "id": "R7-D01-transformation",
+        "text": "The reading room accepts reservations for at most one hundred seats. A request for eighty seats is pending.",
+        "hash": "b44aec4903c5a4053e078214acd317c7f82f293c63bec857f54eb9473db6c063"
+      }
+    },
+    {
+      "id": "R7-D02",
+      "case_type": "CORRUPTION",
+      "corruption_class": "INCLUSIVE_EXCLUSIVE_BOUNDARY",
+      "expected_policy": "PRESERVE_SOURCE",
+      "expected_findings": [
+        {
+          "type": "CHANGED_CANDIDATE",
+          "distinction": "SCOPE_OR_QUANTITY_CHANGE",
+          "source_quote": "The autoclave may process loads of no more than twelve trays.",
+          "transformation_quote": "The autoclave may process loads of fewer than twelve trays.",
+          "severity": "MATERIAL"
+        }
+      ],
+      "deterministic": {
+        "policy": "PRESERVE_SOURCE",
+        "policy_class": "CORRECT",
+        "detected": true,
+        "matched": [
+          {
+            "expected": {
+              "type": "CHANGED_CANDIDATE",
+              "distinction": "SCOPE_OR_QUANTITY_CHANGE",
+              "source_quote": "The autoclave may process loads of no more than twelve trays.",
+              "transformation_quote": "The autoclave may process loads of fewer than twelve trays.",
+              "severity": "MATERIAL"
+            },
+            "source": true,
+            "transformation": true,
+            "matched": true
+          }
+        ],
+        "findings": [
+          {
+            "id": "f2",
+            "type": "CHANGED_CANDIDATE",
+            "distinction": "SCOPE_OR_QUANTITY_CHANGE",
+            "source_spans": [
+              {
+                "origin": "ORIGINAL_SOURCE",
+                "source_id": "R7-D02-source",
+                "source_hash": "0ac6778f61aea4c0996826aa536c4094b7ec632decc2433ad4cb4c589cc4197c",
+                "start": 35,
+                "end": 60,
+                "text": "no more than twelve trays"
+              }
+            ],
+            "transformation_spans": [
+              {
+                "origin": "ORIGINAL_SOURCE",
+                "source_id": "R7-D02-transformation",
+                "source_hash": "a938f77e719feab9132a91d78d39acd0184cb64d6726c2ba93cd17071be79166",
+                "start": 35,
+                "end": 58,
+                "text": "fewer than twelve trays"
+              }
+            ],
+            "method": "LEXICAL_RULE_HEURISTIC",
+            "standing": "CANDIDATE_REQUIRES_REVIEW",
+            "severity": "MATERIAL",
+            "confidence": "HIGH",
+            "reason": "Source constraint <= 12 trays; transformation < 12 trays."
+          }
+        ],
+        "material": [
+          {
+            "id": "f2",
+            "type": "CHANGED_CANDIDATE",
+            "distinction": "SCOPE_OR_QUANTITY_CHANGE",
+            "source_spans": [
+              {
+                "origin": "ORIGINAL_SOURCE",
+                "source_id": "R7-D02-source",
+                "source_hash": "0ac6778f61aea4c0996826aa536c4094b7ec632decc2433ad4cb4c589cc4197c",
+                "start": 35,
+                "end": 60,
+                "text": "no more than twelve trays"
+              }
+            ],
+            "transformation_spans": [
+              {
+                "origin": "ORIGINAL_SOURCE",
+                "source_id": "R7-D02-transformation",
+                "source_hash": "a938f77e719feab9132a91d78d39acd0184cb64d6726c2ba93cd17071be79166",
+                "start": 35,
+                "end": 58,
+                "text": "fewer than twelve trays"
+              }
+            ],
+            "method": "LEXICAL_RULE_HEURISTIC",
+            "standing": "CANDIDATE_REQUIRES_REVIEW",
+            "severity": "MATERIAL",
+            "confidence": "HIGH",
+            "reason": "Source constraint <= 12 trays; transformation < 12 trays."
+          }
+        ],
+        "constraints": {
+          "source": [
+            {
+              "id": "sc1",
+              "kind": "OTHER",
+              "operator": "<=",
+              "value": 12,
+              "unit": "trays",
+              "action": "the autoclave may process loads of",
+              "source_spans": [
+                {
+                  "origin": "ORIGINAL_SOURCE",
+                  "source_id": "R7-D02-source",
+                  "source_hash": "0ac6778f61aea4c0996826aa536c4094b7ec632decc2433ad4cb4c589cc4197c",
+                  "start": 35,
+                  "end": 60,
+                  "text": "no more than twelve trays"
+                }
+              ],
+              "transformation_spans": [],
+              "standing": "SOURCE_STATED",
+              "method": "LEXICAL_CONSTRAINT_HEURISTIC"
+            }
+          ],
+          "transformation": [
+            {
+              "id": "tc1",
+              "kind": "OTHER",
+              "operator": "<",
+              "value": 12,
+              "unit": "trays",
+              "action": "the autoclave may process loads of",
+              "source_spans": [],
+              "transformation_spans": [
+                {
+                  "origin": "ORIGINAL_SOURCE",
+                  "source_id": "R7-D02-transformation",
+                  "source_hash": "a938f77e719feab9132a91d78d39acd0184cb64d6726c2ba93cd17071be79166",
+                  "start": 35,
+                  "end": 58,
+                  "text": "fewer than twelve trays"
+                }
+              ],
+              "standing": "TRANSFORMATION_STATED",
+              "method": "LEXICAL_CONSTRAINT_HEURISTIC"
+            }
+          ],
+          "comparisons": [
+            {
+              "id": "cc1",
+              "source_constraint": "sc1",
+              "transformation_constraint": "tc1",
+              "result": "CHANGED_CANDIDATE",
+              "distinction": "CONSTRAINT_CHANGE",
+              "reason": "Source constraint <= 12 trays; transformation < 12 trays.",
+              "standing": "CANDIDATE_REQUIRES_REVIEW"
+            }
+          ]
+        },
+        "latency_ms": 985.3043999999998
+      },
+      "reviewer": {
+        "status": "SCRIPTED",
+        "error": null,
+        "policy": "REQUEST_CLARIFICATION",
+        "policy_class": "UNNECESSARY_CLARIFICATION",
+        "detected": false,
+        "matched": [
+          {
+            "expected": {
+              "type": "CHANGED_CANDIDATE",
+              "distinction": "SCOPE_OR_QUANTITY_CHANGE",
+              "source_quote": "The autoclave may process loads of no more than twelve trays.",
+              "transformation_quote": "The autoclave may process loads of fewer than twelve trays.",
+              "severity": "MATERIAL"
+            },
+            "source": false,
+            "transformation": false,
+            "matched": false
+          }
+        ],
+        "assessments": [],
+        "abstentions": [],
+        "summary": "Scripted reviewer: no material change proposed.",
+        "mapped": [],
+        "latency_ms": 0.14349999999967622,
+        "usage": null
+      },
+      "hybrid": {
+        "policy": "PRESERVE_SOURCE",
+        "policy_class": "CORRECT",
+        "detected": true,
+        "matched": [
+          {
+            "expected": {
+              "type": "CHANGED_CANDIDATE",
+              "distinction": "SCOPE_OR_QUANTITY_CHANGE",
+              "source_quote": "The autoclave may process loads of no more than twelve trays.",
+              "transformation_quote": "The autoclave may process loads of fewer than twelve trays.",
+              "severity": "MATERIAL"
+            },
+            "source": true,
+            "transformation": true,
+            "matched": true
+          }
+        ],
+        "primary_detected": true,
+        "primary_matched": [
+          {
+            "expected": {
+              "type": "CHANGED_CANDIDATE",
+              "distinction": "SCOPE_OR_QUANTITY_CHANGE",
+              "source_quote": "The autoclave may process loads of no more than twelve trays.",
+              "transformation_quote": "The autoclave may process loads of fewer than twelve trays.",
+              "severity": "MATERIAL"
+            },
+            "source": true,
+            "transformation": true,
+            "matched": true
+          }
+        ],
+        "findings": [
+          {
+            "id": "f2",
+            "origin": "DETERMINISTIC",
+            "reviewer_assessment_id": null,
+            "claim": "Source constraint <= 12 trays; transformation < 12 trays.",
+            "change_kind": null,
+            "epistemic_direction": null,
+            "type": "CHANGED_CANDIDATE",
+            "distinction": "SCOPE_OR_QUANTITY_CHANGE",
+            "severity": "MATERIAL",
+            "confidence": "HIGH",
+            "source_spans": [
+              {
+                "origin": "ORIGINAL_SOURCE",
+                "source_id": "R7-D02-source",
+                "source_hash": "0ac6778f61aea4c0996826aa536c4094b7ec632decc2433ad4cb4c589cc4197c",
+                "start": 35,
+                "end": 60,
+                "text": "no more than twelve trays"
+              }
+            ],
+            "transformation_spans": [
+              {
+                "origin": "ORIGINAL_SOURCE",
+                "source_id": "R7-D02-transformation",
+                "source_hash": "a938f77e719feab9132a91d78d39acd0184cb64d6726c2ba93cd17071be79166",
+                "start": 35,
+                "end": 58,
+                "text": "fewer than twelve trays"
+              }
+            ],
+            "reason": "Source constraint <= 12 trays; transformation < 12 trays.",
+            "status": "DETERMINISTIC_ONLY",
+            "dispute_reason": null,
+            "mapping_basis": null,
+            "standing": "CANDIDATE_REQUIRES_REVIEW"
+          }
+        ],
+        "primary_findings": [
+          {
+            "id": "f2",
+            "origin": "DETERMINISTIC",
+            "reviewer_assessment_id": null,
+            "claim": "Source constraint <= 12 trays; transformation < 12 trays.",
+            "change_kind": null,
+            "epistemic_direction": null,
+            "type": "CHANGED_CANDIDATE",
+            "distinction": "SCOPE_OR_QUANTITY_CHANGE",
+            "severity": "MATERIAL",
+            "confidence": "HIGH",
+            "source_spans": [
+              {
+                "origin": "ORIGINAL_SOURCE",
+                "source_id": "R7-D02-source",
+                "source_hash": "0ac6778f61aea4c0996826aa536c4094b7ec632decc2433ad4cb4c589cc4197c",
+                "start": 35,
+                "end": 60,
+                "text": "no more than twelve trays"
+              }
+            ],
+            "transformation_spans": [
+              {
+                "origin": "ORIGINAL_SOURCE",
+                "source_id": "R7-D02-transformation",
+                "source_hash": "a938f77e719feab9132a91d78d39acd0184cb64d6726c2ba93cd17071be79166",
+                "start": 35,
+                "end": 58,
+                "text": "fewer than twelve trays"
+              }
+            ],
+            "reason": "Source constraint <= 12 trays; transformation < 12 trays.",
+            "status": "DETERMINISTIC_ONLY",
+            "dispute_reason": null,
+            "mapping_basis": null,
+            "standing": "CANDIDATE_REQUIRES_REVIEW"
+          }
+        ],
+        "disagreements": [],
+        "reviewer_status": "SCRIPTED"
+      },
+      "source": {
+        "id": "R7-D02-source",
+        "text": "The autoclave may process loads of no more than twelve trays.",
+        "hash": "0ac6778f61aea4c0996826aa536c4094b7ec632decc2433ad4cb4c589cc4197c"
+      },
+      "transformation": {
+        "id": "R7-D02-transformation",
+        "text": "The autoclave may process loads of fewer than twelve trays.",
+        "hash": "a938f77e719feab9132a91d78d39acd0184cb64d6726c2ba93cd17071be79166"
+      }
+    },
+    {
+      "id": "R7-D03",
+      "case_type": "CORRUPTION",
+      "corruption_class": "DURATION_THRESHOLD_CHANGE",
+      "expected_policy": "PRESERVE_SOURCE",
+      "expected_findings": [
+        {
+          "type": "CHANGED_CANDIDATE",
+          "distinction": "SCOPE_OR_QUANTITY_CHANGE",
+          "source_quote": "Forklift charging is permitted after at least thirty minutes of cool-down.",
+          "transformation_quote": "Forklift charging is permitted after more than thirty minutes of cool-down.",
+          "severity": "MATERIAL"
+        }
+      ],
+      "deterministic": {
+        "policy": "PRESERVE_SOURCE",
+        "policy_class": "CORRECT",
+        "detected": true,
+        "matched": [
+          {
+            "expected": {
+              "type": "CHANGED_CANDIDATE",
+              "distinction": "SCOPE_OR_QUANTITY_CHANGE",
+              "source_quote": "Forklift charging is permitted after at least thirty minutes of cool-down.",
+              "transformation_quote": "Forklift charging is permitted after more than thirty minutes of cool-down.",
+              "severity": "MATERIAL"
+            },
+            "source": true,
+            "transformation": true,
+            "matched": true
+          }
+        ],
+        "findings": [
+          {
+            "id": "f2",
+            "type": "CHANGED_CANDIDATE",
+            "distinction": "SCOPE_OR_QUANTITY_CHANGE",
+            "source_spans": [
+              {
+                "origin": "ORIGINAL_SOURCE",
+                "source_id": "R7-D03-source",
+                "source_hash": "1d546c3edbbca4dea45068323d0aa77b36a080784109215158a5b2d2d028fee9",
+                "start": 37,
+                "end": 68,
+                "text": "at least thirty minutes of cool"
+              }
+            ],
+            "transformation_spans": [
+              {
+                "origin": "ORIGINAL_SOURCE",
+                "source_id": "R7-D03-transformation",
+                "source_hash": "a39225d8624c622a590d87642d47e65edf4e90dcb59ec780876df1bee953ff78",
+                "start": 37,
+                "end": 69,
+                "text": "more than thirty minutes of cool"
+              }
+            ],
+            "method": "LEXICAL_RULE_HEURISTIC",
+            "standing": "CANDIDATE_REQUIRES_REVIEW",
+            "severity": "MATERIAL",
+            "confidence": "HIGH",
+            "reason": "Source constraint >= 30 minutes; transformation > 30 minutes."
+          }
+        ],
+        "material": [
+          {
+            "id": "f2",
+            "type": "CHANGED_CANDIDATE",
+            "distinction": "SCOPE_OR_QUANTITY_CHANGE",
+            "source_spans": [
+              {
+                "origin": "ORIGINAL_SOURCE",
+                "source_id": "R7-D03-source",
+                "source_hash": "1d546c3edbbca4dea45068323d0aa77b36a080784109215158a5b2d2d028fee9",
+                "start": 37,
+                "end": 68,
+                "text": "at least thirty minutes of cool"
+              }
+            ],
+            "transformation_spans": [
+              {
+                "origin": "ORIGINAL_SOURCE",
+                "source_id": "R7-D03-transformation",
+                "source_hash": "a39225d8624c622a590d87642d47e65edf4e90dcb59ec780876df1bee953ff78",
+                "start": 37,
+                "end": 69,
+                "text": "more than thirty minutes of cool"
+              }
+            ],
+            "method": "LEXICAL_RULE_HEURISTIC",
+            "standing": "CANDIDATE_REQUIRES_REVIEW",
+            "severity": "MATERIAL",
+            "confidence": "HIGH",
+            "reason": "Source constraint >= 30 minutes; transformation > 30 minutes."
+          }
+        ],
+        "constraints": {
+          "source": [
+            {
+              "id": "sc1",
+              "kind": "DURATION",
+              "operator": ">=",
+              "value": 30,
+              "unit": "minutes",
+              "action": "forklift charging is permitted after",
+              "source_spans": [
+                {
+                  "origin": "ORIGINAL_SOURCE",
+                  "source_id": "R7-D03-source",
+                  "source_hash": "1d546c3edbbca4dea45068323d0aa77b36a080784109215158a5b2d2d028fee9",
+                  "start": 37,
+                  "end": 68,
+                  "text": "at least thirty minutes of cool"
+                }
+              ],
+              "transformation_spans": [],
+              "standing": "SOURCE_STATED",
+              "method": "LEXICAL_CONSTRAINT_HEURISTIC"
+            }
+          ],
+          "transformation": [
+            {
+              "id": "tc1",
+              "kind": "DURATION",
+              "operator": ">",
+              "value": 30,
+              "unit": "minutes",
+              "action": "forklift charging is permitted after",
+              "source_spans": [],
+              "transformation_spans": [
+                {
+                  "origin": "ORIGINAL_SOURCE",
+                  "source_id": "R7-D03-transformation",
+                  "source_hash": "a39225d8624c622a590d87642d47e65edf4e90dcb59ec780876df1bee953ff78",
+                  "start": 37,
+                  "end": 69,
+                  "text": "more than thirty minutes of cool"
+                }
+              ],
+              "standing": "TRANSFORMATION_STATED",
+              "method": "LEXICAL_CONSTRAINT_HEURISTIC"
+            }
+          ],
+          "comparisons": [
+            {
+              "id": "cc1",
+              "source_constraint": "sc1",
+              "transformation_constraint": "tc1",
+              "result": "CHANGED_CANDIDATE",
+              "distinction": "CONSTRAINT_CHANGE",
+              "reason": "Source constraint >= 30 minutes; transformation > 30 minutes.",
+              "standing": "CANDIDATE_REQUIRES_REVIEW"
+            }
+          ]
+        },
+        "latency_ms": 984.8165000000004
+      },
+      "reviewer": {
+        "status": "SCRIPTED",
+        "error": null,
+        "policy": "REQUEST_CLARIFICATION",
+        "policy_class": "UNNECESSARY_CLARIFICATION",
+        "detected": false,
+        "matched": [
+          {
+            "expected": {
+              "type": "CHANGED_CANDIDATE",
+              "distinction": "SCOPE_OR_QUANTITY_CHANGE",
+              "source_quote": "Forklift charging is permitted after at least thirty minutes of cool-down.",
+              "transformation_quote": "Forklift charging is permitted after more than thirty minutes of cool-down.",
+              "severity": "MATERIAL"
+            },
+            "source": false,
+            "transformation": false,
+            "matched": false
+          }
+        ],
+        "assessments": [],
+        "abstentions": [],
+        "summary": "Scripted reviewer: no material change proposed.",
+        "mapped": [],
+        "latency_ms": 0.1477999999997337,
+        "usage": null
+      },
+      "hybrid": {
+        "policy": "PRESERVE_SOURCE",
+        "policy_class": "CORRECT",
+        "detected": true,
+        "matched": [
+          {
+            "expected": {
+              "type": "CHANGED_CANDIDATE",
+              "distinction": "SCOPE_OR_QUANTITY_CHANGE",
+              "source_quote": "Forklift charging is permitted after at least thirty minutes of cool-down.",
+              "transformation_quote": "Forklift charging is permitted after more than thirty minutes of cool-down.",
+              "severity": "MATERIAL"
+            },
+            "source": true,
+            "transformation": true,
+            "matched": true
+          }
+        ],
+        "primary_detected": true,
+        "primary_matched": [
+          {
+            "expected": {
+              "type": "CHANGED_CANDIDATE",
+              "distinction": "SCOPE_OR_QUANTITY_CHANGE",
+              "source_quote": "Forklift charging is permitted after at least thirty minutes of cool-down.",
+              "transformation_quote": "Forklift charging is permitted after more than thirty minutes of cool-down.",
+              "severity": "MATERIAL"
+            },
+            "source": true,
+            "transformation": true,
+            "matched": true
+          }
+        ],
+        "findings": [
+          {
+            "id": "f2",
+            "origin": "DETERMINISTIC",
+            "reviewer_assessment_id": null,
+            "claim": "Source constraint >= 30 minutes; transformation > 30 minutes.",
+            "change_kind": null,
+            "epistemic_direction": null,
+            "type": "CHANGED_CANDIDATE",
+            "distinction": "SCOPE_OR_QUANTITY_CHANGE",
+            "severity": "MATERIAL",
+            "confidence": "HIGH",
+            "source_spans": [
+              {
+                "origin": "ORIGINAL_SOURCE",
+                "source_id": "R7-D03-source",
+                "source_hash": "1d546c3edbbca4dea45068323d0aa77b36a080784109215158a5b2d2d028fee9",
+                "start": 37,
+                "end": 68,
+                "text": "at least thirty minutes of cool"
+              }
+            ],
+            "transformation_spans": [
+              {
+                "origin": "ORIGINAL_SOURCE",
+                "source_id": "R7-D03-transformation",
+                "source_hash": "a39225d8624c622a590d87642d47e65edf4e90dcb59ec780876df1bee953ff78",
+                "start": 37,
+                "end": 69,
+                "text": "more than thirty minutes of cool"
+              }
+            ],
+            "reason": "Source constraint >= 30 minutes; transformation > 30 minutes.",
+            "status": "DETERMINISTIC_ONLY",
+            "dispute_reason": null,
+            "mapping_basis": null,
+            "standing": "CANDIDATE_REQUIRES_REVIEW"
+          }
+        ],
+        "primary_findings": [
+          {
+            "id": "f2",
+            "origin": "DETERMINISTIC",
+            "reviewer_assessment_id": null,
+            "claim": "Source constraint >= 30 minutes; transformation > 30 minutes.",
+            "change_kind": null,
+            "epistemic_direction": null,
+            "type": "CHANGED_CANDIDATE",
+            "distinction": "SCOPE_OR_QUANTITY_CHANGE",
+            "severity": "MATERIAL",
+            "confidence": "HIGH",
+            "source_spans": [
+              {
+                "origin": "ORIGINAL_SOURCE",
+                "source_id": "R7-D03-source",
+                "source_hash": "1d546c3edbbca4dea45068323d0aa77b36a080784109215158a5b2d2d028fee9",
+                "start": 37,
+                "end": 68,
+                "text": "at least thirty minutes of cool"
+              }
+            ],
+            "transformation_spans": [
+              {
+                "origin": "ORIGINAL_SOURCE",
+                "source_id": "R7-D03-transformation",
+                "source_hash": "a39225d8624c622a590d87642d47e65edf4e90dcb59ec780876df1bee953ff78",
+                "start": 37,
+                "end": 69,
+                "text": "more than thirty minutes of cool"
+              }
+            ],
+            "reason": "Source constraint >= 30 minutes; transformation > 30 minutes.",
+            "status": "DETERMINISTIC_ONLY",
+            "dispute_reason": null,
+            "mapping_basis": null,
+            "standing": "CANDIDATE_REQUIRES_REVIEW"
+          }
+        ],
+        "disagreements": [],
+        "reviewer_status": "SCRIPTED"
+      },
+      "source": {
+        "id": "R7-D03-source",
+        "text": "Forklift charging is permitted after at least thirty minutes of cool-down.",
+        "hash": "1d546c3edbbca4dea45068323d0aa77b36a080784109215158a5b2d2d028fee9"
+      },
+      "transformation": {
+        "id": "R7-D03-transformation",
+        "text": "Forklift charging is permitted after more than thirty minutes of cool-down.",
+        "hash": "a39225d8624c622a590d87642d47e65edf4e90dcb59ec780876df1bee953ff78"
+      }
+    },
+    {
+      "id": "R7-D04",
+      "case_type": "CORRUPTION",
+      "corruption_class": "MISSING_PREREQUISITE",
+      "expected_policy": "PRESERVE_SOURCE",
+      "expected_findings": [
+        {
+          "type": "MISSING_CANDIDATE",
+          "distinction": "MISSING_PREREQUISITE",
+          "source_quote": "only if the badge is active and the safety briefing is current",
+          "transformation_quote": "",
+          "severity": "MATERIAL"
+        }
+      ],
+      "deterministic": {
+        "policy": "PRESERVE_SOURCE",
+        "policy_class": "CORRECT",
+        "detected": true,
+        "matched": [
+          {
+            "expected": {
+              "type": "MISSING_CANDIDATE",
+              "distinction": "MISSING_PREREQUISITE",
+              "source_quote": "only if the badge is active and the safety briefing is current",
+              "transformation_quote": "",
+              "severity": "MATERIAL"
+            },
+            "source": true,
+            "transformation": true,
+            "matched": true
+          }
+        ],
+        "findings": [
+          {
+            "id": "f1",
+            "type": "MISSING_CANDIDATE",
+            "distinction": "MISSING_PREREQUISITE",
+            "source_spans": [
+              {
+                "origin": "ORIGINAL_SOURCE",
+                "source_id": "R7-D04-source",
+                "source_hash": "1395962f6f10b7984405e5371c260fb7bde1d091a221ebd783cc4a0e3418800e",
+                "start": 0,
+                "end": 104,
+                "text": "The contractor may enter the server room only if the badge is active and the safety briefing is current."
+              }
+            ],
+            "transformation_spans": [
+              {
+                "origin": "ORIGINAL_SOURCE",
+                "source_id": "R7-D04-transformation",
+                "source_hash": "9a3ca6183230dbec40a241aa868f8af21ce5f0f64a36247674feabd3383a249a",
+                "start": 0,
+                "end": 69,
+                "text": "The contractor may enter the server room because the badge is active."
+              }
+            ],
+            "method": "LEXICAL_RULE_HEURISTIC",
+            "standing": "CANDIDATE_REQUIRES_REVIEW",
+            "severity": "MATERIAL",
+            "confidence": "MEDIUM",
+            "reason": "Source says “The contractor may enter the server room only if the badge is active and the safety briefing is current.”; transformation says “The contractor may enter the server room because the badge is active.”. The required condition “the safety briefing is current” is not preserved in the transformation."
+          }
+        ],
+        "material": [
+          {
+            "id": "f1",
+            "type": "MISSING_CANDIDATE",
+            "distinction": "MISSING_PREREQUISITE",
+            "source_spans": [
+              {
+                "origin": "ORIGINAL_SOURCE",
+                "source_id": "R7-D04-source",
+                "source_hash": "1395962f6f10b7984405e5371c260fb7bde1d091a221ebd783cc4a0e3418800e",
+                "start": 0,
+                "end": 104,
+                "text": "The contractor may enter the server room only if the badge is active and the safety briefing is current."
+              }
+            ],
+            "transformation_spans": [
+              {
+                "origin": "ORIGINAL_SOURCE",
+                "source_id": "R7-D04-transformation",
+                "source_hash": "9a3ca6183230dbec40a241aa868f8af21ce5f0f64a36247674feabd3383a249a",
+                "start": 0,
+                "end": 69,
+                "text": "The contractor may enter the server room because the badge is active."
+              }
+            ],
+            "method": "LEXICAL_RULE_HEURISTIC",
+            "standing": "CANDIDATE_REQUIRES_REVIEW",
+            "severity": "MATERIAL",
+            "confidence": "MEDIUM",
+            "reason": "Source says “The contractor may enter the server room only if the badge is active and the safety briefing is current.”; transformation says “The contractor may enter the server room because the badge is active.”. The required condition “the safety briefing is current” is not preserved in the transformation."
+          }
+        ],
+        "constraints": {
+          "source": [],
+          "transformation": [],
+          "comparisons": []
+        },
+        "latency_ms": 928.6575000000003
+      },
+      "reviewer": {
+        "status": "SCRIPTED",
+        "error": null,
+        "policy": "REQUEST_CLARIFICATION",
+        "policy_class": "UNNECESSARY_CLARIFICATION",
+        "detected": false,
+        "matched": [
+          {
+            "expected": {
+              "type": "MISSING_CANDIDATE",
+              "distinction": "MISSING_PREREQUISITE",
+              "source_quote": "only if the badge is active and the safety briefing is current",
+              "transformation_quote": "",
+              "severity": "MATERIAL"
+            },
+            "source": false,
+            "transformation": false,
+            "matched": false
+          }
+        ],
+        "assessments": [],
+        "abstentions": [],
+        "summary": "Scripted reviewer: no material change proposed.",
+        "mapped": [],
+        "latency_ms": 0.14249999999992724,
+        "usage": null
+      },
+      "hybrid": {
+        "policy": "PRESERVE_SOURCE",
+        "policy_class": "CORRECT",
+        "detected": true,
+        "matched": [
+          {
+            "expected": {
+              "type": "MISSING_CANDIDATE",
+              "distinction": "MISSING_PREREQUISITE",
+              "source_quote": "only if the badge is active and the safety briefing is current",
+              "transformation_quote": "",
+              "severity": "MATERIAL"
+            },
+            "source": true,
+            "transformation": true,
+            "matched": true
+          }
+        ],
+        "primary_detected": true,
+        "primary_matched": [
+          {
+            "expected": {
+              "type": "MISSING_CANDIDATE",
+              "distinction": "MISSING_PREREQUISITE",
+              "source_quote": "only if the badge is active and the safety briefing is current",
+              "transformation_quote": "",
+              "severity": "MATERIAL"
+            },
+            "source": true,
+            "transformation": true,
+            "matched": true
+          }
+        ],
+        "findings": [
+          {
+            "id": "f1",
+            "origin": "DETERMINISTIC",
+            "reviewer_assessment_id": null,
+            "claim": "Source says “The contractor may enter the server room only if the badge is active and the safety briefing is current.”; transformation says “The contractor may enter the server room because the badge is active.”. The required condition “the safety briefing is current” is not preserved in the transformation.",
+            "change_kind": null,
+            "epistemic_direction": null,
+            "type": "MISSING_CANDIDATE",
+            "distinction": "MISSING_PREREQUISITE",
+            "severity": "MATERIAL",
+            "confidence": "MEDIUM",
+            "source_spans": [
+              {
+                "origin": "ORIGINAL_SOURCE",
+                "source_id": "R7-D04-source",
+                "source_hash": "1395962f6f10b7984405e5371c260fb7bde1d091a221ebd783cc4a0e3418800e",
+                "start": 0,
+                "end": 104,
+                "text": "The contractor may enter the server room only if the badge is active and the safety briefing is current."
+              }
+            ],
+            "transformation_spans": [
+              {
+                "origin": "ORIGINAL_SOURCE",
+                "source_id": "R7-D04-transformation",
+                "source_hash": "9a3ca6183230dbec40a241aa868f8af21ce5f0f64a36247674feabd3383a249a",
+                "start": 0,
+                "end": 69,
+                "text": "The contractor may enter the server room because the badge is active."
+              }
+            ],
+            "reason": "Source says “The contractor may enter the server room only if the badge is active and the safety briefing is current.”; transformation says “The contractor may enter the server room because the badge is active.”. The required condition “the safety briefing is current” is not preserved in the transformation.",
+            "status": "DETERMINISTIC_ONLY",
+            "dispute_reason": null,
+            "mapping_basis": null,
+            "standing": "CANDIDATE_REQUIRES_REVIEW"
+          }
+        ],
+        "primary_findings": [
+          {
+            "id": "f1",
+            "origin": "DETERMINISTIC",
+            "reviewer_assessment_id": null,
+            "claim": "Source says “The contractor may enter the server room only if the badge is active and the safety briefing is current.”; transformation says “The contractor may enter the server room because the badge is active.”. The required condition “the safety briefing is current” is not preserved in the transformation.",
+            "change_kind": null,
+            "epistemic_direction": null,
+            "type": "MISSING_CANDIDATE",
+            "distinction": "MISSING_PREREQUISITE",
+            "severity": "MATERIAL",
+            "confidence": "MEDIUM",
+            "source_spans": [
+              {
+                "origin": "ORIGINAL_SOURCE",
+                "source_id": "R7-D04-source",
+                "source_hash": "1395962f6f10b7984405e5371c260fb7bde1d091a221ebd783cc4a0e3418800e",
+                "start": 0,
+                "end": 104,
+                "text": "The contractor may enter the server room only if the badge is active and the safety briefing is current."
+              }
+            ],
+            "transformation_spans": [
+              {
+                "origin": "ORIGINAL_SOURCE",
+                "source_id": "R7-D04-transformation",
+                "source_hash": "9a3ca6183230dbec40a241aa868f8af21ce5f0f64a36247674feabd3383a249a",
+                "start": 0,
+                "end": 69,
+                "text": "The contractor may enter the server room because the badge is active."
+              }
+            ],
+            "reason": "Source says “The contractor may enter the server room only if the badge is active and the safety briefing is current.”; transformation says “The contractor may enter the server room because the badge is active.”. The required condition “the safety briefing is current” is not preserved in the transformation.",
+            "status": "DETERMINISTIC_ONLY",
+            "dispute_reason": null,
+            "mapping_basis": null,
+            "standing": "CANDIDATE_REQUIRES_REVIEW"
+          }
+        ],
+        "disagreements": [],
+        "reviewer_status": "SCRIPTED"
+      },
+      "source": {
+        "id": "R7-D04-source",
+        "text": "The contractor may enter the server room only if the badge is active and the safety briefing is current. The badge is active. The briefing is not current.",
+        "hash": "1395962f6f10b7984405e5371c260fb7bde1d091a221ebd783cc4a0e3418800e"
+      },
+      "transformation": {
+        "id": "R7-D04-transformation",
+        "text": "The contractor may enter the server room because the badge is active.",
+        "hash": "9a3ca6183230dbec40a241aa868f8af21ce5f0f64a36247674feabd3383a249a"
+      }
+    },
+    {
+      "id": "R7-D05",
+      "case_type": "CORRUPTION",
+      "corruption_class": "BROADENED_EXCEPTION",
+      "expected_policy": "PRESERVE_SOURCE",
+      "expected_findings": [
+        {
+          "type": "CHANGED_CANDIDATE",
+          "distinction": "BROADENED_EXCEPTION",
+          "source_quote": "except when the change freeze is active",
+          "transformation_quote": "except when the change is unresolved",
+          "severity": "MATERIAL"
+        }
+      ],
+      "deterministic": {
+        "policy": "REQUEST_CLARIFICATION",
+        "policy_class": "UNNECESSARY_CLARIFICATION",
+        "detected": false,
+        "matched": [
+          {
+            "expected": {
+              "type": "CHANGED_CANDIDATE",
+              "distinction": "BROADENED_EXCEPTION",
+              "source_quote": "except when the change freeze is active",
+              "transformation_quote": "except when the change is unresolved",
+              "severity": "MATERIAL"
+            },
+            "source": false,
+            "transformation": false,
+            "matched": false
+          }
+        ],
+        "findings": [
+          {
+            "id": "f1",
+            "type": "UNRESOLVED",
+            "distinction": "SOURCE_AMBIGUITY",
+            "source_spans": [
+              {
+                "origin": "ORIGINAL_SOURCE",
+                "source_id": "R7-D05-source",
+                "source_hash": "3ae7078403e6384aa1a0c4832ec97abc089946c3ad1700f86352a0b0dc363171",
+                "start": 0,
+                "end": 94,
+                "text": "The maintenance account may be used during an outage, except when the change freeze is active."
+              }
+            ],
+            "transformation_spans": [
+              {
+                "origin": "ORIGINAL_SOURCE",
+                "source_id": "R7-D05-transformation",
+                "source_hash": "4800a34e38598a38d57b5b38325994af7161af01c85288598e06d637e8a4579d",
+                "start": 0,
+                "end": 91,
+                "text": "The maintenance account may be used during an outage, except when the change is unresolved."
+              }
+            ],
+            "method": "LEXICAL_RULE_HEURISTIC",
+            "standing": "CANDIDATE_REQUIRES_REVIEW",
+            "severity": "MINOR",
+            "confidence": "MEDIUM",
+            "reason": "The uncertainty in “The maintenance account may be used during an outage, except when the change is unresolved.” is grounded in the source: the change freeze is active."
+          }
+        ],
+        "material": [],
+        "constraints": {
+          "source": [],
+          "transformation": [],
+          "comparisons": []
+        },
+        "latency_ms": 931.4651000000003
+      },
+      "reviewer": {
+        "status": "SCRIPTED",
+        "error": null,
+        "policy": "REQUEST_CLARIFICATION",
+        "policy_class": "UNNECESSARY_CLARIFICATION",
+        "detected": false,
+        "matched": [
+          {
+            "expected": {
+              "type": "CHANGED_CANDIDATE",
+              "distinction": "BROADENED_EXCEPTION",
+              "source_quote": "except when the change freeze is active",
+              "transformation_quote": "except when the change is unresolved",
+              "severity": "MATERIAL"
+            },
+            "source": false,
+            "transformation": false,
+            "matched": false
+          }
+        ],
+        "assessments": [],
+        "abstentions": [],
+        "summary": "Scripted reviewer: no material change proposed.",
+        "mapped": [],
+        "latency_ms": 0.18360000000029686,
+        "usage": null
+      },
+      "hybrid": {
+        "policy": "REQUEST_CLARIFICATION",
+        "policy_class": "UNNECESSARY_CLARIFICATION",
+        "detected": false,
+        "matched": [
+          {
+            "expected": {
+              "type": "CHANGED_CANDIDATE",
+              "distinction": "BROADENED_EXCEPTION",
+              "source_quote": "except when the change freeze is active",
+              "transformation_quote": "except when the change is unresolved",
+              "severity": "MATERIAL"
+            },
+            "source": false,
+            "transformation": false,
+            "matched": false
+          }
+        ],
+        "primary_detected": false,
+        "primary_matched": [
+          {
+            "expected": {
+              "type": "CHANGED_CANDIDATE",
+              "distinction": "BROADENED_EXCEPTION",
+              "source_quote": "except when the change freeze is active",
+              "transformation_quote": "except when the change is unresolved",
+              "severity": "MATERIAL"
+            },
+            "source": false,
+            "transformation": false,
+            "matched": false
+          }
+        ],
+        "findings": [
+          {
+            "id": "f1",
+            "origin": "DETERMINISTIC",
+            "reviewer_assessment_id": null,
+            "claim": "The uncertainty in “The maintenance account may be used during an outage, except when the change is unresolved.” is grounded in the source: the change freeze is active.",
+            "change_kind": null,
+            "epistemic_direction": null,
+            "type": "UNRESOLVED",
+            "distinction": "SOURCE_AMBIGUITY",
+            "severity": "MINOR",
+            "confidence": "MEDIUM",
+            "source_spans": [
+              {
+                "origin": "ORIGINAL_SOURCE",
+                "source_id": "R7-D05-source",
+                "source_hash": "3ae7078403e6384aa1a0c4832ec97abc089946c3ad1700f86352a0b0dc363171",
+                "start": 0,
+                "end": 94,
+                "text": "The maintenance account may be used during an outage, except when the change freeze is active."
+              }
+            ],
+            "transformation_spans": [
+              {
+                "origin": "ORIGINAL_SOURCE",
+                "source_id": "R7-D05-transformation",
+                "source_hash": "4800a34e38598a38d57b5b38325994af7161af01c85288598e06d637e8a4579d",
+                "start": 0,
+                "end": 91,
+                "text": "The maintenance account may be used during an outage, except when the change is unresolved."
+              }
+            ],
+            "reason": "The uncertainty in “The maintenance account may be used during an outage, except when the change is unresolved.” is grounded in the source: the change freeze is active.",
+            "status": "DETERMINISTIC_ONLY",
+            "dispute_reason": null,
+            "mapping_basis": null,
+            "standing": "CANDIDATE_REQUIRES_REVIEW"
+          }
+        ],
+        "primary_findings": [
+          {
+            "id": "f1",
+            "origin": "DETERMINISTIC",
+            "reviewer_assessment_id": null,
+            "claim": "The uncertainty in “The maintenance account may be used during an outage, except when the change is unresolved.” is grounded in the source: the change freeze is active.",
+            "change_kind": null,
+            "epistemic_direction": null,
+            "type": "UNRESOLVED",
+            "distinction": "SOURCE_AMBIGUITY",
+            "severity": "MINOR",
+            "confidence": "MEDIUM",
+            "source_spans": [
+              {
+                "origin": "ORIGINAL_SOURCE",
+                "source_id": "R7-D05-source",
+                "source_hash": "3ae7078403e6384aa1a0c4832ec97abc089946c3ad1700f86352a0b0dc363171",
+                "start": 0,
+                "end": 94,
+                "text": "The maintenance account may be used during an outage, except when the change freeze is active."
+              }
+            ],
+            "transformation_spans": [
+              {
+                "origin": "ORIGINAL_SOURCE",
+                "source_id": "R7-D05-transformation",
+                "source_hash": "4800a34e38598a38d57b5b38325994af7161af01c85288598e06d637e8a4579d",
+                "start": 0,
+                "end": 91,
+                "text": "The maintenance account may be used during an outage, except when the change is unresolved."
+              }
+            ],
+            "reason": "The uncertainty in “The maintenance account may be used during an outage, except when the change is unresolved.” is grounded in the source: the change freeze is active.",
+            "status": "DETERMINISTIC_ONLY",
+            "dispute_reason": null,
+            "mapping_basis": null,
+            "standing": "CANDIDATE_REQUIRES_REVIEW"
+          }
+        ],
+        "disagreements": [],
+        "reviewer_status": "SCRIPTED"
+      },
+      "source": {
+        "id": "R7-D05-source",
+        "text": "The maintenance account may be used during an outage, except when the change freeze is active.",
+        "hash": "3ae7078403e6384aa1a0c4832ec97abc089946c3ad1700f86352a0b0dc363171"
+      },
+      "transformation": {
+        "id": "R7-D05-transformation",
+        "text": "The maintenance account may be used during an outage, except when the change is unresolved.",
+        "hash": "4800a34e38598a38d57b5b38325994af7161af01c85288598e06d637e8a4579d"
+      }
+    },
+    {
+      "id": "R7-D06",
+      "case_type": "CORRUPTION",
+      "corruption_class": "UNKNOWN_TO_ESTABLISHED_FACT",
+      "expected_policy": "PRESERVE_SOURCE",
+      "expected_findings": [
+        {
+          "type": "CHANGED_CANDIDATE",
+          "distinction": "UNKNOWN_TO_ESTABLISHED_FACT",
+          "source_quote": "The supplier review is unresolved.",
+          "transformation_quote": "The supplier is approved",
+          "severity": "MATERIAL"
+        }
+      ],
+      "deterministic": {
+        "policy": "PRESERVE_SOURCE",
+        "policy_class": "CORRECT",
+        "detected": true,
+        "matched": [
+          {
+            "expected": {
+              "type": "CHANGED_CANDIDATE",
+              "distinction": "UNKNOWN_TO_ESTABLISHED_FACT",
+              "source_quote": "The supplier review is unresolved.",
+              "transformation_quote": "The supplier is approved",
+              "severity": "MATERIAL"
+            },
+            "source": true,
+            "transformation": true,
+            "matched": true
+          }
+        ],
+        "findings": [
+          {
+            "id": "f2",
+            "type": "CHANGED_CANDIDATE",
+            "distinction": "UNKNOWN_TO_ESTABLISHED_FACT",
+            "source_spans": [
+              {
+                "origin": "ORIGINAL_SOURCE",
+                "source_id": "R7-D06-source",
+                "source_hash": "aed5f90febfa3de114739b232f1bc721040eb5047efa7c0efb19dcab24010b34",
+                "start": 0,
+                "end": 34,
+                "text": "The supplier review is unresolved."
+              }
+            ],
+            "transformation_spans": [
+              {
+                "origin": "ORIGINAL_SOURCE",
+                "source_id": "R7-D06-transformation",
+                "source_hash": "89e2ab47d7e8e4f215ce879248bcbd142f6613ad701a03592514d81836f95d18",
+                "start": 0,
+                "end": 24,
+                "text": "The supplier is approved"
+              }
+            ],
+            "method": "LEXICAL_RULE_HEURISTIC",
+            "standing": "CANDIDATE_REQUIRES_REVIEW",
+            "severity": "MATERIAL",
+            "confidence": "HIGH",
+            "reason": "Source says “The supplier review is unresolved.”; transformation says “The supplier is approved”. Source hedges or leaves the matter unresolved; transformation states it without the hedge."
+          },
+          {
+            "id": "f3",
+            "type": "CHANGED_CANDIDATE",
+            "distinction": "WRONG_CROSS_SENTENCE_REFERENCE",
+            "source_spans": [
+              {
+                "origin": "ORIGINAL_SOURCE",
+                "source_id": "R7-D06-source",
+                "source_hash": "aed5f90febfa3de114739b232f1bc721040eb5047efa7c0efb19dcab24010b34",
+                "start": 0,
+                "end": 34,
+                "text": "The supplier review is unresolved."
+              }
+            ],
+            "transformation_spans": [
+              {
+                "origin": "ORIGINAL_SOURCE",
+                "source_id": "R7-D06-transformation",
+                "source_hash": "89e2ab47d7e8e4f215ce879248bcbd142f6613ad701a03592514d81836f95d18",
+                "start": 0,
+                "end": 24,
+                "text": "The supplier is approved"
+              }
+            ],
+            "method": "LEXICAL_RULE_HEURISTIC",
+            "standing": "CANDIDATE_REQUIRES_REVIEW",
+            "severity": "MATERIAL",
+            "confidence": "MEDIUM",
+            "reason": "Source says “The supplier review is unresolved.”; transformation says “The supplier is approved”. The source flags an unresolved reference; the transformation resolves or replaces it without preserving the ambiguity."
+          }
+        ],
+        "material": [
+          {
+            "id": "f2",
+            "type": "CHANGED_CANDIDATE",
+            "distinction": "UNKNOWN_TO_ESTABLISHED_FACT",
+            "source_spans": [
+              {
+                "origin": "ORIGINAL_SOURCE",
+                "source_id": "R7-D06-source",
+                "source_hash": "aed5f90febfa3de114739b232f1bc721040eb5047efa7c0efb19dcab24010b34",
+                "start": 0,
+                "end": 34,
+                "text": "The supplier review is unresolved."
+              }
+            ],
+            "transformation_spans": [
+              {
+                "origin": "ORIGINAL_SOURCE",
+                "source_id": "R7-D06-transformation",
+                "source_hash": "89e2ab47d7e8e4f215ce879248bcbd142f6613ad701a03592514d81836f95d18",
+                "start": 0,
+                "end": 24,
+                "text": "The supplier is approved"
+              }
+            ],
+            "method": "LEXICAL_RULE_HEURISTIC",
+            "standing": "CANDIDATE_REQUIRES_REVIEW",
+            "severity": "MATERIAL",
+            "confidence": "HIGH",
+            "reason": "Source says “The supplier review is unresolved.”; transformation says “The supplier is approved”. Source hedges or leaves the matter unresolved; transformation states it without the hedge."
+          },
+          {
+            "id": "f3",
+            "type": "CHANGED_CANDIDATE",
+            "distinction": "WRONG_CROSS_SENTENCE_REFERENCE",
+            "source_spans": [
+              {
+                "origin": "ORIGINAL_SOURCE",
+                "source_id": "R7-D06-source",
+                "source_hash": "aed5f90febfa3de114739b232f1bc721040eb5047efa7c0efb19dcab24010b34",
+                "start": 0,
+                "end": 34,
+                "text": "The supplier review is unresolved."
+              }
+            ],
+            "transformation_spans": [
+              {
+                "origin": "ORIGINAL_SOURCE",
+                "source_id": "R7-D06-transformation",
+                "source_hash": "89e2ab47d7e8e4f215ce879248bcbd142f6613ad701a03592514d81836f95d18",
+                "start": 0,
+                "end": 24,
+                "text": "The supplier is approved"
+              }
+            ],
+            "method": "LEXICAL_RULE_HEURISTIC",
+            "standing": "CANDIDATE_REQUIRES_REVIEW",
+            "severity": "MATERIAL",
+            "confidence": "MEDIUM",
+            "reason": "Source says “The supplier review is unresolved.”; transformation says “The supplier is approved”. The source flags an unresolved reference; the transformation resolves or replaces it without preserving the ambiguity."
+          }
+        ],
+        "constraints": {
+          "source": [],
+          "transformation": [],
+          "comparisons": []
+        },
+        "latency_ms": 950.8882999999996
+      },
+      "reviewer": {
+        "status": "SCRIPTED",
+        "error": null,
+        "policy": "REQUEST_CLARIFICATION",
+        "policy_class": "UNNECESSARY_CLARIFICATION",
+        "detected": false,
+        "matched": [
+          {
+            "expected": {
+              "type": "CHANGED_CANDIDATE",
+              "distinction": "UNKNOWN_TO_ESTABLISHED_FACT",
+              "source_quote": "The supplier review is unresolved.",
+              "transformation_quote": "The supplier is approved",
+              "severity": "MATERIAL"
+            },
+            "source": false,
+            "transformation": false,
+            "matched": false
+          }
+        ],
+        "assessments": [],
+        "abstentions": [],
+        "summary": "Scripted reviewer: no material change proposed.",
+        "mapped": [],
+        "latency_ms": 0.10270000000036816,
+        "usage": null
+      },
+      "hybrid": {
+        "policy": "PRESERVE_SOURCE",
+        "policy_class": "CORRECT",
+        "detected": true,
+        "matched": [
+          {
+            "expected": {
+              "type": "CHANGED_CANDIDATE",
+              "distinction": "UNKNOWN_TO_ESTABLISHED_FACT",
+              "source_quote": "The supplier review is unresolved.",
+              "transformation_quote": "The supplier is approved",
+              "severity": "MATERIAL"
+            },
+            "source": true,
+            "transformation": true,
+            "matched": true
+          }
+        ],
+        "primary_detected": true,
+        "primary_matched": [
+          {
+            "expected": {
+              "type": "CHANGED_CANDIDATE",
+              "distinction": "UNKNOWN_TO_ESTABLISHED_FACT",
+              "source_quote": "The supplier review is unresolved.",
+              "transformation_quote": "The supplier is approved",
+              "severity": "MATERIAL"
+            },
+            "source": true,
+            "transformation": true,
+            "matched": true
+          }
+        ],
+        "findings": [
+          {
+            "id": "f2",
+            "origin": "DETERMINISTIC",
+            "reviewer_assessment_id": null,
+            "claim": "Source says “The supplier review is unresolved.”; transformation says “The supplier is approved”. Source hedges or leaves the matter unresolved; transformation states it without the hedge.",
+            "change_kind": null,
+            "epistemic_direction": null,
+            "type": "CHANGED_CANDIDATE",
+            "distinction": "UNKNOWN_TO_ESTABLISHED_FACT",
+            "severity": "MATERIAL",
+            "confidence": "HIGH",
+            "source_spans": [
+              {
+                "origin": "ORIGINAL_SOURCE",
+                "source_id": "R7-D06-source",
+                "source_hash": "aed5f90febfa3de114739b232f1bc721040eb5047efa7c0efb19dcab24010b34",
+                "start": 0,
+                "end": 34,
+                "text": "The supplier review is unresolved."
+              }
+            ],
+            "transformation_spans": [
+              {
+                "origin": "ORIGINAL_SOURCE",
+                "source_id": "R7-D06-transformation",
+                "source_hash": "89e2ab47d7e8e4f215ce879248bcbd142f6613ad701a03592514d81836f95d18",
+                "start": 0,
+                "end": 24,
+                "text": "The supplier is approved"
+              }
+            ],
+            "reason": "Source says “The supplier review is unresolved.”; transformation says “The supplier is approved”. Source hedges or leaves the matter unresolved; transformation states it without the hedge.",
+            "status": "DETERMINISTIC_ONLY",
+            "dispute_reason": null,
+            "mapping_basis": null,
+            "standing": "CANDIDATE_REQUIRES_REVIEW"
+          },
+          {
+            "id": "f3",
+            "origin": "DETERMINISTIC",
+            "reviewer_assessment_id": null,
+            "claim": "Source says “The supplier review is unresolved.”; transformation says “The supplier is approved”. The source flags an unresolved reference; the transformation resolves or replaces it without preserving the ambiguity.",
+            "change_kind": null,
+            "epistemic_direction": null,
+            "type": "CHANGED_CANDIDATE",
+            "distinction": "WRONG_CROSS_SENTENCE_REFERENCE",
+            "severity": "MATERIAL",
+            "confidence": "MEDIUM",
+            "source_spans": [
+              {
+                "origin": "ORIGINAL_SOURCE",
+                "source_id": "R7-D06-source",
+                "source_hash": "aed5f90febfa3de114739b232f1bc721040eb5047efa7c0efb19dcab24010b34",
+                "start": 0,
+                "end": 34,
+                "text": "The supplier review is unresolved."
+              }
+            ],
+            "transformation_spans": [
+              {
+                "origin": "ORIGINAL_SOURCE",
+                "source_id": "R7-D06-transformation",
+                "source_hash": "89e2ab47d7e8e4f215ce879248bcbd142f6613ad701a03592514d81836f95d18",
+                "start": 0,
+                "end": 24,
+                "text": "The supplier is approved"
+              }
+            ],
+            "reason": "Source says “The supplier review is unresolved.”; transformation says “The supplier is approved”. The source flags an unresolved reference; the transformation resolves or replaces it without preserving the ambiguity.",
+            "status": "DETERMINISTIC_ONLY",
+            "dispute_reason": null,
+            "mapping_basis": null,
+            "standing": "CANDIDATE_REQUIRES_REVIEW"
+          }
+        ],
+        "primary_findings": [
+          {
+            "id": "f2",
+            "origin": "DETERMINISTIC",
+            "reviewer_assessment_id": null,
+            "claim": "Source says “The supplier review is unresolved.”; transformation says “The supplier is approved”. Source hedges or leaves the matter unresolved; transformation states it without the hedge.",
+            "change_kind": null,
+            "epistemic_direction": null,
+            "type": "CHANGED_CANDIDATE",
+            "distinction": "UNKNOWN_TO_ESTABLISHED_FACT",
+            "severity": "MATERIAL",
+            "confidence": "HIGH",
+            "source_spans": [
+              {
+                "origin": "ORIGINAL_SOURCE",
+                "source_id": "R7-D06-source",
+                "source_hash": "aed5f90febfa3de114739b232f1bc721040eb5047efa7c0efb19dcab24010b34",
+                "start": 0,
+                "end": 34,
+                "text": "The supplier review is unresolved."
+              }
+            ],
+            "transformation_spans": [
+              {
+                "origin": "ORIGINAL_SOURCE",
+                "source_id": "R7-D06-transformation",
+                "source_hash": "89e2ab47d7e8e4f215ce879248bcbd142f6613ad701a03592514d81836f95d18",
+                "start": 0,
+                "end": 24,
+                "text": "The supplier is approved"
+              }
+            ],
+            "reason": "Source says “The supplier review is unresolved.”; transformation says “The supplier is approved”. Source hedges or leaves the matter unresolved; transformation states it without the hedge.",
+            "status": "DETERMINISTIC_ONLY",
+            "dispute_reason": null,
+            "mapping_basis": null,
+            "standing": "CANDIDATE_REQUIRES_REVIEW"
+          },
+          {
+            "id": "f3",
+            "origin": "DETERMINISTIC",
+            "reviewer_assessment_id": null,
+            "claim": "Source says “The supplier review is unresolved.”; transformation says “The supplier is approved”. The source flags an unresolved reference; the transformation resolves or replaces it without preserving the ambiguity.",
+            "change_kind": null,
+            "epistemic_direction": null,
+            "type": "CHANGED_CANDIDATE",
+            "distinction": "WRONG_CROSS_SENTENCE_REFERENCE",
+            "severity": "MATERIAL",
+            "confidence": "MEDIUM",
+            "source_spans": [
+              {
+                "origin": "ORIGINAL_SOURCE",
+                "source_id": "R7-D06-source",
+                "source_hash": "aed5f90febfa3de114739b232f1bc721040eb5047efa7c0efb19dcab24010b34",
+                "start": 0,
+                "end": 34,
+                "text": "The supplier review is unresolved."
+              }
+            ],
+            "transformation_spans": [
+              {
+                "origin": "ORIGINAL_SOURCE",
+                "source_id": "R7-D06-transformation",
+                "source_hash": "89e2ab47d7e8e4f215ce879248bcbd142f6613ad701a03592514d81836f95d18",
+                "start": 0,
+                "end": 24,
+                "text": "The supplier is approved"
+              }
+            ],
+            "reason": "Source says “The supplier review is unresolved.”; transformation says “The supplier is approved”. The source flags an unresolved reference; the transformation resolves or replaces it without preserving the ambiguity.",
+            "status": "DETERMINISTIC_ONLY",
+            "dispute_reason": null,
+            "mapping_basis": null,
+            "standing": "CANDIDATE_REQUIRES_REVIEW"
+          }
+        ],
+        "disagreements": [],
+        "reviewer_status": "SCRIPTED"
+      },
+      "source": {
+        "id": "R7-D06-source",
+        "text": "The supplier review is unresolved. The file contains neither approval nor rejection.",
+        "hash": "aed5f90febfa3de114739b232f1bc721040eb5047efa7c0efb19dcab24010b34"
+      },
+      "transformation": {
+        "id": "R7-D06-transformation",
+        "text": "The supplier is approved; the file contains the approval.",
+        "hash": "89e2ab47d7e8e4f215ce879248bcbd142f6613ad701a03592514d81836f95d18"
+      }
+    },
+    {
+      "id": "R7-D07",
+      "case_type": "FAITHFUL",
+      "corruption_class": null,
+      "expected_policy": "USE_TRANSFORMATION",
+      "expected_findings": [
+        {
+          "type": "PRESERVED_CANDIDATE",
+          "distinction": "PRESERVED",
+          "source_quote": "Expense claims may be submitted up to fourteen days after the quarter closes.",
+          "transformation_quote": "The deadline for expense claims is no more than fourteen days after quarter close.",
+          "severity": "INFO"
+        }
+      ],
+      "deterministic": {
+        "policy": "PRESERVE_SOURCE",
+        "policy_class": "FALSE_REJECTION",
+        "detected": false,
+        "matched": [
+          {
+            "expected": {
+              "type": "PRESERVED_CANDIDATE",
+              "distinction": "PRESERVED",
+              "source_quote": "Expense claims may be submitted up to fourteen days after the quarter closes.",
+              "transformation_quote": "The deadline for expense claims is no more than fourteen days after quarter close.",
+              "severity": "INFO"
+            },
+            "source": false,
+            "transformation": false,
+            "matched": false
+          }
+        ],
+        "findings": [
+          {
+            "id": "f1",
+            "type": "CHANGED_CANDIDATE",
+            "distinction": "MODALITY_CHANGE",
+            "source_spans": [
+              {
+                "origin": "ORIGINAL_SOURCE",
+                "source_id": "R7-D07-source",
+                "source_hash": "e00601e6c53e03fc91cfa1dfc4086fb397bfbbaf4fa61024f12ed03bf66ebd1c",
+                "start": 0,
+                "end": 77,
+                "text": "Expense claims may be submitted up to fourteen days after the quarter closes."
+              }
+            ],
+            "transformation_spans": [
+              {
+                "origin": "ORIGINAL_SOURCE",
+                "source_id": "R7-D07-transformation",
+                "source_hash": "866a4abdd553fd7b35f7d525e4c42b35a777ccec0a3785ed35f4ca7fbed2817c",
+                "start": 0,
+                "end": 82,
+                "text": "The deadline for expense claims is no more than fourteen days after quarter close."
+              }
+            ],
+            "method": "LEXICAL_RULE_HEURISTIC",
+            "standing": "CANDIDATE_REQUIRES_REVIEW",
+            "severity": "MATERIAL",
+            "confidence": "HIGH",
+            "reason": "Source says “Expense claims may be submitted up to fourteen days after the quarter closes.”; transformation says “The deadline for expense claims is no more than fourteen days after quarter close.”. Permission/obligation/prohibition modality differs."
+          }
+        ],
+        "material": [
+          {
+            "id": "f1",
+            "type": "CHANGED_CANDIDATE",
+            "distinction": "MODALITY_CHANGE",
+            "source_spans": [
+              {
+                "origin": "ORIGINAL_SOURCE",
+                "source_id": "R7-D07-source",
+                "source_hash": "e00601e6c53e03fc91cfa1dfc4086fb397bfbbaf4fa61024f12ed03bf66ebd1c",
+                "start": 0,
+                "end": 77,
+                "text": "Expense claims may be submitted up to fourteen days after the quarter closes."
+              }
+            ],
+            "transformation_spans": [
+              {
+                "origin": "ORIGINAL_SOURCE",
+                "source_id": "R7-D07-transformation",
+                "source_hash": "866a4abdd553fd7b35f7d525e4c42b35a777ccec0a3785ed35f4ca7fbed2817c",
+                "start": 0,
+                "end": 82,
+                "text": "The deadline for expense claims is no more than fourteen days after quarter close."
+              }
+            ],
+            "method": "LEXICAL_RULE_HEURISTIC",
+            "standing": "CANDIDATE_REQUIRES_REVIEW",
+            "severity": "MATERIAL",
+            "confidence": "HIGH",
+            "reason": "Source says “Expense claims may be submitted up to fourteen days after the quarter closes.”; transformation says “The deadline for expense claims is no more than fourteen days after quarter close.”. Permission/obligation/prohibition modality differs."
+          }
+        ],
+        "constraints": {
+          "source": [
+            {
+              "id": "sc1",
+              "kind": "DURATION",
+              "operator": "<=",
+              "value": 14,
+              "unit": "days",
+              "action": "expense claims may be submitted",
+              "source_spans": [
+                {
+                  "origin": "ORIGINAL_SOURCE",
+                  "source_id": "R7-D07-source",
+                  "source_hash": "e00601e6c53e03fc91cfa1dfc4086fb397bfbbaf4fa61024f12ed03bf66ebd1c",
+                  "start": 32,
+                  "end": 61,
+                  "text": "up to fourteen days after the"
+                }
+              ],
+              "transformation_spans": [],
+              "standing": "SOURCE_STATED",
+              "method": "LEXICAL_CONSTRAINT_HEURISTIC"
+            }
+          ],
+          "transformation": [
+            {
+              "id": "tc1",
+              "kind": "DURATION",
+              "operator": "<=",
+              "value": 14,
+              "unit": "days",
+              "action": "the deadline for expense claims is",
+              "source_spans": [],
+              "transformation_spans": [
+                {
+                  "origin": "ORIGINAL_SOURCE",
+                  "source_id": "R7-D07-transformation",
+                  "source_hash": "866a4abdd553fd7b35f7d525e4c42b35a777ccec0a3785ed35f4ca7fbed2817c",
+                  "start": 35,
+                  "end": 75,
+                  "text": "no more than fourteen days after quarter"
+                }
+              ],
+              "standing": "TRANSFORMATION_STATED",
+              "method": "LEXICAL_CONSTRAINT_HEURISTIC"
+            }
+          ],
+          "comparisons": [
+            {
+              "id": "cc1",
+              "source_constraint": "sc1",
+              "transformation_constraint": "tc1",
+              "result": "PRESERVED_CANDIDATE",
+              "distinction": "CONSTRAINT_PRESERVED",
+              "reason": "Source constraint <= 14 days; transformation <= 14 days.",
+              "standing": "CANDIDATE_REQUIRES_REVIEW"
+            }
+          ]
+        },
+        "latency_ms": 939.0068000000001
+      },
+      "reviewer": {
+        "status": "SCRIPTED",
+        "error": null,
+        "policy": "REQUEST_CLARIFICATION",
+        "policy_class": "UNNECESSARY_CLARIFICATION",
+        "detected": false,
+        "matched": [
+          {
+            "expected": {
+              "type": "PRESERVED_CANDIDATE",
+              "distinction": "PRESERVED",
+              "source_quote": "Expense claims may be submitted up to fourteen days after the quarter closes.",
+              "transformation_quote": "The deadline for expense claims is no more than fourteen days after quarter close.",
+              "severity": "INFO"
+            },
+            "source": false,
+            "transformation": false,
+            "matched": false
+          }
+        ],
+        "assessments": [],
+        "abstentions": [],
+        "summary": "Scripted reviewer: no material change proposed.",
+        "mapped": [],
+        "latency_ms": 0.1500000000005457,
+        "usage": null
+      },
+      "hybrid": {
+        "policy": "PRESERVE_SOURCE",
+        "policy_class": "FALSE_REJECTION",
+        "detected": false,
+        "matched": [
+          {
+            "expected": {
+              "type": "PRESERVED_CANDIDATE",
+              "distinction": "PRESERVED",
+              "source_quote": "Expense claims may be submitted up to fourteen days after the quarter closes.",
+              "transformation_quote": "The deadline for expense claims is no more than fourteen days after quarter close.",
+              "severity": "INFO"
+            },
+            "source": false,
+            "transformation": false,
+            "matched": false
+          }
+        ],
+        "primary_detected": false,
+        "primary_matched": [
+          {
+            "expected": {
+              "type": "PRESERVED_CANDIDATE",
+              "distinction": "PRESERVED",
+              "source_quote": "Expense claims may be submitted up to fourteen days after the quarter closes.",
+              "transformation_quote": "The deadline for expense claims is no more than fourteen days after quarter close.",
+              "severity": "INFO"
+            },
+            "source": false,
+            "transformation": false,
+            "matched": false
+          }
+        ],
+        "findings": [
+          {
+            "id": "f1",
+            "origin": "DETERMINISTIC",
+            "reviewer_assessment_id": null,
+            "claim": "Source says “Expense claims may be submitted up to fourteen days after the quarter closes.”; transformation says “The deadline for expense claims is no more than fourteen days after quarter close.”. Permission/obligation/prohibition modality differs.",
+            "change_kind": null,
+            "epistemic_direction": null,
+            "type": "CHANGED_CANDIDATE",
+            "distinction": "MODALITY_CHANGE",
+            "severity": "MATERIAL",
+            "confidence": "HIGH",
+            "source_spans": [
+              {
+                "origin": "ORIGINAL_SOURCE",
+                "source_id": "R7-D07-source",
+                "source_hash": "e00601e6c53e03fc91cfa1dfc4086fb397bfbbaf4fa61024f12ed03bf66ebd1c",
+                "start": 0,
+                "end": 77,
+                "text": "Expense claims may be submitted up to fourteen days after the quarter closes."
+              }
+            ],
+            "transformation_spans": [
+              {
+                "origin": "ORIGINAL_SOURCE",
+                "source_id": "R7-D07-transformation",
+                "source_hash": "866a4abdd553fd7b35f7d525e4c42b35a777ccec0a3785ed35f4ca7fbed2817c",
+                "start": 0,
+                "end": 82,
+                "text": "The deadline for expense claims is no more than fourteen days after quarter close."
+              }
+            ],
+            "reason": "Source says “Expense claims may be submitted up to fourteen days after the quarter closes.”; transformation says “The deadline for expense claims is no more than fourteen days after quarter close.”. Permission/obligation/prohibition modality differs.",
+            "status": "DETERMINISTIC_ONLY",
+            "dispute_reason": null,
+            "mapping_basis": null,
+            "standing": "CANDIDATE_REQUIRES_REVIEW"
+          }
+        ],
+        "primary_findings": [
+          {
+            "id": "f1",
+            "origin": "DETERMINISTIC",
+            "reviewer_assessment_id": null,
+            "claim": "Source says “Expense claims may be submitted up to fourteen days after the quarter closes.”; transformation says “The deadline for expense claims is no more than fourteen days after quarter close.”. Permission/obligation/prohibition modality differs.",
+            "change_kind": null,
+            "epistemic_direction": null,
+            "type": "CHANGED_CANDIDATE",
+            "distinction": "MODALITY_CHANGE",
+            "severity": "MATERIAL",
+            "confidence": "HIGH",
+            "source_spans": [
+              {
+                "origin": "ORIGINAL_SOURCE",
+                "source_id": "R7-D07-source",
+                "source_hash": "e00601e6c53e03fc91cfa1dfc4086fb397bfbbaf4fa61024f12ed03bf66ebd1c",
+                "start": 0,
+                "end": 77,
+                "text": "Expense claims may be submitted up to fourteen days after the quarter closes."
+              }
+            ],
+            "transformation_spans": [
+              {
+                "origin": "ORIGINAL_SOURCE",
+                "source_id": "R7-D07-transformation",
+                "source_hash": "866a4abdd553fd7b35f7d525e4c42b35a777ccec0a3785ed35f4ca7fbed2817c",
+                "start": 0,
+                "end": 82,
+                "text": "The deadline for expense claims is no more than fourteen days after quarter close."
+              }
+            ],
+            "reason": "Source says “Expense claims may be submitted up to fourteen days after the quarter closes.”; transformation says “The deadline for expense claims is no more than fourteen days after quarter close.”. Permission/obligation/prohibition modality differs.",
+            "status": "DETERMINISTIC_ONLY",
+            "dispute_reason": null,
+            "mapping_basis": null,
+            "standing": "CANDIDATE_REQUIRES_REVIEW"
+          }
+        ],
+        "disagreements": [],
+        "reviewer_status": "SCRIPTED"
+      },
+      "source": {
+        "id": "R7-D07-source",
+        "text": "Expense claims may be submitted up to fourteen days after the quarter closes.",
+        "hash": "e00601e6c53e03fc91cfa1dfc4086fb397bfbbaf4fa61024f12ed03bf66ebd1c"
+      },
+      "transformation": {
+        "id": "R7-D07-transformation",
+        "text": "The deadline for expense claims is no more than fourteen days after quarter close.",
+        "hash": "866a4abdd553fd7b35f7d525e4c42b35a777ccec0a3785ed35f4ca7fbed2817c"
+      }
+    },
+    {
+      "id": "R7-D08",
+      "case_type": "FAITHFUL",
+      "corruption_class": null,
+      "expected_policy": "USE_TRANSFORMATION",
+      "expected_findings": [
+        {
+          "type": "PRESERVED_CANDIDATE",
+          "distinction": "PRESERVED",
+          "source_quote": "A release requires a completed security review and an approved change ticket.",
+          "transformation_quote": "An approved change ticket and a completed security review are required for release.",
+          "severity": "INFO"
+        }
+      ],
+      "deterministic": {
+        "policy": "USE_TRANSFORMATION",
+        "policy_class": "CORRECT",
+        "detected": true,
+        "matched": [
+          {
+            "expected": {
+              "type": "PRESERVED_CANDIDATE",
+              "distinction": "PRESERVED",
+              "source_quote": "A release requires a completed security review and an approved change ticket.",
+              "transformation_quote": "An approved change ticket and a completed security review are required for release.",
+              "severity": "INFO"
+            },
+            "source": true,
+            "transformation": true,
+            "matched": true
+          }
+        ],
+        "findings": [
+          {
+            "id": "f1",
+            "type": "PRESERVED_CANDIDATE",
+            "distinction": "PRESERVED",
+            "source_spans": [
+              {
+                "origin": "ORIGINAL_SOURCE",
+                "source_id": "R7-D08-source",
+                "source_hash": "4f1bdc262c4997faf3cb91dbd297e72cd137413e2ae8de0ff87f5dcbdfd0f5e4",
+                "start": 0,
+                "end": 77,
+                "text": "A release requires a completed security review and an approved change ticket."
+              }
+            ],
+            "transformation_spans": [
+              {
+                "origin": "ORIGINAL_SOURCE",
+                "source_id": "R7-D08-transformation",
+                "source_hash": "25372a8b07d0690aacf07f5b6712aeb68a376460e210f8d1e9bcb2586d500c74",
+                "start": 0,
+                "end": 83,
+                "text": "An approved change ticket and a completed security review are required for release."
+              }
+            ],
+            "method": "LEXICAL_RULE_HEURISTIC",
+            "standing": "CANDIDATE_REQUIRES_REVIEW",
+            "severity": "INFO",
+            "confidence": "HIGH",
+            "reason": "The obligated source meaning has a candidate counterpart in the transformation (alignment 1.60)."
+          }
+        ],
+        "material": [],
+        "constraints": {
+          "source": [],
+          "transformation": [],
+          "comparisons": []
+        },
+        "latency_ms": 978.8780999999999
+      },
+      "reviewer": {
+        "status": "SCRIPTED",
+        "error": null,
+        "policy": "REQUEST_CLARIFICATION",
+        "policy_class": "UNNECESSARY_CLARIFICATION",
+        "detected": false,
+        "matched": [
+          {
+            "expected": {
+              "type": "PRESERVED_CANDIDATE",
+              "distinction": "PRESERVED",
+              "source_quote": "A release requires a completed security review and an approved change ticket.",
+              "transformation_quote": "An approved change ticket and a completed security review are required for release.",
+              "severity": "INFO"
+            },
+            "source": false,
+            "transformation": false,
+            "matched": false
+          }
+        ],
+        "assessments": [],
+        "abstentions": [],
+        "summary": "Scripted reviewer: no material change proposed.",
+        "mapped": [],
+        "latency_ms": 0.14649999999983265,
+        "usage": null
+      },
+      "hybrid": {
+        "policy": "REQUEST_CLARIFICATION",
+        "policy_class": "UNNECESSARY_CLARIFICATION",
+        "detected": true,
+        "matched": [
+          {
+            "expected": {
+              "type": "PRESERVED_CANDIDATE",
+              "distinction": "PRESERVED",
+              "source_quote": "A release requires a completed security review and an approved change ticket.",
+              "transformation_quote": "An approved change ticket and a completed security review are required for release.",
+              "severity": "INFO"
+            },
+            "source": true,
+            "transformation": true,
+            "matched": true
+          }
+        ],
+        "primary_detected": true,
+        "primary_matched": [
+          {
+            "expected": {
+              "type": "PRESERVED_CANDIDATE",
+              "distinction": "PRESERVED",
+              "source_quote": "A release requires a completed security review and an approved change ticket.",
+              "transformation_quote": "An approved change ticket and a completed security review are required for release.",
+              "severity": "INFO"
+            },
+            "source": true,
+            "transformation": true,
+            "matched": true
+          }
+        ],
+        "findings": [
+          {
+            "id": "f1",
+            "origin": "DETERMINISTIC",
+            "reviewer_assessment_id": null,
+            "claim": "The obligated source meaning has a candidate counterpart in the transformation (alignment 1.60).",
+            "change_kind": null,
+            "epistemic_direction": null,
+            "type": "PRESERVED_CANDIDATE",
+            "distinction": "PRESERVED",
+            "severity": "INFO",
+            "confidence": "HIGH",
+            "source_spans": [
+              {
+                "origin": "ORIGINAL_SOURCE",
+                "source_id": "R7-D08-source",
+                "source_hash": "4f1bdc262c4997faf3cb91dbd297e72cd137413e2ae8de0ff87f5dcbdfd0f5e4",
+                "start": 0,
+                "end": 77,
+                "text": "A release requires a completed security review and an approved change ticket."
+              }
+            ],
+            "transformation_spans": [
+              {
+                "origin": "ORIGINAL_SOURCE",
+                "source_id": "R7-D08-transformation",
+                "source_hash": "25372a8b07d0690aacf07f5b6712aeb68a376460e210f8d1e9bcb2586d500c74",
+                "start": 0,
+                "end": 83,
+                "text": "An approved change ticket and a completed security review are required for release."
+              }
+            ],
+            "reason": "The obligated source meaning has a candidate counterpart in the transformation (alignment 1.60).",
+            "status": "DETERMINISTIC_ONLY",
+            "dispute_reason": null,
+            "mapping_basis": null,
+            "standing": "CANDIDATE_REQUIRES_REVIEW"
+          }
+        ],
+        "primary_findings": [
+          {
+            "id": "f1",
+            "origin": "DETERMINISTIC",
+            "reviewer_assessment_id": null,
+            "claim": "The obligated source meaning has a candidate counterpart in the transformation (alignment 1.60).",
+            "change_kind": null,
+            "epistemic_direction": null,
+            "type": "PRESERVED_CANDIDATE",
+            "distinction": "PRESERVED",
+            "severity": "INFO",
+            "confidence": "HIGH",
+            "source_spans": [
+              {
+                "origin": "ORIGINAL_SOURCE",
+                "source_id": "R7-D08-source",
+                "source_hash": "4f1bdc262c4997faf3cb91dbd297e72cd137413e2ae8de0ff87f5dcbdfd0f5e4",
+                "start": 0,
+                "end": 77,
+                "text": "A release requires a completed security review and an approved change ticket."
+              }
+            ],
+            "transformation_spans": [
+              {
+                "origin": "ORIGINAL_SOURCE",
+                "source_id": "R7-D08-transformation",
+                "source_hash": "25372a8b07d0690aacf07f5b6712aeb68a376460e210f8d1e9bcb2586d500c74",
+                "start": 0,
+                "end": 83,
+                "text": "An approved change ticket and a completed security review are required for release."
+              }
+            ],
+            "reason": "The obligated source meaning has a candidate counterpart in the transformation (alignment 1.60).",
+            "status": "DETERMINISTIC_ONLY",
+            "dispute_reason": null,
+            "mapping_basis": null,
+            "standing": "CANDIDATE_REQUIRES_REVIEW"
+          }
+        ],
+        "disagreements": [],
+        "reviewer_status": "SCRIPTED"
+      },
+      "source": {
+        "id": "R7-D08-source",
+        "text": "A release requires a completed security review and an approved change ticket.",
+        "hash": "4f1bdc262c4997faf3cb91dbd297e72cd137413e2ae8de0ff87f5dcbdfd0f5e4"
+      },
+      "transformation": {
+        "id": "R7-D08-transformation",
+        "text": "An approved change ticket and a completed security review are required for release.",
+        "hash": "25372a8b07d0690aacf07f5b6712aeb68a376460e210f8d1e9bcb2586d500c74"
+      }
+    },
+    {
+      "id": "R7-D09",
+      "case_type": "FAITHFUL",
+      "corruption_class": null,
+      "expected_policy": "USE_TRANSFORMATION",
+      "expected_findings": [
+        {
+          "type": "PRESERVED_CANDIDATE",
+          "distinction": "PRESERVED",
+          "source_quote": "The on-call engineer may escalate when error rates exceed five percent for ten minutes.",
+          "transformation_quote": "The on-call engineer may escalate when error rates exceed five percent for ten minutes.",
+          "severity": "INFO"
+        }
+      ],
+      "deterministic": {
+        "policy": "USE_TRANSFORMATION",
+        "policy_class": "CORRECT",
+        "detected": true,
+        "matched": [
+          {
+            "expected": {
+              "type": "PRESERVED_CANDIDATE",
+              "distinction": "PRESERVED",
+              "source_quote": "The on-call engineer may escalate when error rates exceed five percent for ten minutes.",
+              "transformation_quote": "The on-call engineer may escalate when error rates exceed five percent for ten minutes.",
+              "severity": "INFO"
+            },
+            "source": true,
+            "transformation": true,
+            "matched": true
+          }
+        ],
+        "findings": [
+          {
+            "id": "f1",
+            "type": "PRESERVED_CANDIDATE",
+            "distinction": "PRESERVED",
+            "source_spans": [
+              {
+                "origin": "ORIGINAL_SOURCE",
+                "source_id": "R7-D09-source",
+                "source_hash": "5495900d48673d8abff5ca9c7b5f495b344f2d631110e6fca838eb86a5fc789d",
+                "start": 0,
+                "end": 87,
+                "text": "The on-call engineer may escalate when error rates exceed five percent for ten minutes."
+              }
+            ],
+            "transformation_spans": [
+              {
+                "origin": "ORIGINAL_SOURCE",
+                "source_id": "R7-D09-transformation",
+                "source_hash": "b4417c6562a42fcba6a3c3834aa3d1cfbb34da8647b26f17dfba14f846308bc8",
+                "start": 0,
+                "end": 87,
+                "text": "The on-call engineer may escalate when error rates exceed five percent for ten minutes."
+              }
+            ],
+            "method": "LEXICAL_RULE_HEURISTIC",
+            "standing": "CANDIDATE_REQUIRES_REVIEW",
+            "severity": "INFO",
+            "confidence": "HIGH",
+            "reason": "The obligated source meaning has a candidate counterpart in the transformation (alignment 1.60)."
+          }
+        ],
+        "material": [],
+        "constraints": {
+          "source": [
+            {
+              "id": "sc1",
+              "kind": "DURATION",
+              "operator": "<=",
+              "value": 10,
+              "unit": "minutes",
+              "action": "may escalate when error rates exceed five percent",
+              "source_spans": [
+                {
+                  "origin": "ORIGINAL_SOURCE",
+                  "source_id": "R7-D09-source",
+                  "source_hash": "5495900d48673d8abff5ca9c7b5f495b344f2d631110e6fca838eb86a5fc789d",
+                  "start": 71,
+                  "end": 86,
+                  "text": "for ten minutes"
+                }
+              ],
+              "transformation_spans": [],
+              "standing": "SOURCE_STATED",
+              "method": "LEXICAL_CONSTRAINT_HEURISTIC"
+            }
+          ],
+          "transformation": [
+            {
+              "id": "tc1",
+              "kind": "DURATION",
+              "operator": "<=",
+              "value": 10,
+              "unit": "minutes",
+              "action": "may escalate when error rates exceed five percent",
+              "source_spans": [],
+              "transformation_spans": [
+                {
+                  "origin": "ORIGINAL_SOURCE",
+                  "source_id": "R7-D09-transformation",
+                  "source_hash": "b4417c6562a42fcba6a3c3834aa3d1cfbb34da8647b26f17dfba14f846308bc8",
+                  "start": 71,
+                  "end": 86,
+                  "text": "for ten minutes"
+                }
+              ],
+              "standing": "TRANSFORMATION_STATED",
+              "method": "LEXICAL_CONSTRAINT_HEURISTIC"
+            }
+          ],
+          "comparisons": [
+            {
+              "id": "cc1",
+              "source_constraint": "sc1",
+              "transformation_constraint": "tc1",
+              "result": "PRESERVED_CANDIDATE",
+              "distinction": "CONSTRAINT_PRESERVED",
+              "reason": "Source constraint <= 10 minutes; transformation <= 10 minutes.",
+              "standing": "CANDIDATE_REQUIRES_REVIEW"
+            }
+          ]
+        },
+        "latency_ms": 952.7408000000005
+      },
+      "reviewer": {
+        "status": "SCRIPTED",
+        "error": null,
+        "policy": "REQUEST_CLARIFICATION",
+        "policy_class": "UNNECESSARY_CLARIFICATION",
+        "detected": false,
+        "matched": [
+          {
+            "expected": {
+              "type": "PRESERVED_CANDIDATE",
+              "distinction": "PRESERVED",
+              "source_quote": "The on-call engineer may escalate when error rates exceed five percent for ten minutes.",
+              "transformation_quote": "The on-call engineer may escalate when error rates exceed five percent for ten minutes.",
+              "severity": "INFO"
+            },
+            "source": false,
+            "transformation": false,
+            "matched": false
+          }
+        ],
+        "assessments": [],
+        "abstentions": [],
+        "summary": "Scripted reviewer: no material change proposed.",
+        "mapped": [],
+        "latency_ms": 0.1712999999999738,
+        "usage": null
+      },
+      "hybrid": {
+        "policy": "REQUEST_CLARIFICATION",
+        "policy_class": "UNNECESSARY_CLARIFICATION",
+        "detected": true,
+        "matched": [
+          {
+            "expected": {
+              "type": "PRESERVED_CANDIDATE",
+              "distinction": "PRESERVED",
+              "source_quote": "The on-call engineer may escalate when error rates exceed five percent for ten minutes.",
+              "transformation_quote": "The on-call engineer may escalate when error rates exceed five percent for ten minutes.",
+              "severity": "INFO"
+            },
+            "source": true,
+            "transformation": true,
+            "matched": true
+          }
+        ],
+        "primary_detected": true,
+        "primary_matched": [
+          {
+            "expected": {
+              "type": "PRESERVED_CANDIDATE",
+              "distinction": "PRESERVED",
+              "source_quote": "The on-call engineer may escalate when error rates exceed five percent for ten minutes.",
+              "transformation_quote": "The on-call engineer may escalate when error rates exceed five percent for ten minutes.",
+              "severity": "INFO"
+            },
+            "source": true,
+            "transformation": true,
+            "matched": true
+          }
+        ],
+        "findings": [
+          {
+            "id": "f1",
+            "origin": "DETERMINISTIC",
+            "reviewer_assessment_id": null,
+            "claim": "The obligated source meaning has a candidate counterpart in the transformation (alignment 1.60).",
+            "change_kind": null,
+            "epistemic_direction": null,
+            "type": "PRESERVED_CANDIDATE",
+            "distinction": "PRESERVED",
+            "severity": "INFO",
+            "confidence": "HIGH",
+            "source_spans": [
+              {
+                "origin": "ORIGINAL_SOURCE",
+                "source_id": "R7-D09-source",
+                "source_hash": "5495900d48673d8abff5ca9c7b5f495b344f2d631110e6fca838eb86a5fc789d",
+                "start": 0,
+                "end": 87,
+                "text": "The on-call engineer may escalate when error rates exceed five percent for ten minutes."
+              }
+            ],
+            "transformation_spans": [
+              {
+                "origin": "ORIGINAL_SOURCE",
+                "source_id": "R7-D09-transformation",
+                "source_hash": "b4417c6562a42fcba6a3c3834aa3d1cfbb34da8647b26f17dfba14f846308bc8",
+                "start": 0,
+                "end": 87,
+                "text": "The on-call engineer may escalate when error rates exceed five percent for ten minutes."
+              }
+            ],
+            "reason": "The obligated source meaning has a candidate counterpart in the transformation (alignment 1.60).",
+            "status": "DETERMINISTIC_ONLY",
+            "dispute_reason": null,
+            "mapping_basis": null,
+            "standing": "CANDIDATE_REQUIRES_REVIEW"
+          }
+        ],
+        "primary_findings": [
+          {
+            "id": "f1",
+            "origin": "DETERMINISTIC",
+            "reviewer_assessment_id": null,
+            "claim": "The obligated source meaning has a candidate counterpart in the transformation (alignment 1.60).",
+            "change_kind": null,
+            "epistemic_direction": null,
+            "type": "PRESERVED_CANDIDATE",
+            "distinction": "PRESERVED",
+            "severity": "INFO",
+            "confidence": "HIGH",
+            "source_spans": [
+              {
+                "origin": "ORIGINAL_SOURCE",
+                "source_id": "R7-D09-source",
+                "source_hash": "5495900d48673d8abff5ca9c7b5f495b344f2d631110e6fca838eb86a5fc789d",
+                "start": 0,
+                "end": 87,
+                "text": "The on-call engineer may escalate when error rates exceed five percent for ten minutes."
+              }
+            ],
+            "transformation_spans": [
+              {
+                "origin": "ORIGINAL_SOURCE",
+                "source_id": "R7-D09-transformation",
+                "source_hash": "b4417c6562a42fcba6a3c3834aa3d1cfbb34da8647b26f17dfba14f846308bc8",
+                "start": 0,
+                "end": 87,
+                "text": "The on-call engineer may escalate when error rates exceed five percent for ten minutes."
+              }
+            ],
+            "reason": "The obligated source meaning has a candidate counterpart in the transformation (alignment 1.60).",
+            "status": "DETERMINISTIC_ONLY",
+            "dispute_reason": null,
+            "mapping_basis": null,
+            "standing": "CANDIDATE_REQUIRES_REVIEW"
+          }
+        ],
+        "disagreements": [],
+        "reviewer_status": "SCRIPTED"
+      },
+      "source": {
+        "id": "R7-D09-source",
+        "text": "The on-call engineer may escalate when error rates exceed five percent for ten minutes. The office location is irrelevant.",
+        "hash": "5495900d48673d8abff5ca9c7b5f495b344f2d631110e6fca838eb86a5fc789d"
+      },
+      "transformation": {
+        "id": "R7-D09-transformation",
+        "text": "The on-call engineer may escalate when error rates exceed five percent for ten minutes.",
+        "hash": "b4417c6562a42fcba6a3c3834aa3d1cfbb34da8647b26f17dfba14f846308bc8"
+      }
+    },
+    {
+      "id": "R7-D10",
+      "case_type": "AMBIGUITY",
+      "corruption_class": null,
+      "expected_policy": "REQUEST_CLARIFICATION",
+      "expected_findings": [
+        {
+          "type": "UNRESOLVED",
+          "distinction": "SOURCE_AMBIGUITY",
+          "source_quote": "The privacy office has not decided whether regional replication is permitted.",
+          "transformation_quote": "It remains unclear whether regional replication is permitted.",
+          "severity": "MINOR"
+        }
+      ],
+      "deterministic": {
+        "policy": "REQUEST_CLARIFICATION",
+        "policy_class": "CORRECT",
+        "detected": true,
+        "matched": [
+          {
+            "expected": {
+              "type": "UNRESOLVED",
+              "distinction": "SOURCE_AMBIGUITY",
+              "source_quote": "The privacy office has not decided whether regional replication is permitted.",
+              "transformation_quote": "It remains unclear whether regional replication is permitted.",
+              "severity": "MINOR"
+            },
+            "source": true,
+            "transformation": true,
+            "matched": true
+          }
+        ],
+        "findings": [
+          {
+            "id": "f1",
+            "type": "UNRESOLVED",
+            "distinction": "SOURCE_AMBIGUITY",
+            "source_spans": [
+              {
+                "origin": "ORIGINAL_SOURCE",
+                "source_id": "R7-D10-source",
+                "source_hash": "256cc19aab8b29f3a7064347fa9293be3d62300e4526a076be6deb0cf4b7ef20",
+                "start": 0,
+                "end": 77,
+                "text": "The privacy office has not decided whether regional replication is permitted."
+              }
+            ],
+            "transformation_spans": [
+              {
+                "origin": "ORIGINAL_SOURCE",
+                "source_id": "R7-D10-transformation",
+                "source_hash": "4a04cea2fa8d557315e94a0be10759e1fca51a7ef3b37213a5a23449ebcebedf",
+                "start": 0,
+                "end": 61,
+                "text": "It remains unclear whether regional replication is permitted."
+              }
+            ],
+            "method": "LEXICAL_RULE_HEURISTIC",
+            "standing": "CANDIDATE_REQUIRES_REVIEW",
+            "severity": "MINOR",
+            "confidence": "MEDIUM",
+            "reason": "The uncertainty in “It remains unclear whether regional replication is permitted.” is grounded in the source: The privacy office has not decided whether regional replication is permitted.."
+          }
+        ],
+        "material": [],
+        "constraints": {
+          "source": [],
+          "transformation": [],
+          "comparisons": []
+        },
+        "latency_ms": 972.1077000000005
+      },
+      "reviewer": {
+        "status": "SCRIPTED",
+        "error": null,
+        "policy": "REQUEST_CLARIFICATION",
+        "policy_class": "CORRECT",
+        "detected": false,
+        "matched": [
+          {
+            "expected": {
+              "type": "UNRESOLVED",
+              "distinction": "SOURCE_AMBIGUITY",
+              "source_quote": "The privacy office has not decided whether regional replication is permitted.",
+              "transformation_quote": "It remains unclear whether regional replication is permitted.",
+              "severity": "MINOR"
+            },
+            "source": false,
+            "transformation": false,
+            "matched": false
+          }
+        ],
+        "assessments": [],
+        "abstentions": [],
+        "summary": "Scripted reviewer: no material change proposed.",
+        "mapped": [],
+        "latency_ms": 0.2798000000002503,
+        "usage": null
+      },
+      "hybrid": {
+        "policy": "REQUEST_CLARIFICATION",
+        "policy_class": "CORRECT",
+        "detected": true,
+        "matched": [
+          {
+            "expected": {
+              "type": "UNRESOLVED",
+              "distinction": "SOURCE_AMBIGUITY",
+              "source_quote": "The privacy office has not decided whether regional replication is permitted.",
+              "transformation_quote": "It remains unclear whether regional replication is permitted.",
+              "severity": "MINOR"
+            },
+            "source": true,
+            "transformation": true,
+            "matched": true
+          }
+        ],
+        "primary_detected": true,
+        "primary_matched": [
+          {
+            "expected": {
+              "type": "UNRESOLVED",
+              "distinction": "SOURCE_AMBIGUITY",
+              "source_quote": "The privacy office has not decided whether regional replication is permitted.",
+              "transformation_quote": "It remains unclear whether regional replication is permitted.",
+              "severity": "MINOR"
+            },
+            "source": true,
+            "transformation": true,
+            "matched": true
+          }
+        ],
+        "findings": [
+          {
+            "id": "f1",
+            "origin": "DETERMINISTIC",
+            "reviewer_assessment_id": null,
+            "claim": "The uncertainty in “It remains unclear whether regional replication is permitted.” is grounded in the source: The privacy office has not decided whether regional replication is permitted..",
+            "change_kind": null,
+            "epistemic_direction": null,
+            "type": "UNRESOLVED",
+            "distinction": "SOURCE_AMBIGUITY",
+            "severity": "MINOR",
+            "confidence": "MEDIUM",
+            "source_spans": [
+              {
+                "origin": "ORIGINAL_SOURCE",
+                "source_id": "R7-D10-source",
+                "source_hash": "256cc19aab8b29f3a7064347fa9293be3d62300e4526a076be6deb0cf4b7ef20",
+                "start": 0,
+                "end": 77,
+                "text": "The privacy office has not decided whether regional replication is permitted."
+              }
+            ],
+            "transformation_spans": [
+              {
+                "origin": "ORIGINAL_SOURCE",
+                "source_id": "R7-D10-transformation",
+                "source_hash": "4a04cea2fa8d557315e94a0be10759e1fca51a7ef3b37213a5a23449ebcebedf",
+                "start": 0,
+                "end": 61,
+                "text": "It remains unclear whether regional replication is permitted."
+              }
+            ],
+            "reason": "The uncertainty in “It remains unclear whether regional replication is permitted.” is grounded in the source: The privacy office has not decided whether regional replication is permitted..",
+            "status": "DETERMINISTIC_ONLY",
+            "dispute_reason": null,
+            "mapping_basis": null,
+            "standing": "CANDIDATE_REQUIRES_REVIEW"
+          }
+        ],
+        "primary_findings": [
+          {
+            "id": "f1",
+            "origin": "DETERMINISTIC",
+            "reviewer_assessment_id": null,
+            "claim": "The uncertainty in “It remains unclear whether regional replication is permitted.” is grounded in the source: The privacy office has not decided whether regional replication is permitted..",
+            "change_kind": null,
+            "epistemic_direction": null,
+            "type": "UNRESOLVED",
+            "distinction": "SOURCE_AMBIGUITY",
+            "severity": "MINOR",
+            "confidence": "MEDIUM",
+            "source_spans": [
+              {
+                "origin": "ORIGINAL_SOURCE",
+                "source_id": "R7-D10-source",
+                "source_hash": "256cc19aab8b29f3a7064347fa9293be3d62300e4526a076be6deb0cf4b7ef20",
+                "start": 0,
+                "end": 77,
+                "text": "The privacy office has not decided whether regional replication is permitted."
+              }
+            ],
+            "transformation_spans": [
+              {
+                "origin": "ORIGINAL_SOURCE",
+                "source_id": "R7-D10-transformation",
+                "source_hash": "4a04cea2fa8d557315e94a0be10759e1fca51a7ef3b37213a5a23449ebcebedf",
+                "start": 0,
+                "end": 61,
+                "text": "It remains unclear whether regional replication is permitted."
+              }
+            ],
+            "reason": "The uncertainty in “It remains unclear whether regional replication is permitted.” is grounded in the source: The privacy office has not decided whether regional replication is permitted..",
+            "status": "DETERMINISTIC_ONLY",
+            "dispute_reason": null,
+            "mapping_basis": null,
+            "standing": "CANDIDATE_REQUIRES_REVIEW"
+          }
+        ],
+        "disagreements": [],
+        "reviewer_status": "SCRIPTED"
+      },
+      "source": {
+        "id": "R7-D10-source",
+        "text": "The privacy office has not decided whether regional replication is permitted. The record contains neither approval nor denial.",
+        "hash": "256cc19aab8b29f3a7064347fa9293be3d62300e4526a076be6deb0cf4b7ef20"
+      },
+      "transformation": {
+        "id": "R7-D10-transformation",
+        "text": "It remains unclear whether regional replication is permitted.",
+        "hash": "4a04cea2fa8d557315e94a0be10759e1fca51a7ef3b37213a5a23449ebcebedf"
+      }
+    },
+    {
+      "id": "R7-D11",
+      "case_type": "CORRUPTION",
+      "corruption_class": "INVENTED_UNCERTAINTY",
+      "expected_policy": "PRESERVE_SOURCE",
+      "expected_findings": [
+        {
+          "type": "UNSUPPORTED_ADDITION_CANDIDATE",
+          "distinction": "UNSUPPORTED_UNCERTAINTY",
+          "source_quote": "Paging is permitted during a severity-one incident.",
+          "transformation_quote": "It is unclear whether paging is permitted during a severity-one incident.",
+          "severity": "MATERIAL"
+        }
+      ],
+      "deterministic": {
+        "policy": "PRESERVE_SOURCE",
+        "policy_class": "CORRECT",
+        "detected": true,
+        "matched": [
+          {
+            "expected": {
+              "type": "UNSUPPORTED_ADDITION_CANDIDATE",
+              "distinction": "UNSUPPORTED_UNCERTAINTY",
+              "source_quote": "Paging is permitted during a severity-one incident.",
+              "transformation_quote": "It is unclear whether paging is permitted during a severity-one incident.",
+              "severity": "MATERIAL"
+            },
+            "source": true,
+            "transformation": true,
+            "matched": true
+          }
+        ],
+        "findings": [
+          {
+            "id": "f1",
+            "type": "UNSUPPORTED_ADDITION_CANDIDATE",
+            "distinction": "UNSUPPORTED_UNCERTAINTY",
+            "source_spans": [
+              {
+                "origin": "ORIGINAL_SOURCE",
+                "source_id": "R7-D11-source",
+                "source_hash": "68cdea9d86aaca77b5d6c93d3c75393d71e7a5007824482d6170924ac79736cd",
+                "start": 0,
+                "end": 51,
+                "text": "Paging is permitted during a severity-one incident."
+              }
+            ],
+            "transformation_spans": [
+              {
+                "origin": "ORIGINAL_SOURCE",
+                "source_id": "R7-D11-transformation",
+                "source_hash": "77bc6d0bda3360d576c27408377cb1d492d3cc87c303a70b93ad44c309354c43",
+                "start": 0,
+                "end": 73,
+                "text": "It is unclear whether paging is permitted during a severity-one incident."
+              }
+            ],
+            "method": "LEXICAL_RULE_HEURISTIC",
+            "standing": "CANDIDATE_REQUIRES_REVIEW",
+            "severity": "MATERIAL",
+            "confidence": "MEDIUM",
+            "reason": "The transformation adds uncertainty in “It is unclear whether paging is permitted during a severity-one incident.” despite a source claim that is stated without an unresolved condition. The relevant source claim is stated without a hedge or unresolved condition."
+          }
+        ],
+        "material": [
+          {
+            "id": "f1",
+            "type": "UNSUPPORTED_ADDITION_CANDIDATE",
+            "distinction": "UNSUPPORTED_UNCERTAINTY",
+            "source_spans": [
+              {
+                "origin": "ORIGINAL_SOURCE",
+                "source_id": "R7-D11-source",
+                "source_hash": "68cdea9d86aaca77b5d6c93d3c75393d71e7a5007824482d6170924ac79736cd",
+                "start": 0,
+                "end": 51,
+                "text": "Paging is permitted during a severity-one incident."
+              }
+            ],
+            "transformation_spans": [
+              {
+                "origin": "ORIGINAL_SOURCE",
+                "source_id": "R7-D11-transformation",
+                "source_hash": "77bc6d0bda3360d576c27408377cb1d492d3cc87c303a70b93ad44c309354c43",
+                "start": 0,
+                "end": 73,
+                "text": "It is unclear whether paging is permitted during a severity-one incident."
+              }
+            ],
+            "method": "LEXICAL_RULE_HEURISTIC",
+            "standing": "CANDIDATE_REQUIRES_REVIEW",
+            "severity": "MATERIAL",
+            "confidence": "MEDIUM",
+            "reason": "The transformation adds uncertainty in “It is unclear whether paging is permitted during a severity-one incident.” despite a source claim that is stated without an unresolved condition. The relevant source claim is stated without a hedge or unresolved condition."
+          }
+        ],
+        "constraints": {
+          "source": [],
+          "transformation": [],
+          "comparisons": []
+        },
+        "latency_ms": 946.1170000000002
+      },
+      "reviewer": {
+        "status": "SCRIPTED",
+        "error": null,
+        "policy": "REQUEST_CLARIFICATION",
+        "policy_class": "UNNECESSARY_CLARIFICATION",
+        "detected": false,
+        "matched": [
+          {
+            "expected": {
+              "type": "UNSUPPORTED_ADDITION_CANDIDATE",
+              "distinction": "UNSUPPORTED_UNCERTAINTY",
+              "source_quote": "Paging is permitted during a severity-one incident.",
+              "transformation_quote": "It is unclear whether paging is permitted during a severity-one incident.",
+              "severity": "MATERIAL"
+            },
+            "source": false,
+            "transformation": false,
+            "matched": false
+          }
+        ],
+        "assessments": [],
+        "abstentions": [],
+        "summary": "Scripted reviewer: no material change proposed.",
+        "mapped": [],
+        "latency_ms": 0.10620000000017171,
+        "usage": null
+      },
+      "hybrid": {
+        "policy": "PRESERVE_SOURCE",
+        "policy_class": "CORRECT",
+        "detected": true,
+        "matched": [
+          {
+            "expected": {
+              "type": "UNSUPPORTED_ADDITION_CANDIDATE",
+              "distinction": "UNSUPPORTED_UNCERTAINTY",
+              "source_quote": "Paging is permitted during a severity-one incident.",
+              "transformation_quote": "It is unclear whether paging is permitted during a severity-one incident.",
+              "severity": "MATERIAL"
+            },
+            "source": true,
+            "transformation": true,
+            "matched": true
+          }
+        ],
+        "primary_detected": true,
+        "primary_matched": [
+          {
+            "expected": {
+              "type": "UNSUPPORTED_ADDITION_CANDIDATE",
+              "distinction": "UNSUPPORTED_UNCERTAINTY",
+              "source_quote": "Paging is permitted during a severity-one incident.",
+              "transformation_quote": "It is unclear whether paging is permitted during a severity-one incident.",
+              "severity": "MATERIAL"
+            },
+            "source": true,
+            "transformation": true,
+            "matched": true
+          }
+        ],
+        "findings": [
+          {
+            "id": "f1",
+            "origin": "DETERMINISTIC",
+            "reviewer_assessment_id": null,
+            "claim": "The transformation adds uncertainty in “It is unclear whether paging is permitted during a severity-one incident.” despite a source claim that is stated without an unresolved condition. The relevant source claim is stated without a hedge or unresolved condition.",
+            "change_kind": null,
+            "epistemic_direction": null,
+            "type": "UNSUPPORTED_ADDITION_CANDIDATE",
+            "distinction": "UNSUPPORTED_UNCERTAINTY",
+            "severity": "MATERIAL",
+            "confidence": "MEDIUM",
+            "source_spans": [
+              {
+                "origin": "ORIGINAL_SOURCE",
+                "source_id": "R7-D11-source",
+                "source_hash": "68cdea9d86aaca77b5d6c93d3c75393d71e7a5007824482d6170924ac79736cd",
+                "start": 0,
+                "end": 51,
+                "text": "Paging is permitted during a severity-one incident."
+              }
+            ],
+            "transformation_spans": [
+              {
+                "origin": "ORIGINAL_SOURCE",
+                "source_id": "R7-D11-transformation",
+                "source_hash": "77bc6d0bda3360d576c27408377cb1d492d3cc87c303a70b93ad44c309354c43",
+                "start": 0,
+                "end": 73,
+                "text": "It is unclear whether paging is permitted during a severity-one incident."
+              }
+            ],
+            "reason": "The transformation adds uncertainty in “It is unclear whether paging is permitted during a severity-one incident.” despite a source claim that is stated without an unresolved condition. The relevant source claim is stated without a hedge or unresolved condition.",
+            "status": "DETERMINISTIC_ONLY",
+            "dispute_reason": null,
+            "mapping_basis": null,
+            "standing": "CANDIDATE_REQUIRES_REVIEW"
+          }
+        ],
+        "primary_findings": [
+          {
+            "id": "f1",
+            "origin": "DETERMINISTIC",
+            "reviewer_assessment_id": null,
+            "claim": "The transformation adds uncertainty in “It is unclear whether paging is permitted during a severity-one incident.” despite a source claim that is stated without an unresolved condition. The relevant source claim is stated without a hedge or unresolved condition.",
+            "change_kind": null,
+            "epistemic_direction": null,
+            "type": "UNSUPPORTED_ADDITION_CANDIDATE",
+            "distinction": "UNSUPPORTED_UNCERTAINTY",
+            "severity": "MATERIAL",
+            "confidence": "MEDIUM",
+            "source_spans": [
+              {
+                "origin": "ORIGINAL_SOURCE",
+                "source_id": "R7-D11-source",
+                "source_hash": "68cdea9d86aaca77b5d6c93d3c75393d71e7a5007824482d6170924ac79736cd",
+                "start": 0,
+                "end": 51,
+                "text": "Paging is permitted during a severity-one incident."
+              }
+            ],
+            "transformation_spans": [
+              {
+                "origin": "ORIGINAL_SOURCE",
+                "source_id": "R7-D11-transformation",
+                "source_hash": "77bc6d0bda3360d576c27408377cb1d492d3cc87c303a70b93ad44c309354c43",
+                "start": 0,
+                "end": 73,
+                "text": "It is unclear whether paging is permitted during a severity-one incident."
+              }
+            ],
+            "reason": "The transformation adds uncertainty in “It is unclear whether paging is permitted during a severity-one incident.” despite a source claim that is stated without an unresolved condition. The relevant source claim is stated without a hedge or unresolved condition.",
+            "status": "DETERMINISTIC_ONLY",
+            "dispute_reason": null,
+            "mapping_basis": null,
+            "standing": "CANDIDATE_REQUIRES_REVIEW"
+          }
+        ],
+        "disagreements": [],
+        "reviewer_status": "SCRIPTED"
+      },
+      "source": {
+        "id": "R7-D11-source",
+        "text": "Paging is permitted during a severity-one incident. The dashboard shows a severity-one incident.",
+        "hash": "68cdea9d86aaca77b5d6c93d3c75393d71e7a5007824482d6170924ac79736cd"
+      },
+      "transformation": {
+        "id": "R7-D11-transformation",
+        "text": "It is unclear whether paging is permitted during a severity-one incident.",
+        "hash": "77bc6d0bda3360d576c27408377cb1d492d3cc87c303a70b93ad44c309354c43"
+      }
+    },
+    {
+      "id": "R7-D12",
+      "case_type": "CORRUPTION",
+      "corruption_class": "UNSUPPORTED_CAUSAL",
+      "expected_policy": "PRESERVE_SOURCE",
+      "expected_findings": [
+        {
+          "type": "UNSUPPORTED_ADDITION_CANDIDATE",
+          "distinction": "UNSUPPORTED_CAUSAL",
+          "source_quote": "The team says the cause has not been verified.",
+          "transformation_quote": "The schema change caused the import failure",
+          "severity": "MATERIAL"
+        }
+      ],
+      "deterministic": {
+        "policy": "PRESERVE_SOURCE",
+        "policy_class": "CORRECT",
+        "detected": true,
+        "matched": [
+          {
+            "expected": {
+              "type": "UNSUPPORTED_ADDITION_CANDIDATE",
+              "distinction": "UNSUPPORTED_CAUSAL",
+              "source_quote": "The team says the cause has not been verified.",
+              "transformation_quote": "The schema change caused the import failure",
+              "severity": "MATERIAL"
+            },
+            "source": true,
+            "transformation": true,
+            "matched": true
+          }
+        ],
+        "findings": [
+          {
+            "id": "f1",
+            "type": "CHANGED_CANDIDATE",
+            "distinction": "NEGATION_REVERSAL",
+            "source_spans": [
+              {
+                "origin": "ORIGINAL_SOURCE",
+                "source_id": "R7-D12-source",
+                "source_hash": "a26b7cf901673172fa9b613130681139a341fcd7a7d3b35825dd601b1b5abca6",
+                "start": 43,
+                "end": 89,
+                "text": "The team says the cause has not been verified."
+              }
+            ],
+            "transformation_spans": [
+              {
+                "origin": "ORIGINAL_SOURCE",
+                "source_id": "R7-D12-transformation",
+                "source_hash": "10a4cb70a89cae7078626b167f9582ae406c83d8ed966bc4b802ee468b8ffa1f",
+                "start": 45,
+                "end": 73,
+                "text": "the team verified the cause."
+              }
+            ],
+            "method": "LEXICAL_RULE_HEURISTIC",
+            "standing": "CANDIDATE_REQUIRES_REVIEW",
+            "severity": "MATERIAL",
+            "confidence": "HIGH",
+            "reason": "Source says “The team says the cause has not been verified.”; transformation says “the team verified the cause.”. Negation polarity differs."
+          },
+          {
+            "id": "f2",
+            "type": "UNSUPPORTED_ADDITION_CANDIDATE",
+            "distinction": "UNSUPPORTED_CAUSAL",
+            "source_spans": [
+              {
+                "origin": "ORIGINAL_SOURCE",
+                "source_id": "R7-D12-source",
+                "source_hash": "a26b7cf901673172fa9b613130681139a341fcd7a7d3b35825dd601b1b5abca6",
+                "start": 43,
+                "end": 89,
+                "text": "The team says the cause has not been verified."
+              }
+            ],
+            "transformation_spans": [
+              {
+                "origin": "ORIGINAL_SOURCE",
+                "source_id": "R7-D12-transformation",
+                "source_hash": "10a4cb70a89cae7078626b167f9582ae406c83d8ed966bc4b802ee468b8ffa1f",
+                "start": 0,
+                "end": 43,
+                "text": "The schema change caused the import failure"
+              }
+            ],
+            "method": "LEXICAL_RULE_HEURISTIC",
+            "standing": "CANDIDATE_REQUIRES_REVIEW",
+            "severity": "MATERIAL",
+            "confidence": "MEDIUM",
+            "reason": "The transformation asserts a causal relation in “The schema change caused the import failure”; the source evidence concerning the cause does not establish that relation."
+          }
+        ],
+        "material": [
+          {
+            "id": "f1",
+            "type": "CHANGED_CANDIDATE",
+            "distinction": "NEGATION_REVERSAL",
+            "source_spans": [
+              {
+                "origin": "ORIGINAL_SOURCE",
+                "source_id": "R7-D12-source",
+                "source_hash": "a26b7cf901673172fa9b613130681139a341fcd7a7d3b35825dd601b1b5abca6",
+                "start": 43,
+                "end": 89,
+                "text": "The team says the cause has not been verified."
+              }
+            ],
+            "transformation_spans": [
+              {
+                "origin": "ORIGINAL_SOURCE",
+                "source_id": "R7-D12-transformation",
+                "source_hash": "10a4cb70a89cae7078626b167f9582ae406c83d8ed966bc4b802ee468b8ffa1f",
+                "start": 45,
+                "end": 73,
+                "text": "the team verified the cause."
+              }
+            ],
+            "method": "LEXICAL_RULE_HEURISTIC",
+            "standing": "CANDIDATE_REQUIRES_REVIEW",
+            "severity": "MATERIAL",
+            "confidence": "HIGH",
+            "reason": "Source says “The team says the cause has not been verified.”; transformation says “the team verified the cause.”. Negation polarity differs."
+          },
+          {
+            "id": "f2",
+            "type": "UNSUPPORTED_ADDITION_CANDIDATE",
+            "distinction": "UNSUPPORTED_CAUSAL",
+            "source_spans": [
+              {
+                "origin": "ORIGINAL_SOURCE",
+                "source_id": "R7-D12-source",
+                "source_hash": "a26b7cf901673172fa9b613130681139a341fcd7a7d3b35825dd601b1b5abca6",
+                "start": 43,
+                "end": 89,
+                "text": "The team says the cause has not been verified."
+              }
+            ],
+            "transformation_spans": [
+              {
+                "origin": "ORIGINAL_SOURCE",
+                "source_id": "R7-D12-transformation",
+                "source_hash": "10a4cb70a89cae7078626b167f9582ae406c83d8ed966bc4b802ee468b8ffa1f",
+                "start": 0,
+                "end": 43,
+                "text": "The schema change caused the import failure"
+              }
+            ],
+            "method": "LEXICAL_RULE_HEURISTIC",
+            "standing": "CANDIDATE_REQUIRES_REVIEW",
+            "severity": "MATERIAL",
+            "confidence": "MEDIUM",
+            "reason": "The transformation asserts a causal relation in “The schema change caused the import failure”; the source evidence concerning the cause does not establish that relation."
+          }
+        ],
+        "constraints": {
+          "source": [],
+          "transformation": [],
+          "comparisons": []
+        },
+        "latency_ms": 949.0771000000004
+      },
+      "reviewer": {
+        "status": "SCRIPTED",
+        "error": null,
+        "policy": "REQUEST_CLARIFICATION",
+        "policy_class": "UNNECESSARY_CLARIFICATION",
+        "detected": false,
+        "matched": [
+          {
+            "expected": {
+              "type": "UNSUPPORTED_ADDITION_CANDIDATE",
+              "distinction": "UNSUPPORTED_CAUSAL",
+              "source_quote": "The team says the cause has not been verified.",
+              "transformation_quote": "The schema change caused the import failure",
+              "severity": "MATERIAL"
+            },
+            "source": false,
+            "transformation": false,
+            "matched": false
+          }
+        ],
+        "assessments": [],
+        "abstentions": [],
+        "summary": "Scripted reviewer: no material change proposed.",
+        "mapped": [],
+        "latency_ms": 0.10629999999946449,
+        "usage": null
+      },
+      "hybrid": {
+        "policy": "PRESERVE_SOURCE",
+        "policy_class": "CORRECT",
+        "detected": true,
+        "matched": [
+          {
+            "expected": {
+              "type": "UNSUPPORTED_ADDITION_CANDIDATE",
+              "distinction": "UNSUPPORTED_CAUSAL",
+              "source_quote": "The team says the cause has not been verified.",
+              "transformation_quote": "The schema change caused the import failure",
+              "severity": "MATERIAL"
+            },
+            "source": true,
+            "transformation": true,
+            "matched": true
+          }
+        ],
+        "primary_detected": true,
+        "primary_matched": [
+          {
+            "expected": {
+              "type": "UNSUPPORTED_ADDITION_CANDIDATE",
+              "distinction": "UNSUPPORTED_CAUSAL",
+              "source_quote": "The team says the cause has not been verified.",
+              "transformation_quote": "The schema change caused the import failure",
+              "severity": "MATERIAL"
+            },
+            "source": true,
+            "transformation": true,
+            "matched": true
+          }
+        ],
+        "findings": [
+          {
+            "id": "f1",
+            "origin": "DETERMINISTIC",
+            "reviewer_assessment_id": null,
+            "claim": "Source says “The team says the cause has not been verified.”; transformation says “the team verified the cause.”. Negation polarity differs.",
+            "change_kind": null,
+            "epistemic_direction": null,
+            "type": "CHANGED_CANDIDATE",
+            "distinction": "NEGATION_REVERSAL",
+            "severity": "MATERIAL",
+            "confidence": "HIGH",
+            "source_spans": [
+              {
+                "origin": "ORIGINAL_SOURCE",
+                "source_id": "R7-D12-source",
+                "source_hash": "a26b7cf901673172fa9b613130681139a341fcd7a7d3b35825dd601b1b5abca6",
+                "start": 43,
+                "end": 89,
+                "text": "The team says the cause has not been verified."
+              }
+            ],
+            "transformation_spans": [
+              {
+                "origin": "ORIGINAL_SOURCE",
+                "source_id": "R7-D12-transformation",
+                "source_hash": "10a4cb70a89cae7078626b167f9582ae406c83d8ed966bc4b802ee468b8ffa1f",
+                "start": 45,
+                "end": 73,
+                "text": "the team verified the cause."
+              }
+            ],
+            "reason": "Source says “The team says the cause has not been verified.”; transformation says “the team verified the cause.”. Negation polarity differs.",
+            "status": "DETERMINISTIC_ONLY",
+            "dispute_reason": null,
+            "mapping_basis": null,
+            "standing": "CANDIDATE_REQUIRES_REVIEW"
+          },
+          {
+            "id": "f2",
+            "origin": "DETERMINISTIC",
+            "reviewer_assessment_id": null,
+            "claim": "The transformation asserts a causal relation in “The schema change caused the import failure”; the source evidence concerning the cause does not establish that relation.",
+            "change_kind": null,
+            "epistemic_direction": null,
+            "type": "UNSUPPORTED_ADDITION_CANDIDATE",
+            "distinction": "UNSUPPORTED_CAUSAL",
+            "severity": "MATERIAL",
+            "confidence": "MEDIUM",
+            "source_spans": [
+              {
+                "origin": "ORIGINAL_SOURCE",
+                "source_id": "R7-D12-source",
+                "source_hash": "a26b7cf901673172fa9b613130681139a341fcd7a7d3b35825dd601b1b5abca6",
+                "start": 43,
+                "end": 89,
+                "text": "The team says the cause has not been verified."
+              }
+            ],
+            "transformation_spans": [
+              {
+                "origin": "ORIGINAL_SOURCE",
+                "source_id": "R7-D12-transformation",
+                "source_hash": "10a4cb70a89cae7078626b167f9582ae406c83d8ed966bc4b802ee468b8ffa1f",
+                "start": 0,
+                "end": 43,
+                "text": "The schema change caused the import failure"
+              }
+            ],
+            "reason": "The transformation asserts a causal relation in “The schema change caused the import failure”; the source evidence concerning the cause does not establish that relation.",
+            "status": "DETERMINISTIC_ONLY",
+            "dispute_reason": null,
+            "mapping_basis": null,
+            "standing": "CANDIDATE_REQUIRES_REVIEW"
+          }
+        ],
+        "primary_findings": [
+          {
+            "id": "f1",
+            "origin": "DETERMINISTIC",
+            "reviewer_assessment_id": null,
+            "claim": "Source says “The team says the cause has not been verified.”; transformation says “the team verified the cause.”. Negation polarity differs.",
+            "change_kind": null,
+            "epistemic_direction": null,
+            "type": "CHANGED_CANDIDATE",
+            "distinction": "NEGATION_REVERSAL",
+            "severity": "MATERIAL",
+            "confidence": "HIGH",
+            "source_spans": [
+              {
+                "origin": "ORIGINAL_SOURCE",
+                "source_id": "R7-D12-source",
+                "source_hash": "a26b7cf901673172fa9b613130681139a341fcd7a7d3b35825dd601b1b5abca6",
+                "start": 43,
+                "end": 89,
+                "text": "The team says the cause has not been verified."
+              }
+            ],
+            "transformation_spans": [
+              {
+                "origin": "ORIGINAL_SOURCE",
+                "source_id": "R7-D12-transformation",
+                "source_hash": "10a4cb70a89cae7078626b167f9582ae406c83d8ed966bc4b802ee468b8ffa1f",
+                "start": 45,
+                "end": 73,
+                "text": "the team verified the cause."
+              }
+            ],
+            "reason": "Source says “The team says the cause has not been verified.”; transformation says “the team verified the cause.”. Negation polarity differs.",
+            "status": "DETERMINISTIC_ONLY",
+            "dispute_reason": null,
+            "mapping_basis": null,
+            "standing": "CANDIDATE_REQUIRES_REVIEW"
+          },
+          {
+            "id": "f2",
+            "origin": "DETERMINISTIC",
+            "reviewer_assessment_id": null,
+            "claim": "The transformation asserts a causal relation in “The schema change caused the import failure”; the source evidence concerning the cause does not establish that relation.",
+            "change_kind": null,
+            "epistemic_direction": null,
+            "type": "UNSUPPORTED_ADDITION_CANDIDATE",
+            "distinction": "UNSUPPORTED_CAUSAL",
+            "severity": "MATERIAL",
+            "confidence": "MEDIUM",
+            "source_spans": [
+              {
+                "origin": "ORIGINAL_SOURCE",
+                "source_id": "R7-D12-source",
+                "source_hash": "a26b7cf901673172fa9b613130681139a341fcd7a7d3b35825dd601b1b5abca6",
+                "start": 43,
+                "end": 89,
+                "text": "The team says the cause has not been verified."
+              }
+            ],
+            "transformation_spans": [
+              {
+                "origin": "ORIGINAL_SOURCE",
+                "source_id": "R7-D12-transformation",
+                "source_hash": "10a4cb70a89cae7078626b167f9582ae406c83d8ed966bc4b802ee468b8ffa1f",
+                "start": 0,
+                "end": 43,
+                "text": "The schema change caused the import failure"
+              }
+            ],
+            "reason": "The transformation asserts a causal relation in “The schema change caused the import failure”; the source evidence concerning the cause does not establish that relation.",
+            "status": "DETERMINISTIC_ONLY",
+            "dispute_reason": null,
+            "mapping_basis": null,
+            "standing": "CANDIDATE_REQUIRES_REVIEW"
+          }
+        ],
+        "disagreements": [],
+        "reviewer_status": "SCRIPTED"
+      },
+      "source": {
+        "id": "R7-D12-source",
+        "text": "The import failed after the schema change. The team says the cause has not been verified.",
+        "hash": "a26b7cf901673172fa9b613130681139a341fcd7a7d3b35825dd601b1b5abca6"
+      },
+      "transformation": {
+        "id": "R7-D12-transformation",
+        "text": "The schema change caused the import failure; the team verified the cause.",
+        "hash": "10a4cb70a89cae7078626b167f9582ae406c83d8ed966bc4b802ee468b8ffa1f"
+      }
+    }
+  ],
+  "reviewer_ledger": [
+    {
+      "type": "REVIEW_RESULT",
+      "at": "2026-10-24T01:05:55.170Z",
+      "model": {
+        "provider": "scripted-reviewer",
+        "id": "scripted",
+        "digest": "SCRIPTED",
+        "size": null,
+        "parameter_size": null,
+        "quantization": null
+      },
+      "output": {
+        "schema": "language-semantic-review/0.1",
+        "reviewer_version": "lc02-r7-local-review/0.1",
+        "prompt_version": "lc02-r7-review-prompt/0.2",
+        "standing": "SCRIPTED_TEST_FIXTURE",
+        "model": {
+          "provider": "scripted-reviewer",
+          "id": "scripted",
+          "digest": "SCRIPTED",
+          "size": null,
+          "parameter_size": null,
+          "quantization": null
+        },
+        "source": {
+          "id": "R7-D01-source",
+          "hash": "749aedd7343b5561a534bf5725431a23be2e4bc12242629a48c634566022cea5"
+        },
+        "transformation": {
+          "id": "R7-D01-transformation",
+          "hash": "b44aec4903c5a4053e078214acd317c7f82f293c63bec857f54eb9473db6c063"
+        },
+        "assessments": [],
+        "abstentions": [],
+        "summary": "Scripted reviewer: no material change proposed.",
+        "model_assisted": false,
+        "action_authority": false,
+        "human_acceptance": "REQUIRED_FOR_ANY_TRANSMISSION"
+      },
+      "raw": "{\"assessments\":[],\"abstentions\":[],\"summary\":\"Scripted reviewer: no material change proposed.\"}",
+      "usage": null,
+      "latency_ms": 0,
+      "retries": 0,
+      "status": "SCRIPTED_FIXTURE",
+      "standing": "SCRIPTED_NOT_MODEL_RESULT"
+    },
+    {
+      "type": "REVIEW_RESULT",
+      "at": "2026-10-24T01:05:56.157Z",
+      "model": {
+        "provider": "scripted-reviewer",
+        "id": "scripted",
+        "digest": "SCRIPTED",
+        "size": null,
+        "parameter_size": null,
+        "quantization": null
+      },
+      "output": {
+        "schema": "language-semantic-review/0.1",
+        "reviewer_version": "lc02-r7-local-review/0.1",
+        "prompt_version": "lc02-r7-review-prompt/0.2",
+        "standing": "SCRIPTED_TEST_FIXTURE",
+        "model": {
+          "provider": "scripted-reviewer",
+          "id": "scripted",
+          "digest": "SCRIPTED",
+          "size": null,
+          "parameter_size": null,
+          "quantization": null
+        },
+        "source": {
+          "id": "R7-D02-source",
+          "hash": "0ac6778f61aea4c0996826aa536c4094b7ec632decc2433ad4cb4c589cc4197c"
+        },
+        "transformation": {
+          "id": "R7-D02-transformation",
+          "hash": "a938f77e719feab9132a91d78d39acd0184cb64d6726c2ba93cd17071be79166"
+        },
+        "assessments": [],
+        "abstentions": [],
+        "summary": "Scripted reviewer: no material change proposed.",
+        "model_assisted": false,
+        "action_authority": false,
+        "human_acceptance": "REQUIRED_FOR_ANY_TRANSMISSION"
+      },
+      "raw": "{\"assessments\":[],\"abstentions\":[],\"summary\":\"Scripted reviewer: no material change proposed.\"}",
+      "usage": null,
+      "latency_ms": 0,
+      "retries": 0,
+      "status": "SCRIPTED_FIXTURE",
+      "standing": "SCRIPTED_NOT_MODEL_RESULT"
+    },
+    {
+      "type": "REVIEW_RESULT",
+      "at": "2026-10-24T01:05:57.143Z",
+      "model": {
+        "provider": "scripted-reviewer",
+        "id": "scripted",
+        "digest": "SCRIPTED",
+        "size": null,
+        "parameter_size": null,
+        "quantization": null
+      },
+      "output": {
+        "schema": "language-semantic-review/0.1",
+        "reviewer_version": "lc02-r7-local-review/0.1",
+        "prompt_version": "lc02-r7-review-prompt/0.2",
+        "standing": "SCRIPTED_TEST_FIXTURE",
+        "model": {
+          "provider": "scripted-reviewer",
+          "id": "scripted",
+          "digest": "SCRIPTED",
+          "size": null,
+          "parameter_size": null,
+          "quantization": null
+        },
+        "source": {
+          "id": "R7-D03-source",
+          "hash": "1d546c3edbbca4dea45068323d0aa77b36a080784109215158a5b2d2d028fee9"
+        },
+        "transformation": {
+          "id": "R7-D03-transformation",
+          "hash": "a39225d8624c622a590d87642d47e65edf4e90dcb59ec780876df1bee953ff78"
+        },
+        "assessments": [],
+        "abstentions": [],
+        "summary": "Scripted reviewer: no material change proposed.",
+        "model_assisted": false,
+        "action_authority": false,
+        "human_acceptance": "REQUIRED_FOR_ANY_TRANSMISSION"
+      },
+      "raw": "{\"assessments\":[],\"abstentions\":[],\"summary\":\"Scripted reviewer: no material change proposed.\"}",
+      "usage": null,
+      "latency_ms": 0,
+      "retries": 0,
+      "status": "SCRIPTED_FIXTURE",
+      "standing": "SCRIPTED_NOT_MODEL_RESULT"
+    },
+    {
+      "type": "REVIEW_RESULT",
+      "at": "2026-10-24T01:05:58.072Z",
+      "model": {
+        "provider": "scripted-reviewer",
+        "id": "scripted",
+        "digest": "SCRIPTED",
+        "size": null,
+        "parameter_size": null,
+        "quantization": null
+      },
+      "output": {
+        "schema": "language-semantic-review/0.1",
+        "reviewer_version": "lc02-r7-local-review/0.1",
+        "prompt_version": "lc02-r7-review-prompt/0.2",
+        "standing": "SCRIPTED_TEST_FIXTURE",
+        "model": {
+          "provider": "scripted-reviewer",
+          "id": "scripted",
+          "digest": "SCRIPTED",
+          "size": null,
+          "parameter_size": null,
+          "quantization": null
+        },
+        "source": {
+          "id": "R7-D04-source",
+          "hash": "1395962f6f10b7984405e5371c260fb7bde1d091a221ebd783cc4a0e3418800e"
+        },
+        "transformation": {
+          "id": "R7-D04-transformation",
+          "hash": "9a3ca6183230dbec40a241aa868f8af21ce5f0f64a36247674feabd3383a249a"
+        },
+        "assessments": [],
+        "abstentions": [],
+        "summary": "Scripted reviewer: no material change proposed.",
+        "model_assisted": false,
+        "action_authority": false,
+        "human_acceptance": "REQUIRED_FOR_ANY_TRANSMISSION"
+      },
+      "raw": "{\"assessments\":[],\"abstentions\":[],\"summary\":\"Scripted reviewer: no material change proposed.\"}",
+      "usage": null,
+      "latency_ms": 0,
+      "retries": 0,
+      "status": "SCRIPTED_FIXTURE",
+      "standing": "SCRIPTED_NOT_MODEL_RESULT"
+    },
+    {
+      "type": "REVIEW_RESULT",
+      "at": "2026-10-24T01:05:59.004Z",
+      "model": {
+        "provider": "scripted-reviewer",
+        "id": "scripted",
+        "digest": "SCRIPTED",
+        "size": null,
+        "parameter_size": null,
+        "quantization": null
+      },
+      "output": {
+        "schema": "language-semantic-review/0.1",
+        "reviewer_version": "lc02-r7-local-review/0.1",
+        "prompt_version": "lc02-r7-review-prompt/0.2",
+        "standing": "SCRIPTED_TEST_FIXTURE",
+        "model": {
+          "provider": "scripted-reviewer",
+          "id": "scripted",
+          "digest": "SCRIPTED",
+          "size": null,
+          "parameter_size": null,
+          "quantization": null
+        },
+        "source": {
+          "id": "R7-D05-source",
+          "hash": "3ae7078403e6384aa1a0c4832ec97abc089946c3ad1700f86352a0b0dc363171"
+        },
+        "transformation": {
+          "id": "R7-D05-transformation",
+          "hash": "4800a34e38598a38d57b5b38325994af7161af01c85288598e06d637e8a4579d"
+        },
+        "assessments": [],
+        "abstentions": [],
+        "summary": "Scripted reviewer: no material change proposed.",
+        "model_assisted": false,
+        "action_authority": false,
+        "human_acceptance": "REQUIRED_FOR_ANY_TRANSMISSION"
+      },
+      "raw": "{\"assessments\":[],\"abstentions\":[],\"summary\":\"Scripted reviewer: no material change proposed.\"}",
+      "usage": null,
+      "latency_ms": 0,
+      "retries": 0,
+      "status": "SCRIPTED_FIXTURE",
+      "standing": "SCRIPTED_NOT_MODEL_RESULT"
+    },
+    {
+      "type": "REVIEW_RESULT",
+      "at": "2026-10-24T01:05:59.955Z",
+      "model": {
+        "provider": "scripted-reviewer",
+        "id": "scripted",
+        "digest": "SCRIPTED",
+        "size": null,
+        "parameter_size": null,
+        "quantization": null
+      },
+      "output": {
+        "schema": "language-semantic-review/0.1",
+        "reviewer_version": "lc02-r7-local-review/0.1",
+        "prompt_version": "lc02-r7-review-prompt/0.2",
+        "standing": "SCRIPTED_TEST_FIXTURE",
+        "model": {
+          "provider": "scripted-reviewer",
+          "id": "scripted",
+          "digest": "SCRIPTED",
+          "size": null,
+          "parameter_size": null,
+          "quantization": null
+        },
+        "source": {
+          "id": "R7-D06-source",
+          "hash": "aed5f90febfa3de114739b232f1bc721040eb5047efa7c0efb19dcab24010b34"
+        },
+        "transformation": {
+          "id": "R7-D06-transformation",
+          "hash": "89e2ab47d7e8e4f215ce879248bcbd142f6613ad701a03592514d81836f95d18"
+        },
+        "assessments": [],
+        "abstentions": [],
+        "summary": "Scripted reviewer: no material change proposed.",
+        "model_assisted": false,
+        "action_authority": false,
+        "human_acceptance": "REQUIRED_FOR_ANY_TRANSMISSION"
+      },
+      "raw": "{\"assessments\":[],\"abstentions\":[],\"summary\":\"Scripted reviewer: no material change proposed.\"}",
+      "usage": null,
+      "latency_ms": 0,
+      "retries": 0,
+      "status": "SCRIPTED_FIXTURE",
+      "standing": "SCRIPTED_NOT_MODEL_RESULT"
+    },
+    {
+      "type": "REVIEW_RESULT",
+      "at": "2026-10-24T01:06:00.894Z",
+      "model": {
+        "provider": "scripted-reviewer",
+        "id": "scripted",
+        "digest": "SCRIPTED",
+        "size": null,
+        "parameter_size": null,
+        "quantization": null
+      },
+      "output": {
+        "schema": "language-semantic-review/0.1",
+        "reviewer_version": "lc02-r7-local-review/0.1",
+        "prompt_version": "lc02-r7-review-prompt/0.2",
+        "standing": "SCRIPTED_TEST_FIXTURE",
+        "model": {
+          "provider": "scripted-reviewer",
+          "id": "scripted",
+          "digest": "SCRIPTED",
+          "size": null,
+          "parameter_size": null,
+          "quantization": null
+        },
+        "source": {
+          "id": "R7-D07-source",
+          "hash": "e00601e6c53e03fc91cfa1dfc4086fb397bfbbaf4fa61024f12ed03bf66ebd1c"
+        },
+        "transformation": {
+          "id": "R7-D07-transformation",
+          "hash": "866a4abdd553fd7b35f7d525e4c42b35a777ccec0a3785ed35f4ca7fbed2817c"
+        },
+        "assessments": [],
+        "abstentions": [],
+        "summary": "Scripted reviewer: no material change proposed.",
+        "model_assisted": false,
+        "action_authority": false,
+        "human_acceptance": "REQUIRED_FOR_ANY_TRANSMISSION"
+      },
+      "raw": "{\"assessments\":[],\"abstentions\":[],\"summary\":\"Scripted reviewer: no material change proposed.\"}",
+      "usage": null,
+      "latency_ms": 0,
+      "retries": 0,
+      "status": "SCRIPTED_FIXTURE",
+      "standing": "SCRIPTED_NOT_MODEL_RESULT"
+    },
+    {
+      "type": "REVIEW_RESULT",
+      "at": "2026-10-24T01:06:01.874Z",
+      "model": {
+        "provider": "scripted-reviewer",
+        "id": "scripted",
+        "digest": "SCRIPTED",
+        "size": null,
+        "parameter_size": null,
+        "quantization": null
+      },
+      "output": {
+        "schema": "language-semantic-review/0.1",
+        "reviewer_version": "lc02-r7-local-review/0.1",
+        "prompt_version": "lc02-r7-review-prompt/0.2",
+        "standing": "SCRIPTED_TEST_FIXTURE",
+        "model": {
+          "provider": "scripted-reviewer",
+          "id": "scripted",
+          "digest": "SCRIPTED",
+          "size": null,
+          "parameter_size": null,
+          "quantization": null
+        },
+        "source": {
+          "id": "R7-D08-source",
+          "hash": "4f1bdc262c4997faf3cb91dbd297e72cd137413e2ae8de0ff87f5dcbdfd0f5e4"
+        },
+        "transformation": {
+          "id": "R7-D08-transformation",
+          "hash": "25372a8b07d0690aacf07f5b6712aeb68a376460e210f8d1e9bcb2586d500c74"
+        },
+        "assessments": [],
+        "abstentions": [],
+        "summary": "Scripted reviewer: no material change proposed.",
+        "model_assisted": false,
+        "action_authority": false,
+        "human_acceptance": "REQUIRED_FOR_ANY_TRANSMISSION"
+      },
+      "raw": "{\"assessments\":[],\"abstentions\":[],\"summary\":\"Scripted reviewer: no material change proposed.\"}",
+      "usage": null,
+      "latency_ms": 0,
+      "retries": 0,
+      "status": "SCRIPTED_FIXTURE",
+      "standing": "SCRIPTED_NOT_MODEL_RESULT"
+    },
+    {
+      "type": "REVIEW_RESULT",
+      "at": "2026-10-24T01:06:02.827Z",
+      "model": {
+        "provider": "scripted-reviewer",
+        "id": "scripted",
+        "digest": "SCRIPTED",
+        "size": null,
+        "parameter_size": null,
+        "quantization": null
+      },
+      "output": {
+        "schema": "language-semantic-review/0.1",
+        "reviewer_version": "lc02-r7-local-review/0.1",
+        "prompt_version": "lc02-r7-review-prompt/0.2",
+        "standing": "SCRIPTED_TEST_FIXTURE",
+        "model": {
+          "provider": "scripted-reviewer",
+          "id": "scripted",
+          "digest": "SCRIPTED",
+          "size": null,
+          "parameter_size": null,
+          "quantization": null
+        },
+        "source": {
+          "id": "R7-D09-source",
+          "hash": "5495900d48673d8abff5ca9c7b5f495b344f2d631110e6fca838eb86a5fc789d"
+        },
+        "transformation": {
+          "id": "R7-D09-transformation",
+          "hash": "b4417c6562a42fcba6a3c3834aa3d1cfbb34da8647b26f17dfba14f846308bc8"
+        },
+        "assessments": [],
+        "abstentions": [],
+        "summary": "Scripted reviewer: no material change proposed.",
+        "model_assisted": false,
+        "action_authority": false,
+        "human_acceptance": "REQUIRED_FOR_ANY_TRANSMISSION"
+      },
+      "raw": "{\"assessments\":[],\"abstentions\":[],\"summary\":\"Scripted reviewer: no material change proposed.\"}",
+      "usage": null,
+      "latency_ms": 0,
+      "retries": 0,
+      "status": "SCRIPTED_FIXTURE",
+      "standing": "SCRIPTED_NOT_MODEL_RESULT"
+    },
+    {
+      "type": "REVIEW_RESULT",
+      "at": "2026-10-24T01:06:03.799Z",
+      "model": {
+        "provider": "scripted-reviewer",
+        "id": "scripted",
+        "digest": "SCRIPTED",
+        "size": null,
+        "parameter_size": null,
+        "quantization": null
+      },
+      "output": {
+        "schema": "language-semantic-review/0.1",
+        "reviewer_version": "lc02-r7-local-review/0.1",
+        "prompt_version": "lc02-r7-review-prompt/0.2",
+        "standing": "SCRIPTED_TEST_FIXTURE",
+        "model": {
+          "provider": "scripted-reviewer",
+          "id": "scripted",
+          "digest": "SCRIPTED",
+          "size": null,
+          "parameter_size": null,
+          "quantization": null
+        },
+        "source": {
+          "id": "R7-D10-source",
+          "hash": "256cc19aab8b29f3a7064347fa9293be3d62300e4526a076be6deb0cf4b7ef20"
+        },
+        "transformation": {
+          "id": "R7-D10-transformation",
+          "hash": "4a04cea2fa8d557315e94a0be10759e1fca51a7ef3b37213a5a23449ebcebedf"
+        },
+        "assessments": [],
+        "abstentions": [],
+        "summary": "Scripted reviewer: no material change proposed.",
+        "model_assisted": false,
+        "action_authority": false,
+        "human_acceptance": "REQUIRED_FOR_ANY_TRANSMISSION"
+      },
+      "raw": "{\"assessments\":[],\"abstentions\":[],\"summary\":\"Scripted reviewer: no material change proposed.\"}",
+      "usage": null,
+      "latency_ms": 0,
+      "retries": 0,
+      "status": "SCRIPTED_FIXTURE",
+      "standing": "SCRIPTED_NOT_MODEL_RESULT"
+    },
+    {
+      "type": "REVIEW_RESULT",
+      "at": "2026-10-24T01:06:04.746Z",
+      "model": {
+        "provider": "scripted-reviewer",
+        "id": "scripted",
+        "digest": "SCRIPTED",
+        "size": null,
+        "parameter_size": null,
+        "quantization": null
+      },
+      "output": {
+        "schema": "language-semantic-review/0.1",
+        "reviewer_version": "lc02-r7-local-review/0.1",
+        "prompt_version": "lc02-r7-review-prompt/0.2",
+        "standing": "SCRIPTED_TEST_FIXTURE",
+        "model": {
+          "provider": "scripted-reviewer",
+          "id": "scripted",
+          "digest": "SCRIPTED",
+          "size": null,
+          "parameter_size": null,
+          "quantization": null
+        },
+        "source": {
+          "id": "R7-D11-source",
+          "hash": "68cdea9d86aaca77b5d6c93d3c75393d71e7a5007824482d6170924ac79736cd"
+        },
+        "transformation": {
+          "id": "R7-D11-transformation",
+          "hash": "77bc6d0bda3360d576c27408377cb1d492d3cc87c303a70b93ad44c309354c43"
+        },
+        "assessments": [],
+        "abstentions": [],
+        "summary": "Scripted reviewer: no material change proposed.",
+        "model_assisted": false,
+        "action_authority": false,
+        "human_acceptance": "REQUIRED_FOR_ANY_TRANSMISSION"
+      },
+      "raw": "{\"assessments\":[],\"abstentions\":[],\"summary\":\"Scripted reviewer: no material change proposed.\"}",
+      "usage": null,
+      "latency_ms": 0,
+      "retries": 0,
+      "status": "SCRIPTED_FIXTURE",
+      "standing": "SCRIPTED_NOT_MODEL_RESULT"
+    },
+    {
+      "type": "REVIEW_RESULT",
+      "at": "2026-10-24T01:06:05.695Z",
+      "model": {
+        "provider": "scripted-reviewer",
+        "id": "scripted",
+        "digest": "SCRIPTED",
+        "size": null,
+        "parameter_size": null,
+        "quantization": null
+      },
+      "output": {
+        "schema": "language-semantic-review/0.1",
+        "reviewer_version": "lc02-r7-local-review/0.1",
+        "prompt_version": "lc02-r7-review-prompt/0.2",
+        "standing": "SCRIPTED_TEST_FIXTURE",
+        "model": {
+          "provider": "scripted-reviewer",
+          "id": "scripted",
+          "digest": "SCRIPTED",
+          "size": null,
+          "parameter_size": null,
+          "quantization": null
+        },
+        "source": {
+          "id": "R7-D12-source",
+          "hash": "a26b7cf901673172fa9b613130681139a341fcd7a7d3b35825dd601b1b5abca6"
+        },
+        "transformation": {
+          "id": "R7-D12-transformation",
+          "hash": "10a4cb70a89cae7078626b167f9582ae406c83d8ed966bc4b802ee468b8ffa1f"
+        },
+        "assessments": [],
+        "abstentions": [],
+        "summary": "Scripted reviewer: no material change proposed.",
+        "model_assisted": false,
+        "action_authority": false,
+        "human_acceptance": "REQUIRED_FOR_ANY_TRANSMISSION"
+      },
+      "raw": "{\"assessments\":[],\"abstentions\":[],\"summary\":\"Scripted reviewer: no material change proposed.\"}",
+      "usage": null,
+      "latency_ms": 0,
+      "retries": 0,
+      "status": "SCRIPTED_FIXTURE",
+      "standing": "SCRIPTED_NOT_MODEL_RESULT"
+    }
+  ]
+}

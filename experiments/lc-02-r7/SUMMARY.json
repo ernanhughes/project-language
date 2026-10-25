@@ -1,0 +1,140 @@
+{
+  "schema": "lc02-r7-summary/0.1",
+  "standing": "OFFLINE_LOCAL_MODEL_EXPLORATORY_PROVISIONAL_REFERENCES",
+  "decision": "PREFER_DETERMINISTIC",
+  "decision_basis": "CLEAN_SUBSET_NOT_PILOT",
+  "checker": {
+    "deterministic_version": "lc02-r6-semantic-check/0.1",
+    "deterministic_sha256": "ed17ecb14a66ebb42b6f1b03427c4bd4b021d4829e66aee9edc2f3a9f5801692",
+    "reviewer_version": "lc02-r7-local-review/0.1",
+    "reviewer_contract_sha256": "e7873b22192923a9ebaf93211ac278c669d28f607427216130716a2b44334980",
+    "reviewer_sha256": "6216b9fd8051f034f36e9f46253b5a0bc5c3f57e397959cef9ad85714a8c5e15",
+    "hybrid_version": "lc02-r7-hybrid-reconciliation/0.1",
+    "hybrid_sha256": "7fad10f7e131f4d537bed6fc607491da6f43735da9aba02c48852cff36b07235",
+    "prompt_version": "lc02-r7-review-prompt/0.4"
+  },
+  "model": {
+    "provider": "ollama-local",
+    "id": "qwen3.5:latest",
+    "digest": "6488c96fa5faab64bb65cbd30d4289e20e6130ef535a93ef9a49f42eda893ea7",
+    "parameter_size": "9.7B",
+    "quantization": "Q4_K_M",
+    "size": 6594474711,
+    "hosted_calls": 0,
+    "retries": 0,
+    "fallbacks": 0
+  },
+  "contamination": {
+    "method": "source-token Jaccard against R5/R6 evaluation sources",
+    "threshold": 0.45,
+    "evaluation_cases": 24,
+    "overlapping_cases": 12,
+    "exact_source_duplicates": 2,
+    "exact_duplicates": ["R7-E20", "R7-E23"],
+    "clean_cases": 12,
+    "eligible_as_fresh_held_out": false,
+    "disclosure": "experiments/lc-02-r7/CONTAMINATION-DISCLOSURE.json"
+  },
+  "clean_subset": {
+    "ids": ["R7-E04", "R7-E06", "R7-E07", "R7-E09", "R7-E10", "R7-E13", "R7-E14", "R7-E15", "R7-E17", "R7-E18", "R7-E21", "R7-E24"],
+    "A": {
+      "corruption_detection": "5/5",
+      "false_acceptances": 0,
+      "faithful_accepted": "4/5",
+      "false_rejections": ["R7-E13"],
+      "ambiguity_clarified": "1/2",
+      "policy_correct": "10/12"
+    },
+    "B": {
+      "corruption_detection": "3/5",
+      "false_acceptances": 0,
+      "faithful_accepted": "4/5",
+      "false_rejections": ["R7-E17"],
+      "ambiguity_clarified": "1/2",
+      "policy_correct": "10/12"
+    },
+    "C": {
+      "corruption_detection": "5/5",
+      "false_acceptances": 0,
+      "faithful_accepted": "3/5",
+      "false_rejections": ["R7-E13", "R7-E17"],
+      "ambiguity_clarified": "1/2",
+      "policy_correct": "9/12"
+    }
+  },
+  "pilot": {
+    "path": "experiments/lc-02-r7/.runs/EVAL-001",
+    "standing": "CONTAMINATED_PILOT_NOT_CLEAN_HELD_OUT",
+    "A": {
+      "corruption_detection": "9/12",
+      "false_acceptances": 0,
+      "faithful_accepted": "7/8",
+      "false_rejections": ["R7-E13"],
+      "ambiguity_clarified": "3/4",
+      "policy_correct": "21/24",
+      "latency_avg_ms": 1205
+    },
+    "B": {
+      "corruption_detection": "8/12",
+      "false_acceptances": 0,
+      "faithful_accepted": "7/8",
+      "false_rejections": ["R7-E17"],
+      "ambiguity_clarified": "3/4",
+      "policy_correct": "22/24",
+      "reviewer_valid": "24/24",
+      "latency_avg_ms": 6573,
+      "input_tokens": 22329,
+      "output_tokens": 5460
+    },
+    "C": {
+      "corruption_detection": "11/12",
+      "missed_corruptions": ["R7-E12"],
+      "false_acceptances": 0,
+      "faithful_accepted": "6/8",
+      "false_rejections": ["R7-E13", "R7-E17"],
+      "ambiguity_clarified": "3/4",
+      "invented_uncertainty_clean": "1/1",
+      "reviewer_valid": "24/24",
+      "source_grounded_matched_findings": "22/22",
+      "source_grounded_cases": "22/24",
+      "policy_correct": "21/24",
+      "reconciliation_disagreements": 26,
+      "latency_avg_ms": 7779,
+      "latency_max_ms": 10594
+    }
+  },
+  "pilot_gates": {
+    "HG1": "PASS: zero material false acceptances",
+    "HG2": "PASS: 11/12 and >= A 9/12",
+    "HG3": "FAIL: C 2 false rejections > A 1",
+    "HG4": "FAIL: 3/4 ambiguity, though invented uncertainty 1/1 and no dual primaries",
+    "HG5": "FAIL: detection gains E05/E08/E13 but false rejections increased by 1",
+    "HG6": "PASS: 24/24 reviewer outputs valid",
+    "HG7": "PASS: no USE with material/unresolved/unavailable review",
+    "HG8": "PASS: 22/22 matched findings source-grounded"
+  },
+  "historical_controls": {
+    "path": "experiments/lc-02-r7/.runs/HISTORICAL-003",
+    "standing": "DISCLOSED_DEVELOPMENT_NOT_HELD_OUT",
+    "reviewer_repairs": ["R6-E05", "R6-E08", "R6-E09", "R6-E12", "R5-E04", "R5-E07"],
+    "reviewer_misses": ["R6-E10", "R6-E11", "R5-E18"],
+    "reviewer_invalid_long_proposals": "7/8 LC20 arm outputs",
+    "hybrid_safety": "C preserved the source on all LC20 arms; no false acceptance"
+  },
+  "rationale": [
+    "The pilot's apparent hybrid gain is concentrated in E05 and E08, both near-duplicates of R6 cases.",
+    "Two pilot cases are exact duplicates of R6 cases.",
+    "On the 12 non-overlapping cases, C matches A's 5/5 detection but adds a false rejection and lowers policy accuracy.",
+    "B detects only 3/5 clean corruptions and does not compensate.",
+    "The clean evidence favors the deterministic checker; the pilot is not eligible as fresh held-out evidence.",
+    "Keep the typed constraints and research infrastructure; stop extending the hybrid as the primary route.",
+    "A future experiment requires independently authored, non-overlapping cases and a new protocol before any further claim."
+  ],
+  "non_actions": {
+    "hosted_models": false,
+    "studio_communication_integration": false,
+    "manuscript_modified": false,
+    "committed": false,
+    "pushed": false
+  }
+}

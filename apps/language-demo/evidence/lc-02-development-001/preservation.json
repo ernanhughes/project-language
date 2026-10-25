@@ -1,0 +1,25 @@
+{
+  "historical_preservation": "PASS",
+  "protected_changes": [],
+  "changed_existing_paths": [
+    "package.json",
+    "README.md",
+    "engine/studio.mjs",
+    "models/runtime.mjs",
+    "server/app.mjs",
+    "tests/browser-simple.mjs",
+    "tests/lc01s.test.mjs",
+    "ui/app.js",
+    "ui/index.html",
+    "ui/style.css"
+  ],
+  "historical_scope": [
+    ".data",
+    "evidence before this task",
+    "config",
+    "tasks",
+    "prior reports"
+  ],
+  "book_repository": "READ_ONLY_UNCHANGED",
+  "credentials_collected": false
+}

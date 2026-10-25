@@ -1,0 +1,1490 @@
+{
+  "schema": "lc02-r7-review-ledger/0.1",
+  "model": {
+    "provider": "ollama-local",
+    "id": "qwen3.5:latest",
+    "digest": "6488c96fa5faab64bb65cbd30d4289e20e6130ef535a93ef9a49f42eda893ea7",
+    "size": 6594474711,
+    "parameter_size": "9.7B",
+    "quantization": "Q4_K_M"
+  },
+  "prompt_version": "lc02-r7-review-prompt/0.2",
+  "records": [
+    {
+      "type": "REVIEW_REQUEST",
+      "at": "2026-10-24T00:55:37.851Z",
+      "request_hash": "a025cfab9b2ffe2eb12d9b4d831026f81c7ab7dbc0e183e6148ef7fcf0031381",
+      "prompt_version": "lc02-r7-review-prompt/0.2",
+      "reviewer_version": "lc02-r7-local-review/0.1",
+      "model": {
+        "provider": "ollama-local",
+        "id": "qwen3.5:latest",
+        "digest": "6488c96fa5faab64bb65cbd30d4289e20e6130ef535a93ef9a49f42eda893ea7",
+        "size": 6594474711,
+        "parameter_size": "9.7B",
+        "quantization": "Q4_K_M"
+      },
+      "input": {
+        "purpose": "Communicate the reading-room reservation limit.",
+        "source": {
+          "id": "R7-D01-source",
+          "text": "The reading room accepts reservations for at most ninety seats. A request for eighty seats is pending.",
+          "hash": "749aedd7343b5561a534bf5725431a23be2e4bc12242629a48c634566022cea5"
+        },
+        "transformation": {
+          "id": "R7-D01-transformation",
+          "text": "The reading room accepts reservations for at most one hundred seats. A request for eighty seats is pending.",
+          "hash": "b44aec4903c5a4053e078214acd317c7f82f293c63bec857f54eb9473db6c063"
+        },
+        "declared_obligations": [
+          {
+            "id": "o1",
+            "source_quote": "The reading room accepts reservations for at most ninety seats.",
+            "description": "The numeric reservation limit must survive."
+          }
+        ]
+      },
+      "request_body": {
+        "model": "qwen3.5:latest",
+        "stream": false,
+        "think": false,
+        "format": "<json-schema>",
+        "messages": [
+          {
+            "role": "system",
+            "content": "You are a semantic reviewer. Compare SOURCE and TRANSFORMATION and report only material semantic changes, faithful paraphrase, or genuine uncertainty.\n\nReturn only JSON matching the supplied schema. Do not add prose outside JSON.\n\nFor each assessment choose exactly one change_kind:\n- QUANTITY_OR_BOUNDARY: a number, written number, operator, unit, threshold, duration, or inclusive/exclusive boundary changed.\n- EXCEPTION_SCOPE: the set of cases covered by an exception, permission, or prohibition was broadened or narrowed. Set material=true.\n- PREREQUISITE: a required condition, prerequisite, or dependency is missing or changed.\n- EPISTEMIC_STATUS: an unresolved or uncertain matter became established (epistemic_direction=ESTABLISHED_FROM_UNRESOLVED), new uncertainty was added (UNCERTAINTY_ADDED), or genuine ambiguity was preserved (AMBIGUITY_PRESERVED).\n- CAUSAL: a causal relation was added, promoted, or reversed beyond what the source states.\n- REFERENT_OR_SPEAKER: a referent, quotation, attribution, or speaker changed.\n- UNSUPPORTED_ADDITION: new authority, permission, fact, or content is asserted without source support.\n- NO_MATERIAL_CHANGE: faithful paraphrase, reordering, terminology substitution, or task-appropriate omission.\n- UNCERTAIN: the available evidence does not support a definite judgment. Use an abstention when appropriate.\n\nRules:\n- material must be true for every change except NO_MATERIAL_CHANGE and UNCERTAIN. material must be false for NO_MATERIAL_CHANGE.\n- For every change_kind except EPISTEMIC_STATUS, set epistemic_direction to NONE.\n- For NO_MATERIAL_CHANGE, set material=false and epistemic_direction=NONE.\n- If an exception changes which cases are covered, use EXCEPTION_SCOPE and material=true. Do not call it mere ambiguity.\n- An incident labelled \"unresolved\" is a status label, not necessarily epistemic uncertainty about a proposition.\n- Distinguish \"has not been decided\" (unresolved status) from ordinary negation. If the source leaves a matter unresolved and the transformation states it as fact, use EPISTEMIC_STATUS/ESTABLISHED_FROM_UNRESOLVED.\n- If the transformation adds doubt that the source does not support, use EPISTEMIC_STATUS/UNCERTAINTY_ADDED.\n- Use exact, verbatim source_quote and transformation_quote from the supplied texts. Do not paraphrase inside a quote. transformation_quote may be empty only when a source obligation is missing from the transformation.\n- Do not invent evidence. Do not infer a change from the declared obligations alone; inspect the source.\n- The declared obligations are provided for context and may be incomplete.\n- Do not claim that the transformation is equivalent unless the assessments support that conclusion.\n- Keep the summary short and factual."
+          },
+          {
+            "role": "user",
+            "content": "{\"purpose\":\"Communicate the reading-room reservation limit.\",\"source\":{\"id\":\"R7-D01-source\",\"text\":\"The reading room accepts reservations for at most ninety seats. A request for eighty seats is pending.\",\"hash\":\"749aedd7343b5561a534bf5725431a23be2e4bc12242629a48c634566022cea5\"},\"transformation\":{\"id\":\"R7-D01-transformation\",\"text\":\"The reading room accepts reservations for at most one hundred seats. A request for eighty seats is pending.\",\"hash\":\"b44aec4903c5a4053e078214acd317c7f82f293c63bec857f54eb9473db6c063\"},\"declared_obligations\":[{\"id\":\"o1\",\"source_quote\":\"The reading room accepts reservations for at most ninety seats.\",\"description\":\"The numeric reservation limit must survive.\"}]}"
+          }
+        ],
+        "options": {
+          "num_predict": 1400,
+          "temperature": 0
+        },
+        "keep_alive": "10m"
+      },
+      "standing": "LOCAL_MODEL_OBSERVATION"
+    },
+    {
+      "type": "REVIEW_RESULT",
+      "at": "2026-10-24T00:55:42.658Z",
+      "request_hash": "a025cfab9b2ffe2eb12d9b4d831026f81c7ab7dbc0e183e6148ef7fcf0031381",
+      "model": {
+        "provider": "ollama-local",
+        "id": "qwen3.5:latest",
+        "digest": "6488c96fa5faab64bb65cbd30d4289e20e6130ef535a93ef9a49f42eda893ea7",
+        "size": 6594474711,
+        "parameter_size": "9.7B",
+        "quantization": "Q4_K_M"
+      },
+      "raw": "{\n  \"assessments\": [\n    {\n      \"claim\": \"The reading room accepts reservations for at most ninety seats.\",\n      \"change_kind\": \"QUANTITY_OR_BOUNDARY\",\n      \"epistemic_direction\": \"NONE\",\n      \"material\": true,\n      \"source_quote\": \"The reading room accepts reservations for at most ninety seats.\",\n      \"transformation_quote\": \"The reading room accepts reservations for at most one hundred seats.\",\n      \"explanation\": \"The numeric reservation limit changed from 'ninety' to 'one hundred'.\",\n      \"confidence\": \"HIGH\"\n    }\n  ],\n  \"abstentions\": [],\n  \"summary\": \"The transformation incorrectly changes the stated reservation limit from ninety seats to one hundred seats, violating the declared obligation that the numeric limit must survive.\"\n}",
+      "output": {
+        "schema": "language-semantic-review/0.1",
+        "reviewer_version": "lc02-r7-local-review/0.1",
+        "prompt_version": "lc02-r7-review-prompt/0.2",
+        "standing": "MODEL_ASSISTED_PROVISIONAL",
+        "model": {
+          "provider": "ollama-local",
+          "id": "qwen3.5:latest",
+          "digest": "6488c96fa5faab64bb65cbd30d4289e20e6130ef535a93ef9a49f42eda893ea7",
+          "size": 6594474711,
+          "parameter_size": "9.7B",
+          "quantization": "Q4_K_M"
+        },
+        "source": {
+          "id": "R7-D01-source",
+          "hash": "749aedd7343b5561a534bf5725431a23be2e4bc12242629a48c634566022cea5"
+        },
+        "transformation": {
+          "id": "R7-D01-transformation",
+          "hash": "b44aec4903c5a4053e078214acd317c7f82f293c63bec857f54eb9473db6c063"
+        },
+        "assessments": [
+          {
+            "id": "ra1",
+            "claim": "The reading room accepts reservations for at most ninety seats.",
+            "change_kind": "QUANTITY_OR_BOUNDARY",
+            "epistemic_direction": "NONE",
+            "material": true,
+            "source_quote": "The reading room accepts reservations for at most ninety seats.",
+            "transformation_quote": "The reading room accepts reservations for at most one hundred seats.",
+            "explanation": "The numeric reservation limit changed from 'ninety' to 'one hundred'.",
+            "confidence": "HIGH",
+            "standing": "PROVISIONAL_MODEL_PROPOSAL"
+          }
+        ],
+        "abstentions": [],
+        "summary": "The transformation incorrectly changes the stated reservation limit from ninety seats to one hundred seats, violating the declared obligation that the numeric limit must survive.",
+        "model_assisted": true,
+        "action_authority": false,
+        "human_acceptance": "REQUIRED_FOR_ANY_TRANSMISSION"
+      },
+      "usage": {
+        "input_tokens": 844,
+        "output_tokens": 185,
+        "reasoning_tokens": null
+      },
+      "latency_ms": 4807.9874,
+      "retries": 0,
+      "status": "VALID_SCHEMA_AND_EVIDENCE",
+      "standing": "LOCAL_MODEL_OBSERVATION"
+    },
+    {
+      "type": "REVIEW_REQUEST",
+      "at": "2026-10-24T00:55:43.558Z",
+      "request_hash": "8a8c66d90f22114889344c17f24e2a14104b390a143407f76789d4e4f22c4287",
+      "prompt_version": "lc02-r7-review-prompt/0.2",
+      "reviewer_version": "lc02-r7-local-review/0.1",
+      "model": {
+        "provider": "ollama-local",
+        "id": "qwen3.5:latest",
+        "digest": "6488c96fa5faab64bb65cbd30d4289e20e6130ef535a93ef9a49f42eda893ea7",
+        "size": 6594474711,
+        "parameter_size": "9.7B",
+        "quantization": "Q4_K_M"
+      },
+      "input": {
+        "purpose": "Communicate the autoclave load limit.",
+        "source": {
+          "id": "R7-D02-source",
+          "text": "The autoclave may process loads of no more than twelve trays.",
+          "hash": "0ac6778f61aea4c0996826aa536c4094b7ec632decc2433ad4cb4c589cc4197c"
+        },
+        "transformation": {
+          "id": "R7-D02-transformation",
+          "text": "The autoclave may process loads of fewer than twelve trays.",
+          "hash": "a938f77e719feab9132a91d78d39acd0184cb64d6726c2ba93cd17071be79166"
+        },
+        "declared_obligations": [
+          {
+            "id": "o1",
+            "source_quote": "The autoclave may process loads of no more than twelve trays.",
+            "description": "The inclusive boundary must survive."
+          }
+        ]
+      },
+      "request_body": {
+        "model": "qwen3.5:latest",
+        "stream": false,
+        "think": false,
+        "format": "<json-schema>",
+        "messages": [
+          {
+            "role": "system",
+            "content": "You are a semantic reviewer. Compare SOURCE and TRANSFORMATION and report only material semantic changes, faithful paraphrase, or genuine uncertainty.\n\nReturn only JSON matching the supplied schema. Do not add prose outside JSON.\n\nFor each assessment choose exactly one change_kind:\n- QUANTITY_OR_BOUNDARY: a number, written number, operator, unit, threshold, duration, or inclusive/exclusive boundary changed.\n- EXCEPTION_SCOPE: the set of cases covered by an exception, permission, or prohibition was broadened or narrowed. Set material=true.\n- PREREQUISITE: a required condition, prerequisite, or dependency is missing or changed.\n- EPISTEMIC_STATUS: an unresolved or uncertain matter became established (epistemic_direction=ESTABLISHED_FROM_UNRESOLVED), new uncertainty was added (UNCERTAINTY_ADDED), or genuine ambiguity was preserved (AMBIGUITY_PRESERVED).\n- CAUSAL: a causal relation was added, promoted, or reversed beyond what the source states.\n- REFERENT_OR_SPEAKER: a referent, quotation, attribution, or speaker changed.\n- UNSUPPORTED_ADDITION: new authority, permission, fact, or content is asserted without source support.\n- NO_MATERIAL_CHANGE: faithful paraphrase, reordering, terminology substitution, or task-appropriate omission.\n- UNCERTAIN: the available evidence does not support a definite judgment. Use an abstention when appropriate.\n\nRules:\n- material must be true for every change except NO_MATERIAL_CHANGE and UNCERTAIN. material must be false for NO_MATERIAL_CHANGE.\n- For every change_kind except EPISTEMIC_STATUS, set epistemic_direction to NONE.\n- For NO_MATERIAL_CHANGE, set material=false and epistemic_direction=NONE.\n- If an exception changes which cases are covered, use EXCEPTION_SCOPE and material=true. Do not call it mere ambiguity.\n- An incident labelled \"unresolved\" is a status label, not necessarily epistemic uncertainty about a proposition.\n- Distinguish \"has not been decided\" (unresolved status) from ordinary negation. If the source leaves a matter unresolved and the transformation states it as fact, use EPISTEMIC_STATUS/ESTABLISHED_FROM_UNRESOLVED.\n- If the transformation adds doubt that the source does not support, use EPISTEMIC_STATUS/UNCERTAINTY_ADDED.\n- Use exact, verbatim source_quote and transformation_quote from the supplied texts. Do not paraphrase inside a quote. transformation_quote may be empty only when a source obligation is missing from the transformation.\n- Do not invent evidence. Do not infer a change from the declared obligations alone; inspect the source.\n- The declared obligations are provided for context and may be incomplete.\n- Do not claim that the transformation is equivalent unless the assessments support that conclusion.\n- Keep the summary short and factual."
+          },
+          {
+            "role": "user",
+            "content": "{\"purpose\":\"Communicate the autoclave load limit.\",\"source\":{\"id\":\"R7-D02-source\",\"text\":\"The autoclave may process loads of no more than twelve trays.\",\"hash\":\"0ac6778f61aea4c0996826aa536c4094b7ec632decc2433ad4cb4c589cc4197c\"},\"transformation\":{\"id\":\"R7-D02-transformation\",\"text\":\"The autoclave may process loads of fewer than twelve trays.\",\"hash\":\"a938f77e719feab9132a91d78d39acd0184cb64d6726c2ba93cd17071be79166\"},\"declared_obligations\":[{\"id\":\"o1\",\"source_quote\":\"The autoclave may process loads of no more than twelve trays.\",\"description\":\"The inclusive boundary must survive.\"}]}"
+          }
+        ],
+        "options": {
+          "num_predict": 1400,
+          "temperature": 0
+        },
+        "keep_alive": "10m"
+      },
+      "standing": "LOCAL_MODEL_OBSERVATION"
+    },
+    {
+      "type": "REVIEW_RESULT",
+      "at": "2026-10-24T00:55:48.670Z",
+      "request_hash": "8a8c66d90f22114889344c17f24e2a14104b390a143407f76789d4e4f22c4287",
+      "model": {
+        "provider": "ollama-local",
+        "id": "qwen3.5:latest",
+        "digest": "6488c96fa5faab64bb65cbd30d4289e20e6130ef535a93ef9a49f42eda893ea7",
+        "size": 6594474711,
+        "parameter_size": "9.7B",
+        "quantization": "Q4_K_M"
+      },
+      "raw": "{\n  \"assessments\": [\n    {\n      \"claim\": \"The transformation changes the load limit from an inclusive maximum ('no more than') to an exclusive upper bound ('fewer than').\",\n      \"change_kind\": \"QUANTITY_OR_BOUNDARY\",\n      \"epistemic_direction\": \"NONE\",\n      \"material\": true,\n      \"source_quote\": \"no more than twelve trays\",\n      \"transformation_quote\": \"fewer than twelve trays\",\n      \"explanation\": \"The source establishes an inclusive boundary (≤12), while the transformation establishes an exclusive boundary (<12). This alters the permitted quantity.\",\n      \"confidence\": \"HIGH\"\n    }\n  ],\n  \"abstentions\": [],\n  \"summary\": \"The transformation narrows the scope of permissible loads by changing the limit from inclusive ('no more than') to exclusive ('fewer than'), excluding exactly twelve trays.\"\n}",
+      "output": {
+        "schema": "language-semantic-review/0.1",
+        "reviewer_version": "lc02-r7-local-review/0.1",
+        "prompt_version": "lc02-r7-review-prompt/0.2",
+        "standing": "MODEL_ASSISTED_PROVISIONAL",
+        "model": {
+          "provider": "ollama-local",
+          "id": "qwen3.5:latest",
+          "digest": "6488c96fa5faab64bb65cbd30d4289e20e6130ef535a93ef9a49f42eda893ea7",
+          "size": 6594474711,
+          "parameter_size": "9.7B",
+          "quantization": "Q4_K_M"
+        },
+        "source": {
+          "id": "R7-D02-source",
+          "hash": "0ac6778f61aea4c0996826aa536c4094b7ec632decc2433ad4cb4c589cc4197c"
+        },
+        "transformation": {
+          "id": "R7-D02-transformation",
+          "hash": "a938f77e719feab9132a91d78d39acd0184cb64d6726c2ba93cd17071be79166"
+        },
+        "assessments": [
+          {
+            "id": "ra1",
+            "claim": "The transformation changes the load limit from an inclusive maximum ('no more than') to an exclusive upper bound ('fewer than').",
+            "change_kind": "QUANTITY_OR_BOUNDARY",
+            "epistemic_direction": "NONE",
+            "material": true,
+            "source_quote": "no more than twelve trays",
+            "transformation_quote": "fewer than twelve trays",
+            "explanation": "The source establishes an inclusive boundary (≤12), while the transformation establishes an exclusive boundary (<12). This alters the permitted quantity.",
+            "confidence": "HIGH",
+            "standing": "PROVISIONAL_MODEL_PROPOSAL"
+          }
+        ],
+        "abstentions": [],
+        "summary": "The transformation narrows the scope of permissible loads by changing the limit from inclusive ('no more than') to exclusive ('fewer than'), excluding exactly twelve trays.",
+        "model_assisted": true,
+        "action_authority": false,
+        "human_acceptance": "REQUIRED_FOR_ANY_TRANSMISSION"
+      },
+      "usage": {
+        "input_tokens": 828,
+        "output_tokens": 206,
+        "reasoning_tokens": null
+      },
+      "latency_ms": 5112.121,
+      "retries": 0,
+      "status": "VALID_SCHEMA_AND_EVIDENCE",
+      "standing": "LOCAL_MODEL_OBSERVATION"
+    },
+    {
+      "type": "REVIEW_REQUEST",
+      "at": "2026-10-24T00:55:49.598Z",
+      "request_hash": "494bd0984727d2ca185afa811bcc9b42f02768b70579300e01e381bac1f3a4b8",
+      "prompt_version": "lc02-r7-review-prompt/0.2",
+      "reviewer_version": "lc02-r7-local-review/0.1",
+      "model": {
+        "provider": "ollama-local",
+        "id": "qwen3.5:latest",
+        "digest": "6488c96fa5faab64bb65cbd30d4289e20e6130ef535a93ef9a49f42eda893ea7",
+        "size": 6594474711,
+        "parameter_size": "9.7B",
+        "quantization": "Q4_K_M"
+      },
+      "input": {
+        "purpose": "Communicate the forklift charging cool-down.",
+        "source": {
+          "id": "R7-D03-source",
+          "text": "Forklift charging is permitted after at least thirty minutes of cool-down.",
+          "hash": "1d546c3edbbca4dea45068323d0aa77b36a080784109215158a5b2d2d028fee9"
+        },
+        "transformation": {
+          "id": "R7-D03-transformation",
+          "text": "Forklift charging is permitted after more than thirty minutes of cool-down.",
+          "hash": "a39225d8624c622a590d87642d47e65edf4e90dcb59ec780876df1bee953ff78"
+        },
+        "declared_obligations": [
+          {
+            "id": "o1",
+            "source_quote": "Forklift charging is permitted after at least thirty minutes of cool-down.",
+            "description": "The duration threshold must survive."
+          }
+        ]
+      },
+      "request_body": {
+        "model": "qwen3.5:latest",
+        "stream": false,
+        "think": false,
+        "format": "<json-schema>",
+        "messages": [
+          {
+            "role": "system",
+            "content": "You are a semantic reviewer. Compare SOURCE and TRANSFORMATION and report only material semantic changes, faithful paraphrase, or genuine uncertainty.\n\nReturn only JSON matching the supplied schema. Do not add prose outside JSON.\n\nFor each assessment choose exactly one change_kind:\n- QUANTITY_OR_BOUNDARY: a number, written number, operator, unit, threshold, duration, or inclusive/exclusive boundary changed.\n- EXCEPTION_SCOPE: the set of cases covered by an exception, permission, or prohibition was broadened or narrowed. Set material=true.\n- PREREQUISITE: a required condition, prerequisite, or dependency is missing or changed.\n- EPISTEMIC_STATUS: an unresolved or uncertain matter became established (epistemic_direction=ESTABLISHED_FROM_UNRESOLVED), new uncertainty was added (UNCERTAINTY_ADDED), or genuine ambiguity was preserved (AMBIGUITY_PRESERVED).\n- CAUSAL: a causal relation was added, promoted, or reversed beyond what the source states.\n- REFERENT_OR_SPEAKER: a referent, quotation, attribution, or speaker changed.\n- UNSUPPORTED_ADDITION: new authority, permission, fact, or content is asserted without source support.\n- NO_MATERIAL_CHANGE: faithful paraphrase, reordering, terminology substitution, or task-appropriate omission.\n- UNCERTAIN: the available evidence does not support a definite judgment. Use an abstention when appropriate.\n\nRules:\n- material must be true for every change except NO_MATERIAL_CHANGE and UNCERTAIN. material must be false for NO_MATERIAL_CHANGE.\n- For every change_kind except EPISTEMIC_STATUS, set epistemic_direction to NONE.\n- For NO_MATERIAL_CHANGE, set material=false and epistemic_direction=NONE.\n- If an exception changes which cases are covered, use EXCEPTION_SCOPE and material=true. Do not call it mere ambiguity.\n- An incident labelled \"unresolved\" is a status label, not necessarily epistemic uncertainty about a proposition.\n- Distinguish \"has not been decided\" (unresolved status) from ordinary negation. If the source leaves a matter unresolved and the transformation states it as fact, use EPISTEMIC_STATUS/ESTABLISHED_FROM_UNRESOLVED.\n- If the transformation adds doubt that the source does not support, use EPISTEMIC_STATUS/UNCERTAINTY_ADDED.\n- Use exact, verbatim source_quote and transformation_quote from the supplied texts. Do not paraphrase inside a quote. transformation_quote may be empty only when a source obligation is missing from the transformation.\n- Do not invent evidence. Do not infer a change from the declared obligations alone; inspect the source.\n- The declared obligations are provided for context and may be incomplete.\n- Do not claim that the transformation is equivalent unless the assessments support that conclusion.\n- Keep the summary short and factual."
+          },
+          {
+            "role": "user",
+            "content": "{\"purpose\":\"Communicate the forklift charging cool-down.\",\"source\":{\"id\":\"R7-D03-source\",\"text\":\"Forklift charging is permitted after at least thirty minutes of cool-down.\",\"hash\":\"1d546c3edbbca4dea45068323d0aa77b36a080784109215158a5b2d2d028fee9\"},\"transformation\":{\"id\":\"R7-D03-transformation\",\"text\":\"Forklift charging is permitted after more than thirty minutes of cool-down.\",\"hash\":\"a39225d8624c622a590d87642d47e65edf4e90dcb59ec780876df1bee953ff78\"},\"declared_obligations\":[{\"id\":\"o1\",\"source_quote\":\"Forklift charging is permitted after at least thirty minutes of cool-down.\",\"description\":\"The duration threshold must survive.\"}]}"
+          }
+        ],
+        "options": {
+          "num_predict": 1400,
+          "temperature": 0
+        },
+        "keep_alive": "10m"
+      },
+      "standing": "LOCAL_MODEL_OBSERVATION"
+    },
+    {
+      "type": "REVIEW_RESULT",
+      "at": "2026-10-24T00:55:55.139Z",
+      "request_hash": "494bd0984727d2ca185afa811bcc9b42f02768b70579300e01e381bac1f3a4b8",
+      "model": {
+        "provider": "ollama-local",
+        "id": "qwen3.5:latest",
+        "digest": "6488c96fa5faab64bb65cbd30d4289e20e6130ef535a93ef9a49f42eda893ea7",
+        "size": 6594474711,
+        "parameter_size": "9.7B",
+        "quantization": "Q4_K_M"
+      },
+      "raw": "{\n  \"assessments\": [\n    {\n      \"claim\": \"The source requires a minimum of thirty minutes ('at least'), whereas the transformation requires strictly more than thirty minutes ('more than').\",\n      \"change_kind\": \"QUANTITY_OR_BOUNDARY\",\n      \"epistemic_direction\": \"NONE\",\n      \"material\": true,\n      \"source_quote\": \"Forklift charging is permitted after at least thirty minutes of cool-down.\",\n      \"transformation_quote\": \"Forklift charging is permitted after more than thirty minutes of cool-down.\",\n      \"explanation\": \"The transformation narrows the boundary from inclusive ('at least') to exclusive ('more than'), changing the set of valid durations.\",\n      \"confidence\": \"HIGH\"\n    }\n  ],\n  \"abstentions\": [],\n  \"summary\": \"The transformation changes the duration threshold from 'at least thirty minutes' (inclusive) to 'more than thirty minutes' (exclusive), narrowing the permitted range of cool-down times.\"\n}",
+      "output": {
+        "schema": "language-semantic-review/0.1",
+        "reviewer_version": "lc02-r7-local-review/0.1",
+        "prompt_version": "lc02-r7-review-prompt/0.2",
+        "standing": "MODEL_ASSISTED_PROVISIONAL",
+        "model": {
+          "provider": "ollama-local",
+          "id": "qwen3.5:latest",
+          "digest": "6488c96fa5faab64bb65cbd30d4289e20e6130ef535a93ef9a49f42eda893ea7",
+          "size": 6594474711,
+          "parameter_size": "9.7B",
+          "quantization": "Q4_K_M"
+        },
+        "source": {
+          "id": "R7-D03-source",
+          "hash": "1d546c3edbbca4dea45068323d0aa77b36a080784109215158a5b2d2d028fee9"
+        },
+        "transformation": {
+          "id": "R7-D03-transformation",
+          "hash": "a39225d8624c622a590d87642d47e65edf4e90dcb59ec780876df1bee953ff78"
+        },
+        "assessments": [
+          {
+            "id": "ra1",
+            "claim": "The source requires a minimum of thirty minutes ('at least'), whereas the transformation requires strictly more than thirty minutes ('more than').",
+            "change_kind": "QUANTITY_OR_BOUNDARY",
+            "epistemic_direction": "NONE",
+            "material": true,
+            "source_quote": "Forklift charging is permitted after at least thirty minutes of cool-down.",
+            "transformation_quote": "Forklift charging is permitted after more than thirty minutes of cool-down.",
+            "explanation": "The transformation narrows the boundary from inclusive ('at least') to exclusive ('more than'), changing the set of valid durations.",
+            "confidence": "HIGH",
+            "standing": "PROVISIONAL_MODEL_PROPOSAL"
+          }
+        ],
+        "abstentions": [],
+        "summary": "The transformation changes the duration threshold from 'at least thirty minutes' (inclusive) to 'more than thirty minutes' (exclusive), narrowing the permitted range of cool-down times.",
+        "model_assisted": true,
+        "action_authority": false,
+        "human_acceptance": "REQUIRED_FOR_ANY_TRANSMISSION"
+      },
+      "usage": {
+        "input_tokens": 840,
+        "output_tokens": 224,
+        "reasoning_tokens": null
+      },
+      "latency_ms": 5541.090899999999,
+      "retries": 0,
+      "status": "VALID_SCHEMA_AND_EVIDENCE",
+      "standing": "LOCAL_MODEL_OBSERVATION"
+    },
+    {
+      "type": "REVIEW_REQUEST",
+      "at": "2026-10-24T00:55:56.039Z",
+      "request_hash": "2fa332f9ee9d1d5b2cddfc91dc493eab5c1ac6c271d9e3c7fffe4c77636d920b",
+      "prompt_version": "lc02-r7-review-prompt/0.2",
+      "reviewer_version": "lc02-r7-local-review/0.1",
+      "model": {
+        "provider": "ollama-local",
+        "id": "qwen3.5:latest",
+        "digest": "6488c96fa5faab64bb65cbd30d4289e20e6130ef535a93ef9a49f42eda893ea7",
+        "size": 6594474711,
+        "parameter_size": "9.7B",
+        "quantization": "Q4_K_M"
+      },
+      "input": {
+        "purpose": "Communicate whether the contractor may enter the server room.",
+        "source": {
+          "id": "R7-D04-source",
+          "text": "The contractor may enter the server room only if the badge is active and the safety briefing is current. The badge is active. The briefing is not current.",
+          "hash": "1395962f6f10b7984405e5371c260fb7bde1d091a221ebd783cc4a0e3418800e"
+        },
+        "transformation": {
+          "id": "R7-D04-transformation",
+          "text": "The contractor may enter the server room because the badge is active.",
+          "hash": "9a3ca6183230dbec40a241aa868f8af21ce5f0f64a36247674feabd3383a249a"
+        },
+        "declared_obligations": [
+          {
+            "id": "o1",
+            "source_quote": "only if the badge is active and the safety briefing is current",
+            "description": "Both conditions must survive."
+          }
+        ]
+      },
+      "request_body": {
+        "model": "qwen3.5:latest",
+        "stream": false,
+        "think": false,
+        "format": "<json-schema>",
+        "messages": [
+          {
+            "role": "system",
+            "content": "You are a semantic reviewer. Compare SOURCE and TRANSFORMATION and report only material semantic changes, faithful paraphrase, or genuine uncertainty.\n\nReturn only JSON matching the supplied schema. Do not add prose outside JSON.\n\nFor each assessment choose exactly one change_kind:\n- QUANTITY_OR_BOUNDARY: a number, written number, operator, unit, threshold, duration, or inclusive/exclusive boundary changed.\n- EXCEPTION_SCOPE: the set of cases covered by an exception, permission, or prohibition was broadened or narrowed. Set material=true.\n- PREREQUISITE: a required condition, prerequisite, or dependency is missing or changed.\n- EPISTEMIC_STATUS: an unresolved or uncertain matter became established (epistemic_direction=ESTABLISHED_FROM_UNRESOLVED), new uncertainty was added (UNCERTAINTY_ADDED), or genuine ambiguity was preserved (AMBIGUITY_PRESERVED).\n- CAUSAL: a causal relation was added, promoted, or reversed beyond what the source states.\n- REFERENT_OR_SPEAKER: a referent, quotation, attribution, or speaker changed.\n- UNSUPPORTED_ADDITION: new authority, permission, fact, or content is asserted without source support.\n- NO_MATERIAL_CHANGE: faithful paraphrase, reordering, terminology substitution, or task-appropriate omission.\n- UNCERTAIN: the available evidence does not support a definite judgment. Use an abstention when appropriate.\n\nRules:\n- material must be true for every change except NO_MATERIAL_CHANGE and UNCERTAIN. material must be false for NO_MATERIAL_CHANGE.\n- For every change_kind except EPISTEMIC_STATUS, set epistemic_direction to NONE.\n- For NO_MATERIAL_CHANGE, set material=false and epistemic_direction=NONE.\n- If an exception changes which cases are covered, use EXCEPTION_SCOPE and material=true. Do not call it mere ambiguity.\n- An incident labelled \"unresolved\" is a status label, not necessarily epistemic uncertainty about a proposition.\n- Distinguish \"has not been decided\" (unresolved status) from ordinary negation. If the source leaves a matter unresolved and the transformation states it as fact, use EPISTEMIC_STATUS/ESTABLISHED_FROM_UNRESOLVED.\n- If the transformation adds doubt that the source does not support, use EPISTEMIC_STATUS/UNCERTAINTY_ADDED.\n- Use exact, verbatim source_quote and transformation_quote from the supplied texts. Do not paraphrase inside a quote. transformation_quote may be empty only when a source obligation is missing from the transformation.\n- Do not invent evidence. Do not infer a change from the declared obligations alone; inspect the source.\n- The declared obligations are provided for context and may be incomplete.\n- Do not claim that the transformation is equivalent unless the assessments support that conclusion.\n- Keep the summary short and factual."
+          },
+          {
+            "role": "user",
+            "content": "{\"purpose\":\"Communicate whether the contractor may enter the server room.\",\"source\":{\"id\":\"R7-D04-source\",\"text\":\"The contractor may enter the server room only if the badge is active and the safety briefing is current. The badge is active. The briefing is not current.\",\"hash\":\"1395962f6f10b7984405e5371c260fb7bde1d091a221ebd783cc4a0e3418800e\"},\"transformation\":{\"id\":\"R7-D04-transformation\",\"text\":\"The contractor may enter the server room because the badge is active.\",\"hash\":\"9a3ca6183230dbec40a241aa868f8af21ce5f0f64a36247674feabd3383a249a\"},\"declared_obligations\":[{\"id\":\"o1\",\"source_quote\":\"only if the badge is active and the safety briefing is current\",\"description\":\"Both conditions must survive.\"}]}"
+          }
+        ],
+        "options": {
+          "num_predict": 1400,
+          "temperature": 0
+        },
+        "keep_alive": "10m"
+      },
+      "standing": "LOCAL_MODEL_OBSERVATION"
+    },
+    {
+      "type": "REVIEW_RESULT",
+      "at": "2026-10-24T00:56:02.980Z",
+      "request_hash": "2fa332f9ee9d1d5b2cddfc91dc493eab5c1ac6c271d9e3c7fffe4c77636d920b",
+      "model": {
+        "provider": "ollama-local",
+        "id": "qwen3.5:latest",
+        "digest": "6488c96fa5faab64bb65cbd30d4289e20e6130ef535a93ef9a49f42eda893ea7",
+        "size": 6594474711,
+        "parameter_size": "9.7B",
+        "quantization": "Q4_K_M"
+      },
+      "raw": "{\n  \"assessments\": [\n    {\n      \"claim\": \"The contractor may enter the server room because the badge is active.\",\n      \"change_kind\": \"EPISTEMIC_STATUS\",\n      \"epistemic_direction\": \"ESTABLISHED_FROM_UNRESOLVED\",\n      \"material\": true,\n      \"source_quote\": \"The contractor may enter the server room only if the badge is active and the safety briefing is current. The badge is active. The briefing is not current.\",\n      \"transformation_quote\": \"The contractor may enter the server room because the badge is active.\",\n      \"explanation\": \"The source explicitly states that entry requires both an active badge AND a current briefing, while also stating the briefing is NOT current. This makes entry impossible. The transformation asserts entry is possible ('may enter') based solely on the badge being active, ignoring the failed prerequisite (current briefing). This changes an established negative fact (entry is not permitted) into a positive assertion of permission, effectively resolving the uncertainty of 'can they enter?' with a false affirmative.\",\n      \"confidence\": \"HIGH\"\n    }\n  ],\n  \"abstentions\": [],\n  \"summary\": \"The transformation incorrectly asserts that entry is permitted despite the source stating the safety briefing is not current, which is a required condition for entry.\"\n}",
+      "output": {
+        "schema": "language-semantic-review/0.1",
+        "reviewer_version": "lc02-r7-local-review/0.1",
+        "prompt_version": "lc02-r7-review-prompt/0.2",
+        "standing": "MODEL_ASSISTED_PROVISIONAL",
+        "model": {
+          "provider": "ollama-local",
+          "id": "qwen3.5:latest",
+          "digest": "6488c96fa5faab64bb65cbd30d4289e20e6130ef535a93ef9a49f42eda893ea7",
+          "size": 6594474711,
+          "parameter_size": "9.7B",
+          "quantization": "Q4_K_M"
+        },
+        "source": {
+          "id": "R7-D04-source",
+          "hash": "1395962f6f10b7984405e5371c260fb7bde1d091a221ebd783cc4a0e3418800e"
+        },
+        "transformation": {
+          "id": "R7-D04-transformation",
+          "hash": "9a3ca6183230dbec40a241aa868f8af21ce5f0f64a36247674feabd3383a249a"
+        },
+        "assessments": [
+          {
+            "id": "ra1",
+            "claim": "The contractor may enter the server room because the badge is active.",
+            "change_kind": "EPISTEMIC_STATUS",
+            "epistemic_direction": "ESTABLISHED_FROM_UNRESOLVED",
+            "material": true,
+            "source_quote": "The contractor may enter the server room only if the badge is active and the safety briefing is current. The badge is active. The briefing is not current.",
+            "transformation_quote": "The contractor may enter the server room because the badge is active.",
+            "explanation": "The source explicitly states that entry requires both an active badge AND a current briefing, while also stating the briefing is NOT current. This makes entry impossible. The transformation asserts entry is possible ('may enter') based solely on the badge being active, ignoring the failed prerequisite (current briefing). This changes an established negative fact (entry is not permitted) into a positive assertion of permission, effectively resolving the uncertainty of 'can they enter?' with a false affirmative.",
+            "confidence": "HIGH",
+            "standing": "PROVISIONAL_MODEL_PROPOSAL"
+          }
+        ],
+        "abstentions": [],
+        "summary": "The transformation incorrectly asserts that entry is permitted despite the source stating the safety briefing is not current, which is a required condition for entry.",
+        "model_assisted": true,
+        "action_authority": false,
+        "human_acceptance": "REQUIRED_FOR_ANY_TRANSMISSION"
+      },
+      "usage": {
+        "input_tokens": 854,
+        "output_tokens": 292,
+        "reasoning_tokens": null
+      },
+      "latency_ms": 6941.8668,
+      "retries": 0,
+      "status": "VALID_SCHEMA_AND_EVIDENCE",
+      "standing": "LOCAL_MODEL_OBSERVATION"
+    },
+    {
+      "type": "REVIEW_REQUEST",
+      "at": "2026-10-24T00:56:03.859Z",
+      "request_hash": "7b9acacf2258f3ec768ef1b62b9daa51ecf3d434f5a4283a0e74aaa3f1bdfd37",
+      "prompt_version": "lc02-r7-review-prompt/0.2",
+      "reviewer_version": "lc02-r7-local-review/0.1",
+      "model": {
+        "provider": "ollama-local",
+        "id": "qwen3.5:latest",
+        "digest": "6488c96fa5faab64bb65cbd30d4289e20e6130ef535a93ef9a49f42eda893ea7",
+        "size": 6594474711,
+        "parameter_size": "9.7B",
+        "quantization": "Q4_K_M"
+      },
+      "input": {
+        "purpose": "Communicate the maintenance-account exception.",
+        "source": {
+          "id": "R7-D05-source",
+          "text": "The maintenance account may be used during an outage, except when the change freeze is active.",
+          "hash": "3ae7078403e6384aa1a0c4832ec97abc089946c3ad1700f86352a0b0dc363171"
+        },
+        "transformation": {
+          "id": "R7-D05-transformation",
+          "text": "The maintenance account may be used during an outage, except when the change is unresolved.",
+          "hash": "4800a34e38598a38d57b5b38325994af7161af01c85288598e06d637e8a4579d"
+        },
+        "declared_obligations": [
+          {
+            "id": "o1",
+            "source_quote": "except when the change freeze is active",
+            "description": "The exception scope must not be broadened."
+          }
+        ]
+      },
+      "request_body": {
+        "model": "qwen3.5:latest",
+        "stream": false,
+        "think": false,
+        "format": "<json-schema>",
+        "messages": [
+          {
+            "role": "system",
+            "content": "You are a semantic reviewer. Compare SOURCE and TRANSFORMATION and report only material semantic changes, faithful paraphrase, or genuine uncertainty.\n\nReturn only JSON matching the supplied schema. Do not add prose outside JSON.\n\nFor each assessment choose exactly one change_kind:\n- QUANTITY_OR_BOUNDARY: a number, written number, operator, unit, threshold, duration, or inclusive/exclusive boundary changed.\n- EXCEPTION_SCOPE: the set of cases covered by an exception, permission, or prohibition was broadened or narrowed. Set material=true.\n- PREREQUISITE: a required condition, prerequisite, or dependency is missing or changed.\n- EPISTEMIC_STATUS: an unresolved or uncertain matter became established (epistemic_direction=ESTABLISHED_FROM_UNRESOLVED), new uncertainty was added (UNCERTAINTY_ADDED), or genuine ambiguity was preserved (AMBIGUITY_PRESERVED).\n- CAUSAL: a causal relation was added, promoted, or reversed beyond what the source states.\n- REFERENT_OR_SPEAKER: a referent, quotation, attribution, or speaker changed.\n- UNSUPPORTED_ADDITION: new authority, permission, fact, or content is asserted without source support.\n- NO_MATERIAL_CHANGE: faithful paraphrase, reordering, terminology substitution, or task-appropriate omission.\n- UNCERTAIN: the available evidence does not support a definite judgment. Use an abstention when appropriate.\n\nRules:\n- material must be true for every change except NO_MATERIAL_CHANGE and UNCERTAIN. material must be false for NO_MATERIAL_CHANGE.\n- For every change_kind except EPISTEMIC_STATUS, set epistemic_direction to NONE.\n- For NO_MATERIAL_CHANGE, set material=false and epistemic_direction=NONE.\n- If an exception changes which cases are covered, use EXCEPTION_SCOPE and material=true. Do not call it mere ambiguity.\n- An incident labelled \"unresolved\" is a status label, not necessarily epistemic uncertainty about a proposition.\n- Distinguish \"has not been decided\" (unresolved status) from ordinary negation. If the source leaves a matter unresolved and the transformation states it as fact, use EPISTEMIC_STATUS/ESTABLISHED_FROM_UNRESOLVED.\n- If the transformation adds doubt that the source does not support, use EPISTEMIC_STATUS/UNCERTAINTY_ADDED.\n- Use exact, verbatim source_quote and transformation_quote from the supplied texts. Do not paraphrase inside a quote. transformation_quote may be empty only when a source obligation is missing from the transformation.\n- Do not invent evidence. Do not infer a change from the declared obligations alone; inspect the source.\n- The declared obligations are provided for context and may be incomplete.\n- Do not claim that the transformation is equivalent unless the assessments support that conclusion.\n- Keep the summary short and factual."
+          },
+          {
+            "role": "user",
+            "content": "{\"purpose\":\"Communicate the maintenance-account exception.\",\"source\":{\"id\":\"R7-D05-source\",\"text\":\"The maintenance account may be used during an outage, except when the change freeze is active.\",\"hash\":\"3ae7078403e6384aa1a0c4832ec97abc089946c3ad1700f86352a0b0dc363171\"},\"transformation\":{\"id\":\"R7-D05-transformation\",\"text\":\"The maintenance account may be used during an outage, except when the change is unresolved.\",\"hash\":\"4800a34e38598a38d57b5b38325994af7161af01c85288598e06d637e8a4579d\"},\"declared_obligations\":[{\"id\":\"o1\",\"source_quote\":\"except when the change freeze is active\",\"description\":\"The exception scope must not be broadened.\"}]}"
+          }
+        ],
+        "options": {
+          "num_predict": 1400,
+          "temperature": 0
+        },
+        "keep_alive": "10m"
+      },
+      "standing": "LOCAL_MODEL_OBSERVATION"
+    },
+    {
+      "type": "REVIEW_RESULT",
+      "at": "2026-10-24T00:56:09.239Z",
+      "request_hash": "7b9acacf2258f3ec768ef1b62b9daa51ecf3d434f5a4283a0e74aaa3f1bdfd37",
+      "model": {
+        "provider": "ollama-local",
+        "id": "qwen3.5:latest",
+        "digest": "6488c96fa5faab64bb65cbd30d4289e20e6130ef535a93ef9a49f42eda893ea7",
+        "size": 6594474711,
+        "parameter_size": "9.7B",
+        "quantization": "Q4_K_M"
+      },
+      "raw": "{\n  \"assessments\": [\n    {\n      \"claim\": \"The maintenance account may be used during an outage, except when the change freeze is active.\",\n      \"change_kind\": \"EXCEPTION_SCOPE\",\n      \"epistemic_direction\": \"NONE\",\n      \"material\": true,\n      \"source_quote\": \"except when the change freeze is active\",\n      \"transformation_quote\": \"except when the change is unresolved\",\n      \"explanation\": \"The transformation replaces the specific condition 'change freeze is active' with the broader or different condition 'change is unresolved', altering the scope of the exception as required by the obligation.\",\n      \"confidence\": \"HIGH\"\n    }\n  ],\n  \"abstentions\": [],\n  \"summary\": \"The transformation changes the exception condition from 'change freeze is active' to 'change is unresolved', which alters the scope of when the maintenance account cannot be used.\"\n}",
+      "output": {
+        "schema": "language-semantic-review/0.1",
+        "reviewer_version": "lc02-r7-local-review/0.1",
+        "prompt_version": "lc02-r7-review-prompt/0.2",
+        "standing": "MODEL_ASSISTED_PROVISIONAL",
+        "model": {
+          "provider": "ollama-local",
+          "id": "qwen3.5:latest",
+          "digest": "6488c96fa5faab64bb65cbd30d4289e20e6130ef535a93ef9a49f42eda893ea7",
+          "size": 6594474711,
+          "parameter_size": "9.7B",
+          "quantization": "Q4_K_M"
+        },
+        "source": {
+          "id": "R7-D05-source",
+          "hash": "3ae7078403e6384aa1a0c4832ec97abc089946c3ad1700f86352a0b0dc363171"
+        },
+        "transformation": {
+          "id": "R7-D05-transformation",
+          "hash": "4800a34e38598a38d57b5b38325994af7161af01c85288598e06d637e8a4579d"
+        },
+        "assessments": [
+          {
+            "id": "ra1",
+            "claim": "The maintenance account may be used during an outage, except when the change freeze is active.",
+            "change_kind": "EXCEPTION_SCOPE",
+            "epistemic_direction": "NONE",
+            "material": true,
+            "source_quote": "except when the change freeze is active",
+            "transformation_quote": "except when the change is unresolved",
+            "explanation": "The transformation replaces the specific condition 'change freeze is active' with the broader or different condition 'change is unresolved', altering the scope of the exception as required by the obligation.",
+            "confidence": "HIGH",
+            "standing": "PROVISIONAL_MODEL_PROPOSAL"
+          }
+        ],
+        "abstentions": [],
+        "summary": "The transformation changes the exception condition from 'change freeze is active' to 'change is unresolved', which alters the scope of when the maintenance account cannot be used.",
+        "model_assisted": true,
+        "action_authority": false,
+        "human_acceptance": "REQUIRED_FOR_ANY_TRANSMISSION"
+      },
+      "usage": {
+        "input_tokens": 844,
+        "output_tokens": 206,
+        "reasoning_tokens": null
+      },
+      "latency_ms": 5379.499100000001,
+      "retries": 0,
+      "status": "VALID_SCHEMA_AND_EVIDENCE",
+      "standing": "LOCAL_MODEL_OBSERVATION"
+    },
+    {
+      "type": "REVIEW_REQUEST",
+      "at": "2026-10-24T00:56:10.100Z",
+      "request_hash": "7ba587f6fecac8d45b390ffcf5fdda2f934882e2d1baaed6761ed0d90295ebe2",
+      "prompt_version": "lc02-r7-review-prompt/0.2",
+      "reviewer_version": "lc02-r7-local-review/0.1",
+      "model": {
+        "provider": "ollama-local",
+        "id": "qwen3.5:latest",
+        "digest": "6488c96fa5faab64bb65cbd30d4289e20e6130ef535a93ef9a49f42eda893ea7",
+        "size": 6594474711,
+        "parameter_size": "9.7B",
+        "quantization": "Q4_K_M"
+      },
+      "input": {
+        "purpose": "Communicate the supplier review status.",
+        "source": {
+          "id": "R7-D06-source",
+          "text": "The supplier review is unresolved. The file contains neither approval nor rejection.",
+          "hash": "aed5f90febfa3de114739b232f1bc721040eb5047efa7c0efb19dcab24010b34"
+        },
+        "transformation": {
+          "id": "R7-D06-transformation",
+          "text": "The supplier is approved; the file contains the approval.",
+          "hash": "89e2ab47d7e8e4f215ce879248bcbd142f6613ad701a03592514d81836f95d18"
+        },
+        "declared_obligations": [
+          {
+            "id": "o1",
+            "source_quote": "The supplier review is unresolved.",
+            "description": "The unresolved status must remain."
+          }
+        ]
+      },
+      "request_body": {
+        "model": "qwen3.5:latest",
+        "stream": false,
+        "think": false,
+        "format": "<json-schema>",
+        "messages": [
+          {
+            "role": "system",
+            "content": "You are a semantic reviewer. Compare SOURCE and TRANSFORMATION and report only material semantic changes, faithful paraphrase, or genuine uncertainty.\n\nReturn only JSON matching the supplied schema. Do not add prose outside JSON.\n\nFor each assessment choose exactly one change_kind:\n- QUANTITY_OR_BOUNDARY: a number, written number, operator, unit, threshold, duration, or inclusive/exclusive boundary changed.\n- EXCEPTION_SCOPE: the set of cases covered by an exception, permission, or prohibition was broadened or narrowed. Set material=true.\n- PREREQUISITE: a required condition, prerequisite, or dependency is missing or changed.\n- EPISTEMIC_STATUS: an unresolved or uncertain matter became established (epistemic_direction=ESTABLISHED_FROM_UNRESOLVED), new uncertainty was added (UNCERTAINTY_ADDED), or genuine ambiguity was preserved (AMBIGUITY_PRESERVED).\n- CAUSAL: a causal relation was added, promoted, or reversed beyond what the source states.\n- REFERENT_OR_SPEAKER: a referent, quotation, attribution, or speaker changed.\n- UNSUPPORTED_ADDITION: new authority, permission, fact, or content is asserted without source support.\n- NO_MATERIAL_CHANGE: faithful paraphrase, reordering, terminology substitution, or task-appropriate omission.\n- UNCERTAIN: the available evidence does not support a definite judgment. Use an abstention when appropriate.\n\nRules:\n- material must be true for every change except NO_MATERIAL_CHANGE and UNCERTAIN. material must be false for NO_MATERIAL_CHANGE.\n- For every change_kind except EPISTEMIC_STATUS, set epistemic_direction to NONE.\n- For NO_MATERIAL_CHANGE, set material=false and epistemic_direction=NONE.\n- If an exception changes which cases are covered, use EXCEPTION_SCOPE and material=true. Do not call it mere ambiguity.\n- An incident labelled \"unresolved\" is a status label, not necessarily epistemic uncertainty about a proposition.\n- Distinguish \"has not been decided\" (unresolved status) from ordinary negation. If the source leaves a matter unresolved and the transformation states it as fact, use EPISTEMIC_STATUS/ESTABLISHED_FROM_UNRESOLVED.\n- If the transformation adds doubt that the source does not support, use EPISTEMIC_STATUS/UNCERTAINTY_ADDED.\n- Use exact, verbatim source_quote and transformation_quote from the supplied texts. Do not paraphrase inside a quote. transformation_quote may be empty only when a source obligation is missing from the transformation.\n- Do not invent evidence. Do not infer a change from the declared obligations alone; inspect the source.\n- The declared obligations are provided for context and may be incomplete.\n- Do not claim that the transformation is equivalent unless the assessments support that conclusion.\n- Keep the summary short and factual."
+          },
+          {
+            "role": "user",
+            "content": "{\"purpose\":\"Communicate the supplier review status.\",\"source\":{\"id\":\"R7-D06-source\",\"text\":\"The supplier review is unresolved. The file contains neither approval nor rejection.\",\"hash\":\"aed5f90febfa3de114739b232f1bc721040eb5047efa7c0efb19dcab24010b34\"},\"transformation\":{\"id\":\"R7-D06-transformation\",\"text\":\"The supplier is approved; the file contains the approval.\",\"hash\":\"89e2ab47d7e8e4f215ce879248bcbd142f6613ad701a03592514d81836f95d18\"},\"declared_obligations\":[{\"id\":\"o1\",\"source_quote\":\"The supplier review is unresolved.\",\"description\":\"The unresolved status must remain.\"}]}"
+          }
+        ],
+        "options": {
+          "num_predict": 1400,
+          "temperature": 0
+        },
+        "keep_alive": "10m"
+      },
+      "standing": "LOCAL_MODEL_OBSERVATION"
+    },
+    {
+      "type": "REVIEW_RESULT",
+      "at": "2026-10-24T00:56:17.006Z",
+      "request_hash": "7ba587f6fecac8d45b390ffcf5fdda2f934882e2d1baaed6761ed0d90295ebe2",
+      "model": {
+        "provider": "ollama-local",
+        "id": "qwen3.5:latest",
+        "digest": "6488c96fa5faab64bb65cbd30d4289e20e6130ef535a93ef9a49f42eda893ea7",
+        "size": 6594474711,
+        "parameter_size": "9.7B",
+        "quantization": "Q4_K_M"
+      },
+      "raw": "{\n  \"assessments\": [\n    {\n      \"claim\": \"The supplier review is unresolved.\",\n      \"change_kind\": \"EPISTEMIC_STATUS\",\n      \"epistemic_direction\": \"ESTABLISHED_FROM_UNRESOLVED\",\n      \"material\": true,\n      \"source_quote\": \"The supplier review is unresolved.\",\n      \"transformation_quote\": \"The supplier is approved;\",\"explanation\": \"The transformation states the supplier is approved, which contradicts the source's statement that the review is unresolved.\",\"confidence\": \"HIGH\"\n    },\n    {\n      \"claim\": \"The file contains neither approval nor rejection.\",\n      \"change_kind\": \"EPISTEMIC_STATUS\",\n      \"epistemic_direction\": \"ESTABLISHED_FROM_UNRESOLVED\",\n      \"material\": true,\n      \"source_quote\": \"The file contains neither approval nor rejection.\",\n      \"transformation_quote\": \"the file contains the approval.\",\"explanation\": \"The transformation asserts the presence of an approval, contradicting the source's claim that neither exists.\",\"confidence\": \"HIGH\"\n    }\n  ],\n  \"abstentions\": [],\"summary\":\"The transformation contradicts the source by asserting a resolved state (approval) and the existence of an approval document, whereas the source explicitly states the review is unresolved and contains neither approval nor rejection.\"}",
+      "output": {
+        "schema": "language-semantic-review/0.1",
+        "reviewer_version": "lc02-r7-local-review/0.1",
+        "prompt_version": "lc02-r7-review-prompt/0.2",
+        "standing": "MODEL_ASSISTED_PROVISIONAL",
+        "model": {
+          "provider": "ollama-local",
+          "id": "qwen3.5:latest",
+          "digest": "6488c96fa5faab64bb65cbd30d4289e20e6130ef535a93ef9a49f42eda893ea7",
+          "size": 6594474711,
+          "parameter_size": "9.7B",
+          "quantization": "Q4_K_M"
+        },
+        "source": {
+          "id": "R7-D06-source",
+          "hash": "aed5f90febfa3de114739b232f1bc721040eb5047efa7c0efb19dcab24010b34"
+        },
+        "transformation": {
+          "id": "R7-D06-transformation",
+          "hash": "89e2ab47d7e8e4f215ce879248bcbd142f6613ad701a03592514d81836f95d18"
+        },
+        "assessments": [
+          {
+            "id": "ra1",
+            "claim": "The supplier review is unresolved.",
+            "change_kind": "EPISTEMIC_STATUS",
+            "epistemic_direction": "ESTABLISHED_FROM_UNRESOLVED",
+            "material": true,
+            "source_quote": "The supplier review is unresolved.",
+            "transformation_quote": "The supplier is approved;",
+            "explanation": "The transformation states the supplier is approved, which contradicts the source's statement that the review is unresolved.",
+            "confidence": "HIGH",
+            "standing": "PROVISIONAL_MODEL_PROPOSAL"
+          },
+          {
+            "id": "ra2",
+            "claim": "The file contains neither approval nor rejection.",
+            "change_kind": "EPISTEMIC_STATUS",
+            "epistemic_direction": "ESTABLISHED_FROM_UNRESOLVED",
+            "material": true,
+            "source_quote": "The file contains neither approval nor rejection.",
+            "transformation_quote": "the file contains the approval.",
+            "explanation": "The transformation asserts the presence of an approval, contradicting the source's claim that neither exists.",
+            "confidence": "HIGH",
+            "standing": "PROVISIONAL_MODEL_PROPOSAL"
+          }
+        ],
+        "abstentions": [],
+        "summary": "The transformation contradicts the source by asserting a resolved state (approval) and the existence of an approval document, whereas the source explicitly states the review is unresolved and contains neither approval nor rejection.",
+        "model_assisted": true,
+        "action_authority": false,
+        "human_acceptance": "REQUIRED_FOR_ANY_TRANSMISSION"
+      },
+      "usage": {
+        "input_tokens": 820,
+        "output_tokens": 295,
+        "reasoning_tokens": null
+      },
+      "latency_ms": 6906.557200000003,
+      "retries": 0,
+      "status": "VALID_SCHEMA_AND_EVIDENCE",
+      "standing": "LOCAL_MODEL_OBSERVATION"
+    },
+    {
+      "type": "REVIEW_REQUEST",
+      "at": "2026-10-24T00:56:17.911Z",
+      "request_hash": "cf336067390f92807ce928ff594312542ac512d079fe868d6b848ce0e221a612",
+      "prompt_version": "lc02-r7-review-prompt/0.2",
+      "reviewer_version": "lc02-r7-local-review/0.1",
+      "model": {
+        "provider": "ollama-local",
+        "id": "qwen3.5:latest",
+        "digest": "6488c96fa5faab64bb65cbd30d4289e20e6130ef535a93ef9a49f42eda893ea7",
+        "size": 6594474711,
+        "parameter_size": "9.7B",
+        "quantization": "Q4_K_M"
+      },
+      "input": {
+        "purpose": "State the expense-claim deadline using an equivalent upper bound.",
+        "source": {
+          "id": "R7-D07-source",
+          "text": "Expense claims may be submitted up to fourteen days after the quarter closes.",
+          "hash": "e00601e6c53e03fc91cfa1dfc4086fb397bfbbaf4fa61024f12ed03bf66ebd1c"
+        },
+        "transformation": {
+          "id": "R7-D07-transformation",
+          "text": "The deadline for expense claims is no more than fourteen days after quarter close.",
+          "hash": "866a4abdd553fd7b35f7d525e4c42b35a777ccec0a3785ed35f4ca7fbed2817c"
+        },
+        "declared_obligations": [
+          {
+            "id": "o1",
+            "source_quote": "Expense claims may be submitted up to fourteen days after the quarter closes.",
+            "description": "The deadline must survive."
+          }
+        ]
+      },
+      "request_body": {
+        "model": "qwen3.5:latest",
+        "stream": false,
+        "think": false,
+        "format": "<json-schema>",
+        "messages": [
+          {
+            "role": "system",
+            "content": "You are a semantic reviewer. Compare SOURCE and TRANSFORMATION and report only material semantic changes, faithful paraphrase, or genuine uncertainty.\n\nReturn only JSON matching the supplied schema. Do not add prose outside JSON.\n\nFor each assessment choose exactly one change_kind:\n- QUANTITY_OR_BOUNDARY: a number, written number, operator, unit, threshold, duration, or inclusive/exclusive boundary changed.\n- EXCEPTION_SCOPE: the set of cases covered by an exception, permission, or prohibition was broadened or narrowed. Set material=true.\n- PREREQUISITE: a required condition, prerequisite, or dependency is missing or changed.\n- EPISTEMIC_STATUS: an unresolved or uncertain matter became established (epistemic_direction=ESTABLISHED_FROM_UNRESOLVED), new uncertainty was added (UNCERTAINTY_ADDED), or genuine ambiguity was preserved (AMBIGUITY_PRESERVED).\n- CAUSAL: a causal relation was added, promoted, or reversed beyond what the source states.\n- REFERENT_OR_SPEAKER: a referent, quotation, attribution, or speaker changed.\n- UNSUPPORTED_ADDITION: new authority, permission, fact, or content is asserted without source support.\n- NO_MATERIAL_CHANGE: faithful paraphrase, reordering, terminology substitution, or task-appropriate omission.\n- UNCERTAIN: the available evidence does not support a definite judgment. Use an abstention when appropriate.\n\nRules:\n- material must be true for every change except NO_MATERIAL_CHANGE and UNCERTAIN. material must be false for NO_MATERIAL_CHANGE.\n- For every change_kind except EPISTEMIC_STATUS, set epistemic_direction to NONE.\n- For NO_MATERIAL_CHANGE, set material=false and epistemic_direction=NONE.\n- If an exception changes which cases are covered, use EXCEPTION_SCOPE and material=true. Do not call it mere ambiguity.\n- An incident labelled \"unresolved\" is a status label, not necessarily epistemic uncertainty about a proposition.\n- Distinguish \"has not been decided\" (unresolved status) from ordinary negation. If the source leaves a matter unresolved and the transformation states it as fact, use EPISTEMIC_STATUS/ESTABLISHED_FROM_UNRESOLVED.\n- If the transformation adds doubt that the source does not support, use EPISTEMIC_STATUS/UNCERTAINTY_ADDED.\n- Use exact, verbatim source_quote and transformation_quote from the supplied texts. Do not paraphrase inside a quote. transformation_quote may be empty only when a source obligation is missing from the transformation.\n- Do not invent evidence. Do not infer a change from the declared obligations alone; inspect the source.\n- The declared obligations are provided for context and may be incomplete.\n- Do not claim that the transformation is equivalent unless the assessments support that conclusion.\n- Keep the summary short and factual."
+          },
+          {
+            "role": "user",
+            "content": "{\"purpose\":\"State the expense-claim deadline using an equivalent upper bound.\",\"source\":{\"id\":\"R7-D07-source\",\"text\":\"Expense claims may be submitted up to fourteen days after the quarter closes.\",\"hash\":\"e00601e6c53e03fc91cfa1dfc4086fb397bfbbaf4fa61024f12ed03bf66ebd1c\"},\"transformation\":{\"id\":\"R7-D07-transformation\",\"text\":\"The deadline for expense claims is no more than fourteen days after quarter close.\",\"hash\":\"866a4abdd553fd7b35f7d525e4c42b35a777ccec0a3785ed35f4ca7fbed2817c\"},\"declared_obligations\":[{\"id\":\"o1\",\"source_quote\":\"Expense claims may be submitted up to fourteen days after the quarter closes.\",\"description\":\"The deadline must survive.\"}]}"
+          }
+        ],
+        "options": {
+          "num_predict": 1400,
+          "temperature": 0
+        },
+        "keep_alive": "10m"
+      },
+      "standing": "LOCAL_MODEL_OBSERVATION"
+    },
+    {
+      "type": "REVIEW_RESULT",
+      "at": "2026-10-24T00:56:23.105Z",
+      "request_hash": "cf336067390f92807ce928ff594312542ac512d079fe868d6b848ce0e221a612",
+      "model": {
+        "provider": "ollama-local",
+        "id": "qwen3.5:latest",
+        "digest": "6488c96fa5faab64bb65cbd30d4289e20e6130ef535a93ef9a49f42eda893ea7",
+        "size": 6594474711,
+        "parameter_size": "9.7B",
+        "quantization": "Q4_K_M"
+      },
+      "raw": "{\n  \"assessments\": [\n    {\n      \"claim\": \"The expense-claim deadline is stated as 'no more than fourteen days' in the transformation, which is semantically equivalent to 'up to fourteen days' in the source.\",\n      \"change_kind\": \"NO_MATERIAL_CHANGE\",\n      \"epistemic_direction\": \"NONE\",\n      \"material\": false,\n      \"source_quote\": \"Expense claims may be submitted up to fourteen days after the quarter closes.\",\n      \"transformation_quote\": \"The deadline for expense claims is no more than fourteen days after quarter close.\",\n      \"explanation\": \"The transformation rephrases 'up to' as 'no more than', preserving the exact upper bound and meaning without adding or removing conditions.\",\n      \"confidence\": \"HIGH\"\n    }\n  ],\n  \"abstentions\": [],\n  \"summary\": \"No material semantic change detected; faithful paraphrase of the deadline constraint.\"\n}",
+      "output": {
+        "schema": "language-semantic-review/0.1",
+        "reviewer_version": "lc02-r7-local-review/0.1",
+        "prompt_version": "lc02-r7-review-prompt/0.2",
+        "standing": "MODEL_ASSISTED_PROVISIONAL",
+        "model": {
+          "provider": "ollama-local",
+          "id": "qwen3.5:latest",
+          "digest": "6488c96fa5faab64bb65cbd30d4289e20e6130ef535a93ef9a49f42eda893ea7",
+          "size": 6594474711,
+          "parameter_size": "9.7B",
+          "quantization": "Q4_K_M"
+        },
+        "source": {
+          "id": "R7-D07-source",
+          "hash": "e00601e6c53e03fc91cfa1dfc4086fb397bfbbaf4fa61024f12ed03bf66ebd1c"
+        },
+        "transformation": {
+          "id": "R7-D07-transformation",
+          "hash": "866a4abdd553fd7b35f7d525e4c42b35a777ccec0a3785ed35f4ca7fbed2817c"
+        },
+        "assessments": [
+          {
+            "id": "ra1",
+            "claim": "The expense-claim deadline is stated as 'no more than fourteen days' in the transformation, which is semantically equivalent to 'up to fourteen days' in the source.",
+            "change_kind": "NO_MATERIAL_CHANGE",
+            "epistemic_direction": "NONE",
+            "material": false,
+            "source_quote": "Expense claims may be submitted up to fourteen days after the quarter closes.",
+            "transformation_quote": "The deadline for expense claims is no more than fourteen days after quarter close.",
+            "explanation": "The transformation rephrases 'up to' as 'no more than', preserving the exact upper bound and meaning without adding or removing conditions.",
+            "confidence": "HIGH",
+            "standing": "PROVISIONAL_MODEL_PROPOSAL"
+          }
+        ],
+        "abstentions": [],
+        "summary": "No material semantic change detected; faithful paraphrase of the deadline constraint.",
+        "model_assisted": true,
+        "action_authority": false,
+        "human_acceptance": "REQUIRED_FOR_ANY_TRANSMISSION"
+      },
+      "usage": {
+        "input_tokens": 834,
+        "output_tokens": 212,
+        "reasoning_tokens": null
+      },
+      "latency_ms": 5194.595099999999,
+      "retries": 0,
+      "status": "VALID_SCHEMA_AND_EVIDENCE",
+      "standing": "LOCAL_MODEL_OBSERVATION"
+    },
+    {
+      "type": "REVIEW_REQUEST",
+      "at": "2026-10-24T00:56:23.982Z",
+      "request_hash": "fb24f701b753fc093e19fc7ef6e231c27e01674e1a4635e5c26c27dc284ae387",
+      "prompt_version": "lc02-r7-review-prompt/0.2",
+      "reviewer_version": "lc02-r7-local-review/0.1",
+      "model": {
+        "provider": "ollama-local",
+        "id": "qwen3.5:latest",
+        "digest": "6488c96fa5faab64bb65cbd30d4289e20e6130ef535a93ef9a49f42eda893ea7",
+        "size": 6594474711,
+        "parameter_size": "9.7B",
+        "quantization": "Q4_K_M"
+      },
+      "input": {
+        "purpose": "Reorder the release conditions without changing them.",
+        "source": {
+          "id": "R7-D08-source",
+          "text": "A release requires a completed security review and an approved change ticket.",
+          "hash": "4f1bdc262c4997faf3cb91dbd297e72cd137413e2ae8de0ff87f5dcbdfd0f5e4"
+        },
+        "transformation": {
+          "id": "R7-D08-transformation",
+          "text": "An approved change ticket and a completed security review are required for release.",
+          "hash": "25372a8b07d0690aacf07f5b6712aeb68a376460e210f8d1e9bcb2586d500c74"
+        },
+        "declared_obligations": [
+          {
+            "id": "o1",
+            "source_quote": "A release requires a completed security review and an approved change ticket.",
+            "description": "Both conditions must survive."
+          }
+        ]
+      },
+      "request_body": {
+        "model": "qwen3.5:latest",
+        "stream": false,
+        "think": false,
+        "format": "<json-schema>",
+        "messages": [
+          {
+            "role": "system",
+            "content": "You are a semantic reviewer. Compare SOURCE and TRANSFORMATION and report only material semantic changes, faithful paraphrase, or genuine uncertainty.\n\nReturn only JSON matching the supplied schema. Do not add prose outside JSON.\n\nFor each assessment choose exactly one change_kind:\n- QUANTITY_OR_BOUNDARY: a number, written number, operator, unit, threshold, duration, or inclusive/exclusive boundary changed.\n- EXCEPTION_SCOPE: the set of cases covered by an exception, permission, or prohibition was broadened or narrowed. Set material=true.\n- PREREQUISITE: a required condition, prerequisite, or dependency is missing or changed.\n- EPISTEMIC_STATUS: an unresolved or uncertain matter became established (epistemic_direction=ESTABLISHED_FROM_UNRESOLVED), new uncertainty was added (UNCERTAINTY_ADDED), or genuine ambiguity was preserved (AMBIGUITY_PRESERVED).\n- CAUSAL: a causal relation was added, promoted, or reversed beyond what the source states.\n- REFERENT_OR_SPEAKER: a referent, quotation, attribution, or speaker changed.\n- UNSUPPORTED_ADDITION: new authority, permission, fact, or content is asserted without source support.\n- NO_MATERIAL_CHANGE: faithful paraphrase, reordering, terminology substitution, or task-appropriate omission.\n- UNCERTAIN: the available evidence does not support a definite judgment. Use an abstention when appropriate.\n\nRules:\n- material must be true for every change except NO_MATERIAL_CHANGE and UNCERTAIN. material must be false for NO_MATERIAL_CHANGE.\n- For every change_kind except EPISTEMIC_STATUS, set epistemic_direction to NONE.\n- For NO_MATERIAL_CHANGE, set material=false and epistemic_direction=NONE.\n- If an exception changes which cases are covered, use EXCEPTION_SCOPE and material=true. Do not call it mere ambiguity.\n- An incident labelled \"unresolved\" is a status label, not necessarily epistemic uncertainty about a proposition.\n- Distinguish \"has not been decided\" (unresolved status) from ordinary negation. If the source leaves a matter unresolved and the transformation states it as fact, use EPISTEMIC_STATUS/ESTABLISHED_FROM_UNRESOLVED.\n- If the transformation adds doubt that the source does not support, use EPISTEMIC_STATUS/UNCERTAINTY_ADDED.\n- Use exact, verbatim source_quote and transformation_quote from the supplied texts. Do not paraphrase inside a quote. transformation_quote may be empty only when a source obligation is missing from the transformation.\n- Do not invent evidence. Do not infer a change from the declared obligations alone; inspect the source.\n- The declared obligations are provided for context and may be incomplete.\n- Do not claim that the transformation is equivalent unless the assessments support that conclusion.\n- Keep the summary short and factual."
+          },
+          {
+            "role": "user",
+            "content": "{\"purpose\":\"Reorder the release conditions without changing them.\",\"source\":{\"id\":\"R7-D08-source\",\"text\":\"A release requires a completed security review and an approved change ticket.\",\"hash\":\"4f1bdc262c4997faf3cb91dbd297e72cd137413e2ae8de0ff87f5dcbdfd0f5e4\"},\"transformation\":{\"id\":\"R7-D08-transformation\",\"text\":\"An approved change ticket and a completed security review are required for release.\",\"hash\":\"25372a8b07d0690aacf07f5b6712aeb68a376460e210f8d1e9bcb2586d500c74\"},\"declared_obligations\":[{\"id\":\"o1\",\"source_quote\":\"A release requires a completed security review and an approved change ticket.\",\"description\":\"Both conditions must survive.\"}]}"
+          }
+        ],
+        "options": {
+          "num_predict": 1400,
+          "temperature": 0
+        },
+        "keep_alive": "10m"
+      },
+      "standing": "LOCAL_MODEL_OBSERVATION"
+    },
+    {
+      "type": "REVIEW_RESULT",
+      "at": "2026-10-24T00:56:28.403Z",
+      "request_hash": "fb24f701b753fc093e19fc7ef6e231c27e01674e1a4635e5c26c27dc284ae387",
+      "model": {
+        "provider": "ollama-local",
+        "id": "qwen3.5:latest",
+        "digest": "6488c96fa5faab64bb65cbd30d4289e20e6130ef535a93ef9a49f42eda893ea7",
+        "size": 6594474711,
+        "parameter_size": "9.7B",
+        "quantization": "Q4_K_M"
+      },
+      "raw": "{\n  \"assessments\": [\n    {\n      \"claim\": \"The order of the two required conditions for release was changed.\",\n      \"change_kind\": \"NO_MATERIAL_CHANGE\",\n      \"epistemic_direction\": \"NONE\",\n      \"material\": false,\n      \"source_quote\": \"A release requires a completed security review and an approved change ticket.\",\n      \"transformation_quote\": \"An approved change ticket and a completed security review are required for release.\",\n      \"explanation\": \"The transformation reorders the clauses but preserves the exact same conditions and requirements as the source.\",\n      \"confidence\": \"HIGH\"\n    }\n  ],\n  \"abstentions\": [],\n  \"summary\": \"No material semantic change detected; only a reordering of identical conditions.\"\n}",
+      "output": {
+        "schema": "language-semantic-review/0.1",
+        "reviewer_version": "lc02-r7-local-review/0.1",
+        "prompt_version": "lc02-r7-review-prompt/0.2",
+        "standing": "MODEL_ASSISTED_PROVISIONAL",
+        "model": {
+          "provider": "ollama-local",
+          "id": "qwen3.5:latest",
+          "digest": "6488c96fa5faab64bb65cbd30d4289e20e6130ef535a93ef9a49f42eda893ea7",
+          "size": 6594474711,
+          "parameter_size": "9.7B",
+          "quantization": "Q4_K_M"
+        },
+        "source": {
+          "id": "R7-D08-source",
+          "hash": "4f1bdc262c4997faf3cb91dbd297e72cd137413e2ae8de0ff87f5dcbdfd0f5e4"
+        },
+        "transformation": {
+          "id": "R7-D08-transformation",
+          "hash": "25372a8b07d0690aacf07f5b6712aeb68a376460e210f8d1e9bcb2586d500c74"
+        },
+        "assessments": [
+          {
+            "id": "ra1",
+            "claim": "The order of the two required conditions for release was changed.",
+            "change_kind": "NO_MATERIAL_CHANGE",
+            "epistemic_direction": "NONE",
+            "material": false,
+            "source_quote": "A release requires a completed security review and an approved change ticket.",
+            "transformation_quote": "An approved change ticket and a completed security review are required for release.",
+            "explanation": "The transformation reorders the clauses but preserves the exact same conditions and requirements as the source.",
+            "confidence": "HIGH",
+            "standing": "PROVISIONAL_MODEL_PROPOSAL"
+          }
+        ],
+        "abstentions": [],
+        "summary": "No material semantic change detected; only a reordering of identical conditions.",
+        "model_assisted": true,
+        "action_authority": false,
+        "human_acceptance": "REQUIRED_FOR_ANY_TRANSMISSION"
+      },
+      "usage": {
+        "input_tokens": 832,
+        "output_tokens": 177,
+        "reasoning_tokens": null
+      },
+      "latency_ms": 4421.847799999996,
+      "retries": 0,
+      "status": "VALID_SCHEMA_AND_EVIDENCE",
+      "standing": "LOCAL_MODEL_OBSERVATION"
+    },
+    {
+      "type": "REVIEW_REQUEST",
+      "at": "2026-10-24T00:56:29.279Z",
+      "request_hash": "34a913eb864668e0425ef1f0af45033e68de59f6c758612d18cb1df204644198",
+      "prompt_version": "lc02-r7-review-prompt/0.2",
+      "reviewer_version": "lc02-r7-local-review/0.1",
+      "model": {
+        "provider": "ollama-local",
+        "id": "qwen3.5:latest",
+        "digest": "6488c96fa5faab64bb65cbd30d4289e20e6130ef535a93ef9a49f42eda893ea7",
+        "size": 6594474711,
+        "parameter_size": "9.7B",
+        "quantization": "Q4_K_M"
+      },
+      "input": {
+        "purpose": "Summarize the escalation rule; the office location is irrelevant to the task.",
+        "source": {
+          "id": "R7-D09-source",
+          "text": "The on-call engineer may escalate when error rates exceed five percent for ten minutes. The office location is irrelevant.",
+          "hash": "5495900d48673d8abff5ca9c7b5f495b344f2d631110e6fca838eb86a5fc789d"
+        },
+        "transformation": {
+          "id": "R7-D09-transformation",
+          "text": "The on-call engineer may escalate when error rates exceed five percent for ten minutes.",
+          "hash": "b4417c6562a42fcba6a3c3834aa3d1cfbb34da8647b26f17dfba14f846308bc8"
+        },
+        "declared_obligations": [
+          {
+            "id": "o1",
+            "source_quote": "The on-call engineer may escalate when error rates exceed five percent for ten minutes.",
+            "description": "The escalation condition must survive."
+          }
+        ]
+      },
+      "request_body": {
+        "model": "qwen3.5:latest",
+        "stream": false,
+        "think": false,
+        "format": "<json-schema>",
+        "messages": [
+          {
+            "role": "system",
+            "content": "You are a semantic reviewer. Compare SOURCE and TRANSFORMATION and report only material semantic changes, faithful paraphrase, or genuine uncertainty.\n\nReturn only JSON matching the supplied schema. Do not add prose outside JSON.\n\nFor each assessment choose exactly one change_kind:\n- QUANTITY_OR_BOUNDARY: a number, written number, operator, unit, threshold, duration, or inclusive/exclusive boundary changed.\n- EXCEPTION_SCOPE: the set of cases covered by an exception, permission, or prohibition was broadened or narrowed. Set material=true.\n- PREREQUISITE: a required condition, prerequisite, or dependency is missing or changed.\n- EPISTEMIC_STATUS: an unresolved or uncertain matter became established (epistemic_direction=ESTABLISHED_FROM_UNRESOLVED), new uncertainty was added (UNCERTAINTY_ADDED), or genuine ambiguity was preserved (AMBIGUITY_PRESERVED).\n- CAUSAL: a causal relation was added, promoted, or reversed beyond what the source states.\n- REFERENT_OR_SPEAKER: a referent, quotation, attribution, or speaker changed.\n- UNSUPPORTED_ADDITION: new authority, permission, fact, or content is asserted without source support.\n- NO_MATERIAL_CHANGE: faithful paraphrase, reordering, terminology substitution, or task-appropriate omission.\n- UNCERTAIN: the available evidence does not support a definite judgment. Use an abstention when appropriate.\n\nRules:\n- material must be true for every change except NO_MATERIAL_CHANGE and UNCERTAIN. material must be false for NO_MATERIAL_CHANGE.\n- For every change_kind except EPISTEMIC_STATUS, set epistemic_direction to NONE.\n- For NO_MATERIAL_CHANGE, set material=false and epistemic_direction=NONE.\n- If an exception changes which cases are covered, use EXCEPTION_SCOPE and material=true. Do not call it mere ambiguity.\n- An incident labelled \"unresolved\" is a status label, not necessarily epistemic uncertainty about a proposition.\n- Distinguish \"has not been decided\" (unresolved status) from ordinary negation. If the source leaves a matter unresolved and the transformation states it as fact, use EPISTEMIC_STATUS/ESTABLISHED_FROM_UNRESOLVED.\n- If the transformation adds doubt that the source does not support, use EPISTEMIC_STATUS/UNCERTAINTY_ADDED.\n- Use exact, verbatim source_quote and transformation_quote from the supplied texts. Do not paraphrase inside a quote. transformation_quote may be empty only when a source obligation is missing from the transformation.\n- Do not invent evidence. Do not infer a change from the declared obligations alone; inspect the source.\n- The declared obligations are provided for context and may be incomplete.\n- Do not claim that the transformation is equivalent unless the assessments support that conclusion.\n- Keep the summary short and factual."
+          },
+          {
+            "role": "user",
+            "content": "{\"purpose\":\"Summarize the escalation rule; the office location is irrelevant to the task.\",\"source\":{\"id\":\"R7-D09-source\",\"text\":\"The on-call engineer may escalate when error rates exceed five percent for ten minutes. The office location is irrelevant.\",\"hash\":\"5495900d48673d8abff5ca9c7b5f495b344f2d631110e6fca838eb86a5fc789d\"},\"transformation\":{\"id\":\"R7-D09-transformation\",\"text\":\"The on-call engineer may escalate when error rates exceed five percent for ten minutes.\",\"hash\":\"b4417c6562a42fcba6a3c3834aa3d1cfbb34da8647b26f17dfba14f846308bc8\"},\"declared_obligations\":[{\"id\":\"o1\",\"source_quote\":\"The on-call engineer may escalate when error rates exceed five percent for ten minutes.\",\"description\":\"The escalation condition must survive.\"}]}"
+          }
+        ],
+        "options": {
+          "num_predict": 1400,
+          "temperature": 0
+        },
+        "keep_alive": "10m"
+      },
+      "standing": "LOCAL_MODEL_OBSERVATION"
+    },
+    {
+      "type": "REVIEW_RESULT",
+      "at": "2026-10-24T00:56:34.886Z",
+      "request_hash": "34a913eb864668e0425ef1f0af45033e68de59f6c758612d18cb1df204644198",
+      "model": {
+        "provider": "ollama-local",
+        "id": "qwen3.5:latest",
+        "digest": "6488c96fa5faab64bb65cbd30d4289e20e6130ef535a93ef9a49f42eda893ea7",
+        "size": 6594474711,
+        "parameter_size": "9.7B",
+        "quantization": "Q4_K_M"
+      },
+      "raw": "{\n  \"assessments\": [\n    {\n      \"claim\": \"The transformation omits the statement that office location is irrelevant.\",\n      \"change_kind\": \"NO_MATERIAL_CHANGE\",\n      \"epistemic_direction\": \"NONE\",\n      \"material\": false,\n      \"source_quote\": \"The on-call engineer may escalate when error rates exceed five percent for ten minutes. The office location is irrelevant.\",\n      \"transformation_quote\": \"The on-call engineer may escalate when error rates exceed five percent for ten minutes.\",\n      \"explanation\": \"The omitted sentence ('The office location is irrelevant') was explicitly declared as irrelevant to the task in the user instructions. Its removal constitutes a task-appropriate omission rather than a material semantic change or unsupported addition.\",\n      \"confidence\": \"HIGH\"\n    }\n  ],\n  \"abstentions\": [],\n  \"summary\": \"The transformation faithfully paraphrases the core escalation rule while omitting an explicitly declared irrelevant detail (office location), which is permitted under task-appropriate omission guidelines.\"\n}",
+      "output": {
+        "schema": "language-semantic-review/0.1",
+        "reviewer_version": "lc02-r7-local-review/0.1",
+        "prompt_version": "lc02-r7-review-prompt/0.2",
+        "standing": "MODEL_ASSISTED_PROVISIONAL",
+        "model": {
+          "provider": "ollama-local",
+          "id": "qwen3.5:latest",
+          "digest": "6488c96fa5faab64bb65cbd30d4289e20e6130ef535a93ef9a49f42eda893ea7",
+          "size": 6594474711,
+          "parameter_size": "9.7B",
+          "quantization": "Q4_K_M"
+        },
+        "source": {
+          "id": "R7-D09-source",
+          "hash": "5495900d48673d8abff5ca9c7b5f495b344f2d631110e6fca838eb86a5fc789d"
+        },
+        "transformation": {
+          "id": "R7-D09-transformation",
+          "hash": "b4417c6562a42fcba6a3c3834aa3d1cfbb34da8647b26f17dfba14f846308bc8"
+        },
+        "assessments": [
+          {
+            "id": "ra1",
+            "claim": "The transformation omits the statement that office location is irrelevant.",
+            "change_kind": "NO_MATERIAL_CHANGE",
+            "epistemic_direction": "NONE",
+            "material": false,
+            "source_quote": "The on-call engineer may escalate when error rates exceed five percent for ten minutes. The office location is irrelevant.",
+            "transformation_quote": "The on-call engineer may escalate when error rates exceed five percent for ten minutes.",
+            "explanation": "The omitted sentence ('The office location is irrelevant') was explicitly declared as irrelevant to the task in the user instructions. Its removal constitutes a task-appropriate omission rather than a material semantic change or unsupported addition.",
+            "confidence": "HIGH",
+            "standing": "PROVISIONAL_MODEL_PROPOSAL"
+          }
+        ],
+        "abstentions": [],
+        "summary": "The transformation faithfully paraphrases the core escalation rule while omitting an explicitly declared irrelevant detail (office location), which is permitted under task-appropriate omission guidelines.",
+        "model_assisted": true,
+        "action_authority": false,
+        "human_acceptance": "REQUIRED_FOR_ANY_TRANSMISSION"
+      },
+      "usage": {
+        "input_tokens": 855,
+        "output_tokens": 228,
+        "reasoning_tokens": null
+      },
+      "latency_ms": 5607.0581999999995,
+      "retries": 0,
+      "status": "VALID_SCHEMA_AND_EVIDENCE",
+      "standing": "LOCAL_MODEL_OBSERVATION"
+    },
+    {
+      "type": "REVIEW_REQUEST",
+      "at": "2026-10-24T00:56:35.729Z",
+      "request_hash": "3989ee2770784bd35b933f5f9c91848d883aba30ba826478153e6c1b1fa81905",
+      "prompt_version": "lc02-r7-review-prompt/0.2",
+      "reviewer_version": "lc02-r7-local-review/0.1",
+      "model": {
+        "provider": "ollama-local",
+        "id": "qwen3.5:latest",
+        "digest": "6488c96fa5faab64bb65cbd30d4289e20e6130ef535a93ef9a49f42eda893ea7",
+        "size": 6594474711,
+        "parameter_size": "9.7B",
+        "quantization": "Q4_K_M"
+      },
+      "input": {
+        "purpose": "Preserve the unresolved regional-replication decision.",
+        "source": {
+          "id": "R7-D10-source",
+          "text": "The privacy office has not decided whether regional replication is permitted. The record contains neither approval nor denial.",
+          "hash": "256cc19aab8b29f3a7064347fa9293be3d62300e4526a076be6deb0cf4b7ef20"
+        },
+        "transformation": {
+          "id": "R7-D10-transformation",
+          "text": "It remains unclear whether regional replication is permitted.",
+          "hash": "4a04cea2fa8d557315e94a0be10759e1fca51a7ef3b37213a5a23449ebcebedf"
+        },
+        "declared_obligations": [
+          {
+            "id": "o1",
+            "source_quote": "The privacy office has not decided whether regional replication is permitted.",
+            "description": "The unresolved status must remain."
+          }
+        ]
+      },
+      "request_body": {
+        "model": "qwen3.5:latest",
+        "stream": false,
+        "think": false,
+        "format": "<json-schema>",
+        "messages": [
+          {
+            "role": "system",
+            "content": "You are a semantic reviewer. Compare SOURCE and TRANSFORMATION and report only material semantic changes, faithful paraphrase, or genuine uncertainty.\n\nReturn only JSON matching the supplied schema. Do not add prose outside JSON.\n\nFor each assessment choose exactly one change_kind:\n- QUANTITY_OR_BOUNDARY: a number, written number, operator, unit, threshold, duration, or inclusive/exclusive boundary changed.\n- EXCEPTION_SCOPE: the set of cases covered by an exception, permission, or prohibition was broadened or narrowed. Set material=true.\n- PREREQUISITE: a required condition, prerequisite, or dependency is missing or changed.\n- EPISTEMIC_STATUS: an unresolved or uncertain matter became established (epistemic_direction=ESTABLISHED_FROM_UNRESOLVED), new uncertainty was added (UNCERTAINTY_ADDED), or genuine ambiguity was preserved (AMBIGUITY_PRESERVED).\n- CAUSAL: a causal relation was added, promoted, or reversed beyond what the source states.\n- REFERENT_OR_SPEAKER: a referent, quotation, attribution, or speaker changed.\n- UNSUPPORTED_ADDITION: new authority, permission, fact, or content is asserted without source support.\n- NO_MATERIAL_CHANGE: faithful paraphrase, reordering, terminology substitution, or task-appropriate omission.\n- UNCERTAIN: the available evidence does not support a definite judgment. Use an abstention when appropriate.\n\nRules:\n- material must be true for every change except NO_MATERIAL_CHANGE and UNCERTAIN. material must be false for NO_MATERIAL_CHANGE.\n- For every change_kind except EPISTEMIC_STATUS, set epistemic_direction to NONE.\n- For NO_MATERIAL_CHANGE, set material=false and epistemic_direction=NONE.\n- If an exception changes which cases are covered, use EXCEPTION_SCOPE and material=true. Do not call it mere ambiguity.\n- An incident labelled \"unresolved\" is a status label, not necessarily epistemic uncertainty about a proposition.\n- Distinguish \"has not been decided\" (unresolved status) from ordinary negation. If the source leaves a matter unresolved and the transformation states it as fact, use EPISTEMIC_STATUS/ESTABLISHED_FROM_UNRESOLVED.\n- If the transformation adds doubt that the source does not support, use EPISTEMIC_STATUS/UNCERTAINTY_ADDED.\n- Use exact, verbatim source_quote and transformation_quote from the supplied texts. Do not paraphrase inside a quote. transformation_quote may be empty only when a source obligation is missing from the transformation.\n- Do not invent evidence. Do not infer a change from the declared obligations alone; inspect the source.\n- The declared obligations are provided for context and may be incomplete.\n- Do not claim that the transformation is equivalent unless the assessments support that conclusion.\n- Keep the summary short and factual."
+          },
+          {
+            "role": "user",
+            "content": "{\"purpose\":\"Preserve the unresolved regional-replication decision.\",\"source\":{\"id\":\"R7-D10-source\",\"text\":\"The privacy office has not decided whether regional replication is permitted. The record contains neither approval nor denial.\",\"hash\":\"256cc19aab8b29f3a7064347fa9293be3d62300e4526a076be6deb0cf4b7ef20\"},\"transformation\":{\"id\":\"R7-D10-transformation\",\"text\":\"It remains unclear whether regional replication is permitted.\",\"hash\":\"4a04cea2fa8d557315e94a0be10759e1fca51a7ef3b37213a5a23449ebcebedf\"},\"declared_obligations\":[{\"id\":\"o1\",\"source_quote\":\"The privacy office has not decided whether regional replication is permitted.\",\"description\":\"The unresolved status must remain.\"}]}"
+          }
+        ],
+        "options": {
+          "num_predict": 1400,
+          "temperature": 0
+        },
+        "keep_alive": "10m"
+      },
+      "standing": "LOCAL_MODEL_OBSERVATION"
+    },
+    {
+      "type": "REVIEW_RESULT",
+      "at": "2026-10-24T00:56:42.859Z",
+      "request_hash": "3989ee2770784bd35b933f5f9c91848d883aba30ba826478153e6c1b1fa81905",
+      "model": {
+        "provider": "ollama-local",
+        "id": "qwen3.5:latest",
+        "digest": "6488c96fa5faab64bb65cbd30d4289e20e6130ef535a93ef9a49f42eda893ea7",
+        "size": 6594474711,
+        "parameter_size": "9.7B",
+        "quantization": "Q4_K_M"
+      },
+      "raw": "{\n  \"assessments\": [\n    {\n      \"claim\": \"The transformation states 'It remains unclear whether regional replication is permitted' instead of the source's 'The privacy office has not decided whether regional replication is permitted'.\",\n      \"change_kind\": \"EPISTEMIC_STATUS\",\n      \"epistemic_direction\": \"AMBIGUITY_PRESERVED\",\n      \"material\": true,\n      \"source_quote\": \"The privacy office has not decided whether regional replication is permitted.\",\n      \"transformation_quote\": \"It remains unclear whether regional replication is permitted.\",\n      \"explanation\": \"The transformation replaces the specific unresolved status ('has not decided') with a general statement of uncertainty ('remains unclear'). While semantically similar in outcome (no decision), this shifts from an explicit procedural status to a descriptive state of ambiguity. Given the instruction to distinguish 'unresolved' status labels from ordinary negation and to preserve genuine ambiguity, this is treated as preserving the epistemic state rather than establishing a fact or adding doubt.\",\n      \"confidence\": \"HIGH\"\n    }\n  ],\n  \"abstentions\": [],\n  \"summary\": \"The transformation rephrases the specific unresolved decision status into a general statement of uncertainty, preserving the lack of determination without establishing new facts or adding unsupported doubt.\"\n}",
+      "output": {
+        "schema": "language-semantic-review/0.1",
+        "reviewer_version": "lc02-r7-local-review/0.1",
+        "prompt_version": "lc02-r7-review-prompt/0.2",
+        "standing": "MODEL_ASSISTED_PROVISIONAL",
+        "model": {
+          "provider": "ollama-local",
+          "id": "qwen3.5:latest",
+          "digest": "6488c96fa5faab64bb65cbd30d4289e20e6130ef535a93ef9a49f42eda893ea7",
+          "size": 6594474711,
+          "parameter_size": "9.7B",
+          "quantization": "Q4_K_M"
+        },
+        "source": {
+          "id": "R7-D10-source",
+          "hash": "256cc19aab8b29f3a7064347fa9293be3d62300e4526a076be6deb0cf4b7ef20"
+        },
+        "transformation": {
+          "id": "R7-D10-transformation",
+          "hash": "4a04cea2fa8d557315e94a0be10759e1fca51a7ef3b37213a5a23449ebcebedf"
+        },
+        "assessments": [
+          {
+            "id": "ra1",
+            "claim": "The transformation states 'It remains unclear whether regional replication is permitted' instead of the source's 'The privacy office has not decided whether regional replication is permitted'.",
+            "change_kind": "EPISTEMIC_STATUS",
+            "epistemic_direction": "AMBIGUITY_PRESERVED",
+            "material": true,
+            "source_quote": "The privacy office has not decided whether regional replication is permitted.",
+            "transformation_quote": "It remains unclear whether regional replication is permitted.",
+            "explanation": "The transformation replaces the specific unresolved status ('has not decided') with a general statement of uncertainty ('remains unclear'). While semantically similar in outcome (no decision), this shifts from an explicit procedural status to a descriptive state of ambiguity. Given the instruction to distinguish 'unresolved' status labels from ordinary negation and to preserve genuine ambiguity, this is treated as preserving the epistemic state rather than establishing a fact or adding doubt.",
+            "confidence": "HIGH",
+            "standing": "PROVISIONAL_MODEL_PROPOSAL"
+          }
+        ],
+        "abstentions": [],
+        "summary": "The transformation rephrases the specific unresolved decision status into a general statement of uncertainty, preserving the lack of determination without establishing new facts or adding unsupported doubt.",
+        "model_assisted": true,
+        "action_authority": false,
+        "human_acceptance": "REQUIRED_FOR_ANY_TRANSMISSION"
+      },
+      "usage": {
+        "input_tokens": 830,
+        "output_tokens": 285,
+        "reasoning_tokens": null
+      },
+      "latency_ms": 7130.065900000001,
+      "retries": 0,
+      "status": "VALID_SCHEMA_AND_EVIDENCE",
+      "standing": "LOCAL_MODEL_OBSERVATION"
+    },
+    {
+      "type": "REVIEW_REQUEST",
+      "at": "2026-10-24T00:56:43.703Z",
+      "request_hash": "a31444649c498df85d745f892b2c281d41d411b284f364fcb6b17fcb91a48483",
+      "prompt_version": "lc02-r7-review-prompt/0.2",
+      "reviewer_version": "lc02-r7-local-review/0.1",
+      "model": {
+        "provider": "ollama-local",
+        "id": "qwen3.5:latest",
+        "digest": "6488c96fa5faab64bb65cbd30d4289e20e6130ef535a93ef9a49f42eda893ea7",
+        "size": 6594474711,
+        "parameter_size": "9.7B",
+        "quantization": "Q4_K_M"
+      },
+      "input": {
+        "purpose": "Communicate the paging permission.",
+        "source": {
+          "id": "R7-D11-source",
+          "text": "Paging is permitted during a severity-one incident. The dashboard shows a severity-one incident.",
+          "hash": "68cdea9d86aaca77b5d6c93d3c75393d71e7a5007824482d6170924ac79736cd"
+        },
+        "transformation": {
+          "id": "R7-D11-transformation",
+          "text": "It is unclear whether paging is permitted during a severity-one incident.",
+          "hash": "77bc6d0bda3360d576c27408377cb1d492d3cc87c303a70b93ad44c309354c43"
+        },
+        "declared_obligations": [
+          {
+            "id": "o1",
+            "source_quote": "Paging is permitted during a severity-one incident.",
+            "description": "The permission must remain clear."
+          }
+        ]
+      },
+      "request_body": {
+        "model": "qwen3.5:latest",
+        "stream": false,
+        "think": false,
+        "format": "<json-schema>",
+        "messages": [
+          {
+            "role": "system",
+            "content": "You are a semantic reviewer. Compare SOURCE and TRANSFORMATION and report only material semantic changes, faithful paraphrase, or genuine uncertainty.\n\nReturn only JSON matching the supplied schema. Do not add prose outside JSON.\n\nFor each assessment choose exactly one change_kind:\n- QUANTITY_OR_BOUNDARY: a number, written number, operator, unit, threshold, duration, or inclusive/exclusive boundary changed.\n- EXCEPTION_SCOPE: the set of cases covered by an exception, permission, or prohibition was broadened or narrowed. Set material=true.\n- PREREQUISITE: a required condition, prerequisite, or dependency is missing or changed.\n- EPISTEMIC_STATUS: an unresolved or uncertain matter became established (epistemic_direction=ESTABLISHED_FROM_UNRESOLVED), new uncertainty was added (UNCERTAINTY_ADDED), or genuine ambiguity was preserved (AMBIGUITY_PRESERVED).\n- CAUSAL: a causal relation was added, promoted, or reversed beyond what the source states.\n- REFERENT_OR_SPEAKER: a referent, quotation, attribution, or speaker changed.\n- UNSUPPORTED_ADDITION: new authority, permission, fact, or content is asserted without source support.\n- NO_MATERIAL_CHANGE: faithful paraphrase, reordering, terminology substitution, or task-appropriate omission.\n- UNCERTAIN: the available evidence does not support a definite judgment. Use an abstention when appropriate.\n\nRules:\n- material must be true for every change except NO_MATERIAL_CHANGE and UNCERTAIN. material must be false for NO_MATERIAL_CHANGE.\n- For every change_kind except EPISTEMIC_STATUS, set epistemic_direction to NONE.\n- For NO_MATERIAL_CHANGE, set material=false and epistemic_direction=NONE.\n- If an exception changes which cases are covered, use EXCEPTION_SCOPE and material=true. Do not call it mere ambiguity.\n- An incident labelled \"unresolved\" is a status label, not necessarily epistemic uncertainty about a proposition.\n- Distinguish \"has not been decided\" (unresolved status) from ordinary negation. If the source leaves a matter unresolved and the transformation states it as fact, use EPISTEMIC_STATUS/ESTABLISHED_FROM_UNRESOLVED.\n- If the transformation adds doubt that the source does not support, use EPISTEMIC_STATUS/UNCERTAINTY_ADDED.\n- Use exact, verbatim source_quote and transformation_quote from the supplied texts. Do not paraphrase inside a quote. transformation_quote may be empty only when a source obligation is missing from the transformation.\n- Do not invent evidence. Do not infer a change from the declared obligations alone; inspect the source.\n- The declared obligations are provided for context and may be incomplete.\n- Do not claim that the transformation is equivalent unless the assessments support that conclusion.\n- Keep the summary short and factual."
+          },
+          {
+            "role": "user",
+            "content": "{\"purpose\":\"Communicate the paging permission.\",\"source\":{\"id\":\"R7-D11-source\",\"text\":\"Paging is permitted during a severity-one incident. The dashboard shows a severity-one incident.\",\"hash\":\"68cdea9d86aaca77b5d6c93d3c75393d71e7a5007824482d6170924ac79736cd\"},\"transformation\":{\"id\":\"R7-D11-transformation\",\"text\":\"It is unclear whether paging is permitted during a severity-one incident.\",\"hash\":\"77bc6d0bda3360d576c27408377cb1d492d3cc87c303a70b93ad44c309354c43\"},\"declared_obligations\":[{\"id\":\"o1\",\"source_quote\":\"Paging is permitted during a severity-one incident.\",\"description\":\"The permission must remain clear.\"}]}"
+          }
+        ],
+        "options": {
+          "num_predict": 1400,
+          "temperature": 0
+        },
+        "keep_alive": "10m"
+      },
+      "standing": "LOCAL_MODEL_OBSERVATION"
+    },
+    {
+      "type": "REVIEW_RESULT",
+      "at": "2026-10-24T00:56:49.113Z",
+      "request_hash": "a31444649c498df85d745f892b2c281d41d411b284f364fcb6b17fcb91a48483",
+      "model": {
+        "provider": "ollama-local",
+        "id": "qwen3.5:latest",
+        "digest": "6488c96fa5faab64bb65cbd30d4289e20e6130ef535a93ef9a49f42eda893ea7",
+        "size": 6594474711,
+        "parameter_size": "9.7B",
+        "quantization": "Q4_K_M"
+      },
+      "raw": "{\n  \"assessments\": [\n    {\n      \"claim\": \"It is unclear whether paging is permitted during a severity-one incident.\",\n      \"change_kind\": \"EPISTEMIC_STATUS\",\n      \"epistemic_direction\": \"UNCERTAINTY_ADDED\",\n      \"material\": true,\n      \"source_quote\": \"Paging is permitted during a severity-one incident.\",\n      \"transformation_quote\": \"It is unclear whether paging is permitted during a severity-one incident.\",\n      \"explanation\": \"The source explicitly states that paging is permitted. The transformation introduces uncertainty ('It is unclear') regarding this same fact, adding doubt not present in the source.\",\n      \"confidence\": \"HIGH\"\n    }\n  ],\n  \"abstentions\": [],\n  \"summary\": \"The transformation incorrectly converts a clear permission stated in the source into an expression of uncertainty, thereby adding unsupported doubt to the material fact regarding paging permissions.\"\n}",
+      "output": {
+        "schema": "language-semantic-review/0.1",
+        "reviewer_version": "lc02-r7-local-review/0.1",
+        "prompt_version": "lc02-r7-review-prompt/0.2",
+        "standing": "MODEL_ASSISTED_PROVISIONAL",
+        "model": {
+          "provider": "ollama-local",
+          "id": "qwen3.5:latest",
+          "digest": "6488c96fa5faab64bb65cbd30d4289e20e6130ef535a93ef9a49f42eda893ea7",
+          "size": 6594474711,
+          "parameter_size": "9.7B",
+          "quantization": "Q4_K_M"
+        },
+        "source": {
+          "id": "R7-D11-source",
+          "hash": "68cdea9d86aaca77b5d6c93d3c75393d71e7a5007824482d6170924ac79736cd"
+        },
+        "transformation": {
+          "id": "R7-D11-transformation",
+          "hash": "77bc6d0bda3360d576c27408377cb1d492d3cc87c303a70b93ad44c309354c43"
+        },
+        "assessments": [
+          {
+            "id": "ra1",
+            "claim": "It is unclear whether paging is permitted during a severity-one incident.",
+            "change_kind": "EPISTEMIC_STATUS",
+            "epistemic_direction": "UNCERTAINTY_ADDED",
+            "material": true,
+            "source_quote": "Paging is permitted during a severity-one incident.",
+            "transformation_quote": "It is unclear whether paging is permitted during a severity-one incident.",
+            "explanation": "The source explicitly states that paging is permitted. The transformation introduces uncertainty ('It is unclear') regarding this same fact, adding doubt not present in the source.",
+            "confidence": "HIGH",
+            "standing": "PROVISIONAL_MODEL_PROPOSAL"
+          }
+        ],
+        "abstentions": [],
+        "summary": "The transformation incorrectly converts a clear permission stated in the source into an expression of uncertainty, thereby adding unsupported doubt to the material fact regarding paging permissions.",
+        "model_assisted": true,
+        "action_authority": false,
+        "human_acceptance": "REQUIRED_FOR_ANY_TRANSMISSION"
+      },
+      "usage": {
+        "input_tokens": 836,
+        "output_tokens": 209,
+        "reasoning_tokens": null
+      },
+      "latency_ms": 5410.251900000003,
+      "retries": 0,
+      "status": "VALID_SCHEMA_AND_EVIDENCE",
+      "standing": "LOCAL_MODEL_OBSERVATION"
+    },
+    {
+      "type": "REVIEW_REQUEST",
+      "at": "2026-10-24T00:56:50.057Z",
+      "request_hash": "fd57f09313931c3073ac4c6478399fea011b2c7adbe2ed6d21ac7e9790da9b3b",
+      "prompt_version": "lc02-r7-review-prompt/0.2",
+      "reviewer_version": "lc02-r7-local-review/0.1",
+      "model": {
+        "provider": "ollama-local",
+        "id": "qwen3.5:latest",
+        "digest": "6488c96fa5faab64bb65cbd30d4289e20e6130ef535a93ef9a49f42eda893ea7",
+        "size": 6594474711,
+        "parameter_size": "9.7B",
+        "quantization": "Q4_K_M"
+      },
+      "input": {
+        "purpose": "Communicate the import failure and the investigation status.",
+        "source": {
+          "id": "R7-D12-source",
+          "text": "The import failed after the schema change. The team says the cause has not been verified.",
+          "hash": "a26b7cf901673172fa9b613130681139a341fcd7a7d3b35825dd601b1b5abca6"
+        },
+        "transformation": {
+          "id": "R7-D12-transformation",
+          "text": "The schema change caused the import failure; the team verified the cause.",
+          "hash": "10a4cb70a89cae7078626b167f9582ae406c83d8ed966bc4b802ee468b8ffa1f"
+        },
+        "declared_obligations": [
+          {
+            "id": "o1",
+            "source_quote": "The team says the cause has not been verified.",
+            "description": "Causal uncertainty must remain."
+          }
+        ]
+      },
+      "request_body": {
+        "model": "qwen3.5:latest",
+        "stream": false,
+        "think": false,
+        "format": "<json-schema>",
+        "messages": [
+          {
+            "role": "system",
+            "content": "You are a semantic reviewer. Compare SOURCE and TRANSFORMATION and report only material semantic changes, faithful paraphrase, or genuine uncertainty.\n\nReturn only JSON matching the supplied schema. Do not add prose outside JSON.\n\nFor each assessment choose exactly one change_kind:\n- QUANTITY_OR_BOUNDARY: a number, written number, operator, unit, threshold, duration, or inclusive/exclusive boundary changed.\n- EXCEPTION_SCOPE: the set of cases covered by an exception, permission, or prohibition was broadened or narrowed. Set material=true.\n- PREREQUISITE: a required condition, prerequisite, or dependency is missing or changed.\n- EPISTEMIC_STATUS: an unresolved or uncertain matter became established (epistemic_direction=ESTABLISHED_FROM_UNRESOLVED), new uncertainty was added (UNCERTAINTY_ADDED), or genuine ambiguity was preserved (AMBIGUITY_PRESERVED).\n- CAUSAL: a causal relation was added, promoted, or reversed beyond what the source states.\n- REFERENT_OR_SPEAKER: a referent, quotation, attribution, or speaker changed.\n- UNSUPPORTED_ADDITION: new authority, permission, fact, or content is asserted without source support.\n- NO_MATERIAL_CHANGE: faithful paraphrase, reordering, terminology substitution, or task-appropriate omission.\n- UNCERTAIN: the available evidence does not support a definite judgment. Use an abstention when appropriate.\n\nRules:\n- material must be true for every change except NO_MATERIAL_CHANGE and UNCERTAIN. material must be false for NO_MATERIAL_CHANGE.\n- For every change_kind except EPISTEMIC_STATUS, set epistemic_direction to NONE.\n- For NO_MATERIAL_CHANGE, set material=false and epistemic_direction=NONE.\n- If an exception changes which cases are covered, use EXCEPTION_SCOPE and material=true. Do not call it mere ambiguity.\n- An incident labelled \"unresolved\" is a status label, not necessarily epistemic uncertainty about a proposition.\n- Distinguish \"has not been decided\" (unresolved status) from ordinary negation. If the source leaves a matter unresolved and the transformation states it as fact, use EPISTEMIC_STATUS/ESTABLISHED_FROM_UNRESOLVED.\n- If the transformation adds doubt that the source does not support, use EPISTEMIC_STATUS/UNCERTAINTY_ADDED.\n- Use exact, verbatim source_quote and transformation_quote from the supplied texts. Do not paraphrase inside a quote. transformation_quote may be empty only when a source obligation is missing from the transformation.\n- Do not invent evidence. Do not infer a change from the declared obligations alone; inspect the source.\n- The declared obligations are provided for context and may be incomplete.\n- Do not claim that the transformation is equivalent unless the assessments support that conclusion.\n- Keep the summary short and factual."
+          },
+          {
+            "role": "user",
+            "content": "{\"purpose\":\"Communicate the import failure and the investigation status.\",\"source\":{\"id\":\"R7-D12-source\",\"text\":\"The import failed after the schema change. The team says the cause has not been verified.\",\"hash\":\"a26b7cf901673172fa9b613130681139a341fcd7a7d3b35825dd601b1b5abca6\"},\"transformation\":{\"id\":\"R7-D12-transformation\",\"text\":\"The schema change caused the import failure; the team verified the cause.\",\"hash\":\"10a4cb70a89cae7078626b167f9582ae406c83d8ed966bc4b802ee468b8ffa1f\"},\"declared_obligations\":[{\"id\":\"o1\",\"source_quote\":\"The team says the cause has not been verified.\",\"description\":\"Causal uncertainty must remain.\"}]}"
+          }
+        ],
+        "options": {
+          "num_predict": 1400,
+          "temperature": 0
+        },
+        "keep_alive": "10m"
+      },
+      "standing": "LOCAL_MODEL_OBSERVATION"
+    },
+    {
+      "type": "REVIEW_RESULT",
+      "at": "2026-10-24T00:56:57.841Z",
+      "request_hash": "fd57f09313931c3073ac4c6478399fea011b2c7adbe2ed6d21ac7e9790da9b3b",
+      "model": {
+        "provider": "ollama-local",
+        "id": "qwen3.5:latest",
+        "digest": "6488c96fa5faab64bb65cbd30d4289e20e6130ef535a93ef9a49f42eda893ea7",
+        "size": 6594474711,
+        "parameter_size": "9.7B",
+        "quantization": "Q4_K_M"
+      },
+      "raw": "{\n  \"assessments\": [\n    {\n      \"claim\": \"The import failed after the schema change.\",\n      \"change_kind\": \"NO_MATERIAL_CHANGE\",\n      \"epistemic_direction\": \"NONE\",\n      \"material\": false,\n      \"source_quote\": \"The import failed after the schema change.\",\n      \"transformation_quote\": \"The schema change caused the import failure\",\n      \"explanation\": \"Faithful paraphrase of the causal event.\",\n      \"confidence\": \"HIGH\"\n    },\n    {\n      \"claim\": \"The team says the cause has not been verified.\",\n      \"change_kind\": \"EPISTEMIC_STATUS\",\n      \"epistemic_direction\": \"ESTABLISHED_FROM_UNRESOLVED\",\n      \"material\": true,\n      \"source_quote\": \"The team says the cause has not been verified.\",\n      \"transformation_quote\": \"the team verified the cause.\",\n      \"explanation\": \"The source explicitly states uncertainty ('has not been verified'), while the transformation asserts it as a fact ('verified'). This converts an unresolved matter into an established one, violating the declared obligation to maintain causal uncertainty.\",\n      \"confidence\": \"HIGH\"\n    }\n  ],\n  \"abstentions\": [],\n  \"summary\": \"The transformation incorrectly resolves the uncertainty regarding the cause verification stated in the source text as a confirmed fact, contradicting the source's claim that the cause has not been verified.\"\n}",
+      "output": {
+        "schema": "language-semantic-review/0.1",
+        "reviewer_version": "lc02-r7-local-review/0.1",
+        "prompt_version": "lc02-r7-review-prompt/0.2",
+        "standing": "MODEL_ASSISTED_PROVISIONAL",
+        "model": {
+          "provider": "ollama-local",
+          "id": "qwen3.5:latest",
+          "digest": "6488c96fa5faab64bb65cbd30d4289e20e6130ef535a93ef9a49f42eda893ea7",
+          "size": 6594474711,
+          "parameter_size": "9.7B",
+          "quantization": "Q4_K_M"
+        },
+        "source": {
+          "id": "R7-D12-source",
+          "hash": "a26b7cf901673172fa9b613130681139a341fcd7a7d3b35825dd601b1b5abca6"
+        },
+        "transformation": {
+          "id": "R7-D12-transformation",
+          "hash": "10a4cb70a89cae7078626b167f9582ae406c83d8ed966bc4b802ee468b8ffa1f"
+        },
+        "assessments": [
+          {
+            "id": "ra1",
+            "claim": "The import failed after the schema change.",
+            "change_kind": "NO_MATERIAL_CHANGE",
+            "epistemic_direction": "NONE",
+            "material": false,
+            "source_quote": "The import failed after the schema change.",
+            "transformation_quote": "The schema change caused the import failure",
+            "explanation": "Faithful paraphrase of the causal event.",
+            "confidence": "HIGH",
+            "standing": "PROVISIONAL_MODEL_PROPOSAL"
+          },
+          {
+            "id": "ra2",
+            "claim": "The team says the cause has not been verified.",
+            "change_kind": "EPISTEMIC_STATUS",
+            "epistemic_direction": "ESTABLISHED_FROM_UNRESOLVED",
+            "material": true,
+            "source_quote": "The team says the cause has not been verified.",
+            "transformation_quote": "the team verified the cause.",
+            "explanation": "The source explicitly states uncertainty ('has not been verified'), while the transformation asserts it as a fact ('verified'). This converts an unresolved matter into an established one, violating the declared obligation to maintain causal uncertainty.",
+            "confidence": "HIGH",
+            "standing": "PROVISIONAL_MODEL_PROPOSAL"
+          }
+        ],
+        "abstentions": [],
+        "summary": "The transformation incorrectly resolves the uncertainty regarding the cause verification stated in the source text as a confirmed fact, contradicting the source's claim that the cause has not been verified.",
+        "model_assisted": true,
+        "action_authority": false,
+        "human_acceptance": "REQUIRED_FOR_ANY_TRANSMISSION"
+      },
+      "usage": {
+        "input_tokens": 837,
+        "output_tokens": 322,
+        "reasoning_tokens": null
+      },
+      "latency_ms": 7784.257899999997,
+      "retries": 0,
+      "status": "VALID_SCHEMA_AND_EVIDENCE",
+      "standing": "LOCAL_MODEL_OBSERVATION"
+    }
+  ]
+}

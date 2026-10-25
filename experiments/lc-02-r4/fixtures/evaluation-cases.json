@@ -1,0 +1,238 @@
+{
+  "schema": "language-semantic-checker-cases/0.1",
+  "split": "evaluation",
+  "standing": "AUTHOR_CONSTRUCTED_PROVISIONAL",
+  "cases": [
+    {
+      "id": "R4-E01",
+      "split": "evaluation",
+      "domain": "technical-policy",
+      "profile": "technical-policy",
+      "faithful": false,
+      "corruption_class": "UNKNOWN_TO_ESTABLISHED_FACT",
+      "source": "The privacy team has not decided whether vendor replication will be authorised. The record contains neither an approval nor a denial. No future decision or commitment is recorded.",
+      "transformation": "The privacy team has authorised vendor replication. The record contains the approval, and the commitment is recorded.",
+      "purpose": "Communicate the vendor-replication status.",
+      "obligations": [
+        {
+          "id": "o1",
+          "source_quote": "The privacy team has not decided whether vendor replication will be authorised.",
+          "description": "The unresolved status must remain unresolved."
+        }
+      ]
+    },
+    {
+      "id": "R4-E02",
+      "split": "evaluation",
+      "domain": "interview",
+      "profile": "general",
+      "faithful": false,
+      "corruption_class": "MISATTRIBUTED_QUOTATION_OR_SPEAKER",
+      "source": "Reviewer: \"The rollout is approved.\" Chair: \"The test plan is approved.\" Editor: \"I will prepare the internal copy.\"",
+      "transformation": "Chair: \"The rollout is approved.\" Reviewer: \"The test plan is approved.\" Editor: \"I will prepare the internal copy.\"",
+      "purpose": "Communicate who approved which plan.",
+      "obligations": [
+        {
+          "id": "o1",
+          "source_quote": "Reviewer: \"The rollout is approved.\"",
+          "description": "The Reviewer’s statement must remain attributed to the Reviewer."
+        },
+        {
+          "id": "o2",
+          "source_quote": "Chair: \"The test plan is approved.\"",
+          "description": "The Chair’s statement must remain attributed to the Chair."
+        }
+      ]
+    },
+    {
+      "id": "R4-E03",
+      "split": "evaluation",
+      "domain": "interview",
+      "profile": "general",
+      "faithful": false,
+      "corruption_class": "WRONG_CROSS_SENTENCE_REFERENCE",
+      "source": "The reviewer approved the plan after the chair’s note. The note does not say whether \"the plan\" refers to the rollout plan or the test plan. The rollout plan is the larger document.",
+      "transformation": "The reviewer approved the rollout plan after the chair’s note. The rollout plan is the larger document.",
+      "purpose": "Communicate what the reviewer approved.",
+      "obligations": [
+        {
+          "id": "o1",
+          "source_quote": "The note does not say whether \"the plan\" refers to the rollout plan or the test plan.",
+          "description": "The unresolved reference must not be silently resolved."
+        }
+      ]
+    },
+    {
+      "id": "R4-E04",
+      "split": "evaluation",
+      "domain": "technical-policy",
+      "profile": "technical-policy",
+      "faithful": false,
+      "corruption_class": "UNSUPPORTED_CAUSAL",
+      "source": "The checksum failed during the transfer. The investigation note says the cause has not been verified and offers one possible explanation. The replica was later marked stale.",
+      "transformation": "The checksum failure caused the replica to become stale. The investigation confirmed the causal link.",
+      "purpose": "Communicate the investigation finding.",
+      "obligations": [
+        {
+          "id": "o1",
+          "source_quote": "The investigation note says the cause has not been verified and offers one possible explanation.",
+          "description": "The causal uncertainty must be preserved."
+        }
+      ]
+    },
+    {
+      "id": "R4-E05",
+      "split": "evaluation",
+      "domain": "technical-policy",
+      "profile": "technical-policy",
+      "faithful": false,
+      "corruption_class": "MISSING_PREREQUISITE",
+      "source": "A release may be deployed only if the security review is accepted and the change ticket is approved. The security review is accepted. The change ticket has not been approved. No other approval applies.",
+      "transformation": "A release may be deployed because the security review is accepted. No other approval applies.",
+      "purpose": "Communicate whether this release may be deployed.",
+      "obligations": [
+        {
+          "id": "o1",
+          "source_quote": "only if the security review is accepted and the change ticket is approved",
+          "description": "Both necessary conditions must be preserved."
+        }
+      ]
+    },
+    {
+      "id": "R4-E06",
+      "split": "evaluation",
+      "domain": "technical-policy",
+      "profile": "technical-policy",
+      "faithful": false,
+      "corruption_class": "NEGATION_REVERSAL",
+      "source": "The archive team is not authorised to delete legal-hold records. A legal-hold record is present in the proposed batch. No exception is recorded.",
+      "transformation": "The archive team is authorised to delete legal-hold records. A legal-hold record is present in the proposed batch. No exception is recorded.",
+      "purpose": "Communicate the archive team’s authority.",
+      "obligations": [
+        {
+          "id": "o1",
+          "source_quote": "The archive team is not authorised to delete legal-hold records.",
+          "description": "The authority denial must remain a denial."
+        }
+      ]
+    },
+    {
+      "id": "R4-E07",
+      "split": "evaluation",
+      "domain": "technical-policy",
+      "profile": "technical-policy",
+      "faithful": true,
+      "corruption_class": null,
+      "source": "An operator may retrieve the backup credential only if the incident ticket is open and the audit log remains intact. The credential must stay in the temporary isolated terminal.",
+      "transformation": "Provided the incident ticket stays open and the audit log is unaltered, the operator is permitted to retrieve the backup credential. The credential must remain in the temporary isolated terminal.",
+      "purpose": "Paraphrase the retrieval permission and both conditions.",
+      "obligations": [
+        {
+          "id": "o1",
+          "source_quote": "only if the incident ticket is open and the audit log remains intact",
+          "description": "Both conditions must survive."
+        }
+      ]
+    },
+    {
+      "id": "R4-E08",
+      "split": "evaluation",
+      "domain": "technical-policy",
+      "profile": "technical-policy",
+      "faithful": true,
+      "corruption_class": null,
+      "source": "The release requires an accepted security review, an approved change ticket, and a named production owner. All three records are present.",
+      "transformation": "All three records are present: a named production owner, an approved change ticket, and an accepted security review. The release requires all three.",
+      "purpose": "Reorder the same conditions.",
+      "obligations": [
+        {
+          "id": "o1",
+          "source_quote": "The release requires an accepted security review, an approved change ticket, and a named production owner.",
+          "description": "All three conditions must survive."
+        }
+      ]
+    },
+    {
+      "id": "R4-E09",
+      "split": "evaluation",
+      "domain": "technical-policy",
+      "profile": "technical-policy",
+      "faithful": true,
+      "corruption_class": null,
+      "source": "The incident desk may page the database engineer when replication lag stays above twenty seconds for five continuous minutes. The dashboard shows nine uninterrupted minutes above twenty seconds. The policy also discusses office access badges, which are irrelevant to paging.",
+      "transformation": "The incident desk may page the database engineer because the dashboard shows nine uninterrupted minutes of replication lag above twenty seconds.",
+      "purpose": "Omit the irrelevant badge material.",
+      "obligations": [
+        {
+          "id": "o1",
+          "source_quote": "The incident desk may page the database engineer when replication lag stays above twenty seconds for five continuous minutes.",
+          "description": "The paging permission must survive."
+        }
+      ]
+    },
+    {
+      "id": "R4-E10",
+      "split": "evaluation",
+      "domain": "technical-policy",
+      "profile": "technical-policy",
+      "faithful": true,
+      "corruption_class": null,
+      "source": "During an outage, operators may copy the backup credential into a temporary isolated terminal for diagnostics. The credential must not be sent by email.",
+      "transformation": "During an outage, operators are allowed to duplicate the recovery key into a standalone diagnostic terminal. The key must not be emailed.",
+      "purpose": "Use harmless terminology changes.",
+      "obligations": [
+        {
+          "id": "o1",
+          "source_quote": "operators may copy the backup credential into a temporary isolated terminal for diagnostics",
+          "description": "The retrieval permission must survive."
+        },
+        {
+          "id": "o2",
+          "source_quote": "The credential must not be sent by email.",
+          "description": "The email prohibition must survive."
+        }
+      ]
+    },
+    {
+      "id": "R4-E11",
+      "split": "evaluation",
+      "domain": "technical-policy",
+      "profile": "technical-policy",
+      "faithful": true,
+      "corruption_class": null,
+      "source": "The vendor may retain its recovery copy only for fourteen days and only if the privacy review is complete. The vendor must delete the copy after fourteen days. The vendor may not share the copy with subcontractors.",
+      "transformation": "Subject to completion of the privacy review, the vendor may keep its recovery copy for no more than fourteen days, must delete it afterwards, and may not share it with subcontractors.",
+      "purpose": "Qualified summary of the retention rules.",
+      "obligations": [
+        {
+          "id": "o1",
+          "source_quote": "The vendor may retain its recovery copy only for fourteen days and only if the privacy review is complete.",
+          "description": "Retention duration and privacy condition must survive."
+        },
+        {
+          "id": "o2",
+          "source_quote": "The vendor must delete the copy after fourteen days.",
+          "description": "Deletion obligation must survive."
+        }
+      ]
+    },
+    {
+      "id": "R4-E12",
+      "split": "evaluation",
+      "domain": "technical-policy",
+      "profile": "technical-policy",
+      "faithful": true,
+      "corruption_class": null,
+      "source": "The exception window closes at 17:00 UTC on 16 October 2026. Requests must be submitted before 17:00 UTC to use the exception.",
+      "transformation": "The exception window closes at 17:00 UTC on 16 October 2026. Requests must be submitted prior to 17:00 UTC to use the exception.",
+      "purpose": "Use an equivalent deadline formulation.",
+      "obligations": [
+        {
+          "id": "o1",
+          "source_quote": "Requests must be submitted before 17:00 UTC to use the exception.",
+          "description": "Deadline direction must survive."
+        }
+      ]
+    }
+  ]
+}

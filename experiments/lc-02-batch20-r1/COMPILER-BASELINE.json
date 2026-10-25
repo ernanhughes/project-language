@@ -1,0 +1,48 @@
+{
+  "schema": "lc02-r1-compiler-baseline/0.1",
+  "standing": "OFFLINE_QUALIFICATION_NOT_SEMANTIC_CERTIFICATION",
+  "python": "C:\\Projects\\project-language\\.venv\\Scripts\\python.exe",
+  "probe": {
+    "python_version": "3.13.15",
+    "spacy_version": "3.8.16",
+    "installed_models": []
+  },
+  "profile": {
+    "id": "technical-policy",
+    "version": "0.2",
+    "sha256": "12287d00977aa52dcc4b142c6bb2829bf72c4636ce7a9cde6caea4b7d2dd669b",
+    "file_sha256": "9d961fac646c1c164019c55b1eaa3f75748f42b47e3aad7862bc50181cdd4a75"
+  },
+  "engine": {
+    "id": "spacy/blank-en+sentencizer",
+    "version": "0.2.0",
+    "nltk_version": "3.10.4",
+    "spacy_version": "3.8.16",
+    "trained_syntax_available": false,
+    "trained_model_requested": "en_core_web_sm",
+    "fallback_reason": "SPACY_MODEL_NOT_INSTALLED"
+  },
+  "trained_syntax_available": false,
+  "fallback_reason": "SPACY_MODEL_NOT_INSTALLED",
+  "counts": {
+    "technical_policy": {
+      "sentences": 2,
+      "units": 3,
+      "relations": 0,
+      "prerequisites": [
+        "lag stays above twenty seconds for five continuous minutes"
+      ],
+      "semicolon_split_units": 1
+    },
+    "general": {
+      "sentences": 2,
+      "units": 2,
+      "relations": 0
+    }
+  },
+  "limitations": [
+    "No trained spaCy model is installed in the selected environment. Blank-English sentence segmentation was used.",
+    "No automatic download was attempted.",
+    "Counts and labels are heuristic candidates, not semantic completeness or correctness."
+  ]
+}

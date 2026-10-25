@@ -1,0 +1,212 @@
+{
+  "schema": "lc02-r3-exploratory-live/0.1",
+  "mode": "live",
+  "standing": "EXPLORATORY_LIVE_UNADJUDICATED",
+  "design": {
+    "path": "experiments/lc-02-batch20-r1/fixtures/fresh-evaluation-v2.json",
+    "sha256": "c1ca37936300384536b3c94d5cf5b38076b3a813bf6c934c0a053b9bd6bc09d9",
+    "version": 2
+  },
+  "approval": {
+    "path": "experiments\\lc-02-batch20-r3\\EXPLORATORY-APPROVAL-V2.json",
+    "hash": "4b10f87b7d84fd08d52a845c7b25cb952b3aab573e17234bdb16c1a3ff123df8",
+    "approved_by": "USER",
+    "approved_at": "2026-10-23T18:58:20.072Z"
+  },
+  "protocol": {
+    "path": "experiments\\lc-02-batch20-r3\\EXPLORATORY-PROTOCOL-V2.json",
+    "hash": "756814ad9598c3d82b6f0a7ba8f7197d385295515bd51cede9e838fd6de6ad50"
+  },
+  "r2_protocol": {
+    "path": "experiments/lc-02-batch20-r2/FROZEN-LIVE-PROTOCOL.json",
+    "hash": "26009e396fa890c85b573fdeec9f0c3be04e4433fbe84b55e8cbb986918959e3"
+  },
+  "seed": "lc02-r3-live-v1",
+  "cases": 16,
+  "planned_calls": 80,
+  "maximum_requests": 80,
+  "absolute_request_ceiling": 100,
+  "automatic_retries": 0,
+  "fallback": false,
+  "resume": false,
+  "post_result_tuning": false,
+  "models": {
+    "interpreter": "opencode-go/deepseek-v4.1-flash",
+    "challenger": "opencode-go/gpt-6-luna",
+    "mediator": "opencode-go/deepseek-v4.1-flash",
+    "recipient": "opencode-go/qwen3.8-flash",
+    "advisory_evaluator": "opencode-go/claude-haiku-5-5"
+  },
+  "compiler": {
+    "adapter": "language-understanding-child/0.1",
+    "python": "C:\\Projects\\project-language\\.venv\\Scripts\\python.exe",
+    "timeout_ms": 15000,
+    "max_input_bytes": 262144,
+    "max_output_bytes": 4194304,
+    "require_trained_syntax": false,
+    "profile": {
+      "id": "technical-policy",
+      "version": "0.2",
+      "sha256": "12287d00977aa52dcc4b142c6bb2829bf72c4636ce7a9cde6caea4b7d2dd669b",
+      "file_sha256": "9d961fac646c1c164019c55b1eaa3f75748f42b47e3aad7862bc50181cdd4a75",
+      "path": "C:\\Projects\\project-language\\core\\understanding\\python\\profiles\\technical-policy.json"
+    },
+    "source_hashes": {
+      "src/understanding/cli.py": "fdbbaab6d1c51d077046100aef43fcb0fcfac5e278dba1fa30f3a0cddb229ba9",
+      "src/understanding/pipeline.py": "713ddf811112278038b19aaa5995eba929a827e6dee7634d5d5e8d54cba5ed1d",
+      "src/understanding/__init__.py": "c4b5f92990c64643e4907def83a7a62dd00c8bdd3dd738a8ab14c55d523a396f",
+      "src/understanding/contracts.py": "ec17e9c381a22aed695663e4e27ed57f0cdd07491ec78355cb95855a2e08e7d7",
+      "../schemas/request-v0.1.json": "0d1dc60bff65f0baf319fef34d6dd5e141c814d55ed7f865fed629cebd4578c2",
+      "../schemas/inventory-v0.1.json": "aa4c284f4352141ec9fbcc56a51027bdba94e2e588affcaa739fcf2fd8340e5d",
+      "pyproject.toml": "b8b9fb81e47e37041d1fbc7a1a660b35a5b57909a1b370b76826a539af4e8108"
+    }
+  },
+  "profiles": {
+    "technical-policy": {
+      "id": "technical-policy",
+      "version": "0.2",
+      "sha256": "12287d00977aa52dcc4b142c6bb2829bf72c4636ce7a9cde6caea4b7d2dd669b",
+      "file_sha256": "9d961fac646c1c164019c55b1eaa3f75748f42b47e3aad7862bc50181cdd4a75",
+      "path": "C:\\Projects\\project-language\\core\\understanding\\python\\profiles\\technical-policy.json"
+    },
+    "general": {
+      "id": "general",
+      "version": "0.1",
+      "sha256": "37e50a276b075d430dbadc58007e944c537cee98a3b141fad8d55081de53d7d2",
+      "file_sha256": "8db2bd43f2a8515b049f070123bd34070f14e94a3a4f9ebfb1109e6199eb719f",
+      "path": "C:\\Projects\\project-language\\core\\understanding\\python\\profiles\\general.json"
+    }
+  },
+  "started_at": "2026-10-23T18:58:28.724Z",
+  "ended_at": "2026-10-23T19:23:46.186Z",
+  "hosted_requests": 76,
+  "reserved_usd": 6.1198799999999975,
+  "mechanical": [
+    {
+      "check": "case-count",
+      "status": "PASS",
+      "detail": {
+        "cases": 16
+      }
+    },
+    {
+      "check": "three-arms",
+      "status": "PASS",
+      "detail": {
+        "arms": 3
+      }
+    },
+    {
+      "check": "all-arms-complete",
+      "status": "PASS",
+      "detail": {
+        "valid": 46,
+        "failed": 2
+      }
+    },
+    {
+      "check": "identical-source-across-arms",
+      "status": "PASS",
+      "detail": {
+        "mismatches": [],
+        "note": "Failed arms are excluded and reported separately."
+      }
+    },
+    {
+      "check": "identical-question-across-arms",
+      "status": "PASS",
+      "detail": {
+        "mismatches": [],
+        "note": "Failed arms are excluded and reported separately."
+      }
+    },
+    {
+      "check": "compiler-hints-only-to-c",
+      "status": "PASS",
+      "detail": {
+        "errors": [],
+        "note": "Failed arms are excluded and reported separately."
+      }
+    },
+    {
+      "check": "fresh-sessions",
+      "status": "PASS",
+      "detail": {
+        "requests": 76,
+        "unique": 76
+      }
+    },
+    {
+      "check": "frozen-references-excluded",
+      "status": "PASS",
+      "detail": {
+        "leaks": []
+      }
+    },
+    {
+      "check": "source-relative-contract",
+      "status": "PASS",
+      "detail": {
+        "errors": [],
+        "note": "Failed arms are excluded and reported separately."
+      }
+    },
+    {
+      "check": "citation-validation",
+      "status": "PASS",
+      "detail": {
+        "errors": [],
+        "host_resolved": 0,
+        "note": "Exact spans remain mandatory; host resolution is recorded separately."
+      }
+    },
+    {
+      "check": "mechanical-failure-accounting",
+      "status": "PASS",
+      "detail": {
+        "failed": [
+          [
+            "R1E-07",
+            "B",
+            "INTERPRETER_QUESTION_LEAK"
+          ],
+          [
+            "R1E-07",
+            "C",
+            "INTERPRETER_QUESTION_LEAK"
+          ]
+        ],
+        "note": "Failed arms are preserved and excluded from semantic ties; they are not repaired."
+      }
+    },
+    {
+      "check": "no-implicit-authority",
+      "status": "PASS",
+      "detail": {
+        "note": "Packets grant no action authority; failed arms without packets are reported separately."
+      }
+    },
+    {
+      "check": "request-count",
+      "status": "PASS",
+      "detail": {
+        "requests": 76,
+        "maximum": 80,
+        "ceiling": 100,
+        "hosted": 76,
+        "scripted": 0
+      }
+    }
+  ],
+  "analysis_summary": {
+    "unnecessary_abstention_candidates": 0,
+    "missing_condition_candidates": 0,
+    "c_only_better": 0,
+    "c_only_worse": 0,
+    "ties_correct": 15,
+    "ties_wrong": 0,
+    "mechanical_failures": 1
+  },
+  "reservations": 78,
+  "aborted_before_transport": 2
+}

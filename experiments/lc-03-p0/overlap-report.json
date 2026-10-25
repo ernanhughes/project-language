@@ -1,0 +1,26 @@
+{
+  "schema": "lc03-overlap-audit/0.1",
+  "created": "2026-10-24",
+  "standing": "PRE_FREEZE_SOURCE_OVERLAP_CHECK",
+  "method": "source-token Jaccard and exact match",
+  "threshold": 0.45,
+  "corpora_checked": 9,
+  "comparison_sources": 195,
+  "rows": [
+    {
+      "id": "LC03-DEV-INCIDENT",
+      "path": "core/browser/fixtures/incident.ts",
+      "sha256": "4764c4aebfb3ddb8c18ed337f72f2729d0f61496dece48551f33d2135da42da1",
+      "chars": 1378,
+      "nearest": {
+        "corpus": "lc-02-batch20",
+        "id": "A_SOURCE_ONLY/record.json",
+        "jaccard": 0.0888
+      },
+      "exact_duplicate": null,
+      "status": "CLEAN"
+    }
+  ],
+  "clean": true,
+  "note": "Only the LC-03 development fixture is audited here. Evaluation sources are not authored yet and must receive the same audit before freezing."
+}

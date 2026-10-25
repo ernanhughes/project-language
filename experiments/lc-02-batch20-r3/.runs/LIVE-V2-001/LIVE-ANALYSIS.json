@@ -1,0 +1,995 @@
+{
+  "schema": "lc02-r3-live-analysis/0.1",
+  "standing": "EXPLORATORY_LIVE_UNADJUDICATED_PROVISIONAL_CANDIDATES",
+  "run_dir": "experiments/lc-02-batch20-r3/.runs/LIVE-V2-001",
+  "source_standing": "EXPLORATORY_LIVE_UNADJUDICATED",
+  "paired": {
+    "B_vs_A": {
+      "IMPROVED": 0,
+      "WORSENED": 0,
+      "TIE_BOTH_CORRECT": 15,
+      "TIE_BOTH_WRONG": 0,
+      "UNASSESSABLE": 1
+    },
+    "C_vs_B": {
+      "IMPROVED": 0,
+      "WORSENED": 0,
+      "TIE_BOTH_CORRECT": 15,
+      "TIE_BOTH_WRONG": 0,
+      "UNASSESSABLE": 1
+    },
+    "C_vs_A": {
+      "IMPROVED": 0,
+      "WORSENED": 0,
+      "TIE_BOTH_CORRECT": 15,
+      "TIE_BOTH_WRONG": 0,
+      "UNASSESSABLE": 1
+    }
+  },
+  "totals": {
+    "A_SOURCE_ONLY": {
+      "valid": 16,
+      "correct": 16,
+      "failed": 0
+    },
+    "B_AI_MEDIATED": {
+      "valid": 15,
+      "correct": 15,
+      "failed": 1
+    },
+    "C_UNDERSTANDING_ENHANCED": {
+      "valid": 15,
+      "correct": 15,
+      "failed": 1
+    }
+  },
+  "flag_counts": {},
+  "unnecessary_abstention_candidates": [],
+  "missing_condition_candidates": [],
+  "c_only_better": [],
+  "c_only_worse": [],
+  "ties_correct": [
+    "R1E-01",
+    "R1E-02",
+    "R1E-03",
+    "R1E-04",
+    "R1E-05",
+    "R1E-06",
+    "R1E-08",
+    "R1E-09",
+    "R1E-10",
+    "R1E-11",
+    "R1E-12",
+    "R1E-13",
+    "R1E-14",
+    "R1E-15",
+    "R1E-16"
+  ],
+  "ties_wrong": [],
+  "mechanical_failures": [
+    {
+      "id": "R1E-07",
+      "statuses": {
+        "A": "VALID",
+        "B": "FAILED",
+        "C": "FAILED"
+      },
+      "note": "Mechanical failure or missing arm; not a semantic tie."
+    }
+  ],
+  "rows": [
+    {
+      "id": "R1E-01",
+      "expected": "YES",
+      "scope": "SOURCE_RELATIVE",
+      "decisions": {
+        "A": "YES",
+        "B": "YES",
+        "C": "YES"
+      },
+      "statuses": {
+        "A": "VALID",
+        "B": "VALID",
+        "C": "VALID"
+      },
+      "correct": {
+        "A": true,
+        "B": true,
+        "C": true
+      },
+      "flags": {
+        "A_SOURCE_ONLY": [],
+        "B_AI_MEDIATED": [],
+        "C_UNDERSTANDING_ENHANCED": []
+      },
+      "explanations": {
+        "A": "The source states that the on-call engineer may fail over when the primary region has been unavailable for ten continuous minutes. Monitoring shows the primary region unavailable for twelve continuous minutes, which satisfies the condition (12 >= 10). The text explicitly states 'No other condition applies,' meaning no additional constraints prevent the action. Therefore, based strictly on the provided source text, the engineer may fail over.",
+        "B": "The source states a conditional permission for the on-call engineer to fail over when the primary region has been unavailable for ten continuous minutes. It further states that monitoring shows the primary region unavailable for twelve continuous minutes and explicitly asserts that no other condition applies. On the source's own terms, the reported twelve-minute unavailability satisfies the ten-minute condition, and no additional constraints are noted.",
+        "C": "The source establishes a conditional permission: the on-call engineer may fail over to the secondary region when the primary region has been unavailable for ten continuous minutes. The source further reports that monitoring shows the primary region unavailable for twelve continuous minutes, which satisfies the ten-minute threshold stated in the policy. Finally, the source explicitly states that no other condition applies. Therefore, within the scope of the provided text, the conditions for the permission are met."
+      },
+      "mechanical": {
+        "A": {
+          "schema": "PASS",
+          "source_binding": "PASS",
+          "citation_resolution": [
+            "EXACT",
+            "EXACT",
+            "EXACT"
+          ],
+          "host_repaired_hashes": 0
+        },
+        "B": {
+          "schema": "PASS",
+          "source_binding": "PASS",
+          "citation_resolution": [
+            "EXACT",
+            "EXACT",
+            "EXACT"
+          ],
+          "host_repaired_hashes": 0
+        },
+        "C": {
+          "schema": "PASS",
+          "source_binding": "PASS",
+          "citation_resolution": [
+            "EXACT",
+            "EXACT",
+            "EXACT"
+          ],
+          "host_repaired_hashes": 0
+        }
+      }
+    },
+    {
+      "id": "R1E-02",
+      "expected": "NO",
+      "scope": "SOURCE_RELATIVE",
+      "decisions": {
+        "A": "NO",
+        "B": "NO",
+        "C": "NO"
+      },
+      "statuses": {
+        "A": "VALID",
+        "B": "VALID",
+        "C": "VALID"
+      },
+      "correct": {
+        "A": true,
+        "B": true,
+        "C": true
+      },
+      "flags": {
+        "A_SOURCE_ONLY": [],
+        "B_AI_MEDIATED": [],
+        "C_UNDERSTANDING_ENHANCED": []
+      },
+      "explanations": {
+        "A": "The source text explicitly states that the staging database must not be copied to removable media. This constitutes a prohibition, meaning the policy does not permit the operator to perform this action.",
+        "B": "The source text explicitly states a prohibition: 'The staging database must not be copied to removable media.' It does not contain any provision permitting the operator to copy the staging database to removable media. Therefore, the policy does not permit this action.",
+        "C": "The source explicitly states that 'The staging database must not be copied to removable media.' This is a prohibition. The question asks if the policy permits the operator to perform this action. Since the source establishes a rule forbidding the copying of the staging database to removable media, and does not provide any exception or permission for the operator (or anyone else) to do so, the answer is NO. The second sentence notes that an operator *proposes* doing it, but a proposal does not establish permission, especially in the face of an explicit prohibition."
+      },
+      "mechanical": {
+        "A": {
+          "schema": "PASS",
+          "source_binding": "PASS",
+          "citation_resolution": [
+            "EXACT"
+          ],
+          "host_repaired_hashes": 0
+        },
+        "B": {
+          "schema": "PASS",
+          "source_binding": "PASS",
+          "citation_resolution": [
+            "EXACT"
+          ],
+          "host_repaired_hashes": 0
+        },
+        "C": {
+          "schema": "PASS",
+          "source_binding": "PASS",
+          "citation_resolution": [
+            "EXACT"
+          ],
+          "host_repaired_hashes": 0
+        }
+      }
+    },
+    {
+      "id": "R1E-03",
+      "expected": "UNKNOWN",
+      "scope": "SOURCE_RELATIVE",
+      "decisions": {
+        "A": "UNKNOWN",
+        "B": "UNKNOWN",
+        "C": "UNKNOWN"
+      },
+      "statuses": {
+        "A": "VALID",
+        "B": "VALID",
+        "C": "VALID"
+      },
+      "correct": {
+        "A": true,
+        "B": true,
+        "C": true
+      },
+      "flags": {
+        "A_SOURCE_ONLY": [],
+        "B_AI_MEDIATED": [],
+        "C_UNDERSTANDING_ENHANCED": [
+          "POSSIBLE_ADDED_CONDITION"
+        ]
+      },
+      "explanations": {
+        "A": "The source text explicitly states that the record does not state whether the vendor returned the security questionnaire. Therefore, the information is missing from the provided source.",
+        "B": "The source explicitly states that 'The record does not state whether the vendor returned it.' Consequently, the source leaves the question of whether the vendor returned the questionnaire unresolved. It neither affirms nor denies the action.",
+        "C": "The source text explicitly states that 'The record does not state whether the vendor returned it.' Since no other document is supplied, the source leaves the fact of whether the vendor returned the questionnaire unresolved. Therefore, from a source-relative perspective, the answer is unknown."
+      },
+      "mechanical": {
+        "A": {
+          "schema": "PASS",
+          "source_binding": "PASS",
+          "citation_resolution": [
+            "EXACT"
+          ],
+          "host_repaired_hashes": 0
+        },
+        "B": {
+          "schema": "PASS",
+          "source_binding": "PASS",
+          "citation_resolution": [
+            "EXACT"
+          ],
+          "host_repaired_hashes": 0
+        },
+        "C": {
+          "schema": "PASS",
+          "source_binding": "PASS",
+          "citation_resolution": [
+            "EXACT"
+          ],
+          "host_repaired_hashes": 0
+        }
+      }
+    },
+    {
+      "id": "R1E-04",
+      "expected": "SOURCE_CONFLICT",
+      "scope": "SOURCE_RELATIVE",
+      "decisions": {
+        "A": "SOURCE_CONFLICT",
+        "B": "SOURCE_CONFLICT",
+        "C": "SOURCE_CONFLICT"
+      },
+      "statuses": {
+        "A": "VALID",
+        "B": "VALID",
+        "C": "VALID"
+      },
+      "correct": {
+        "A": true,
+        "B": true,
+        "C": true
+      },
+      "flags": {
+        "A_SOURCE_ONLY": [],
+        "B_AI_MEDIATED": [],
+        "C_UNDERSTANDING_ENHANCED": []
+      },
+      "explanations": {
+        "A": "The source contains two contradictory provisions regarding the deletion of expired drafts by the archivist. Section 4.2 first states that the archivist 'may delete expired drafts after the retention review,' implying permission. Immediately after, it states that the archivist 'must not delete any expired draft,' implying a prohibition. The text explicitly notes that there is 'no precedence rule' provided in the excerpt to resolve this conflict. Therefore, the status of deleting expired drafts cannot be determined as definitively permitted or prohibited based on the supplied source.",
+        "B": "The source text contains two contradictory statements attributed to Section 4.2 regarding the deletion of expired drafts after the retention review. One statement permits this action ('the archivist may delete expired drafts'), while the other prohibits it ('the archivist must not delete any expired draft'). The source explicitly notes that both statements share the same effective date and provides no precedence rule to resolve the contradiction. Therefore, the status is a genuine conflict within the source.",
+        "C": "The source excerpt explicitly reports two contradictory statements attributed to Section 4.2 regarding the deletion of expired drafts: one states that the archivist 'may delete' them after the retention review, while another states that the archivist 'must not delete any' such draft. Both are reported with the same effective date. Crucially, the excerpt states that it 'gives no precedence rule,' meaning the source itself does not resolve which provision controls. This constitutes an unresolved contradiction within the provided text."
+      },
+      "mechanical": {
+        "A": {
+          "schema": "PASS",
+          "source_binding": "PASS",
+          "citation_resolution": [
+            "EXACT"
+          ],
+          "host_repaired_hashes": 0
+        },
+        "B": {
+          "schema": "PASS",
+          "source_binding": "PASS",
+          "citation_resolution": [
+            "EXACT",
+            "EXACT",
+            "EXACT"
+          ],
+          "host_repaired_hashes": 0
+        },
+        "C": {
+          "schema": "PASS",
+          "source_binding": "PASS",
+          "citation_resolution": [
+            "EXACT"
+          ],
+          "host_repaired_hashes": 0
+        }
+      }
+    },
+    {
+      "id": "R1E-05",
+      "expected": "UNKNOWN",
+      "scope": "SOURCE_RELATIVE",
+      "decisions": {
+        "A": "UNKNOWN",
+        "B": "UNKNOWN",
+        "C": "UNKNOWN"
+      },
+      "statuses": {
+        "A": "VALID",
+        "B": "VALID",
+        "C": "VALID"
+      },
+      "correct": {
+        "A": true,
+        "B": true,
+        "C": true
+      },
+      "flags": {
+        "A_SOURCE_ONLY": [],
+        "B_AI_MEDIATED": [],
+        "C_UNDERSTANDING_ENHANCED": []
+      },
+      "explanations": {
+        "A": "The source states that the request was submitted in the portal on 3 March. However, it explicitly notes that the portal record does not clarify whether '3 March' represents the actual submission date or merely the synchronization date. Because the actual submission date is ambiguous (it could be earlier than 3 March, and potentially before 1 March), the source does not establish whether the condition 'submitted before 1 March' was met.",
+        "B": "The source text states that the request was submitted in the portal on 3 March. However, it explicitly notes that the portal record does not clarify whether '3 March' refers to the actual submission date or the synchronization date. Because the exception applies to requests submitted before 1 March, and the source leaves the nature of the '3 March' date unresolved, it is impossible to determine from the source alone whether the request satisfies the condition of being submitted before 1 March.",
+        "C": "The question asks whether the request was submitted before 1 March. The source states that 'The request was submitted in the portal on 3 March' and that 'The exception applies to requests submitted before 1 March.' However, the source explicitly notes a limitation: 'The portal record does not show whether 3 March is the submission date or the date the portal synchronized the request.' Because it is unresolved whether 3 March represents the actual submission date, we cannot definitively determine if the submission occurred before 1 March (e.g., if the true submission was earlier but synchronized/recorded as 3 March) or after 1 March (if 3 March is indeed the submission date). Therefore, the condition of being submitted before 1 March is not established by the source text."
+      },
+      "mechanical": {
+        "A": {
+          "schema": "PASS",
+          "source_binding": "PASS",
+          "citation_resolution": [
+            "EXACT",
+            "EXACT"
+          ],
+          "host_repaired_hashes": 0
+        },
+        "B": {
+          "schema": "PASS",
+          "source_binding": "PASS",
+          "citation_resolution": [
+            "EXACT",
+            "EXACT"
+          ],
+          "host_repaired_hashes": 0
+        },
+        "C": {
+          "schema": "PASS",
+          "source_binding": "PASS",
+          "citation_resolution": [
+            "EXACT",
+            "EXACT",
+            "EXACT"
+          ],
+          "host_repaired_hashes": 0
+        }
+      }
+    },
+    {
+      "id": "R1E-06",
+      "expected": "NO",
+      "scope": "SOURCE_RELATIVE",
+      "decisions": {
+        "A": "NO",
+        "B": "NO",
+        "C": "NO"
+      },
+      "statuses": {
+        "A": "VALID",
+        "B": "VALID",
+        "C": "VALID"
+      },
+      "correct": {
+        "A": true,
+        "B": true,
+        "C": true
+      },
+      "flags": {
+        "A_SOURCE_ONLY": [],
+        "B_AI_MEDIATED": [],
+        "C_UNDERSTANDING_ENHANCED": []
+      },
+      "explanations": {
+        "A": "The source explicitly states that the policy does not authorise the archive team to delete legal-hold records.",
+        "B": "The source explicitly states that the policy says the archive team is not authorised to delete legal-hold records. Since the record in question is identified as a legal-hold record, and the policy denies authorisation for deleting such records, the source establishes that the policy does not authorise the deletion.",
+        "C": "The source explicitly states that the policy says the archive team is NOT authorised to delete legal-hold records. Therefore, regarding the specific question of whether the policy authorises the deletion, the answer is no. The proposal mentioned in the second sentence does not alter the stated policy restriction."
+      },
+      "mechanical": {
+        "A": {
+          "schema": "PASS",
+          "source_binding": "PASS",
+          "citation_resolution": [
+            "EXACT"
+          ],
+          "host_repaired_hashes": 0
+        },
+        "B": {
+          "schema": "PASS",
+          "source_binding": "PASS",
+          "citation_resolution": [
+            "EXACT",
+            "EXACT"
+          ],
+          "host_repaired_hashes": 0
+        },
+        "C": {
+          "schema": "PASS",
+          "source_binding": "PASS",
+          "citation_resolution": [
+            "EXACT"
+          ],
+          "host_repaired_hashes": 0
+        }
+      }
+    },
+    {
+      "id": "R1E-07",
+      "expected": "UNKNOWN",
+      "scope": "SOURCE_RELATIVE",
+      "decisions": {
+        "A": "UNKNOWN",
+        "B": "FAILED",
+        "C": "FAILED"
+      },
+      "statuses": {
+        "A": "VALID",
+        "B": "FAILED",
+        "C": "FAILED"
+      },
+      "correct": {
+        "A": true,
+        "B": false,
+        "C": false
+      },
+      "flags": {
+        "A_SOURCE_ONLY": [],
+        "B_AI_MEDIATED": [
+          "MISSING_EXPLANATION"
+        ],
+        "C_UNDERSTANDING_ENHANCED": [
+          "MISSING_EXPLANATION"
+        ]
+      },
+      "explanations": {
+        "A": "The source states that the chair approved 'the plan' but explicitly notes that it is unclear whether 'the plan' refers to the rollout plan or the test plan. Because the specific identity of the approved plan is ambiguous in the text, we cannot determine if the rollout plan was the one approved.",
+        "B": "",
+        "C": ""
+      },
+      "mechanical": {
+        "A": {
+          "schema": "PASS",
+          "source_binding": "PASS",
+          "citation_resolution": [
+            "EXACT"
+          ],
+          "host_repaired_hashes": 0
+        },
+        "B": null,
+        "C": null
+      }
+    },
+    {
+      "id": "R1E-08",
+      "expected": "YES",
+      "scope": "SOURCE_RELATIVE",
+      "decisions": {
+        "A": "YES",
+        "B": "YES",
+        "C": "YES"
+      },
+      "statuses": {
+        "A": "VALID",
+        "B": "VALID",
+        "C": "VALID"
+      },
+      "correct": {
+        "A": true,
+        "B": true,
+        "C": true
+      },
+      "flags": {
+        "A_SOURCE_ONLY": [],
+        "B_AI_MEDIATED": [],
+        "C_UNDERSTANDING_ENHANCED": []
+      },
+      "explanations": {
+        "A": "The source states that the incident desk may page the database engineer when replication lag stays above 20 seconds for at least 5 continuous minutes. It further reports that the dashboard currently shows 9 uninterrupted minutes above 20 seconds, which satisfies the condition for paging.",
+        "B": "The source establishes a conditional permission for the incident desk to page the database engineer when replication lag stays above 20 seconds for at least 5 continuous minutes. The source also states that the dashboard currently shows 9 uninterrupted minutes above 20 seconds. Source-relatively, this current state satisfies the condition for the permission, meaning the incident desk may page the database engineer now.",
+        "C": "The source explicitly grants the incident desk permission to page the database engineer when replication lag stays above 20 seconds for at least 5 continuous minutes. The source also states that the dashboard currently shows 9 uninterrupted minutes above 20 seconds. In the context of this policy, the dashboard reading refers to the metric described in the first sentence (replication lag). Since 9 minutes exceeds the 5-minute threshold and is 'above 20 seconds', the condition for the permission is met in the source's scenario. Therefore, the source permits the action."
+      },
+      "mechanical": {
+        "A": {
+          "schema": "PASS",
+          "source_binding": "PASS",
+          "citation_resolution": [
+            "EXACT",
+            "EXACT"
+          ],
+          "host_repaired_hashes": 0
+        },
+        "B": {
+          "schema": "PASS",
+          "source_binding": "PASS",
+          "citation_resolution": [
+            "EXACT",
+            "EXACT"
+          ],
+          "host_repaired_hashes": 0
+        },
+        "C": {
+          "schema": "PASS",
+          "source_binding": "PASS",
+          "citation_resolution": [
+            "EXACT",
+            "EXACT"
+          ],
+          "host_repaired_hashes": 0
+        }
+      }
+    },
+    {
+      "id": "R1E-09",
+      "expected": "NO",
+      "scope": "SOURCE_RELATIVE",
+      "decisions": {
+        "A": "NO",
+        "B": "NO",
+        "C": "NO"
+      },
+      "statuses": {
+        "A": "VALID",
+        "B": "VALID",
+        "C": "VALID"
+      },
+      "correct": {
+        "A": true,
+        "B": true,
+        "C": true
+      },
+      "flags": {
+        "A_SOURCE_ONLY": [],
+        "B_AI_MEDIATED": [],
+        "C_UNDERSTANDING_ENHANCED": []
+      },
+      "explanations": {
+        "A": "The source text explicitly states that 'The exception does not allow sending the key by email.' Therefore, regarding whether the exception permits emailing the key, the answer is negative based on the provided document.",
+        "B": "The source text explicitly states that 'The exception does not allow sending the key by email.' Therefore, in a source-relative sense, the exception described does not permit emailing the key.",
+        "C": "The source explicitly states that 'The exception does not allow sending the key by email.' Therefore, within the scope of the provided text, the exception does not permit emailing the key."
+      },
+      "mechanical": {
+        "A": {
+          "schema": "PASS",
+          "source_binding": "PASS",
+          "citation_resolution": [
+            "EXACT"
+          ],
+          "host_repaired_hashes": 0
+        },
+        "B": {
+          "schema": "PASS",
+          "source_binding": "PASS",
+          "citation_resolution": [
+            "EXACT"
+          ],
+          "host_repaired_hashes": 0
+        },
+        "C": {
+          "schema": "PASS",
+          "source_binding": "PASS",
+          "citation_resolution": [
+            "EXACT"
+          ],
+          "host_repaired_hashes": 0
+        }
+      }
+    },
+    {
+      "id": "R1E-10",
+      "expected": "NO",
+      "scope": "SOURCE_RELATIVE",
+      "decisions": {
+        "A": "NO",
+        "B": "NO",
+        "C": "NO"
+      },
+      "statuses": {
+        "A": "VALID",
+        "B": "VALID",
+        "C": "VALID"
+      },
+      "correct": {
+        "A": true,
+        "B": true,
+        "C": true
+      },
+      "flags": {
+        "A_SOURCE_ONLY": [],
+        "B_AI_MEDIATED": [],
+        "C_UNDERSTANDING_ENHANCED": []
+      },
+      "explanations": {
+        "A": "The source text explicitly states that circulation to the client is not approved because it requires legal clearance. The Lead responds 'No' to the question about circulating the draft to the client.",
+        "B": "The question asks whether the team may circulate the draft to the client. The source explicitly states that the Lead answered 'No' to this specific request, citing that the client copy needs legal clearance. Therefore, within the scope of the provided text, circulation to the client is not approved.",
+        "C": "The source explicitly records the Lead's negative response to the Reviewer's request to circulate the draft to the client. The text states: 'Lead: No, the client copy needs legal clearance.' This constitutes a direct denial of permission for client circulation within the scope of the provided dialogue."
+      },
+      "mechanical": {
+        "A": {
+          "schema": "PASS",
+          "source_binding": "PASS",
+          "citation_resolution": [
+            "EXACT"
+          ],
+          "host_repaired_hashes": 0
+        },
+        "B": {
+          "schema": "PASS",
+          "source_binding": "PASS",
+          "citation_resolution": [
+            "EXACT"
+          ],
+          "host_repaired_hashes": 0
+        },
+        "C": {
+          "schema": "PASS",
+          "source_binding": "PASS",
+          "citation_resolution": [
+            "EXACT"
+          ],
+          "host_repaired_hashes": 0
+        }
+      }
+    },
+    {
+      "id": "R1E-11",
+      "expected": "YES",
+      "scope": "SOURCE_RELATIVE",
+      "decisions": {
+        "A": "YES",
+        "B": "YES",
+        "C": "YES"
+      },
+      "statuses": {
+        "A": "VALID",
+        "B": "VALID",
+        "C": "VALID"
+      },
+      "correct": {
+        "A": true,
+        "B": true,
+        "C": true
+      },
+      "flags": {
+        "A_SOURCE_ONLY": [],
+        "B_AI_MEDIATED": [],
+        "C_UNDERSTANDING_ENHANCED": []
+      },
+      "explanations": {
+        "A": "The source text explicitly states that internal circulation is approved in response to the question about circulating internally.",
+        "B": "The source explicitly states that internal circulation is approved. In response to the Reviewer's question 'May we circulate it internally?', the Lead answers 'Yes, internal circulation is approved.' While the antecedent of 'it' could technically refer to the client copy mentioned earlier, the context of the exchange and the specific approval of 'internal circulation' establishes permission for circulating the draft internally relative to the source text.",
+        "C": "The source text explicitly records the Lead stating 'Yes, internal circulation is approved' in response to the Reviewer's question about circulating 'it' internally. While the interpretation notes that the referent of 'it' is not explicitly defined as 'the draft' in that specific sentence, the context of the dialogue (where 'it' follows a question about 'the draft') and the direct answer to the permission request regarding internal circulation supports the conclusion that the team may circulate the draft internally."
+      },
+      "mechanical": {
+        "A": {
+          "schema": "PASS",
+          "source_binding": "PASS",
+          "citation_resolution": [
+            "EXACT"
+          ],
+          "host_repaired_hashes": 0
+        },
+        "B": {
+          "schema": "PASS",
+          "source_binding": "PASS",
+          "citation_resolution": [
+            "EXACT"
+          ],
+          "host_repaired_hashes": 0
+        },
+        "C": {
+          "schema": "PASS",
+          "source_binding": "PASS",
+          "citation_resolution": [
+            "EXACT"
+          ],
+          "host_repaired_hashes": 0
+        }
+      }
+    },
+    {
+      "id": "R1E-12",
+      "expected": "NO",
+      "scope": "SOURCE_RELATIVE",
+      "decisions": {
+        "A": "NO",
+        "B": "NO",
+        "C": "NO"
+      },
+      "statuses": {
+        "A": "VALID",
+        "B": "VALID",
+        "C": "VALID"
+      },
+      "correct": {
+        "A": true,
+        "B": true,
+        "C": true
+      },
+      "flags": {
+        "A_SOURCE_ONLY": [],
+        "B_AI_MEDIATED": [],
+        "C_UNDERSTANDING_ENHANCED": []
+      },
+      "explanations": {
+        "A": "The source states that the exception closes at 17:00 UTC and that requests timestamped after this time require fresh approval. The specific request is timestamped 17:00:01 UTC, which is after the closing time, thus requiring fresh approval. However, the source explicitly notes that 'No fresh approval is recorded.' Therefore, the request does not meet the conditions to use the exception without fresh approval.",
+        "B": "The source states that 'A request timestamped after 17:00 UTC requires fresh approval' and explicitly notes that 'This request is timestamped 17:00:01 UTC.' Since 17:00:01 UTC is after 17:00 UTC, the rule applies. The source also states that 'No fresh approval is recorded.' Consequently, under the source-relative rules provided, the request does not meet the conditions to use the exception without fresh approval.",
+        "C": "The question asks if the request may use the exception without fresh approval. The source states that 'A request timestamped after 17:00 UTC requires fresh approval.' It also identifies 'This request' as being 'timestamped 17:00:01 UTC', which is after 17:00 UTC. Therefore, according to the source's rules, this request requires fresh approval. Consequently, it cannot use the exception *without* fresh approval."
+      },
+      "mechanical": {
+        "A": {
+          "schema": "PASS",
+          "source_binding": "PASS",
+          "citation_resolution": [
+            "EXACT",
+            "EXACT",
+            "EXACT"
+          ],
+          "host_repaired_hashes": 0
+        },
+        "B": {
+          "schema": "PASS",
+          "source_binding": "PASS",
+          "citation_resolution": [
+            "EXACT",
+            "EXACT",
+            "EXACT"
+          ],
+          "host_repaired_hashes": 0
+        },
+        "C": {
+          "schema": "PASS",
+          "source_binding": "PASS",
+          "citation_resolution": [
+            "EXACT",
+            "EXACT"
+          ],
+          "host_repaired_hashes": 0
+        }
+      }
+    },
+    {
+      "id": "R1E-13",
+      "expected": "UNKNOWN",
+      "scope": "EXTERNAL_FACTUAL_VERIFICATION",
+      "decisions": {
+        "A": "UNKNOWN",
+        "B": "UNKNOWN",
+        "C": "UNKNOWN"
+      },
+      "statuses": {
+        "A": "VALID",
+        "B": "VALID",
+        "C": "VALID"
+      },
+      "correct": {
+        "A": true,
+        "B": true,
+        "C": true
+      },
+      "flags": {
+        "A_SOURCE_ONLY": [],
+        "B_AI_MEDIATED": [],
+        "C_UNDERSTANDING_ENHANCED": []
+      },
+      "explanations": {
+        "A": "The question asks for EXTERNAL_FACTUAL_VERIFICATION (whether the backup is *actually* encrypted). The source text explicitly states that 'No independent audit or system evidence is supplied.' Therefore, the provided packet does not contain sufficient information to verify the real-world factual status of the encryption; it only reports what a policy document claims. Since external verification cannot be performed based on this source alone, the answer is UNKNOWN.",
+        "B": "The question asks for EXTERNAL_FACTUAL_VERIFICATION: whether the production backup is actually encrypted at rest in reality. The source text states that a policy document claims the backup is encrypted, but it explicitly notes that 'No independent audit or system evidence is supplied.' Consequently, the source does not provide sufficient evidence to verify the real-world factual status of the encryption; it only reports what the document says. Therefore, the external truth remains unknown based on the supplied packet.",
+        "C": "The question asks for EXTERNAL_FACTUAL_VERIFICATION: whether the production backup is *actually* encrypted at rest. The source text only reports that a policy document *states* this claim, and explicitly notes that 'No independent audit or system evidence is supplied.' Consequently, the source does not establish the factual truth of the encryption status in the external world; it remains unverified."
+      },
+      "mechanical": {
+        "A": {
+          "schema": "PASS",
+          "source_binding": "PASS",
+          "citation_resolution": [
+            "EXACT"
+          ],
+          "host_repaired_hashes": 0
+        },
+        "B": {
+          "schema": "PASS",
+          "source_binding": "PASS",
+          "citation_resolution": [
+            "EXACT"
+          ],
+          "host_repaired_hashes": 0
+        },
+        "C": {
+          "schema": "PASS",
+          "source_binding": "PASS",
+          "citation_resolution": [
+            "EXACT"
+          ],
+          "host_repaired_hashes": 0
+        }
+      }
+    },
+    {
+      "id": "R1E-14",
+      "expected": "YES",
+      "scope": "SOURCE_RELATIVE",
+      "decisions": {
+        "A": "YES",
+        "B": "YES",
+        "C": "YES"
+      },
+      "statuses": {
+        "A": "VALID",
+        "B": "VALID",
+        "C": "VALID"
+      },
+      "correct": {
+        "A": true,
+        "B": true,
+        "C": true
+      },
+      "flags": {
+        "A_SOURCE_ONLY": [],
+        "B_AI_MEDIATED": [],
+        "C_UNDERSTANDING_ENHANCED": []
+      },
+      "explanations": {
+        "A": "The source text explicitly states: 'The supplied policy document states that the production backup is encrypted at rest.' The question asks whether the supplied document makes this statement, which it does.",
+        "B": "The source text explicitly states: 'The supplied policy document states that the production backup is encrypted at rest.' The question asks whether the supplied document makes this statement. Since the source directly quotes or reports this statement from the policy document, the answer is YES regarding what the source says. Note that the source also mentions no independent audit evidence exists, but this does not negate the fact that the document *states* the encryption claim.",
+        "C": "The source text explicitly states that the supplied policy document asserts that the production backup is encrypted at rest. The question asks whether the document *states* this proposition, which is directly confirmed by the first sentence of the source."
+      },
+      "mechanical": {
+        "A": {
+          "schema": "PASS",
+          "source_binding": "PASS",
+          "citation_resolution": [
+            "EXACT"
+          ],
+          "host_repaired_hashes": 0
+        },
+        "B": {
+          "schema": "PASS",
+          "source_binding": "PASS",
+          "citation_resolution": [
+            "EXACT"
+          ],
+          "host_repaired_hashes": 0
+        },
+        "C": {
+          "schema": "PASS",
+          "source_binding": "PASS",
+          "citation_resolution": [
+            "EXACT"
+          ],
+          "host_repaired_hashes": 0
+        }
+      }
+    },
+    {
+      "id": "R1E-15",
+      "expected": "NO",
+      "scope": "SOURCE_RELATIVE",
+      "decisions": {
+        "A": "NO",
+        "B": "NO",
+        "C": "NO"
+      },
+      "statuses": {
+        "A": "VALID",
+        "B": "VALID",
+        "C": "VALID"
+      },
+      "correct": {
+        "A": true,
+        "B": true,
+        "C": true
+      },
+      "flags": {
+        "A_SOURCE_ONLY": [],
+        "B_AI_MEDIATED": [],
+        "C_UNDERSTANDING_ENHANCED": []
+      },
+      "explanations": {
+        "A": "The source states that a release may be deployed 'only if' two conditions are met: the security review is accepted AND the change ticket is approved. The source explicitly states that 'The change ticket is not approved.' Therefore, the necessary condition for deployment is not met, and the release may not be deployed.",
+        "B": "The source establishes a necessary condition for deployment: the security review must be accepted AND the change ticket must be approved. The source explicitly states that the change ticket is not approved. Since one of the required conditions is not met, the source does not permit the release to be deployed. The statement 'No other approval applies' further reinforces that no alternative authorization can substitute for the missing approval.",
+        "C": "The source establishes that a release may be deployed only if two conditions are met: the security review is accepted AND the change ticket is approved. The source explicitly states that 'the change ticket is not approved.' Since one of the necessary conditions for deployment is not met, and no other approval applies, the source does not establish permission to deploy the release. In the context of source-relative permission questions, failure to satisfy the stated necessary conditions results in a determination that the action is not permitted by the source (NO)."
+      },
+      "mechanical": {
+        "A": {
+          "schema": "PASS",
+          "source_binding": "PASS",
+          "citation_resolution": [
+            "EXACT"
+          ],
+          "host_repaired_hashes": 0
+        },
+        "B": {
+          "schema": "PASS",
+          "source_binding": "PASS",
+          "citation_resolution": [
+            "EXACT",
+            "EXACT"
+          ],
+          "host_repaired_hashes": 0
+        },
+        "C": {
+          "schema": "PASS",
+          "source_binding": "PASS",
+          "citation_resolution": [
+            "EXACT",
+            "EXACT"
+          ],
+          "host_repaired_hashes": 0
+        }
+      }
+    },
+    {
+      "id": "R1E-16",
+      "expected": "SOURCE_CONFLICT",
+      "scope": "SOURCE_RELATIVE",
+      "decisions": {
+        "A": "SOURCE_CONFLICT",
+        "B": "SOURCE_CONFLICT",
+        "C": "SOURCE_CONFLICT"
+      },
+      "statuses": {
+        "A": "VALID",
+        "B": "VALID",
+        "C": "VALID"
+      },
+      "correct": {
+        "A": true,
+        "B": true,
+        "C": true
+      },
+      "flags": {
+        "A_SOURCE_ONLY": [],
+        "B_AI_MEDIATED": [],
+        "C_UNDERSTANDING_ENHANCED": []
+      },
+      "explanations": {
+        "A": "The source text contains contradictory provisions regarding auditor access to the log archive. Clause 7 states that the auditor may access it, while Clause 9 states that the auditor must not access it. The document explicitly states that neither clause takes precedence over the other, resulting in an unresolved conflict.",
+        "B": "The source text presents two contradictory normative statements regarding auditor access to the log archive. Clause 7 states that the auditor 'may access' it, while Clause 9 states that the auditor 'must not access' it. Both clauses are stated to have the same effective date. Crucially, the document explicitly resolves the hierarchy by stating that 'neither clause takes precedence'. This creates an unresolved conflict of equal standing where the permissibility is neither established nor prohibited definitively due to the lack of a resolution mechanism or priority rule.",
+        "C": "The source document contains contradictory provisions regarding auditor access to the log archive. Clause 7 states that the auditor 'may' access the log archive (permission), while Clause 9 states that the auditor 'must not' access the log archive (prohibition). The document explicitly states that 'neither clause takes precedence,' leaving the conflict unresolved and providing no rule to determine which provision prevails."
+      },
+      "mechanical": {
+        "A": {
+          "schema": "PASS",
+          "source_binding": "PASS",
+          "citation_resolution": [
+            "EXACT"
+          ],
+          "host_repaired_hashes": 0
+        },
+        "B": {
+          "schema": "PASS",
+          "source_binding": "PASS",
+          "citation_resolution": [
+            "EXACT"
+          ],
+          "host_repaired_hashes": 0
+        },
+        "C": {
+          "schema": "PASS",
+          "source_binding": "PASS",
+          "citation_resolution": [
+            "EXACT",
+            "EXACT",
+            "EXACT"
+          ],
+          "host_repaired_hashes": 0
+        }
+      }
+    }
+  ]
+}

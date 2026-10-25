@@ -1,0 +1,24 @@
+{
+  "status": "HISTORICAL_PREFIX_PRESERVED_WITH_APPENDED_STARTUP_GATE_FAILURE",
+  "protected_existing_files": 80,
+  "append_only_changes": [
+    {
+      "path": ".data/lc-01s-s17-01/events.jsonl",
+      "status": "ORIGINAL_PREFIX_UNCHANGED_APPEND_ONLY",
+      "appended_events": [
+        {
+          "type": "PREPARATION_GATE_FAILURE",
+          "at": "2026-10-23T07:33:29.739Z",
+          "error": "PROSPECTIVE_PLAN_MISMATCH"
+        }
+      ],
+      "attribution": "NOT_ESTABLISHED",
+      "new_model_requests": 0
+    }
+  ],
+  "accepted_version_2_digest": "6dad8fdedab27c2746faf67e43f7aabf3e6eba1a4f46baf0632fa01ed4cbb3c6",
+  "accepted_version_unchanged": true,
+  "live_provider_calls_during_implementation": 0,
+  "commits": 0,
+  "pushes": 0
+}

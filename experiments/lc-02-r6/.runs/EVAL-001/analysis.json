@@ -1,0 +1,456 @@
+{
+  "schema": "lc02-r6-gate-analysis/0.1",
+  "standing": "POST_EXECUTION_ANALYSIS_OF_FROZEN_RESULTS",
+  "created": "2026-10-24",
+  "split": "evaluation",
+  "corpus_freeze": {
+    "development-cases.json": "7fc0de690911a519b57f5b3d540662b800c1ad5a30bf197de106df755eeaed09",
+    "evaluation-cases.json": "35fa89f812b59989b55c6ebf8bb5089f019731f24f85cb4d72d3c3505c52b540",
+    "development-references.json": "e4d99491d81c7f23a36431f6f099f4f222c8f441d31e23c092f5d75365e4a7a6",
+    "evaluation-references.json": "ce52c8c41a1cfade926e58e90a035d50daa2294122ea8f12c18da45c3dce9f14"
+  },
+  "criteria_sha256": "c8692715c89aab8b265752b4dbbcc4cdbd36f5ba37e26522931c89e318210ceb",
+  "artifact_checks": {
+    "evaluation-cases.json": {
+      "expected": "35fa89f812b59989b55c6ebf8bb5089f019731f24f85cb4d72d3c3505c52b540",
+      "actual": "35fa89f812b59989b55c6ebf8bb5089f019731f24f85cb4d72d3c3505c52b540",
+      "ok": true
+    },
+    "evaluation-references.json": {
+      "expected": "ce52c8c41a1cfade926e58e90a035d50daa2294122ea8f12c18da45c3dce9f14",
+      "actual": "ce52c8c41a1cfade926e58e90a035d50daa2294122ea8f12c18da45c3dce9f14",
+      "ok": true
+    },
+    "development-cases.json": {
+      "expected": "7fc0de690911a519b57f5b3d540662b800c1ad5a30bf197de106df755eeaed09",
+      "actual": "7fc0de690911a519b57f5b3d540662b800c1ad5a30bf197de106df755eeaed09",
+      "ok": true
+    },
+    "development-references.json": {
+      "expected": "e4d99491d81c7f23a36431f6f099f4f222c8f441d31e23c092f5d75365e4a7a6",
+      "actual": "e4d99491d81c7f23a36431f6f099f4f222c8f441d31e23c092f5d75365e4a7a6",
+      "ok": true
+    },
+    "FREEZE.json": {
+      "expected": "2307af8d79ac9527798265e0a183a09fadbf347d8863f748fb3a2b5dc30cfe99",
+      "actual": "2307af8d79ac9527798265e0a183a09fadbf347d8863f748fb3a2b5dc30cfe99",
+      "ok": true
+    },
+    "semantic-checker-v6.mjs": {
+      "expected": "ed17ecb14a66ebb42b6f1b03427c4bd4b021d4829e66aee9edc2f3a9f5801692",
+      "actual": "ed17ecb14a66ebb42b6f1b03427c4bd4b021d4829e66aee9edc2f3a9f5801692",
+      "ok": true
+    },
+    "semantic-checker-v6-contract.mjs": {
+      "expected": "c56c812c7b32ab8bca2a2e06a1bf2ae03da43fbb435b8772b9ea14c1d30c3064",
+      "actual": "c56c812c7b32ab8bca2a2e06a1bf2ae03da43fbb435b8772b9ea14c1d30c3064",
+      "ok": true
+    },
+    "semantic-checker-v5.mjs": {
+      "expected": "2b11a67ca6b44c61523c3901cbb130fa6da81b0815ead3261f640cf848e902d5",
+      "actual": "2b11a67ca6b44c61523c3901cbb130fa6da81b0815ead3261f640cf848e902d5",
+      "ok": true
+    },
+    "semantic-checker-v5-contract.mjs": {
+      "expected": "92ab3570a00164123eac5045a838f64e9df8b23efd4592115f88925f9c8bb297",
+      "actual": "92ab3570a00164123eac5045a838f64e9df8b23efd4592115f88925f9c8bb297",
+      "ok": true
+    },
+    "run-compare.mjs": {
+      "expected": "ca8305f815317019653792368fc07f5b53d18d02cc4b11c5c909e671dbddb8b4",
+      "actual": "ca8305f815317019653792368fc07f5b53d18d02cc4b11c5c909e671dbddb8b4",
+      "ok": true
+    },
+    "build-corpus.mjs": {
+      "expected": "9c3bdd07eb2b22eb7fc92e1ffd71b11f9bed4677e3fb63fa27e956bd93e95683",
+      "actual": "9c3bdd07eb2b22eb7fc92e1ffd71b11f9bed4677e3fb63fa27e956bd93e95683",
+      "ok": true
+    }
+  },
+  "all_artifacts_frozen": true,
+  "gates": {
+    "HG1": {
+      "criterion": "Zero held-out corruption cases receive policy USE_TRANSFORMATION. Any single material false acceptance blocks adoption.",
+      "pass": true,
+      "observed": []
+    },
+    "HG2": {
+      "criterion": "At least 10 of the 12 held-out corruption cases are detected with the expected finding type and distinction, a matching source span, and a matching transformation span when the reference specifies one.",
+      "pass": true,
+      "observed": "10/12"
+    },
+    "HG3": {
+      "criterion": "R6 false rejections on the eight held-out faithful cases are no worse than R5 false rejections on the same eight cases. A false rejection is policy PRESERVE_SOURCE on a faithful case.",
+      "pass": true,
+      "observed": {
+        "r5": [
+          "R6-E20"
+        ],
+        "r6": []
+      }
+    },
+    "HG4": {
+      "criterion": "For R6-E21 through R6-E24, UNRESOLVED is present and no UNSUPPORTED_UNCERTAINTY finding is present. For R6-E12, UNSUPPORTED_UNCERTAINTY is present and no UNRESOLVED finding is present. No held-out case contains both UNRESOLVED and UNSUPPORTED_UNCERTAINTY as primary findings.",
+      "pass": true,
+      "observed": {
+        "justified": [
+          "R6-E21",
+          "R6-E22",
+          "R6-E23",
+          "R6-E24"
+        ],
+        "invented": [
+          "R6-E12"
+        ],
+        "dual": []
+      }
+    },
+    "HG5": {
+      "criterion": "Every USE_TRANSFORMATION decision has positive preservation evidence (at least one PRESERVED_CANDIDATE finding) and no MATERIAL, UNRESOLVED or NOT_ASSESSED finding. Silence is never treated as equivalence. Any case with no findings is reported as NOT_ASSESSED and cannot receive USE_TRANSFORMATION.",
+      "pass": true,
+      "observed": {
+        "violations": [],
+        "corruptionUse": [],
+        "emptyUse": [],
+        "useCases": [
+          "R6-E13",
+          "R6-E14",
+          "R6-E15",
+          "R6-E16",
+          "R6-E17",
+          "R6-E18",
+          "R6-E19",
+          "R6-E20"
+        ]
+      }
+    }
+  },
+  "hard_gates_passed": true,
+  "secondary": {
+    "ST1": {
+      "target": "At least 7 of 8 held-out faithful cases receive USE_TRANSFORMATION; zero false rejections is the preferred result.",
+      "pass": true,
+      "observed": "8/8"
+    },
+    "ST2": {
+      "target": "4 of 4 held-out ambiguity cases receive REQUEST_CLARIFICATION.",
+      "pass": true,
+      "observed": "4/4"
+    },
+    "ST3": {
+      "target": "At least 22 of 24 held-out cases receive the reference policy.",
+      "pass": true,
+      "observed": "23/24"
+    },
+    "ST4": {
+      "target": "All matched corruption findings have a source span. Transformation grounding is reported separately, including expected findings that specify no transformation quote.",
+      "pass": true,
+      "observed": {
+        "source": 22,
+        "transformation": 22,
+        "cases": 24
+      }
+    }
+  },
+  "r5_metrics": {
+    "cases": 24,
+    "corruption_cases": 12,
+    "detected_corruptions": 6,
+    "missed_corruptions": [
+      "R6-E01",
+      "R6-E02",
+      "R6-E03",
+      "R6-E05",
+      "R6-E08",
+      "R6-E11"
+    ],
+    "detection_rate": 0.5,
+    "false_acceptances": [
+      "R6-E01",
+      "R6-E02",
+      "R6-E03"
+    ],
+    "faithful_cases": 8,
+    "faithful_accepted": 7,
+    "false_rejections": [
+      "R6-E20"
+    ],
+    "false_alarm_rate": 0.125,
+    "ambiguity_cases": 4,
+    "ambiguity_correct": 4,
+    "ambiguity_grounded": 4,
+    "justified_uncertainty_clean": [
+      "R6-E21",
+      "R6-E22",
+      "R6-E23",
+      "R6-E24"
+    ],
+    "invented_uncertainty_clean": [
+      "R6-E12"
+    ],
+    "dual_primary_uncertainty": [],
+    "unnecessary_clarifications": [
+      "R6-E05"
+    ],
+    "not_assessed": [],
+    "source_grounded": 17,
+    "transformation_grounded": 17,
+    "policy_correct": 19,
+    "policy_accuracy": 0.7916666666666666,
+    "latency_ms": {
+      "avg": 1012.5045791666666,
+      "max": 1382.6143999999986
+    }
+  },
+  "r6_metrics": {
+    "cases": 24,
+    "corruption_cases": 12,
+    "detected_corruptions": 10,
+    "missed_corruptions": [
+      "R6-E05",
+      "R6-E08"
+    ],
+    "detection_rate": 0.8333333333333334,
+    "false_acceptances": [],
+    "faithful_cases": 8,
+    "faithful_accepted": 8,
+    "false_rejections": [],
+    "false_alarm_rate": 0,
+    "ambiguity_cases": 4,
+    "ambiguity_correct": 4,
+    "ambiguity_grounded": 4,
+    "justified_uncertainty_clean": [
+      "R6-E21",
+      "R6-E22",
+      "R6-E23",
+      "R6-E24"
+    ],
+    "invented_uncertainty_clean": [
+      "R6-E12"
+    ],
+    "dual_primary_uncertainty": [],
+    "unnecessary_clarifications": [
+      "R6-E05"
+    ],
+    "not_assessed": [],
+    "source_grounded": 22,
+    "transformation_grounded": 22,
+    "policy_correct": 23,
+    "policy_accuracy": 0.9583333333333334,
+    "latency_ms": {
+      "avg": 1040.883141666667,
+      "max": 1376.0374999999985
+    }
+  },
+  "misses": [
+    {
+      "id": "R6-E05",
+      "corruption_class": "BROADENED_EXCEPTION",
+      "policy": "REQUEST_CLARIFICATION",
+      "expected": {
+        "type": "CHANGED_CANDIDATE",
+        "distinction": "BROADENED_EXCEPTION",
+        "source_quote": "except when the incident ticket is closed",
+        "transformation_quote": "except when the incident is unresolved",
+        "severity": "MATERIAL"
+      },
+      "actual_findings": [
+        {
+          "type": "UNRESOLVED",
+          "distinction": "SOURCE_AMBIGUITY",
+          "severity": "MINOR",
+          "source_spans": [
+            "The key may be used during an incident, except when the incident ticket is closed."
+          ],
+          "transformation_spans": [
+            "The key may be used during an incident, except when the incident is unresolved."
+          ],
+          "reason": "The uncertainty in “The key may be used during an incident, except when the incident is unresolved.” is grounded in the source: the incident ticket is closed."
+        }
+      ],
+      "epistemic": [
+        {
+          "id": "e1",
+          "claim": "The key may be used during an incident, except when the incident is unresolved.",
+          "source_spans": [
+            {
+              "origin": "ORIGINAL_SOURCE",
+              "source_id": "R6-E05-source",
+              "source_hash": "38853a9a96218cc3b44b53c647261a7b126b3fe9b41a9da4e6355c441b984337",
+              "start": 0,
+              "end": 82,
+              "text": "The key may be used during an incident, except when the incident ticket is closed."
+            }
+          ],
+          "transformation_spans": [
+            {
+              "origin": "ORIGINAL_SOURCE",
+              "source_id": "R6-E05-transformation",
+              "source_hash": "f787e30e7a3867c412b19295db0704bed64c51df86651f8f108201f6f5b55c25",
+              "start": 0,
+              "end": 79,
+              "text": "The key may be used during an incident, except when the incident is unresolved."
+            }
+          ],
+          "source_standing": "UNRESOLVED_IN_SOURCE",
+          "transformation_assessment": "PRESERVATION_CANDIDATE",
+          "primary_verdict": "UNRESOLVED",
+          "evidence_signals": [
+            "TRANSFORMATION_UNCERTAINTY",
+            "SOURCE_UNRESOLVED:the incident ticket is closed"
+          ],
+          "reason": "The source leaves the relevant condition or reference unresolved; the transformation preserves that uncertainty.",
+          "method": "LEXICAL_RULE_HEURISTIC",
+          "standing": "CANDIDATE_REQUIRES_REVIEW"
+        }
+      ]
+    },
+    {
+      "id": "R6-E08",
+      "corruption_class": "UNKNOWN_TO_ESTABLISHED_FACT",
+      "policy": "PRESERVE_SOURCE",
+      "expected": {
+        "type": "CHANGED_CANDIDATE",
+        "distinction": "UNKNOWN_TO_ESTABLISHED_FACT",
+        "source_quote": "The vendor approval has not been decided.",
+        "transformation_quote": "The vendor is approved",
+        "severity": "MATERIAL"
+      },
+      "actual_findings": [
+        {
+          "type": "CHANGED_CANDIDATE",
+          "distinction": "NEGATION_REVERSAL",
+          "severity": "MATERIAL",
+          "source_spans": [
+            "The vendor approval has not been decided."
+          ],
+          "transformation_spans": [
+            "The vendor is approved"
+          ],
+          "reason": "Source says “The vendor approval has not been decided.”; transformation says “The vendor is approved”. Negation polarity differs."
+        }
+      ],
+      "epistemic": [
+        {
+          "id": "e1",
+          "claim": "Source says “The vendor approval has not been decided.”; transformation says “The vendor is approved”. Negation polarity differs.",
+          "source_spans": [
+            {
+              "origin": "ORIGINAL_SOURCE",
+              "source_id": "R6-E08-source",
+              "source_hash": "93e16b52a990859c0540619bac453b2b9b6f1798e3214cc68873f921bbcd4ba3",
+              "start": 0,
+              "end": 41,
+              "text": "The vendor approval has not been decided."
+            }
+          ],
+          "transformation_spans": [
+            {
+              "origin": "ORIGINAL_SOURCE",
+              "source_id": "R6-E08-transformation",
+              "source_hash": "c81b97a9ba8eaa95211c0b1a10b9232d5b9f90643eda19bdbc3cd79fc5f862fb",
+              "start": 0,
+              "end": 22,
+              "text": "The vendor is approved"
+            }
+          ],
+          "source_standing": "ESTABLISHED_IN_SOURCE",
+          "transformation_assessment": "UNSUPPORTED_CHANGE_CANDIDATE",
+          "primary_verdict": "CHANGED_CANDIDATE",
+          "evidence_signals": [
+            "NEGATION_REVERSAL"
+          ],
+          "reason": "Source says “The vendor approval has not been decided.”; transformation says “The vendor is approved”. Negation polarity differs.",
+          "method": "LEXICAL_RULE_HEURISTIC",
+          "standing": "CANDIDATE_REQUIRES_REVIEW"
+        }
+      ]
+    }
+  ],
+  "false_rejections": [],
+  "paired_changes": [
+    {
+      "id": "R6-E01",
+      "old_detected": false,
+      "new_detected": true,
+      "old_policy": "FALSE_ACCEPT",
+      "new_policy": "CORRECT",
+      "old_false_rejection": false,
+      "new_false_rejection": false,
+      "old_false_accept": true,
+      "new_false_accept": false,
+      "changed": true
+    },
+    {
+      "id": "R6-E02",
+      "old_detected": false,
+      "new_detected": true,
+      "old_policy": "FALSE_ACCEPT",
+      "new_policy": "CORRECT",
+      "old_false_rejection": false,
+      "new_false_rejection": false,
+      "old_false_accept": true,
+      "new_false_accept": false,
+      "changed": true
+    },
+    {
+      "id": "R6-E03",
+      "old_detected": false,
+      "new_detected": true,
+      "old_policy": "FALSE_ACCEPT",
+      "new_policy": "CORRECT",
+      "old_false_rejection": false,
+      "new_false_rejection": false,
+      "old_false_accept": true,
+      "new_false_accept": false,
+      "changed": true
+    },
+    {
+      "id": "R6-E11",
+      "old_detected": false,
+      "new_detected": true,
+      "old_policy": "CORRECT",
+      "new_policy": "CORRECT",
+      "old_false_rejection": false,
+      "new_false_rejection": false,
+      "old_false_accept": false,
+      "new_false_accept": false,
+      "changed": true
+    },
+    {
+      "id": "R6-E13",
+      "old_detected": false,
+      "new_detected": true,
+      "old_policy": "CORRECT",
+      "new_policy": "CORRECT",
+      "old_false_rejection": false,
+      "new_false_rejection": false,
+      "old_false_accept": false,
+      "new_false_accept": false,
+      "changed": true
+    },
+    {
+      "id": "R6-E20",
+      "old_detected": false,
+      "new_detected": true,
+      "old_policy": "FALSE_REJECTION",
+      "new_policy": "CORRECT",
+      "old_false_rejection": true,
+      "new_false_rejection": false,
+      "old_false_accept": false,
+      "new_false_accept": false,
+      "changed": true
+    }
+  ],
+  "decision_inputs": {
+    "detection_improvement": "6 -> 10",
+    "false_acceptance_change": "3 -> 0",
+    "false_rejection_change": "1 -> 0",
+    "policy_accuracy_change": "19/24 -> 23/24",
+    "remaining_rule_based_misses": [
+      "R6-E05",
+      "R6-E08"
+    ],
+    "note": "All five hard gates pass. HG2 is met exactly at the pre-registered threshold. Two corruption cases remain semantically misclassified, one of which is routed conservatively to clarification and one to preservation."
+  }
+}

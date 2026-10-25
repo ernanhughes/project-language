@@ -1,0 +1,9 @@
+Source | Unit | Candidate type         | Force                      | Exact source meaning (extractive)                                                                       
+s1     | m1   | statement              | ASSERTED_IN_SOURCE         | A green migration rehearsal is readiness evidence only                                                  
+s1     | m2   | authority_limit        | DOES_NOT_CONFER_PERMISSION | not permission to run a production migration.                                                           
+s2     | m3   | requirement            | REQUIRED                   | Production changes require the service owner's separate approval.                                       
+s3     | m4   | conditional_permission | PERMITTED_IN_SOURCE        | An emergency rollback may precede review only for a signed known-good build with audit records retained.
+s4     | m5   | authority_limit        | DOES_NOT_CONFER_PERMISSION | This emergency rollback never permits a new migration.                                                  
+s5     | m6   | unknown                | UNRESOLVED                 | Vendor replication approval is unknown.                                                                 
+
+RESEARCH STANDING: HEURISTIC_UNVERIFIED (not a semantic coverage certificate)

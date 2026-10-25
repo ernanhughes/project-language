@@ -1,0 +1,66 @@
+{
+  "schema": "lc02-r7-local-model-qualification/0.1",
+  "standing": "LOCAL_MODEL_OBSERVATION",
+  "created": "2026-10-24",
+  "model": {
+    "provider": "ollama-local",
+    "id": "qwen3.5:latest",
+    "digest": "6488c96fa5faab64bb65cbd30d4289e20e6130ef535a93ef9a49f42eda893ea7",
+    "size": 6594474711,
+    "parameter_size": "9.7B",
+    "quantization": "Q4_K_M"
+  },
+  "prompt_version": "lc02-r7-review-prompt/0.4",
+  "reviewer_version": "lc02-r7-local-review/0.1",
+  "cases": 3,
+  "passed": 3,
+  "failed": 0,
+  "status": "QUALIFIED_FOR_BOUNDED_EXPERIMENT",
+  "checks": [
+    {
+      "id": "R6-E05",
+      "status": "PASS",
+      "json": "VALID",
+      "evidence": "EXACT",
+      "assessments": 1,
+      "abstentions": 0,
+      "latency_ms": 7125.6467999999995,
+      "usage": {
+        "input_tokens": 928,
+        "output_tokens": 242,
+        "reasoning_tokens": null
+      },
+      "summary": "The transformation broadens the exception scope by changing the condition from 'incident ticket is closed' to 'incident is unresolved', thereby prohibiting key use in more cases than the source allows."
+    },
+    {
+      "id": "R6-E08",
+      "status": "PASS",
+      "json": "VALID",
+      "evidence": "EXACT",
+      "assessments": 1,
+      "abstentions": 0,
+      "latency_ms": 6114.5455999999995,
+      "usage": {
+        "input_tokens": 914,
+        "output_tokens": 233,
+        "reasoning_tokens": null
+      },
+      "summary": "The transformation establishes as fact that the vendor is approved and the record contains approval, contradicting the source's explicit statement that the status is unresolved and no decision has been made."
+    },
+    {
+      "id": "R6-E13",
+      "status": "PASS",
+      "json": "VALID",
+      "evidence": "EXACT",
+      "assessments": 1,
+      "abstentions": 0,
+      "latency_ms": 5746.421500000002,
+      "usage": {
+        "input_tokens": 934,
+        "output_tokens": 203,
+        "reasoning_tokens": null
+      },
+      "summary": "The transformation is a faithful paraphrase of the source text."
+    }
+  ]
+}

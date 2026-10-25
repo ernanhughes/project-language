@@ -1,0 +1,391 @@
+{
+  "schema": "language-hybrid-checker-reference/0.1",
+  "split": "evaluation",
+  "standing": "AUTHOR_CONSTRUCTED_PROVISIONAL_NOT_INDEPENDENT_HUMAN_ADJUDICATION",
+  "cases": [
+    {
+      "id": "R7-E01",
+      "case_type": "CORRUPTION",
+      "corruption_class": "WRITTEN_NUMBER_CHANGE",
+      "expected_policy": "PRESERVE_SOURCE",
+      "expected_findings": [
+        {
+          "type": "CHANGED_CANDIDATE",
+          "distinction": "SCOPE_OR_QUANTITY_CHANGE",
+          "source_quote": "The archive accepts batches of no more than seventy files.",
+          "transformation_quote": "The archive accepts batches of no more than ninety files.",
+          "severity": "MATERIAL"
+        }
+      ],
+      "notes": "Deliberate corruption: a miss is a missed detection."
+    },
+    {
+      "id": "R7-E02",
+      "case_type": "CORRUPTION",
+      "corruption_class": "INCLUSIVE_EXCLUSIVE_BOUNDARY",
+      "expected_policy": "PRESERVE_SOURCE",
+      "expected_findings": [
+        {
+          "type": "CHANGED_CANDIDATE",
+          "distinction": "SCOPE_OR_QUANTITY_CHANGE",
+          "source_quote": "The review queue accepts batches of no more than eighteen items.",
+          "transformation_quote": "The review queue accepts batches of fewer than eighteen items.",
+          "severity": "MATERIAL"
+        }
+      ],
+      "notes": "Deliberate corruption: a miss is a missed detection."
+    },
+    {
+      "id": "R7-E03",
+      "case_type": "CORRUPTION",
+      "corruption_class": "DURATION_THRESHOLD_CHANGE",
+      "expected_policy": "PRESERVE_SOURCE",
+      "expected_findings": [
+        {
+          "type": "CHANGED_CANDIDATE",
+          "distinction": "SCOPE_OR_QUANTITY_CHANGE",
+          "source_quote": "Escalation is permitted after at least eight continuous minutes of lag.",
+          "transformation_quote": "Escalation is permitted after more than eight continuous minutes of lag.",
+          "severity": "MATERIAL"
+        }
+      ],
+      "notes": "Deliberate corruption: a miss is a missed detection."
+    },
+    {
+      "id": "R7-E04",
+      "case_type": "CORRUPTION",
+      "corruption_class": "MULTIPLE_CONSTRAINTS",
+      "expected_policy": "PRESERVE_SOURCE",
+      "expected_findings": [
+        {
+          "type": "CHANGED_CANDIDATE",
+          "distinction": "SCOPE_OR_QUANTITY_CHANGE",
+          "source_quote": "The cache may retain entries for twelve minutes.",
+          "transformation_quote": "The cache may retain entries for twenty minutes.",
+          "severity": "MATERIAL"
+        }
+      ],
+      "notes": "Deliberate corruption: a miss is a missed detection."
+    },
+    {
+      "id": "R7-E05",
+      "case_type": "CORRUPTION",
+      "corruption_class": "BROADENED_EXCEPTION",
+      "expected_policy": "PRESERVE_SOURCE",
+      "expected_findings": [
+        {
+          "type": "CHANGED_CANDIDATE",
+          "distinction": "BROADENED_EXCEPTION",
+          "source_quote": "except when the audit ticket is closed",
+          "transformation_quote": "except when the audit is unresolved",
+          "severity": "MATERIAL"
+        }
+      ],
+      "notes": "Deliberate corruption: a miss is a missed detection."
+    },
+    {
+      "id": "R7-E06",
+      "case_type": "CORRUPTION",
+      "corruption_class": "MISSING_PREREQUISITE",
+      "expected_policy": "PRESERVE_SOURCE",
+      "expected_findings": [
+        {
+          "type": "MISSING_CANDIDATE",
+          "distinction": "MISSING_PREREQUISITE",
+          "source_quote": "only if the training is current and an escort is assigned",
+          "transformation_quote": "",
+          "severity": "MATERIAL"
+        }
+      ],
+      "notes": "Deliberate corruption: a miss is a missed detection."
+    },
+    {
+      "id": "R7-E07",
+      "case_type": "CORRUPTION",
+      "corruption_class": "MISATTRIBUTED_QUOTATION_OR_SPEAKER",
+      "expected_policy": "PRESERVE_SOURCE",
+      "expected_findings": [
+        {
+          "type": "CHANGED_CANDIDATE",
+          "distinction": "MISATTRIBUTED_QUOTATION_OR_SPEAKER",
+          "source_quote": "Auditor: \"The retention schedule is approved.\"",
+          "transformation_quote": "Auditor: \"The deletion plan is approved.\"",
+          "severity": "MATERIAL"
+        }
+      ],
+      "notes": "Deliberate corruption: a miss is a missed detection."
+    },
+    {
+      "id": "R7-E08",
+      "case_type": "CORRUPTION",
+      "corruption_class": "UNKNOWN_TO_ESTABLISHED_FACT",
+      "expected_policy": "PRESERVE_SOURCE",
+      "expected_findings": [
+        {
+          "type": "CHANGED_CANDIDATE",
+          "distinction": "UNKNOWN_TO_ESTABLISHED_FACT",
+          "source_quote": "The ethics approval has not been decided.",
+          "transformation_quote": "The ethics approval is granted",
+          "severity": "MATERIAL"
+        }
+      ],
+      "notes": "Deliberate corruption: a miss is a missed detection."
+    },
+    {
+      "id": "R7-E09",
+      "case_type": "CORRUPTION",
+      "corruption_class": "INVENTED_UNCERTAINTY",
+      "expected_policy": "PRESERVE_SOURCE",
+      "expected_findings": [
+        {
+          "type": "UNSUPPORTED_ADDITION_CANDIDATE",
+          "distinction": "UNSUPPORTED_UNCERTAINTY",
+          "source_quote": "The facilities team is permitted to unlock the roof hatch.",
+          "transformation_quote": "It is unclear whether the facilities team is permitted to unlock the roof hatch.",
+          "severity": "MATERIAL"
+        }
+      ],
+      "notes": "Deliberate corruption: a miss is a missed detection."
+    },
+    {
+      "id": "R7-E10",
+      "case_type": "CORRUPTION",
+      "corruption_class": "UNSUPPORTED_CAUSAL",
+      "expected_policy": "PRESERVE_SOURCE",
+      "expected_findings": [
+        {
+          "type": "UNSUPPORTED_ADDITION_CANDIDATE",
+          "distinction": "UNSUPPORTED_CAUSAL",
+          "source_quote": "The lab says the cause has not been established.",
+          "transformation_quote": "The temperature change caused the batch failure",
+          "severity": "MATERIAL"
+        }
+      ],
+      "notes": "Deliberate corruption: a miss is a missed detection."
+    },
+    {
+      "id": "R7-E11",
+      "case_type": "CORRUPTION",
+      "corruption_class": "WRONG_CROSS_SENTENCE_REFERENCE",
+      "expected_policy": "PRESERVE_SOURCE",
+      "expected_findings": [
+        {
+          "type": "CHANGED_CANDIDATE",
+          "distinction": "WRONG_CROSS_SENTENCE_REFERENCE",
+          "source_quote": "The note does not say whether \"the exception\" means the retention exception or the access exception.",
+          "transformation_quote": "The auditor approved the retention exception.",
+          "severity": "MATERIAL"
+        }
+      ],
+      "notes": "Deliberate corruption: a miss is a missed detection."
+    },
+    {
+      "id": "R7-E12",
+      "case_type": "CORRUPTION",
+      "corruption_class": "INVENTED_AUTHORITY",
+      "expected_policy": "PRESERVE_SOURCE",
+      "expected_findings": [
+        {
+          "type": "UNSUPPORTED_ADDITION_CANDIDATE",
+          "distinction": "INVENTED_AUTHORITY",
+          "source_quote": "It does not authorise rollback.",
+          "transformation_quote": "The operator may roll back the release without approval.",
+          "severity": "MATERIAL"
+        }
+      ],
+      "notes": "Deliberate corruption: a miss is a missed detection."
+    },
+    {
+      "id": "R7-E13",
+      "case_type": "FAITHFUL",
+      "corruption_class": null,
+      "expected_policy": "USE_TRANSFORMATION",
+      "expected_findings": [
+        {
+          "type": "PRESERVED_CANDIDATE",
+          "distinction": "PRESERVED",
+          "source_quote": "Samples may be stored for up to twenty-one days.",
+          "transformation_quote": "The sample storage limit is no more than twenty-one days.",
+          "severity": "INFO"
+        }
+      ],
+      "notes": "Faithful control: rejection is a false alarm."
+    },
+    {
+      "id": "R7-E14",
+      "case_type": "FAITHFUL",
+      "corruption_class": null,
+      "expected_policy": "USE_TRANSFORMATION",
+      "expected_findings": [
+        {
+          "type": "PRESERVED_CANDIDATE",
+          "distinction": "PRESERVED",
+          "source_quote": "Access requires a current badge and a completed briefing.",
+          "transformation_quote": "A completed briefing and a current badge are required for access.",
+          "severity": "INFO"
+        }
+      ],
+      "notes": "Faithful control: rejection is a false alarm."
+    },
+    {
+      "id": "R7-E15",
+      "case_type": "FAITHFUL",
+      "corruption_class": null,
+      "expected_policy": "USE_TRANSFORMATION",
+      "expected_findings": [
+        {
+          "type": "PRESERVED_CANDIDATE",
+          "distinction": "PRESERVED",
+          "source_quote": "The desk may page the engineer when queue delay exceeds thirty seconds for six minutes.",
+          "transformation_quote": "The desk may page the engineer when queue delay exceeds thirty seconds for six minutes.",
+          "severity": "INFO"
+        }
+      ],
+      "notes": "Faithful control: rejection is a false alarm."
+    },
+    {
+      "id": "R7-E16",
+      "case_type": "FAITHFUL",
+      "corruption_class": null,
+      "expected_policy": "USE_TRANSFORMATION",
+      "expected_findings": [
+        {
+          "type": "PRESERVED_CANDIDATE",
+          "distinction": "PRESERVED",
+          "source_quote": "The investigation has not verified the cause.",
+          "transformation_quote": "the investigation has not verified the cause",
+          "severity": "INFO"
+        }
+      ],
+      "notes": "Faithful control: rejection is a false alarm."
+    },
+    {
+      "id": "R7-E17",
+      "case_type": "FAITHFUL",
+      "corruption_class": null,
+      "expected_policy": "USE_TRANSFORMATION",
+      "expected_findings": [
+        {
+          "type": "PRESERVED_CANDIDATE",
+          "distinction": "PRESERVED",
+          "source_quote": "During a storm, operators may copy the recovery key into a sealed laptop.",
+          "transformation_quote": "During a storm, operators are allowed to duplicate the recovery key into an isolated laptop.",
+          "severity": "INFO"
+        }
+      ],
+      "notes": "Faithful control: rejection is a false alarm."
+    },
+    {
+      "id": "R7-E18",
+      "case_type": "FAITHFUL",
+      "corruption_class": null,
+      "expected_policy": "USE_TRANSFORMATION",
+      "expected_findings": [
+        {
+          "type": "PRESERVED_CANDIDATE",
+          "distinction": "PRESERVED",
+          "source_quote": "The cache may retain entries for fifteen minutes.",
+          "transformation_quote": "The cache may retain entries for fifteen minutes.",
+          "severity": "INFO"
+        }
+      ],
+      "notes": "Faithful control: rejection is a false alarm."
+    },
+    {
+      "id": "R7-E19",
+      "case_type": "FAITHFUL",
+      "corruption_class": null,
+      "expected_policy": "USE_TRANSFORMATION",
+      "expected_findings": [
+        {
+          "type": "PRESERVED_CANDIDATE",
+          "distinction": "PRESERVED",
+          "source_quote": "The vendor may keep the copy for thirty days only if the privacy review is complete.",
+          "transformation_quote": "Subject to completion of the privacy review, the vendor may keep the copy for no more than thirty days",
+          "severity": "INFO"
+        }
+      ],
+      "notes": "Faithful control: rejection is a false alarm."
+    },
+    {
+      "id": "R7-E20",
+      "case_type": "FAITHFUL",
+      "corruption_class": null,
+      "expected_policy": "USE_TRANSFORMATION",
+      "expected_findings": [
+        {
+          "type": "PRESERVED_CANDIDATE",
+          "distinction": "PRESERVED",
+          "source_quote": "It must keep the audit log intact.",
+          "transformation_quote": "must keep the audit log intact",
+          "severity": "INFO"
+        }
+      ],
+      "notes": "Faithful control: rejection is a false alarm."
+    },
+    {
+      "id": "R7-E21",
+      "case_type": "AMBIGUITY",
+      "corruption_class": null,
+      "expected_policy": "REQUEST_CLARIFICATION",
+      "expected_findings": [
+        {
+          "type": "UNRESOLVED",
+          "distinction": "SOURCE_AMBIGUITY",
+          "source_quote": "The board has not decided whether the merger is approved.",
+          "transformation_quote": "It is unclear whether the merger is approved.",
+          "severity": "MINOR"
+        }
+      ],
+      "notes": "Genuine ambiguity: clarification is appropriate."
+    },
+    {
+      "id": "R7-E22",
+      "case_type": "AMBIGUITY",
+      "corruption_class": null,
+      "expected_policy": "REQUEST_CLARIFICATION",
+      "expected_findings": [
+        {
+          "type": "UNRESOLVED",
+          "distinction": "SOURCE_AMBIGUITY",
+          "source_quote": "It is unclear whether 18:00 is the request time or the recording time.",
+          "transformation_quote": "It is unclear whether the request was after 17:00",
+          "severity": "MINOR"
+        }
+      ],
+      "notes": "Genuine ambiguity: clarification is appropriate."
+    },
+    {
+      "id": "R7-E23",
+      "case_type": "AMBIGUITY",
+      "corruption_class": null,
+      "expected_policy": "REQUEST_CLARIFICATION",
+      "expected_findings": [
+        {
+          "type": "UNRESOLVED",
+          "distinction": "SOURCE_AMBIGUITY",
+          "source_quote": "The note does not say whether \"the plan\" means the rollout plan or the test plan.",
+          "transformation_quote": "It remains unclear which plan the reviewer approved.",
+          "severity": "MINOR"
+        }
+      ],
+      "notes": "Genuine ambiguity: clarification is appropriate."
+    },
+    {
+      "id": "R7-E24",
+      "case_type": "AMBIGUITY",
+      "corruption_class": null,
+      "expected_policy": "REQUEST_CLARIFICATION",
+      "expected_findings": [
+        {
+          "type": "UNRESOLVED",
+          "distinction": "SOURCE_AMBIGUITY",
+          "source_quote": "The record does not resolve the conflict.",
+          "transformation_quote": "The backup status remains unresolved because the logs conflict.",
+          "severity": "MINOR"
+        }
+      ],
+      "notes": "Genuine ambiguity: clarification is appropriate."
+    }
+  ]
+}

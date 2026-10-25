@@ -1,0 +1,152 @@
+{
+  "schema": "language-blind-review-response/1.0",
+  "reviewer_id": null,
+  "reviewer_standing": "HUMAN_INDEPENDENT_REVIEWER_OR_MODEL_BASED_PROVISIONAL",
+  "reviewed_at": null,
+  "cases": [
+    {
+      "case_id": "R1E-01",
+      "decision": null,
+      "explanation": "",
+      "citations": [],
+      "confidence": null,
+      "suspected_ambiguity": "",
+      "notes": ""
+    },
+    {
+      "case_id": "R1E-02",
+      "decision": null,
+      "explanation": "",
+      "citations": [],
+      "confidence": null,
+      "suspected_ambiguity": "",
+      "notes": ""
+    },
+    {
+      "case_id": "R1E-03",
+      "decision": null,
+      "explanation": "",
+      "citations": [],
+      "confidence": null,
+      "suspected_ambiguity": "",
+      "notes": ""
+    },
+    {
+      "case_id": "R1E-04",
+      "decision": null,
+      "explanation": "",
+      "citations": [],
+      "confidence": null,
+      "suspected_ambiguity": "",
+      "notes": ""
+    },
+    {
+      "case_id": "R1E-05",
+      "decision": null,
+      "explanation": "",
+      "citations": [],
+      "confidence": null,
+      "suspected_ambiguity": "",
+      "notes": ""
+    },
+    {
+      "case_id": "R1E-06",
+      "decision": null,
+      "explanation": "",
+      "citations": [],
+      "confidence": null,
+      "suspected_ambiguity": "",
+      "notes": ""
+    },
+    {
+      "case_id": "R1E-07",
+      "decision": null,
+      "explanation": "",
+      "citations": [],
+      "confidence": null,
+      "suspected_ambiguity": "",
+      "notes": ""
+    },
+    {
+      "case_id": "R1E-08",
+      "decision": null,
+      "explanation": "",
+      "citations": [],
+      "confidence": null,
+      "suspected_ambiguity": "",
+      "notes": ""
+    },
+    {
+      "case_id": "R1E-09",
+      "decision": null,
+      "explanation": "",
+      "citations": [],
+      "confidence": null,
+      "suspected_ambiguity": "",
+      "notes": ""
+    },
+    {
+      "case_id": "R1E-10",
+      "decision": null,
+      "explanation": "",
+      "citations": [],
+      "confidence": null,
+      "suspected_ambiguity": "",
+      "notes": ""
+    },
+    {
+      "case_id": "R1E-11",
+      "decision": null,
+      "explanation": "",
+      "citations": [],
+      "confidence": null,
+      "suspected_ambiguity": "",
+      "notes": ""
+    },
+    {
+      "case_id": "R1E-12",
+      "decision": null,
+      "explanation": "",
+      "citations": [],
+      "confidence": null,
+      "suspected_ambiguity": "",
+      "notes": ""
+    },
+    {
+      "case_id": "R1E-13",
+      "decision": null,
+      "explanation": "",
+      "citations": [],
+      "confidence": null,
+      "suspected_ambiguity": "",
+      "notes": ""
+    },
+    {
+      "case_id": "R1E-14",
+      "decision": null,
+      "explanation": "",
+      "citations": [],
+      "confidence": null,
+      "suspected_ambiguity": "",
+      "notes": ""
+    },
+    {
+      "case_id": "R1E-15",
+      "decision": null,
+      "explanation": "",
+      "citations": [],
+      "confidence": null,
+      "suspected_ambiguity": "",
+      "notes": ""
+    },
+    {
+      "case_id": "R1E-16",
+      "decision": null,
+      "explanation": "",
+      "citations": [],
+      "confidence": null,
+      "suspected_ambiguity": "",
+      "notes": ""
+    }
+  ]
+}

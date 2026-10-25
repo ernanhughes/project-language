@@ -1,0 +1,17 @@
+{
+  "status": "PASS",
+  "default_real_mode": true,
+  "four_models_five_roles": true,
+  "all_completion_caps": 16384,
+  "default_stream_mib": 32,
+  "saved_stream_mib": 48,
+  "settings_persist_reload": true,
+  "no_model_calls_from_settings": true,
+  "no_remote_approval_required": true,
+  "semantic_acceptance_required": true,
+  "stage_feedback": true,
+  "mobile_no_overflow": true,
+  "injected_requests": 3,
+  "real_requests": 0,
+  "errors": []
+}

@@ -1,0 +1,199 @@
+{
+  "schema": "language-semantic-checker-reference/0.1",
+  "split": "development",
+  "standing": "AUTHOR_CONSTRUCTED_PROVISIONAL_NOT_INDEPENDENT_HUMAN_ADJUDICATION",
+  "cases": [
+    {
+      "id": "R6-D01",
+      "case_type": "CORRUPTION",
+      "corruption_class": "WRITTEN_NUMBER_CHANGE",
+      "expected_policy": "PRESERVE_SOURCE",
+      "expected_findings": [
+        {
+          "type": "CHANGED_CANDIDATE",
+          "distinction": "SCOPE_OR_QUANTITY_CHANGE",
+          "source_quote": "The queue accepts batches of no more than forty records.",
+          "transformation_quote": "The queue accepts batches of no more than fifty records.",
+          "severity": "MATERIAL"
+        }
+      ],
+      "notes": "Deliberate corruption: a miss is a missed detection."
+    },
+    {
+      "id": "R6-D02",
+      "case_type": "CORRUPTION",
+      "corruption_class": "INCLUSIVE_EXCLUSIVE_BOUNDARY",
+      "expected_policy": "PRESERVE_SOURCE",
+      "expected_findings": [
+        {
+          "type": "CHANGED_CANDIDATE",
+          "distinction": "SCOPE_OR_QUANTITY_CHANGE",
+          "source_quote": "The queue accepts batches of no more than forty records.",
+          "transformation_quote": "The queue accepts batches of fewer than forty records.",
+          "severity": "MATERIAL"
+        }
+      ],
+      "notes": "Deliberate corruption: a miss is a missed detection."
+    },
+    {
+      "id": "R6-D03",
+      "case_type": "CORRUPTION",
+      "corruption_class": "DURATION_THRESHOLD_CHANGE",
+      "expected_policy": "PRESERVE_SOURCE",
+      "expected_findings": [
+        {
+          "type": "CHANGED_CANDIDATE",
+          "distinction": "SCOPE_OR_QUANTITY_CHANGE",
+          "source_quote": "Paging is permitted after at least five continuous minutes above the threshold.",
+          "transformation_quote": "Paging is permitted after more than five continuous minutes above the threshold.",
+          "severity": "MATERIAL"
+        }
+      ],
+      "notes": "Deliberate corruption: a miss is a missed detection."
+    },
+    {
+      "id": "R6-D04",
+      "case_type": "CORRUPTION",
+      "corruption_class": "MULTIPLE_CONSTRAINTS",
+      "expected_policy": "PRESERVE_SOURCE",
+      "expected_findings": [
+        {
+          "type": "CHANGED_CANDIDATE",
+          "distinction": "SCOPE_OR_QUANTITY_CHANGE",
+          "source_quote": "Paging is permitted after five minutes.",
+          "transformation_quote": "Paging is permitted after ten minutes.",
+          "severity": "MATERIAL"
+        }
+      ],
+      "notes": "Deliberate corruption: a miss is a missed detection."
+    },
+    {
+      "id": "R6-D05",
+      "case_type": "FAITHFUL",
+      "corruption_class": null,
+      "expected_policy": "USE_TRANSFORMATION",
+      "expected_findings": [
+        {
+          "type": "PRESERVED_CANDIDATE",
+          "distinction": "PRESERVED",
+          "source_quote": "only if the ticket is open and the audit log remains intact",
+          "transformation_quote": "Provided the ticket stays open and the audit log is unaltered",
+          "severity": "INFO"
+        }
+      ],
+      "notes": "Faithful control: rejection is a false alarm."
+    },
+    {
+      "id": "R6-D06",
+      "case_type": "FAITHFUL",
+      "corruption_class": null,
+      "expected_policy": "USE_TRANSFORMATION",
+      "expected_findings": [
+        {
+          "type": "PRESERVED_CANDIDATE",
+          "distinction": "PRESERVED",
+          "source_quote": "The release requires an accepted security review and an approved ticket.",
+          "transformation_quote": "An approved ticket and an accepted security review are required.",
+          "severity": "INFO"
+        }
+      ],
+      "notes": "Faithful control: rejection is a false alarm."
+    },
+    {
+      "id": "R6-D07",
+      "case_type": "FAITHFUL",
+      "corruption_class": null,
+      "expected_policy": "USE_TRANSFORMATION",
+      "expected_findings": [
+        {
+          "type": "PRESERVED_CANDIDATE",
+          "distinction": "PRESERVED",
+          "source_quote": "The investigation says the cause has not been verified.",
+          "transformation_quote": "the investigation has not verified the cause",
+          "severity": "INFO"
+        }
+      ],
+      "notes": "Faithful control: rejection is a false alarm."
+    },
+    {
+      "id": "R6-D08",
+      "case_type": "FAITHFUL",
+      "corruption_class": null,
+      "expected_policy": "USE_TRANSFORMATION",
+      "expected_findings": [
+        {
+          "type": "PRESERVED_CANDIDATE",
+          "distinction": "PRESERVED",
+          "source_quote": "It must keep the audit log intact.",
+          "transformation_quote": "must keep the audit log intact",
+          "severity": "INFO"
+        }
+      ],
+      "notes": "Faithful control: rejection is a false alarm."
+    },
+    {
+      "id": "R6-D09",
+      "case_type": "AMBIGUITY",
+      "corruption_class": null,
+      "expected_policy": "REQUEST_CLARIFICATION",
+      "expected_findings": [
+        {
+          "type": "UNRESOLVED",
+          "distinction": "SOURCE_AMBIGUITY",
+          "source_quote": "The privacy team has not decided whether vendor replication is authorised.",
+          "transformation_quote": "It remains unclear whether vendor replication is authorised.",
+          "severity": "MINOR"
+        }
+      ],
+      "notes": "Genuine ambiguity: clarification is appropriate."
+    },
+    {
+      "id": "R6-D10",
+      "case_type": "AMBIGUITY",
+      "corruption_class": null,
+      "expected_policy": "REQUEST_CLARIFICATION",
+      "expected_findings": [
+        {
+          "type": "UNRESOLVED",
+          "distinction": "SOURCE_AMBIGUITY",
+          "source_quote": "It is unclear whether 18:00 is the request timestamp or only the recording time.",
+          "transformation_quote": "It is unclear whether the request was timestamped after 17:00",
+          "severity": "MINOR"
+        }
+      ],
+      "notes": "Genuine ambiguity: clarification is appropriate."
+    },
+    {
+      "id": "R6-D11",
+      "case_type": "AMBIGUITY",
+      "corruption_class": null,
+      "expected_policy": "REQUEST_CLARIFICATION",
+      "expected_findings": [
+        {
+          "type": "UNRESOLVED",
+          "distinction": "SOURCE_AMBIGUITY",
+          "source_quote": "The policy requires a signed known-good image.",
+          "transformation_quote": "It is unclear whether the image is known-good",
+          "severity": "MINOR"
+        }
+      ],
+      "notes": "Genuine ambiguity: clarification is appropriate."
+    },
+    {
+      "id": "R6-D12",
+      "case_type": "CORRUPTION",
+      "corruption_class": "MANUFACTURED_UNCERTAINTY",
+      "expected_policy": "PRESERVE_SOURCE",
+      "expected_findings": [
+        {
+          "type": "UNSUPPORTED_ADDITION_CANDIDATE",
+          "distinction": "UNSUPPORTED_UNCERTAINTY",
+          "source_quote": "Paging is permitted.",
+          "transformation_quote": "It is unclear whether paging is permitted.",
+          "severity": "MATERIAL"
+        }
+      ],
+      "notes": "Deliberate corruption: a miss is a missed detection."
+    }
+  ]
+}

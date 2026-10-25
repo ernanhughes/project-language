@@ -1,0 +1,7 @@
+Metadata-Version: 2.4
+Name: language-understanding-baseline
+Version: 0.1.0
+Summary: Source-anchored linguistic segmentation and provisional meaning inventory for Language
+Requires-Python: >=3.10
+Requires-Dist: spacy<4,>=3.7
+Requires-Dist: nltk<4,>=3.8

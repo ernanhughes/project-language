@@ -1,0 +1,447 @@
+{
+  "standing": "OFFLINE_PREPARATION_NOT_REAL_COMMUNICATION",
+  "human_acceptance": "NOT_PERFORMED",
+  "live_provider_requests": 0,
+  "schema": "language-studio-export/0.1",
+  "replay": "CAPTURED_OUTPUT_ONLY_NO_REGENERATION",
+  "exchange": {
+    "id": "c1d2d990-8a9f-4b71-a155-354254738231",
+    "scenario": "archive-recovery-s17-v1",
+    "task_identity": {
+      "id": "archive-recovery-s17-v1",
+      "digest": "dd6ecdebf0a88a7dc414726c7118b498a9a95d648b32c8036ffb92e26eb0e2ee",
+      "source_hash": "e2600a515566dad94df3632cfff7eb1cd92a0d71693d9dd2c6fa0473f1c682c2",
+      "question_hash": "c625728d8e94939a5de237f51a339ad002517f9c7e493489915ae810301082c3",
+      "reference_standing": "UNADJUDICATED_REFERENCE"
+    },
+    "created_at": "2026-10-22T23:54:54.743Z",
+    "intent": "Prepare an archive-recovery handoff that preserves release approval, every urgent-restore condition, rehearsal scope and the unresolved vendor-copy question.",
+    "original_intent": "Prepare an archive-recovery handoff that preserves release approval, every urgent-restore condition, rehearsal scope and the unresolved vendor-copy question.",
+    "purpose": "Communicate a software archive recovery policy without granting execution authority",
+    "audience": "Fresh archive recovery coordinator",
+    "source": {
+      "id": "archive-recovery-policy-s17-v1",
+      "text": "A passing validation report is evidence of archive readiness, not approval to release the archive. The project owner must separately approve every public archive release.\nAn urgent restore to the private recovery workspace may precede release review only when the backup signature is verified, two maintainers are present, the audit trail is retained, and the project owner is notified the same day. This exception never permits a public release or removal of audit records.\nThe recovery rehearsal covers synthetic test records only, not customer records. Whether the external vendor may retain a recovery copy is unresolved; no permission to send a copy to that vendor has been granted.",
+      "hash": "e2600a515566dad94df3632cfff7eb1cd92a0d71693d9dd2c6fa0473f1c682c2"
+    },
+    "versions": [],
+    "transfers": [],
+    "question_revealed": false
+  },
+  "events": [
+    {
+      "seq": 0,
+      "previous": null,
+      "at": "2026-10-22T23:54:54.744Z",
+      "type": "STATE",
+      "data": {
+        "id": "c1d2d990-8a9f-4b71-a155-354254738231",
+        "scenario": "archive-recovery-s17-v1",
+        "task_identity": {
+          "id": "archive-recovery-s17-v1",
+          "digest": "dd6ecdebf0a88a7dc414726c7118b498a9a95d648b32c8036ffb92e26eb0e2ee",
+          "source_hash": "e2600a515566dad94df3632cfff7eb1cd92a0d71693d9dd2c6fa0473f1c682c2",
+          "question_hash": "c625728d8e94939a5de237f51a339ad002517f9c7e493489915ae810301082c3",
+          "reference_standing": "UNADJUDICATED_REFERENCE"
+        },
+        "created_at": "2026-10-22T23:54:54.743Z",
+        "intent": "Prepare an archive-recovery handoff that preserves release approval, every urgent-restore condition, rehearsal scope and the unresolved vendor-copy question.",
+        "original_intent": "Prepare an archive-recovery handoff that preserves release approval, every urgent-restore condition, rehearsal scope and the unresolved vendor-copy question.",
+        "purpose": "Communicate a software archive recovery policy without granting execution authority",
+        "audience": "Fresh archive recovery coordinator",
+        "source": {
+          "id": "archive-recovery-policy-s17-v1",
+          "text": "A passing validation report is evidence of archive readiness, not approval to release the archive. The project owner must separately approve every public archive release.\nAn urgent restore to the private recovery workspace may precede release review only when the backup signature is verified, two maintainers are present, the audit trail is retained, and the project owner is notified the same day. This exception never permits a public release or removal of audit records.\nThe recovery rehearsal covers synthetic test records only, not customer records. Whether the external vendor may retain a recovery copy is unresolved; no permission to send a copy to that vendor has been granted.",
+          "hash": "e2600a515566dad94df3632cfff7eb1cd92a0d71693d9dd2c6fa0473f1c682c2"
+        },
+        "versions": [],
+        "transfers": [],
+        "question_revealed": false
+      },
+      "digest": "d8dce753a4ec8b4dec5c29a28622379c31d50793c0ff2ed5d6c51cfdbf18d29e"
+    },
+    {
+      "seq": 1,
+      "previous": "d8dce753a4ec8b4dec5c29a28622379c31d50793c0ff2ed5d6c51cfdbf18d29e",
+      "at": "2026-10-22T23:54:54.748Z",
+      "type": "OPERATION_ERROR",
+      "data": {
+        "action": "interpret",
+        "error": "REMOTE_DISABLED_BY_LAUNCHER"
+      },
+      "digest": "0ecab0cdbfd019d4d625a879e670bc54088618a85ae76ab4c92cd78d113ab599"
+    }
+  ],
+  "models": [
+    {
+      "id": "fixture",
+      "provider": "fixture",
+      "local": false,
+      "api_family": "scripted",
+      "qualification": "SCRIPTED_NOT_MODEL_RESULT",
+      "availability": "AVAILABLE_OFFLINE",
+      "output_limit": null,
+      "price_per_million": null
+    },
+    {
+      "id": "opencode-go/deepseek-v4.1-flash",
+      "provider": "opencode-go",
+      "local": false,
+      "api_family": "openai-completions",
+      "base_url": "https://opencode.ai/inference/go/openai/v1",
+      "expected_route": "https://opencode.ai/inference/go/openai/v1/chat/completions",
+      "context_window": 1000000,
+      "output_limit": 384000,
+      "input_modalities": [
+        "text",
+        "image"
+      ],
+      "output_modalities": [
+        "text"
+      ],
+      "structured_output": "PROMPTED_JSON_STRICT_HOST_VALIDATION",
+      "reasoning": "Pi simple-stream default; no reasoning-token inference",
+      "price_per_million": {
+        "input": 0.3,
+        "output": 1.2,
+        "cacheRead": 0.006,
+        "cacheWrite": 0
+      },
+      "availability": "SCOPED_REGISTERED_NOT_LIVE_PROBED",
+      "qualification": "OFFLINE_ADAPTER_VERIFIED_LIVE_NOT_PROBED",
+      "metadata_origin": "PINNED_PI_1.0.4_WITH_DOCUMENTED_ENDPOINT_OVERLAY",
+      "config_hash": "78020e5ed7246fa4f787cd8b1f72f721c41caba22e72a20fcf56f07937ebe7ad"
+    },
+    {
+      "id": "opencode-go/gpt-6-luna",
+      "provider": "opencode-go",
+      "local": false,
+      "api_family": "openai-responses",
+      "base_url": "https://opencode.ai/inference/go/openai/v1",
+      "expected_route": "https://opencode.ai/inference/go/openai/v1/responses",
+      "context_window": 1050000,
+      "output_limit": 128000,
+      "input_modalities": [
+        "text",
+        "image"
+      ],
+      "output_modalities": [
+        "text"
+      ],
+      "structured_output": "PROMPTED_JSON_STRICT_HOST_VALIDATION",
+      "reasoning": "Pi simple-stream default; no reasoning-token inference",
+      "price_per_million": {
+        "input": 0.1,
+        "output": 0.5,
+        "cacheRead": 0.01,
+        "cacheWrite": 0.125
+      },
+      "availability": "SCOPED_REGISTERED_NOT_LIVE_PROBED",
+      "qualification": "OFFLINE_ADAPTER_VERIFIED_LIVE_NOT_PROBED",
+      "metadata_origin": "PINNED_PI_1.0.4_WITH_DOCUMENTED_ENDPOINT_OVERLAY",
+      "config_hash": "78020e5ed7246fa4f787cd8b1f72f721c41caba22e72a20fcf56f07937ebe7ad"
+    },
+    {
+      "id": "opencode-go/qwen3.8-flash",
+      "provider": "opencode-go",
+      "local": false,
+      "api_family": "anthropic-messages",
+      "base_url": "https://opencode.ai/inference/go/anthropic",
+      "expected_route": "https://opencode.ai/inference/go/anthropic/v1/messages",
+      "context_window": 1000000,
+      "output_limit": 131072,
+      "input_modalities": [
+        "text",
+        "image"
+      ],
+      "output_modalities": [
+        "text"
+      ],
+      "structured_output": "PROMPTED_JSON_STRICT_HOST_VALIDATION",
+      "reasoning": "Pi simple-stream default; no reasoning-token inference",
+      "price_per_million": {
+        "input": 0.15,
+        "output": 0.47,
+        "cacheRead": 0.016,
+        "cacheWrite": 0.2
+      },
+      "availability": "SCOPED_REGISTERED_NOT_LIVE_PROBED",
+      "qualification": "OFFLINE_ADAPTER_VERIFIED_LIVE_NOT_PROBED",
+      "metadata_origin": "PINNED_PI_1.0.4_WITH_DOCUMENTED_ENDPOINT_OVERLAY",
+      "config_hash": "78020e5ed7246fa4f787cd8b1f72f721c41caba22e72a20fcf56f07937ebe7ad"
+    },
+    {
+      "id": "opencode-go/claude-haiku-5-5",
+      "provider": "opencode-go",
+      "local": false,
+      "api_family": "anthropic-messages",
+      "base_url": "https://opencode.ai/inference/go/anthropic",
+      "expected_route": "https://opencode.ai/inference/go/anthropic/v1/messages",
+      "context_window": 1000000,
+      "output_limit": 128000,
+      "input_modalities": [
+        "text",
+        "image"
+      ],
+      "output_modalities": [
+        "text"
+      ],
+      "structured_output": "PROMPTED_JSON_STRICT_HOST_VALIDATION",
+      "reasoning": "Pi simple-stream default; no reasoning-token inference",
+      "price_per_million": {
+        "input": 0.1,
+        "output": 0.5,
+        "cacheRead": 0.01,
+        "cacheWrite": 0.125,
+        "tiers": [
+          {
+            "inputTokensAbove": 100000,
+            "input": 0.5,
+            "output": 2.5,
+            "cacheRead": 0.05,
+            "cacheWrite": 0.625
+          }
+        ]
+      },
+      "availability": "SCOPED_REGISTERED_NOT_LIVE_PROBED",
+      "qualification": "OFFLINE_ADAPTER_VERIFIED_LIVE_NOT_PROBED",
+      "metadata_origin": "MANAGED_PI_1.4.0_SCOPED_REGISTRATION",
+      "config_hash": "78020e5ed7246fa4f787cd8b1f72f721c41caba22e72a20fcf56f07937ebe7ad"
+    }
+  ],
+  "assignments": {
+    "interpreter": "opencode-go/deepseek-v4.1-flash",
+    "challenger": "opencode-go/gpt-6-luna",
+    "mediator": "opencode-go/deepseek-v4.1-flash",
+    "recipient": "opencode-go/qwen3.8-flash",
+    "advisory_evaluator": "opencode-go/claude-haiku-5-5"
+  },
+  "remote_plan": {
+    "schema": "studio-remote-plan/0.1r",
+    "provider": "opencode-go",
+    "task_identity": {
+      "id": "archive-recovery-s17-v1",
+      "digest": "dd6ecdebf0a88a7dc414726c7118b498a9a95d648b32c8036ffb92e26eb0e2ee",
+      "source_hash": "e2600a515566dad94df3632cfff7eb1cd92a0d71693d9dd2c6fa0473f1c682c2",
+      "question_hash": "c625728d8e94939a5de237f51a339ad002517f9c7e493489915ae810301082c3",
+      "reference_standing": "UNADJUDICATED_REFERENCE"
+    },
+    "models": [
+      {
+        "role": "interpreter",
+        "model": "opencode-go/deepseek-v4.1-flash",
+        "metadata": {
+          "id": "opencode-go/deepseek-v4.1-flash",
+          "provider": "opencode-go",
+          "local": false,
+          "api_family": "openai-completions",
+          "base_url": "https://opencode.ai/inference/go/openai/v1",
+          "expected_route": "https://opencode.ai/inference/go/openai/v1/chat/completions",
+          "context_window": 1000000,
+          "output_limit": 384000,
+          "input_modalities": [
+            "text",
+            "image"
+          ],
+          "output_modalities": [
+            "text"
+          ],
+          "structured_output": "PROMPTED_JSON_STRICT_HOST_VALIDATION",
+          "reasoning": "Pi simple-stream default; no reasoning-token inference",
+          "price_per_million": {
+            "input": 0.3,
+            "output": 1.2,
+            "cacheRead": 0.006,
+            "cacheWrite": 0
+          },
+          "availability": "SCOPED_REGISTERED_NOT_LIVE_PROBED",
+          "qualification": "OFFLINE_ADAPTER_VERIFIED_LIVE_NOT_PROBED",
+          "metadata_origin": "PINNED_PI_1.0.4_WITH_DOCUMENTED_ENDPOINT_OVERLAY",
+          "config_hash": "78020e5ed7246fa4f787cd8b1f72f721c41caba22e72a20fcf56f07937ebe7ad"
+        },
+        "output_tokens": 8192
+      },
+      {
+        "role": "challenger",
+        "model": "opencode-go/gpt-6-luna",
+        "metadata": {
+          "id": "opencode-go/gpt-6-luna",
+          "provider": "opencode-go",
+          "local": false,
+          "api_family": "openai-responses",
+          "base_url": "https://opencode.ai/inference/go/openai/v1",
+          "expected_route": "https://opencode.ai/inference/go/openai/v1/responses",
+          "context_window": 1050000,
+          "output_limit": 128000,
+          "input_modalities": [
+            "text",
+            "image"
+          ],
+          "output_modalities": [
+            "text"
+          ],
+          "structured_output": "PROMPTED_JSON_STRICT_HOST_VALIDATION",
+          "reasoning": "Pi simple-stream default; no reasoning-token inference",
+          "price_per_million": {
+            "input": 0.1,
+            "output": 0.5,
+            "cacheRead": 0.01,
+            "cacheWrite": 0.125
+          },
+          "availability": "SCOPED_REGISTERED_NOT_LIVE_PROBED",
+          "qualification": "OFFLINE_ADAPTER_VERIFIED_LIVE_NOT_PROBED",
+          "metadata_origin": "PINNED_PI_1.0.4_WITH_DOCUMENTED_ENDPOINT_OVERLAY",
+          "config_hash": "78020e5ed7246fa4f787cd8b1f72f721c41caba22e72a20fcf56f07937ebe7ad"
+        },
+        "output_tokens": 4096
+      },
+      {
+        "role": "mediator",
+        "model": "opencode-go/deepseek-v4.1-flash",
+        "metadata": {
+          "id": "opencode-go/deepseek-v4.1-flash",
+          "provider": "opencode-go",
+          "local": false,
+          "api_family": "openai-completions",
+          "base_url": "https://opencode.ai/inference/go/openai/v1",
+          "expected_route": "https://opencode.ai/inference/go/openai/v1/chat/completions",
+          "context_window": 1000000,
+          "output_limit": 384000,
+          "input_modalities": [
+            "text",
+            "image"
+          ],
+          "output_modalities": [
+            "text"
+          ],
+          "structured_output": "PROMPTED_JSON_STRICT_HOST_VALIDATION",
+          "reasoning": "Pi simple-stream default; no reasoning-token inference",
+          "price_per_million": {
+            "input": 0.3,
+            "output": 1.2,
+            "cacheRead": 0.006,
+            "cacheWrite": 0
+          },
+          "availability": "SCOPED_REGISTERED_NOT_LIVE_PROBED",
+          "qualification": "OFFLINE_ADAPTER_VERIFIED_LIVE_NOT_PROBED",
+          "metadata_origin": "PINNED_PI_1.0.4_WITH_DOCUMENTED_ENDPOINT_OVERLAY",
+          "config_hash": "78020e5ed7246fa4f787cd8b1f72f721c41caba22e72a20fcf56f07937ebe7ad"
+        },
+        "output_tokens": 8192
+      },
+      {
+        "role": "recipient",
+        "model": "opencode-go/qwen3.8-flash",
+        "metadata": {
+          "id": "opencode-go/qwen3.8-flash",
+          "provider": "opencode-go",
+          "local": false,
+          "api_family": "anthropic-messages",
+          "base_url": "https://opencode.ai/inference/go/anthropic",
+          "expected_route": "https://opencode.ai/inference/go/anthropic/v1/messages",
+          "context_window": 1000000,
+          "output_limit": 131072,
+          "input_modalities": [
+            "text",
+            "image"
+          ],
+          "output_modalities": [
+            "text"
+          ],
+          "structured_output": "PROMPTED_JSON_STRICT_HOST_VALIDATION",
+          "reasoning": "Pi simple-stream default; no reasoning-token inference",
+          "price_per_million": {
+            "input": 0.15,
+            "output": 0.47,
+            "cacheRead": 0.016,
+            "cacheWrite": 0.2
+          },
+          "availability": "SCOPED_REGISTERED_NOT_LIVE_PROBED",
+          "qualification": "OFFLINE_ADAPTER_VERIFIED_LIVE_NOT_PROBED",
+          "metadata_origin": "PINNED_PI_1.0.4_WITH_DOCUMENTED_ENDPOINT_OVERLAY",
+          "config_hash": "78020e5ed7246fa4f787cd8b1f72f721c41caba22e72a20fcf56f07937ebe7ad"
+        },
+        "output_tokens": 4096
+      },
+      {
+        "role": "advisory_evaluator",
+        "model": "opencode-go/claude-haiku-5-5",
+        "metadata": {
+          "id": "opencode-go/claude-haiku-5-5",
+          "provider": "opencode-go",
+          "local": false,
+          "api_family": "anthropic-messages",
+          "base_url": "https://opencode.ai/inference/go/anthropic",
+          "expected_route": "https://opencode.ai/inference/go/anthropic/v1/messages",
+          "context_window": 1000000,
+          "output_limit": 128000,
+          "input_modalities": [
+            "text",
+            "image"
+          ],
+          "output_modalities": [
+            "text"
+          ],
+          "structured_output": "PROMPTED_JSON_STRICT_HOST_VALIDATION",
+          "reasoning": "Pi simple-stream default; no reasoning-token inference",
+          "price_per_million": {
+            "input": 0.1,
+            "output": 0.5,
+            "cacheRead": 0.01,
+            "cacheWrite": 0.125,
+            "tiers": [
+              {
+                "inputTokensAbove": 100000,
+                "input": 0.5,
+                "output": 2.5,
+                "cacheRead": 0.05,
+                "cacheWrite": 0.625
+              }
+            ]
+          },
+          "availability": "SCOPED_REGISTERED_NOT_LIVE_PROBED",
+          "qualification": "OFFLINE_ADAPTER_VERIFIED_LIVE_NOT_PROBED",
+          "metadata_origin": "MANAGED_PI_1.4.0_SCOPED_REGISTRATION",
+          "config_hash": "78020e5ed7246fa4f787cd8b1f72f721c41caba22e72a20fcf56f07937ebe7ad"
+        },
+        "output_tokens": 4096
+      }
+    ],
+    "settings": {
+      "max_requests": 6,
+      "budget_usd": 1,
+      "max_input_bytes": 60000,
+      "max_response_bytes": 1048576,
+      "timeout_ms": 90000,
+      "output_tokens": {
+        "interpreter": 8192,
+        "challenger": 4096,
+        "mediator": 8192,
+        "recipient": 4096,
+        "advisory_evaluator": 4096
+      },
+      "automatic_retries": 0
+    },
+    "config_hash": "78020e5ed7246fa4f787cd8b1f72f721c41caba22e72a20fcf56f07937ebe7ad",
+    "offline_qualification_identity": "92448506cad48c62254ca99451d7ac405823fa74d82633aba20634acec2366b3",
+    "expected_workflow_calls": 3,
+    "with_mediation_calls": 4,
+    "with_comparison_calls": 5,
+    "maximum_actual_requests": 6,
+    "conservative_estimate_usd": 0.34787999999999997,
+    "per_request_reservation_usd": 0.05798,
+    "estimate_standing": "CATALOGUE_BOUND_NOT_INVOICE; UTF8_BYTES_AS_INPUT_TOKEN_BOUND",
+    "service_use": "OPERATOR_MUST_CONFIRM_GO_WORKLOAD_APPROPRIATENESS",
+    "fallback": false,
+    "hash": "b9e3fdc5595f7397c4507047cb717a789b7eb63aa89e1da9335ae1eaac8c01d6",
+    "launcher_remote_enabled": false,
+    "credential_available": false,
+    "approval_active": false,
+    "requests_used": 0,
+    "reserved_usd": 0,
+    "last_errors": {},
+    "advisory_evaluator_status": "OPTIONAL_NOT_RUN"
+  },
+  "external_actions": "DISABLED",
+  "head": "0ecab0cdbfd019d4d625a879e670bc54088618a85ae76ab4c92cd78d113ab599"
+}

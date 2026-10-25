@@ -1,0 +1,2049 @@
+{
+  "schema": "lc02-r6-comparison/0.1",
+  "standing": "OFFLINE_EXPLORATORY_PROVISIONAL_REFERENCES",
+  "split": "development",
+  "corpus_freeze": {
+    "development-cases.json": "7fc0de690911a519b57f5b3d540662b800c1ad5a30bf197de106df755eeaed09",
+    "evaluation-cases.json": "c60a25361e3b8658885ad6f1c201480282c7c7d90230093dd6fb5827a3b9e6d5",
+    "development-references.json": "e4d99491d81c7f23a36431f6f099f4f222c8f441d31e23c092f5d75365e4a7a6",
+    "evaluation-references.json": "9bcd1f19b92505e8edf6b39afcfb36dd069ae2b4ec1954f3d0f39ab03e619d71"
+  },
+  "r5": {
+    "metrics": {
+      "cases": 12,
+      "corruption_cases": 5,
+      "detected_corruptions": 1,
+      "missed_corruptions": [
+        "R6-D01",
+        "R6-D02",
+        "R6-D03",
+        "R6-D04"
+      ],
+      "detection_rate": 0.2,
+      "false_acceptances": [
+        "R6-D01",
+        "R6-D02",
+        "R6-D03",
+        "R6-D04"
+      ],
+      "faithful_cases": 4,
+      "faithful_accepted": 3,
+      "false_rejections": [
+        "R6-D08"
+      ],
+      "false_alarm_rate": 0.25,
+      "ambiguity_cases": 3,
+      "ambiguity_correct": 3,
+      "ambiguity_grounded": 3,
+      "unnecessary_clarifications": [],
+      "not_assessed": [],
+      "policy_correct": 7,
+      "policy_accuracy": 0.5833333333333334,
+      "latency_ms": {
+        "avg": 1005.3754666666672,
+        "max": 1151.5031
+      }
+    },
+    "rows": [
+      {
+        "id": "R6-D01",
+        "case_type": "CORRUPTION",
+        "corruption_class": "WRITTEN_NUMBER_CHANGE",
+        "expected_policy": "PRESERVE_SOURCE",
+        "actual_policy": "USE_TRANSFORMATION",
+        "policy_correct": false,
+        "policy_class": "FALSE_ACCEPT",
+        "detected": false,
+        "matched": [
+          {
+            "expected": {
+              "type": "CHANGED_CANDIDATE",
+              "distinction": "SCOPE_OR_QUANTITY_CHANGE",
+              "source_quote": "The queue accepts batches of no more than forty records.",
+              "transformation_quote": "The queue accepts batches of no more than fifty records.",
+              "severity": "MATERIAL"
+            },
+            "matched": false
+          }
+        ],
+        "material_findings": [],
+        "findings": [
+          {
+            "type": "PRESERVED_CANDIDATE",
+            "distinction": "PRESERVED",
+            "severity": "INFO",
+            "source_spans": [
+              "The queue accepts batches of no more than forty records."
+            ],
+            "transformation_spans": [
+              "The queue accepts batches of no more than fifty records."
+            ],
+            "reason": "The obligated source meaning has a candidate counterpart in the transformation (alignment 1.32).",
+            "confidence": "HIGH"
+          }
+        ],
+        "latency_ms": 981.8921
+      },
+      {
+        "id": "R6-D02",
+        "case_type": "CORRUPTION",
+        "corruption_class": "INCLUSIVE_EXCLUSIVE_BOUNDARY",
+        "expected_policy": "PRESERVE_SOURCE",
+        "actual_policy": "USE_TRANSFORMATION",
+        "policy_correct": false,
+        "policy_class": "FALSE_ACCEPT",
+        "detected": false,
+        "matched": [
+          {
+            "expected": {
+              "type": "CHANGED_CANDIDATE",
+              "distinction": "SCOPE_OR_QUANTITY_CHANGE",
+              "source_quote": "The queue accepts batches of no more than forty records.",
+              "transformation_quote": "The queue accepts batches of fewer than forty records.",
+              "severity": "MATERIAL"
+            },
+            "matched": false
+          }
+        ],
+        "material_findings": [],
+        "findings": [
+          {
+            "type": "PRESERVED_CANDIDATE",
+            "distinction": "PRESERVED",
+            "severity": "INFO",
+            "source_spans": [
+              "The queue accepts batches of no more than forty records."
+            ],
+            "transformation_spans": [
+              "The queue accepts batches of fewer than forty records."
+            ],
+            "reason": "The obligated source meaning has a candidate counterpart in the transformation (alignment 1.50).",
+            "confidence": "HIGH"
+          }
+        ],
+        "latency_ms": 974.5333
+      },
+      {
+        "id": "R6-D03",
+        "case_type": "CORRUPTION",
+        "corruption_class": "DURATION_THRESHOLD_CHANGE",
+        "expected_policy": "PRESERVE_SOURCE",
+        "actual_policy": "USE_TRANSFORMATION",
+        "policy_correct": false,
+        "policy_class": "FALSE_ACCEPT",
+        "detected": false,
+        "matched": [
+          {
+            "expected": {
+              "type": "CHANGED_CANDIDATE",
+              "distinction": "SCOPE_OR_QUANTITY_CHANGE",
+              "source_quote": "Paging is permitted after at least five continuous minutes above the threshold.",
+              "transformation_quote": "Paging is permitted after more than five continuous minutes above the threshold.",
+              "severity": "MATERIAL"
+            },
+            "matched": false
+          }
+        ],
+        "material_findings": [],
+        "findings": [
+          {
+            "type": "PRESERVED_CANDIDATE",
+            "distinction": "PRESERVED",
+            "severity": "INFO",
+            "source_spans": [
+              "Paging is permitted after at least five continuous minutes above the threshold."
+            ],
+            "transformation_spans": [
+              "Paging is permitted after more than five continuous minutes above the threshold."
+            ],
+            "reason": "The obligated source meaning has a candidate counterpart in the transformation (alignment 1.60).",
+            "confidence": "HIGH"
+          }
+        ],
+        "latency_ms": 951.3578000000002
+      },
+      {
+        "id": "R6-D04",
+        "case_type": "CORRUPTION",
+        "corruption_class": "MULTIPLE_CONSTRAINTS",
+        "expected_policy": "PRESERVE_SOURCE",
+        "actual_policy": "USE_TRANSFORMATION",
+        "policy_correct": false,
+        "policy_class": "FALSE_ACCEPT",
+        "detected": false,
+        "matched": [
+          {
+            "expected": {
+              "type": "CHANGED_CANDIDATE",
+              "distinction": "SCOPE_OR_QUANTITY_CHANGE",
+              "source_quote": "Paging is permitted after five minutes.",
+              "transformation_quote": "Paging is permitted after ten minutes.",
+              "severity": "MATERIAL"
+            },
+            "matched": false
+          }
+        ],
+        "material_findings": [],
+        "findings": [
+          {
+            "type": "PRESERVED_CANDIDATE",
+            "distinction": "PRESERVED",
+            "severity": "INFO",
+            "source_spans": [
+              "Paging is permitted after five minutes."
+            ],
+            "transformation_spans": [
+              "Paging is permitted after ten minutes."
+            ],
+            "reason": "The obligated source meaning has a candidate counterpart in the transformation (alignment 1.32).",
+            "confidence": "HIGH"
+          },
+          {
+            "type": "PRESERVED_CANDIDATE",
+            "distinction": "PRESERVED",
+            "severity": "INFO",
+            "source_spans": [
+              "Restarting requires separate approval."
+            ],
+            "transformation_spans": [
+              "Restarting requires separate approval."
+            ],
+            "reason": "The obligated source meaning has a candidate counterpart in the transformation (alignment 1.60).",
+            "confidence": "HIGH"
+          }
+        ],
+        "latency_ms": 1036.2996000000003
+      },
+      {
+        "id": "R6-D05",
+        "case_type": "FAITHFUL",
+        "corruption_class": null,
+        "expected_policy": "USE_TRANSFORMATION",
+        "actual_policy": "USE_TRANSFORMATION",
+        "policy_correct": true,
+        "policy_class": "CORRECT",
+        "detected": true,
+        "matched": [
+          {
+            "expected": {
+              "type": "PRESERVED_CANDIDATE",
+              "distinction": "PRESERVED",
+              "source_quote": "only if the ticket is open and the audit log remains intact",
+              "transformation_quote": "Provided the ticket stays open and the audit log is unaltered",
+              "severity": "INFO"
+            },
+            "matched": true
+          }
+        ],
+        "material_findings": [],
+        "findings": [
+          {
+            "type": "PRESERVED_CANDIDATE",
+            "distinction": "PRESERVED",
+            "severity": "INFO",
+            "source_spans": [
+              "An operator may retrieve the key only if the ticket is open and the audit log remains intact."
+            ],
+            "transformation_spans": [
+              "the operator is allowed to retrieve the key."
+            ],
+            "reason": "The obligated source meaning has a candidate counterpart in the transformation (alignment 1.07).",
+            "confidence": "HIGH"
+          }
+        ],
+        "latency_ms": 1092.6610999999994
+      },
+      {
+        "id": "R6-D06",
+        "case_type": "FAITHFUL",
+        "corruption_class": null,
+        "expected_policy": "USE_TRANSFORMATION",
+        "actual_policy": "USE_TRANSFORMATION",
+        "policy_correct": true,
+        "policy_class": "CORRECT",
+        "detected": true,
+        "matched": [
+          {
+            "expected": {
+              "type": "PRESERVED_CANDIDATE",
+              "distinction": "PRESERVED",
+              "source_quote": "The release requires an accepted security review and an approved ticket.",
+              "transformation_quote": "An approved ticket and an accepted security review are required.",
+              "severity": "INFO"
+            },
+            "matched": true
+          }
+        ],
+        "material_findings": [],
+        "findings": [
+          {
+            "type": "PRESERVED_CANDIDATE",
+            "distinction": "PRESERVED",
+            "severity": "INFO",
+            "source_spans": [
+              "The release requires an accepted security review and an approved ticket."
+            ],
+            "transformation_spans": [
+              "An approved ticket and an accepted security review are required."
+            ],
+            "reason": "The obligated source meaning has a candidate counterpart in the transformation (alignment 1.51).",
+            "confidence": "HIGH"
+          }
+        ],
+        "latency_ms": 1051.107100000001
+      },
+      {
+        "id": "R6-D07",
+        "case_type": "FAITHFUL",
+        "corruption_class": null,
+        "expected_policy": "USE_TRANSFORMATION",
+        "actual_policy": "USE_TRANSFORMATION",
+        "policy_correct": true,
+        "policy_class": "CORRECT",
+        "detected": true,
+        "matched": [
+          {
+            "expected": {
+              "type": "PRESERVED_CANDIDATE",
+              "distinction": "PRESERVED",
+              "source_quote": "The investigation says the cause has not been verified.",
+              "transformation_quote": "the investigation has not verified the cause",
+              "severity": "INFO"
+            },
+            "matched": true
+          }
+        ],
+        "material_findings": [],
+        "findings": [
+          {
+            "type": "PRESERVED_CANDIDATE",
+            "distinction": "PRESERVED",
+            "severity": "INFO",
+            "source_spans": [
+              "The investigation says the cause has not been verified."
+            ],
+            "transformation_spans": [
+              "the investigation has not verified the cause."
+            ],
+            "reason": "The obligated source meaning has a candidate counterpart in the transformation (alignment 1.48).",
+            "confidence": "HIGH"
+          }
+        ],
+        "latency_ms": 1083.1551999999992
+      },
+      {
+        "id": "R6-D08",
+        "case_type": "FAITHFUL",
+        "corruption_class": null,
+        "expected_policy": "USE_TRANSFORMATION",
+        "actual_policy": "PRESERVE_SOURCE",
+        "policy_correct": false,
+        "policy_class": "FALSE_REJECTION",
+        "detected": false,
+        "matched": [
+          {
+            "expected": {
+              "type": "PRESERVED_CANDIDATE",
+              "distinction": "PRESERVED",
+              "source_quote": "It must keep the audit log intact.",
+              "transformation_quote": "must keep the audit log intact",
+              "severity": "INFO"
+            },
+            "matched": false
+          }
+        ],
+        "material_findings": [
+          {
+            "type": "CHANGED_CANDIDATE",
+            "distinction": "WRONG_CROSS_SENTENCE_REFERENCE",
+            "severity": "MATERIAL",
+            "source_spans": [
+              "It must keep the audit log intact."
+            ],
+            "reason": "Source says “It must keep the audit log intact.”; transformation says “must keep the audit log intact.”. The source flags an unresolved reference; the transformation resolves or replaces it without preserving the ambiguity."
+          }
+        ],
+        "findings": [
+          {
+            "type": "CHANGED_CANDIDATE",
+            "distinction": "WRONG_CROSS_SENTENCE_REFERENCE",
+            "severity": "MATERIAL",
+            "source_spans": [
+              "It must keep the audit log intact."
+            ],
+            "transformation_spans": [
+              "must keep the audit log intact."
+            ],
+            "reason": "Source says “It must keep the audit log intact.”; transformation says “must keep the audit log intact.”. The source flags an unresolved reference; the transformation resolves or replaces it without preserving the ambiguity.",
+            "confidence": "MEDIUM"
+          }
+        ],
+        "latency_ms": 1151.5031
+      },
+      {
+        "id": "R6-D09",
+        "case_type": "AMBIGUITY",
+        "corruption_class": null,
+        "expected_policy": "REQUEST_CLARIFICATION",
+        "actual_policy": "REQUEST_CLARIFICATION",
+        "policy_correct": true,
+        "policy_class": "CORRECT",
+        "detected": true,
+        "matched": [
+          {
+            "expected": {
+              "type": "UNRESOLVED",
+              "distinction": "SOURCE_AMBIGUITY",
+              "source_quote": "The privacy team has not decided whether vendor replication is authorised.",
+              "transformation_quote": "It remains unclear whether vendor replication is authorised.",
+              "severity": "MINOR"
+            },
+            "matched": true
+          }
+        ],
+        "material_findings": [],
+        "findings": [
+          {
+            "type": "UNRESOLVED",
+            "distinction": "SOURCE_AMBIGUITY",
+            "severity": "MINOR",
+            "source_spans": [
+              "The privacy team has not decided whether vendor replication is authorised."
+            ],
+            "transformation_spans": [
+              "It remains unclear whether vendor replication is authorised."
+            ],
+            "reason": "The uncertainty in “It remains unclear whether vendor replication is authorised.” is grounded in the source: The privacy team has not decided whether vendor replication is authorised..",
+            "confidence": "MEDIUM"
+          }
+        ],
+        "latency_ms": 953.9927000000025
+      },
+      {
+        "id": "R6-D10",
+        "case_type": "AMBIGUITY",
+        "corruption_class": null,
+        "expected_policy": "REQUEST_CLARIFICATION",
+        "actual_policy": "REQUEST_CLARIFICATION",
+        "policy_correct": true,
+        "policy_class": "CORRECT",
+        "detected": true,
+        "matched": [
+          {
+            "expected": {
+              "type": "UNRESOLVED",
+              "distinction": "SOURCE_AMBIGUITY",
+              "source_quote": "It is unclear whether 18:00 is the request timestamp or only the recording time.",
+              "transformation_quote": "It is unclear whether the request was timestamped after 17:00",
+              "severity": "MINOR"
+            },
+            "matched": true
+          }
+        ],
+        "material_findings": [],
+        "findings": [
+          {
+            "type": "UNRESOLVED",
+            "distinction": "SOURCE_AMBIGUITY",
+            "severity": "MINOR",
+            "source_spans": [
+              "It is unclear whether 18:00 is the request timestamp or only the recording time."
+            ],
+            "transformation_spans": [
+              "It is unclear whether the request was timestamped after 17:00, because 18:00 may be the recording time."
+            ],
+            "reason": "The uncertainty in “It is unclear whether the request was timestamped after 17:00, because 18:00 may be the recording time.” is grounded in the source: It is unclear whether 18:00 is the request timestamp or only the recording time..",
+            "confidence": "MEDIUM"
+          }
+        ],
+        "latency_ms": 1005.9530000000013
+      },
+      {
+        "id": "R6-D11",
+        "case_type": "AMBIGUITY",
+        "corruption_class": null,
+        "expected_policy": "REQUEST_CLARIFICATION",
+        "actual_policy": "REQUEST_CLARIFICATION",
+        "policy_correct": true,
+        "policy_class": "CORRECT",
+        "detected": true,
+        "matched": [
+          {
+            "expected": {
+              "type": "UNRESOLVED",
+              "distinction": "SOURCE_AMBIGUITY",
+              "source_quote": "The policy requires a signed known-good image.",
+              "transformation_quote": "It is unclear whether the image is known-good",
+              "severity": "MINOR"
+            },
+            "matched": true
+          }
+        ],
+        "material_findings": [],
+        "findings": [
+          {
+            "type": "UNRESOLVED",
+            "distinction": "SOURCE_AMBIGUITY",
+            "severity": "MINOR",
+            "source_spans": [
+              "The policy requires a signed known-good image."
+            ],
+            "transformation_spans": [
+              "It is unclear whether the image is known-good despite the verified signature."
+            ],
+            "reason": "The uncertainty in “It is unclear whether the image is known-good despite the verified signature.” is grounded in the source: a signed known-good image.",
+            "confidence": "MEDIUM"
+          }
+        ],
+        "latency_ms": 885.7471000000005
+      },
+      {
+        "id": "R6-D12",
+        "case_type": "CORRUPTION",
+        "corruption_class": "MANUFACTURED_UNCERTAINTY",
+        "expected_policy": "PRESERVE_SOURCE",
+        "actual_policy": "PRESERVE_SOURCE",
+        "policy_correct": true,
+        "policy_class": "CORRECT",
+        "detected": true,
+        "matched": [
+          {
+            "expected": {
+              "type": "UNSUPPORTED_ADDITION_CANDIDATE",
+              "distinction": "UNSUPPORTED_UNCERTAINTY",
+              "source_quote": "Paging is permitted.",
+              "transformation_quote": "It is unclear whether paging is permitted.",
+              "severity": "MATERIAL"
+            },
+            "matched": true
+          }
+        ],
+        "material_findings": [
+          {
+            "type": "UNSUPPORTED_ADDITION_CANDIDATE",
+            "distinction": "UNSUPPORTED_UNCERTAINTY",
+            "severity": "MATERIAL",
+            "source_spans": [
+              "Paging is permitted."
+            ],
+            "reason": "The transformation adds uncertainty in “It is unclear whether paging is permitted.” despite a source claim that is stated without an unresolved condition. The relevant source claim is stated without a hedge or unresolved condition."
+          }
+        ],
+        "findings": [
+          {
+            "type": "UNSUPPORTED_ADDITION_CANDIDATE",
+            "distinction": "UNSUPPORTED_UNCERTAINTY",
+            "severity": "MATERIAL",
+            "source_spans": [
+              "Paging is permitted."
+            ],
+            "transformation_spans": [
+              "It is unclear whether paging is permitted."
+            ],
+            "reason": "The transformation adds uncertainty in “It is unclear whether paging is permitted.” despite a source claim that is stated without an unresolved condition. The relevant source claim is stated without a hedge or unresolved condition.",
+            "confidence": "MEDIUM"
+          }
+        ],
+        "latency_ms": 896.3035000000018
+      }
+    ]
+  },
+  "r6": {
+    "metrics": {
+      "cases": 12,
+      "corruption_cases": 5,
+      "detected_corruptions": 5,
+      "missed_corruptions": [],
+      "detection_rate": 1,
+      "false_acceptances": [],
+      "faithful_cases": 4,
+      "faithful_accepted": 4,
+      "false_rejections": [],
+      "false_alarm_rate": 0,
+      "ambiguity_cases": 3,
+      "ambiguity_correct": 2,
+      "ambiguity_grounded": 3,
+      "unnecessary_clarifications": [],
+      "not_assessed": [],
+      "policy_correct": 11,
+      "policy_accuracy": 0.9166666666666666,
+      "latency_ms": {
+        "avg": 983.024166666667,
+        "max": 1085.0356999999985
+      }
+    },
+    "rows": [
+      {
+        "id": "R6-D01",
+        "case_type": "CORRUPTION",
+        "corruption_class": "WRITTEN_NUMBER_CHANGE",
+        "expected_policy": "PRESERVE_SOURCE",
+        "actual_policy": "PRESERVE_SOURCE",
+        "policy_correct": true,
+        "policy_class": "CORRECT",
+        "detected": true,
+        "matched": [
+          {
+            "expected": {
+              "type": "CHANGED_CANDIDATE",
+              "distinction": "SCOPE_OR_QUANTITY_CHANGE",
+              "source_quote": "The queue accepts batches of no more than forty records.",
+              "transformation_quote": "The queue accepts batches of no more than fifty records.",
+              "severity": "MATERIAL"
+            },
+            "matched": true
+          }
+        ],
+        "material_findings": [
+          {
+            "type": "CHANGED_CANDIDATE",
+            "distinction": "SCOPE_OR_QUANTITY_CHANGE",
+            "severity": "MATERIAL",
+            "source_spans": [
+              "no more than forty records"
+            ],
+            "reason": "Source constraint <= 40 records; transformation <= 50 records."
+          }
+        ],
+        "constraints": {
+          "source": [
+            {
+              "id": "sc1",
+              "kind": "COUNT",
+              "operator": "<=",
+              "value": 40,
+              "unit": "records",
+              "action": "the queue accepts batches of",
+              "source_spans": [
+                {
+                  "origin": "ORIGINAL_SOURCE",
+                  "source_id": "R6-D01-source",
+                  "source_hash": "ecf3d968679f0b6c0b071e8c3b01e7062fe250960d615a8d0dc9b087fe99a933",
+                  "start": 29,
+                  "end": 55,
+                  "text": "no more than forty records"
+                }
+              ],
+              "transformation_spans": [],
+              "standing": "SOURCE_STATED",
+              "method": "LEXICAL_CONSTRAINT_HEURISTIC"
+            }
+          ],
+          "transformation": [
+            {
+              "id": "tc1",
+              "kind": "COUNT",
+              "operator": "<=",
+              "value": 50,
+              "unit": "records",
+              "action": "the queue accepts batches of",
+              "source_spans": [],
+              "transformation_spans": [
+                {
+                  "origin": "ORIGINAL_SOURCE",
+                  "source_id": "R6-D01-transformation",
+                  "source_hash": "e693725faf9ff7609f08398cd055e3cfe0575d501c63f012c853ea74e5ab805b",
+                  "start": 29,
+                  "end": 55,
+                  "text": "no more than fifty records"
+                }
+              ],
+              "standing": "TRANSFORMATION_STATED",
+              "method": "LEXICAL_CONSTRAINT_HEURISTIC"
+            }
+          ],
+          "comparisons": [
+            {
+              "id": "cc1",
+              "source_constraint": "sc1",
+              "transformation_constraint": "tc1",
+              "result": "CHANGED_CANDIDATE",
+              "distinction": "CONSTRAINT_CHANGE",
+              "reason": "Source constraint <= 40 records; transformation <= 50 records.",
+              "standing": "CANDIDATE_REQUIRES_REVIEW"
+            }
+          ]
+        },
+        "epistemic_judgments": [
+          {
+            "id": "e1",
+            "claim": "Source constraint <= 40 records; transformation <= 50 records.",
+            "source_spans": [
+              {
+                "origin": "ORIGINAL_SOURCE",
+                "source_id": "R6-D01-source",
+                "source_hash": "ecf3d968679f0b6c0b071e8c3b01e7062fe250960d615a8d0dc9b087fe99a933",
+                "start": 29,
+                "end": 55,
+                "text": "no more than forty records"
+              }
+            ],
+            "transformation_spans": [
+              {
+                "origin": "ORIGINAL_SOURCE",
+                "source_id": "R6-D01-transformation",
+                "source_hash": "e693725faf9ff7609f08398cd055e3cfe0575d501c63f012c853ea74e5ab805b",
+                "start": 29,
+                "end": 55,
+                "text": "no more than fifty records"
+              }
+            ],
+            "source_standing": "ESTABLISHED_IN_SOURCE",
+            "transformation_assessment": "UNSUPPORTED_CHANGE_CANDIDATE",
+            "primary_verdict": "CHANGED_CANDIDATE",
+            "evidence_signals": [
+              "SCOPE_OR_QUANTITY_CHANGE"
+            ],
+            "reason": "Source constraint <= 40 records; transformation <= 50 records.",
+            "method": "LEXICAL_RULE_HEURISTIC",
+            "standing": "CANDIDATE_REQUIRES_REVIEW"
+          }
+        ],
+        "findings": [
+          {
+            "type": "CHANGED_CANDIDATE",
+            "distinction": "SCOPE_OR_QUANTITY_CHANGE",
+            "severity": "MATERIAL",
+            "source_spans": [
+              "no more than forty records"
+            ],
+            "transformation_spans": [
+              "no more than fifty records"
+            ],
+            "reason": "Source constraint <= 40 records; transformation <= 50 records.",
+            "confidence": "HIGH"
+          }
+        ],
+        "latency_ms": 1009.7270000000001
+      },
+      {
+        "id": "R6-D02",
+        "case_type": "CORRUPTION",
+        "corruption_class": "INCLUSIVE_EXCLUSIVE_BOUNDARY",
+        "expected_policy": "PRESERVE_SOURCE",
+        "actual_policy": "PRESERVE_SOURCE",
+        "policy_correct": true,
+        "policy_class": "CORRECT",
+        "detected": true,
+        "matched": [
+          {
+            "expected": {
+              "type": "CHANGED_CANDIDATE",
+              "distinction": "SCOPE_OR_QUANTITY_CHANGE",
+              "source_quote": "The queue accepts batches of no more than forty records.",
+              "transformation_quote": "The queue accepts batches of fewer than forty records.",
+              "severity": "MATERIAL"
+            },
+            "matched": true
+          }
+        ],
+        "material_findings": [
+          {
+            "type": "CHANGED_CANDIDATE",
+            "distinction": "SCOPE_OR_QUANTITY_CHANGE",
+            "severity": "MATERIAL",
+            "source_spans": [
+              "no more than forty records"
+            ],
+            "reason": "Source constraint <= 40 records; transformation < 40 records."
+          }
+        ],
+        "constraints": {
+          "source": [
+            {
+              "id": "sc1",
+              "kind": "COUNT",
+              "operator": "<=",
+              "value": 40,
+              "unit": "records",
+              "action": "the queue accepts batches of",
+              "source_spans": [
+                {
+                  "origin": "ORIGINAL_SOURCE",
+                  "source_id": "R6-D02-source",
+                  "source_hash": "4c58161736ca8e0d168500eb3d6239e035305c7a76e2c6c9243e14d46fe05887",
+                  "start": 29,
+                  "end": 55,
+                  "text": "no more than forty records"
+                }
+              ],
+              "transformation_spans": [],
+              "standing": "SOURCE_STATED",
+              "method": "LEXICAL_CONSTRAINT_HEURISTIC"
+            }
+          ],
+          "transformation": [
+            {
+              "id": "tc1",
+              "kind": "COUNT",
+              "operator": "<",
+              "value": 40,
+              "unit": "records",
+              "action": "the queue accepts batches of",
+              "source_spans": [],
+              "transformation_spans": [
+                {
+                  "origin": "ORIGINAL_SOURCE",
+                  "source_id": "R6-D02-transformation",
+                  "source_hash": "fbdf39da5afbdd9e40e7dc21f2914fe385d521e10e11413b9e2f09d587ff3fba",
+                  "start": 29,
+                  "end": 53,
+                  "text": "fewer than forty records"
+                }
+              ],
+              "standing": "TRANSFORMATION_STATED",
+              "method": "LEXICAL_CONSTRAINT_HEURISTIC"
+            }
+          ],
+          "comparisons": [
+            {
+              "id": "cc1",
+              "source_constraint": "sc1",
+              "transformation_constraint": "tc1",
+              "result": "CHANGED_CANDIDATE",
+              "distinction": "CONSTRAINT_CHANGE",
+              "reason": "Source constraint <= 40 records; transformation < 40 records.",
+              "standing": "CANDIDATE_REQUIRES_REVIEW"
+            }
+          ]
+        },
+        "epistemic_judgments": [
+          {
+            "id": "e1",
+            "claim": "Source constraint <= 40 records; transformation < 40 records.",
+            "source_spans": [
+              {
+                "origin": "ORIGINAL_SOURCE",
+                "source_id": "R6-D02-source",
+                "source_hash": "4c58161736ca8e0d168500eb3d6239e035305c7a76e2c6c9243e14d46fe05887",
+                "start": 29,
+                "end": 55,
+                "text": "no more than forty records"
+              }
+            ],
+            "transformation_spans": [
+              {
+                "origin": "ORIGINAL_SOURCE",
+                "source_id": "R6-D02-transformation",
+                "source_hash": "fbdf39da5afbdd9e40e7dc21f2914fe385d521e10e11413b9e2f09d587ff3fba",
+                "start": 29,
+                "end": 53,
+                "text": "fewer than forty records"
+              }
+            ],
+            "source_standing": "ESTABLISHED_IN_SOURCE",
+            "transformation_assessment": "UNSUPPORTED_CHANGE_CANDIDATE",
+            "primary_verdict": "CHANGED_CANDIDATE",
+            "evidence_signals": [
+              "SCOPE_OR_QUANTITY_CHANGE"
+            ],
+            "reason": "Source constraint <= 40 records; transformation < 40 records.",
+            "method": "LEXICAL_RULE_HEURISTIC",
+            "standing": "CANDIDATE_REQUIRES_REVIEW"
+          }
+        ],
+        "findings": [
+          {
+            "type": "CHANGED_CANDIDATE",
+            "distinction": "SCOPE_OR_QUANTITY_CHANGE",
+            "severity": "MATERIAL",
+            "source_spans": [
+              "no more than forty records"
+            ],
+            "transformation_spans": [
+              "fewer than forty records"
+            ],
+            "reason": "Source constraint <= 40 records; transformation < 40 records.",
+            "confidence": "HIGH"
+          }
+        ],
+        "latency_ms": 969.6093999999998
+      },
+      {
+        "id": "R6-D03",
+        "case_type": "CORRUPTION",
+        "corruption_class": "DURATION_THRESHOLD_CHANGE",
+        "expected_policy": "PRESERVE_SOURCE",
+        "actual_policy": "PRESERVE_SOURCE",
+        "policy_correct": true,
+        "policy_class": "CORRECT",
+        "detected": true,
+        "matched": [
+          {
+            "expected": {
+              "type": "CHANGED_CANDIDATE",
+              "distinction": "SCOPE_OR_QUANTITY_CHANGE",
+              "source_quote": "Paging is permitted after at least five continuous minutes above the threshold.",
+              "transformation_quote": "Paging is permitted after more than five continuous minutes above the threshold.",
+              "severity": "MATERIAL"
+            },
+            "matched": true
+          }
+        ],
+        "material_findings": [
+          {
+            "type": "CHANGED_CANDIDATE",
+            "distinction": "SCOPE_OR_QUANTITY_CHANGE",
+            "severity": "MATERIAL",
+            "source_spans": [
+              "at least five continuous minutes above"
+            ],
+            "reason": "Source constraint >= 5 minutes; transformation > 5 minutes."
+          }
+        ],
+        "constraints": {
+          "source": [
+            {
+              "id": "sc1",
+              "kind": "DURATION",
+              "operator": ">=",
+              "value": 5,
+              "unit": "minutes",
+              "action": "paging is permitted after",
+              "source_spans": [
+                {
+                  "origin": "ORIGINAL_SOURCE",
+                  "source_id": "R6-D03-source",
+                  "source_hash": "e04bc68fb7183b4f305bd0df668e24124f822d4f8242529967ff6f9ca009f466",
+                  "start": 26,
+                  "end": 64,
+                  "text": "at least five continuous minutes above"
+                }
+              ],
+              "transformation_spans": [],
+              "standing": "SOURCE_STATED",
+              "method": "LEXICAL_CONSTRAINT_HEURISTIC"
+            }
+          ],
+          "transformation": [
+            {
+              "id": "tc1",
+              "kind": "DURATION",
+              "operator": ">",
+              "value": 5,
+              "unit": "minutes",
+              "action": "paging is permitted after",
+              "source_spans": [],
+              "transformation_spans": [
+                {
+                  "origin": "ORIGINAL_SOURCE",
+                  "source_id": "R6-D03-transformation",
+                  "source_hash": "47566536af2bb1a76790df9edbe94b4322d4614203a68bd34eac4a4227f78d4a",
+                  "start": 26,
+                  "end": 65,
+                  "text": "more than five continuous minutes above"
+                }
+              ],
+              "standing": "TRANSFORMATION_STATED",
+              "method": "LEXICAL_CONSTRAINT_HEURISTIC"
+            }
+          ],
+          "comparisons": [
+            {
+              "id": "cc1",
+              "source_constraint": "sc1",
+              "transformation_constraint": "tc1",
+              "result": "CHANGED_CANDIDATE",
+              "distinction": "CONSTRAINT_CHANGE",
+              "reason": "Source constraint >= 5 minutes; transformation > 5 minutes.",
+              "standing": "CANDIDATE_REQUIRES_REVIEW"
+            }
+          ]
+        },
+        "epistemic_judgments": [
+          {
+            "id": "e1",
+            "claim": "Source constraint >= 5 minutes; transformation > 5 minutes.",
+            "source_spans": [
+              {
+                "origin": "ORIGINAL_SOURCE",
+                "source_id": "R6-D03-source",
+                "source_hash": "e04bc68fb7183b4f305bd0df668e24124f822d4f8242529967ff6f9ca009f466",
+                "start": 26,
+                "end": 64,
+                "text": "at least five continuous minutes above"
+              }
+            ],
+            "transformation_spans": [
+              {
+                "origin": "ORIGINAL_SOURCE",
+                "source_id": "R6-D03-transformation",
+                "source_hash": "47566536af2bb1a76790df9edbe94b4322d4614203a68bd34eac4a4227f78d4a",
+                "start": 26,
+                "end": 65,
+                "text": "more than five continuous minutes above"
+              }
+            ],
+            "source_standing": "ESTABLISHED_IN_SOURCE",
+            "transformation_assessment": "UNSUPPORTED_CHANGE_CANDIDATE",
+            "primary_verdict": "CHANGED_CANDIDATE",
+            "evidence_signals": [
+              "SCOPE_OR_QUANTITY_CHANGE"
+            ],
+            "reason": "Source constraint >= 5 minutes; transformation > 5 minutes.",
+            "method": "LEXICAL_RULE_HEURISTIC",
+            "standing": "CANDIDATE_REQUIRES_REVIEW"
+          }
+        ],
+        "findings": [
+          {
+            "type": "CHANGED_CANDIDATE",
+            "distinction": "SCOPE_OR_QUANTITY_CHANGE",
+            "severity": "MATERIAL",
+            "source_spans": [
+              "at least five continuous minutes above"
+            ],
+            "transformation_spans": [
+              "more than five continuous minutes above"
+            ],
+            "reason": "Source constraint >= 5 minutes; transformation > 5 minutes.",
+            "confidence": "HIGH"
+          }
+        ],
+        "latency_ms": 1016.0316000000003
+      },
+      {
+        "id": "R6-D04",
+        "case_type": "CORRUPTION",
+        "corruption_class": "MULTIPLE_CONSTRAINTS",
+        "expected_policy": "PRESERVE_SOURCE",
+        "actual_policy": "PRESERVE_SOURCE",
+        "policy_correct": true,
+        "policy_class": "CORRECT",
+        "detected": true,
+        "matched": [
+          {
+            "expected": {
+              "type": "CHANGED_CANDIDATE",
+              "distinction": "SCOPE_OR_QUANTITY_CHANGE",
+              "source_quote": "Paging is permitted after five minutes.",
+              "transformation_quote": "Paging is permitted after ten minutes.",
+              "severity": "MATERIAL"
+            },
+            "matched": true
+          }
+        ],
+        "material_findings": [
+          {
+            "type": "CHANGED_CANDIDATE",
+            "distinction": "SCOPE_OR_QUANTITY_CHANGE",
+            "severity": "MATERIAL",
+            "source_spans": [
+              "after five minutes"
+            ],
+            "reason": "Source constraint >= 5 minutes; transformation >= 10 minutes."
+          }
+        ],
+        "constraints": {
+          "source": [
+            {
+              "id": "sc1",
+              "kind": "DURATION",
+              "operator": ">=",
+              "value": 5,
+              "unit": "minutes",
+              "action": "paging is permitted",
+              "source_spans": [
+                {
+                  "origin": "ORIGINAL_SOURCE",
+                  "source_id": "R6-D04-source",
+                  "source_hash": "2a2fdddfb65f02abfaffa7a1302ef7a47a423742e9dd00ba379107a27239b99b",
+                  "start": 20,
+                  "end": 38,
+                  "text": "after five minutes"
+                }
+              ],
+              "transformation_spans": [],
+              "standing": "SOURCE_STATED",
+              "method": "LEXICAL_CONSTRAINT_HEURISTIC"
+            }
+          ],
+          "transformation": [
+            {
+              "id": "tc1",
+              "kind": "DURATION",
+              "operator": ">=",
+              "value": 10,
+              "unit": "minutes",
+              "action": "paging is permitted",
+              "source_spans": [],
+              "transformation_spans": [
+                {
+                  "origin": "ORIGINAL_SOURCE",
+                  "source_id": "R6-D04-transformation",
+                  "source_hash": "602773b77cbdd947f3fe74eff4f8f3849e04d9587b0ad9301ba5572927d59a57",
+                  "start": 20,
+                  "end": 37,
+                  "text": "after ten minutes"
+                }
+              ],
+              "standing": "TRANSFORMATION_STATED",
+              "method": "LEXICAL_CONSTRAINT_HEURISTIC"
+            }
+          ],
+          "comparisons": [
+            {
+              "id": "cc1",
+              "source_constraint": "sc1",
+              "transformation_constraint": "tc1",
+              "result": "CHANGED_CANDIDATE",
+              "distinction": "CONSTRAINT_CHANGE",
+              "reason": "Source constraint >= 5 minutes; transformation >= 10 minutes.",
+              "standing": "CANDIDATE_REQUIRES_REVIEW"
+            }
+          ]
+        },
+        "epistemic_judgments": [
+          {
+            "id": "e1",
+            "claim": "The obligated source meaning has a candidate counterpart in the transformation (alignment 1.60).",
+            "source_spans": [
+              {
+                "origin": "ORIGINAL_SOURCE",
+                "source_id": "R6-D04-source",
+                "source_hash": "2a2fdddfb65f02abfaffa7a1302ef7a47a423742e9dd00ba379107a27239b99b",
+                "start": 40,
+                "end": 78,
+                "text": "Restarting requires separate approval."
+              }
+            ],
+            "transformation_spans": [
+              {
+                "origin": "ORIGINAL_SOURCE",
+                "source_id": "R6-D04-transformation",
+                "source_hash": "602773b77cbdd947f3fe74eff4f8f3849e04d9587b0ad9301ba5572927d59a57",
+                "start": 39,
+                "end": 77,
+                "text": "Restarting requires separate approval."
+              }
+            ],
+            "source_standing": "ESTABLISHED_IN_SOURCE",
+            "transformation_assessment": "PRESERVATION_CANDIDATE",
+            "primary_verdict": "PRESERVED_CANDIDATE",
+            "evidence_signals": [
+              "PRESERVED"
+            ],
+            "reason": "The obligated source meaning has a candidate counterpart in the transformation (alignment 1.60).",
+            "method": "LEXICAL_RULE_HEURISTIC",
+            "standing": "CANDIDATE_REQUIRES_REVIEW"
+          },
+          {
+            "id": "e2",
+            "claim": "Source constraint >= 5 minutes; transformation >= 10 minutes.",
+            "source_spans": [
+              {
+                "origin": "ORIGINAL_SOURCE",
+                "source_id": "R6-D04-source",
+                "source_hash": "2a2fdddfb65f02abfaffa7a1302ef7a47a423742e9dd00ba379107a27239b99b",
+                "start": 20,
+                "end": 38,
+                "text": "after five minutes"
+              }
+            ],
+            "transformation_spans": [
+              {
+                "origin": "ORIGINAL_SOURCE",
+                "source_id": "R6-D04-transformation",
+                "source_hash": "602773b77cbdd947f3fe74eff4f8f3849e04d9587b0ad9301ba5572927d59a57",
+                "start": 20,
+                "end": 37,
+                "text": "after ten minutes"
+              }
+            ],
+            "source_standing": "ESTABLISHED_IN_SOURCE",
+            "transformation_assessment": "UNSUPPORTED_CHANGE_CANDIDATE",
+            "primary_verdict": "CHANGED_CANDIDATE",
+            "evidence_signals": [
+              "SCOPE_OR_QUANTITY_CHANGE"
+            ],
+            "reason": "Source constraint >= 5 minutes; transformation >= 10 minutes.",
+            "method": "LEXICAL_RULE_HEURISTIC",
+            "standing": "CANDIDATE_REQUIRES_REVIEW"
+          }
+        ],
+        "findings": [
+          {
+            "type": "PRESERVED_CANDIDATE",
+            "distinction": "PRESERVED",
+            "severity": "INFO",
+            "source_spans": [
+              "Restarting requires separate approval."
+            ],
+            "transformation_spans": [
+              "Restarting requires separate approval."
+            ],
+            "reason": "The obligated source meaning has a candidate counterpart in the transformation (alignment 1.60).",
+            "confidence": "HIGH"
+          },
+          {
+            "type": "CHANGED_CANDIDATE",
+            "distinction": "SCOPE_OR_QUANTITY_CHANGE",
+            "severity": "MATERIAL",
+            "source_spans": [
+              "after five minutes"
+            ],
+            "transformation_spans": [
+              "after ten minutes"
+            ],
+            "reason": "Source constraint >= 5 minutes; transformation >= 10 minutes.",
+            "confidence": "HIGH"
+          }
+        ],
+        "latency_ms": 1027.5736000000006
+      },
+      {
+        "id": "R6-D05",
+        "case_type": "FAITHFUL",
+        "corruption_class": null,
+        "expected_policy": "USE_TRANSFORMATION",
+        "actual_policy": "USE_TRANSFORMATION",
+        "policy_correct": true,
+        "policy_class": "CORRECT",
+        "detected": true,
+        "matched": [
+          {
+            "expected": {
+              "type": "PRESERVED_CANDIDATE",
+              "distinction": "PRESERVED",
+              "source_quote": "only if the ticket is open and the audit log remains intact",
+              "transformation_quote": "Provided the ticket stays open and the audit log is unaltered",
+              "severity": "INFO"
+            },
+            "matched": true
+          }
+        ],
+        "material_findings": [],
+        "constraints": {
+          "source": [],
+          "transformation": [],
+          "comparisons": []
+        },
+        "epistemic_judgments": [
+          {
+            "id": "e1",
+            "claim": "The obligated source meaning has a candidate counterpart in the transformation (alignment 1.07).",
+            "source_spans": [
+              {
+                "origin": "ORIGINAL_SOURCE",
+                "source_id": "R6-D05-source",
+                "source_hash": "e41b89a8a9ebaab588be0b2256e122ae411ea5f6d240c5acd0cab75d539dbcc1",
+                "start": 0,
+                "end": 93,
+                "text": "An operator may retrieve the key only if the ticket is open and the audit log remains intact."
+              }
+            ],
+            "transformation_spans": [
+              {
+                "origin": "ORIGINAL_SOURCE",
+                "source_id": "R6-D05-transformation",
+                "source_hash": "6d8d6751427c5201899ac13c9f0908478ac1f340f681840b76491784ec60e363",
+                "start": 63,
+                "end": 107,
+                "text": "the operator is allowed to retrieve the key."
+              }
+            ],
+            "source_standing": "ESTABLISHED_IN_SOURCE",
+            "transformation_assessment": "PRESERVATION_CANDIDATE",
+            "primary_verdict": "PRESERVED_CANDIDATE",
+            "evidence_signals": [
+              "PRESERVED"
+            ],
+            "reason": "The obligated source meaning has a candidate counterpart in the transformation (alignment 1.07).",
+            "method": "LEXICAL_RULE_HEURISTIC",
+            "standing": "CANDIDATE_REQUIRES_REVIEW"
+          }
+        ],
+        "findings": [
+          {
+            "type": "PRESERVED_CANDIDATE",
+            "distinction": "PRESERVED",
+            "severity": "INFO",
+            "source_spans": [
+              "An operator may retrieve the key only if the ticket is open and the audit log remains intact."
+            ],
+            "transformation_spans": [
+              "the operator is allowed to retrieve the key."
+            ],
+            "reason": "The obligated source meaning has a candidate counterpart in the transformation (alignment 1.07).",
+            "confidence": "HIGH"
+          }
+        ],
+        "latency_ms": 1019.3423999999995
+      },
+      {
+        "id": "R6-D06",
+        "case_type": "FAITHFUL",
+        "corruption_class": null,
+        "expected_policy": "USE_TRANSFORMATION",
+        "actual_policy": "USE_TRANSFORMATION",
+        "policy_correct": true,
+        "policy_class": "CORRECT",
+        "detected": true,
+        "matched": [
+          {
+            "expected": {
+              "type": "PRESERVED_CANDIDATE",
+              "distinction": "PRESERVED",
+              "source_quote": "The release requires an accepted security review and an approved ticket.",
+              "transformation_quote": "An approved ticket and an accepted security review are required.",
+              "severity": "INFO"
+            },
+            "matched": true
+          }
+        ],
+        "material_findings": [],
+        "constraints": {
+          "source": [],
+          "transformation": [],
+          "comparisons": []
+        },
+        "epistemic_judgments": [
+          {
+            "id": "e1",
+            "claim": "The obligated source meaning has a candidate counterpart in the transformation (alignment 1.51).",
+            "source_spans": [
+              {
+                "origin": "ORIGINAL_SOURCE",
+                "source_id": "R6-D06-source",
+                "source_hash": "56014ae1b75be322431bb3cc9aa80148cc5ecfa374593dff37dc10f1afe3b58f",
+                "start": 0,
+                "end": 72,
+                "text": "The release requires an accepted security review and an approved ticket."
+              }
+            ],
+            "transformation_spans": [
+              {
+                "origin": "ORIGINAL_SOURCE",
+                "source_id": "R6-D06-transformation",
+                "source_hash": "1ebcd4043ccad30f1db57c6a0e71edb5715f19330f1b92cb3d54c89d51902e35",
+                "start": 0,
+                "end": 64,
+                "text": "An approved ticket and an accepted security review are required."
+              }
+            ],
+            "source_standing": "ESTABLISHED_IN_SOURCE",
+            "transformation_assessment": "PRESERVATION_CANDIDATE",
+            "primary_verdict": "PRESERVED_CANDIDATE",
+            "evidence_signals": [
+              "PRESERVED"
+            ],
+            "reason": "The obligated source meaning has a candidate counterpart in the transformation (alignment 1.51).",
+            "method": "LEXICAL_RULE_HEURISTIC",
+            "standing": "CANDIDATE_REQUIRES_REVIEW"
+          }
+        ],
+        "findings": [
+          {
+            "type": "PRESERVED_CANDIDATE",
+            "distinction": "PRESERVED",
+            "severity": "INFO",
+            "source_spans": [
+              "The release requires an accepted security review and an approved ticket."
+            ],
+            "transformation_spans": [
+              "An approved ticket and an accepted security review are required."
+            ],
+            "reason": "The obligated source meaning has a candidate counterpart in the transformation (alignment 1.51).",
+            "confidence": "HIGH"
+          }
+        ],
+        "latency_ms": 1039.7864000000009
+      },
+      {
+        "id": "R6-D07",
+        "case_type": "FAITHFUL",
+        "corruption_class": null,
+        "expected_policy": "USE_TRANSFORMATION",
+        "actual_policy": "USE_TRANSFORMATION",
+        "policy_correct": true,
+        "policy_class": "CORRECT",
+        "detected": true,
+        "matched": [
+          {
+            "expected": {
+              "type": "PRESERVED_CANDIDATE",
+              "distinction": "PRESERVED",
+              "source_quote": "The investigation says the cause has not been verified.",
+              "transformation_quote": "the investigation has not verified the cause",
+              "severity": "INFO"
+            },
+            "matched": true
+          }
+        ],
+        "material_findings": [],
+        "constraints": {
+          "source": [],
+          "transformation": [],
+          "comparisons": []
+        },
+        "epistemic_judgments": [
+          {
+            "id": "e1",
+            "claim": "The obligated source meaning has a candidate counterpart in the transformation (alignment 1.48).",
+            "source_spans": [
+              {
+                "origin": "ORIGINAL_SOURCE",
+                "source_id": "R6-D07-source",
+                "source_hash": "0af57e3979403f11dacbfba1ed52b7ce020575d0d1aba122ad3ef1e93a0af7d6",
+                "start": 37,
+                "end": 92,
+                "text": "The investigation says the cause has not been verified."
+              }
+            ],
+            "transformation_spans": [
+              {
+                "origin": "ORIGINAL_SOURCE",
+                "source_id": "R6-D07-transformation",
+                "source_hash": "fa7c93cd4b59fc1f1624f3e90efdeb2e3b42f2b214a0ea6c246d255f75e20edc",
+                "start": 37,
+                "end": 82,
+                "text": "the investigation has not verified the cause."
+              }
+            ],
+            "source_standing": "ESTABLISHED_IN_SOURCE",
+            "transformation_assessment": "PRESERVATION_CANDIDATE",
+            "primary_verdict": "PRESERVED_CANDIDATE",
+            "evidence_signals": [
+              "PRESERVED"
+            ],
+            "reason": "The obligated source meaning has a candidate counterpart in the transformation (alignment 1.48).",
+            "method": "LEXICAL_RULE_HEURISTIC",
+            "standing": "CANDIDATE_REQUIRES_REVIEW"
+          }
+        ],
+        "findings": [
+          {
+            "type": "PRESERVED_CANDIDATE",
+            "distinction": "PRESERVED",
+            "severity": "INFO",
+            "source_spans": [
+              "The investigation says the cause has not been verified."
+            ],
+            "transformation_spans": [
+              "the investigation has not verified the cause."
+            ],
+            "reason": "The obligated source meaning has a candidate counterpart in the transformation (alignment 1.48).",
+            "confidence": "HIGH"
+          }
+        ],
+        "latency_ms": 1085.0356999999985
+      },
+      {
+        "id": "R6-D08",
+        "case_type": "FAITHFUL",
+        "corruption_class": null,
+        "expected_policy": "USE_TRANSFORMATION",
+        "actual_policy": "USE_TRANSFORMATION",
+        "policy_correct": true,
+        "policy_class": "CORRECT",
+        "detected": true,
+        "matched": [
+          {
+            "expected": {
+              "type": "PRESERVED_CANDIDATE",
+              "distinction": "PRESERVED",
+              "source_quote": "It must keep the audit log intact.",
+              "transformation_quote": "must keep the audit log intact",
+              "severity": "INFO"
+            },
+            "matched": true
+          }
+        ],
+        "material_findings": [],
+        "constraints": {
+          "source": [],
+          "transformation": [],
+          "comparisons": []
+        },
+        "epistemic_judgments": [
+          {
+            "id": "e1",
+            "claim": "The obligated source meaning has a candidate counterpart in the transformation (alignment 1.60).",
+            "source_spans": [
+              {
+                "origin": "ORIGINAL_SOURCE",
+                "source_id": "R6-D08-source",
+                "source_hash": "b99bf763d161c29716293ac7eddaa4d45d125f1f0f78b77fe9cc368d51430158",
+                "start": 44,
+                "end": 78,
+                "text": "It must keep the audit log intact."
+              }
+            ],
+            "transformation_spans": [
+              {
+                "origin": "ORIGINAL_SOURCE",
+                "source_id": "R6-D08-transformation",
+                "source_hash": "22493dd4cfc51befd8365d116480fe821908862a7d0bc75adf9f8640496c2f9c",
+                "start": 47,
+                "end": 78,
+                "text": "must keep the audit log intact."
+              }
+            ],
+            "source_standing": "ESTABLISHED_IN_SOURCE",
+            "transformation_assessment": "PRESERVATION_CANDIDATE",
+            "primary_verdict": "PRESERVED_CANDIDATE",
+            "evidence_signals": [
+              "PRESERVED"
+            ],
+            "reason": "The obligated source meaning has a candidate counterpart in the transformation (alignment 1.60).",
+            "method": "LEXICAL_RULE_HEURISTIC",
+            "standing": "CANDIDATE_REQUIRES_REVIEW"
+          }
+        ],
+        "findings": [
+          {
+            "type": "PRESERVED_CANDIDATE",
+            "distinction": "PRESERVED",
+            "severity": "INFO",
+            "source_spans": [
+              "It must keep the audit log intact."
+            ],
+            "transformation_spans": [
+              "must keep the audit log intact."
+            ],
+            "reason": "The obligated source meaning has a candidate counterpart in the transformation (alignment 1.60).",
+            "confidence": "HIGH"
+          }
+        ],
+        "latency_ms": 939.6810999999998
+      },
+      {
+        "id": "R6-D09",
+        "case_type": "AMBIGUITY",
+        "corruption_class": null,
+        "expected_policy": "REQUEST_CLARIFICATION",
+        "actual_policy": "REQUEST_CLARIFICATION",
+        "policy_correct": true,
+        "policy_class": "CORRECT",
+        "detected": true,
+        "matched": [
+          {
+            "expected": {
+              "type": "UNRESOLVED",
+              "distinction": "SOURCE_AMBIGUITY",
+              "source_quote": "The privacy team has not decided whether vendor replication is authorised.",
+              "transformation_quote": "It remains unclear whether vendor replication is authorised.",
+              "severity": "MINOR"
+            },
+            "matched": true
+          }
+        ],
+        "material_findings": [],
+        "constraints": {
+          "source": [],
+          "transformation": [],
+          "comparisons": []
+        },
+        "epistemic_judgments": [
+          {
+            "id": "e1",
+            "claim": "It remains unclear whether vendor replication is authorised.",
+            "source_spans": [
+              {
+                "origin": "ORIGINAL_SOURCE",
+                "source_id": "R6-D09-source",
+                "source_hash": "52309291d1ea7e5bcd63609a902f906b40101e9acca4bbf8b121d25680933a0f",
+                "start": 0,
+                "end": 74,
+                "text": "The privacy team has not decided whether vendor replication is authorised."
+              }
+            ],
+            "transformation_spans": [
+              {
+                "origin": "ORIGINAL_SOURCE",
+                "source_id": "R6-D09-transformation",
+                "source_hash": "0adfe7399afc88449601047d2e393898de068fcfc307ef79e195ad98af6053c1",
+                "start": 0,
+                "end": 60,
+                "text": "It remains unclear whether vendor replication is authorised."
+              }
+            ],
+            "source_standing": "UNRESOLVED_IN_SOURCE",
+            "transformation_assessment": "PRESERVATION_CANDIDATE",
+            "primary_verdict": "UNRESOLVED",
+            "evidence_signals": [
+              "TRANSFORMATION_UNCERTAINTY",
+              "SOURCE_UNRESOLVED:The privacy team has not decided whether vendor replication is authorised."
+            ],
+            "reason": "The source leaves the relevant condition or reference unresolved; the transformation preserves that uncertainty.",
+            "method": "LEXICAL_RULE_HEURISTIC",
+            "standing": "CANDIDATE_REQUIRES_REVIEW"
+          }
+        ],
+        "findings": [
+          {
+            "type": "UNRESOLVED",
+            "distinction": "SOURCE_AMBIGUITY",
+            "severity": "MINOR",
+            "source_spans": [
+              "The privacy team has not decided whether vendor replication is authorised."
+            ],
+            "transformation_spans": [
+              "It remains unclear whether vendor replication is authorised."
+            ],
+            "reason": "The uncertainty in “It remains unclear whether vendor replication is authorised.” is grounded in the source: The privacy team has not decided whether vendor replication is authorised..",
+            "confidence": "MEDIUM"
+          }
+        ],
+        "latency_ms": 946.2076000000015
+      },
+      {
+        "id": "R6-D10",
+        "case_type": "AMBIGUITY",
+        "corruption_class": null,
+        "expected_policy": "REQUEST_CLARIFICATION",
+        "actual_policy": "PRESERVE_SOURCE",
+        "policy_correct": false,
+        "policy_class": "FALSE_REJECTION",
+        "detected": true,
+        "matched": [
+          {
+            "expected": {
+              "type": "UNRESOLVED",
+              "distinction": "SOURCE_AMBIGUITY",
+              "source_quote": "It is unclear whether 18:00 is the request timestamp or only the recording time.",
+              "transformation_quote": "It is unclear whether the request was timestamped after 17:00",
+              "severity": "MINOR"
+            },
+            "matched": true
+          }
+        ],
+        "material_findings": [
+          {
+            "type": "UNSUPPORTED_ADDITION_CANDIDATE",
+            "distinction": "UNSUPPORTED_CAUSAL",
+            "severity": "MATERIAL",
+            "source_spans": [
+              "It is unclear whether 18:00 is the request timestamp or only the recording time."
+            ],
+            "reason": "The transformation asserts a causal relation in “because 18:00 may be the recording time.”; the source evidence concerning the cause does not establish that relation."
+          }
+        ],
+        "constraints": {
+          "source": [
+            {
+              "id": "sc1",
+              "kind": "TIME",
+              "operator": "AFTER",
+              "value": 17,
+              "unit": "time",
+              "action": "requests timestamped",
+              "source_spans": [
+                {
+                  "origin": "ORIGINAL_SOURCE",
+                  "source_id": "R6-D10-source",
+                  "source_hash": "7a13a187ef30b75c856375ba9f3c5e159d04729b73df7afe474f291e56dec516",
+                  "start": 21,
+                  "end": 32,
+                  "text": "after 17:00"
+                }
+              ],
+              "transformation_spans": [],
+              "standing": "SOURCE_STATED",
+              "method": "LEXICAL_CONSTRAINT_HEURISTIC"
+            }
+          ],
+          "transformation": [
+            {
+              "id": "tc1",
+              "kind": "TIME",
+              "operator": "AFTER",
+              "value": 17,
+              "unit": "time",
+              "action": "it is unclear whether the request was timestamped",
+              "source_spans": [],
+              "transformation_spans": [
+                {
+                  "origin": "ORIGINAL_SOURCE",
+                  "source_id": "R6-D10-transformation",
+                  "source_hash": "7b2c9526d82e512457a8b1a79f7efb23395e19dc5d7c7ec318b94b6573f0ca9a",
+                  "start": 50,
+                  "end": 61,
+                  "text": "after 17:00"
+                }
+              ],
+              "standing": "TRANSFORMATION_STATED",
+              "method": "LEXICAL_CONSTRAINT_HEURISTIC"
+            }
+          ],
+          "comparisons": [
+            {
+              "id": "cc1",
+              "source_constraint": "sc1",
+              "transformation_constraint": "tc1",
+              "result": "PRESERVED_CANDIDATE",
+              "distinction": "CONSTRAINT_PRESERVED",
+              "reason": "Source constraint AFTER 17 time; transformation AFTER 17 time.",
+              "standing": "CANDIDATE_REQUIRES_REVIEW"
+            }
+          ]
+        },
+        "epistemic_judgments": [
+          {
+            "id": "e1",
+            "claim": "It is unclear whether the request was timestamped after 17:00, because 18:00 may be the recording time.",
+            "source_spans": [
+              {
+                "origin": "ORIGINAL_SOURCE",
+                "source_id": "R6-D10-source",
+                "source_hash": "7a13a187ef30b75c856375ba9f3c5e159d04729b73df7afe474f291e56dec516",
+                "start": 102,
+                "end": 182,
+                "text": "It is unclear whether 18:00 is the request timestamp or only the recording time."
+              }
+            ],
+            "transformation_spans": [
+              {
+                "origin": "ORIGINAL_SOURCE",
+                "source_id": "R6-D10-transformation",
+                "source_hash": "7b2c9526d82e512457a8b1a79f7efb23395e19dc5d7c7ec318b94b6573f0ca9a",
+                "start": 0,
+                "end": 103,
+                "text": "It is unclear whether the request was timestamped after 17:00, because 18:00 may be the recording time."
+              }
+            ],
+            "source_standing": "UNRESOLVED_IN_SOURCE",
+            "transformation_assessment": "PRESERVATION_CANDIDATE",
+            "primary_verdict": "UNRESOLVED",
+            "evidence_signals": [
+              "TRANSFORMATION_UNCERTAINTY",
+              "SOURCE_UNRESOLVED:It is unclear whether 18:00 is the request timestamp or only the recording time."
+            ],
+            "reason": "The source leaves the relevant condition or reference unresolved; the transformation preserves that uncertainty.",
+            "method": "LEXICAL_RULE_HEURISTIC",
+            "standing": "CANDIDATE_REQUIRES_REVIEW"
+          },
+          {
+            "id": "e2",
+            "claim": "The transformation asserts a causal relation in “because 18:00 may be the recording time.”; the source evidence concerning the cause does not establish that relation.",
+            "source_spans": [
+              {
+                "origin": "ORIGINAL_SOURCE",
+                "source_id": "R6-D10-source",
+                "source_hash": "7a13a187ef30b75c856375ba9f3c5e159d04729b73df7afe474f291e56dec516",
+                "start": 102,
+                "end": 182,
+                "text": "It is unclear whether 18:00 is the request timestamp or only the recording time."
+              }
+            ],
+            "transformation_spans": [
+              {
+                "origin": "ORIGINAL_SOURCE",
+                "source_id": "R6-D10-transformation",
+                "source_hash": "7b2c9526d82e512457a8b1a79f7efb23395e19dc5d7c7ec318b94b6573f0ca9a",
+                "start": 63,
+                "end": 103,
+                "text": "because 18:00 may be the recording time."
+              }
+            ],
+            "source_standing": "NOT_ADDRESSED",
+            "transformation_assessment": "UNSUPPORTED_CHANGE_CANDIDATE",
+            "primary_verdict": "UNSUPPORTED_ADDITION_CANDIDATE",
+            "evidence_signals": [
+              "UNSUPPORTED_CAUSAL"
+            ],
+            "reason": "The transformation asserts a causal relation in “because 18:00 may be the recording time.”; the source evidence concerning the cause does not establish that relation.",
+            "method": "LEXICAL_RULE_HEURISTIC",
+            "standing": "CANDIDATE_REQUIRES_REVIEW"
+          }
+        ],
+        "findings": [
+          {
+            "type": "UNSUPPORTED_ADDITION_CANDIDATE",
+            "distinction": "UNSUPPORTED_CAUSAL",
+            "severity": "MATERIAL",
+            "source_spans": [
+              "It is unclear whether 18:00 is the request timestamp or only the recording time."
+            ],
+            "transformation_spans": [
+              "because 18:00 may be the recording time."
+            ],
+            "reason": "The transformation asserts a causal relation in “because 18:00 may be the recording time.”; the source evidence concerning the cause does not establish that relation.",
+            "confidence": "MEDIUM"
+          },
+          {
+            "type": "UNRESOLVED",
+            "distinction": "SOURCE_AMBIGUITY",
+            "severity": "MINOR",
+            "source_spans": [
+              "It is unclear whether 18:00 is the request timestamp or only the recording time."
+            ],
+            "transformation_spans": [
+              "It is unclear whether the request was timestamped after 17:00, because 18:00 may be the recording time."
+            ],
+            "reason": "The uncertainty in “It is unclear whether the request was timestamped after 17:00, because 18:00 may be the recording time.” is grounded in the source: It is unclear whether 18:00 is the request timestamp or only the recording time..",
+            "confidence": "MEDIUM"
+          }
+        ],
+        "latency_ms": 939.2139000000025
+      },
+      {
+        "id": "R6-D11",
+        "case_type": "AMBIGUITY",
+        "corruption_class": null,
+        "expected_policy": "REQUEST_CLARIFICATION",
+        "actual_policy": "REQUEST_CLARIFICATION",
+        "policy_correct": true,
+        "policy_class": "CORRECT",
+        "detected": true,
+        "matched": [
+          {
+            "expected": {
+              "type": "UNRESOLVED",
+              "distinction": "SOURCE_AMBIGUITY",
+              "source_quote": "The policy requires a signed known-good image.",
+              "transformation_quote": "It is unclear whether the image is known-good",
+              "severity": "MINOR"
+            },
+            "matched": true
+          }
+        ],
+        "material_findings": [],
+        "constraints": {
+          "source": [],
+          "transformation": [],
+          "comparisons": []
+        },
+        "epistemic_judgments": [
+          {
+            "id": "e1",
+            "claim": "It is unclear whether the image is known-good despite the verified signature.",
+            "source_spans": [
+              {
+                "origin": "ORIGINAL_SOURCE",
+                "source_id": "R6-D11-source",
+                "source_hash": "38f3b101c664e7de4ca606ba84a26323d35e50ee8fd213da3867b9f251873316",
+                "start": 34,
+                "end": 80,
+                "text": "The policy requires a signed known-good image."
+              }
+            ],
+            "transformation_spans": [
+              {
+                "origin": "ORIGINAL_SOURCE",
+                "source_id": "R6-D11-transformation",
+                "source_hash": "d4b39418c82f5309c95f3881ed0f1670b19beec7a0b10c02305093517c864f3f",
+                "start": 0,
+                "end": 77,
+                "text": "It is unclear whether the image is known-good despite the verified signature."
+              }
+            ],
+            "source_standing": "UNRESOLVED_IN_SOURCE",
+            "transformation_assessment": "PRESERVATION_CANDIDATE",
+            "primary_verdict": "UNRESOLVED",
+            "evidence_signals": [
+              "TRANSFORMATION_UNCERTAINTY",
+              "SOURCE_UNRESOLVED:a signed known-good image"
+            ],
+            "reason": "The source leaves the relevant condition or reference unresolved; the transformation preserves that uncertainty.",
+            "method": "LEXICAL_RULE_HEURISTIC",
+            "standing": "CANDIDATE_REQUIRES_REVIEW"
+          }
+        ],
+        "findings": [
+          {
+            "type": "UNRESOLVED",
+            "distinction": "SOURCE_AMBIGUITY",
+            "severity": "MINOR",
+            "source_spans": [
+              "The policy requires a signed known-good image."
+            ],
+            "transformation_spans": [
+              "It is unclear whether the image is known-good despite the verified signature."
+            ],
+            "reason": "The uncertainty in “It is unclear whether the image is known-good despite the verified signature.” is grounded in the source: a signed known-good image.",
+            "confidence": "MEDIUM"
+          }
+        ],
+        "latency_ms": 925.1847999999991
+      },
+      {
+        "id": "R6-D12",
+        "case_type": "CORRUPTION",
+        "corruption_class": "MANUFACTURED_UNCERTAINTY",
+        "expected_policy": "PRESERVE_SOURCE",
+        "actual_policy": "PRESERVE_SOURCE",
+        "policy_correct": true,
+        "policy_class": "CORRECT",
+        "detected": true,
+        "matched": [
+          {
+            "expected": {
+              "type": "UNSUPPORTED_ADDITION_CANDIDATE",
+              "distinction": "UNSUPPORTED_UNCERTAINTY",
+              "source_quote": "Paging is permitted.",
+              "transformation_quote": "It is unclear whether paging is permitted.",
+              "severity": "MATERIAL"
+            },
+            "matched": true
+          }
+        ],
+        "material_findings": [
+          {
+            "type": "UNSUPPORTED_ADDITION_CANDIDATE",
+            "distinction": "UNSUPPORTED_UNCERTAINTY",
+            "severity": "MATERIAL",
+            "source_spans": [
+              "Paging is permitted."
+            ],
+            "reason": "The transformation adds uncertainty in “It is unclear whether paging is permitted.” despite a source claim that is stated without an unresolved condition. The relevant source claim is stated without a hedge or unresolved condition."
+          }
+        ],
+        "constraints": {
+          "source": [],
+          "transformation": [],
+          "comparisons": []
+        },
+        "epistemic_judgments": [
+          {
+            "id": "e1",
+            "claim": "It is unclear whether paging is permitted.",
+            "source_spans": [
+              {
+                "origin": "ORIGINAL_SOURCE",
+                "source_id": "R6-D12-source",
+                "source_hash": "80fe4532eb00108cd934e5b0238fdccae478a778911ed0b8d6e6b9a5123d68fd",
+                "start": 0,
+                "end": 20,
+                "text": "Paging is permitted."
+              }
+            ],
+            "transformation_spans": [
+              {
+                "origin": "ORIGINAL_SOURCE",
+                "source_id": "R6-D12-transformation",
+                "source_hash": "c8ec822251d95f0b24429ffb7f762860f7af99ea488884728c05b3f144b34f7f",
+                "start": 0,
+                "end": 42,
+                "text": "It is unclear whether paging is permitted."
+              }
+            ],
+            "source_standing": "ESTABLISHED_IN_SOURCE",
+            "transformation_assessment": "UNSUPPORTED_CHANGE_CANDIDATE",
+            "primary_verdict": "UNSUPPORTED_ADDITION_CANDIDATE",
+            "evidence_signals": [
+              "TRANSFORMATION_UNCERTAINTY"
+            ],
+            "reason": "The source states the relevant matter without an unresolved condition; the transformation adds uncertainty.",
+            "method": "LEXICAL_RULE_HEURISTIC",
+            "standing": "CANDIDATE_REQUIRES_REVIEW"
+          }
+        ],
+        "findings": [
+          {
+            "type": "UNSUPPORTED_ADDITION_CANDIDATE",
+            "distinction": "UNSUPPORTED_UNCERTAINTY",
+            "severity": "MATERIAL",
+            "source_spans": [
+              "Paging is permitted."
+            ],
+            "transformation_spans": [
+              "It is unclear whether paging is permitted."
+            ],
+            "reason": "The transformation adds uncertainty in “It is unclear whether paging is permitted.” despite a source claim that is stated without an unresolved condition. The relevant source claim is stated without a hedge or unresolved condition.",
+            "confidence": "MEDIUM"
+          }
+        ],
+        "latency_ms": 878.8965000000026
+      }
+    ]
+  },
+  "paired": [
+    {
+      "id": "R6-D01",
+      "old_detected": false,
+      "new_detected": true,
+      "old_policy": "FALSE_ACCEPT",
+      "new_policy": "CORRECT",
+      "changed": true
+    },
+    {
+      "id": "R6-D02",
+      "old_detected": false,
+      "new_detected": true,
+      "old_policy": "FALSE_ACCEPT",
+      "new_policy": "CORRECT",
+      "changed": true
+    },
+    {
+      "id": "R6-D03",
+      "old_detected": false,
+      "new_detected": true,
+      "old_policy": "FALSE_ACCEPT",
+      "new_policy": "CORRECT",
+      "changed": true
+    },
+    {
+      "id": "R6-D04",
+      "old_detected": false,
+      "new_detected": true,
+      "old_policy": "FALSE_ACCEPT",
+      "new_policy": "CORRECT",
+      "changed": true
+    },
+    {
+      "id": "R6-D05",
+      "old_detected": true,
+      "new_detected": true,
+      "old_policy": "CORRECT",
+      "new_policy": "CORRECT",
+      "changed": false
+    },
+    {
+      "id": "R6-D06",
+      "old_detected": true,
+      "new_detected": true,
+      "old_policy": "CORRECT",
+      "new_policy": "CORRECT",
+      "changed": false
+    },
+    {
+      "id": "R6-D07",
+      "old_detected": true,
+      "new_detected": true,
+      "old_policy": "CORRECT",
+      "new_policy": "CORRECT",
+      "changed": false
+    },
+    {
+      "id": "R6-D08",
+      "old_detected": false,
+      "new_detected": true,
+      "old_policy": "FALSE_REJECTION",
+      "new_policy": "CORRECT",
+      "changed": true
+    },
+    {
+      "id": "R6-D09",
+      "old_detected": true,
+      "new_detected": true,
+      "old_policy": "CORRECT",
+      "new_policy": "CORRECT",
+      "changed": false
+    },
+    {
+      "id": "R6-D10",
+      "old_detected": true,
+      "new_detected": true,
+      "old_policy": "CORRECT",
+      "new_policy": "FALSE_REJECTION",
+      "changed": true
+    },
+    {
+      "id": "R6-D11",
+      "old_detected": true,
+      "new_detected": true,
+      "old_policy": "CORRECT",
+      "new_policy": "CORRECT",
+      "changed": false
+    },
+    {
+      "id": "R6-D12",
+      "old_detected": true,
+      "new_detected": true,
+      "old_policy": "CORRECT",
+      "new_policy": "CORRECT",
+      "changed": false
+    }
+  ]
+}

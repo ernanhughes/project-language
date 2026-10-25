@@ -1,0 +1,77 @@
+(node:30764) ExperimentalWarning: Transform Types is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+✔ paired development paths preserve source, tasks, fresh recipients and withheld questions (131.5013ms)
+✔ replay preserves captured comparison without regeneration or implicit authorization (69.9399ms)
+✔ candidate agreement does not create semantic adjudication; manual assessments remain distinct (52.8282ms)
+✔ unapproved remote mode cannot consume calls or autoaccept (2.0407ms)
+✔ real path stops for exact human review; both receive same clarification; unchanged approval reused (16.8199ms)
+✔ partial failure preserved without retry or output repair (15.5626ms)
+✔ independent evaluation cannot be represented by the exposed development suite (0.8584ms)
+✔ saving identical settings/roles preserves approval; material change revokes it (1.4246ms)
+✔ paired requests traverse actual Pi adapters offline with separate sessions and identical questions (1574.7882ms)
+✔ switching to manual workflow requires its own explicit approval and preserves comparison state (10.8729ms)
+(node:50660) ExperimentalWarning: Transform Types is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+✔ guided start runs interpreter/challenger once; human approval finishes only recipient (1858.7295ms)
+✔ expired remote approval never restored by guided resume; no prior role repeated (23.734ms)
+(node:14008) ExperimentalWarning: Transform Types is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+✔ historical-size SSE exceeds old cap but passes bounded 1 MiB; exact boundary enforced (1100.7616ms)
+✔ only configured response-byte ceiling changes from LC-01R; reservations/tokens/retries unchanged (5.7531ms)
+✔ fresh task is source-bound, locks original inputs and binds the displayed remote plan (7.1479ms)
+✔ model/settings changes revoke approval; no real-operator acceptance is created by a model (39.5429ms)
+✔ custom task recipient packet excludes transcript/rejected proposal/question/reference; replay stays captured (526.1825ms)
+✔ accepted content digest is checked before communication and cannot be silently edited (8.0745ms)
+✔ prospective startup hash mismatch stops before listening; injected credential availability does not change plan identity (23.0111ms)
+(node:28860) ExperimentalWarning: Transform Types is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+✔ all four scoped IDs resolve with required families; no network or private credential store (27.8563ms)
+✔ installed Pi serializes deepseek-v4.1-flash via openai-completions (1041.626ms)
+✔ installed Pi serializes gpt-6-luna via openai-responses (37.2473ms)
+✔ installed Pi serializes qwen3.8-flash via anthropic-messages (744.3683ms)
+✔ installed Pi serializes claude-haiku-5-5 via anthropic-messages (3.701ms)
+✔ launcher, plan, service confirmation, credential and budget gates precede dispatch (11.0881ms)
+✔ OpenCode workflow through actual three-family adapters remains isolated and human-gated (33.6784ms)
+✔ recorded failed length attempt never fabricates state or retries (10.2888ms)
+✔ recorded failed incomplete attempt never fabricates state or retries (10.832ms)
+✔ recorded failed http429 attempt never fabricates state or retries (10.6627ms)
+✔ recorded failed http500 attempt never fabricates state or retries (11.2416ms)
+✔ recorded failed timeout attempt never fabricates state or retries (29.6631ms)
+✔ recorded failed malformed attempt never fabricates state or retries (10.024ms)
+✔ recorded failed schema attempt never fabricates state or retries (7.8672ms)
+✔ manual development retries preserve distinct requests and respect cap; replay never reauthorizes (135.172ms)
+✔ missing optional Haiku does not block core roles, evaluation remains explicitly unavailable (7.9101ms)
+✔ redaction handles nested keys, bearer strings and echoed raw response without exposing secret (0.1491ms)
+✔ wire input and response bounds reject precisely without retry or state (13.4211ms)
+✔ Console endpoint and non-Go provider are refused; no fallback (1.7864ms)
+(node:36652) ExperimentalWarning: Transform Types is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+✔ new direct profile retains four models in five roles, 16K caps and finite generous limits (9.4775ms)
+✔ direct mode makes calls only on explicit start, still requires exact semantic acceptance (1851.2966ms)
+✔ direct execution retains key, offline switch, request cap and no retry checks (7.184ms)
+✔ settings persist separately, reject credentials, and never reset request accounting (65.1114ms)
+✔ settings caps are finite and at least 16K; frozen legacy profile is not rewritten (2.1473ms)
+✔ new finite stream cap accepts SSE overhead above the old 1 MiB limit (16.7812ms)
+(node:3804) ExperimentalWarning: Transform Types is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+✔ strict protocol, source/hash/span/origin and inferred/source standing (14.701ms)
+✔ contradiction is explicit review state; unresolved information never grants authority (18.9723ms)
+✔ challenge cannot accept; missing qualification remains visible; human acceptance exact version and scope (24.2919ms)
+✔ rejection blocks communication; no implicit negotiation (20.0349ms)
+✔ sender isolation, sealing, parity, context denial and fresh recipient (30.1232ms)
+✔ append-only persisted replay and integrity rejection (94.2982ms)
+✔ local registry, role rotation, exact no-history request and usage (11.3788ms)
+✔ provider timeout records failure with no retry/fallback (1.1491ms)
+✔ provider truncation records failure with no retry/fallback (1.0055ms)
+✔ provider malformed records failure with no retry/fallback (0.9508ms)
+✔ provider http records failure with no retry/fallback (0.8866ms)
+✔ full application HTTP end to end, export and restart without regeneration (162.0414ms)
+✔ intent evolution retains original expression and invalidates acceptance (11.2242ms)
+ℹ tests 57
+ℹ suites 0
+ℹ pass 57
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 6310.2184

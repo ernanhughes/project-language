@@ -1,0 +1,3157 @@
+{
+  "case_id": "R1E-04",
+  "split": "fresh_evaluation",
+  "arm": "A_SOURCE_ONLY",
+  "result": {
+    "arm": "A_SOURCE_ONLY",
+    "origin": "HOSTED_OPENCODE_GO",
+    "status": "VALID",
+    "semantic_quality": "NOT_ASSESSED",
+    "output": {
+      "decision": "SOURCE_CONFLICT",
+      "explanation": "The source contains two contradictory provisions regarding the deletion of expired drafts by the archivist. Section 4.2 first states that the archivist 'may delete expired drafts after the retention review,' implying permission. Immediately after, it states that the archivist 'must not delete any expired draft,' implying a prohibition. The text explicitly notes that there is 'no precedence rule' provided in the excerpt to resolve this conflict. Therefore, the status of deleting expired drafts cannot be determined as definitively permitted or prohibited based on the supplied source.",
+      "citations": [
+        {
+          "origin": "ORIGINAL_SOURCE",
+          "source_id": "R1E-04-source-v1",
+          "source_hash": "4a14f45bbeedc4fe9d8d9ed4ec7be05013fbe4699def90c8814bd323b3e17020",
+          "start": 0,
+          "end": 219,
+          "text": "Section 4.2 says the archivist may delete expired drafts after the retention review. Section 4.2, with the same effective date, says the archivist must not delete any expired draft. The excerpt gives no precedence rule."
+        }
+      ]
+    },
+    "mechanical": {
+      "schema": "PASS",
+      "source_binding": "PASS",
+      "citation_resolution": [
+        "EXACT"
+      ],
+      "host_repaired_hashes": 0
+    }
+  },
+  "source": {
+    "id": "R1E-04-source-v1",
+    "text": "Section 4.2 says the archivist may delete expired drafts after the retention review. Section 4.2, with the same effective date, says the archivist must not delete any expired draft. The excerpt gives no precedence rule.",
+    "hash": "4a14f45bbeedc4fe9d8d9ed4ec7be05013fbe4699def90c8814bd323b3e17020"
+  },
+  "question": {
+    "id": "R1E-04-question-v1",
+    "text": "What is the status of deleting expired drafts after the retention review under the excerpt?",
+    "scope": "SOURCE_RELATIVE"
+  },
+  "packet": {
+    "schema": "language-delivery/0.1",
+    "purpose": "Faithful communication to a fresh recipient",
+    "audience": "Independent reader",
+    "contract_version": "lc02-r1/source-relative/1",
+    "answer_scope": "SOURCE_RELATIVE",
+    "source_truth": "UNVERIFIED",
+    "source_truth_scope": "EXTERNAL_FACTUAL_VERIFICATION_ONLY",
+    "interpretation_standing": "FALLIBLE_AID_NOT_SOURCE",
+    "action_authority": false,
+    "source": {
+      "id": "R1E-04-source-v1",
+      "text": "Section 4.2 says the archivist may delete expired drafts after the retention review. Section 4.2, with the same effective date, says the archivist must not delete any expired draft. The excerpt gives no precedence rule.",
+      "hash": "4a14f45bbeedc4fe9d8d9ed4ec7be05013fbe4699def90c8814bd323b3e17020"
+    }
+  },
+  "unvalidated_answer": {
+    "decision": "SOURCE_CONFLICT",
+    "explanation": "The source contains two contradictory provisions regarding the deletion of expired drafts by the archivist. Section 4.2 first states that the archivist 'may delete expired drafts after the retention review,' implying permission. Immediately after, it states that the archivist 'must not delete any expired draft,' implying a prohibition. The text explicitly notes that there is 'no precedence rule' provided in the excerpt to resolve this conflict. Therefore, the status of deleting expired drafts cannot be determined as definitively permitted or prohibited based on the supplied source.",
+    "citations": [
+      {
+        "origin": "ORIGINAL_SOURCE",
+        "source_id": "R1E-04-source-v1",
+        "source_hash": "4a14f45bbeedc4fe9d8d9ed4ec7be05013fbe4699def90c8814bd323b3e17020",
+        "start": 0,
+        "end": 219,
+        "text": "Section 4.2 says the archivist may delete expired drafts after the retention review. Section 4.2, with the same effective date, says the archivist must not delete any expired draft. The excerpt gives no precedence rule."
+      }
+    ]
+  },
+  "understanding": {
+    "schema": "language-understanding-trial/0.1",
+    "configuration_hash": "e91c6cd23e00e360e53c3b221095301fc3eed659e42d8f603224c80322175aa1",
+    "source": {
+      "id": "93d7f0d2a2ad2e7f135f4e2c18e4df1117dae259a37f0f69d8bc525c00d0b847",
+      "schema": "language-understanding-artifact/0.1",
+      "trial_id": "R1E-04-A_SOURCE_ONLY",
+      "stage": "SOURCE",
+      "at": "2026-10-23T19:03:20.276Z",
+      "request": {
+        "source_id": "R1E-04-source-v1",
+        "source_text": "Section 4.2 says the archivist may delete expired drafts after the retention review. Section 4.2, with the same effective date, says the archivist must not delete any expired draft. The excerpt gives no precedence rule.",
+        "profile": "technical-policy",
+        "profile_version": "0.2",
+        "context": {
+          "purpose": "Faithful communication to a fresh recipient",
+          "intended_recipient": "Independent reader",
+          "declared_context": {}
+        }
+      },
+      "inventory": {
+        "schema": "language-understanding-inventory/0.1",
+        "offset_unit": "UNICODE_CODE_POINTS",
+        "standing": "HEURISTIC_UNVERIFIED",
+        "source": {
+          "id": "R1E-04-source-v1",
+          "sha256": "4a14f45bbeedc4fe9d8d9ed4ec7be05013fbe4699def90c8814bd323b3e17020",
+          "text": "Section 4.2 says the archivist may delete expired drafts after the retention review. Section 4.2, with the same effective date, says the archivist must not delete any expired draft. The excerpt gives no precedence rule."
+        },
+        "profile": {
+          "id": "technical-policy",
+          "version": "0.2",
+          "schema": "language-understanding-profile/0.1",
+          "sha256": "12287d00977aa52dcc4b142c6bb2829bf72c4636ce7a9cde6caea4b7d2dd669b"
+        },
+        "engine": {
+          "id": "spacy/blank-en+sentencizer",
+          "version": "0.2.0",
+          "nltk_version": "3.10.4",
+          "spacy_version": "3.8.16",
+          "trained_syntax_available": false,
+          "trained_model_requested": "en_core_web_sm",
+          "fallback_reason": "SPACY_MODEL_NOT_INSTALLED"
+        },
+        "segments": [
+          {
+            "id": "s1",
+            "start": 0,
+            "end": 84,
+            "text": "Section 4.2 says the archivist may delete expired drafts after the retention review."
+          },
+          {
+            "id": "s2",
+            "start": 85,
+            "end": 181,
+            "text": "Section 4.2, with the same effective date, says the archivist must not delete any expired draft."
+          },
+          {
+            "id": "s3",
+            "start": 182,
+            "end": 219,
+            "text": "The excerpt gives no precedence rule."
+          }
+        ],
+        "meaning_units": [
+          {
+            "id": "m1",
+            "source_segments": [
+              "s1"
+            ],
+            "start": 0,
+            "end": 84,
+            "source_quote": "Section 4.2 says the archivist may delete expired drafts after the retention review.",
+            "proposed_meaning": "Section 4.2 says the archivist may delete expired drafts after the retention review.",
+            "classification": {
+              "kind": "permission",
+              "normative_force": "PERMITTED_IN_SOURCE",
+              "condition_cues": [],
+              "temporal_cues": [
+                "after"
+              ],
+              "possible_unresolved_reference": false,
+              "speaker": "",
+              "prerequisites": [],
+              "method": "LEXICAL_RULE_HEURISTIC",
+              "review": "HEURISTIC_UNVERIFIED"
+            },
+            "provenance": "EXACT_SOURCE_SPAN"
+          },
+          {
+            "id": "m2",
+            "source_segments": [
+              "s2"
+            ],
+            "start": 85,
+            "end": 181,
+            "source_quote": "Section 4.2, with the same effective date, says the archivist must not delete any expired draft.",
+            "proposed_meaning": "Section 4.2, with the same effective date, says the archivist must not delete any expired draft.",
+            "classification": {
+              "kind": "prohibition",
+              "normative_force": "PROHIBITED",
+              "condition_cues": [
+                "with"
+              ],
+              "temporal_cues": [],
+              "possible_unresolved_reference": false,
+              "speaker": "",
+              "prerequisites": [],
+              "method": "LEXICAL_RULE_HEURISTIC",
+              "review": "HEURISTIC_UNVERIFIED"
+            },
+            "provenance": "EXACT_SOURCE_SPAN"
+          },
+          {
+            "id": "m3",
+            "source_segments": [
+              "s3"
+            ],
+            "start": 182,
+            "end": 219,
+            "source_quote": "The excerpt gives no precedence rule.",
+            "proposed_meaning": "The excerpt gives no precedence rule.",
+            "classification": {
+              "kind": "statement",
+              "normative_force": "ASSERTED_IN_SOURCE",
+              "condition_cues": [],
+              "temporal_cues": [],
+              "possible_unresolved_reference": false,
+              "speaker": "",
+              "prerequisites": [],
+              "method": "LEXICAL_RULE_HEURISTIC",
+              "review": "HEURISTIC_UNVERIFIED"
+            },
+            "provenance": "EXACT_SOURCE_SPAN"
+          }
+        ],
+        "relations": [],
+        "context": {
+          "purpose": "Faithful communication to a fresh recipient",
+          "intended_recipient": "Independent reader",
+          "declared_context": {}
+        },
+        "coverage": {
+          "standing": "NOT_EVALUATED",
+          "source_supportedness": "NOT_EVALUATED",
+          "semantic_completeness": "NOT_ESTABLISHED"
+        },
+        "warnings": [
+          "Labels are lexical heuristics, not verified meaning or permissions.",
+          "No cross-sentence relation, coreference, or semantic completeness checker is implemented.",
+          "Semicolon splitting, prerequisite hints and speaker labels are rule-based candidates, not semantic analysis."
+        ]
+      },
+      "compiler": {
+        "profile": {
+          "id": "technical-policy",
+          "version": "0.2",
+          "sha256": "12287d00977aa52dcc4b142c6bb2829bf72c4636ce7a9cde6caea4b7d2dd669b",
+          "file_sha256": "9d961fac646c1c164019c55b1eaa3f75748f42b47e3aad7862bc50181cdd4a75",
+          "path": "C:\\Projects\\project-language\\core\\understanding\\python\\profiles\\technical-policy.json"
+        },
+        "adapter": "language-understanding-child/0.1",
+        "python": "C:\\Projects\\project-language\\.venv\\Scripts\\python.exe",
+        "timeout_ms": 15000,
+        "max_input_bytes": 262144,
+        "max_output_bytes": 4194304,
+        "require_trained_syntax": false,
+        "source_hashes": {
+          "src/understanding/cli.py": "fdbbaab6d1c51d077046100aef43fcb0fcfac5e278dba1fa30f3a0cddb229ba9",
+          "src/understanding/pipeline.py": "713ddf811112278038b19aaa5995eba929a827e6dee7634d5d5e8d54cba5ed1d",
+          "src/understanding/__init__.py": "c4b5f92990c64643e4907def83a7a62dd00c8bdd3dd738a8ab14c55d523a396f",
+          "src/understanding/contracts.py": "ec17e9c381a22aed695663e4e27ed57f0cdd07491ec78355cb95855a2e08e7d7",
+          "../schemas/request-v0.1.json": "0d1dc60bff65f0baf319fef34d6dd5e141c814d55ed7f865fed629cebd4578c2",
+          "../schemas/inventory-v0.1.json": "aa4c284f4352141ec9fbcc56a51027bdba94e2e588affcaa739fcf2fd8340e5d",
+          "pyproject.toml": "b8b9fb81e47e37041d1fbc7a1a660b35a5b57909a1b370b76826a539af4e8108"
+        },
+        "integration_hashes": {
+          "./workflow.mjs": "3b435c25171ef5dd66785ad93b132c0ed67f833eab63bdd9bd0cff36f5e4bc25",
+          "./analysis.mjs": "c0279d78149f90f6412875dbe0df5eb35f516a90cbd5a235023bb9a93a94ef95",
+          "./decomposition.mjs": "42e5cbc7d12bb55d98d93c5223c8a5edf6eba9de3bfbfe2469ee9ca729c412cb",
+          "../models/prompts.mjs": "5b16ac6b45b60727f8c1467bb6b934e14cd2d9726bb0d750d4f9e9d69cccd32b",
+          "../models/source-anchors.mjs": "04d977f0a67397d568c2c84cf1f6767ea210d6bfb2ecb67c875935909258aa08"
+        }
+      },
+      "provenance": {
+        "source_hash": "4a14f45bbeedc4fe9d8d9ed4ec7be05013fbe4699def90c8814bd323b3e17020"
+      },
+      "standing": "HEURISTIC_UNVERIFIED"
+    },
+    "proposals": [],
+    "deliveries": [
+      {
+        "arm": "A_SOURCE_ONLY",
+        "accepted_version": "cacbf7ba1f6eeadcd20213eb277746fc052975a3bfc9eb3b6ec0ce2cfa99047d",
+        "packet_hash": "7e159bcadc3a763ca3ec3c6493bbfae3ab654fb1a7db8e0baaf9b71d45c305c5",
+        "fields": [
+          {
+            "path": "/source/text",
+            "text": "Section 4.2 says the archivist may delete expired drafts after the retention review. Section 4.2, with the same effective date, says the archivist must not delete any expired draft. The excerpt gives no precedence rule.",
+            "origin": "ORIGINAL_SOURCE_EMBEDDED",
+            "artifact": {
+              "id": "eace013ac05db26a954a68e5573827897e315c7d3eb9b37a2f1ebc0104ce579e",
+              "schema": "language-understanding-artifact/0.1",
+              "trial_id": "R1E-04-A_SOURCE_ONLY",
+              "stage": "DELIVERY_FIELD",
+              "at": "2026-10-23T19:03:26.989Z",
+              "request": {
+                "source_id": "u-e3df166f4fe52c29493f89e0f193097e32879b4f",
+                "source_text": "Section 4.2 says the archivist may delete expired drafts after the retention review. Section 4.2, with the same effective date, says the archivist must not delete any expired draft. The excerpt gives no precedence rule.",
+                "profile": "technical-policy",
+                "profile_version": "0.2",
+                "context": {
+                  "purpose": "Faithful communication to a fresh recipient",
+                  "intended_recipient": "Independent reader"
+                }
+              },
+              "inventory": {
+                "schema": "language-understanding-inventory/0.1",
+                "offset_unit": "UNICODE_CODE_POINTS",
+                "standing": "HEURISTIC_UNVERIFIED",
+                "source": {
+                  "id": "u-e3df166f4fe52c29493f89e0f193097e32879b4f",
+                  "sha256": "4a14f45bbeedc4fe9d8d9ed4ec7be05013fbe4699def90c8814bd323b3e17020",
+                  "text": "Section 4.2 says the archivist may delete expired drafts after the retention review. Section 4.2, with the same effective date, says the archivist must not delete any expired draft. The excerpt gives no precedence rule."
+                },
+                "profile": {
+                  "id": "technical-policy",
+                  "version": "0.2",
+                  "schema": "language-understanding-profile/0.1",
+                  "sha256": "12287d00977aa52dcc4b142c6bb2829bf72c4636ce7a9cde6caea4b7d2dd669b"
+                },
+                "engine": {
+                  "id": "spacy/blank-en+sentencizer",
+                  "version": "0.2.0",
+                  "nltk_version": "3.10.4",
+                  "spacy_version": "3.8.16",
+                  "trained_syntax_available": false,
+                  "trained_model_requested": "en_core_web_sm",
+                  "fallback_reason": "SPACY_MODEL_NOT_INSTALLED"
+                },
+                "segments": [
+                  {
+                    "id": "s1",
+                    "start": 0,
+                    "end": 84,
+                    "text": "Section 4.2 says the archivist may delete expired drafts after the retention review."
+                  },
+                  {
+                    "id": "s2",
+                    "start": 85,
+                    "end": 181,
+                    "text": "Section 4.2, with the same effective date, says the archivist must not delete any expired draft."
+                  },
+                  {
+                    "id": "s3",
+                    "start": 182,
+                    "end": 219,
+                    "text": "The excerpt gives no precedence rule."
+                  }
+                ],
+                "meaning_units": [
+                  {
+                    "id": "m1",
+                    "source_segments": [
+                      "s1"
+                    ],
+                    "start": 0,
+                    "end": 84,
+                    "source_quote": "Section 4.2 says the archivist may delete expired drafts after the retention review.",
+                    "proposed_meaning": "Section 4.2 says the archivist may delete expired drafts after the retention review.",
+                    "classification": {
+                      "kind": "permission",
+                      "normative_force": "PERMITTED_IN_SOURCE",
+                      "condition_cues": [],
+                      "temporal_cues": [
+                        "after"
+                      ],
+                      "possible_unresolved_reference": false,
+                      "speaker": "",
+                      "prerequisites": [],
+                      "method": "LEXICAL_RULE_HEURISTIC",
+                      "review": "HEURISTIC_UNVERIFIED"
+                    },
+                    "provenance": "EXACT_SOURCE_SPAN"
+                  },
+                  {
+                    "id": "m2",
+                    "source_segments": [
+                      "s2"
+                    ],
+                    "start": 85,
+                    "end": 181,
+                    "source_quote": "Section 4.2, with the same effective date, says the archivist must not delete any expired draft.",
+                    "proposed_meaning": "Section 4.2, with the same effective date, says the archivist must not delete any expired draft.",
+                    "classification": {
+                      "kind": "prohibition",
+                      "normative_force": "PROHIBITED",
+                      "condition_cues": [
+                        "with"
+                      ],
+                      "temporal_cues": [],
+                      "possible_unresolved_reference": false,
+                      "speaker": "",
+                      "prerequisites": [],
+                      "method": "LEXICAL_RULE_HEURISTIC",
+                      "review": "HEURISTIC_UNVERIFIED"
+                    },
+                    "provenance": "EXACT_SOURCE_SPAN"
+                  },
+                  {
+                    "id": "m3",
+                    "source_segments": [
+                      "s3"
+                    ],
+                    "start": 182,
+                    "end": 219,
+                    "source_quote": "The excerpt gives no precedence rule.",
+                    "proposed_meaning": "The excerpt gives no precedence rule.",
+                    "classification": {
+                      "kind": "statement",
+                      "normative_force": "ASSERTED_IN_SOURCE",
+                      "condition_cues": [],
+                      "temporal_cues": [],
+                      "possible_unresolved_reference": false,
+                      "speaker": "",
+                      "prerequisites": [],
+                      "method": "LEXICAL_RULE_HEURISTIC",
+                      "review": "HEURISTIC_UNVERIFIED"
+                    },
+                    "provenance": "EXACT_SOURCE_SPAN"
+                  }
+                ],
+                "relations": [],
+                "context": {
+                  "purpose": "Faithful communication to a fresh recipient",
+                  "intended_recipient": "Independent reader"
+                },
+                "coverage": {
+                  "standing": "NOT_EVALUATED",
+                  "source_supportedness": "NOT_EVALUATED",
+                  "semantic_completeness": "NOT_ESTABLISHED"
+                },
+                "warnings": [
+                  "Labels are lexical heuristics, not verified meaning or permissions.",
+                  "No cross-sentence relation, coreference, or semantic completeness checker is implemented.",
+                  "Semicolon splitting, prerequisite hints and speaker labels are rule-based candidates, not semantic analysis."
+                ]
+              },
+              "compiler": {
+                "profile": {
+                  "id": "technical-policy",
+                  "version": "0.2",
+                  "sha256": "12287d00977aa52dcc4b142c6bb2829bf72c4636ce7a9cde6caea4b7d2dd669b",
+                  "file_sha256": "9d961fac646c1c164019c55b1eaa3f75748f42b47e3aad7862bc50181cdd4a75",
+                  "path": "C:\\Projects\\project-language\\core\\understanding\\python\\profiles\\technical-policy.json"
+                },
+                "adapter": "language-understanding-child/0.1",
+                "python": "C:\\Projects\\project-language\\.venv\\Scripts\\python.exe",
+                "timeout_ms": 15000,
+                "max_input_bytes": 262144,
+                "max_output_bytes": 4194304,
+                "require_trained_syntax": false,
+                "source_hashes": {
+                  "src/understanding/cli.py": "fdbbaab6d1c51d077046100aef43fcb0fcfac5e278dba1fa30f3a0cddb229ba9",
+                  "src/understanding/pipeline.py": "713ddf811112278038b19aaa5995eba929a827e6dee7634d5d5e8d54cba5ed1d",
+                  "src/understanding/__init__.py": "c4b5f92990c64643e4907def83a7a62dd00c8bdd3dd738a8ab14c55d523a396f",
+                  "src/understanding/contracts.py": "ec17e9c381a22aed695663e4e27ed57f0cdd07491ec78355cb95855a2e08e7d7",
+                  "../schemas/request-v0.1.json": "0d1dc60bff65f0baf319fef34d6dd5e141c814d55ed7f865fed629cebd4578c2",
+                  "../schemas/inventory-v0.1.json": "aa4c284f4352141ec9fbcc56a51027bdba94e2e588affcaa739fcf2fd8340e5d",
+                  "pyproject.toml": "b8b9fb81e47e37041d1fbc7a1a660b35a5b57909a1b370b76826a539af4e8108"
+                },
+                "integration_hashes": {
+                  "./workflow.mjs": "3b435c25171ef5dd66785ad93b132c0ed67f833eab63bdd9bd0cff36f5e4bc25",
+                  "./analysis.mjs": "c0279d78149f90f6412875dbe0df5eb35f516a90cbd5a235023bb9a93a94ef95",
+                  "./decomposition.mjs": "42e5cbc7d12bb55d98d93c5223c8a5edf6eba9de3bfbfe2469ee9ca729c412cb",
+                  "../models/prompts.mjs": "5b16ac6b45b60727f8c1467bb6b934e14cd2d9726bb0d750d4f9e9d69cccd32b",
+                  "../models/source-anchors.mjs": "04d977f0a67397d568c2c84cf1f6767ea210d6bfb2ecb67c875935909258aa08"
+                }
+              },
+              "provenance": {
+                "arm": "A_SOURCE_ONLY",
+                "json_path": "/source/text",
+                "origin": "ORIGINAL_SOURCE_EMBEDDED",
+                "source_hash": "4a14f45bbeedc4fe9d8d9ed4ec7be05013fbe4699def90c8814bd323b3e17020",
+                "accepted_version": "cacbf7ba1f6eeadcd20213eb277746fc052975a3bfc9eb3b6ec0ce2cfa99047d",
+                "packet_hash": "7e159bcadc3a763ca3ec3c6493bbfae3ab654fb1a7db8e0baaf9b71d45c305c5",
+                "response_hash": "e68d431b911b705b7d53737faec17303908f37fecc29a14a12ca6ed6892594c8"
+              },
+              "standing": "HEURISTIC_UNVERIFIED"
+            }
+          }
+        ]
+      }
+    ],
+    "responses": [
+      {
+        "arm": "A_SOURCE_ONLY",
+        "response_hash": "e68d431b911b705b7d53737faec17303908f37fecc29a14a12ca6ed6892594c8",
+        "fields": [
+          {
+            "path": "/decision",
+            "text": "SOURCE_CONFLICT",
+            "origin": "RECIPIENT_RESPONSE",
+            "artifact": {
+              "id": "2beb4d561143cd37c421e7a8ef994c2c746bc1de195a0b620efa301e6c6536d8",
+              "schema": "language-understanding-artifact/0.1",
+              "trial_id": "R1E-04-A_SOURCE_ONLY",
+              "stage": "RECIPIENT_FIELD",
+              "at": "2026-10-23T19:03:26.996Z",
+              "request": {
+                "source_id": "u-bef597fa1a361e9b3bdc9a192ce830d5366fba05",
+                "source_text": "SOURCE_CONFLICT",
+                "profile": "technical-policy",
+                "profile_version": "0.2",
+                "context": {
+                  "purpose": "Faithful communication to a fresh recipient",
+                  "intended_recipient": "Independent reader"
+                }
+              },
+              "inventory": {
+                "schema": "language-understanding-inventory/0.1",
+                "offset_unit": "UNICODE_CODE_POINTS",
+                "standing": "HEURISTIC_UNVERIFIED",
+                "source": {
+                  "id": "u-bef597fa1a361e9b3bdc9a192ce830d5366fba05",
+                  "sha256": "0b5db4c2b585e6cb88176759fe0dfb1b21fe42788da67e0b11eb1e5780c55ac4",
+                  "text": "SOURCE_CONFLICT"
+                },
+                "profile": {
+                  "id": "technical-policy",
+                  "version": "0.2",
+                  "schema": "language-understanding-profile/0.1",
+                  "sha256": "12287d00977aa52dcc4b142c6bb2829bf72c4636ce7a9cde6caea4b7d2dd669b"
+                },
+                "engine": {
+                  "id": "spacy/blank-en+sentencizer",
+                  "version": "0.2.0",
+                  "nltk_version": "3.10.4",
+                  "spacy_version": "3.8.16",
+                  "trained_syntax_available": false,
+                  "trained_model_requested": "en_core_web_sm",
+                  "fallback_reason": "SPACY_MODEL_NOT_INSTALLED"
+                },
+                "segments": [
+                  {
+                    "id": "s1",
+                    "start": 0,
+                    "end": 15,
+                    "text": "SOURCE_CONFLICT"
+                  }
+                ],
+                "meaning_units": [
+                  {
+                    "id": "m1",
+                    "source_segments": [
+                      "s1"
+                    ],
+                    "start": 0,
+                    "end": 15,
+                    "source_quote": "SOURCE_CONFLICT",
+                    "proposed_meaning": "SOURCE_CONFLICT",
+                    "classification": {
+                      "kind": "statement",
+                      "normative_force": "ASSERTED_IN_SOURCE",
+                      "condition_cues": [],
+                      "temporal_cues": [],
+                      "possible_unresolved_reference": false,
+                      "speaker": "",
+                      "prerequisites": [],
+                      "method": "LEXICAL_RULE_HEURISTIC",
+                      "review": "HEURISTIC_UNVERIFIED"
+                    },
+                    "provenance": "EXACT_SOURCE_SPAN"
+                  }
+                ],
+                "relations": [],
+                "context": {
+                  "purpose": "Faithful communication to a fresh recipient",
+                  "intended_recipient": "Independent reader"
+                },
+                "coverage": {
+                  "standing": "NOT_EVALUATED",
+                  "source_supportedness": "NOT_EVALUATED",
+                  "semantic_completeness": "NOT_ESTABLISHED"
+                },
+                "warnings": [
+                  "Labels are lexical heuristics, not verified meaning or permissions.",
+                  "No cross-sentence relation, coreference, or semantic completeness checker is implemented.",
+                  "Semicolon splitting, prerequisite hints and speaker labels are rule-based candidates, not semantic analysis."
+                ]
+              },
+              "compiler": {
+                "profile": {
+                  "id": "technical-policy",
+                  "version": "0.2",
+                  "sha256": "12287d00977aa52dcc4b142c6bb2829bf72c4636ce7a9cde6caea4b7d2dd669b",
+                  "file_sha256": "9d961fac646c1c164019c55b1eaa3f75748f42b47e3aad7862bc50181cdd4a75",
+                  "path": "C:\\Projects\\project-language\\core\\understanding\\python\\profiles\\technical-policy.json"
+                },
+                "adapter": "language-understanding-child/0.1",
+                "python": "C:\\Projects\\project-language\\.venv\\Scripts\\python.exe",
+                "timeout_ms": 15000,
+                "max_input_bytes": 262144,
+                "max_output_bytes": 4194304,
+                "require_trained_syntax": false,
+                "source_hashes": {
+                  "src/understanding/cli.py": "fdbbaab6d1c51d077046100aef43fcb0fcfac5e278dba1fa30f3a0cddb229ba9",
+                  "src/understanding/pipeline.py": "713ddf811112278038b19aaa5995eba929a827e6dee7634d5d5e8d54cba5ed1d",
+                  "src/understanding/__init__.py": "c4b5f92990c64643e4907def83a7a62dd00c8bdd3dd738a8ab14c55d523a396f",
+                  "src/understanding/contracts.py": "ec17e9c381a22aed695663e4e27ed57f0cdd07491ec78355cb95855a2e08e7d7",
+                  "../schemas/request-v0.1.json": "0d1dc60bff65f0baf319fef34d6dd5e141c814d55ed7f865fed629cebd4578c2",
+                  "../schemas/inventory-v0.1.json": "aa4c284f4352141ec9fbcc56a51027bdba94e2e588affcaa739fcf2fd8340e5d",
+                  "pyproject.toml": "b8b9fb81e47e37041d1fbc7a1a660b35a5b57909a1b370b76826a539af4e8108"
+                },
+                "integration_hashes": {
+                  "./workflow.mjs": "3b435c25171ef5dd66785ad93b132c0ed67f833eab63bdd9bd0cff36f5e4bc25",
+                  "./analysis.mjs": "c0279d78149f90f6412875dbe0df5eb35f516a90cbd5a235023bb9a93a94ef95",
+                  "./decomposition.mjs": "42e5cbc7d12bb55d98d93c5223c8a5edf6eba9de3bfbfe2469ee9ca729c412cb",
+                  "../models/prompts.mjs": "5b16ac6b45b60727f8c1467bb6b934e14cd2d9726bb0d750d4f9e9d69cccd32b",
+                  "../models/source-anchors.mjs": "04d977f0a67397d568c2c84cf1f6767ea210d6bfb2ecb67c875935909258aa08"
+                }
+              },
+              "provenance": {
+                "arm": "A_SOURCE_ONLY",
+                "json_path": "/decision",
+                "origin": "RECIPIENT_RESPONSE",
+                "source_hash": "4a14f45bbeedc4fe9d8d9ed4ec7be05013fbe4699def90c8814bd323b3e17020",
+                "accepted_version": "cacbf7ba1f6eeadcd20213eb277746fc052975a3bfc9eb3b6ec0ce2cfa99047d",
+                "packet_hash": "7e159bcadc3a763ca3ec3c6493bbfae3ab654fb1a7db8e0baaf9b71d45c305c5",
+                "response_hash": "e68d431b911b705b7d53737faec17303908f37fecc29a14a12ca6ed6892594c8"
+              },
+              "standing": "HEURISTIC_UNVERIFIED"
+            }
+          },
+          {
+            "path": "/explanation",
+            "text": "The source contains two contradictory provisions regarding the deletion of expired drafts by the archivist. Section 4.2 first states that the archivist 'may delete expired drafts after the retention review,' implying permission. Immediately after, it states that the archivist 'must not delete any expired draft,' implying a prohibition. The text explicitly notes that there is 'no precedence rule' provided in the excerpt to resolve this conflict. Therefore, the status of deleting expired drafts cannot be determined as definitively permitted or prohibited based on the supplied source.",
+            "origin": "RECIPIENT_RESPONSE",
+            "artifact": {
+              "id": "9b39cb2e4ff8b88c1a06e99c6ed35116557f9f7374f625a80403049a275c464a",
+              "schema": "language-understanding-artifact/0.1",
+              "trial_id": "R1E-04-A_SOURCE_ONLY",
+              "stage": "RECIPIENT_FIELD",
+              "at": "2026-10-23T19:03:27.003Z",
+              "request": {
+                "source_id": "u-e79e4f5f96db9a38be201122acdd316e88ea1609",
+                "source_text": "The source contains two contradictory provisions regarding the deletion of expired drafts by the archivist. Section 4.2 first states that the archivist 'may delete expired drafts after the retention review,' implying permission. Immediately after, it states that the archivist 'must not delete any expired draft,' implying a prohibition. The text explicitly notes that there is 'no precedence rule' provided in the excerpt to resolve this conflict. Therefore, the status of deleting expired drafts cannot be determined as definitively permitted or prohibited based on the supplied source.",
+                "profile": "technical-policy",
+                "profile_version": "0.2",
+                "context": {
+                  "purpose": "Faithful communication to a fresh recipient",
+                  "intended_recipient": "Independent reader"
+                }
+              },
+              "inventory": {
+                "schema": "language-understanding-inventory/0.1",
+                "offset_unit": "UNICODE_CODE_POINTS",
+                "standing": "HEURISTIC_UNVERIFIED",
+                "source": {
+                  "id": "u-e79e4f5f96db9a38be201122acdd316e88ea1609",
+                  "sha256": "578c57f141cff73cbb39f0a7986424683607f772088837ebfa49b20b74732379",
+                  "text": "The source contains two contradictory provisions regarding the deletion of expired drafts by the archivist. Section 4.2 first states that the archivist 'may delete expired drafts after the retention review,' implying permission. Immediately after, it states that the archivist 'must not delete any expired draft,' implying a prohibition. The text explicitly notes that there is 'no precedence rule' provided in the excerpt to resolve this conflict. Therefore, the status of deleting expired drafts cannot be determined as definitively permitted or prohibited based on the supplied source."
+                },
+                "profile": {
+                  "id": "technical-policy",
+                  "version": "0.2",
+                  "schema": "language-understanding-profile/0.1",
+                  "sha256": "12287d00977aa52dcc4b142c6bb2829bf72c4636ce7a9cde6caea4b7d2dd669b"
+                },
+                "engine": {
+                  "id": "spacy/blank-en+sentencizer",
+                  "version": "0.2.0",
+                  "nltk_version": "3.10.4",
+                  "spacy_version": "3.8.16",
+                  "trained_syntax_available": false,
+                  "trained_model_requested": "en_core_web_sm",
+                  "fallback_reason": "SPACY_MODEL_NOT_INSTALLED"
+                },
+                "segments": [
+                  {
+                    "id": "s1",
+                    "start": 0,
+                    "end": 107,
+                    "text": "The source contains two contradictory provisions regarding the deletion of expired drafts by the archivist."
+                  },
+                  {
+                    "id": "s2",
+                    "start": 108,
+                    "end": 228,
+                    "text": "Section 4.2 first states that the archivist 'may delete expired drafts after the retention review,' implying permission."
+                  },
+                  {
+                    "id": "s3",
+                    "start": 229,
+                    "end": 337,
+                    "text": "Immediately after, it states that the archivist 'must not delete any expired draft,' implying a prohibition."
+                  },
+                  {
+                    "id": "s4",
+                    "start": 338,
+                    "end": 448,
+                    "text": "The text explicitly notes that there is 'no precedence rule' provided in the excerpt to resolve this conflict."
+                  },
+                  {
+                    "id": "s5",
+                    "start": 449,
+                    "end": 588,
+                    "text": "Therefore, the status of deleting expired drafts cannot be determined as definitively permitted or prohibited based on the supplied source."
+                  }
+                ],
+                "meaning_units": [
+                  {
+                    "id": "m1",
+                    "source_segments": [
+                      "s1"
+                    ],
+                    "start": 0,
+                    "end": 107,
+                    "source_quote": "The source contains two contradictory provisions regarding the deletion of expired drafts by the archivist.",
+                    "proposed_meaning": "The source contains two contradictory provisions regarding the deletion of expired drafts by the archivist.",
+                    "classification": {
+                      "kind": "statement",
+                      "normative_force": "ASSERTED_IN_SOURCE",
+                      "condition_cues": [],
+                      "temporal_cues": [],
+                      "possible_unresolved_reference": false,
+                      "speaker": "",
+                      "prerequisites": [],
+                      "method": "LEXICAL_RULE_HEURISTIC",
+                      "review": "HEURISTIC_UNVERIFIED"
+                    },
+                    "provenance": "EXACT_SOURCE_SPAN"
+                  },
+                  {
+                    "id": "m2",
+                    "source_segments": [
+                      "s2"
+                    ],
+                    "start": 108,
+                    "end": 228,
+                    "source_quote": "Section 4.2 first states that the archivist 'may delete expired drafts after the retention review,' implying permission.",
+                    "proposed_meaning": "Section 4.2 first states that the archivist 'may delete expired drafts after the retention review,' implying permission.",
+                    "classification": {
+                      "kind": "permission",
+                      "normative_force": "PERMITTED_IN_SOURCE",
+                      "condition_cues": [],
+                      "temporal_cues": [
+                        "after"
+                      ],
+                      "possible_unresolved_reference": false,
+                      "speaker": "",
+                      "prerequisites": [],
+                      "method": "LEXICAL_RULE_HEURISTIC",
+                      "review": "HEURISTIC_UNVERIFIED"
+                    },
+                    "provenance": "EXACT_SOURCE_SPAN"
+                  },
+                  {
+                    "id": "m3",
+                    "source_segments": [
+                      "s3"
+                    ],
+                    "start": 229,
+                    "end": 337,
+                    "source_quote": "Immediately after, it states that the archivist 'must not delete any expired draft,' implying a prohibition.",
+                    "proposed_meaning": "Immediately after, it states that the archivist 'must not delete any expired draft,' implying a prohibition.",
+                    "classification": {
+                      "kind": "prohibition",
+                      "normative_force": "PROHIBITED",
+                      "condition_cues": [],
+                      "temporal_cues": [
+                        "after"
+                      ],
+                      "possible_unresolved_reference": false,
+                      "speaker": "",
+                      "prerequisites": [],
+                      "method": "LEXICAL_RULE_HEURISTIC",
+                      "review": "HEURISTIC_UNVERIFIED"
+                    },
+                    "provenance": "EXACT_SOURCE_SPAN"
+                  },
+                  {
+                    "id": "m4",
+                    "source_segments": [
+                      "s4"
+                    ],
+                    "start": 338,
+                    "end": 448,
+                    "source_quote": "The text explicitly notes that there is 'no precedence rule' provided in the excerpt to resolve this conflict.",
+                    "proposed_meaning": "The text explicitly notes that there is 'no precedence rule' provided in the excerpt to resolve this conflict.",
+                    "classification": {
+                      "kind": "statement",
+                      "normative_force": "ASSERTED_IN_SOURCE",
+                      "condition_cues": [
+                        "provided"
+                      ],
+                      "temporal_cues": [],
+                      "possible_unresolved_reference": false,
+                      "speaker": "",
+                      "prerequisites": [],
+                      "method": "LEXICAL_RULE_HEURISTIC",
+                      "review": "HEURISTIC_UNVERIFIED"
+                    },
+                    "provenance": "EXACT_SOURCE_SPAN"
+                  },
+                  {
+                    "id": "m5",
+                    "source_segments": [
+                      "s5"
+                    ],
+                    "start": 449,
+                    "end": 588,
+                    "source_quote": "Therefore, the status of deleting expired drafts cannot be determined as definitively permitted or prohibited based on the supplied source.",
+                    "proposed_meaning": "Therefore, the status of deleting expired drafts cannot be determined as definitively permitted or prohibited based on the supplied source.",
+                    "classification": {
+                      "kind": "prohibition",
+                      "normative_force": "PROHIBITED",
+                      "condition_cues": [],
+                      "temporal_cues": [],
+                      "possible_unresolved_reference": false,
+                      "speaker": "",
+                      "prerequisites": [],
+                      "method": "LEXICAL_RULE_HEURISTIC",
+                      "review": "HEURISTIC_UNVERIFIED"
+                    },
+                    "provenance": "EXACT_SOURCE_SPAN"
+                  }
+                ],
+                "relations": [],
+                "context": {
+                  "purpose": "Faithful communication to a fresh recipient",
+                  "intended_recipient": "Independent reader"
+                },
+                "coverage": {
+                  "standing": "NOT_EVALUATED",
+                  "source_supportedness": "NOT_EVALUATED",
+                  "semantic_completeness": "NOT_ESTABLISHED"
+                },
+                "warnings": [
+                  "Labels are lexical heuristics, not verified meaning or permissions.",
+                  "No cross-sentence relation, coreference, or semantic completeness checker is implemented.",
+                  "Semicolon splitting, prerequisite hints and speaker labels are rule-based candidates, not semantic analysis."
+                ]
+              },
+              "compiler": {
+                "profile": {
+                  "id": "technical-policy",
+                  "version": "0.2",
+                  "sha256": "12287d00977aa52dcc4b142c6bb2829bf72c4636ce7a9cde6caea4b7d2dd669b",
+                  "file_sha256": "9d961fac646c1c164019c55b1eaa3f75748f42b47e3aad7862bc50181cdd4a75",
+                  "path": "C:\\Projects\\project-language\\core\\understanding\\python\\profiles\\technical-policy.json"
+                },
+                "adapter": "language-understanding-child/0.1",
+                "python": "C:\\Projects\\project-language\\.venv\\Scripts\\python.exe",
+                "timeout_ms": 15000,
+                "max_input_bytes": 262144,
+                "max_output_bytes": 4194304,
+                "require_trained_syntax": false,
+                "source_hashes": {
+                  "src/understanding/cli.py": "fdbbaab6d1c51d077046100aef43fcb0fcfac5e278dba1fa30f3a0cddb229ba9",
+                  "src/understanding/pipeline.py": "713ddf811112278038b19aaa5995eba929a827e6dee7634d5d5e8d54cba5ed1d",
+                  "src/understanding/__init__.py": "c4b5f92990c64643e4907def83a7a62dd00c8bdd3dd738a8ab14c55d523a396f",
+                  "src/understanding/contracts.py": "ec17e9c381a22aed695663e4e27ed57f0cdd07491ec78355cb95855a2e08e7d7",
+                  "../schemas/request-v0.1.json": "0d1dc60bff65f0baf319fef34d6dd5e141c814d55ed7f865fed629cebd4578c2",
+                  "../schemas/inventory-v0.1.json": "aa4c284f4352141ec9fbcc56a51027bdba94e2e588affcaa739fcf2fd8340e5d",
+                  "pyproject.toml": "b8b9fb81e47e37041d1fbc7a1a660b35a5b57909a1b370b76826a539af4e8108"
+                },
+                "integration_hashes": {
+                  "./workflow.mjs": "3b435c25171ef5dd66785ad93b132c0ed67f833eab63bdd9bd0cff36f5e4bc25",
+                  "./analysis.mjs": "c0279d78149f90f6412875dbe0df5eb35f516a90cbd5a235023bb9a93a94ef95",
+                  "./decomposition.mjs": "42e5cbc7d12bb55d98d93c5223c8a5edf6eba9de3bfbfe2469ee9ca729c412cb",
+                  "../models/prompts.mjs": "5b16ac6b45b60727f8c1467bb6b934e14cd2d9726bb0d750d4f9e9d69cccd32b",
+                  "../models/source-anchors.mjs": "04d977f0a67397d568c2c84cf1f6767ea210d6bfb2ecb67c875935909258aa08"
+                }
+              },
+              "provenance": {
+                "arm": "A_SOURCE_ONLY",
+                "json_path": "/explanation",
+                "origin": "RECIPIENT_RESPONSE",
+                "source_hash": "4a14f45bbeedc4fe9d8d9ed4ec7be05013fbe4699def90c8814bd323b3e17020",
+                "accepted_version": "cacbf7ba1f6eeadcd20213eb277746fc052975a3bfc9eb3b6ec0ce2cfa99047d",
+                "packet_hash": "7e159bcadc3a763ca3ec3c6493bbfae3ab654fb1a7db8e0baaf9b71d45c305c5",
+                "response_hash": "e68d431b911b705b7d53737faec17303908f37fecc29a14a12ca6ed6892594c8"
+              },
+              "standing": "HEURISTIC_UNVERIFIED"
+            }
+          }
+        ]
+      }
+    ],
+    "comparisons": [
+      {
+        "arm": "A_SOURCE_ONLY",
+        "accepted_version": "cacbf7ba1f6eeadcd20213eb277746fc052975a3bfc9eb3b6ec0ce2cfa99047d",
+        "packet_hash": "7e159bcadc3a763ca3ec3c6493bbfae3ab654fb1a7db8e0baaf9b71d45c305c5",
+        "response_hash": "e68d431b911b705b7d53737faec17303908f37fecc29a14a12ca6ed6892594c8",
+        "transferred": {
+          "schema": "language-meaning-transferred/0.1",
+          "accepted_version": "cacbf7ba1f6eeadcd20213eb277746fc052975a3bfc9eb3b6ec0ce2cfa99047d",
+          "source_inventory_hash": "283f86a1b0ccc8f303170425de64dc044f93b425f0f9a3048fa7ce4debda7614",
+          "standing": "MECHANICAL_CANDIDATES_NOT_SEMANTIC_VERDICTS",
+          "embedded_source_present": true,
+          "embedded_source_is_not_understanding": true,
+          "units": [
+            {
+              "unit_id": "m1",
+              "quote": "Section 4.2 says the archivist may delete expired drafts after the retention review.",
+              "candidate_paths": [],
+              "analysis_ids": [],
+              "mechanical": "NO_DERIVED_TEXT_MATCH",
+              "assessment": "NOT_ASSESSED",
+              "review_flags": [],
+              "semantic_preservation": "NOT_ASSESSED"
+            },
+            {
+              "unit_id": "m2",
+              "quote": "Section 4.2, with the same effective date, says the archivist must not delete any expired draft.",
+              "candidate_paths": [],
+              "analysis_ids": [],
+              "mechanical": "NO_DERIVED_TEXT_MATCH",
+              "assessment": "NOT_ASSESSED",
+              "review_flags": [],
+              "semantic_preservation": "NOT_ASSESSED"
+            },
+            {
+              "unit_id": "m3",
+              "quote": "The excerpt gives no precedence rule.",
+              "candidate_paths": [],
+              "analysis_ids": [],
+              "mechanical": "NO_DERIVED_TEXT_MATCH",
+              "assessment": "NOT_ASSESSED",
+              "review_flags": [],
+              "semantic_preservation": "NOT_ASSESSED"
+            }
+          ],
+          "possible_additions_or_paraphrases": [],
+          "warnings": [
+            "No lexical match establishes preservation.",
+            "No match is not proof of meaning loss.",
+            "Embedded source copies are excluded from candidate derived preservation.",
+            "Unmatched derived wording may be a valid paraphrase, purpose statement, human clarification or inference; it is not automatically an unsupported addition."
+          ]
+        },
+        "reconstructed": {
+          "standing": "NOT_ASSESSED",
+          "reason": "No independently defined question requirements are registered."
+        }
+      }
+    ]
+  },
+  "studio": {
+    "schema": "language-studio-export/0.1",
+    "standing": "EXPLORATORY_DEVELOPMENT_NOT_VALIDATION",
+    "replay": "CAPTURED_OUTPUT_ONLY_NO_REGENERATION",
+    "comparison": {
+      "state": null,
+      "cases": [
+        {
+          "id": "lc02-d1",
+          "name": "Readiness and authority",
+          "standing": "EXPOSED_SYNTHETIC_DEVELOPMENT"
+        },
+        {
+          "id": "lc02-d2",
+          "name": "A straightforward boundary",
+          "standing": "EXPOSED_SYNTHETIC_DEVELOPMENT"
+        },
+        {
+          "id": "lc02-d3",
+          "name": "Mediation can invent certainty",
+          "standing": "EXPOSED_SYNTHETIC_DEVELOPMENT"
+        }
+      ],
+      "rubric": [
+        "correct_interpretation",
+        "important_information_retained",
+        "important_information_lost",
+        "unsupported_inferences",
+        "ambiguity_discovered",
+        "handling_unknowns",
+        "decision_quality",
+        "clarification_and_negotiated_correction"
+      ],
+      "evaluation_gate": {
+        "status": "PENDING_INDEPENDENT_CASE_AUTHOR_AND_REVIEW",
+        "cases": [],
+        "reason": "The implementation agent cannot certify its own cases as independently authored and previously unseen. No development case may be relabelled held-out."
+      },
+      "scope": {
+        "id": "lc02u-development-v1",
+        "case_suite": {
+          "id": "lc02-development-v1",
+          "digest": "17d692dd8a0255e2cc92ea6c7993d9ba53b610e3ee1d6b7dfd0598367aea189c",
+          "case_ids": [
+            "lc02-d1",
+            "lc02-d2",
+            "lc02-d3"
+          ],
+          "standing": "EXPOSED_DEVELOPMENT_NOT_CONFIRMATORY"
+        },
+        "understanding": {
+          "profile": {
+            "id": "technical-policy",
+            "version": "0.2",
+            "sha256": "12287d00977aa52dcc4b142c6bb2829bf72c4636ce7a9cde6caea4b7d2dd669b",
+            "file_sha256": "9d961fac646c1c164019c55b1eaa3f75748f42b47e3aad7862bc50181cdd4a75",
+            "path": "C:\\Projects\\project-language\\core\\understanding\\python\\profiles\\technical-policy.json"
+          },
+          "adapter": "language-understanding-child/0.1",
+          "python": "C:\\Projects\\project-language\\.venv\\Scripts\\python.exe",
+          "timeout_ms": 15000,
+          "max_input_bytes": 262144,
+          "max_output_bytes": 4194304,
+          "require_trained_syntax": false,
+          "source_hashes": {
+            "src/understanding/cli.py": "fdbbaab6d1c51d077046100aef43fcb0fcfac5e278dba1fa30f3a0cddb229ba9",
+            "src/understanding/pipeline.py": "713ddf811112278038b19aaa5995eba929a827e6dee7634d5d5e8d54cba5ed1d",
+            "src/understanding/__init__.py": "c4b5f92990c64643e4907def83a7a62dd00c8bdd3dd738a8ab14c55d523a396f",
+            "src/understanding/contracts.py": "ec17e9c381a22aed695663e4e27ed57f0cdd07491ec78355cb95855a2e08e7d7",
+            "../schemas/request-v0.1.json": "0d1dc60bff65f0baf319fef34d6dd5e141c814d55ed7f865fed629cebd4578c2",
+            "../schemas/inventory-v0.1.json": "aa4c284f4352141ec9fbcc56a51027bdba94e2e588affcaa739fcf2fd8340e5d",
+            "pyproject.toml": "b8b9fb81e47e37041d1fbc7a1a660b35a5b57909a1b370b76826a539af4e8108"
+          },
+          "integration_hashes": {
+            "./workflow.mjs": "3b435c25171ef5dd66785ad93b132c0ed67f833eab63bdd9bd0cff36f5e4bc25",
+            "./analysis.mjs": "c0279d78149f90f6412875dbe0df5eb35f516a90cbd5a235023bb9a93a94ef95",
+            "./decomposition.mjs": "42e5cbc7d12bb55d98d93c5223c8a5edf6eba9de3bfbfe2469ee9ca729c412cb",
+            "../models/prompts.mjs": "5b16ac6b45b60727f8c1467bb6b934e14cd2d9726bb0d750d4f9e9d69cccd32b",
+            "../models/source-anchors.mjs": "04d977f0a67397d568c2c84cf1f6767ea210d6bfb2ecb67c875935909258aa08"
+          }
+        },
+        "digest": "11502b2c9537821b29cc434aa286d310856004dcb9ca1caf6b4006993c565997"
+      }
+    },
+    "comparison_plan": {
+      "schema": "studio-remote-plan/0.1r",
+      "provider": "opencode-go",
+      "task_identity": {
+        "id": "lc02u-development-v1",
+        "case_suite": {
+          "id": "lc02-development-v1",
+          "digest": "17d692dd8a0255e2cc92ea6c7993d9ba53b610e3ee1d6b7dfd0598367aea189c",
+          "case_ids": [
+            "lc02-d1",
+            "lc02-d2",
+            "lc02-d3"
+          ],
+          "standing": "EXPOSED_DEVELOPMENT_NOT_CONFIRMATORY"
+        },
+        "understanding": {
+          "profile": {
+            "id": "technical-policy",
+            "version": "0.2",
+            "sha256": "12287d00977aa52dcc4b142c6bb2829bf72c4636ce7a9cde6caea4b7d2dd669b",
+            "file_sha256": "9d961fac646c1c164019c55b1eaa3f75748f42b47e3aad7862bc50181cdd4a75",
+            "path": "C:\\Projects\\project-language\\core\\understanding\\python\\profiles\\technical-policy.json"
+          },
+          "adapter": "language-understanding-child/0.1",
+          "python": "C:\\Projects\\project-language\\.venv\\Scripts\\python.exe",
+          "timeout_ms": 15000,
+          "max_input_bytes": 262144,
+          "max_output_bytes": 4194304,
+          "require_trained_syntax": false,
+          "source_hashes": {
+            "src/understanding/cli.py": "fdbbaab6d1c51d077046100aef43fcb0fcfac5e278dba1fa30f3a0cddb229ba9",
+            "src/understanding/pipeline.py": "713ddf811112278038b19aaa5995eba929a827e6dee7634d5d5e8d54cba5ed1d",
+            "src/understanding/__init__.py": "c4b5f92990c64643e4907def83a7a62dd00c8bdd3dd738a8ab14c55d523a396f",
+            "src/understanding/contracts.py": "ec17e9c381a22aed695663e4e27ed57f0cdd07491ec78355cb95855a2e08e7d7",
+            "../schemas/request-v0.1.json": "0d1dc60bff65f0baf319fef34d6dd5e141c814d55ed7f865fed629cebd4578c2",
+            "../schemas/inventory-v0.1.json": "aa4c284f4352141ec9fbcc56a51027bdba94e2e588affcaa739fcf2fd8340e5d",
+            "pyproject.toml": "b8b9fb81e47e37041d1fbc7a1a660b35a5b57909a1b370b76826a539af4e8108"
+          },
+          "integration_hashes": {
+            "./workflow.mjs": "3b435c25171ef5dd66785ad93b132c0ed67f833eab63bdd9bd0cff36f5e4bc25",
+            "./analysis.mjs": "c0279d78149f90f6412875dbe0df5eb35f516a90cbd5a235023bb9a93a94ef95",
+            "./decomposition.mjs": "42e5cbc7d12bb55d98d93c5223c8a5edf6eba9de3bfbfe2469ee9ca729c412cb",
+            "../models/prompts.mjs": "5b16ac6b45b60727f8c1467bb6b934e14cd2d9726bb0d750d4f9e9d69cccd32b",
+            "../models/source-anchors.mjs": "04d977f0a67397d568c2c84cf1f6767ea210d6bfb2ecb67c875935909258aa08"
+          }
+        },
+        "digest": "11502b2c9537821b29cc434aa286d310856004dcb9ca1caf6b4006993c565997"
+      },
+      "models": [
+        {
+          "role": "interpreter",
+          "model": "opencode-go/deepseek-v4.1-flash",
+          "metadata": {
+            "id": "opencode-go/deepseek-v4.1-flash",
+            "provider": "opencode-go",
+            "local": false,
+            "api_family": "openai-completions",
+            "base_url": "https://opencode.ai/inference/go/openai/v1",
+            "expected_route": "https://opencode.ai/inference/go/openai/v1/chat/completions",
+            "context_window": 1000000,
+            "output_limit": 384000,
+            "input_modalities": [
+              "text",
+              "image"
+            ],
+            "output_modalities": [
+              "text"
+            ],
+            "structured_output": "PROMPTED_JSON_STRICT_HOST_VALIDATION",
+            "reasoning": "Pi simple-stream default; no reasoning-token inference",
+            "price_per_million": {
+              "input": 0.3,
+              "output": 1.2,
+              "cacheRead": 0.006,
+              "cacheWrite": 0
+            },
+            "availability": "SCOPED_REGISTERED_NOT_LIVE_PROBED",
+            "qualification": "OFFLINE_TEST_REQUIRED",
+            "metadata_origin": "PINNED_PI_1.0.4_WITH_DOCUMENTED_ENDPOINT_OVERLAY",
+            "config_hash": "78020e5ed7246fa4f787cd8b1f72f721c41caba22e72a20fcf56f07937ebe7ad"
+          },
+          "output_tokens": 16384
+        },
+        {
+          "role": "challenger",
+          "model": "opencode-go/gpt-6-luna",
+          "metadata": {
+            "id": "opencode-go/gpt-6-luna",
+            "provider": "opencode-go",
+            "local": false,
+            "api_family": "openai-responses",
+            "base_url": "https://opencode.ai/inference/go/openai/v1",
+            "expected_route": "https://opencode.ai/inference/go/openai/v1/responses",
+            "context_window": 1050000,
+            "output_limit": 128000,
+            "input_modalities": [
+              "text",
+              "image"
+            ],
+            "output_modalities": [
+              "text"
+            ],
+            "structured_output": "PROMPTED_JSON_STRICT_HOST_VALIDATION",
+            "reasoning": "Pi simple-stream default; no reasoning-token inference",
+            "price_per_million": {
+              "input": 0.1,
+              "output": 0.5,
+              "cacheRead": 0.01,
+              "cacheWrite": 0.125
+            },
+            "availability": "SCOPED_REGISTERED_NOT_LIVE_PROBED",
+            "qualification": "OFFLINE_TEST_REQUIRED",
+            "metadata_origin": "PINNED_PI_1.0.4_WITH_DOCUMENTED_ENDPOINT_OVERLAY",
+            "config_hash": "78020e5ed7246fa4f787cd8b1f72f721c41caba22e72a20fcf56f07937ebe7ad"
+          },
+          "output_tokens": 16384
+        },
+        {
+          "role": "mediator",
+          "model": "opencode-go/deepseek-v4.1-flash",
+          "metadata": {
+            "id": "opencode-go/deepseek-v4.1-flash",
+            "provider": "opencode-go",
+            "local": false,
+            "api_family": "openai-completions",
+            "base_url": "https://opencode.ai/inference/go/openai/v1",
+            "expected_route": "https://opencode.ai/inference/go/openai/v1/chat/completions",
+            "context_window": 1000000,
+            "output_limit": 384000,
+            "input_modalities": [
+              "text",
+              "image"
+            ],
+            "output_modalities": [
+              "text"
+            ],
+            "structured_output": "PROMPTED_JSON_STRICT_HOST_VALIDATION",
+            "reasoning": "Pi simple-stream default; no reasoning-token inference",
+            "price_per_million": {
+              "input": 0.3,
+              "output": 1.2,
+              "cacheRead": 0.006,
+              "cacheWrite": 0
+            },
+            "availability": "SCOPED_REGISTERED_NOT_LIVE_PROBED",
+            "qualification": "OFFLINE_TEST_REQUIRED",
+            "metadata_origin": "PINNED_PI_1.0.4_WITH_DOCUMENTED_ENDPOINT_OVERLAY",
+            "config_hash": "78020e5ed7246fa4f787cd8b1f72f721c41caba22e72a20fcf56f07937ebe7ad"
+          },
+          "output_tokens": 16384
+        },
+        {
+          "role": "recipient",
+          "model": "opencode-go/qwen3.8-flash",
+          "metadata": {
+            "id": "opencode-go/qwen3.8-flash",
+            "provider": "opencode-go",
+            "local": false,
+            "api_family": "anthropic-messages",
+            "base_url": "https://opencode.ai/inference/go/anthropic",
+            "expected_route": "https://opencode.ai/inference/go/anthropic/v1/messages",
+            "context_window": 1000000,
+            "output_limit": 131072,
+            "input_modalities": [
+              "text",
+              "image"
+            ],
+            "output_modalities": [
+              "text"
+            ],
+            "structured_output": "PROMPTED_JSON_STRICT_HOST_VALIDATION",
+            "reasoning": "Pi simple-stream default; no reasoning-token inference",
+            "price_per_million": {
+              "input": 0.15,
+              "output": 0.47,
+              "cacheRead": 0.016,
+              "cacheWrite": 0.2
+            },
+            "availability": "SCOPED_REGISTERED_NOT_LIVE_PROBED",
+            "qualification": "OFFLINE_TEST_REQUIRED",
+            "metadata_origin": "PINNED_PI_1.0.4_WITH_DOCUMENTED_ENDPOINT_OVERLAY",
+            "config_hash": "78020e5ed7246fa4f787cd8b1f72f721c41caba22e72a20fcf56f07937ebe7ad"
+          },
+          "output_tokens": 16384
+        },
+        {
+          "role": "advisory_evaluator",
+          "model": "opencode-go/claude-haiku-5-5",
+          "metadata": {
+            "id": "opencode-go/claude-haiku-5-5",
+            "provider": "opencode-go",
+            "local": false,
+            "api_family": "anthropic-messages",
+            "base_url": "https://opencode.ai/inference/go/anthropic",
+            "expected_route": "https://opencode.ai/inference/go/anthropic/v1/messages",
+            "context_window": 1000000,
+            "output_limit": 128000,
+            "input_modalities": [
+              "text",
+              "image"
+            ],
+            "output_modalities": [
+              "text"
+            ],
+            "structured_output": "PROMPTED_JSON_STRICT_HOST_VALIDATION",
+            "reasoning": "Pi simple-stream default; no reasoning-token inference",
+            "price_per_million": {
+              "input": 0.1,
+              "output": 0.5,
+              "cacheRead": 0.01,
+              "cacheWrite": 0.125,
+              "tiers": [
+                {
+                  "inputTokensAbove": 100000,
+                  "input": 0.5,
+                  "output": 2.5,
+                  "cacheRead": 0.05,
+                  "cacheWrite": 0.625
+                }
+              ]
+            },
+            "availability": "SCOPED_REGISTERED_NOT_LIVE_PROBED",
+            "qualification": "OFFLINE_TEST_REQUIRED",
+            "metadata_origin": "MANAGED_PI_1.4.0_SCOPED_REGISTRATION",
+            "config_hash": "78020e5ed7246fa4f787cd8b1f72f721c41caba22e72a20fcf56f07937ebe7ad"
+          },
+          "output_tokens": 16384
+        }
+      ],
+      "settings": {
+        "max_requests": 12,
+        "budget_usd": 10,
+        "max_input_bytes": 60000,
+        "max_response_bytes": 33554432,
+        "timeout_ms": 180000,
+        "output_tokens": {
+          "interpreter": 16384,
+          "challenger": 16384,
+          "mediator": 16384,
+          "recipient": 16384,
+          "advisory_evaluator": 16384
+        },
+        "automatic_retries": 0
+      },
+      "config_hash": "78020e5ed7246fa4f787cd8b1f72f721c41caba22e72a20fcf56f07937ebe7ad",
+      "offline_qualification_identity": null,
+      "expected_workflow_calls": 3,
+      "with_mediation_calls": 4,
+      "with_comparison_calls": 5,
+      "maximum_actual_requests": 12,
+      "conservative_estimate_usd": 0.94152,
+      "per_request_reservation_usd": 0.07846,
+      "estimate_standing": "CATALOGUE_BOUND_NOT_INVOICE; UTF8_BYTES_AS_INPUT_TOKEN_BOUND",
+      "service_use": "OPERATOR_MUST_CONFIRM_GO_WORKLOAD_APPROPRIATENESS",
+      "fallback": false,
+      "hash": "c28e9cade3d39473c2a016c626b9413424a1ea6cfa04fb44bd71cf2644cdfb01",
+      "launcher_remote_enabled": true,
+      "credential_available": true,
+      "approval_required": false,
+      "execution_policy": "DIRECT_USER_REQUEST",
+      "approval_active": true,
+      "requests_used": 1,
+      "reserved_usd": 0.07846,
+      "last_errors": {},
+      "advisory_evaluator_status": "OPTIONAL_NOT_RUN"
+    },
+    "manual_plan": {
+      "schema": "studio-remote-plan/0.1r",
+      "provider": "opencode-go",
+      "task_identity": {
+        "id": "museum-loan-m12",
+        "digest": "e22911925db7424b874b94b44a60e9250a68e0f0b0b0db5d09713aa754fb28b4",
+        "source_hash": "277b9050c46b1df5f9794bda17829e2acf450e6c4afaf79a7e21cf4692447228",
+        "question_hash": "0f71abc5fbc41f4fb5e3474a0efa15eb02aa33fe6642e99a27688a1fa89fb390",
+        "reference_standing": "UNADJUDICATED_REFERENCE"
+      },
+      "models": [
+        {
+          "role": "interpreter",
+          "model": "opencode-go/deepseek-v4.1-flash",
+          "metadata": {
+            "id": "opencode-go/deepseek-v4.1-flash",
+            "provider": "opencode-go",
+            "local": false,
+            "api_family": "openai-completions",
+            "base_url": "https://opencode.ai/inference/go/openai/v1",
+            "expected_route": "https://opencode.ai/inference/go/openai/v1/chat/completions",
+            "context_window": 1000000,
+            "output_limit": 384000,
+            "input_modalities": [
+              "text",
+              "image"
+            ],
+            "output_modalities": [
+              "text"
+            ],
+            "structured_output": "PROMPTED_JSON_STRICT_HOST_VALIDATION",
+            "reasoning": "Pi simple-stream default; no reasoning-token inference",
+            "price_per_million": {
+              "input": 0.3,
+              "output": 1.2,
+              "cacheRead": 0.006,
+              "cacheWrite": 0
+            },
+            "availability": "SCOPED_REGISTERED_NOT_LIVE_PROBED",
+            "qualification": "OFFLINE_TEST_REQUIRED",
+            "metadata_origin": "PINNED_PI_1.0.4_WITH_DOCUMENTED_ENDPOINT_OVERLAY",
+            "config_hash": "78020e5ed7246fa4f787cd8b1f72f721c41caba22e72a20fcf56f07937ebe7ad"
+          },
+          "output_tokens": 16384
+        },
+        {
+          "role": "challenger",
+          "model": "opencode-go/gpt-6-luna",
+          "metadata": {
+            "id": "opencode-go/gpt-6-luna",
+            "provider": "opencode-go",
+            "local": false,
+            "api_family": "openai-responses",
+            "base_url": "https://opencode.ai/inference/go/openai/v1",
+            "expected_route": "https://opencode.ai/inference/go/openai/v1/responses",
+            "context_window": 1050000,
+            "output_limit": 128000,
+            "input_modalities": [
+              "text",
+              "image"
+            ],
+            "output_modalities": [
+              "text"
+            ],
+            "structured_output": "PROMPTED_JSON_STRICT_HOST_VALIDATION",
+            "reasoning": "Pi simple-stream default; no reasoning-token inference",
+            "price_per_million": {
+              "input": 0.1,
+              "output": 0.5,
+              "cacheRead": 0.01,
+              "cacheWrite": 0.125
+            },
+            "availability": "SCOPED_REGISTERED_NOT_LIVE_PROBED",
+            "qualification": "OFFLINE_TEST_REQUIRED",
+            "metadata_origin": "PINNED_PI_1.0.4_WITH_DOCUMENTED_ENDPOINT_OVERLAY",
+            "config_hash": "78020e5ed7246fa4f787cd8b1f72f721c41caba22e72a20fcf56f07937ebe7ad"
+          },
+          "output_tokens": 16384
+        },
+        {
+          "role": "mediator",
+          "model": "opencode-go/deepseek-v4.1-flash",
+          "metadata": {
+            "id": "opencode-go/deepseek-v4.1-flash",
+            "provider": "opencode-go",
+            "local": false,
+            "api_family": "openai-completions",
+            "base_url": "https://opencode.ai/inference/go/openai/v1",
+            "expected_route": "https://opencode.ai/inference/go/openai/v1/chat/completions",
+            "context_window": 1000000,
+            "output_limit": 384000,
+            "input_modalities": [
+              "text",
+              "image"
+            ],
+            "output_modalities": [
+              "text"
+            ],
+            "structured_output": "PROMPTED_JSON_STRICT_HOST_VALIDATION",
+            "reasoning": "Pi simple-stream default; no reasoning-token inference",
+            "price_per_million": {
+              "input": 0.3,
+              "output": 1.2,
+              "cacheRead": 0.006,
+              "cacheWrite": 0
+            },
+            "availability": "SCOPED_REGISTERED_NOT_LIVE_PROBED",
+            "qualification": "OFFLINE_TEST_REQUIRED",
+            "metadata_origin": "PINNED_PI_1.0.4_WITH_DOCUMENTED_ENDPOINT_OVERLAY",
+            "config_hash": "78020e5ed7246fa4f787cd8b1f72f721c41caba22e72a20fcf56f07937ebe7ad"
+          },
+          "output_tokens": 16384
+        },
+        {
+          "role": "recipient",
+          "model": "opencode-go/qwen3.8-flash",
+          "metadata": {
+            "id": "opencode-go/qwen3.8-flash",
+            "provider": "opencode-go",
+            "local": false,
+            "api_family": "anthropic-messages",
+            "base_url": "https://opencode.ai/inference/go/anthropic",
+            "expected_route": "https://opencode.ai/inference/go/anthropic/v1/messages",
+            "context_window": 1000000,
+            "output_limit": 131072,
+            "input_modalities": [
+              "text",
+              "image"
+            ],
+            "output_modalities": [
+              "text"
+            ],
+            "structured_output": "PROMPTED_JSON_STRICT_HOST_VALIDATION",
+            "reasoning": "Pi simple-stream default; no reasoning-token inference",
+            "price_per_million": {
+              "input": 0.15,
+              "output": 0.47,
+              "cacheRead": 0.016,
+              "cacheWrite": 0.2
+            },
+            "availability": "SCOPED_REGISTERED_NOT_LIVE_PROBED",
+            "qualification": "OFFLINE_TEST_REQUIRED",
+            "metadata_origin": "PINNED_PI_1.0.4_WITH_DOCUMENTED_ENDPOINT_OVERLAY",
+            "config_hash": "78020e5ed7246fa4f787cd8b1f72f721c41caba22e72a20fcf56f07937ebe7ad"
+          },
+          "output_tokens": 16384
+        },
+        {
+          "role": "advisory_evaluator",
+          "model": "opencode-go/claude-haiku-5-5",
+          "metadata": {
+            "id": "opencode-go/claude-haiku-5-5",
+            "provider": "opencode-go",
+            "local": false,
+            "api_family": "anthropic-messages",
+            "base_url": "https://opencode.ai/inference/go/anthropic",
+            "expected_route": "https://opencode.ai/inference/go/anthropic/v1/messages",
+            "context_window": 1000000,
+            "output_limit": 128000,
+            "input_modalities": [
+              "text",
+              "image"
+            ],
+            "output_modalities": [
+              "text"
+            ],
+            "structured_output": "PROMPTED_JSON_STRICT_HOST_VALIDATION",
+            "reasoning": "Pi simple-stream default; no reasoning-token inference",
+            "price_per_million": {
+              "input": 0.1,
+              "output": 0.5,
+              "cacheRead": 0.01,
+              "cacheWrite": 0.125,
+              "tiers": [
+                {
+                  "inputTokensAbove": 100000,
+                  "input": 0.5,
+                  "output": 2.5,
+                  "cacheRead": 0.05,
+                  "cacheWrite": 0.625
+                }
+              ]
+            },
+            "availability": "SCOPED_REGISTERED_NOT_LIVE_PROBED",
+            "qualification": "OFFLINE_TEST_REQUIRED",
+            "metadata_origin": "MANAGED_PI_1.4.0_SCOPED_REGISTRATION",
+            "config_hash": "78020e5ed7246fa4f787cd8b1f72f721c41caba22e72a20fcf56f07937ebe7ad"
+          },
+          "output_tokens": 16384
+        }
+      ],
+      "settings": {
+        "max_requests": 12,
+        "budget_usd": 10,
+        "max_input_bytes": 60000,
+        "max_response_bytes": 33554432,
+        "timeout_ms": 180000,
+        "output_tokens": {
+          "interpreter": 16384,
+          "challenger": 16384,
+          "mediator": 16384,
+          "recipient": 16384,
+          "advisory_evaluator": 16384
+        },
+        "automatic_retries": 0
+      },
+      "config_hash": "78020e5ed7246fa4f787cd8b1f72f721c41caba22e72a20fcf56f07937ebe7ad",
+      "offline_qualification_identity": null,
+      "expected_workflow_calls": 3,
+      "with_mediation_calls": 4,
+      "with_comparison_calls": 5,
+      "maximum_actual_requests": 12,
+      "conservative_estimate_usd": 0.94152,
+      "per_request_reservation_usd": 0.07846,
+      "estimate_standing": "CATALOGUE_BOUND_NOT_INVOICE; UTF8_BYTES_AS_INPUT_TOKEN_BOUND",
+      "service_use": "OPERATOR_MUST_CONFIRM_GO_WORKLOAD_APPROPRIATENESS",
+      "fallback": false,
+      "hash": "c1e6a81b14b40afd0ec1b50f3d90b0753d8f50ccdb0dac8d6d1cc3bfea65c9aa",
+      "launcher_remote_enabled": true,
+      "credential_available": true,
+      "approval_required": false,
+      "execution_policy": "DIRECT_USER_REQUEST",
+      "approval_active": true,
+      "requests_used": 1,
+      "reserved_usd": 0.07846,
+      "last_errors": {},
+      "advisory_evaluator_status": "OPTIONAL_NOT_RUN"
+    },
+    "comparison_mode": "opencode",
+    "exchange": {
+      "id": "ba357e6f-d504-4318-9601-7344ac9ef926",
+      "scenario": "museum-loan-m12",
+      "task_identity": {
+        "id": "museum-loan-m12",
+        "digest": "e22911925db7424b874b94b44a60e9250a68e0f0b0b0db5d09713aa754fb28b4",
+        "source_hash": "277b9050c46b1df5f9794bda17829e2acf450e6c4afaf79a7e21cf4692447228",
+        "question_hash": "0f71abc5fbc41f4fb5e3474a0efa15eb02aa33fe6642e99a27688a1fa89fb390",
+        "reference_standing": "UNADJUDICATED_REFERENCE"
+      },
+      "created_at": "2026-10-23T19:03:18.925Z",
+      "intent": "Communicate this source faithfully, preserving attribution, conditions, exceptions, scope and uncertainty. Do not grant action authority.",
+      "original_intent": "Communicate this source faithfully, preserving attribution, conditions, exceptions, scope and uncertainty. Do not grant action authority.",
+      "purpose": "Faithful communication to a fresh recipient",
+      "audience": "Independent reader",
+      "source": {
+        "id": "R1E-04-source-v1",
+        "text": "Section 4.2 says the archivist may delete expired drafts after the retention review. Section 4.2, with the same effective date, says the archivist must not delete any expired draft. The excerpt gives no precedence rule.",
+        "hash": "4a14f45bbeedc4fe9d8d9ed4ec7be05013fbe4699def90c8814bd323b3e17020"
+      },
+      "versions": [],
+      "transfers": [],
+      "question_revealed": false
+    },
+    "events": [
+      {
+        "seq": 0,
+        "previous": null,
+        "at": "2026-10-23T19:03:18.921Z",
+        "type": "USER_SETTINGS_APPLIED",
+        "data": {
+          "understanding": {
+            "profile": "technical-policy",
+            "python_executable": "",
+            "timeout_ms": 15000
+          },
+          "version": 2,
+          "comparison_mode": "opencode",
+          "roles": {
+            "interpreter": "opencode-go/deepseek-v4.1-flash",
+            "challenger": "opencode-go/gpt-6-luna",
+            "mediator": "opencode-go/deepseek-v4.1-flash",
+            "recipient": "opencode-go/qwen3.8-flash",
+            "advisory_evaluator": "opencode-go/claude-haiku-5-5"
+          },
+          "limits": {
+            "max_requests": 12,
+            "budget_usd": 10,
+            "max_input_bytes": 60000,
+            "max_response_bytes": 33554432,
+            "timeout_ms": 180000,
+            "automatic_retries": 0,
+            "output_tokens": {
+              "interpreter": 16384,
+              "challenger": 16384,
+              "mediator": 16384,
+              "recipient": 16384,
+              "advisory_evaluator": 16384
+            }
+          },
+          "execution_policy": "DIRECT_USER_REQUEST"
+        },
+        "digest": "dc2a363161f3d87d90a50e37b278c5c6ebfa13466e82ef07546f84e140d8b117"
+      },
+      {
+        "seq": 1,
+        "previous": "dc2a363161f3d87d90a50e37b278c5c6ebfa13466e82ef07546f84e140d8b117",
+        "at": "2026-10-23T19:03:18.925Z",
+        "type": "STATE",
+        "data": {
+          "id": "ba357e6f-d504-4318-9601-7344ac9ef926",
+          "scenario": "museum-loan-m12",
+          "task_identity": {
+            "id": "museum-loan-m12",
+            "digest": "e22911925db7424b874b94b44a60e9250a68e0f0b0b0db5d09713aa754fb28b4",
+            "source_hash": "277b9050c46b1df5f9794bda17829e2acf450e6c4afaf79a7e21cf4692447228",
+            "question_hash": "0f71abc5fbc41f4fb5e3474a0efa15eb02aa33fe6642e99a27688a1fa89fb390",
+            "reference_standing": "UNADJUDICATED_REFERENCE"
+          },
+          "created_at": "2026-10-23T19:03:18.925Z",
+          "intent": "Communicate this source faithfully, preserving attribution, conditions, exceptions, scope and uncertainty. Do not grant action authority.",
+          "original_intent": "Communicate this source faithfully, preserving attribution, conditions, exceptions, scope and uncertainty. Do not grant action authority.",
+          "purpose": "Communicate museum handling policy",
+          "audience": "Independent reader",
+          "source": {
+            "id": "museum-policy-m12",
+            "text": "Section 4.2 says the archivist may delete expired drafts after the retention review. Section 4.2, with the same effective date, says the archivist must not delete any expired draft. The excerpt gives no precedence rule.",
+            "hash": "4a14f45bbeedc4fe9d8d9ed4ec7be05013fbe4699def90c8814bd323b3e17020"
+          },
+          "versions": [],
+          "transfers": [],
+          "question_revealed": false
+        },
+        "digest": "dcf955755bfd6769aee711f38b5bf8ef6880bdac92f196a167890b4aae6ce2c3"
+      },
+      {
+        "seq": 2,
+        "previous": "dcf955755bfd6769aee711f38b5bf8ef6880bdac92f196a167890b4aae6ce2c3",
+        "at": "2026-10-23T19:03:18.935Z",
+        "type": "STATE",
+        "data": {
+          "id": "ba357e6f-d504-4318-9601-7344ac9ef926",
+          "scenario": "museum-loan-m12",
+          "task_identity": {
+            "id": "museum-loan-m12",
+            "digest": "e22911925db7424b874b94b44a60e9250a68e0f0b0b0db5d09713aa754fb28b4",
+            "source_hash": "277b9050c46b1df5f9794bda17829e2acf450e6c4afaf79a7e21cf4692447228",
+            "question_hash": "0f71abc5fbc41f4fb5e3474a0efa15eb02aa33fe6642e99a27688a1fa89fb390",
+            "reference_standing": "UNADJUDICATED_REFERENCE"
+          },
+          "created_at": "2026-10-23T19:03:18.925Z",
+          "intent": "Communicate this source faithfully, preserving attribution, conditions, exceptions, scope and uncertainty. Do not grant action authority.",
+          "original_intent": "Communicate this source faithfully, preserving attribution, conditions, exceptions, scope and uncertainty. Do not grant action authority.",
+          "purpose": "Faithful communication to a fresh recipient",
+          "audience": "Independent reader",
+          "source": {
+            "id": "R1E-04-source-v1",
+            "text": "Section 4.2 says the archivist may delete expired drafts after the retention review. Section 4.2, with the same effective date, says the archivist must not delete any expired draft. The excerpt gives no precedence rule.",
+            "hash": "4a14f45bbeedc4fe9d8d9ed4ec7be05013fbe4699def90c8814bd323b3e17020"
+          },
+          "versions": [],
+          "transfers": [],
+          "question_revealed": false
+        },
+        "digest": "6da7d7ae25712ab8a200bffd7b35f34aeaaa061c57e83dc7662d34ed37d9e1f8"
+      },
+      {
+        "seq": 3,
+        "previous": "6da7d7ae25712ab8a200bffd7b35f34aeaaa061c57e83dc7662d34ed37d9e1f8",
+        "at": "2026-10-23T19:03:18.945Z",
+        "type": "UNDERSTANDING_PROCESS_STARTED",
+        "data": {
+          "trial_id": "R1E-04-A_SOURCE_ONLY",
+          "stage": "SOURCE",
+          "source_hash": "4a14f45bbeedc4fe9d8d9ed4ec7be05013fbe4699def90c8814bd323b3e17020",
+          "profile": "technical-policy"
+        },
+        "digest": "3a5343a12f05a5b474d6b8fd50782729ce3cf40753d3c082a633c6b9b423d17a"
+      },
+      {
+        "seq": 4,
+        "previous": "3a5343a12f05a5b474d6b8fd50782729ce3cf40753d3c082a633c6b9b423d17a",
+        "at": "2026-10-23T19:03:20.278Z",
+        "type": "UNDERSTANDING_ARTIFACT",
+        "data": {
+          "id": "93d7f0d2a2ad2e7f135f4e2c18e4df1117dae259a37f0f69d8bc525c00d0b847",
+          "schema": "language-understanding-artifact/0.1",
+          "trial_id": "R1E-04-A_SOURCE_ONLY",
+          "stage": "SOURCE",
+          "at": "2026-10-23T19:03:20.276Z",
+          "request": {
+            "source_id": "R1E-04-source-v1",
+            "source_text": "Section 4.2 says the archivist may delete expired drafts after the retention review. Section 4.2, with the same effective date, says the archivist must not delete any expired draft. The excerpt gives no precedence rule.",
+            "profile": "technical-policy",
+            "profile_version": "0.2",
+            "context": {
+              "purpose": "Faithful communication to a fresh recipient",
+              "intended_recipient": "Independent reader",
+              "declared_context": {}
+            }
+          },
+          "inventory": {
+            "schema": "language-understanding-inventory/0.1",
+            "offset_unit": "UNICODE_CODE_POINTS",
+            "standing": "HEURISTIC_UNVERIFIED",
+            "source": {
+              "id": "R1E-04-source-v1",
+              "sha256": "4a14f45bbeedc4fe9d8d9ed4ec7be05013fbe4699def90c8814bd323b3e17020",
+              "text": "Section 4.2 says the archivist may delete expired drafts after the retention review. Section 4.2, with the same effective date, says the archivist must not delete any expired draft. The excerpt gives no precedence rule."
+            },
+            "profile": {
+              "id": "technical-policy",
+              "version": "0.2",
+              "schema": "language-understanding-profile/0.1",
+              "sha256": "12287d00977aa52dcc4b142c6bb2829bf72c4636ce7a9cde6caea4b7d2dd669b"
+            },
+            "engine": {
+              "id": "spacy/blank-en+sentencizer",
+              "version": "0.2.0",
+              "nltk_version": "3.10.4",
+              "spacy_version": "3.8.16",
+              "trained_syntax_available": false,
+              "trained_model_requested": "en_core_web_sm",
+              "fallback_reason": "SPACY_MODEL_NOT_INSTALLED"
+            },
+            "segments": [
+              {
+                "id": "s1",
+                "start": 0,
+                "end": 84,
+                "text": "Section 4.2 says the archivist may delete expired drafts after the retention review."
+              },
+              {
+                "id": "s2",
+                "start": 85,
+                "end": 181,
+                "text": "Section 4.2, with the same effective date, says the archivist must not delete any expired draft."
+              },
+              {
+                "id": "s3",
+                "start": 182,
+                "end": 219,
+                "text": "The excerpt gives no precedence rule."
+              }
+            ],
+            "meaning_units": [
+              {
+                "id": "m1",
+                "source_segments": [
+                  "s1"
+                ],
+                "start": 0,
+                "end": 84,
+                "source_quote": "Section 4.2 says the archivist may delete expired drafts after the retention review.",
+                "proposed_meaning": "Section 4.2 says the archivist may delete expired drafts after the retention review.",
+                "classification": {
+                  "kind": "permission",
+                  "normative_force": "PERMITTED_IN_SOURCE",
+                  "condition_cues": [],
+                  "temporal_cues": [
+                    "after"
+                  ],
+                  "possible_unresolved_reference": false,
+                  "speaker": "",
+                  "prerequisites": [],
+                  "method": "LEXICAL_RULE_HEURISTIC",
+                  "review": "HEURISTIC_UNVERIFIED"
+                },
+                "provenance": "EXACT_SOURCE_SPAN"
+              },
+              {
+                "id": "m2",
+                "source_segments": [
+                  "s2"
+                ],
+                "start": 85,
+                "end": 181,
+                "source_quote": "Section 4.2, with the same effective date, says the archivist must not delete any expired draft.",
+                "proposed_meaning": "Section 4.2, with the same effective date, says the archivist must not delete any expired draft.",
+                "classification": {
+                  "kind": "prohibition",
+                  "normative_force": "PROHIBITED",
+                  "condition_cues": [
+                    "with"
+                  ],
+                  "temporal_cues": [],
+                  "possible_unresolved_reference": false,
+                  "speaker": "",
+                  "prerequisites": [],
+                  "method": "LEXICAL_RULE_HEURISTIC",
+                  "review": "HEURISTIC_UNVERIFIED"
+                },
+                "provenance": "EXACT_SOURCE_SPAN"
+              },
+              {
+                "id": "m3",
+                "source_segments": [
+                  "s3"
+                ],
+                "start": 182,
+                "end": 219,
+                "source_quote": "The excerpt gives no precedence rule.",
+                "proposed_meaning": "The excerpt gives no precedence rule.",
+                "classification": {
+                  "kind": "statement",
+                  "normative_force": "ASSERTED_IN_SOURCE",
+                  "condition_cues": [],
+                  "temporal_cues": [],
+                  "possible_unresolved_reference": false,
+                  "speaker": "",
+                  "prerequisites": [],
+                  "method": "LEXICAL_RULE_HEURISTIC",
+                  "review": "HEURISTIC_UNVERIFIED"
+                },
+                "provenance": "EXACT_SOURCE_SPAN"
+              }
+            ],
+            "relations": [],
+            "context": {
+              "purpose": "Faithful communication to a fresh recipient",
+              "intended_recipient": "Independent reader",
+              "declared_context": {}
+            },
+            "coverage": {
+              "standing": "NOT_EVALUATED",
+              "source_supportedness": "NOT_EVALUATED",
+              "semantic_completeness": "NOT_ESTABLISHED"
+            },
+            "warnings": [
+              "Labels are lexical heuristics, not verified meaning or permissions.",
+              "No cross-sentence relation, coreference, or semantic completeness checker is implemented.",
+              "Semicolon splitting, prerequisite hints and speaker labels are rule-based candidates, not semantic analysis."
+            ]
+          },
+          "compiler": {
+            "profile": {
+              "id": "technical-policy",
+              "version": "0.2",
+              "sha256": "12287d00977aa52dcc4b142c6bb2829bf72c4636ce7a9cde6caea4b7d2dd669b",
+              "file_sha256": "9d961fac646c1c164019c55b1eaa3f75748f42b47e3aad7862bc50181cdd4a75",
+              "path": "C:\\Projects\\project-language\\core\\understanding\\python\\profiles\\technical-policy.json"
+            },
+            "adapter": "language-understanding-child/0.1",
+            "python": "C:\\Projects\\project-language\\.venv\\Scripts\\python.exe",
+            "timeout_ms": 15000,
+            "max_input_bytes": 262144,
+            "max_output_bytes": 4194304,
+            "require_trained_syntax": false,
+            "source_hashes": {
+              "src/understanding/cli.py": "fdbbaab6d1c51d077046100aef43fcb0fcfac5e278dba1fa30f3a0cddb229ba9",
+              "src/understanding/pipeline.py": "713ddf811112278038b19aaa5995eba929a827e6dee7634d5d5e8d54cba5ed1d",
+              "src/understanding/__init__.py": "c4b5f92990c64643e4907def83a7a62dd00c8bdd3dd738a8ab14c55d523a396f",
+              "src/understanding/contracts.py": "ec17e9c381a22aed695663e4e27ed57f0cdd07491ec78355cb95855a2e08e7d7",
+              "../schemas/request-v0.1.json": "0d1dc60bff65f0baf319fef34d6dd5e141c814d55ed7f865fed629cebd4578c2",
+              "../schemas/inventory-v0.1.json": "aa4c284f4352141ec9fbcc56a51027bdba94e2e588affcaa739fcf2fd8340e5d",
+              "pyproject.toml": "b8b9fb81e47e37041d1fbc7a1a660b35a5b57909a1b370b76826a539af4e8108"
+            },
+            "integration_hashes": {
+              "./workflow.mjs": "3b435c25171ef5dd66785ad93b132c0ed67f833eab63bdd9bd0cff36f5e4bc25",
+              "./analysis.mjs": "c0279d78149f90f6412875dbe0df5eb35f516a90cbd5a235023bb9a93a94ef95",
+              "./decomposition.mjs": "42e5cbc7d12bb55d98d93c5223c8a5edf6eba9de3bfbfe2469ee9ca729c412cb",
+              "../models/prompts.mjs": "5b16ac6b45b60727f8c1467bb6b934e14cd2d9726bb0d750d4f9e9d69cccd32b",
+              "../models/source-anchors.mjs": "04d977f0a67397d568c2c84cf1f6767ea210d6bfb2ecb67c875935909258aa08"
+            }
+          },
+          "provenance": {
+            "source_hash": "4a14f45bbeedc4fe9d8d9ed4ec7be05013fbe4699def90c8814bd323b3e17020"
+          },
+          "standing": "HEURISTIC_UNVERIFIED"
+        },
+        "digest": "82fd8171480e837a310e9eae43bca29c8b37945622fda5e11e1f39b0dd98b03e"
+      },
+      {
+        "seq": 5,
+        "previous": "82fd8171480e837a310e9eae43bca29c8b37945622fda5e11e1f39b0dd98b03e",
+        "at": "2026-10-23T19:03:20.285Z",
+        "type": "BATCH_DELIVERY_SEALED",
+        "data": {
+          "arm": "A_SOURCE_ONLY",
+          "packet": {
+            "schema": "language-delivery/0.1",
+            "purpose": "Faithful communication to a fresh recipient",
+            "audience": "Independent reader",
+            "contract_version": "lc02-r1/source-relative/1",
+            "answer_scope": "SOURCE_RELATIVE",
+            "source_truth": "UNVERIFIED",
+            "source_truth_scope": "EXTERNAL_FACTUAL_VERIFICATION_ONLY",
+            "interpretation_standing": "FALLIBLE_AID_NOT_SOURCE",
+            "action_authority": false,
+            "source": {
+              "id": "R1E-04-source-v1",
+              "text": "Section 4.2 says the archivist may delete expired drafts after the retention review. Section 4.2, with the same effective date, says the archivist must not delete any expired draft. The excerpt gives no precedence rule.",
+              "hash": "4a14f45bbeedc4fe9d8d9ed4ec7be05013fbe4699def90c8814bd323b3e17020"
+            }
+          },
+          "packet_hash": "7e159bcadc3a763ca3ec3c6493bbfae3ab654fb1a7db8e0baaf9b71d45c305c5",
+          "question": {
+            "id": "R1E-04-question-v1",
+            "text": "What is the status of deleting expired drafts after the retention review under the excerpt?",
+            "scope": "SOURCE_RELATIVE"
+          },
+          "action_authority": false
+        },
+        "digest": "55cc8ab4b283375bcbcac266fe2b39adb88d9e2a13000314bb46116c1493c3bb"
+      },
+      {
+        "seq": 6,
+        "previous": "55cc8ab4b283375bcbcac266fe2b39adb88d9e2a13000314bb46116c1493c3bb",
+        "at": "2026-10-23T19:03:20.296Z",
+        "type": "MODEL_REQUEST",
+        "data": {
+          "role": "recipient",
+          "model": "opencode-go/qwen3.8-flash",
+          "system": "Answer the supplied question from the source embedded in the delivered packet. The packet may also contain a fallible interpretation. The interpretation is an aid, not the source and not evidence of external truth. Return YES, NO, UNKNOWN or SOURCE_CONFLICT with explanation and exact source anchors only when source text is available. Unknown is not permission. No tools or actions. Three scopes are distinct. (a) SOURCE_RELATIVE: what the supplied document or hypothetical scenario states or entails. (b) EXTERNAL_FACTUAL_VERIFICATION: whether that document accurately describes the real world. (c) ACTION_AUTHORITY: whether an actual actor or system is permitted to execute an operation now. source_truth: UNVERIFIED means only that the document has not been independently checked against the external world. It does not prevent a source-relative answer. Do not cite it as a reason to answer UNKNOWN about what the document itself states or entails. The interpretation is a fallible aid, not the source. A doubt, unknown, qualification or inference added by an interpreter is not a gap in the source unless the exact source text leaves the question-relevant condition unresolved. Do not add a condition that the source does not contain. Do not treat a later sentence as adding a new condition merely because it does not repeat an earlier one. If the source explicitly resolves a question-relevant condition, it is resolved even when an interpretation lists it as open. This packet grants no action authority and no external verification. For a SOURCE_RELATIVE question, use the labels as follows. YES: the source states or entails the proposition asked about. NO: the source states its negation, expressly prohibits it, or does not establish the requested permission/condition; explain which of these applies. NO is not automatically a universal prohibition. UNKNOWN: the source leaves a question-relevant fact, condition or authority unresolved, or contains a genuine ambiguity that the text does not settle. UNKNOWN is not a synonym for lack of external verification. SOURCE_CONFLICT: the source contains unresolved contradictory provisions or statements of equal standing and supplies no precedence rule. Do not use SOURCE_CONFLICT for ordinary missing information. If source_anchors is supplied, copy an appropriate complete anchor object from that catalogue verbatim rather than calculating numeric positions yourself. The catalogue contains source locations only, not evidence that a claim follows from a quotation. You may cite a whole sentence supporting a smaller meaning. Source anchors use zero-based UTF-16 code-unit offsets into the exact ORIGINAL_SOURCE text, with an exclusive end. Every anchor must satisfy source.text.slice(start,end) === anchor.text, with the original source ID and hash. Do not guess positions or normalize punctuation or whitespace. If you cannot reproduce source_hash exactly, use an empty string for source_hash and still supply the exact source_id, start, end and text; the host resolves the canonical hash from its own source identity. Never fabricate a span or text. Recipients may return citations: [] when exact offsets cannot be established; explain the answer without fabricated anchors. Return only JSON matching this schema: {\"$schema\":\"https://json-schema.org/draft/2020-12/schema\",\"type\":\"object\",\"properties\":{\"decision\":{\"type\":\"string\",\"enum\":[\"YES\",\"NO\",\"UNKNOWN\",\"SOURCE_CONFLICT\"]},\"explanation\":{\"type\":\"string\"},\"citations\":{\"type\":\"array\",\"items\":{\"type\":\"object\",\"properties\":{\"origin\":{\"type\":\"string\",\"const\":\"ORIGINAL_SOURCE\"},\"source_id\":{\"type\":\"string\"},\"source_hash\":{\"type\":\"string\"},\"start\":{\"type\":\"integer\",\"minimum\":0,\"maximum\":9007199254740991},\"end\":{\"type\":\"integer\",\"exclusiveMinimum\":0,\"maximum\":9007199254740991},\"text\":{\"type\":\"string\",\"minLength\":1}},\"required\":[\"origin\",\"source_id\",\"source_hash\",\"start\",\"end\",\"text\"],\"additionalProperties\":false}}},\"required\":[\"decision\",\"explanation\",\"citations\"],\"additionalProperties\":false}",
+          "input": {
+            "packet": {
+              "schema": "language-delivery/0.1",
+              "purpose": "Faithful communication to a fresh recipient",
+              "audience": "Independent reader",
+              "contract_version": "lc02-r1/source-relative/1",
+              "answer_scope": "SOURCE_RELATIVE",
+              "source_truth": "UNVERIFIED",
+              "source_truth_scope": "EXTERNAL_FACTUAL_VERIFICATION_ONLY",
+              "interpretation_standing": "FALLIBLE_AID_NOT_SOURCE",
+              "action_authority": false,
+              "source": {
+                "id": "R1E-04-source-v1",
+                "text": "Section 4.2 says the archivist may delete expired drafts after the retention review. Section 4.2, with the same effective date, says the archivist must not delete any expired draft. The excerpt gives no precedence rule.",
+                "hash": "4a14f45bbeedc4fe9d8d9ed4ec7be05013fbe4699def90c8814bd323b3e17020"
+              }
+            },
+            "question": {
+              "id": "R1E-04-question-v1",
+              "text": "What is the status of deleting expired drafts after the retention review under the excerpt?",
+              "scope": "SOURCE_RELATIVE"
+            },
+            "source_anchors": {
+              "schema": "language-source-anchor-catalogue/0.1",
+              "offset_unit": "UTF16_CODE_UNITS",
+              "standing": "EXACT_SOURCE_LOCATIONS_NOT_SEMANTIC_SUPPORT",
+              "anchors": [
+                {
+                  "origin": "ORIGINAL_SOURCE",
+                  "source_id": "R1E-04-source-v1",
+                  "source_hash": "4a14f45bbeedc4fe9d8d9ed4ec7be05013fbe4699def90c8814bd323b3e17020",
+                  "start": 0,
+                  "end": 219,
+                  "text": "Section 4.2 says the archivist may delete expired drafts after the retention review. Section 4.2, with the same effective date, says the archivist must not delete any expired draft. The excerpt gives no precedence rule."
+                },
+                {
+                  "origin": "ORIGINAL_SOURCE",
+                  "source_id": "R1E-04-source-v1",
+                  "source_hash": "4a14f45bbeedc4fe9d8d9ed4ec7be05013fbe4699def90c8814bd323b3e17020",
+                  "start": 0,
+                  "end": 84,
+                  "text": "Section 4.2 says the archivist may delete expired drafts after the retention review."
+                },
+                {
+                  "origin": "ORIGINAL_SOURCE",
+                  "source_id": "R1E-04-source-v1",
+                  "source_hash": "4a14f45bbeedc4fe9d8d9ed4ec7be05013fbe4699def90c8814bd323b3e17020",
+                  "start": 85,
+                  "end": 181,
+                  "text": "Section 4.2, with the same effective date, says the archivist must not delete any expired draft."
+                },
+                {
+                  "origin": "ORIGINAL_SOURCE",
+                  "source_id": "R1E-04-source-v1",
+                  "source_hash": "4a14f45bbeedc4fe9d8d9ed4ec7be05013fbe4699def90c8814bd323b3e17020",
+                  "start": 182,
+                  "end": 219,
+                  "text": "The excerpt gives no precedence rule."
+                }
+              ]
+            }
+          },
+          "user": "{\"packet\":{\"schema\":\"language-delivery/0.1\",\"purpose\":\"Faithful communication to a fresh recipient\",\"audience\":\"Independent reader\",\"contract_version\":\"lc02-r1/source-relative/1\",\"answer_scope\":\"SOURCE_RELATIVE\",\"source_truth\":\"UNVERIFIED\",\"source_truth_scope\":\"EXTERNAL_FACTUAL_VERIFICATION_ONLY\",\"interpretation_standing\":\"FALLIBLE_AID_NOT_SOURCE\",\"action_authority\":false,\"source\":{\"id\":\"R1E-04-source-v1\",\"text\":\"Section 4.2 says the archivist may delete expired drafts after the retention review. Section 4.2, with the same effective date, says the archivist must not delete any expired draft. The excerpt gives no precedence rule.\",\"hash\":\"4a14f45bbeedc4fe9d8d9ed4ec7be05013fbe4699def90c8814bd323b3e17020\"}},\"question\":{\"id\":\"R1E-04-question-v1\",\"text\":\"What is the status of deleting expired drafts after the retention review under the excerpt?\",\"scope\":\"SOURCE_RELATIVE\"},\"source_anchors\":{\"schema\":\"language-source-anchor-catalogue/0.1\",\"offset_unit\":\"UTF16_CODE_UNITS\",\"standing\":\"EXACT_SOURCE_LOCATIONS_NOT_SEMANTIC_SUPPORT\",\"anchors\":[{\"origin\":\"ORIGINAL_SOURCE\",\"source_id\":\"R1E-04-source-v1\",\"source_hash\":\"4a14f45bbeedc4fe9d8d9ed4ec7be05013fbe4699def90c8814bd323b3e17020\",\"start\":0,\"end\":219,\"text\":\"Section 4.2 says the archivist may delete expired drafts after the retention review. Section 4.2, with the same effective date, says the archivist must not delete any expired draft. The excerpt gives no precedence rule.\"},{\"origin\":\"ORIGINAL_SOURCE\",\"source_id\":\"R1E-04-source-v1\",\"source_hash\":\"4a14f45bbeedc4fe9d8d9ed4ec7be05013fbe4699def90c8814bd323b3e17020\",\"start\":0,\"end\":84,\"text\":\"Section 4.2 says the archivist may delete expired drafts after the retention review.\"},{\"origin\":\"ORIGINAL_SOURCE\",\"source_id\":\"R1E-04-source-v1\",\"source_hash\":\"4a14f45bbeedc4fe9d8d9ed4ec7be05013fbe4699def90c8814bd323b3e17020\",\"start\":85,\"end\":181,\"text\":\"Section 4.2, with the same effective date, says the archivist must not delete any expired draft.\"},{\"origin\":\"ORIGINAL_SOURCE\",\"source_id\":\"R1E-04-source-v1\",\"source_hash\":\"4a14f45bbeedc4fe9d8d9ed4ec7be05013fbe4699def90c8814bd323b3e17020\",\"start\":182,\"end\":219,\"text\":\"The excerpt gives no precedence rule.\"}]}}",
+          "output_schema": {
+            "$schema": "https://json-schema.org/draft/2020-12/schema",
+            "type": "object",
+            "properties": {
+              "decision": {
+                "type": "string",
+                "enum": [
+                  "YES",
+                  "NO",
+                  "UNKNOWN",
+                  "SOURCE_CONFLICT"
+                ]
+              },
+              "explanation": {
+                "type": "string"
+              },
+              "citations": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "origin": {
+                      "type": "string",
+                      "const": "ORIGINAL_SOURCE"
+                    },
+                    "source_id": {
+                      "type": "string"
+                    },
+                    "source_hash": {
+                      "type": "string"
+                    },
+                    "start": {
+                      "type": "integer",
+                      "minimum": 0,
+                      "maximum": 9007199254740991
+                    },
+                    "end": {
+                      "type": "integer",
+                      "exclusiveMinimum": 0,
+                      "maximum": 9007199254740991
+                    },
+                    "text": {
+                      "type": "string",
+                      "minLength": 1
+                    }
+                  },
+                  "required": [
+                    "origin",
+                    "source_id",
+                    "source_hash",
+                    "start",
+                    "end",
+                    "text"
+                  ],
+                  "additionalProperties": false
+                }
+              }
+            },
+            "required": [
+              "decision",
+              "explanation",
+              "citations"
+            ],
+            "additionalProperties": false
+          },
+          "session_id": "195752aa-6f96-444a-8aed-03c21d399e0d",
+          "hash": "2b30cceff77f96c9ba1d613f9df791cc410170049b26151cddd84245d52786e2",
+          "prompt_hash": "2b30cceff77f96c9ba1d613f9df791cc410170049b26151cddd84245d52786e2",
+          "standing": "HOSTED_OPENCODE_GO",
+          "api_family": "anthropic-messages",
+          "settings": {
+            "max_requests": 12,
+            "budget_usd": 10,
+            "max_input_bytes": 60000,
+            "max_response_bytes": 33554432,
+            "timeout_ms": 180000,
+            "output_tokens": {
+              "interpreter": 16384,
+              "challenger": 16384,
+              "mediator": 16384,
+              "recipient": 16384,
+              "advisory_evaluator": 16384
+            },
+            "automatic_retries": 0
+          },
+          "reservation_usd": 0.07846,
+          "plan_hash": "c1e6a81b14b40afd0ec1b50f3d90b0753d8f50ccdb0dac8d6d1cc3bfea65c9aa",
+          "attempt_number": 1
+        },
+        "digest": "16cfea4b7a8498cba88636902e1c9936e73d4e2ea1a15f9d116f843282ca43cd"
+      },
+      {
+        "seq": 7,
+        "previous": "16cfea4b7a8498cba88636902e1c9936e73d4e2ea1a15f9d116f843282ca43cd",
+        "at": "2026-10-23T19:03:20.302Z",
+        "type": "PROVIDER_REQUEST",
+        "data": {
+          "request_hash": "2b30cceff77f96c9ba1d613f9df791cc410170049b26151cddd84245d52786e2",
+          "model": "opencode-go/qwen3.8-flash",
+          "api": "anthropic-messages",
+          "url": "https://opencode.ai/inference/go/anthropic/v1/messages?beta=true",
+          "method": "POST",
+          "body": "{\"model\":\"qwen3.8-flash\",\"messages\":[{\"role\":\"user\",\"content\":[{\"type\":\"text\",\"text\":\"{\\\"packet\\\":{\\\"schema\\\":\\\"language-delivery/0.1\\\",\\\"purpose\\\":\\\"Faithful communication to a fresh recipient\\\",\\\"audience\\\":\\\"Independent reader\\\",\\\"contract_version\\\":\\\"lc02-r1/source-relative/1\\\",\\\"answer_scope\\\":\\\"SOURCE_RELATIVE\\\",\\\"source_truth\\\":\\\"UNVERIFIED\\\",\\\"source_truth_scope\\\":\\\"EXTERNAL_FACTUAL_VERIFICATION_ONLY\\\",\\\"interpretation_standing\\\":\\\"FALLIBLE_AID_NOT_SOURCE\\\",\\\"action_authority\\\":false,\\\"source\\\":{\\\"id\\\":\\\"R1E-04-source-v1\\\",\\\"text\\\":\\\"Section 4.2 says the archivist may delete expired drafts after the retention review. Section 4.2, with the same effective date, says the archivist must not delete any expired draft. The excerpt gives no precedence rule.\\\",\\\"hash\\\":\\\"4a14f45bbeedc4fe9d8d9ed4ec7be05013fbe4699def90c8814bd323b3e17020\\\"}},\\\"question\\\":{\\\"id\\\":\\\"R1E-04-question-v1\\\",\\\"text\\\":\\\"What is the status of deleting expired drafts after the retention review under the excerpt?\\\",\\\"scope\\\":\\\"SOURCE_RELATIVE\\\"},\\\"source_anchors\\\":{\\\"schema\\\":\\\"language-source-anchor-catalogue/0.1\\\",\\\"offset_unit\\\":\\\"UTF16_CODE_UNITS\\\",\\\"standing\\\":\\\"EXACT_SOURCE_LOCATIONS_NOT_SEMANTIC_SUPPORT\\\",\\\"anchors\\\":[{\\\"origin\\\":\\\"ORIGINAL_SOURCE\\\",\\\"source_id\\\":\\\"R1E-04-source-v1\\\",\\\"source_hash\\\":\\\"4a14f45bbeedc4fe9d8d9ed4ec7be05013fbe4699def90c8814bd323b3e17020\\\",\\\"start\\\":0,\\\"end\\\":219,\\\"text\\\":\\\"Section 4.2 says the archivist may delete expired drafts after the retention review. Section 4.2, with the same effective date, says the archivist must not delete any expired draft. The excerpt gives no precedence rule.\\\"},{\\\"origin\\\":\\\"ORIGINAL_SOURCE\\\",\\\"source_id\\\":\\\"R1E-04-source-v1\\\",\\\"source_hash\\\":\\\"4a14f45bbeedc4fe9d8d9ed4ec7be05013fbe4699def90c8814bd323b3e17020\\\",\\\"start\\\":0,\\\"end\\\":84,\\\"text\\\":\\\"Section 4.2 says the archivist may delete expired drafts after the retention review.\\\"},{\\\"origin\\\":\\\"ORIGINAL_SOURCE\\\",\\\"source_id\\\":\\\"R1E-04-source-v1\\\",\\\"source_hash\\\":\\\"4a14f45bbeedc4fe9d8d9ed4ec7be05013fbe4699def90c8814bd323b3e17020\\\",\\\"start\\\":85,\\\"end\\\":181,\\\"text\\\":\\\"Section 4.2, with the same effective date, says the archivist must not delete any expired draft.\\\"},{\\\"origin\\\":\\\"ORIGINAL_SOURCE\\\",\\\"source_id\\\":\\\"R1E-04-source-v1\\\",\\\"source_hash\\\":\\\"4a14f45bbeedc4fe9d8d9ed4ec7be05013fbe4699def90c8814bd323b3e17020\\\",\\\"start\\\":182,\\\"end\\\":219,\\\"text\\\":\\\"The excerpt gives no precedence rule.\\\"}]}}\"}]}],\"max_tokens\":16384,\"stream\":true,\"system\":[{\"type\":\"text\",\"text\":\"Answer the supplied question from the source embedded in the delivered packet. The packet may also contain a fallible interpretation. The interpretation is an aid, not the source and not evidence of external truth. Return YES, NO, UNKNOWN or SOURCE_CONFLICT with explanation and exact source anchors only when source text is available. Unknown is not permission. No tools or actions. Three scopes are distinct. (a) SOURCE_RELATIVE: what the supplied document or hypothetical scenario states or entails. (b) EXTERNAL_FACTUAL_VERIFICATION: whether that document accurately describes the real world. (c) ACTION_AUTHORITY: whether an actual actor or system is permitted to execute an operation now. source_truth: UNVERIFIED means only that the document has not been independently checked against the external world. It does not prevent a source-relative answer. Do not cite it as a reason to answer UNKNOWN about what the document itself states or entails. The interpretation is a fallible aid, not the source. A doubt, unknown, qualification or inference added by an interpreter is not a gap in the source unless the exact source text leaves the question-relevant condition unresolved. Do not add a condition that the source does not contain. Do not treat a later sentence as adding a new condition merely because it does not repeat an earlier one. If the source explicitly resolves a question-relevant condition, it is resolved even when an interpretation lists it as open. This packet grants no action authority and no external verification. For a SOURCE_RELATIVE question, use the labels as follows. YES: the source states or entails the proposition asked about. NO: the source states its negation, expressly prohibits it, or does not establish the requested permission/condition; explain which of these applies. NO is not automatically a universal prohibition. UNKNOWN: the source leaves a question-relevant fact, condition or authority unresolved, or contains a genuine ambiguity that the text does not settle. UNKNOWN is not a synonym for lack of external verification. SOURCE_CONFLICT: the source contains unresolved contradictory provisions or statements of equal standing and supplies no precedence rule. Do not use SOURCE_CONFLICT for ordinary missing information. If source_anchors is supplied, copy an appropriate complete anchor object from that catalogue verbatim rather than calculating numeric positions yourself. The catalogue contains source locations only, not evidence that a claim follows from a quotation. You may cite a whole sentence supporting a smaller meaning. Source anchors use zero-based UTF-16 code-unit offsets into the exact ORIGINAL_SOURCE text, with an exclusive end. Every anchor must satisfy source.text.slice(start,end) === anchor.text, with the original source ID and hash. Do not guess positions or normalize punctuation or whitespace. If you cannot reproduce source_hash exactly, use an empty string for source_hash and still supply the exact source_id, start, end and text; the host resolves the canonical hash from its own source identity. Never fabricate a span or text. Recipients may return citations: [] when exact offsets cannot be established; explain the answer without fabricated anchors. Return only JSON matching this schema: {\\\"$schema\\\":\\\"https://json-schema.org/draft/2020-12/schema\\\",\\\"type\\\":\\\"object\\\",\\\"properties\\\":{\\\"decision\\\":{\\\"type\\\":\\\"string\\\",\\\"enum\\\":[\\\"YES\\\",\\\"NO\\\",\\\"UNKNOWN\\\",\\\"SOURCE_CONFLICT\\\"]},\\\"explanation\\\":{\\\"type\\\":\\\"string\\\"},\\\"citations\\\":{\\\"type\\\":\\\"array\\\",\\\"items\\\":{\\\"type\\\":\\\"object\\\",\\\"properties\\\":{\\\"origin\\\":{\\\"type\\\":\\\"string\\\",\\\"const\\\":\\\"ORIGINAL_SOURCE\\\"},\\\"source_id\\\":{\\\"type\\\":\\\"string\\\"},\\\"source_hash\\\":{\\\"type\\\":\\\"string\\\"},\\\"start\\\":{\\\"type\\\":\\\"integer\\\",\\\"minimum\\\":0,\\\"maximum\\\":9007199254740991},\\\"end\\\":{\\\"type\\\":\\\"integer\\\",\\\"exclusiveMinimum\\\":0,\\\"maximum\\\":9007199254740991},\\\"text\\\":{\\\"type\\\":\\\"string\\\",\\\"minLength\\\":1}},\\\"required\\\":[\\\"origin\\\",\\\"source_id\\\",\\\"source_hash\\\",\\\"start\\\",\\\"end\\\",\\\"text\\\"],\\\"additionalProperties\\\":false}}},\\\"required\\\":[\\\"decision\\\",\\\"explanation\\\",\\\"citations\\\"],\\\"additionalProperties\\\":false}\"}],\"thinking\":{\"type\":\"disabled\"}}",
+          "body_hash": "a7ce1a9f2ef2e5acc2a1a1349c404c617e46149eff18b57c1098369b1739d1aa",
+          "input_bytes": 6660,
+          "session_id": "195752aa-6f96-444a-8aed-03c21d399e0d",
+          "public_headers": {
+            "user-agent": "language-studio/0.1r",
+            "x-opencode-session": "195752aa-6f96-444a-8aed-03c21d399e0d"
+          },
+          "authentication": "PROCESS_ENV_ONLY_REDACTED"
+        },
+        "digest": "037014a56283bf3e153dd80664d43ba0ea62252e1015fa311e7e6a750375a0f7"
+      },
+      {
+        "seq": 8,
+        "previous": "037014a56283bf3e153dd80664d43ba0ea62252e1015fa311e7e6a750375a0f7",
+        "at": "2026-10-23T19:03:25.286Z",
+        "type": "MODEL_RESULT",
+        "data": {
+          "role": "recipient",
+          "model": "opencode-go/qwen3.8-flash",
+          "request_hash": "2b30cceff77f96c9ba1d613f9df791cc410170049b26151cddd84245d52786e2",
+          "raw": "{\n  \"decision\": \"SOURCE_CONFLICT\",\n  \"explanation\": \"The source contains two contradictory provisions regarding the deletion of expired drafts by the archivist. Section 4.2 first states that the archivist 'may delete expired drafts after the retention review,' implying permission. Immediately after, it states that the archivist 'must not delete any expired draft,' implying a prohibition. The text explicitly notes that there is 'no precedence rule' provided in the excerpt to resolve this conflict. Therefore, the status of deleting expired drafts cannot be determined as definitively permitted or prohibited based on the supplied source.\",\n  \"citations\": [\n    {\n      \"origin\": \"ORIGINAL_SOURCE\",\n      \"source_id\": \"R1E-04-source-v1\",\n      \"source_hash\": \"4a14f45bbeedc4fe9d8d9ed4ec7be05013fbe4699def90c8814bd323b3e17020\",\n      \"start\": 0,\n      \"end\": 219,\n      \"text\": \"Section 4.2 says the archivist may delete expired drafts after the retention review. Section 4.2, with the same effective date, says the archivist must not delete any expired draft. The excerpt gives no precedence rule.\"\n    }\n  ]\n}",
+          "output": {
+            "decision": "SOURCE_CONFLICT",
+            "explanation": "The source contains two contradictory provisions regarding the deletion of expired drafts by the archivist. Section 4.2 first states that the archivist 'may delete expired drafts after the retention review,' implying permission. Immediately after, it states that the archivist 'must not delete any expired draft,' implying a prohibition. The text explicitly notes that there is 'no precedence rule' provided in the excerpt to resolve this conflict. Therefore, the status of deleting expired drafts cannot be determined as definitively permitted or prohibited based on the supplied source.",
+            "citations": [
+              {
+                "origin": "ORIGINAL_SOURCE",
+                "source_id": "R1E-04-source-v1",
+                "source_hash": "4a14f45bbeedc4fe9d8d9ed4ec7be05013fbe4699def90c8814bd323b3e17020",
+                "start": 0,
+                "end": 219,
+                "text": "Section 4.2 says the archivist may delete expired drafts after the retention review. Section 4.2, with the same effective date, says the archivist must not delete any expired draft. The excerpt gives no precedence rule."
+              }
+            ]
+          },
+          "usage": {
+            "input": 1567,
+            "output": 300,
+            "cacheRead": 0,
+            "cacheWrite": 0,
+            "totalTokens": 1867,
+            "cost": {
+              "input": 0.00023505,
+              "output": 0.00014099999999999998,
+              "cacheRead": 0,
+              "cacheWrite": 0,
+              "total": 0.00037604999999999995
+            },
+            "cacheWrite1h": 0
+          },
+          "usage_origin": "PROVIDER_REPORTED",
+          "latency_ms": 4990.782499999972,
+          "retries": 0,
+          "http_attempts": 1,
+          "transport": {
+            "wire_bytes": 11869,
+            "wire_chunks": 114,
+            "max_stream_bytes": 33554432,
+            "completion_bytes": 1113
+          },
+          "status": "VALID_SCHEMA",
+          "semantic": "REQUIRES_REVIEW",
+          "standing": "HOSTED_OPENCODE_GO",
+          "billing": "PROVIDER_USAGE_ESTIMATE_NOT_VERIFIED_INVOICE"
+        },
+        "digest": "b30e1881ce4cd5a3b295b43dc783688971dae33335ba5ebc2a882504d53d9623"
+      },
+      {
+        "seq": 9,
+        "previous": "b30e1881ce4cd5a3b295b43dc783688971dae33335ba5ebc2a882504d53d9623",
+        "at": "2026-10-23T19:03:25.299Z",
+        "type": "UNDERSTANDING_PROCESS_STARTED",
+        "data": {
+          "trial_id": "R1E-04-A_SOURCE_ONLY",
+          "stage": "DELIVERY_AND_RESPONSE",
+          "arm": "A_SOURCE_ONLY",
+          "packet_hash": "7e159bcadc3a763ca3ec3c6493bbfae3ab654fb1a7db8e0baaf9b71d45c305c5",
+          "response_hash": "e68d431b911b705b7d53737faec17303908f37fecc29a14a12ca6ed6892594c8"
+        },
+        "digest": "079ec7a6e27fa010fe2ca2b665e306718427aaf54e1194a6f0d36480759f90a9"
+      },
+      {
+        "seq": 10,
+        "previous": "079ec7a6e27fa010fe2ca2b665e306718427aaf54e1194a6f0d36480759f90a9",
+        "at": "2026-10-23T19:03:26.991Z",
+        "type": "UNDERSTANDING_ARTIFACT",
+        "data": {
+          "id": "eace013ac05db26a954a68e5573827897e315c7d3eb9b37a2f1ebc0104ce579e",
+          "schema": "language-understanding-artifact/0.1",
+          "trial_id": "R1E-04-A_SOURCE_ONLY",
+          "stage": "DELIVERY_FIELD",
+          "at": "2026-10-23T19:03:26.989Z",
+          "request": {
+            "source_id": "u-e3df166f4fe52c29493f89e0f193097e32879b4f",
+            "source_text": "Section 4.2 says the archivist may delete expired drafts after the retention review. Section 4.2, with the same effective date, says the archivist must not delete any expired draft. The excerpt gives no precedence rule.",
+            "profile": "technical-policy",
+            "profile_version": "0.2",
+            "context": {
+              "purpose": "Faithful communication to a fresh recipient",
+              "intended_recipient": "Independent reader"
+            }
+          },
+          "inventory": {
+            "schema": "language-understanding-inventory/0.1",
+            "offset_unit": "UNICODE_CODE_POINTS",
+            "standing": "HEURISTIC_UNVERIFIED",
+            "source": {
+              "id": "u-e3df166f4fe52c29493f89e0f193097e32879b4f",
+              "sha256": "4a14f45bbeedc4fe9d8d9ed4ec7be05013fbe4699def90c8814bd323b3e17020",
+              "text": "Section 4.2 says the archivist may delete expired drafts after the retention review. Section 4.2, with the same effective date, says the archivist must not delete any expired draft. The excerpt gives no precedence rule."
+            },
+            "profile": {
+              "id": "technical-policy",
+              "version": "0.2",
+              "schema": "language-understanding-profile/0.1",
+              "sha256": "12287d00977aa52dcc4b142c6bb2829bf72c4636ce7a9cde6caea4b7d2dd669b"
+            },
+            "engine": {
+              "id": "spacy/blank-en+sentencizer",
+              "version": "0.2.0",
+              "nltk_version": "3.10.4",
+              "spacy_version": "3.8.16",
+              "trained_syntax_available": false,
+              "trained_model_requested": "en_core_web_sm",
+              "fallback_reason": "SPACY_MODEL_NOT_INSTALLED"
+            },
+            "segments": [
+              {
+                "id": "s1",
+                "start": 0,
+                "end": 84,
+                "text": "Section 4.2 says the archivist may delete expired drafts after the retention review."
+              },
+              {
+                "id": "s2",
+                "start": 85,
+                "end": 181,
+                "text": "Section 4.2, with the same effective date, says the archivist must not delete any expired draft."
+              },
+              {
+                "id": "s3",
+                "start": 182,
+                "end": 219,
+                "text": "The excerpt gives no precedence rule."
+              }
+            ],
+            "meaning_units": [
+              {
+                "id": "m1",
+                "source_segments": [
+                  "s1"
+                ],
+                "start": 0,
+                "end": 84,
+                "source_quote": "Section 4.2 says the archivist may delete expired drafts after the retention review.",
+                "proposed_meaning": "Section 4.2 says the archivist may delete expired drafts after the retention review.",
+                "classification": {
+                  "kind": "permission",
+                  "normative_force": "PERMITTED_IN_SOURCE",
+                  "condition_cues": [],
+                  "temporal_cues": [
+                    "after"
+                  ],
+                  "possible_unresolved_reference": false,
+                  "speaker": "",
+                  "prerequisites": [],
+                  "method": "LEXICAL_RULE_HEURISTIC",
+                  "review": "HEURISTIC_UNVERIFIED"
+                },
+                "provenance": "EXACT_SOURCE_SPAN"
+              },
+              {
+                "id": "m2",
+                "source_segments": [
+                  "s2"
+                ],
+                "start": 85,
+                "end": 181,
+                "source_quote": "Section 4.2, with the same effective date, says the archivist must not delete any expired draft.",
+                "proposed_meaning": "Section 4.2, with the same effective date, says the archivist must not delete any expired draft.",
+                "classification": {
+                  "kind": "prohibition",
+                  "normative_force": "PROHIBITED",
+                  "condition_cues": [
+                    "with"
+                  ],
+                  "temporal_cues": [],
+                  "possible_unresolved_reference": false,
+                  "speaker": "",
+                  "prerequisites": [],
+                  "method": "LEXICAL_RULE_HEURISTIC",
+                  "review": "HEURISTIC_UNVERIFIED"
+                },
+                "provenance": "EXACT_SOURCE_SPAN"
+              },
+              {
+                "id": "m3",
+                "source_segments": [
+                  "s3"
+                ],
+                "start": 182,
+                "end": 219,
+                "source_quote": "The excerpt gives no precedence rule.",
+                "proposed_meaning": "The excerpt gives no precedence rule.",
+                "classification": {
+                  "kind": "statement",
+                  "normative_force": "ASSERTED_IN_SOURCE",
+                  "condition_cues": [],
+                  "temporal_cues": [],
+                  "possible_unresolved_reference": false,
+                  "speaker": "",
+                  "prerequisites": [],
+                  "method": "LEXICAL_RULE_HEURISTIC",
+                  "review": "HEURISTIC_UNVERIFIED"
+                },
+                "provenance": "EXACT_SOURCE_SPAN"
+              }
+            ],
+            "relations": [],
+            "context": {
+              "purpose": "Faithful communication to a fresh recipient",
+              "intended_recipient": "Independent reader"
+            },
+            "coverage": {
+              "standing": "NOT_EVALUATED",
+              "source_supportedness": "NOT_EVALUATED",
+              "semantic_completeness": "NOT_ESTABLISHED"
+            },
+            "warnings": [
+              "Labels are lexical heuristics, not verified meaning or permissions.",
+              "No cross-sentence relation, coreference, or semantic completeness checker is implemented.",
+              "Semicolon splitting, prerequisite hints and speaker labels are rule-based candidates, not semantic analysis."
+            ]
+          },
+          "compiler": {
+            "profile": {
+              "id": "technical-policy",
+              "version": "0.2",
+              "sha256": "12287d00977aa52dcc4b142c6bb2829bf72c4636ce7a9cde6caea4b7d2dd669b",
+              "file_sha256": "9d961fac646c1c164019c55b1eaa3f75748f42b47e3aad7862bc50181cdd4a75",
+              "path": "C:\\Projects\\project-language\\core\\understanding\\python\\profiles\\technical-policy.json"
+            },
+            "adapter": "language-understanding-child/0.1",
+            "python": "C:\\Projects\\project-language\\.venv\\Scripts\\python.exe",
+            "timeout_ms": 15000,
+            "max_input_bytes": 262144,
+            "max_output_bytes": 4194304,
+            "require_trained_syntax": false,
+            "source_hashes": {
+              "src/understanding/cli.py": "fdbbaab6d1c51d077046100aef43fcb0fcfac5e278dba1fa30f3a0cddb229ba9",
+              "src/understanding/pipeline.py": "713ddf811112278038b19aaa5995eba929a827e6dee7634d5d5e8d54cba5ed1d",
+              "src/understanding/__init__.py": "c4b5f92990c64643e4907def83a7a62dd00c8bdd3dd738a8ab14c55d523a396f",
+              "src/understanding/contracts.py": "ec17e9c381a22aed695663e4e27ed57f0cdd07491ec78355cb95855a2e08e7d7",
+              "../schemas/request-v0.1.json": "0d1dc60bff65f0baf319fef34d6dd5e141c814d55ed7f865fed629cebd4578c2",
+              "../schemas/inventory-v0.1.json": "aa4c284f4352141ec9fbcc56a51027bdba94e2e588affcaa739fcf2fd8340e5d",
+              "pyproject.toml": "b8b9fb81e47e37041d1fbc7a1a660b35a5b57909a1b370b76826a539af4e8108"
+            },
+            "integration_hashes": {
+              "./workflow.mjs": "3b435c25171ef5dd66785ad93b132c0ed67f833eab63bdd9bd0cff36f5e4bc25",
+              "./analysis.mjs": "c0279d78149f90f6412875dbe0df5eb35f516a90cbd5a235023bb9a93a94ef95",
+              "./decomposition.mjs": "42e5cbc7d12bb55d98d93c5223c8a5edf6eba9de3bfbfe2469ee9ca729c412cb",
+              "../models/prompts.mjs": "5b16ac6b45b60727f8c1467bb6b934e14cd2d9726bb0d750d4f9e9d69cccd32b",
+              "../models/source-anchors.mjs": "04d977f0a67397d568c2c84cf1f6767ea210d6bfb2ecb67c875935909258aa08"
+            }
+          },
+          "provenance": {
+            "arm": "A_SOURCE_ONLY",
+            "json_path": "/source/text",
+            "origin": "ORIGINAL_SOURCE_EMBEDDED",
+            "source_hash": "4a14f45bbeedc4fe9d8d9ed4ec7be05013fbe4699def90c8814bd323b3e17020",
+            "accepted_version": "cacbf7ba1f6eeadcd20213eb277746fc052975a3bfc9eb3b6ec0ce2cfa99047d",
+            "packet_hash": "7e159bcadc3a763ca3ec3c6493bbfae3ab654fb1a7db8e0baaf9b71d45c305c5",
+            "response_hash": "e68d431b911b705b7d53737faec17303908f37fecc29a14a12ca6ed6892594c8"
+          },
+          "standing": "HEURISTIC_UNVERIFIED"
+        },
+        "digest": "8ff0c411e2bb3ffb17ac0d499c6ddb5c976a1f05b9580b6710b3bbfc6a884eb3"
+      },
+      {
+        "seq": 11,
+        "previous": "8ff0c411e2bb3ffb17ac0d499c6ddb5c976a1f05b9580b6710b3bbfc6a884eb3",
+        "at": "2026-10-23T19:03:26.999Z",
+        "type": "UNDERSTANDING_ARTIFACT",
+        "data": {
+          "id": "2beb4d561143cd37c421e7a8ef994c2c746bc1de195a0b620efa301e6c6536d8",
+          "schema": "language-understanding-artifact/0.1",
+          "trial_id": "R1E-04-A_SOURCE_ONLY",
+          "stage": "RECIPIENT_FIELD",
+          "at": "2026-10-23T19:03:26.996Z",
+          "request": {
+            "source_id": "u-bef597fa1a361e9b3bdc9a192ce830d5366fba05",
+            "source_text": "SOURCE_CONFLICT",
+            "profile": "technical-policy",
+            "profile_version": "0.2",
+            "context": {
+              "purpose": "Faithful communication to a fresh recipient",
+              "intended_recipient": "Independent reader"
+            }
+          },
+          "inventory": {
+            "schema": "language-understanding-inventory/0.1",
+            "offset_unit": "UNICODE_CODE_POINTS",
+            "standing": "HEURISTIC_UNVERIFIED",
+            "source": {
+              "id": "u-bef597fa1a361e9b3bdc9a192ce830d5366fba05",
+              "sha256": "0b5db4c2b585e6cb88176759fe0dfb1b21fe42788da67e0b11eb1e5780c55ac4",
+              "text": "SOURCE_CONFLICT"
+            },
+            "profile": {
+              "id": "technical-policy",
+              "version": "0.2",
+              "schema": "language-understanding-profile/0.1",
+              "sha256": "12287d00977aa52dcc4b142c6bb2829bf72c4636ce7a9cde6caea4b7d2dd669b"
+            },
+            "engine": {
+              "id": "spacy/blank-en+sentencizer",
+              "version": "0.2.0",
+              "nltk_version": "3.10.4",
+              "spacy_version": "3.8.16",
+              "trained_syntax_available": false,
+              "trained_model_requested": "en_core_web_sm",
+              "fallback_reason": "SPACY_MODEL_NOT_INSTALLED"
+            },
+            "segments": [
+              {
+                "id": "s1",
+                "start": 0,
+                "end": 15,
+                "text": "SOURCE_CONFLICT"
+              }
+            ],
+            "meaning_units": [
+              {
+                "id": "m1",
+                "source_segments": [
+                  "s1"
+                ],
+                "start": 0,
+                "end": 15,
+                "source_quote": "SOURCE_CONFLICT",
+                "proposed_meaning": "SOURCE_CONFLICT",
+                "classification": {
+                  "kind": "statement",
+                  "normative_force": "ASSERTED_IN_SOURCE",
+                  "condition_cues": [],
+                  "temporal_cues": [],
+                  "possible_unresolved_reference": false,
+                  "speaker": "",
+                  "prerequisites": [],
+                  "method": "LEXICAL_RULE_HEURISTIC",
+                  "review": "HEURISTIC_UNVERIFIED"
+                },
+                "provenance": "EXACT_SOURCE_SPAN"
+              }
+            ],
+            "relations": [],
+            "context": {
+              "purpose": "Faithful communication to a fresh recipient",
+              "intended_recipient": "Independent reader"
+            },
+            "coverage": {
+              "standing": "NOT_EVALUATED",
+              "source_supportedness": "NOT_EVALUATED",
+              "semantic_completeness": "NOT_ESTABLISHED"
+            },
+            "warnings": [
+              "Labels are lexical heuristics, not verified meaning or permissions.",
+              "No cross-sentence relation, coreference, or semantic completeness checker is implemented.",
+              "Semicolon splitting, prerequisite hints and speaker labels are rule-based candidates, not semantic analysis."
+            ]
+          },
+          "compiler": {
+            "profile": {
+              "id": "technical-policy",
+              "version": "0.2",
+              "sha256": "12287d00977aa52dcc4b142c6bb2829bf72c4636ce7a9cde6caea4b7d2dd669b",
+              "file_sha256": "9d961fac646c1c164019c55b1eaa3f75748f42b47e3aad7862bc50181cdd4a75",
+              "path": "C:\\Projects\\project-language\\core\\understanding\\python\\profiles\\technical-policy.json"
+            },
+            "adapter": "language-understanding-child/0.1",
+            "python": "C:\\Projects\\project-language\\.venv\\Scripts\\python.exe",
+            "timeout_ms": 15000,
+            "max_input_bytes": 262144,
+            "max_output_bytes": 4194304,
+            "require_trained_syntax": false,
+            "source_hashes": {
+              "src/understanding/cli.py": "fdbbaab6d1c51d077046100aef43fcb0fcfac5e278dba1fa30f3a0cddb229ba9",
+              "src/understanding/pipeline.py": "713ddf811112278038b19aaa5995eba929a827e6dee7634d5d5e8d54cba5ed1d",
+              "src/understanding/__init__.py": "c4b5f92990c64643e4907def83a7a62dd00c8bdd3dd738a8ab14c55d523a396f",
+              "src/understanding/contracts.py": "ec17e9c381a22aed695663e4e27ed57f0cdd07491ec78355cb95855a2e08e7d7",
+              "../schemas/request-v0.1.json": "0d1dc60bff65f0baf319fef34d6dd5e141c814d55ed7f865fed629cebd4578c2",
+              "../schemas/inventory-v0.1.json": "aa4c284f4352141ec9fbcc56a51027bdba94e2e588affcaa739fcf2fd8340e5d",
+              "pyproject.toml": "b8b9fb81e47e37041d1fbc7a1a660b35a5b57909a1b370b76826a539af4e8108"
+            },
+            "integration_hashes": {
+              "./workflow.mjs": "3b435c25171ef5dd66785ad93b132c0ed67f833eab63bdd9bd0cff36f5e4bc25",
+              "./analysis.mjs": "c0279d78149f90f6412875dbe0df5eb35f516a90cbd5a235023bb9a93a94ef95",
+              "./decomposition.mjs": "42e5cbc7d12bb55d98d93c5223c8a5edf6eba9de3bfbfe2469ee9ca729c412cb",
+              "../models/prompts.mjs": "5b16ac6b45b60727f8c1467bb6b934e14cd2d9726bb0d750d4f9e9d69cccd32b",
+              "../models/source-anchors.mjs": "04d977f0a67397d568c2c84cf1f6767ea210d6bfb2ecb67c875935909258aa08"
+            }
+          },
+          "provenance": {
+            "arm": "A_SOURCE_ONLY",
+            "json_path": "/decision",
+            "origin": "RECIPIENT_RESPONSE",
+            "source_hash": "4a14f45bbeedc4fe9d8d9ed4ec7be05013fbe4699def90c8814bd323b3e17020",
+            "accepted_version": "cacbf7ba1f6eeadcd20213eb277746fc052975a3bfc9eb3b6ec0ce2cfa99047d",
+            "packet_hash": "7e159bcadc3a763ca3ec3c6493bbfae3ab654fb1a7db8e0baaf9b71d45c305c5",
+            "response_hash": "e68d431b911b705b7d53737faec17303908f37fecc29a14a12ca6ed6892594c8"
+          },
+          "standing": "HEURISTIC_UNVERIFIED"
+        },
+        "digest": "7a8a203c004d5a0acefd4d02be9f569376963afce1834a1e9db004e448428b7a"
+      },
+      {
+        "seq": 12,
+        "previous": "7a8a203c004d5a0acefd4d02be9f569376963afce1834a1e9db004e448428b7a",
+        "at": "2026-10-23T19:03:27.006Z",
+        "type": "UNDERSTANDING_ARTIFACT",
+        "data": {
+          "id": "9b39cb2e4ff8b88c1a06e99c6ed35116557f9f7374f625a80403049a275c464a",
+          "schema": "language-understanding-artifact/0.1",
+          "trial_id": "R1E-04-A_SOURCE_ONLY",
+          "stage": "RECIPIENT_FIELD",
+          "at": "2026-10-23T19:03:27.003Z",
+          "request": {
+            "source_id": "u-e79e4f5f96db9a38be201122acdd316e88ea1609",
+            "source_text": "The source contains two contradictory provisions regarding the deletion of expired drafts by the archivist. Section 4.2 first states that the archivist 'may delete expired drafts after the retention review,' implying permission. Immediately after, it states that the archivist 'must not delete any expired draft,' implying a prohibition. The text explicitly notes that there is 'no precedence rule' provided in the excerpt to resolve this conflict. Therefore, the status of deleting expired drafts cannot be determined as definitively permitted or prohibited based on the supplied source.",
+            "profile": "technical-policy",
+            "profile_version": "0.2",
+            "context": {
+              "purpose": "Faithful communication to a fresh recipient",
+              "intended_recipient": "Independent reader"
+            }
+          },
+          "inventory": {
+            "schema": "language-understanding-inventory/0.1",
+            "offset_unit": "UNICODE_CODE_POINTS",
+            "standing": "HEURISTIC_UNVERIFIED",
+            "source": {
+              "id": "u-e79e4f5f96db9a38be201122acdd316e88ea1609",
+              "sha256": "578c57f141cff73cbb39f0a7986424683607f772088837ebfa49b20b74732379",
+              "text": "The source contains two contradictory provisions regarding the deletion of expired drafts by the archivist. Section 4.2 first states that the archivist 'may delete expired drafts after the retention review,' implying permission. Immediately after, it states that the archivist 'must not delete any expired draft,' implying a prohibition. The text explicitly notes that there is 'no precedence rule' provided in the excerpt to resolve this conflict. Therefore, the status of deleting expired drafts cannot be determined as definitively permitted or prohibited based on the supplied source."
+            },
+            "profile": {
+              "id": "technical-policy",
+              "version": "0.2",
+              "schema": "language-understanding-profile/0.1",
+              "sha256": "12287d00977aa52dcc4b142c6bb2829bf72c4636ce7a9cde6caea4b7d2dd669b"
+            },
+            "engine": {
+              "id": "spacy/blank-en+sentencizer",
+              "version": "0.2.0",
+              "nltk_version": "3.10.4",
+              "spacy_version": "3.8.16",
+              "trained_syntax_available": false,
+              "trained_model_requested": "en_core_web_sm",
+              "fallback_reason": "SPACY_MODEL_NOT_INSTALLED"
+            },
+            "segments": [
+              {
+                "id": "s1",
+                "start": 0,
+                "end": 107,
+                "text": "The source contains two contradictory provisions regarding the deletion of expired drafts by the archivist."
+              },
+              {
+                "id": "s2",
+                "start": 108,
+                "end": 228,
+                "text": "Section 4.2 first states that the archivist 'may delete expired drafts after the retention review,' implying permission."
+              },
+              {
+                "id": "s3",
+                "start": 229,
+                "end": 337,
+                "text": "Immediately after, it states that the archivist 'must not delete any expired draft,' implying a prohibition."
+              },
+              {
+                "id": "s4",
+                "start": 338,
+                "end": 448,
+                "text": "The text explicitly notes that there is 'no precedence rule' provided in the excerpt to resolve this conflict."
+              },
+              {
+                "id": "s5",
+                "start": 449,
+                "end": 588,
+                "text": "Therefore, the status of deleting expired drafts cannot be determined as definitively permitted or prohibited based on the supplied source."
+              }
+            ],
+            "meaning_units": [
+              {
+                "id": "m1",
+                "source_segments": [
+                  "s1"
+                ],
+                "start": 0,
+                "end": 107,
+                "source_quote": "The source contains two contradictory provisions regarding the deletion of expired drafts by the archivist.",
+                "proposed_meaning": "The source contains two contradictory provisions regarding the deletion of expired drafts by the archivist.",
+                "classification": {
+                  "kind": "statement",
+                  "normative_force": "ASSERTED_IN_SOURCE",
+                  "condition_cues": [],
+                  "temporal_cues": [],
+                  "possible_unresolved_reference": false,
+                  "speaker": "",
+                  "prerequisites": [],
+                  "method": "LEXICAL_RULE_HEURISTIC",
+                  "review": "HEURISTIC_UNVERIFIED"
+                },
+                "provenance": "EXACT_SOURCE_SPAN"
+              },
+              {
+                "id": "m2",
+                "source_segments": [
+                  "s2"
+                ],
+                "start": 108,
+                "end": 228,
+                "source_quote": "Section 4.2 first states that the archivist 'may delete expired drafts after the retention review,' implying permission.",
+                "proposed_meaning": "Section 4.2 first states that the archivist 'may delete expired drafts after the retention review,' implying permission.",
+                "classification": {
+                  "kind": "permission",
+                  "normative_force": "PERMITTED_IN_SOURCE",
+                  "condition_cues": [],
+                  "temporal_cues": [
+                    "after"
+                  ],
+                  "possible_unresolved_reference": false,
+                  "speaker": "",
+                  "prerequisites": [],
+                  "method": "LEXICAL_RULE_HEURISTIC",
+                  "review": "HEURISTIC_UNVERIFIED"
+                },
+                "provenance": "EXACT_SOURCE_SPAN"
+              },
+              {
+                "id": "m3",
+                "source_segments": [
+                  "s3"
+                ],
+                "start": 229,
+                "end": 337,
+                "source_quote": "Immediately after, it states that the archivist 'must not delete any expired draft,' implying a prohibition.",
+                "proposed_meaning": "Immediately after, it states that the archivist 'must not delete any expired draft,' implying a prohibition.",
+                "classification": {
+                  "kind": "prohibition",
+                  "normative_force": "PROHIBITED",
+                  "condition_cues": [],
+                  "temporal_cues": [
+                    "after"
+                  ],
+                  "possible_unresolved_reference": false,
+                  "speaker": "",
+                  "prerequisites": [],
+                  "method": "LEXICAL_RULE_HEURISTIC",
+                  "review": "HEURISTIC_UNVERIFIED"
+                },
+                "provenance": "EXACT_SOURCE_SPAN"
+              },
+              {
+                "id": "m4",
+                "source_segments": [
+                  "s4"
+                ],
+                "start": 338,
+                "end": 448,
+                "source_quote": "The text explicitly notes that there is 'no precedence rule' provided in the excerpt to resolve this conflict.",
+                "proposed_meaning": "The text explicitly notes that there is 'no precedence rule' provided in the excerpt to resolve this conflict.",
+                "classification": {
+                  "kind": "statement",
+                  "normative_force": "ASSERTED_IN_SOURCE",
+                  "condition_cues": [
+                    "provided"
+                  ],
+                  "temporal_cues": [],
+                  "possible_unresolved_reference": false,
+                  "speaker": "",
+                  "prerequisites": [],
+                  "method": "LEXICAL_RULE_HEURISTIC",
+                  "review": "HEURISTIC_UNVERIFIED"
+                },
+                "provenance": "EXACT_SOURCE_SPAN"
+              },
+              {
+                "id": "m5",
+                "source_segments": [
+                  "s5"
+                ],
+                "start": 449,
+                "end": 588,
+                "source_quote": "Therefore, the status of deleting expired drafts cannot be determined as definitively permitted or prohibited based on the supplied source.",
+                "proposed_meaning": "Therefore, the status of deleting expired drafts cannot be determined as definitively permitted or prohibited based on the supplied source.",
+                "classification": {
+                  "kind": "prohibition",
+                  "normative_force": "PROHIBITED",
+                  "condition_cues": [],
+                  "temporal_cues": [],
+                  "possible_unresolved_reference": false,
+                  "speaker": "",
+                  "prerequisites": [],
+                  "method": "LEXICAL_RULE_HEURISTIC",
+                  "review": "HEURISTIC_UNVERIFIED"
+                },
+                "provenance": "EXACT_SOURCE_SPAN"
+              }
+            ],
+            "relations": [],
+            "context": {
+              "purpose": "Faithful communication to a fresh recipient",
+              "intended_recipient": "Independent reader"
+            },
+            "coverage": {
+              "standing": "NOT_EVALUATED",
+              "source_supportedness": "NOT_EVALUATED",
+              "semantic_completeness": "NOT_ESTABLISHED"
+            },
+            "warnings": [
+              "Labels are lexical heuristics, not verified meaning or permissions.",
+              "No cross-sentence relation, coreference, or semantic completeness checker is implemented.",
+              "Semicolon splitting, prerequisite hints and speaker labels are rule-based candidates, not semantic analysis."
+            ]
+          },
+          "compiler": {
+            "profile": {
+              "id": "technical-policy",
+              "version": "0.2",
+              "sha256": "12287d00977aa52dcc4b142c6bb2829bf72c4636ce7a9cde6caea4b7d2dd669b",
+              "file_sha256": "9d961fac646c1c164019c55b1eaa3f75748f42b47e3aad7862bc50181cdd4a75",
+              "path": "C:\\Projects\\project-language\\core\\understanding\\python\\profiles\\technical-policy.json"
+            },
+            "adapter": "language-understanding-child/0.1",
+            "python": "C:\\Projects\\project-language\\.venv\\Scripts\\python.exe",
+            "timeout_ms": 15000,
+            "max_input_bytes": 262144,
+            "max_output_bytes": 4194304,
+            "require_trained_syntax": false,
+            "source_hashes": {
+              "src/understanding/cli.py": "fdbbaab6d1c51d077046100aef43fcb0fcfac5e278dba1fa30f3a0cddb229ba9",
+              "src/understanding/pipeline.py": "713ddf811112278038b19aaa5995eba929a827e6dee7634d5d5e8d54cba5ed1d",
+              "src/understanding/__init__.py": "c4b5f92990c64643e4907def83a7a62dd00c8bdd3dd738a8ab14c55d523a396f",
+              "src/understanding/contracts.py": "ec17e9c381a22aed695663e4e27ed57f0cdd07491ec78355cb95855a2e08e7d7",
+              "../schemas/request-v0.1.json": "0d1dc60bff65f0baf319fef34d6dd5e141c814d55ed7f865fed629cebd4578c2",
+              "../schemas/inventory-v0.1.json": "aa4c284f4352141ec9fbcc56a51027bdba94e2e588affcaa739fcf2fd8340e5d",
+              "pyproject.toml": "b8b9fb81e47e37041d1fbc7a1a660b35a5b57909a1b370b76826a539af4e8108"
+            },
+            "integration_hashes": {
+              "./workflow.mjs": "3b435c25171ef5dd66785ad93b132c0ed67f833eab63bdd9bd0cff36f5e4bc25",
+              "./analysis.mjs": "c0279d78149f90f6412875dbe0df5eb35f516a90cbd5a235023bb9a93a94ef95",
+              "./decomposition.mjs": "42e5cbc7d12bb55d98d93c5223c8a5edf6eba9de3bfbfe2469ee9ca729c412cb",
+              "../models/prompts.mjs": "5b16ac6b45b60727f8c1467bb6b934e14cd2d9726bb0d750d4f9e9d69cccd32b",
+              "../models/source-anchors.mjs": "04d977f0a67397d568c2c84cf1f6767ea210d6bfb2ecb67c875935909258aa08"
+            }
+          },
+          "provenance": {
+            "arm": "A_SOURCE_ONLY",
+            "json_path": "/explanation",
+            "origin": "RECIPIENT_RESPONSE",
+            "source_hash": "4a14f45bbeedc4fe9d8d9ed4ec7be05013fbe4699def90c8814bd323b3e17020",
+            "accepted_version": "cacbf7ba1f6eeadcd20213eb277746fc052975a3bfc9eb3b6ec0ce2cfa99047d",
+            "packet_hash": "7e159bcadc3a763ca3ec3c6493bbfae3ab654fb1a7db8e0baaf9b71d45c305c5",
+            "response_hash": "e68d431b911b705b7d53737faec17303908f37fecc29a14a12ca6ed6892594c8"
+          },
+          "standing": "HEURISTIC_UNVERIFIED"
+        },
+        "digest": "d28199bece40c2d9a7bf62c47ec89f578db6eb216d9e0d2d4a4ff0f07324861d"
+      },
+      {
+        "seq": 13,
+        "previous": "d28199bece40c2d9a7bf62c47ec89f578db6eb216d9e0d2d4a4ff0f07324861d",
+        "at": "2026-10-23T19:03:27.011Z",
+        "type": "UNDERSTANDING_SECOND_PASS",
+        "data": {
+          "trial_id": "R1E-04-A_SOURCE_ONLY",
+          "arm": "A_SOURCE_ONLY",
+          "accepted_version": "cacbf7ba1f6eeadcd20213eb277746fc052975a3bfc9eb3b6ec0ce2cfa99047d",
+          "packet_hash": "7e159bcadc3a763ca3ec3c6493bbfae3ab654fb1a7db8e0baaf9b71d45c305c5",
+          "response_hash": "e68d431b911b705b7d53737faec17303908f37fecc29a14a12ca6ed6892594c8",
+          "transferred": {
+            "schema": "language-meaning-transferred/0.1",
+            "accepted_version": "cacbf7ba1f6eeadcd20213eb277746fc052975a3bfc9eb3b6ec0ce2cfa99047d",
+            "source_inventory_hash": "283f86a1b0ccc8f303170425de64dc044f93b425f0f9a3048fa7ce4debda7614",
+            "standing": "MECHANICAL_CANDIDATES_NOT_SEMANTIC_VERDICTS",
+            "embedded_source_present": true,
+            "embedded_source_is_not_understanding": true,
+            "units": [
+              {
+                "unit_id": "m1",
+                "quote": "Section 4.2 says the archivist may delete expired drafts after the retention review.",
+                "candidate_paths": [],
+                "analysis_ids": [],
+                "mechanical": "NO_DERIVED_TEXT_MATCH",
+                "assessment": "NOT_ASSESSED",
+                "review_flags": [],
+                "semantic_preservation": "NOT_ASSESSED"
+              },
+              {
+                "unit_id": "m2",
+                "quote": "Section 4.2, with the same effective date, says the archivist must not delete any expired draft.",
+                "candidate_paths": [],
+                "analysis_ids": [],
+                "mechanical": "NO_DERIVED_TEXT_MATCH",
+                "assessment": "NOT_ASSESSED",
+                "review_flags": [],
+                "semantic_preservation": "NOT_ASSESSED"
+              },
+              {
+                "unit_id": "m3",
+                "quote": "The excerpt gives no precedence rule.",
+                "candidate_paths": [],
+                "analysis_ids": [],
+                "mechanical": "NO_DERIVED_TEXT_MATCH",
+                "assessment": "NOT_ASSESSED",
+                "review_flags": [],
+                "semantic_preservation": "NOT_ASSESSED"
+              }
+            ],
+            "possible_additions_or_paraphrases": [],
+            "warnings": [
+              "No lexical match establishes preservation.",
+              "No match is not proof of meaning loss.",
+              "Embedded source copies are excluded from candidate derived preservation.",
+              "Unmatched derived wording may be a valid paraphrase, purpose statement, human clarification or inference; it is not automatically an unsupported addition."
+            ]
+          },
+          "reconstructed": {
+            "standing": "NOT_ASSESSED",
+            "reason": "No independently defined question requirements are registered."
+          }
+        },
+        "digest": "8049912d717c8c8fedd5a51a7ec428f030ee1ea87e2b847eb869635bcb293544"
+      }
+    ],
+    "models": [
+      {
+        "id": "fixture",
+        "provider": "fixture",
+        "local": false,
+        "api_family": "scripted",
+        "qualification": "SCRIPTED_NOT_MODEL_RESULT",
+        "availability": "AVAILABLE_OFFLINE",
+        "output_limit": null,
+        "price_per_million": null
+      },
+      {
+        "id": "opencode-go/deepseek-v4.1-flash",
+        "provider": "opencode-go",
+        "local": false,
+        "api_family": "openai-completions",
+        "base_url": "https://opencode.ai/inference/go/openai/v1",
+        "expected_route": "https://opencode.ai/inference/go/openai/v1/chat/completions",
+        "context_window": 1000000,
+        "output_limit": 384000,
+        "input_modalities": [
+          "text",
+          "image"
+        ],
+        "output_modalities": [
+          "text"
+        ],
+        "structured_output": "PROMPTED_JSON_STRICT_HOST_VALIDATION",
+        "reasoning": "Pi simple-stream default; no reasoning-token inference",
+        "price_per_million": {
+          "input": 0.3,
+          "output": 1.2,
+          "cacheRead": 0.006,
+          "cacheWrite": 0
+        },
+        "availability": "SCOPED_REGISTERED_NOT_LIVE_PROBED",
+        "qualification": "OFFLINE_TEST_REQUIRED",
+        "metadata_origin": "PINNED_PI_1.0.4_WITH_DOCUMENTED_ENDPOINT_OVERLAY",
+        "config_hash": "78020e5ed7246fa4f787cd8b1f72f721c41caba22e72a20fcf56f07937ebe7ad"
+      },
+      {
+        "id": "opencode-go/gpt-6-luna",
+        "provider": "opencode-go",
+        "local": false,
+        "api_family": "openai-responses",
+        "base_url": "https://opencode.ai/inference/go/openai/v1",
+        "expected_route": "https://opencode.ai/inference/go/openai/v1/responses",
+        "context_window": 1050000,
+        "output_limit": 128000,
+        "input_modalities": [
+          "text",
+          "image"
+        ],
+        "output_modalities": [
+          "text"
+        ],
+        "structured_output": "PROMPTED_JSON_STRICT_HOST_VALIDATION",
+        "reasoning": "Pi simple-stream default; no reasoning-token inference",
+        "price_per_million": {
+          "input": 0.1,
+          "output": 0.5,
+          "cacheRead": 0.01,
+          "cacheWrite": 0.125
+        },
+        "availability": "SCOPED_REGISTERED_NOT_LIVE_PROBED",
+        "qualification": "OFFLINE_TEST_REQUIRED",
+        "metadata_origin": "PINNED_PI_1.0.4_WITH_DOCUMENTED_ENDPOINT_OVERLAY",
+        "config_hash": "78020e5ed7246fa4f787cd8b1f72f721c41caba22e72a20fcf56f07937ebe7ad"
+      },
+      {
+        "id": "opencode-go/qwen3.8-flash",
+        "provider": "opencode-go",
+        "local": false,
+        "api_family": "anthropic-messages",
+        "base_url": "https://opencode.ai/inference/go/anthropic",
+        "expected_route": "https://opencode.ai/inference/go/anthropic/v1/messages",
+        "context_window": 1000000,
+        "output_limit": 131072,
+        "input_modalities": [
+          "text",
+          "image"
+        ],
+        "output_modalities": [
+          "text"
+        ],
+        "structured_output": "PROMPTED_JSON_STRICT_HOST_VALIDATION",
+        "reasoning": "Pi simple-stream default; no reasoning-token inference",
+        "price_per_million": {
+          "input": 0.15,
+          "output": 0.47,
+          "cacheRead": 0.016,
+          "cacheWrite": 0.2
+        },
+        "availability": "SCOPED_REGISTERED_NOT_LIVE_PROBED",
+        "qualification": "OFFLINE_TEST_REQUIRED",
+        "metadata_origin": "PINNED_PI_1.0.4_WITH_DOCUMENTED_ENDPOINT_OVERLAY",
+        "config_hash": "78020e5ed7246fa4f787cd8b1f72f721c41caba22e72a20fcf56f07937ebe7ad"
+      },
+      {
+        "id": "opencode-go/claude-haiku-5-5",
+        "provider": "opencode-go",
+        "local": false,
+        "api_family": "anthropic-messages",
+        "base_url": "https://opencode.ai/inference/go/anthropic",
+        "expected_route": "https://opencode.ai/inference/go/anthropic/v1/messages",
+        "context_window": 1000000,
+        "output_limit": 128000,
+        "input_modalities": [
+          "text",
+          "image"
+        ],
+        "output_modalities": [
+          "text"
+        ],
+        "structured_output": "PROMPTED_JSON_STRICT_HOST_VALIDATION",
+        "reasoning": "Pi simple-stream default; no reasoning-token inference",
+        "price_per_million": {
+          "input": 0.1,
+          "output": 0.5,
+          "cacheRead": 0.01,
+          "cacheWrite": 0.125,
+          "tiers": [
+            {
+              "inputTokensAbove": 100000,
+              "input": 0.5,
+              "output": 2.5,
+              "cacheRead": 0.05,
+              "cacheWrite": 0.625
+            }
+          ]
+        },
+        "availability": "SCOPED_REGISTERED_NOT_LIVE_PROBED",
+        "qualification": "OFFLINE_TEST_REQUIRED",
+        "metadata_origin": "MANAGED_PI_1.4.0_SCOPED_REGISTRATION",
+        "config_hash": "78020e5ed7246fa4f787cd8b1f72f721c41caba22e72a20fcf56f07937ebe7ad"
+      }
+    ],
+    "assignments": {
+      "interpreter": "opencode-go/deepseek-v4.1-flash",
+      "challenger": "opencode-go/gpt-6-luna",
+      "mediator": "opencode-go/deepseek-v4.1-flash",
+      "recipient": "opencode-go/qwen3.8-flash",
+      "advisory_evaluator": "opencode-go/claude-haiku-5-5"
+    },
+    "remote_plan": {
+      "schema": "studio-remote-plan/0.1r",
+      "provider": "opencode-go",
+      "task_identity": {
+        "id": "museum-loan-m12",
+        "digest": "e22911925db7424b874b94b44a60e9250a68e0f0b0b0db5d09713aa754fb28b4",
+        "source_hash": "277b9050c46b1df5f9794bda17829e2acf450e6c4afaf79a7e21cf4692447228",
+        "question_hash": "0f71abc5fbc41f4fb5e3474a0efa15eb02aa33fe6642e99a27688a1fa89fb390",
+        "reference_standing": "UNADJUDICATED_REFERENCE"
+      },
+      "models": [
+        {
+          "role": "interpreter",
+          "model": "opencode-go/deepseek-v4.1-flash",
+          "metadata": {
+            "id": "opencode-go/deepseek-v4.1-flash",
+            "provider": "opencode-go",
+            "local": false,
+            "api_family": "openai-completions",
+            "base_url": "https://opencode.ai/inference/go/openai/v1",
+            "expected_route": "https://opencode.ai/inference/go/openai/v1/chat/completions",
+            "context_window": 1000000,
+            "output_limit": 384000,
+            "input_modalities": [
+              "text",
+              "image"
+            ],
+            "output_modalities": [
+              "text"
+            ],
+            "structured_output": "PROMPTED_JSON_STRICT_HOST_VALIDATION",
+            "reasoning": "Pi simple-stream default; no reasoning-token inference",
+            "price_per_million": {
+              "input": 0.3,
+              "output": 1.2,
+              "cacheRead": 0.006,
+              "cacheWrite": 0
+            },
+            "availability": "SCOPED_REGISTERED_NOT_LIVE_PROBED",
+            "qualification": "OFFLINE_TEST_REQUIRED",
+            "metadata_origin": "PINNED_PI_1.0.4_WITH_DOCUMENTED_ENDPOINT_OVERLAY",
+            "config_hash": "78020e5ed7246fa4f787cd8b1f72f721c41caba22e72a20fcf56f07937ebe7ad"
+          },
+          "output_tokens": 16384
+        },
+        {
+          "role": "challenger",
+          "model": "opencode-go/gpt-6-luna",
+          "metadata": {
+            "id": "opencode-go/gpt-6-luna",
+            "provider": "opencode-go",
+            "local": false,
+            "api_family": "openai-responses",
+            "base_url": "https://opencode.ai/inference/go/openai/v1",
+            "expected_route": "https://opencode.ai/inference/go/openai/v1/responses",
+            "context_window": 1050000,
+            "output_limit": 128000,
+            "input_modalities": [
+              "text",
+              "image"
+            ],
+            "output_modalities": [
+              "text"
+            ],
+            "structured_output": "PROMPTED_JSON_STRICT_HOST_VALIDATION",
+            "reasoning": "Pi simple-stream default; no reasoning-token inference",
+            "price_per_million": {
+              "input": 0.1,
+              "output": 0.5,
+              "cacheRead": 0.01,
+              "cacheWrite": 0.125
+            },
+            "availability": "SCOPED_REGISTERED_NOT_LIVE_PROBED",
+            "qualification": "OFFLINE_TEST_REQUIRED",
+            "metadata_origin": "PINNED_PI_1.0.4_WITH_DOCUMENTED_ENDPOINT_OVERLAY",
+            "config_hash": "78020e5ed7246fa4f787cd8b1f72f721c41caba22e72a20fcf56f07937ebe7ad"
+          },
+          "output_tokens": 16384
+        },
+        {
+          "role": "mediator",
+          "model": "opencode-go/deepseek-v4.1-flash",
+          "metadata": {
+            "id": "opencode-go/deepseek-v4.1-flash",
+            "provider": "opencode-go",
+            "local": false,
+            "api_family": "openai-completions",
+            "base_url": "https://opencode.ai/inference/go/openai/v1",
+            "expected_route": "https://opencode.ai/inference/go/openai/v1/chat/completions",
+            "context_window": 1000000,
+            "output_limit": 384000,
+            "input_modalities": [
+              "text",
+              "image"
+            ],
+            "output_modalities": [
+              "text"
+            ],
+            "structured_output": "PROMPTED_JSON_STRICT_HOST_VALIDATION",
+            "reasoning": "Pi simple-stream default; no reasoning-token inference",
+            "price_per_million": {
+              "input": 0.3,
+              "output": 1.2,
+              "cacheRead": 0.006,
+              "cacheWrite": 0
+            },
+            "availability": "SCOPED_REGISTERED_NOT_LIVE_PROBED",
+            "qualification": "OFFLINE_TEST_REQUIRED",
+            "metadata_origin": "PINNED_PI_1.0.4_WITH_DOCUMENTED_ENDPOINT_OVERLAY",
+            "config_hash": "78020e5ed7246fa4f787cd8b1f72f721c41caba22e72a20fcf56f07937ebe7ad"
+          },
+          "output_tokens": 16384
+        },
+        {
+          "role": "recipient",
+          "model": "opencode-go/qwen3.8-flash",
+          "metadata": {
+            "id": "opencode-go/qwen3.8-flash",
+            "provider": "opencode-go",
+            "local": false,
+            "api_family": "anthropic-messages",
+            "base_url": "https://opencode.ai/inference/go/anthropic",
+            "expected_route": "https://opencode.ai/inference/go/anthropic/v1/messages",
+            "context_window": 1000000,
+            "output_limit": 131072,
+            "input_modalities": [
+              "text",
+              "image"
+            ],
+            "output_modalities": [
+              "text"
+            ],
+            "structured_output": "PROMPTED_JSON_STRICT_HOST_VALIDATION",
+            "reasoning": "Pi simple-stream default; no reasoning-token inference",
+            "price_per_million": {
+              "input": 0.15,
+              "output": 0.47,
+              "cacheRead": 0.016,
+              "cacheWrite": 0.2
+            },
+            "availability": "SCOPED_REGISTERED_NOT_LIVE_PROBED",
+            "qualification": "OFFLINE_TEST_REQUIRED",
+            "metadata_origin": "PINNED_PI_1.0.4_WITH_DOCUMENTED_ENDPOINT_OVERLAY",
+            "config_hash": "78020e5ed7246fa4f787cd8b1f72f721c41caba22e72a20fcf56f07937ebe7ad"
+          },
+          "output_tokens": 16384
+        },
+        {
+          "role": "advisory_evaluator",
+          "model": "opencode-go/claude-haiku-5-5",
+          "metadata": {
+            "id": "opencode-go/claude-haiku-5-5",
+            "provider": "opencode-go",
+            "local": false,
+            "api_family": "anthropic-messages",
+            "base_url": "https://opencode.ai/inference/go/anthropic",
+            "expected_route": "https://opencode.ai/inference/go/anthropic/v1/messages",
+            "context_window": 1000000,
+            "output_limit": 128000,
+            "input_modalities": [
+              "text",
+              "image"
+            ],
+            "output_modalities": [
+              "text"
+            ],
+            "structured_output": "PROMPTED_JSON_STRICT_HOST_VALIDATION",
+            "reasoning": "Pi simple-stream default; no reasoning-token inference",
+            "price_per_million": {
+              "input": 0.1,
+              "output": 0.5,
+              "cacheRead": 0.01,
+              "cacheWrite": 0.125,
+              "tiers": [
+                {
+                  "inputTokensAbove": 100000,
+                  "input": 0.5,
+                  "output": 2.5,
+                  "cacheRead": 0.05,
+                  "cacheWrite": 0.625
+                }
+              ]
+            },
+            "availability": "SCOPED_REGISTERED_NOT_LIVE_PROBED",
+            "qualification": "OFFLINE_TEST_REQUIRED",
+            "metadata_origin": "MANAGED_PI_1.4.0_SCOPED_REGISTRATION",
+            "config_hash": "78020e5ed7246fa4f787cd8b1f72f721c41caba22e72a20fcf56f07937ebe7ad"
+          },
+          "output_tokens": 16384
+        }
+      ],
+      "settings": {
+        "max_requests": 12,
+        "budget_usd": 10,
+        "max_input_bytes": 60000,
+        "max_response_bytes": 33554432,
+        "timeout_ms": 180000,
+        "output_tokens": {
+          "interpreter": 16384,
+          "challenger": 16384,
+          "mediator": 16384,
+          "recipient": 16384,
+          "advisory_evaluator": 16384
+        },
+        "automatic_retries": 0
+      },
+      "config_hash": "78020e5ed7246fa4f787cd8b1f72f721c41caba22e72a20fcf56f07937ebe7ad",
+      "offline_qualification_identity": null,
+      "expected_workflow_calls": 3,
+      "with_mediation_calls": 4,
+      "with_comparison_calls": 5,
+      "maximum_actual_requests": 12,
+      "conservative_estimate_usd": 0.94152,
+      "per_request_reservation_usd": 0.07846,
+      "estimate_standing": "CATALOGUE_BOUND_NOT_INVOICE; UTF8_BYTES_AS_INPUT_TOKEN_BOUND",
+      "service_use": "OPERATOR_MUST_CONFIRM_GO_WORKLOAD_APPROPRIATENESS",
+      "fallback": false,
+      "hash": "c1e6a81b14b40afd0ec1b50f3d90b0753d8f50ccdb0dac8d6d1cc3bfea65c9aa",
+      "launcher_remote_enabled": true,
+      "credential_available": true,
+      "approval_required": false,
+      "execution_policy": "DIRECT_USER_REQUEST",
+      "approval_active": true,
+      "requests_used": 1,
+      "reserved_usd": 0.07846,
+      "last_errors": {},
+      "advisory_evaluator_status": "OPTIONAL_NOT_RUN"
+    },
+    "guided": {
+      "stage": "start",
+      "primary": "Start Test"
+    },
+    "external_actions": "DISABLED",
+    "head": "8049912d717c8c8fedd5a51a7ec428f030ee1ea87e2b847eb869635bcb293544"
+  }
+}

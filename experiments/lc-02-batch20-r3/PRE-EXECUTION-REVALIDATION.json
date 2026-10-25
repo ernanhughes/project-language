@@ -1,0 +1,182 @@
+{
+  "schema": "lc02-r3-pre-execution-revalidation/0.1",
+  "standing": "OFFLINE_PREFLIGHT_READY_FOR_LIVE_EXECUTION",
+  "design_hash": "c1ca37936300384536b3c94d5cf5b38076b3a813bf6c934c0a053b9bd6bc09d9",
+  "approval_hash": "4b10f87b7d84fd08d52a845c7b25cb952b3aab573e17234bdb16c1a3ff123df8",
+  "protocol_hash": "756814ad9598c3d82b6f0a7ba8f7197d385295515bd51cede9e838fd6de6ad50",
+  "r2_protocol_hash": "26009e396fa890c85b573fdeec9f0c3be04e4433fbe84b55e8cbb986918959e3",
+  "checks": [
+    {
+      "check": "approval-hash",
+      "status": "PASS",
+      "detail": {
+        "hash": "4b10f87b7d84fd08d52a845c7b25cb952b3aab573e17234bdb16c1a3ff123df8"
+      }
+    },
+    {
+      "check": "protocol-hash",
+      "status": "PASS",
+      "detail": {
+        "hash": "756814ad9598c3d82b6f0a7ba8f7197d385295515bd51cede9e838fd6de6ad50"
+      }
+    },
+    {
+      "check": "v2-design-hash",
+      "status": "PASS",
+      "detail": {
+        "hash": "c1ca37936300384536b3c94d5cf5b38076b3a813bf6c934c0a053b9bd6bc09d9"
+      }
+    },
+    {
+      "check": "v1-preserved-hash",
+      "status": "PASS",
+      "detail": {
+        "hash": "2c88429b777baca7207aad13ea3041746bc0a99d0d96fcc217aed81856c78de4"
+      }
+    },
+    {
+      "check": "r2-protocol-unchanged",
+      "status": "PASS",
+      "detail": {
+        "hash": "26009e396fa890c85b573fdeec9f0c3be04e4433fbe84b55e8cbb986918959e3",
+        "authorized": false
+      }
+    },
+    {
+      "check": "approval-state",
+      "status": "PASS",
+      "detail": {
+        "status": "APPROVED",
+        "authorized": true,
+        "approved_by": "USER"
+      }
+    },
+    {
+      "check": "exploratory-protocol-state",
+      "status": "PASS",
+      "detail": {
+        "standing": "EXPLORATORY_PROTOCOL_APPROVED_FOR_SINGLE_RUN",
+        "authorized": true
+      }
+    },
+    {
+      "check": "dry-run-v2",
+      "status": "PASS",
+      "detail": {
+        "checks": 13,
+        "passed": 13
+      }
+    },
+    {
+      "check": "compiler-hints-only-to-c",
+      "status": "PASS",
+      "detail": {}
+    },
+    {
+      "check": "fresh-sessions",
+      "status": "PASS",
+      "detail": {}
+    },
+    {
+      "check": "identical-source-across-arms",
+      "status": "PASS",
+      "detail": {}
+    },
+    {
+      "check": "identical-question-across-arms",
+      "status": "PASS",
+      "detail": {}
+    },
+    {
+      "check": "source-relative-contract",
+      "status": "PASS",
+      "detail": {}
+    },
+    {
+      "check": "frozen-references-excluded",
+      "status": "PASS",
+      "detail": {}
+    },
+    {
+      "check": "no-implicit-authority",
+      "status": "PASS",
+      "detail": {}
+    },
+    {
+      "check": "failure-accounting",
+      "status": "PASS",
+      "detail": {
+        "results": [
+          {
+            "case_id": "R1E-01",
+            "control": "PROVIDER_FAILURE",
+            "status": "FAILED",
+            "error": "INJECTED_PROVIDER_FAILURE",
+            "recipient_response_captured": false,
+            "citation_resolution": null
+          },
+          {
+            "case_id": "R1E-02",
+            "control": "BAD_SPAN",
+            "status": "FAILED",
+            "error": "SOURCE_SPAN",
+            "recipient_response_captured": true,
+            "citation_resolution": null
+          }
+        ]
+      }
+    },
+    {
+      "check": "compiler-blank-fallback",
+      "status": "PASS",
+      "detail": {
+        "engine": "spacy/blank-en+sentencizer",
+        "trained": false,
+        "fallback": "SPACY_MODEL_NOT_INSTALLED"
+      }
+    },
+    {
+      "check": "model-assignments-match-r2",
+      "status": "PASS",
+      "detail": {
+        "models": {
+          "interpreter": "opencode-go/deepseek-v4.1-flash",
+          "challenger": "opencode-go/gpt-6-luna",
+          "mediator": "opencode-go/deepseek-v4.1-flash",
+          "recipient": "opencode-go/qwen3.8-flash",
+          "advisory_evaluator": "opencode-go/claude-haiku-5-5"
+        }
+      }
+    },
+    {
+      "check": "case-references-match-v2",
+      "status": "PASS",
+      "detail": {
+        "mismatches": []
+      }
+    },
+    {
+      "check": "frozen-batch20-artifacts",
+      "status": "PASS",
+      "detail": {
+        "checked": 146,
+        "bad": []
+      }
+    },
+    {
+      "check": "live-output-absent",
+      "status": "PASS",
+      "detail": {
+        "path": "experiments/lc-02-batch20-r3/.runs/LIVE-V2-001"
+      }
+    },
+    {
+      "check": "no-hosted-requests",
+      "status": "PASS",
+      "detail": {
+        "hosted": 0
+      }
+    }
+  ],
+  "overall": "READY_FOR_LIVE_EXECUTION"
+}

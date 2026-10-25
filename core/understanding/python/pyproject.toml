@@ -1,0 +1,19 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "language-understanding-baseline"
+version = "0.2.0"
+description = "Source-anchored linguistic segmentation and provisional meaning inventory for Language"
+requires-python = ">=3.10"
+dependencies = ["spacy>=3.7,<4", "nltk>=3.8,<4"]
+
+[project.scripts]
+language-understand = "understanding.cli:main"
+
+[tool.setuptools]
+package-dir = {"" = "src"}
+
+[tool.setuptools.packages.find]
+where = ["src"]

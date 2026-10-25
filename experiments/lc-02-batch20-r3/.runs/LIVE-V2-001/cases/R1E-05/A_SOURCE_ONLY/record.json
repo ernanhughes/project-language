@@ -1,0 +1,3054 @@
+{
+  "case_id": "R1E-05",
+  "split": "fresh_evaluation",
+  "arm": "A_SOURCE_ONLY",
+  "result": {
+    "arm": "A_SOURCE_ONLY",
+    "origin": "HOSTED_OPENCODE_GO",
+    "status": "VALID",
+    "semantic_quality": "NOT_ASSESSED",
+    "output": {
+      "decision": "UNKNOWN",
+      "explanation": "The source states that the request was submitted in the portal on 3 March. However, it explicitly notes that the portal record does not clarify whether '3 March' represents the actual submission date or merely the synchronization date. Because the actual submission date is ambiguous (it could be earlier than 3 March, and potentially before 1 March), the source does not establish whether the condition 'submitted before 1 March' was met.",
+      "citations": [
+        {
+          "origin": "ORIGINAL_SOURCE",
+          "source_id": "R1E-05-source-v1",
+          "source_hash": "ef17b20e9aa01218e96598cf019b3ff7e34b4936ba9d67bbd75181c1c0326ba9",
+          "start": 0,
+          "end": 51,
+          "text": "The request was submitted in the portal on 3 March."
+        },
+        {
+          "origin": "ORIGINAL_SOURCE",
+          "source_id": "R1E-05-source-v1",
+          "source_hash": "ef17b20e9aa01218e96598cf019b3ff7e34b4936ba9d67bbd75181c1c0326ba9",
+          "start": 112,
+          "end": 231,
+          "text": "The portal record does not show whether 3 March is the submission date or the date the portal synchronized the request."
+        }
+      ]
+    },
+    "mechanical": {
+      "schema": "PASS",
+      "source_binding": "PASS",
+      "citation_resolution": [
+        "EXACT",
+        "EXACT"
+      ],
+      "host_repaired_hashes": 0
+    }
+  },
+  "source": {
+    "id": "R1E-05-source-v1",
+    "text": "The request was submitted in the portal on 3 March. The exception applies to requests submitted before 1 March. The portal record does not show whether 3 March is the submission date or the date the portal synchronized the request.",
+    "hash": "ef17b20e9aa01218e96598cf019b3ff7e34b4936ba9d67bbd75181c1c0326ba9"
+  },
+  "question": {
+    "id": "R1E-05-question-v1",
+    "text": "Was the request submitted before 1 March?",
+    "scope": "SOURCE_RELATIVE"
+  },
+  "packet": {
+    "schema": "language-delivery/0.1",
+    "purpose": "Faithful communication to a fresh recipient",
+    "audience": "Independent reader",
+    "contract_version": "lc02-r1/source-relative/1",
+    "answer_scope": "SOURCE_RELATIVE",
+    "source_truth": "UNVERIFIED",
+    "source_truth_scope": "EXTERNAL_FACTUAL_VERIFICATION_ONLY",
+    "interpretation_standing": "FALLIBLE_AID_NOT_SOURCE",
+    "action_authority": false,
+    "source": {
+      "id": "R1E-05-source-v1",
+      "text": "The request was submitted in the portal on 3 March. The exception applies to requests submitted before 1 March. The portal record does not show whether 3 March is the submission date or the date the portal synchronized the request.",
+      "hash": "ef17b20e9aa01218e96598cf019b3ff7e34b4936ba9d67bbd75181c1c0326ba9"
+    }
+  },
+  "unvalidated_answer": {
+    "decision": "UNKNOWN",
+    "explanation": "The source states that the request was submitted in the portal on 3 March. However, it explicitly notes that the portal record does not clarify whether '3 March' represents the actual submission date or merely the synchronization date. Because the actual submission date is ambiguous (it could be earlier than 3 March, and potentially before 1 March), the source does not establish whether the condition 'submitted before 1 March' was met.",
+    "citations": [
+      {
+        "origin": "ORIGINAL_SOURCE",
+        "source_id": "R1E-05-source-v1",
+        "source_hash": "ef17b20e9aa01218e96598cf019b3ff7e34b4936ba9d67bbd75181c1c0326ba9",
+        "start": 0,
+        "end": 51,
+        "text": "The request was submitted in the portal on 3 March."
+      },
+      {
+        "origin": "ORIGINAL_SOURCE",
+        "source_id": "R1E-05-source-v1",
+        "source_hash": "ef17b20e9aa01218e96598cf019b3ff7e34b4936ba9d67bbd75181c1c0326ba9",
+        "start": 112,
+        "end": 231,
+        "text": "The portal record does not show whether 3 March is the submission date or the date the portal synchronized the request."
+      }
+    ]
+  },
+  "understanding": {
+    "schema": "language-understanding-trial/0.1",
+    "configuration_hash": "e91c6cd23e00e360e53c3b221095301fc3eed659e42d8f603224c80322175aa1",
+    "source": {
+      "id": "db47cb091a9287f2be215a12a9bb59415904ab80185e76d1f20b6f258b1a3263",
+      "schema": "language-understanding-artifact/0.1",
+      "trial_id": "R1E-05-A_SOURCE_ONLY",
+      "stage": "SOURCE",
+      "at": "2026-10-23T19:05:37.277Z",
+      "request": {
+        "source_id": "R1E-05-source-v1",
+        "source_text": "The request was submitted in the portal on 3 March. The exception applies to requests submitted before 1 March. The portal record does not show whether 3 March is the submission date or the date the portal synchronized the request.",
+        "profile": "technical-policy",
+        "profile_version": "0.2",
+        "context": {
+          "purpose": "Faithful communication to a fresh recipient",
+          "intended_recipient": "Independent reader",
+          "declared_context": {}
+        }
+      },
+      "inventory": {
+        "schema": "language-understanding-inventory/0.1",
+        "offset_unit": "UNICODE_CODE_POINTS",
+        "standing": "HEURISTIC_UNVERIFIED",
+        "source": {
+          "id": "R1E-05-source-v1",
+          "sha256": "ef17b20e9aa01218e96598cf019b3ff7e34b4936ba9d67bbd75181c1c0326ba9",
+          "text": "The request was submitted in the portal on 3 March. The exception applies to requests submitted before 1 March. The portal record does not show whether 3 March is the submission date or the date the portal synchronized the request."
+        },
+        "profile": {
+          "id": "technical-policy",
+          "version": "0.2",
+          "schema": "language-understanding-profile/0.1",
+          "sha256": "12287d00977aa52dcc4b142c6bb2829bf72c4636ce7a9cde6caea4b7d2dd669b"
+        },
+        "engine": {
+          "id": "spacy/blank-en+sentencizer",
+          "version": "0.2.0",
+          "nltk_version": "3.10.4",
+          "spacy_version": "3.8.16",
+          "trained_syntax_available": false,
+          "trained_model_requested": "en_core_web_sm",
+          "fallback_reason": "SPACY_MODEL_NOT_INSTALLED"
+        },
+        "segments": [
+          {
+            "id": "s1",
+            "start": 0,
+            "end": 51,
+            "text": "The request was submitted in the portal on 3 March."
+          },
+          {
+            "id": "s2",
+            "start": 52,
+            "end": 111,
+            "text": "The exception applies to requests submitted before 1 March."
+          },
+          {
+            "id": "s3",
+            "start": 112,
+            "end": 231,
+            "text": "The portal record does not show whether 3 March is the submission date or the date the portal synchronized the request."
+          }
+        ],
+        "meaning_units": [
+          {
+            "id": "m1",
+            "source_segments": [
+              "s1"
+            ],
+            "start": 0,
+            "end": 51,
+            "source_quote": "The request was submitted in the portal on 3 March.",
+            "proposed_meaning": "The request was submitted in the portal on 3 March.",
+            "classification": {
+              "kind": "statement",
+              "normative_force": "ASSERTED_IN_SOURCE",
+              "condition_cues": [],
+              "temporal_cues": [],
+              "possible_unresolved_reference": false,
+              "speaker": "",
+              "prerequisites": [],
+              "method": "LEXICAL_RULE_HEURISTIC",
+              "review": "HEURISTIC_UNVERIFIED"
+            },
+            "provenance": "EXACT_SOURCE_SPAN"
+          },
+          {
+            "id": "m2",
+            "source_segments": [
+              "s2"
+            ],
+            "start": 52,
+            "end": 111,
+            "source_quote": "The exception applies to requests submitted before 1 March.",
+            "proposed_meaning": "The exception applies to requests submitted before 1 March.",
+            "classification": {
+              "kind": "statement",
+              "normative_force": "ASSERTED_IN_SOURCE",
+              "condition_cues": [],
+              "temporal_cues": [
+                "before"
+              ],
+              "possible_unresolved_reference": false,
+              "speaker": "",
+              "prerequisites": [],
+              "method": "LEXICAL_RULE_HEURISTIC",
+              "review": "HEURISTIC_UNVERIFIED"
+            },
+            "provenance": "EXACT_SOURCE_SPAN"
+          },
+          {
+            "id": "m3",
+            "source_segments": [
+              "s3"
+            ],
+            "start": 112,
+            "end": 231,
+            "source_quote": "The portal record does not show whether 3 March is the submission date or the date the portal synchronized the request.",
+            "proposed_meaning": "The portal record does not show whether 3 March is the submission date or the date the portal synchronized the request.",
+            "classification": {
+              "kind": "statement",
+              "normative_force": "ASSERTED_IN_SOURCE",
+              "condition_cues": [],
+              "temporal_cues": [],
+              "possible_unresolved_reference": false,
+              "speaker": "",
+              "prerequisites": [],
+              "method": "LEXICAL_RULE_HEURISTIC",
+              "review": "HEURISTIC_UNVERIFIED"
+            },
+            "provenance": "EXACT_SOURCE_SPAN"
+          }
+        ],
+        "relations": [],
+        "context": {
+          "purpose": "Faithful communication to a fresh recipient",
+          "intended_recipient": "Independent reader",
+          "declared_context": {}
+        },
+        "coverage": {
+          "standing": "NOT_EVALUATED",
+          "source_supportedness": "NOT_EVALUATED",
+          "semantic_completeness": "NOT_ESTABLISHED"
+        },
+        "warnings": [
+          "Labels are lexical heuristics, not verified meaning or permissions.",
+          "No cross-sentence relation, coreference, or semantic completeness checker is implemented.",
+          "Semicolon splitting, prerequisite hints and speaker labels are rule-based candidates, not semantic analysis."
+        ]
+      },
+      "compiler": {
+        "profile": {
+          "id": "technical-policy",
+          "version": "0.2",
+          "sha256": "12287d00977aa52dcc4b142c6bb2829bf72c4636ce7a9cde6caea4b7d2dd669b",
+          "file_sha256": "9d961fac646c1c164019c55b1eaa3f75748f42b47e3aad7862bc50181cdd4a75",
+          "path": "C:\\Projects\\project-language\\core\\understanding\\python\\profiles\\technical-policy.json"
+        },
+        "adapter": "language-understanding-child/0.1",
+        "python": "C:\\Projects\\project-language\\.venv\\Scripts\\python.exe",
+        "timeout_ms": 15000,
+        "max_input_bytes": 262144,
+        "max_output_bytes": 4194304,
+        "require_trained_syntax": false,
+        "source_hashes": {
+          "src/understanding/cli.py": "fdbbaab6d1c51d077046100aef43fcb0fcfac5e278dba1fa30f3a0cddb229ba9",
+          "src/understanding/pipeline.py": "713ddf811112278038b19aaa5995eba929a827e6dee7634d5d5e8d54cba5ed1d",
+          "src/understanding/__init__.py": "c4b5f92990c64643e4907def83a7a62dd00c8bdd3dd738a8ab14c55d523a396f",
+          "src/understanding/contracts.py": "ec17e9c381a22aed695663e4e27ed57f0cdd07491ec78355cb95855a2e08e7d7",
+          "../schemas/request-v0.1.json": "0d1dc60bff65f0baf319fef34d6dd5e141c814d55ed7f865fed629cebd4578c2",
+          "../schemas/inventory-v0.1.json": "aa4c284f4352141ec9fbcc56a51027bdba94e2e588affcaa739fcf2fd8340e5d",
+          "pyproject.toml": "b8b9fb81e47e37041d1fbc7a1a660b35a5b57909a1b370b76826a539af4e8108"
+        },
+        "integration_hashes": {
+          "./workflow.mjs": "3b435c25171ef5dd66785ad93b132c0ed67f833eab63bdd9bd0cff36f5e4bc25",
+          "./analysis.mjs": "c0279d78149f90f6412875dbe0df5eb35f516a90cbd5a235023bb9a93a94ef95",
+          "./decomposition.mjs": "42e5cbc7d12bb55d98d93c5223c8a5edf6eba9de3bfbfe2469ee9ca729c412cb",
+          "../models/prompts.mjs": "5b16ac6b45b60727f8c1467bb6b934e14cd2d9726bb0d750d4f9e9d69cccd32b",
+          "../models/source-anchors.mjs": "04d977f0a67397d568c2c84cf1f6767ea210d6bfb2ecb67c875935909258aa08"
+        }
+      },
+      "provenance": {
+        "source_hash": "ef17b20e9aa01218e96598cf019b3ff7e34b4936ba9d67bbd75181c1c0326ba9"
+      },
+      "standing": "HEURISTIC_UNVERIFIED"
+    },
+    "proposals": [],
+    "deliveries": [
+      {
+        "arm": "A_SOURCE_ONLY",
+        "accepted_version": "a78fd7604638fbfb174c17e124e490443ccd57dc1a7709df025b93824d407340",
+        "packet_hash": "2e5febd4712ef606818adb237302ac4925d012adf663439ea89be195958f92cd",
+        "fields": [
+          {
+            "path": "/source/text",
+            "text": "The request was submitted in the portal on 3 March. The exception applies to requests submitted before 1 March. The portal record does not show whether 3 March is the submission date or the date the portal synchronized the request.",
+            "origin": "ORIGINAL_SOURCE_EMBEDDED",
+            "artifact": {
+              "id": "4dc6ed7d058d13642ded13252b2dab0afa499db95f09efe1472b36cc0fcc0d17",
+              "schema": "language-understanding-artifact/0.1",
+              "trial_id": "R1E-05-A_SOURCE_ONLY",
+              "stage": "DELIVERY_FIELD",
+              "at": "2026-10-23T19:05:45.710Z",
+              "request": {
+                "source_id": "u-31f72231be1200683174d5e8fe97c7c908ff57cb",
+                "source_text": "The request was submitted in the portal on 3 March. The exception applies to requests submitted before 1 March. The portal record does not show whether 3 March is the submission date or the date the portal synchronized the request.",
+                "profile": "technical-policy",
+                "profile_version": "0.2",
+                "context": {
+                  "purpose": "Faithful communication to a fresh recipient",
+                  "intended_recipient": "Independent reader"
+                }
+              },
+              "inventory": {
+                "schema": "language-understanding-inventory/0.1",
+                "offset_unit": "UNICODE_CODE_POINTS",
+                "standing": "HEURISTIC_UNVERIFIED",
+                "source": {
+                  "id": "u-31f72231be1200683174d5e8fe97c7c908ff57cb",
+                  "sha256": "ef17b20e9aa01218e96598cf019b3ff7e34b4936ba9d67bbd75181c1c0326ba9",
+                  "text": "The request was submitted in the portal on 3 March. The exception applies to requests submitted before 1 March. The portal record does not show whether 3 March is the submission date or the date the portal synchronized the request."
+                },
+                "profile": {
+                  "id": "technical-policy",
+                  "version": "0.2",
+                  "schema": "language-understanding-profile/0.1",
+                  "sha256": "12287d00977aa52dcc4b142c6bb2829bf72c4636ce7a9cde6caea4b7d2dd669b"
+                },
+                "engine": {
+                  "id": "spacy/blank-en+sentencizer",
+                  "version": "0.2.0",
+                  "nltk_version": "3.10.4",
+                  "spacy_version": "3.8.16",
+                  "trained_syntax_available": false,
+                  "trained_model_requested": "en_core_web_sm",
+                  "fallback_reason": "SPACY_MODEL_NOT_INSTALLED"
+                },
+                "segments": [
+                  {
+                    "id": "s1",
+                    "start": 0,
+                    "end": 51,
+                    "text": "The request was submitted in the portal on 3 March."
+                  },
+                  {
+                    "id": "s2",
+                    "start": 52,
+                    "end": 111,
+                    "text": "The exception applies to requests submitted before 1 March."
+                  },
+                  {
+                    "id": "s3",
+                    "start": 112,
+                    "end": 231,
+                    "text": "The portal record does not show whether 3 March is the submission date or the date the portal synchronized the request."
+                  }
+                ],
+                "meaning_units": [
+                  {
+                    "id": "m1",
+                    "source_segments": [
+                      "s1"
+                    ],
+                    "start": 0,
+                    "end": 51,
+                    "source_quote": "The request was submitted in the portal on 3 March.",
+                    "proposed_meaning": "The request was submitted in the portal on 3 March.",
+                    "classification": {
+                      "kind": "statement",
+                      "normative_force": "ASSERTED_IN_SOURCE",
+                      "condition_cues": [],
+                      "temporal_cues": [],
+                      "possible_unresolved_reference": false,
+                      "speaker": "",
+                      "prerequisites": [],
+                      "method": "LEXICAL_RULE_HEURISTIC",
+                      "review": "HEURISTIC_UNVERIFIED"
+                    },
+                    "provenance": "EXACT_SOURCE_SPAN"
+                  },
+                  {
+                    "id": "m2",
+                    "source_segments": [
+                      "s2"
+                    ],
+                    "start": 52,
+                    "end": 111,
+                    "source_quote": "The exception applies to requests submitted before 1 March.",
+                    "proposed_meaning": "The exception applies to requests submitted before 1 March.",
+                    "classification": {
+                      "kind": "statement",
+                      "normative_force": "ASSERTED_IN_SOURCE",
+                      "condition_cues": [],
+                      "temporal_cues": [
+                        "before"
+                      ],
+                      "possible_unresolved_reference": false,
+                      "speaker": "",
+                      "prerequisites": [],
+                      "method": "LEXICAL_RULE_HEURISTIC",
+                      "review": "HEURISTIC_UNVERIFIED"
+                    },
+                    "provenance": "EXACT_SOURCE_SPAN"
+                  },
+                  {
+                    "id": "m3",
+                    "source_segments": [
+                      "s3"
+                    ],
+                    "start": 112,
+                    "end": 231,
+                    "source_quote": "The portal record does not show whether 3 March is the submission date or the date the portal synchronized the request.",
+                    "proposed_meaning": "The portal record does not show whether 3 March is the submission date or the date the portal synchronized the request.",
+                    "classification": {
+                      "kind": "statement",
+                      "normative_force": "ASSERTED_IN_SOURCE",
+                      "condition_cues": [],
+                      "temporal_cues": [],
+                      "possible_unresolved_reference": false,
+                      "speaker": "",
+                      "prerequisites": [],
+                      "method": "LEXICAL_RULE_HEURISTIC",
+                      "review": "HEURISTIC_UNVERIFIED"
+                    },
+                    "provenance": "EXACT_SOURCE_SPAN"
+                  }
+                ],
+                "relations": [],
+                "context": {
+                  "purpose": "Faithful communication to a fresh recipient",
+                  "intended_recipient": "Independent reader"
+                },
+                "coverage": {
+                  "standing": "NOT_EVALUATED",
+                  "source_supportedness": "NOT_EVALUATED",
+                  "semantic_completeness": "NOT_ESTABLISHED"
+                },
+                "warnings": [
+                  "Labels are lexical heuristics, not verified meaning or permissions.",
+                  "No cross-sentence relation, coreference, or semantic completeness checker is implemented.",
+                  "Semicolon splitting, prerequisite hints and speaker labels are rule-based candidates, not semantic analysis."
+                ]
+              },
+              "compiler": {
+                "profile": {
+                  "id": "technical-policy",
+                  "version": "0.2",
+                  "sha256": "12287d00977aa52dcc4b142c6bb2829bf72c4636ce7a9cde6caea4b7d2dd669b",
+                  "file_sha256": "9d961fac646c1c164019c55b1eaa3f75748f42b47e3aad7862bc50181cdd4a75",
+                  "path": "C:\\Projects\\project-language\\core\\understanding\\python\\profiles\\technical-policy.json"
+                },
+                "adapter": "language-understanding-child/0.1",
+                "python": "C:\\Projects\\project-language\\.venv\\Scripts\\python.exe",
+                "timeout_ms": 15000,
+                "max_input_bytes": 262144,
+                "max_output_bytes": 4194304,
+                "require_trained_syntax": false,
+                "source_hashes": {
+                  "src/understanding/cli.py": "fdbbaab6d1c51d077046100aef43fcb0fcfac5e278dba1fa30f3a0cddb229ba9",
+                  "src/understanding/pipeline.py": "713ddf811112278038b19aaa5995eba929a827e6dee7634d5d5e8d54cba5ed1d",
+                  "src/understanding/__init__.py": "c4b5f92990c64643e4907def83a7a62dd00c8bdd3dd738a8ab14c55d523a396f",
+                  "src/understanding/contracts.py": "ec17e9c381a22aed695663e4e27ed57f0cdd07491ec78355cb95855a2e08e7d7",
+                  "../schemas/request-v0.1.json": "0d1dc60bff65f0baf319fef34d6dd5e141c814d55ed7f865fed629cebd4578c2",
+                  "../schemas/inventory-v0.1.json": "aa4c284f4352141ec9fbcc56a51027bdba94e2e588affcaa739fcf2fd8340e5d",
+                  "pyproject.toml": "b8b9fb81e47e37041d1fbc7a1a660b35a5b57909a1b370b76826a539af4e8108"
+                },
+                "integration_hashes": {
+                  "./workflow.mjs": "3b435c25171ef5dd66785ad93b132c0ed67f833eab63bdd9bd0cff36f5e4bc25",
+                  "./analysis.mjs": "c0279d78149f90f6412875dbe0df5eb35f516a90cbd5a235023bb9a93a94ef95",
+                  "./decomposition.mjs": "42e5cbc7d12bb55d98d93c5223c8a5edf6eba9de3bfbfe2469ee9ca729c412cb",
+                  "../models/prompts.mjs": "5b16ac6b45b60727f8c1467bb6b934e14cd2d9726bb0d750d4f9e9d69cccd32b",
+                  "../models/source-anchors.mjs": "04d977f0a67397d568c2c84cf1f6767ea210d6bfb2ecb67c875935909258aa08"
+                }
+              },
+              "provenance": {
+                "arm": "A_SOURCE_ONLY",
+                "json_path": "/source/text",
+                "origin": "ORIGINAL_SOURCE_EMBEDDED",
+                "source_hash": "ef17b20e9aa01218e96598cf019b3ff7e34b4936ba9d67bbd75181c1c0326ba9",
+                "accepted_version": "a78fd7604638fbfb174c17e124e490443ccd57dc1a7709df025b93824d407340",
+                "packet_hash": "2e5febd4712ef606818adb237302ac4925d012adf663439ea89be195958f92cd",
+                "response_hash": "f9ff78b18917571de1ecb334e15d2d9a0b4c07a808c886826c19acf1a6813440"
+              },
+              "standing": "HEURISTIC_UNVERIFIED"
+            }
+          }
+        ]
+      }
+    ],
+    "responses": [
+      {
+        "arm": "A_SOURCE_ONLY",
+        "response_hash": "f9ff78b18917571de1ecb334e15d2d9a0b4c07a808c886826c19acf1a6813440",
+        "fields": [
+          {
+            "path": "/decision",
+            "text": "UNKNOWN",
+            "origin": "RECIPIENT_RESPONSE",
+            "artifact": {
+              "id": "cddbe16a9d37eb8b7669ae27ffa79db84dd573340bdd0ad4629e25bf3c3997b2",
+              "schema": "language-understanding-artifact/0.1",
+              "trial_id": "R1E-05-A_SOURCE_ONLY",
+              "stage": "RECIPIENT_FIELD",
+              "at": "2026-10-23T19:05:45.716Z",
+              "request": {
+                "source_id": "u-779fa8d535fde5362c2f778140b9a855a8ef6c55",
+                "source_text": "UNKNOWN",
+                "profile": "technical-policy",
+                "profile_version": "0.2",
+                "context": {
+                  "purpose": "Faithful communication to a fresh recipient",
+                  "intended_recipient": "Independent reader"
+                }
+              },
+              "inventory": {
+                "schema": "language-understanding-inventory/0.1",
+                "offset_unit": "UNICODE_CODE_POINTS",
+                "standing": "HEURISTIC_UNVERIFIED",
+                "source": {
+                  "id": "u-779fa8d535fde5362c2f778140b9a855a8ef6c55",
+                  "sha256": "23759997b3c59884dc4c0ff5320d6301b0e7f63bf0f6483a7b54d7d43bc5ccd1",
+                  "text": "UNKNOWN"
+                },
+                "profile": {
+                  "id": "technical-policy",
+                  "version": "0.2",
+                  "schema": "language-understanding-profile/0.1",
+                  "sha256": "12287d00977aa52dcc4b142c6bb2829bf72c4636ce7a9cde6caea4b7d2dd669b"
+                },
+                "engine": {
+                  "id": "spacy/blank-en+sentencizer",
+                  "version": "0.2.0",
+                  "nltk_version": "3.10.4",
+                  "spacy_version": "3.8.16",
+                  "trained_syntax_available": false,
+                  "trained_model_requested": "en_core_web_sm",
+                  "fallback_reason": "SPACY_MODEL_NOT_INSTALLED"
+                },
+                "segments": [
+                  {
+                    "id": "s1",
+                    "start": 0,
+                    "end": 7,
+                    "text": "UNKNOWN"
+                  }
+                ],
+                "meaning_units": [
+                  {
+                    "id": "m1",
+                    "source_segments": [
+                      "s1"
+                    ],
+                    "start": 0,
+                    "end": 7,
+                    "source_quote": "UNKNOWN",
+                    "proposed_meaning": "UNKNOWN",
+                    "classification": {
+                      "kind": "unknown",
+                      "normative_force": "UNRESOLVED",
+                      "condition_cues": [],
+                      "temporal_cues": [],
+                      "possible_unresolved_reference": false,
+                      "speaker": "",
+                      "prerequisites": [],
+                      "method": "LEXICAL_RULE_HEURISTIC",
+                      "review": "HEURISTIC_UNVERIFIED"
+                    },
+                    "provenance": "EXACT_SOURCE_SPAN"
+                  }
+                ],
+                "relations": [],
+                "context": {
+                  "purpose": "Faithful communication to a fresh recipient",
+                  "intended_recipient": "Independent reader"
+                },
+                "coverage": {
+                  "standing": "NOT_EVALUATED",
+                  "source_supportedness": "NOT_EVALUATED",
+                  "semantic_completeness": "NOT_ESTABLISHED"
+                },
+                "warnings": [
+                  "Labels are lexical heuristics, not verified meaning or permissions.",
+                  "No cross-sentence relation, coreference, or semantic completeness checker is implemented.",
+                  "Semicolon splitting, prerequisite hints and speaker labels are rule-based candidates, not semantic analysis."
+                ]
+              },
+              "compiler": {
+                "profile": {
+                  "id": "technical-policy",
+                  "version": "0.2",
+                  "sha256": "12287d00977aa52dcc4b142c6bb2829bf72c4636ce7a9cde6caea4b7d2dd669b",
+                  "file_sha256": "9d961fac646c1c164019c55b1eaa3f75748f42b47e3aad7862bc50181cdd4a75",
+                  "path": "C:\\Projects\\project-language\\core\\understanding\\python\\profiles\\technical-policy.json"
+                },
+                "adapter": "language-understanding-child/0.1",
+                "python": "C:\\Projects\\project-language\\.venv\\Scripts\\python.exe",
+                "timeout_ms": 15000,
+                "max_input_bytes": 262144,
+                "max_output_bytes": 4194304,
+                "require_trained_syntax": false,
+                "source_hashes": {
+                  "src/understanding/cli.py": "fdbbaab6d1c51d077046100aef43fcb0fcfac5e278dba1fa30f3a0cddb229ba9",
+                  "src/understanding/pipeline.py": "713ddf811112278038b19aaa5995eba929a827e6dee7634d5d5e8d54cba5ed1d",
+                  "src/understanding/__init__.py": "c4b5f92990c64643e4907def83a7a62dd00c8bdd3dd738a8ab14c55d523a396f",
+                  "src/understanding/contracts.py": "ec17e9c381a22aed695663e4e27ed57f0cdd07491ec78355cb95855a2e08e7d7",
+                  "../schemas/request-v0.1.json": "0d1dc60bff65f0baf319fef34d6dd5e141c814d55ed7f865fed629cebd4578c2",
+                  "../schemas/inventory-v0.1.json": "aa4c284f4352141ec9fbcc56a51027bdba94e2e588affcaa739fcf2fd8340e5d",
+                  "pyproject.toml": "b8b9fb81e47e37041d1fbc7a1a660b35a5b57909a1b370b76826a539af4e8108"
+                },
+                "integration_hashes": {
+                  "./workflow.mjs": "3b435c25171ef5dd66785ad93b132c0ed67f833eab63bdd9bd0cff36f5e4bc25",
+                  "./analysis.mjs": "c0279d78149f90f6412875dbe0df5eb35f516a90cbd5a235023bb9a93a94ef95",
+                  "./decomposition.mjs": "42e5cbc7d12bb55d98d93c5223c8a5edf6eba9de3bfbfe2469ee9ca729c412cb",
+                  "../models/prompts.mjs": "5b16ac6b45b60727f8c1467bb6b934e14cd2d9726bb0d750d4f9e9d69cccd32b",
+                  "../models/source-anchors.mjs": "04d977f0a67397d568c2c84cf1f6767ea210d6bfb2ecb67c875935909258aa08"
+                }
+              },
+              "provenance": {
+                "arm": "A_SOURCE_ONLY",
+                "json_path": "/decision",
+                "origin": "RECIPIENT_RESPONSE",
+                "source_hash": "ef17b20e9aa01218e96598cf019b3ff7e34b4936ba9d67bbd75181c1c0326ba9",
+                "accepted_version": "a78fd7604638fbfb174c17e124e490443ccd57dc1a7709df025b93824d407340",
+                "packet_hash": "2e5febd4712ef606818adb237302ac4925d012adf663439ea89be195958f92cd",
+                "response_hash": "f9ff78b18917571de1ecb334e15d2d9a0b4c07a808c886826c19acf1a6813440"
+              },
+              "standing": "HEURISTIC_UNVERIFIED"
+            }
+          },
+          {
+            "path": "/explanation",
+            "text": "The source states that the request was submitted in the portal on 3 March. However, it explicitly notes that the portal record does not clarify whether '3 March' represents the actual submission date or merely the synchronization date. Because the actual submission date is ambiguous (it could be earlier than 3 March, and potentially before 1 March), the source does not establish whether the condition 'submitted before 1 March' was met.",
+            "origin": "RECIPIENT_RESPONSE",
+            "artifact": {
+              "id": "dc9d14691d0c32dd10f6aa1ae1627bc3b9987a981e6d4d1455bac02ed20564ba",
+              "schema": "language-understanding-artifact/0.1",
+              "trial_id": "R1E-05-A_SOURCE_ONLY",
+              "stage": "RECIPIENT_FIELD",
+              "at": "2026-10-23T19:05:45.723Z",
+              "request": {
+                "source_id": "u-6ab14b0f0b56ad078d4aa1cfcf77ab381dd0493a",
+                "source_text": "The source states that the request was submitted in the portal on 3 March. However, it explicitly notes that the portal record does not clarify whether '3 March' represents the actual submission date or merely the synchronization date. Because the actual submission date is ambiguous (it could be earlier than 3 March, and potentially before 1 March), the source does not establish whether the condition 'submitted before 1 March' was met.",
+                "profile": "technical-policy",
+                "profile_version": "0.2",
+                "context": {
+                  "purpose": "Faithful communication to a fresh recipient",
+                  "intended_recipient": "Independent reader"
+                }
+              },
+              "inventory": {
+                "schema": "language-understanding-inventory/0.1",
+                "offset_unit": "UNICODE_CODE_POINTS",
+                "standing": "HEURISTIC_UNVERIFIED",
+                "source": {
+                  "id": "u-6ab14b0f0b56ad078d4aa1cfcf77ab381dd0493a",
+                  "sha256": "519c236bbc57d2e7e19d1c88366b7e90ed3bd83bf43596001abe62c3d1914261",
+                  "text": "The source states that the request was submitted in the portal on 3 March. However, it explicitly notes that the portal record does not clarify whether '3 March' represents the actual submission date or merely the synchronization date. Because the actual submission date is ambiguous (it could be earlier than 3 March, and potentially before 1 March), the source does not establish whether the condition 'submitted before 1 March' was met."
+                },
+                "profile": {
+                  "id": "technical-policy",
+                  "version": "0.2",
+                  "schema": "language-understanding-profile/0.1",
+                  "sha256": "12287d00977aa52dcc4b142c6bb2829bf72c4636ce7a9cde6caea4b7d2dd669b"
+                },
+                "engine": {
+                  "id": "spacy/blank-en+sentencizer",
+                  "version": "0.2.0",
+                  "nltk_version": "3.10.4",
+                  "spacy_version": "3.8.16",
+                  "trained_syntax_available": false,
+                  "trained_model_requested": "en_core_web_sm",
+                  "fallback_reason": "SPACY_MODEL_NOT_INSTALLED"
+                },
+                "segments": [
+                  {
+                    "id": "s1",
+                    "start": 0,
+                    "end": 74,
+                    "text": "The source states that the request was submitted in the portal on 3 March."
+                  },
+                  {
+                    "id": "s2",
+                    "start": 75,
+                    "end": 235,
+                    "text": "However, it explicitly notes that the portal record does not clarify whether '3 March' represents the actual submission date or merely the synchronization date."
+                  },
+                  {
+                    "id": "s3",
+                    "start": 236,
+                    "end": 439,
+                    "text": "Because the actual submission date is ambiguous (it could be earlier than 3 March, and potentially before 1 March), the source does not establish whether the condition 'submitted before 1 March' was met."
+                  }
+                ],
+                "meaning_units": [
+                  {
+                    "id": "m1",
+                    "source_segments": [
+                      "s1"
+                    ],
+                    "start": 0,
+                    "end": 74,
+                    "source_quote": "The source states that the request was submitted in the portal on 3 March.",
+                    "proposed_meaning": "The source states that the request was submitted in the portal on 3 March.",
+                    "classification": {
+                      "kind": "statement",
+                      "normative_force": "ASSERTED_IN_SOURCE",
+                      "condition_cues": [],
+                      "temporal_cues": [],
+                      "possible_unresolved_reference": false,
+                      "speaker": "",
+                      "prerequisites": [],
+                      "method": "LEXICAL_RULE_HEURISTIC",
+                      "review": "HEURISTIC_UNVERIFIED"
+                    },
+                    "provenance": "EXACT_SOURCE_SPAN"
+                  },
+                  {
+                    "id": "m2",
+                    "source_segments": [
+                      "s2"
+                    ],
+                    "start": 75,
+                    "end": 235,
+                    "source_quote": "However, it explicitly notes that the portal record does not clarify whether '3 March' represents the actual submission date or merely the synchronization date.",
+                    "proposed_meaning": "However, it explicitly notes that the portal record does not clarify whether '3 March' represents the actual submission date or merely the synchronization date.",
+                    "classification": {
+                      "kind": "statement",
+                      "normative_force": "ASSERTED_IN_SOURCE",
+                      "condition_cues": [],
+                      "temporal_cues": [],
+                      "possible_unresolved_reference": false,
+                      "speaker": "",
+                      "prerequisites": [],
+                      "method": "LEXICAL_RULE_HEURISTIC",
+                      "review": "HEURISTIC_UNVERIFIED"
+                    },
+                    "provenance": "EXACT_SOURCE_SPAN"
+                  },
+                  {
+                    "id": "m3",
+                    "source_segments": [
+                      "s3"
+                    ],
+                    "start": 236,
+                    "end": 439,
+                    "source_quote": "Because the actual submission date is ambiguous (it could be earlier than 3 March, and potentially before 1 March), the source does not establish whether the condition 'submitted before 1 March' was met.",
+                    "proposed_meaning": "Because the actual submission date is ambiguous (it could be earlier than 3 March, and potentially before 1 March), the source does not establish whether the condition 'submitted before 1 March' was met.",
+                    "classification": {
+                      "kind": "statement",
+                      "normative_force": "ASSERTED_IN_SOURCE",
+                      "condition_cues": [],
+                      "temporal_cues": [
+                        "before"
+                      ],
+                      "possible_unresolved_reference": false,
+                      "speaker": "",
+                      "prerequisites": [],
+                      "method": "LEXICAL_RULE_HEURISTIC",
+                      "review": "HEURISTIC_UNVERIFIED"
+                    },
+                    "provenance": "EXACT_SOURCE_SPAN"
+                  }
+                ],
+                "relations": [],
+                "context": {
+                  "purpose": "Faithful communication to a fresh recipient",
+                  "intended_recipient": "Independent reader"
+                },
+                "coverage": {
+                  "standing": "NOT_EVALUATED",
+                  "source_supportedness": "NOT_EVALUATED",
+                  "semantic_completeness": "NOT_ESTABLISHED"
+                },
+                "warnings": [
+                  "Labels are lexical heuristics, not verified meaning or permissions.",
+                  "No cross-sentence relation, coreference, or semantic completeness checker is implemented.",
+                  "Semicolon splitting, prerequisite hints and speaker labels are rule-based candidates, not semantic analysis."
+                ]
+              },
+              "compiler": {
+                "profile": {
+                  "id": "technical-policy",
+                  "version": "0.2",
+                  "sha256": "12287d00977aa52dcc4b142c6bb2829bf72c4636ce7a9cde6caea4b7d2dd669b",
+                  "file_sha256": "9d961fac646c1c164019c55b1eaa3f75748f42b47e3aad7862bc50181cdd4a75",
+                  "path": "C:\\Projects\\project-language\\core\\understanding\\python\\profiles\\technical-policy.json"
+                },
+                "adapter": "language-understanding-child/0.1",
+                "python": "C:\\Projects\\project-language\\.venv\\Scripts\\python.exe",
+                "timeout_ms": 15000,
+                "max_input_bytes": 262144,
+                "max_output_bytes": 4194304,
+                "require_trained_syntax": false,
+                "source_hashes": {
+                  "src/understanding/cli.py": "fdbbaab6d1c51d077046100aef43fcb0fcfac5e278dba1fa30f3a0cddb229ba9",
+                  "src/understanding/pipeline.py": "713ddf811112278038b19aaa5995eba929a827e6dee7634d5d5e8d54cba5ed1d",
+                  "src/understanding/__init__.py": "c4b5f92990c64643e4907def83a7a62dd00c8bdd3dd738a8ab14c55d523a396f",
+                  "src/understanding/contracts.py": "ec17e9c381a22aed695663e4e27ed57f0cdd07491ec78355cb95855a2e08e7d7",
+                  "../schemas/request-v0.1.json": "0d1dc60bff65f0baf319fef34d6dd5e141c814d55ed7f865fed629cebd4578c2",
+                  "../schemas/inventory-v0.1.json": "aa4c284f4352141ec9fbcc56a51027bdba94e2e588affcaa739fcf2fd8340e5d",
+                  "pyproject.toml": "b8b9fb81e47e37041d1fbc7a1a660b35a5b57909a1b370b76826a539af4e8108"
+                },
+                "integration_hashes": {
+                  "./workflow.mjs": "3b435c25171ef5dd66785ad93b132c0ed67f833eab63bdd9bd0cff36f5e4bc25",
+                  "./analysis.mjs": "c0279d78149f90f6412875dbe0df5eb35f516a90cbd5a235023bb9a93a94ef95",
+                  "./decomposition.mjs": "42e5cbc7d12bb55d98d93c5223c8a5edf6eba9de3bfbfe2469ee9ca729c412cb",
+                  "../models/prompts.mjs": "5b16ac6b45b60727f8c1467bb6b934e14cd2d9726bb0d750d4f9e9d69cccd32b",
+                  "../models/source-anchors.mjs": "04d977f0a67397d568c2c84cf1f6767ea210d6bfb2ecb67c875935909258aa08"
+                }
+              },
+              "provenance": {
+                "arm": "A_SOURCE_ONLY",
+                "json_path": "/explanation",
+                "origin": "RECIPIENT_RESPONSE",
+                "source_hash": "ef17b20e9aa01218e96598cf019b3ff7e34b4936ba9d67bbd75181c1c0326ba9",
+                "accepted_version": "a78fd7604638fbfb174c17e124e490443ccd57dc1a7709df025b93824d407340",
+                "packet_hash": "2e5febd4712ef606818adb237302ac4925d012adf663439ea89be195958f92cd",
+                "response_hash": "f9ff78b18917571de1ecb334e15d2d9a0b4c07a808c886826c19acf1a6813440"
+              },
+              "standing": "HEURISTIC_UNVERIFIED"
+            }
+          }
+        ]
+      }
+    ],
+    "comparisons": [
+      {
+        "arm": "A_SOURCE_ONLY",
+        "accepted_version": "a78fd7604638fbfb174c17e124e490443ccd57dc1a7709df025b93824d407340",
+        "packet_hash": "2e5febd4712ef606818adb237302ac4925d012adf663439ea89be195958f92cd",
+        "response_hash": "f9ff78b18917571de1ecb334e15d2d9a0b4c07a808c886826c19acf1a6813440",
+        "transferred": {
+          "schema": "language-meaning-transferred/0.1",
+          "accepted_version": "a78fd7604638fbfb174c17e124e490443ccd57dc1a7709df025b93824d407340",
+          "source_inventory_hash": "7f044aa45cd80f126f773595cf947a28aa42dcac17e97228a4969f0bf3badbe6",
+          "standing": "MECHANICAL_CANDIDATES_NOT_SEMANTIC_VERDICTS",
+          "embedded_source_present": true,
+          "embedded_source_is_not_understanding": true,
+          "units": [
+            {
+              "unit_id": "m1",
+              "quote": "The request was submitted in the portal on 3 March.",
+              "candidate_paths": [],
+              "analysis_ids": [],
+              "mechanical": "NO_DERIVED_TEXT_MATCH",
+              "assessment": "NOT_ASSESSED",
+              "review_flags": [],
+              "semantic_preservation": "NOT_ASSESSED"
+            },
+            {
+              "unit_id": "m2",
+              "quote": "The exception applies to requests submitted before 1 March.",
+              "candidate_paths": [],
+              "analysis_ids": [],
+              "mechanical": "NO_DERIVED_TEXT_MATCH",
+              "assessment": "NOT_ASSESSED",
+              "review_flags": [],
+              "semantic_preservation": "NOT_ASSESSED"
+            },
+            {
+              "unit_id": "m3",
+              "quote": "The portal record does not show whether 3 March is the submission date or the date the portal synchronized the request.",
+              "candidate_paths": [],
+              "analysis_ids": [],
+              "mechanical": "NO_DERIVED_TEXT_MATCH",
+              "assessment": "NOT_ASSESSED",
+              "review_flags": [],
+              "semantic_preservation": "NOT_ASSESSED"
+            }
+          ],
+          "possible_additions_or_paraphrases": [],
+          "warnings": [
+            "No lexical match establishes preservation.",
+            "No match is not proof of meaning loss.",
+            "Embedded source copies are excluded from candidate derived preservation.",
+            "Unmatched derived wording may be a valid paraphrase, purpose statement, human clarification or inference; it is not automatically an unsupported addition."
+          ]
+        },
+        "reconstructed": {
+          "standing": "NOT_ASSESSED",
+          "reason": "No independently defined question requirements are registered."
+        }
+      }
+    ]
+  },
+  "studio": {
+    "schema": "language-studio-export/0.1",
+    "standing": "EXPLORATORY_DEVELOPMENT_NOT_VALIDATION",
+    "replay": "CAPTURED_OUTPUT_ONLY_NO_REGENERATION",
+    "comparison": {
+      "state": null,
+      "cases": [
+        {
+          "id": "lc02-d1",
+          "name": "Readiness and authority",
+          "standing": "EXPOSED_SYNTHETIC_DEVELOPMENT"
+        },
+        {
+          "id": "lc02-d2",
+          "name": "A straightforward boundary",
+          "standing": "EXPOSED_SYNTHETIC_DEVELOPMENT"
+        },
+        {
+          "id": "lc02-d3",
+          "name": "Mediation can invent certainty",
+          "standing": "EXPOSED_SYNTHETIC_DEVELOPMENT"
+        }
+      ],
+      "rubric": [
+        "correct_interpretation",
+        "important_information_retained",
+        "important_information_lost",
+        "unsupported_inferences",
+        "ambiguity_discovered",
+        "handling_unknowns",
+        "decision_quality",
+        "clarification_and_negotiated_correction"
+      ],
+      "evaluation_gate": {
+        "status": "PENDING_INDEPENDENT_CASE_AUTHOR_AND_REVIEW",
+        "cases": [],
+        "reason": "The implementation agent cannot certify its own cases as independently authored and previously unseen. No development case may be relabelled held-out."
+      },
+      "scope": {
+        "id": "lc02u-development-v1",
+        "case_suite": {
+          "id": "lc02-development-v1",
+          "digest": "17d692dd8a0255e2cc92ea6c7993d9ba53b610e3ee1d6b7dfd0598367aea189c",
+          "case_ids": [
+            "lc02-d1",
+            "lc02-d2",
+            "lc02-d3"
+          ],
+          "standing": "EXPOSED_DEVELOPMENT_NOT_CONFIRMATORY"
+        },
+        "understanding": {
+          "profile": {
+            "id": "technical-policy",
+            "version": "0.2",
+            "sha256": "12287d00977aa52dcc4b142c6bb2829bf72c4636ce7a9cde6caea4b7d2dd669b",
+            "file_sha256": "9d961fac646c1c164019c55b1eaa3f75748f42b47e3aad7862bc50181cdd4a75",
+            "path": "C:\\Projects\\project-language\\core\\understanding\\python\\profiles\\technical-policy.json"
+          },
+          "adapter": "language-understanding-child/0.1",
+          "python": "C:\\Projects\\project-language\\.venv\\Scripts\\python.exe",
+          "timeout_ms": 15000,
+          "max_input_bytes": 262144,
+          "max_output_bytes": 4194304,
+          "require_trained_syntax": false,
+          "source_hashes": {
+            "src/understanding/cli.py": "fdbbaab6d1c51d077046100aef43fcb0fcfac5e278dba1fa30f3a0cddb229ba9",
+            "src/understanding/pipeline.py": "713ddf811112278038b19aaa5995eba929a827e6dee7634d5d5e8d54cba5ed1d",
+            "src/understanding/__init__.py": "c4b5f92990c64643e4907def83a7a62dd00c8bdd3dd738a8ab14c55d523a396f",
+            "src/understanding/contracts.py": "ec17e9c381a22aed695663e4e27ed57f0cdd07491ec78355cb95855a2e08e7d7",
+            "../schemas/request-v0.1.json": "0d1dc60bff65f0baf319fef34d6dd5e141c814d55ed7f865fed629cebd4578c2",
+            "../schemas/inventory-v0.1.json": "aa4c284f4352141ec9fbcc56a51027bdba94e2e588affcaa739fcf2fd8340e5d",
+            "pyproject.toml": "b8b9fb81e47e37041d1fbc7a1a660b35a5b57909a1b370b76826a539af4e8108"
+          },
+          "integration_hashes": {
+            "./workflow.mjs": "3b435c25171ef5dd66785ad93b132c0ed67f833eab63bdd9bd0cff36f5e4bc25",
+            "./analysis.mjs": "c0279d78149f90f6412875dbe0df5eb35f516a90cbd5a235023bb9a93a94ef95",
+            "./decomposition.mjs": "42e5cbc7d12bb55d98d93c5223c8a5edf6eba9de3bfbfe2469ee9ca729c412cb",
+            "../models/prompts.mjs": "5b16ac6b45b60727f8c1467bb6b934e14cd2d9726bb0d750d4f9e9d69cccd32b",
+            "../models/source-anchors.mjs": "04d977f0a67397d568c2c84cf1f6767ea210d6bfb2ecb67c875935909258aa08"
+          }
+        },
+        "digest": "11502b2c9537821b29cc434aa286d310856004dcb9ca1caf6b4006993c565997"
+      }
+    },
+    "comparison_plan": {
+      "schema": "studio-remote-plan/0.1r",
+      "provider": "opencode-go",
+      "task_identity": {
+        "id": "lc02u-development-v1",
+        "case_suite": {
+          "id": "lc02-development-v1",
+          "digest": "17d692dd8a0255e2cc92ea6c7993d9ba53b610e3ee1d6b7dfd0598367aea189c",
+          "case_ids": [
+            "lc02-d1",
+            "lc02-d2",
+            "lc02-d3"
+          ],
+          "standing": "EXPOSED_DEVELOPMENT_NOT_CONFIRMATORY"
+        },
+        "understanding": {
+          "profile": {
+            "id": "technical-policy",
+            "version": "0.2",
+            "sha256": "12287d00977aa52dcc4b142c6bb2829bf72c4636ce7a9cde6caea4b7d2dd669b",
+            "file_sha256": "9d961fac646c1c164019c55b1eaa3f75748f42b47e3aad7862bc50181cdd4a75",
+            "path": "C:\\Projects\\project-language\\core\\understanding\\python\\profiles\\technical-policy.json"
+          },
+          "adapter": "language-understanding-child/0.1",
+          "python": "C:\\Projects\\project-language\\.venv\\Scripts\\python.exe",
+          "timeout_ms": 15000,
+          "max_input_bytes": 262144,
+          "max_output_bytes": 4194304,
+          "require_trained_syntax": false,
+          "source_hashes": {
+            "src/understanding/cli.py": "fdbbaab6d1c51d077046100aef43fcb0fcfac5e278dba1fa30f3a0cddb229ba9",
+            "src/understanding/pipeline.py": "713ddf811112278038b19aaa5995eba929a827e6dee7634d5d5e8d54cba5ed1d",
+            "src/understanding/__init__.py": "c4b5f92990c64643e4907def83a7a62dd00c8bdd3dd738a8ab14c55d523a396f",
+            "src/understanding/contracts.py": "ec17e9c381a22aed695663e4e27ed57f0cdd07491ec78355cb95855a2e08e7d7",
+            "../schemas/request-v0.1.json": "0d1dc60bff65f0baf319fef34d6dd5e141c814d55ed7f865fed629cebd4578c2",
+            "../schemas/inventory-v0.1.json": "aa4c284f4352141ec9fbcc56a51027bdba94e2e588affcaa739fcf2fd8340e5d",
+            "pyproject.toml": "b8b9fb81e47e37041d1fbc7a1a660b35a5b57909a1b370b76826a539af4e8108"
+          },
+          "integration_hashes": {
+            "./workflow.mjs": "3b435c25171ef5dd66785ad93b132c0ed67f833eab63bdd9bd0cff36f5e4bc25",
+            "./analysis.mjs": "c0279d78149f90f6412875dbe0df5eb35f516a90cbd5a235023bb9a93a94ef95",
+            "./decomposition.mjs": "42e5cbc7d12bb55d98d93c5223c8a5edf6eba9de3bfbfe2469ee9ca729c412cb",
+            "../models/prompts.mjs": "5b16ac6b45b60727f8c1467bb6b934e14cd2d9726bb0d750d4f9e9d69cccd32b",
+            "../models/source-anchors.mjs": "04d977f0a67397d568c2c84cf1f6767ea210d6bfb2ecb67c875935909258aa08"
+          }
+        },
+        "digest": "11502b2c9537821b29cc434aa286d310856004dcb9ca1caf6b4006993c565997"
+      },
+      "models": [
+        {
+          "role": "interpreter",
+          "model": "opencode-go/deepseek-v4.1-flash",
+          "metadata": {
+            "id": "opencode-go/deepseek-v4.1-flash",
+            "provider": "opencode-go",
+            "local": false,
+            "api_family": "openai-completions",
+            "base_url": "https://opencode.ai/inference/go/openai/v1",
+            "expected_route": "https://opencode.ai/inference/go/openai/v1/chat/completions",
+            "context_window": 1000000,
+            "output_limit": 384000,
+            "input_modalities": [
+              "text",
+              "image"
+            ],
+            "output_modalities": [
+              "text"
+            ],
+            "structured_output": "PROMPTED_JSON_STRICT_HOST_VALIDATION",
+            "reasoning": "Pi simple-stream default; no reasoning-token inference",
+            "price_per_million": {
+              "input": 0.3,
+              "output": 1.2,
+              "cacheRead": 0.006,
+              "cacheWrite": 0
+            },
+            "availability": "SCOPED_REGISTERED_NOT_LIVE_PROBED",
+            "qualification": "OFFLINE_TEST_REQUIRED",
+            "metadata_origin": "PINNED_PI_1.0.4_WITH_DOCUMENTED_ENDPOINT_OVERLAY",
+            "config_hash": "78020e5ed7246fa4f787cd8b1f72f721c41caba22e72a20fcf56f07937ebe7ad"
+          },
+          "output_tokens": 16384
+        },
+        {
+          "role": "challenger",
+          "model": "opencode-go/gpt-6-luna",
+          "metadata": {
+            "id": "opencode-go/gpt-6-luna",
+            "provider": "opencode-go",
+            "local": false,
+            "api_family": "openai-responses",
+            "base_url": "https://opencode.ai/inference/go/openai/v1",
+            "expected_route": "https://opencode.ai/inference/go/openai/v1/responses",
+            "context_window": 1050000,
+            "output_limit": 128000,
+            "input_modalities": [
+              "text",
+              "image"
+            ],
+            "output_modalities": [
+              "text"
+            ],
+            "structured_output": "PROMPTED_JSON_STRICT_HOST_VALIDATION",
+            "reasoning": "Pi simple-stream default; no reasoning-token inference",
+            "price_per_million": {
+              "input": 0.1,
+              "output": 0.5,
+              "cacheRead": 0.01,
+              "cacheWrite": 0.125
+            },
+            "availability": "SCOPED_REGISTERED_NOT_LIVE_PROBED",
+            "qualification": "OFFLINE_TEST_REQUIRED",
+            "metadata_origin": "PINNED_PI_1.0.4_WITH_DOCUMENTED_ENDPOINT_OVERLAY",
+            "config_hash": "78020e5ed7246fa4f787cd8b1f72f721c41caba22e72a20fcf56f07937ebe7ad"
+          },
+          "output_tokens": 16384
+        },
+        {
+          "role": "mediator",
+          "model": "opencode-go/deepseek-v4.1-flash",
+          "metadata": {
+            "id": "opencode-go/deepseek-v4.1-flash",
+            "provider": "opencode-go",
+            "local": false,
+            "api_family": "openai-completions",
+            "base_url": "https://opencode.ai/inference/go/openai/v1",
+            "expected_route": "https://opencode.ai/inference/go/openai/v1/chat/completions",
+            "context_window": 1000000,
+            "output_limit": 384000,
+            "input_modalities": [
+              "text",
+              "image"
+            ],
+            "output_modalities": [
+              "text"
+            ],
+            "structured_output": "PROMPTED_JSON_STRICT_HOST_VALIDATION",
+            "reasoning": "Pi simple-stream default; no reasoning-token inference",
+            "price_per_million": {
+              "input": 0.3,
+              "output": 1.2,
+              "cacheRead": 0.006,
+              "cacheWrite": 0
+            },
+            "availability": "SCOPED_REGISTERED_NOT_LIVE_PROBED",
+            "qualification": "OFFLINE_TEST_REQUIRED",
+            "metadata_origin": "PINNED_PI_1.0.4_WITH_DOCUMENTED_ENDPOINT_OVERLAY",
+            "config_hash": "78020e5ed7246fa4f787cd8b1f72f721c41caba22e72a20fcf56f07937ebe7ad"
+          },
+          "output_tokens": 16384
+        },
+        {
+          "role": "recipient",
+          "model": "opencode-go/qwen3.8-flash",
+          "metadata": {
+            "id": "opencode-go/qwen3.8-flash",
+            "provider": "opencode-go",
+            "local": false,
+            "api_family": "anthropic-messages",
+            "base_url": "https://opencode.ai/inference/go/anthropic",
+            "expected_route": "https://opencode.ai/inference/go/anthropic/v1/messages",
+            "context_window": 1000000,
+            "output_limit": 131072,
+            "input_modalities": [
+              "text",
+              "image"
+            ],
+            "output_modalities": [
+              "text"
+            ],
+            "structured_output": "PROMPTED_JSON_STRICT_HOST_VALIDATION",
+            "reasoning": "Pi simple-stream default; no reasoning-token inference",
+            "price_per_million": {
+              "input": 0.15,
+              "output": 0.47,
+              "cacheRead": 0.016,
+              "cacheWrite": 0.2
+            },
+            "availability": "SCOPED_REGISTERED_NOT_LIVE_PROBED",
+            "qualification": "OFFLINE_TEST_REQUIRED",
+            "metadata_origin": "PINNED_PI_1.0.4_WITH_DOCUMENTED_ENDPOINT_OVERLAY",
+            "config_hash": "78020e5ed7246fa4f787cd8b1f72f721c41caba22e72a20fcf56f07937ebe7ad"
+          },
+          "output_tokens": 16384
+        },
+        {
+          "role": "advisory_evaluator",
+          "model": "opencode-go/claude-haiku-5-5",
+          "metadata": {
+            "id": "opencode-go/claude-haiku-5-5",
+            "provider": "opencode-go",
+            "local": false,
+            "api_family": "anthropic-messages",
+            "base_url": "https://opencode.ai/inference/go/anthropic",
+            "expected_route": "https://opencode.ai/inference/go/anthropic/v1/messages",
+            "context_window": 1000000,
+            "output_limit": 128000,
+            "input_modalities": [
+              "text",
+              "image"
+            ],
+            "output_modalities": [
+              "text"
+            ],
+            "structured_output": "PROMPTED_JSON_STRICT_HOST_VALIDATION",
+            "reasoning": "Pi simple-stream default; no reasoning-token inference",
+            "price_per_million": {
+              "input": 0.1,
+              "output": 0.5,
+              "cacheRead": 0.01,
+              "cacheWrite": 0.125,
+              "tiers": [
+                {
+                  "inputTokensAbove": 100000,
+                  "input": 0.5,
+                  "output": 2.5,
+                  "cacheRead": 0.05,
+                  "cacheWrite": 0.625
+                }
+              ]
+            },
+            "availability": "SCOPED_REGISTERED_NOT_LIVE_PROBED",
+            "qualification": "OFFLINE_TEST_REQUIRED",
+            "metadata_origin": "MANAGED_PI_1.4.0_SCOPED_REGISTRATION",
+            "config_hash": "78020e5ed7246fa4f787cd8b1f72f721c41caba22e72a20fcf56f07937ebe7ad"
+          },
+          "output_tokens": 16384
+        }
+      ],
+      "settings": {
+        "max_requests": 12,
+        "budget_usd": 10,
+        "max_input_bytes": 60000,
+        "max_response_bytes": 33554432,
+        "timeout_ms": 180000,
+        "output_tokens": {
+          "interpreter": 16384,
+          "challenger": 16384,
+          "mediator": 16384,
+          "recipient": 16384,
+          "advisory_evaluator": 16384
+        },
+        "automatic_retries": 0
+      },
+      "config_hash": "78020e5ed7246fa4f787cd8b1f72f721c41caba22e72a20fcf56f07937ebe7ad",
+      "offline_qualification_identity": null,
+      "expected_workflow_calls": 3,
+      "with_mediation_calls": 4,
+      "with_comparison_calls": 5,
+      "maximum_actual_requests": 12,
+      "conservative_estimate_usd": 0.94152,
+      "per_request_reservation_usd": 0.07846,
+      "estimate_standing": "CATALOGUE_BOUND_NOT_INVOICE; UTF8_BYTES_AS_INPUT_TOKEN_BOUND",
+      "service_use": "OPERATOR_MUST_CONFIRM_GO_WORKLOAD_APPROPRIATENESS",
+      "fallback": false,
+      "hash": "c28e9cade3d39473c2a016c626b9413424a1ea6cfa04fb44bd71cf2644cdfb01",
+      "launcher_remote_enabled": true,
+      "credential_available": true,
+      "approval_required": false,
+      "execution_policy": "DIRECT_USER_REQUEST",
+      "approval_active": true,
+      "requests_used": 1,
+      "reserved_usd": 0.07846,
+      "last_errors": {},
+      "advisory_evaluator_status": "OPTIONAL_NOT_RUN"
+    },
+    "manual_plan": {
+      "schema": "studio-remote-plan/0.1r",
+      "provider": "opencode-go",
+      "task_identity": {
+        "id": "museum-loan-m12",
+        "digest": "e22911925db7424b874b94b44a60e9250a68e0f0b0b0db5d09713aa754fb28b4",
+        "source_hash": "277b9050c46b1df5f9794bda17829e2acf450e6c4afaf79a7e21cf4692447228",
+        "question_hash": "0f71abc5fbc41f4fb5e3474a0efa15eb02aa33fe6642e99a27688a1fa89fb390",
+        "reference_standing": "UNADJUDICATED_REFERENCE"
+      },
+      "models": [
+        {
+          "role": "interpreter",
+          "model": "opencode-go/deepseek-v4.1-flash",
+          "metadata": {
+            "id": "opencode-go/deepseek-v4.1-flash",
+            "provider": "opencode-go",
+            "local": false,
+            "api_family": "openai-completions",
+            "base_url": "https://opencode.ai/inference/go/openai/v1",
+            "expected_route": "https://opencode.ai/inference/go/openai/v1/chat/completions",
+            "context_window": 1000000,
+            "output_limit": 384000,
+            "input_modalities": [
+              "text",
+              "image"
+            ],
+            "output_modalities": [
+              "text"
+            ],
+            "structured_output": "PROMPTED_JSON_STRICT_HOST_VALIDATION",
+            "reasoning": "Pi simple-stream default; no reasoning-token inference",
+            "price_per_million": {
+              "input": 0.3,
+              "output": 1.2,
+              "cacheRead": 0.006,
+              "cacheWrite": 0
+            },
+            "availability": "SCOPED_REGISTERED_NOT_LIVE_PROBED",
+            "qualification": "OFFLINE_TEST_REQUIRED",
+            "metadata_origin": "PINNED_PI_1.0.4_WITH_DOCUMENTED_ENDPOINT_OVERLAY",
+            "config_hash": "78020e5ed7246fa4f787cd8b1f72f721c41caba22e72a20fcf56f07937ebe7ad"
+          },
+          "output_tokens": 16384
+        },
+        {
+          "role": "challenger",
+          "model": "opencode-go/gpt-6-luna",
+          "metadata": {
+            "id": "opencode-go/gpt-6-luna",
+            "provider": "opencode-go",
+            "local": false,
+            "api_family": "openai-responses",
+            "base_url": "https://opencode.ai/inference/go/openai/v1",
+            "expected_route": "https://opencode.ai/inference/go/openai/v1/responses",
+            "context_window": 1050000,
+            "output_limit": 128000,
+            "input_modalities": [
+              "text",
+              "image"
+            ],
+            "output_modalities": [
+              "text"
+            ],
+            "structured_output": "PROMPTED_JSON_STRICT_HOST_VALIDATION",
+            "reasoning": "Pi simple-stream default; no reasoning-token inference",
+            "price_per_million": {
+              "input": 0.1,
+              "output": 0.5,
+              "cacheRead": 0.01,
+              "cacheWrite": 0.125
+            },
+            "availability": "SCOPED_REGISTERED_NOT_LIVE_PROBED",
+            "qualification": "OFFLINE_TEST_REQUIRED",
+            "metadata_origin": "PINNED_PI_1.0.4_WITH_DOCUMENTED_ENDPOINT_OVERLAY",
+            "config_hash": "78020e5ed7246fa4f787cd8b1f72f721c41caba22e72a20fcf56f07937ebe7ad"
+          },
+          "output_tokens": 16384
+        },
+        {
+          "role": "mediator",
+          "model": "opencode-go/deepseek-v4.1-flash",
+          "metadata": {
+            "id": "opencode-go/deepseek-v4.1-flash",
+            "provider": "opencode-go",
+            "local": false,
+            "api_family": "openai-completions",
+            "base_url": "https://opencode.ai/inference/go/openai/v1",
+            "expected_route": "https://opencode.ai/inference/go/openai/v1/chat/completions",
+            "context_window": 1000000,
+            "output_limit": 384000,
+            "input_modalities": [
+              "text",
+              "image"
+            ],
+            "output_modalities": [
+              "text"
+            ],
+            "structured_output": "PROMPTED_JSON_STRICT_HOST_VALIDATION",
+            "reasoning": "Pi simple-stream default; no reasoning-token inference",
+            "price_per_million": {
+              "input": 0.3,
+              "output": 1.2,
+              "cacheRead": 0.006,
+              "cacheWrite": 0
+            },
+            "availability": "SCOPED_REGISTERED_NOT_LIVE_PROBED",
+            "qualification": "OFFLINE_TEST_REQUIRED",
+            "metadata_origin": "PINNED_PI_1.0.4_WITH_DOCUMENTED_ENDPOINT_OVERLAY",
+            "config_hash": "78020e5ed7246fa4f787cd8b1f72f721c41caba22e72a20fcf56f07937ebe7ad"
+          },
+          "output_tokens": 16384
+        },
+        {
+          "role": "recipient",
+          "model": "opencode-go/qwen3.8-flash",
+          "metadata": {
+            "id": "opencode-go/qwen3.8-flash",
+            "provider": "opencode-go",
+            "local": false,
+            "api_family": "anthropic-messages",
+            "base_url": "https://opencode.ai/inference/go/anthropic",
+            "expected_route": "https://opencode.ai/inference/go/anthropic/v1/messages",
+            "context_window": 1000000,
+            "output_limit": 131072,
+            "input_modalities": [
+              "text",
+              "image"
+            ],
+            "output_modalities": [
+              "text"
+            ],
+            "structured_output": "PROMPTED_JSON_STRICT_HOST_VALIDATION",
+            "reasoning": "Pi simple-stream default; no reasoning-token inference",
+            "price_per_million": {
+              "input": 0.15,
+              "output": 0.47,
+              "cacheRead": 0.016,
+              "cacheWrite": 0.2
+            },
+            "availability": "SCOPED_REGISTERED_NOT_LIVE_PROBED",
+            "qualification": "OFFLINE_TEST_REQUIRED",
+            "metadata_origin": "PINNED_PI_1.0.4_WITH_DOCUMENTED_ENDPOINT_OVERLAY",
+            "config_hash": "78020e5ed7246fa4f787cd8b1f72f721c41caba22e72a20fcf56f07937ebe7ad"
+          },
+          "output_tokens": 16384
+        },
+        {
+          "role": "advisory_evaluator",
+          "model": "opencode-go/claude-haiku-5-5",
+          "metadata": {
+            "id": "opencode-go/claude-haiku-5-5",
+            "provider": "opencode-go",
+            "local": false,
+            "api_family": "anthropic-messages",
+            "base_url": "https://opencode.ai/inference/go/anthropic",
+            "expected_route": "https://opencode.ai/inference/go/anthropic/v1/messages",
+            "context_window": 1000000,
+            "output_limit": 128000,
+            "input_modalities": [
+              "text",
+              "image"
+            ],
+            "output_modalities": [
+              "text"
+            ],
+            "structured_output": "PROMPTED_JSON_STRICT_HOST_VALIDATION",
+            "reasoning": "Pi simple-stream default; no reasoning-token inference",
+            "price_per_million": {
+              "input": 0.1,
+              "output": 0.5,
+              "cacheRead": 0.01,
+              "cacheWrite": 0.125,
+              "tiers": [
+                {
+                  "inputTokensAbove": 100000,
+                  "input": 0.5,
+                  "output": 2.5,
+                  "cacheRead": 0.05,
+                  "cacheWrite": 0.625
+                }
+              ]
+            },
+            "availability": "SCOPED_REGISTERED_NOT_LIVE_PROBED",
+            "qualification": "OFFLINE_TEST_REQUIRED",
+            "metadata_origin": "MANAGED_PI_1.4.0_SCOPED_REGISTRATION",
+            "config_hash": "78020e5ed7246fa4f787cd8b1f72f721c41caba22e72a20fcf56f07937ebe7ad"
+          },
+          "output_tokens": 16384
+        }
+      ],
+      "settings": {
+        "max_requests": 12,
+        "budget_usd": 10,
+        "max_input_bytes": 60000,
+        "max_response_bytes": 33554432,
+        "timeout_ms": 180000,
+        "output_tokens": {
+          "interpreter": 16384,
+          "challenger": 16384,
+          "mediator": 16384,
+          "recipient": 16384,
+          "advisory_evaluator": 16384
+        },
+        "automatic_retries": 0
+      },
+      "config_hash": "78020e5ed7246fa4f787cd8b1f72f721c41caba22e72a20fcf56f07937ebe7ad",
+      "offline_qualification_identity": null,
+      "expected_workflow_calls": 3,
+      "with_mediation_calls": 4,
+      "with_comparison_calls": 5,
+      "maximum_actual_requests": 12,
+      "conservative_estimate_usd": 0.94152,
+      "per_request_reservation_usd": 0.07846,
+      "estimate_standing": "CATALOGUE_BOUND_NOT_INVOICE; UTF8_BYTES_AS_INPUT_TOKEN_BOUND",
+      "service_use": "OPERATOR_MUST_CONFIRM_GO_WORKLOAD_APPROPRIATENESS",
+      "fallback": false,
+      "hash": "c1e6a81b14b40afd0ec1b50f3d90b0753d8f50ccdb0dac8d6d1cc3bfea65c9aa",
+      "launcher_remote_enabled": true,
+      "credential_available": true,
+      "approval_required": false,
+      "execution_policy": "DIRECT_USER_REQUEST",
+      "approval_active": true,
+      "requests_used": 1,
+      "reserved_usd": 0.07846,
+      "last_errors": {},
+      "advisory_evaluator_status": "OPTIONAL_NOT_RUN"
+    },
+    "comparison_mode": "opencode",
+    "exchange": {
+      "id": "954e2190-d6ac-43c4-ab3f-753573858df2",
+      "scenario": "museum-loan-m12",
+      "task_identity": {
+        "id": "museum-loan-m12",
+        "digest": "e22911925db7424b874b94b44a60e9250a68e0f0b0b0db5d09713aa754fb28b4",
+        "source_hash": "277b9050c46b1df5f9794bda17829e2acf450e6c4afaf79a7e21cf4692447228",
+        "question_hash": "0f71abc5fbc41f4fb5e3474a0efa15eb02aa33fe6642e99a27688a1fa89fb390",
+        "reference_standing": "UNADJUDICATED_REFERENCE"
+      },
+      "created_at": "2026-10-23T19:05:35.494Z",
+      "intent": "Communicate this source faithfully, preserving attribution, conditions, exceptions, scope and uncertainty. Do not grant action authority.",
+      "original_intent": "Communicate this source faithfully, preserving attribution, conditions, exceptions, scope and uncertainty. Do not grant action authority.",
+      "purpose": "Faithful communication to a fresh recipient",
+      "audience": "Independent reader",
+      "source": {
+        "id": "R1E-05-source-v1",
+        "text": "The request was submitted in the portal on 3 March. The exception applies to requests submitted before 1 March. The portal record does not show whether 3 March is the submission date or the date the portal synchronized the request.",
+        "hash": "ef17b20e9aa01218e96598cf019b3ff7e34b4936ba9d67bbd75181c1c0326ba9"
+      },
+      "versions": [],
+      "transfers": [],
+      "question_revealed": false
+    },
+    "events": [
+      {
+        "seq": 0,
+        "previous": null,
+        "at": "2026-10-23T19:05:35.489Z",
+        "type": "USER_SETTINGS_APPLIED",
+        "data": {
+          "understanding": {
+            "profile": "technical-policy",
+            "python_executable": "",
+            "timeout_ms": 15000
+          },
+          "version": 2,
+          "comparison_mode": "opencode",
+          "roles": {
+            "interpreter": "opencode-go/deepseek-v4.1-flash",
+            "challenger": "opencode-go/gpt-6-luna",
+            "mediator": "opencode-go/deepseek-v4.1-flash",
+            "recipient": "opencode-go/qwen3.8-flash",
+            "advisory_evaluator": "opencode-go/claude-haiku-5-5"
+          },
+          "limits": {
+            "max_requests": 12,
+            "budget_usd": 10,
+            "max_input_bytes": 60000,
+            "max_response_bytes": 33554432,
+            "timeout_ms": 180000,
+            "automatic_retries": 0,
+            "output_tokens": {
+              "interpreter": 16384,
+              "challenger": 16384,
+              "mediator": 16384,
+              "recipient": 16384,
+              "advisory_evaluator": 16384
+            }
+          },
+          "execution_policy": "DIRECT_USER_REQUEST"
+        },
+        "digest": "b6a886ddbe21b2817c200af24684c60c495ab9801656cb78dfc1e41ae69a150b"
+      },
+      {
+        "seq": 1,
+        "previous": "b6a886ddbe21b2817c200af24684c60c495ab9801656cb78dfc1e41ae69a150b",
+        "at": "2026-10-23T19:05:35.495Z",
+        "type": "STATE",
+        "data": {
+          "id": "954e2190-d6ac-43c4-ab3f-753573858df2",
+          "scenario": "museum-loan-m12",
+          "task_identity": {
+            "id": "museum-loan-m12",
+            "digest": "e22911925db7424b874b94b44a60e9250a68e0f0b0b0db5d09713aa754fb28b4",
+            "source_hash": "277b9050c46b1df5f9794bda17829e2acf450e6c4afaf79a7e21cf4692447228",
+            "question_hash": "0f71abc5fbc41f4fb5e3474a0efa15eb02aa33fe6642e99a27688a1fa89fb390",
+            "reference_standing": "UNADJUDICATED_REFERENCE"
+          },
+          "created_at": "2026-10-23T19:05:35.494Z",
+          "intent": "Communicate this source faithfully, preserving attribution, conditions, exceptions, scope and uncertainty. Do not grant action authority.",
+          "original_intent": "Communicate this source faithfully, preserving attribution, conditions, exceptions, scope and uncertainty. Do not grant action authority.",
+          "purpose": "Communicate museum handling policy",
+          "audience": "Independent reader",
+          "source": {
+            "id": "museum-policy-m12",
+            "text": "The request was submitted in the portal on 3 March. The exception applies to requests submitted before 1 March. The portal record does not show whether 3 March is the submission date or the date the portal synchronized the request.",
+            "hash": "ef17b20e9aa01218e96598cf019b3ff7e34b4936ba9d67bbd75181c1c0326ba9"
+          },
+          "versions": [],
+          "transfers": [],
+          "question_revealed": false
+        },
+        "digest": "e8fc1c7679d79c01bda6f256ea777434b9b23a4263d842c7bcb3fd6417aadfd7"
+      },
+      {
+        "seq": 2,
+        "previous": "e8fc1c7679d79c01bda6f256ea777434b9b23a4263d842c7bcb3fd6417aadfd7",
+        "at": "2026-10-23T19:05:35.507Z",
+        "type": "STATE",
+        "data": {
+          "id": "954e2190-d6ac-43c4-ab3f-753573858df2",
+          "scenario": "museum-loan-m12",
+          "task_identity": {
+            "id": "museum-loan-m12",
+            "digest": "e22911925db7424b874b94b44a60e9250a68e0f0b0b0db5d09713aa754fb28b4",
+            "source_hash": "277b9050c46b1df5f9794bda17829e2acf450e6c4afaf79a7e21cf4692447228",
+            "question_hash": "0f71abc5fbc41f4fb5e3474a0efa15eb02aa33fe6642e99a27688a1fa89fb390",
+            "reference_standing": "UNADJUDICATED_REFERENCE"
+          },
+          "created_at": "2026-10-23T19:05:35.494Z",
+          "intent": "Communicate this source faithfully, preserving attribution, conditions, exceptions, scope and uncertainty. Do not grant action authority.",
+          "original_intent": "Communicate this source faithfully, preserving attribution, conditions, exceptions, scope and uncertainty. Do not grant action authority.",
+          "purpose": "Faithful communication to a fresh recipient",
+          "audience": "Independent reader",
+          "source": {
+            "id": "R1E-05-source-v1",
+            "text": "The request was submitted in the portal on 3 March. The exception applies to requests submitted before 1 March. The portal record does not show whether 3 March is the submission date or the date the portal synchronized the request.",
+            "hash": "ef17b20e9aa01218e96598cf019b3ff7e34b4936ba9d67bbd75181c1c0326ba9"
+          },
+          "versions": [],
+          "transfers": [],
+          "question_revealed": false
+        },
+        "digest": "7d371323a3bc6eb0c298c489bcf97524c0d6ba56202ef5a78c3efbf752285ddf"
+      },
+      {
+        "seq": 3,
+        "previous": "7d371323a3bc6eb0c298c489bcf97524c0d6ba56202ef5a78c3efbf752285ddf",
+        "at": "2026-10-23T19:05:35.519Z",
+        "type": "UNDERSTANDING_PROCESS_STARTED",
+        "data": {
+          "trial_id": "R1E-05-A_SOURCE_ONLY",
+          "stage": "SOURCE",
+          "source_hash": "ef17b20e9aa01218e96598cf019b3ff7e34b4936ba9d67bbd75181c1c0326ba9",
+          "profile": "technical-policy"
+        },
+        "digest": "91e531872814bdf5d64097326ee2852e2e2481e96a8434ded8d47887972d1220"
+      },
+      {
+        "seq": 4,
+        "previous": "91e531872814bdf5d64097326ee2852e2e2481e96a8434ded8d47887972d1220",
+        "at": "2026-10-23T19:05:37.280Z",
+        "type": "UNDERSTANDING_ARTIFACT",
+        "data": {
+          "id": "db47cb091a9287f2be215a12a9bb59415904ab80185e76d1f20b6f258b1a3263",
+          "schema": "language-understanding-artifact/0.1",
+          "trial_id": "R1E-05-A_SOURCE_ONLY",
+          "stage": "SOURCE",
+          "at": "2026-10-23T19:05:37.277Z",
+          "request": {
+            "source_id": "R1E-05-source-v1",
+            "source_text": "The request was submitted in the portal on 3 March. The exception applies to requests submitted before 1 March. The portal record does not show whether 3 March is the submission date or the date the portal synchronized the request.",
+            "profile": "technical-policy",
+            "profile_version": "0.2",
+            "context": {
+              "purpose": "Faithful communication to a fresh recipient",
+              "intended_recipient": "Independent reader",
+              "declared_context": {}
+            }
+          },
+          "inventory": {
+            "schema": "language-understanding-inventory/0.1",
+            "offset_unit": "UNICODE_CODE_POINTS",
+            "standing": "HEURISTIC_UNVERIFIED",
+            "source": {
+              "id": "R1E-05-source-v1",
+              "sha256": "ef17b20e9aa01218e96598cf019b3ff7e34b4936ba9d67bbd75181c1c0326ba9",
+              "text": "The request was submitted in the portal on 3 March. The exception applies to requests submitted before 1 March. The portal record does not show whether 3 March is the submission date or the date the portal synchronized the request."
+            },
+            "profile": {
+              "id": "technical-policy",
+              "version": "0.2",
+              "schema": "language-understanding-profile/0.1",
+              "sha256": "12287d00977aa52dcc4b142c6bb2829bf72c4636ce7a9cde6caea4b7d2dd669b"
+            },
+            "engine": {
+              "id": "spacy/blank-en+sentencizer",
+              "version": "0.2.0",
+              "nltk_version": "3.10.4",
+              "spacy_version": "3.8.16",
+              "trained_syntax_available": false,
+              "trained_model_requested": "en_core_web_sm",
+              "fallback_reason": "SPACY_MODEL_NOT_INSTALLED"
+            },
+            "segments": [
+              {
+                "id": "s1",
+                "start": 0,
+                "end": 51,
+                "text": "The request was submitted in the portal on 3 March."
+              },
+              {
+                "id": "s2",
+                "start": 52,
+                "end": 111,
+                "text": "The exception applies to requests submitted before 1 March."
+              },
+              {
+                "id": "s3",
+                "start": 112,
+                "end": 231,
+                "text": "The portal record does not show whether 3 March is the submission date or the date the portal synchronized the request."
+              }
+            ],
+            "meaning_units": [
+              {
+                "id": "m1",
+                "source_segments": [
+                  "s1"
+                ],
+                "start": 0,
+                "end": 51,
+                "source_quote": "The request was submitted in the portal on 3 March.",
+                "proposed_meaning": "The request was submitted in the portal on 3 March.",
+                "classification": {
+                  "kind": "statement",
+                  "normative_force": "ASSERTED_IN_SOURCE",
+                  "condition_cues": [],
+                  "temporal_cues": [],
+                  "possible_unresolved_reference": false,
+                  "speaker": "",
+                  "prerequisites": [],
+                  "method": "LEXICAL_RULE_HEURISTIC",
+                  "review": "HEURISTIC_UNVERIFIED"
+                },
+                "provenance": "EXACT_SOURCE_SPAN"
+              },
+              {
+                "id": "m2",
+                "source_segments": [
+                  "s2"
+                ],
+                "start": 52,
+                "end": 111,
+                "source_quote": "The exception applies to requests submitted before 1 March.",
+                "proposed_meaning": "The exception applies to requests submitted before 1 March.",
+                "classification": {
+                  "kind": "statement",
+                  "normative_force": "ASSERTED_IN_SOURCE",
+                  "condition_cues": [],
+                  "temporal_cues": [
+                    "before"
+                  ],
+                  "possible_unresolved_reference": false,
+                  "speaker": "",
+                  "prerequisites": [],
+                  "method": "LEXICAL_RULE_HEURISTIC",
+                  "review": "HEURISTIC_UNVERIFIED"
+                },
+                "provenance": "EXACT_SOURCE_SPAN"
+              },
+              {
+                "id": "m3",
+                "source_segments": [
+                  "s3"
+                ],
+                "start": 112,
+                "end": 231,
+                "source_quote": "The portal record does not show whether 3 March is the submission date or the date the portal synchronized the request.",
+                "proposed_meaning": "The portal record does not show whether 3 March is the submission date or the date the portal synchronized the request.",
+                "classification": {
+                  "kind": "statement",
+                  "normative_force": "ASSERTED_IN_SOURCE",
+                  "condition_cues": [],
+                  "temporal_cues": [],
+                  "possible_unresolved_reference": false,
+                  "speaker": "",
+                  "prerequisites": [],
+                  "method": "LEXICAL_RULE_HEURISTIC",
+                  "review": "HEURISTIC_UNVERIFIED"
+                },
+                "provenance": "EXACT_SOURCE_SPAN"
+              }
+            ],
+            "relations": [],
+            "context": {
+              "purpose": "Faithful communication to a fresh recipient",
+              "intended_recipient": "Independent reader",
+              "declared_context": {}
+            },
+            "coverage": {
+              "standing": "NOT_EVALUATED",
+              "source_supportedness": "NOT_EVALUATED",
+              "semantic_completeness": "NOT_ESTABLISHED"
+            },
+            "warnings": [
+              "Labels are lexical heuristics, not verified meaning or permissions.",
+              "No cross-sentence relation, coreference, or semantic completeness checker is implemented.",
+              "Semicolon splitting, prerequisite hints and speaker labels are rule-based candidates, not semantic analysis."
+            ]
+          },
+          "compiler": {
+            "profile": {
+              "id": "technical-policy",
+              "version": "0.2",
+              "sha256": "12287d00977aa52dcc4b142c6bb2829bf72c4636ce7a9cde6caea4b7d2dd669b",
+              "file_sha256": "9d961fac646c1c164019c55b1eaa3f75748f42b47e3aad7862bc50181cdd4a75",
+              "path": "C:\\Projects\\project-language\\core\\understanding\\python\\profiles\\technical-policy.json"
+            },
+            "adapter": "language-understanding-child/0.1",
+            "python": "C:\\Projects\\project-language\\.venv\\Scripts\\python.exe",
+            "timeout_ms": 15000,
+            "max_input_bytes": 262144,
+            "max_output_bytes": 4194304,
+            "require_trained_syntax": false,
+            "source_hashes": {
+              "src/understanding/cli.py": "fdbbaab6d1c51d077046100aef43fcb0fcfac5e278dba1fa30f3a0cddb229ba9",
+              "src/understanding/pipeline.py": "713ddf811112278038b19aaa5995eba929a827e6dee7634d5d5e8d54cba5ed1d",
+              "src/understanding/__init__.py": "c4b5f92990c64643e4907def83a7a62dd00c8bdd3dd738a8ab14c55d523a396f",
+              "src/understanding/contracts.py": "ec17e9c381a22aed695663e4e27ed57f0cdd07491ec78355cb95855a2e08e7d7",
+              "../schemas/request-v0.1.json": "0d1dc60bff65f0baf319fef34d6dd5e141c814d55ed7f865fed629cebd4578c2",
+              "../schemas/inventory-v0.1.json": "aa4c284f4352141ec9fbcc56a51027bdba94e2e588affcaa739fcf2fd8340e5d",
+              "pyproject.toml": "b8b9fb81e47e37041d1fbc7a1a660b35a5b57909a1b370b76826a539af4e8108"
+            },
+            "integration_hashes": {
+              "./workflow.mjs": "3b435c25171ef5dd66785ad93b132c0ed67f833eab63bdd9bd0cff36f5e4bc25",
+              "./analysis.mjs": "c0279d78149f90f6412875dbe0df5eb35f516a90cbd5a235023bb9a93a94ef95",
+              "./decomposition.mjs": "42e5cbc7d12bb55d98d93c5223c8a5edf6eba9de3bfbfe2469ee9ca729c412cb",
+              "../models/prompts.mjs": "5b16ac6b45b60727f8c1467bb6b934e14cd2d9726bb0d750d4f9e9d69cccd32b",
+              "../models/source-anchors.mjs": "04d977f0a67397d568c2c84cf1f6767ea210d6bfb2ecb67c875935909258aa08"
+            }
+          },
+          "provenance": {
+            "source_hash": "ef17b20e9aa01218e96598cf019b3ff7e34b4936ba9d67bbd75181c1c0326ba9"
+          },
+          "standing": "HEURISTIC_UNVERIFIED"
+        },
+        "digest": "33857f3ae8519d236676b58302109e65a2684988e6de0d435c5e37defba83dac"
+      },
+      {
+        "seq": 5,
+        "previous": "33857f3ae8519d236676b58302109e65a2684988e6de0d435c5e37defba83dac",
+        "at": "2026-10-23T19:05:37.287Z",
+        "type": "BATCH_DELIVERY_SEALED",
+        "data": {
+          "arm": "A_SOURCE_ONLY",
+          "packet": {
+            "schema": "language-delivery/0.1",
+            "purpose": "Faithful communication to a fresh recipient",
+            "audience": "Independent reader",
+            "contract_version": "lc02-r1/source-relative/1",
+            "answer_scope": "SOURCE_RELATIVE",
+            "source_truth": "UNVERIFIED",
+            "source_truth_scope": "EXTERNAL_FACTUAL_VERIFICATION_ONLY",
+            "interpretation_standing": "FALLIBLE_AID_NOT_SOURCE",
+            "action_authority": false,
+            "source": {
+              "id": "R1E-05-source-v1",
+              "text": "The request was submitted in the portal on 3 March. The exception applies to requests submitted before 1 March. The portal record does not show whether 3 March is the submission date or the date the portal synchronized the request.",
+              "hash": "ef17b20e9aa01218e96598cf019b3ff7e34b4936ba9d67bbd75181c1c0326ba9"
+            }
+          },
+          "packet_hash": "2e5febd4712ef606818adb237302ac4925d012adf663439ea89be195958f92cd",
+          "question": {
+            "id": "R1E-05-question-v1",
+            "text": "Was the request submitted before 1 March?",
+            "scope": "SOURCE_RELATIVE"
+          },
+          "action_authority": false
+        },
+        "digest": "ddb26d246b23cc92d0408b8ee12ca32130745c474dcfc66a4df8e9e38eda9234"
+      },
+      {
+        "seq": 6,
+        "previous": "ddb26d246b23cc92d0408b8ee12ca32130745c474dcfc66a4df8e9e38eda9234",
+        "at": "2026-10-23T19:05:37.296Z",
+        "type": "MODEL_REQUEST",
+        "data": {
+          "role": "recipient",
+          "model": "opencode-go/qwen3.8-flash",
+          "system": "Answer the supplied question from the source embedded in the delivered packet. The packet may also contain a fallible interpretation. The interpretation is an aid, not the source and not evidence of external truth. Return YES, NO, UNKNOWN or SOURCE_CONFLICT with explanation and exact source anchors only when source text is available. Unknown is not permission. No tools or actions. Three scopes are distinct. (a) SOURCE_RELATIVE: what the supplied document or hypothetical scenario states or entails. (b) EXTERNAL_FACTUAL_VERIFICATION: whether that document accurately describes the real world. (c) ACTION_AUTHORITY: whether an actual actor or system is permitted to execute an operation now. source_truth: UNVERIFIED means only that the document has not been independently checked against the external world. It does not prevent a source-relative answer. Do not cite it as a reason to answer UNKNOWN about what the document itself states or entails. The interpretation is a fallible aid, not the source. A doubt, unknown, qualification or inference added by an interpreter is not a gap in the source unless the exact source text leaves the question-relevant condition unresolved. Do not add a condition that the source does not contain. Do not treat a later sentence as adding a new condition merely because it does not repeat an earlier one. If the source explicitly resolves a question-relevant condition, it is resolved even when an interpretation lists it as open. This packet grants no action authority and no external verification. For a SOURCE_RELATIVE question, use the labels as follows. YES: the source states or entails the proposition asked about. NO: the source states its negation, expressly prohibits it, or does not establish the requested permission/condition; explain which of these applies. NO is not automatically a universal prohibition. UNKNOWN: the source leaves a question-relevant fact, condition or authority unresolved, or contains a genuine ambiguity that the text does not settle. UNKNOWN is not a synonym for lack of external verification. SOURCE_CONFLICT: the source contains unresolved contradictory provisions or statements of equal standing and supplies no precedence rule. Do not use SOURCE_CONFLICT for ordinary missing information. If source_anchors is supplied, copy an appropriate complete anchor object from that catalogue verbatim rather than calculating numeric positions yourself. The catalogue contains source locations only, not evidence that a claim follows from a quotation. You may cite a whole sentence supporting a smaller meaning. Source anchors use zero-based UTF-16 code-unit offsets into the exact ORIGINAL_SOURCE text, with an exclusive end. Every anchor must satisfy source.text.slice(start,end) === anchor.text, with the original source ID and hash. Do not guess positions or normalize punctuation or whitespace. If you cannot reproduce source_hash exactly, use an empty string for source_hash and still supply the exact source_id, start, end and text; the host resolves the canonical hash from its own source identity. Never fabricate a span or text. Recipients may return citations: [] when exact offsets cannot be established; explain the answer without fabricated anchors. Return only JSON matching this schema: {\"$schema\":\"https://json-schema.org/draft/2020-12/schema\",\"type\":\"object\",\"properties\":{\"decision\":{\"type\":\"string\",\"enum\":[\"YES\",\"NO\",\"UNKNOWN\",\"SOURCE_CONFLICT\"]},\"explanation\":{\"type\":\"string\"},\"citations\":{\"type\":\"array\",\"items\":{\"type\":\"object\",\"properties\":{\"origin\":{\"type\":\"string\",\"const\":\"ORIGINAL_SOURCE\"},\"source_id\":{\"type\":\"string\"},\"source_hash\":{\"type\":\"string\"},\"start\":{\"type\":\"integer\",\"minimum\":0,\"maximum\":9007199254740991},\"end\":{\"type\":\"integer\",\"exclusiveMinimum\":0,\"maximum\":9007199254740991},\"text\":{\"type\":\"string\",\"minLength\":1}},\"required\":[\"origin\",\"source_id\",\"source_hash\",\"start\",\"end\",\"text\"],\"additionalProperties\":false}}},\"required\":[\"decision\",\"explanation\",\"citations\"],\"additionalProperties\":false}",
+          "input": {
+            "packet": {
+              "schema": "language-delivery/0.1",
+              "purpose": "Faithful communication to a fresh recipient",
+              "audience": "Independent reader",
+              "contract_version": "lc02-r1/source-relative/1",
+              "answer_scope": "SOURCE_RELATIVE",
+              "source_truth": "UNVERIFIED",
+              "source_truth_scope": "EXTERNAL_FACTUAL_VERIFICATION_ONLY",
+              "interpretation_standing": "FALLIBLE_AID_NOT_SOURCE",
+              "action_authority": false,
+              "source": {
+                "id": "R1E-05-source-v1",
+                "text": "The request was submitted in the portal on 3 March. The exception applies to requests submitted before 1 March. The portal record does not show whether 3 March is the submission date or the date the portal synchronized the request.",
+                "hash": "ef17b20e9aa01218e96598cf019b3ff7e34b4936ba9d67bbd75181c1c0326ba9"
+              }
+            },
+            "question": {
+              "id": "R1E-05-question-v1",
+              "text": "Was the request submitted before 1 March?",
+              "scope": "SOURCE_RELATIVE"
+            },
+            "source_anchors": {
+              "schema": "language-source-anchor-catalogue/0.1",
+              "offset_unit": "UTF16_CODE_UNITS",
+              "standing": "EXACT_SOURCE_LOCATIONS_NOT_SEMANTIC_SUPPORT",
+              "anchors": [
+                {
+                  "origin": "ORIGINAL_SOURCE",
+                  "source_id": "R1E-05-source-v1",
+                  "source_hash": "ef17b20e9aa01218e96598cf019b3ff7e34b4936ba9d67bbd75181c1c0326ba9",
+                  "start": 0,
+                  "end": 231,
+                  "text": "The request was submitted in the portal on 3 March. The exception applies to requests submitted before 1 March. The portal record does not show whether 3 March is the submission date or the date the portal synchronized the request."
+                },
+                {
+                  "origin": "ORIGINAL_SOURCE",
+                  "source_id": "R1E-05-source-v1",
+                  "source_hash": "ef17b20e9aa01218e96598cf019b3ff7e34b4936ba9d67bbd75181c1c0326ba9",
+                  "start": 0,
+                  "end": 51,
+                  "text": "The request was submitted in the portal on 3 March."
+                },
+                {
+                  "origin": "ORIGINAL_SOURCE",
+                  "source_id": "R1E-05-source-v1",
+                  "source_hash": "ef17b20e9aa01218e96598cf019b3ff7e34b4936ba9d67bbd75181c1c0326ba9",
+                  "start": 52,
+                  "end": 111,
+                  "text": "The exception applies to requests submitted before 1 March."
+                },
+                {
+                  "origin": "ORIGINAL_SOURCE",
+                  "source_id": "R1E-05-source-v1",
+                  "source_hash": "ef17b20e9aa01218e96598cf019b3ff7e34b4936ba9d67bbd75181c1c0326ba9",
+                  "start": 112,
+                  "end": 231,
+                  "text": "The portal record does not show whether 3 March is the submission date or the date the portal synchronized the request."
+                }
+              ]
+            }
+          },
+          "user": "{\"packet\":{\"schema\":\"language-delivery/0.1\",\"purpose\":\"Faithful communication to a fresh recipient\",\"audience\":\"Independent reader\",\"contract_version\":\"lc02-r1/source-relative/1\",\"answer_scope\":\"SOURCE_RELATIVE\",\"source_truth\":\"UNVERIFIED\",\"source_truth_scope\":\"EXTERNAL_FACTUAL_VERIFICATION_ONLY\",\"interpretation_standing\":\"FALLIBLE_AID_NOT_SOURCE\",\"action_authority\":false,\"source\":{\"id\":\"R1E-05-source-v1\",\"text\":\"The request was submitted in the portal on 3 March. The exception applies to requests submitted before 1 March. The portal record does not show whether 3 March is the submission date or the date the portal synchronized the request.\",\"hash\":\"ef17b20e9aa01218e96598cf019b3ff7e34b4936ba9d67bbd75181c1c0326ba9\"}},\"question\":{\"id\":\"R1E-05-question-v1\",\"text\":\"Was the request submitted before 1 March?\",\"scope\":\"SOURCE_RELATIVE\"},\"source_anchors\":{\"schema\":\"language-source-anchor-catalogue/0.1\",\"offset_unit\":\"UTF16_CODE_UNITS\",\"standing\":\"EXACT_SOURCE_LOCATIONS_NOT_SEMANTIC_SUPPORT\",\"anchors\":[{\"origin\":\"ORIGINAL_SOURCE\",\"source_id\":\"R1E-05-source-v1\",\"source_hash\":\"ef17b20e9aa01218e96598cf019b3ff7e34b4936ba9d67bbd75181c1c0326ba9\",\"start\":0,\"end\":231,\"text\":\"The request was submitted in the portal on 3 March. The exception applies to requests submitted before 1 March. The portal record does not show whether 3 March is the submission date or the date the portal synchronized the request.\"},{\"origin\":\"ORIGINAL_SOURCE\",\"source_id\":\"R1E-05-source-v1\",\"source_hash\":\"ef17b20e9aa01218e96598cf019b3ff7e34b4936ba9d67bbd75181c1c0326ba9\",\"start\":0,\"end\":51,\"text\":\"The request was submitted in the portal on 3 March.\"},{\"origin\":\"ORIGINAL_SOURCE\",\"source_id\":\"R1E-05-source-v1\",\"source_hash\":\"ef17b20e9aa01218e96598cf019b3ff7e34b4936ba9d67bbd75181c1c0326ba9\",\"start\":52,\"end\":111,\"text\":\"The exception applies to requests submitted before 1 March.\"},{\"origin\":\"ORIGINAL_SOURCE\",\"source_id\":\"R1E-05-source-v1\",\"source_hash\":\"ef17b20e9aa01218e96598cf019b3ff7e34b4936ba9d67bbd75181c1c0326ba9\",\"start\":112,\"end\":231,\"text\":\"The portal record does not show whether 3 March is the submission date or the date the portal synchronized the request.\"}]}}",
+          "output_schema": {
+            "$schema": "https://json-schema.org/draft/2020-12/schema",
+            "type": "object",
+            "properties": {
+              "decision": {
+                "type": "string",
+                "enum": [
+                  "YES",
+                  "NO",
+                  "UNKNOWN",
+                  "SOURCE_CONFLICT"
+                ]
+              },
+              "explanation": {
+                "type": "string"
+              },
+              "citations": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "origin": {
+                      "type": "string",
+                      "const": "ORIGINAL_SOURCE"
+                    },
+                    "source_id": {
+                      "type": "string"
+                    },
+                    "source_hash": {
+                      "type": "string"
+                    },
+                    "start": {
+                      "type": "integer",
+                      "minimum": 0,
+                      "maximum": 9007199254740991
+                    },
+                    "end": {
+                      "type": "integer",
+                      "exclusiveMinimum": 0,
+                      "maximum": 9007199254740991
+                    },
+                    "text": {
+                      "type": "string",
+                      "minLength": 1
+                    }
+                  },
+                  "required": [
+                    "origin",
+                    "source_id",
+                    "source_hash",
+                    "start",
+                    "end",
+                    "text"
+                  ],
+                  "additionalProperties": false
+                }
+              }
+            },
+            "required": [
+              "decision",
+              "explanation",
+              "citations"
+            ],
+            "additionalProperties": false
+          },
+          "session_id": "5d26db08-29d5-4be5-ab8d-9b499ce38e5a",
+          "hash": "4bc9592423969ea061fec0929d35f386b42a5cb32e6dea64471b1613c04b1bab",
+          "prompt_hash": "4bc9592423969ea061fec0929d35f386b42a5cb32e6dea64471b1613c04b1bab",
+          "standing": "HOSTED_OPENCODE_GO",
+          "api_family": "anthropic-messages",
+          "settings": {
+            "max_requests": 12,
+            "budget_usd": 10,
+            "max_input_bytes": 60000,
+            "max_response_bytes": 33554432,
+            "timeout_ms": 180000,
+            "output_tokens": {
+              "interpreter": 16384,
+              "challenger": 16384,
+              "mediator": 16384,
+              "recipient": 16384,
+              "advisory_evaluator": 16384
+            },
+            "automatic_retries": 0
+          },
+          "reservation_usd": 0.07846,
+          "plan_hash": "c1e6a81b14b40afd0ec1b50f3d90b0753d8f50ccdb0dac8d6d1cc3bfea65c9aa",
+          "attempt_number": 1
+        },
+        "digest": "d9cbbae94dd94ccbc263b80cc938cff3140697075401540c36e6d6669b0f54b0"
+      },
+      {
+        "seq": 7,
+        "previous": "d9cbbae94dd94ccbc263b80cc938cff3140697075401540c36e6d6669b0f54b0",
+        "at": "2026-10-23T19:05:37.304Z",
+        "type": "PROVIDER_REQUEST",
+        "data": {
+          "request_hash": "4bc9592423969ea061fec0929d35f386b42a5cb32e6dea64471b1613c04b1bab",
+          "model": "opencode-go/qwen3.8-flash",
+          "api": "anthropic-messages",
+          "url": "https://opencode.ai/inference/go/anthropic/v1/messages?beta=true",
+          "method": "POST",
+          "body": "{\"model\":\"qwen3.8-flash\",\"messages\":[{\"role\":\"user\",\"content\":[{\"type\":\"text\",\"text\":\"{\\\"packet\\\":{\\\"schema\\\":\\\"language-delivery/0.1\\\",\\\"purpose\\\":\\\"Faithful communication to a fresh recipient\\\",\\\"audience\\\":\\\"Independent reader\\\",\\\"contract_version\\\":\\\"lc02-r1/source-relative/1\\\",\\\"answer_scope\\\":\\\"SOURCE_RELATIVE\\\",\\\"source_truth\\\":\\\"UNVERIFIED\\\",\\\"source_truth_scope\\\":\\\"EXTERNAL_FACTUAL_VERIFICATION_ONLY\\\",\\\"interpretation_standing\\\":\\\"FALLIBLE_AID_NOT_SOURCE\\\",\\\"action_authority\\\":false,\\\"source\\\":{\\\"id\\\":\\\"R1E-05-source-v1\\\",\\\"text\\\":\\\"The request was submitted in the portal on 3 March. The exception applies to requests submitted before 1 March. The portal record does not show whether 3 March is the submission date or the date the portal synchronized the request.\\\",\\\"hash\\\":\\\"ef17b20e9aa01218e96598cf019b3ff7e34b4936ba9d67bbd75181c1c0326ba9\\\"}},\\\"question\\\":{\\\"id\\\":\\\"R1E-05-question-v1\\\",\\\"text\\\":\\\"Was the request submitted before 1 March?\\\",\\\"scope\\\":\\\"SOURCE_RELATIVE\\\"},\\\"source_anchors\\\":{\\\"schema\\\":\\\"language-source-anchor-catalogue/0.1\\\",\\\"offset_unit\\\":\\\"UTF16_CODE_UNITS\\\",\\\"standing\\\":\\\"EXACT_SOURCE_LOCATIONS_NOT_SEMANTIC_SUPPORT\\\",\\\"anchors\\\":[{\\\"origin\\\":\\\"ORIGINAL_SOURCE\\\",\\\"source_id\\\":\\\"R1E-05-source-v1\\\",\\\"source_hash\\\":\\\"ef17b20e9aa01218e96598cf019b3ff7e34b4936ba9d67bbd75181c1c0326ba9\\\",\\\"start\\\":0,\\\"end\\\":231,\\\"text\\\":\\\"The request was submitted in the portal on 3 March. The exception applies to requests submitted before 1 March. The portal record does not show whether 3 March is the submission date or the date the portal synchronized the request.\\\"},{\\\"origin\\\":\\\"ORIGINAL_SOURCE\\\",\\\"source_id\\\":\\\"R1E-05-source-v1\\\",\\\"source_hash\\\":\\\"ef17b20e9aa01218e96598cf019b3ff7e34b4936ba9d67bbd75181c1c0326ba9\\\",\\\"start\\\":0,\\\"end\\\":51,\\\"text\\\":\\\"The request was submitted in the portal on 3 March.\\\"},{\\\"origin\\\":\\\"ORIGINAL_SOURCE\\\",\\\"source_id\\\":\\\"R1E-05-source-v1\\\",\\\"source_hash\\\":\\\"ef17b20e9aa01218e96598cf019b3ff7e34b4936ba9d67bbd75181c1c0326ba9\\\",\\\"start\\\":52,\\\"end\\\":111,\\\"text\\\":\\\"The exception applies to requests submitted before 1 March.\\\"},{\\\"origin\\\":\\\"ORIGINAL_SOURCE\\\",\\\"source_id\\\":\\\"R1E-05-source-v1\\\",\\\"source_hash\\\":\\\"ef17b20e9aa01218e96598cf019b3ff7e34b4936ba9d67bbd75181c1c0326ba9\\\",\\\"start\\\":112,\\\"end\\\":231,\\\"text\\\":\\\"The portal record does not show whether 3 March is the submission date or the date the portal synchronized the request.\\\"}]}}\"}]}],\"max_tokens\":16384,\"stream\":true,\"system\":[{\"type\":\"text\",\"text\":\"Answer the supplied question from the source embedded in the delivered packet. The packet may also contain a fallible interpretation. The interpretation is an aid, not the source and not evidence of external truth. Return YES, NO, UNKNOWN or SOURCE_CONFLICT with explanation and exact source anchors only when source text is available. Unknown is not permission. No tools or actions. Three scopes are distinct. (a) SOURCE_RELATIVE: what the supplied document or hypothetical scenario states or entails. (b) EXTERNAL_FACTUAL_VERIFICATION: whether that document accurately describes the real world. (c) ACTION_AUTHORITY: whether an actual actor or system is permitted to execute an operation now. source_truth: UNVERIFIED means only that the document has not been independently checked against the external world. It does not prevent a source-relative answer. Do not cite it as a reason to answer UNKNOWN about what the document itself states or entails. The interpretation is a fallible aid, not the source. A doubt, unknown, qualification or inference added by an interpreter is not a gap in the source unless the exact source text leaves the question-relevant condition unresolved. Do not add a condition that the source does not contain. Do not treat a later sentence as adding a new condition merely because it does not repeat an earlier one. If the source explicitly resolves a question-relevant condition, it is resolved even when an interpretation lists it as open. This packet grants no action authority and no external verification. For a SOURCE_RELATIVE question, use the labels as follows. YES: the source states or entails the proposition asked about. NO: the source states its negation, expressly prohibits it, or does not establish the requested permission/condition; explain which of these applies. NO is not automatically a universal prohibition. UNKNOWN: the source leaves a question-relevant fact, condition or authority unresolved, or contains a genuine ambiguity that the text does not settle. UNKNOWN is not a synonym for lack of external verification. SOURCE_CONFLICT: the source contains unresolved contradictory provisions or statements of equal standing and supplies no precedence rule. Do not use SOURCE_CONFLICT for ordinary missing information. If source_anchors is supplied, copy an appropriate complete anchor object from that catalogue verbatim rather than calculating numeric positions yourself. The catalogue contains source locations only, not evidence that a claim follows from a quotation. You may cite a whole sentence supporting a smaller meaning. Source anchors use zero-based UTF-16 code-unit offsets into the exact ORIGINAL_SOURCE text, with an exclusive end. Every anchor must satisfy source.text.slice(start,end) === anchor.text, with the original source ID and hash. Do not guess positions or normalize punctuation or whitespace. If you cannot reproduce source_hash exactly, use an empty string for source_hash and still supply the exact source_id, start, end and text; the host resolves the canonical hash from its own source identity. Never fabricate a span or text. Recipients may return citations: [] when exact offsets cannot be established; explain the answer without fabricated anchors. Return only JSON matching this schema: {\\\"$schema\\\":\\\"https://json-schema.org/draft/2020-12/schema\\\",\\\"type\\\":\\\"object\\\",\\\"properties\\\":{\\\"decision\\\":{\\\"type\\\":\\\"string\\\",\\\"enum\\\":[\\\"YES\\\",\\\"NO\\\",\\\"UNKNOWN\\\",\\\"SOURCE_CONFLICT\\\"]},\\\"explanation\\\":{\\\"type\\\":\\\"string\\\"},\\\"citations\\\":{\\\"type\\\":\\\"array\\\",\\\"items\\\":{\\\"type\\\":\\\"object\\\",\\\"properties\\\":{\\\"origin\\\":{\\\"type\\\":\\\"string\\\",\\\"const\\\":\\\"ORIGINAL_SOURCE\\\"},\\\"source_id\\\":{\\\"type\\\":\\\"string\\\"},\\\"source_hash\\\":{\\\"type\\\":\\\"string\\\"},\\\"start\\\":{\\\"type\\\":\\\"integer\\\",\\\"minimum\\\":0,\\\"maximum\\\":9007199254740991},\\\"end\\\":{\\\"type\\\":\\\"integer\\\",\\\"exclusiveMinimum\\\":0,\\\"maximum\\\":9007199254740991},\\\"text\\\":{\\\"type\\\":\\\"string\\\",\\\"minLength\\\":1}},\\\"required\\\":[\\\"origin\\\",\\\"source_id\\\",\\\"source_hash\\\",\\\"start\\\",\\\"end\\\",\\\"text\\\"],\\\"additionalProperties\\\":false}}},\\\"required\\\":[\\\"decision\\\",\\\"explanation\\\",\\\"citations\\\"],\\\"additionalProperties\\\":false}\"}],\"thinking\":{\"type\":\"disabled\"}}",
+          "body_hash": "4bcabebdefd05745871a9db6890f64655378fffa23ae9a52a4e6917ab717682c",
+          "input_bytes": 6646,
+          "session_id": "5d26db08-29d5-4be5-ab8d-9b499ce38e5a",
+          "public_headers": {
+            "user-agent": "language-studio/0.1r",
+            "x-opencode-session": "5d26db08-29d5-4be5-ab8d-9b499ce38e5a"
+          },
+          "authentication": "PROCESS_ENV_ONLY_REDACTED"
+        },
+        "digest": "84772de6b5b6bee67c2cbfe8af03ef593a5ebcaac8db7e73b66509b9cfb9678a"
+      },
+      {
+        "seq": 8,
+        "previous": "84772de6b5b6bee67c2cbfe8af03ef593a5ebcaac8db7e73b66509b9cfb9678a",
+        "at": "2026-10-23T19:05:44.060Z",
+        "type": "MODEL_RESULT",
+        "data": {
+          "role": "recipient",
+          "model": "opencode-go/qwen3.8-flash",
+          "request_hash": "4bc9592423969ea061fec0929d35f386b42a5cb32e6dea64471b1613c04b1bab",
+          "raw": "{\n  \"decision\": \"UNKNOWN\",\n  \"explanation\": \"The source states that the request was submitted in the portal on 3 March. However, it explicitly notes that the portal record does not clarify whether '3 March' represents the actual submission date or merely the synchronization date. Because the actual submission date is ambiguous (it could be earlier than 3 March, and potentially before 1 March), the source does not establish whether the condition 'submitted before 1 March' was met.\",\n  \"citations\": [\n    {\n      \"origin\": \"ORIGINAL_SOURCE\",\n      \"source_id\": \"R1E-05-source-v1\",\n      \"source_hash\": \"ef17b20e9aa01218e96598cf019b3ff7e34b4936ba9d67bbd75181c1c0326ba9\",\n      \"start\": 0,\n      \"end\": 51,\n      \"text\": \"The request was submitted in the portal on 3 March.\"\n    },\n    {\n      \"origin\": \"ORIGINAL_SOURCE\",\n      \"source_id\": \"R1E-05-source-v1\",\n      \"source_hash\": \"ef17b20e9aa01218e96598cf019b3ff7e34b4936ba9d67bbd75181c1c0326ba9\",\n      \"start\": 112,\n      \"end\": 231,\n      \"text\": \"The portal record does not show whether 3 March is the submission date or the date the portal synchronized the request.\"\n    }\n  ]\n}",
+          "output": {
+            "decision": "UNKNOWN",
+            "explanation": "The source states that the request was submitted in the portal on 3 March. However, it explicitly notes that the portal record does not clarify whether '3 March' represents the actual submission date or merely the synchronization date. Because the actual submission date is ambiguous (it could be earlier than 3 March, and potentially before 1 March), the source does not establish whether the condition 'submitted before 1 March' was met.",
+            "citations": [
+              {
+                "origin": "ORIGINAL_SOURCE",
+                "source_id": "R1E-05-source-v1",
+                "source_hash": "ef17b20e9aa01218e96598cf019b3ff7e34b4936ba9d67bbd75181c1c0326ba9",
+                "start": 0,
+                "end": 51,
+                "text": "The request was submitted in the portal on 3 March."
+              },
+              {
+                "origin": "ORIGINAL_SOURCE",
+                "source_id": "R1E-05-source-v1",
+                "source_hash": "ef17b20e9aa01218e96598cf019b3ff7e34b4936ba9d67bbd75181c1c0326ba9",
+                "start": 112,
+                "end": 231,
+                "text": "The portal record does not show whether 3 March is the submission date or the date the portal synchronized the request."
+              }
+            ]
+          },
+          "usage": {
+            "input": 555,
+            "output": 392,
+            "cacheRead": 1024,
+            "cacheWrite": 0,
+            "totalTokens": 1971,
+            "cost": {
+              "input": 0.00008324999999999999,
+              "output": 0.00018423999999999998,
+              "cacheRead": 0.000016384,
+              "cacheWrite": 0,
+              "total": 0.000283874
+            },
+            "cacheWrite1h": 0
+          },
+          "usage_origin": "PROVIDER_REPORTED",
+          "latency_ms": 6764.704899999953,
+          "retries": 0,
+          "http_attempts": 1,
+          "transport": {
+            "wire_bytes": 15028,
+            "wire_chunks": 130,
+            "max_stream_bytes": 33554432,
+            "completion_bytes": 1137
+          },
+          "status": "VALID_SCHEMA",
+          "semantic": "REQUIRES_REVIEW",
+          "standing": "HOSTED_OPENCODE_GO",
+          "billing": "PROVIDER_USAGE_ESTIMATE_NOT_VERIFIED_INVOICE"
+        },
+        "digest": "f7df9126283f75b5403039863fad6e14b9fb22f71fa4632206bddc68941aa57e"
+      },
+      {
+        "seq": 9,
+        "previous": "f7df9126283f75b5403039863fad6e14b9fb22f71fa4632206bddc68941aa57e",
+        "at": "2026-10-23T19:05:44.070Z",
+        "type": "UNDERSTANDING_PROCESS_STARTED",
+        "data": {
+          "trial_id": "R1E-05-A_SOURCE_ONLY",
+          "stage": "DELIVERY_AND_RESPONSE",
+          "arm": "A_SOURCE_ONLY",
+          "packet_hash": "2e5febd4712ef606818adb237302ac4925d012adf663439ea89be195958f92cd",
+          "response_hash": "f9ff78b18917571de1ecb334e15d2d9a0b4c07a808c886826c19acf1a6813440"
+        },
+        "digest": "d99f7f8b6c3a4269db30510c24b6af34828edd22cb93287feb0bffce53607cb8"
+      },
+      {
+        "seq": 10,
+        "previous": "d99f7f8b6c3a4269db30510c24b6af34828edd22cb93287feb0bffce53607cb8",
+        "at": "2026-10-23T19:05:45.712Z",
+        "type": "UNDERSTANDING_ARTIFACT",
+        "data": {
+          "id": "4dc6ed7d058d13642ded13252b2dab0afa499db95f09efe1472b36cc0fcc0d17",
+          "schema": "language-understanding-artifact/0.1",
+          "trial_id": "R1E-05-A_SOURCE_ONLY",
+          "stage": "DELIVERY_FIELD",
+          "at": "2026-10-23T19:05:45.710Z",
+          "request": {
+            "source_id": "u-31f72231be1200683174d5e8fe97c7c908ff57cb",
+            "source_text": "The request was submitted in the portal on 3 March. The exception applies to requests submitted before 1 March. The portal record does not show whether 3 March is the submission date or the date the portal synchronized the request.",
+            "profile": "technical-policy",
+            "profile_version": "0.2",
+            "context": {
+              "purpose": "Faithful communication to a fresh recipient",
+              "intended_recipient": "Independent reader"
+            }
+          },
+          "inventory": {
+            "schema": "language-understanding-inventory/0.1",
+            "offset_unit": "UNICODE_CODE_POINTS",
+            "standing": "HEURISTIC_UNVERIFIED",
+            "source": {
+              "id": "u-31f72231be1200683174d5e8fe97c7c908ff57cb",
+              "sha256": "ef17b20e9aa01218e96598cf019b3ff7e34b4936ba9d67bbd75181c1c0326ba9",
+              "text": "The request was submitted in the portal on 3 March. The exception applies to requests submitted before 1 March. The portal record does not show whether 3 March is the submission date or the date the portal synchronized the request."
+            },
+            "profile": {
+              "id": "technical-policy",
+              "version": "0.2",
+              "schema": "language-understanding-profile/0.1",
+              "sha256": "12287d00977aa52dcc4b142c6bb2829bf72c4636ce7a9cde6caea4b7d2dd669b"
+            },
+            "engine": {
+              "id": "spacy/blank-en+sentencizer",
+              "version": "0.2.0",
+              "nltk_version": "3.10.4",
+              "spacy_version": "3.8.16",
+              "trained_syntax_available": false,
+              "trained_model_requested": "en_core_web_sm",
+              "fallback_reason": "SPACY_MODEL_NOT_INSTALLED"
+            },
+            "segments": [
+              {
+                "id": "s1",
+                "start": 0,
+                "end": 51,
+                "text": "The request was submitted in the portal on 3 March."
+              },
+              {
+                "id": "s2",
+                "start": 52,
+                "end": 111,
+                "text": "The exception applies to requests submitted before 1 March."
+              },
+              {
+                "id": "s3",
+                "start": 112,
+                "end": 231,
+                "text": "The portal record does not show whether 3 March is the submission date or the date the portal synchronized the request."
+              }
+            ],
+            "meaning_units": [
+              {
+                "id": "m1",
+                "source_segments": [
+                  "s1"
+                ],
+                "start": 0,
+                "end": 51,
+                "source_quote": "The request was submitted in the portal on 3 March.",
+                "proposed_meaning": "The request was submitted in the portal on 3 March.",
+                "classification": {
+                  "kind": "statement",
+                  "normative_force": "ASSERTED_IN_SOURCE",
+                  "condition_cues": [],
+                  "temporal_cues": [],
+                  "possible_unresolved_reference": false,
+                  "speaker": "",
+                  "prerequisites": [],
+                  "method": "LEXICAL_RULE_HEURISTIC",
+                  "review": "HEURISTIC_UNVERIFIED"
+                },
+                "provenance": "EXACT_SOURCE_SPAN"
+              },
+              {
+                "id": "m2",
+                "source_segments": [
+                  "s2"
+                ],
+                "start": 52,
+                "end": 111,
+                "source_quote": "The exception applies to requests submitted before 1 March.",
+                "proposed_meaning": "The exception applies to requests submitted before 1 March.",
+                "classification": {
+                  "kind": "statement",
+                  "normative_force": "ASSERTED_IN_SOURCE",
+                  "condition_cues": [],
+                  "temporal_cues": [
+                    "before"
+                  ],
+                  "possible_unresolved_reference": false,
+                  "speaker": "",
+                  "prerequisites": [],
+                  "method": "LEXICAL_RULE_HEURISTIC",
+                  "review": "HEURISTIC_UNVERIFIED"
+                },
+                "provenance": "EXACT_SOURCE_SPAN"
+              },
+              {
+                "id": "m3",
+                "source_segments": [
+                  "s3"
+                ],
+                "start": 112,
+                "end": 231,
+                "source_quote": "The portal record does not show whether 3 March is the submission date or the date the portal synchronized the request.",
+                "proposed_meaning": "The portal record does not show whether 3 March is the submission date or the date the portal synchronized the request.",
+                "classification": {
+                  "kind": "statement",
+                  "normative_force": "ASSERTED_IN_SOURCE",
+                  "condition_cues": [],
+                  "temporal_cues": [],
+                  "possible_unresolved_reference": false,
+                  "speaker": "",
+                  "prerequisites": [],
+                  "method": "LEXICAL_RULE_HEURISTIC",
+                  "review": "HEURISTIC_UNVERIFIED"
+                },
+                "provenance": "EXACT_SOURCE_SPAN"
+              }
+            ],
+            "relations": [],
+            "context": {
+              "purpose": "Faithful communication to a fresh recipient",
+              "intended_recipient": "Independent reader"
+            },
+            "coverage": {
+              "standing": "NOT_EVALUATED",
+              "source_supportedness": "NOT_EVALUATED",
+              "semantic_completeness": "NOT_ESTABLISHED"
+            },
+            "warnings": [
+              "Labels are lexical heuristics, not verified meaning or permissions.",
+              "No cross-sentence relation, coreference, or semantic completeness checker is implemented.",
+              "Semicolon splitting, prerequisite hints and speaker labels are rule-based candidates, not semantic analysis."
+            ]
+          },
+          "compiler": {
+            "profile": {
+              "id": "technical-policy",
+              "version": "0.2",
+              "sha256": "12287d00977aa52dcc4b142c6bb2829bf72c4636ce7a9cde6caea4b7d2dd669b",
+              "file_sha256": "9d961fac646c1c164019c55b1eaa3f75748f42b47e3aad7862bc50181cdd4a75",
+              "path": "C:\\Projects\\project-language\\core\\understanding\\python\\profiles\\technical-policy.json"
+            },
+            "adapter": "language-understanding-child/0.1",
+            "python": "C:\\Projects\\project-language\\.venv\\Scripts\\python.exe",
+            "timeout_ms": 15000,
+            "max_input_bytes": 262144,
+            "max_output_bytes": 4194304,
+            "require_trained_syntax": false,
+            "source_hashes": {
+              "src/understanding/cli.py": "fdbbaab6d1c51d077046100aef43fcb0fcfac5e278dba1fa30f3a0cddb229ba9",
+              "src/understanding/pipeline.py": "713ddf811112278038b19aaa5995eba929a827e6dee7634d5d5e8d54cba5ed1d",
+              "src/understanding/__init__.py": "c4b5f92990c64643e4907def83a7a62dd00c8bdd3dd738a8ab14c55d523a396f",
+              "src/understanding/contracts.py": "ec17e9c381a22aed695663e4e27ed57f0cdd07491ec78355cb95855a2e08e7d7",
+              "../schemas/request-v0.1.json": "0d1dc60bff65f0baf319fef34d6dd5e141c814d55ed7f865fed629cebd4578c2",
+              "../schemas/inventory-v0.1.json": "aa4c284f4352141ec9fbcc56a51027bdba94e2e588affcaa739fcf2fd8340e5d",
+              "pyproject.toml": "b8b9fb81e47e37041d1fbc7a1a660b35a5b57909a1b370b76826a539af4e8108"
+            },
+            "integration_hashes": {
+              "./workflow.mjs": "3b435c25171ef5dd66785ad93b132c0ed67f833eab63bdd9bd0cff36f5e4bc25",
+              "./analysis.mjs": "c0279d78149f90f6412875dbe0df5eb35f516a90cbd5a235023bb9a93a94ef95",
+              "./decomposition.mjs": "42e5cbc7d12bb55d98d93c5223c8a5edf6eba9de3bfbfe2469ee9ca729c412cb",
+              "../models/prompts.mjs": "5b16ac6b45b60727f8c1467bb6b934e14cd2d9726bb0d750d4f9e9d69cccd32b",
+              "../models/source-anchors.mjs": "04d977f0a67397d568c2c84cf1f6767ea210d6bfb2ecb67c875935909258aa08"
+            }
+          },
+          "provenance": {
+            "arm": "A_SOURCE_ONLY",
+            "json_path": "/source/text",
+            "origin": "ORIGINAL_SOURCE_EMBEDDED",
+            "source_hash": "ef17b20e9aa01218e96598cf019b3ff7e34b4936ba9d67bbd75181c1c0326ba9",
+            "accepted_version": "a78fd7604638fbfb174c17e124e490443ccd57dc1a7709df025b93824d407340",
+            "packet_hash": "2e5febd4712ef606818adb237302ac4925d012adf663439ea89be195958f92cd",
+            "response_hash": "f9ff78b18917571de1ecb334e15d2d9a0b4c07a808c886826c19acf1a6813440"
+          },
+          "standing": "HEURISTIC_UNVERIFIED"
+        },
+        "digest": "2054a3a048b30685a6aef357fe2f33695ae0943d5b2c66bf953563290a1443c6"
+      },
+      {
+        "seq": 11,
+        "previous": "2054a3a048b30685a6aef357fe2f33695ae0943d5b2c66bf953563290a1443c6",
+        "at": "2026-10-23T19:05:45.719Z",
+        "type": "UNDERSTANDING_ARTIFACT",
+        "data": {
+          "id": "cddbe16a9d37eb8b7669ae27ffa79db84dd573340bdd0ad4629e25bf3c3997b2",
+          "schema": "language-understanding-artifact/0.1",
+          "trial_id": "R1E-05-A_SOURCE_ONLY",
+          "stage": "RECIPIENT_FIELD",
+          "at": "2026-10-23T19:05:45.716Z",
+          "request": {
+            "source_id": "u-779fa8d535fde5362c2f778140b9a855a8ef6c55",
+            "source_text": "UNKNOWN",
+            "profile": "technical-policy",
+            "profile_version": "0.2",
+            "context": {
+              "purpose": "Faithful communication to a fresh recipient",
+              "intended_recipient": "Independent reader"
+            }
+          },
+          "inventory": {
+            "schema": "language-understanding-inventory/0.1",
+            "offset_unit": "UNICODE_CODE_POINTS",
+            "standing": "HEURISTIC_UNVERIFIED",
+            "source": {
+              "id": "u-779fa8d535fde5362c2f778140b9a855a8ef6c55",
+              "sha256": "23759997b3c59884dc4c0ff5320d6301b0e7f63bf0f6483a7b54d7d43bc5ccd1",
+              "text": "UNKNOWN"
+            },
+            "profile": {
+              "id": "technical-policy",
+              "version": "0.2",
+              "schema": "language-understanding-profile/0.1",
+              "sha256": "12287d00977aa52dcc4b142c6bb2829bf72c4636ce7a9cde6caea4b7d2dd669b"
+            },
+            "engine": {
+              "id": "spacy/blank-en+sentencizer",
+              "version": "0.2.0",
+              "nltk_version": "3.10.4",
+              "spacy_version": "3.8.16",
+              "trained_syntax_available": false,
+              "trained_model_requested": "en_core_web_sm",
+              "fallback_reason": "SPACY_MODEL_NOT_INSTALLED"
+            },
+            "segments": [
+              {
+                "id": "s1",
+                "start": 0,
+                "end": 7,
+                "text": "UNKNOWN"
+              }
+            ],
+            "meaning_units": [
+              {
+                "id": "m1",
+                "source_segments": [
+                  "s1"
+                ],
+                "start": 0,
+                "end": 7,
+                "source_quote": "UNKNOWN",
+                "proposed_meaning": "UNKNOWN",
+                "classification": {
+                  "kind": "unknown",
+                  "normative_force": "UNRESOLVED",
+                  "condition_cues": [],
+                  "temporal_cues": [],
+                  "possible_unresolved_reference": false,
+                  "speaker": "",
+                  "prerequisites": [],
+                  "method": "LEXICAL_RULE_HEURISTIC",
+                  "review": "HEURISTIC_UNVERIFIED"
+                },
+                "provenance": "EXACT_SOURCE_SPAN"
+              }
+            ],
+            "relations": [],
+            "context": {
+              "purpose": "Faithful communication to a fresh recipient",
+              "intended_recipient": "Independent reader"
+            },
+            "coverage": {
+              "standing": "NOT_EVALUATED",
+              "source_supportedness": "NOT_EVALUATED",
+              "semantic_completeness": "NOT_ESTABLISHED"
+            },
+            "warnings": [
+              "Labels are lexical heuristics, not verified meaning or permissions.",
+              "No cross-sentence relation, coreference, or semantic completeness checker is implemented.",
+              "Semicolon splitting, prerequisite hints and speaker labels are rule-based candidates, not semantic analysis."
+            ]
+          },
+          "compiler": {
+            "profile": {
+              "id": "technical-policy",
+              "version": "0.2",
+              "sha256": "12287d00977aa52dcc4b142c6bb2829bf72c4636ce7a9cde6caea4b7d2dd669b",
+              "file_sha256": "9d961fac646c1c164019c55b1eaa3f75748f42b47e3aad7862bc50181cdd4a75",
+              "path": "C:\\Projects\\project-language\\core\\understanding\\python\\profiles\\technical-policy.json"
+            },
+            "adapter": "language-understanding-child/0.1",
+            "python": "C:\\Projects\\project-language\\.venv\\Scripts\\python.exe",
+            "timeout_ms": 15000,
+            "max_input_bytes": 262144,
+            "max_output_bytes": 4194304,
+            "require_trained_syntax": false,
+            "source_hashes": {
+              "src/understanding/cli.py": "fdbbaab6d1c51d077046100aef43fcb0fcfac5e278dba1fa30f3a0cddb229ba9",
+              "src/understanding/pipeline.py": "713ddf811112278038b19aaa5995eba929a827e6dee7634d5d5e8d54cba5ed1d",
+              "src/understanding/__init__.py": "c4b5f92990c64643e4907def83a7a62dd00c8bdd3dd738a8ab14c55d523a396f",
+              "src/understanding/contracts.py": "ec17e9c381a22aed695663e4e27ed57f0cdd07491ec78355cb95855a2e08e7d7",
+              "../schemas/request-v0.1.json": "0d1dc60bff65f0baf319fef34d6dd5e141c814d55ed7f865fed629cebd4578c2",
+              "../schemas/inventory-v0.1.json": "aa4c284f4352141ec9fbcc56a51027bdba94e2e588affcaa739fcf2fd8340e5d",
+              "pyproject.toml": "b8b9fb81e47e37041d1fbc7a1a660b35a5b57909a1b370b76826a539af4e8108"
+            },
+            "integration_hashes": {
+              "./workflow.mjs": "3b435c25171ef5dd66785ad93b132c0ed67f833eab63bdd9bd0cff36f5e4bc25",
+              "./analysis.mjs": "c0279d78149f90f6412875dbe0df5eb35f516a90cbd5a235023bb9a93a94ef95",
+              "./decomposition.mjs": "42e5cbc7d12bb55d98d93c5223c8a5edf6eba9de3bfbfe2469ee9ca729c412cb",
+              "../models/prompts.mjs": "5b16ac6b45b60727f8c1467bb6b934e14cd2d9726bb0d750d4f9e9d69cccd32b",
+              "../models/source-anchors.mjs": "04d977f0a67397d568c2c84cf1f6767ea210d6bfb2ecb67c875935909258aa08"
+            }
+          },
+          "provenance": {
+            "arm": "A_SOURCE_ONLY",
+            "json_path": "/decision",
+            "origin": "RECIPIENT_RESPONSE",
+            "source_hash": "ef17b20e9aa01218e96598cf019b3ff7e34b4936ba9d67bbd75181c1c0326ba9",
+            "accepted_version": "a78fd7604638fbfb174c17e124e490443ccd57dc1a7709df025b93824d407340",
+            "packet_hash": "2e5febd4712ef606818adb237302ac4925d012adf663439ea89be195958f92cd",
+            "response_hash": "f9ff78b18917571de1ecb334e15d2d9a0b4c07a808c886826c19acf1a6813440"
+          },
+          "standing": "HEURISTIC_UNVERIFIED"
+        },
+        "digest": "f716dee06542712ceb31ee6faccd66ad849bf879d191018c63738d7a127a610b"
+      },
+      {
+        "seq": 12,
+        "previous": "f716dee06542712ceb31ee6faccd66ad849bf879d191018c63738d7a127a610b",
+        "at": "2026-10-23T19:05:45.726Z",
+        "type": "UNDERSTANDING_ARTIFACT",
+        "data": {
+          "id": "dc9d14691d0c32dd10f6aa1ae1627bc3b9987a981e6d4d1455bac02ed20564ba",
+          "schema": "language-understanding-artifact/0.1",
+          "trial_id": "R1E-05-A_SOURCE_ONLY",
+          "stage": "RECIPIENT_FIELD",
+          "at": "2026-10-23T19:05:45.723Z",
+          "request": {
+            "source_id": "u-6ab14b0f0b56ad078d4aa1cfcf77ab381dd0493a",
+            "source_text": "The source states that the request was submitted in the portal on 3 March. However, it explicitly notes that the portal record does not clarify whether '3 March' represents the actual submission date or merely the synchronization date. Because the actual submission date is ambiguous (it could be earlier than 3 March, and potentially before 1 March), the source does not establish whether the condition 'submitted before 1 March' was met.",
+            "profile": "technical-policy",
+            "profile_version": "0.2",
+            "context": {
+              "purpose": "Faithful communication to a fresh recipient",
+              "intended_recipient": "Independent reader"
+            }
+          },
+          "inventory": {
+            "schema": "language-understanding-inventory/0.1",
+            "offset_unit": "UNICODE_CODE_POINTS",
+            "standing": "HEURISTIC_UNVERIFIED",
+            "source": {
+              "id": "u-6ab14b0f0b56ad078d4aa1cfcf77ab381dd0493a",
+              "sha256": "519c236bbc57d2e7e19d1c88366b7e90ed3bd83bf43596001abe62c3d1914261",
+              "text": "The source states that the request was submitted in the portal on 3 March. However, it explicitly notes that the portal record does not clarify whether '3 March' represents the actual submission date or merely the synchronization date. Because the actual submission date is ambiguous (it could be earlier than 3 March, and potentially before 1 March), the source does not establish whether the condition 'submitted before 1 March' was met."
+            },
+            "profile": {
+              "id": "technical-policy",
+              "version": "0.2",
+              "schema": "language-understanding-profile/0.1",
+              "sha256": "12287d00977aa52dcc4b142c6bb2829bf72c4636ce7a9cde6caea4b7d2dd669b"
+            },
+            "engine": {
+              "id": "spacy/blank-en+sentencizer",
+              "version": "0.2.0",
+              "nltk_version": "3.10.4",
+              "spacy_version": "3.8.16",
+              "trained_syntax_available": false,
+              "trained_model_requested": "en_core_web_sm",
+              "fallback_reason": "SPACY_MODEL_NOT_INSTALLED"
+            },
+            "segments": [
+              {
+                "id": "s1",
+                "start": 0,
+                "end": 74,
+                "text": "The source states that the request was submitted in the portal on 3 March."
+              },
+              {
+                "id": "s2",
+                "start": 75,
+                "end": 235,
+                "text": "However, it explicitly notes that the portal record does not clarify whether '3 March' represents the actual submission date or merely the synchronization date."
+              },
+              {
+                "id": "s3",
+                "start": 236,
+                "end": 439,
+                "text": "Because the actual submission date is ambiguous (it could be earlier than 3 March, and potentially before 1 March), the source does not establish whether the condition 'submitted before 1 March' was met."
+              }
+            ],
+            "meaning_units": [
+              {
+                "id": "m1",
+                "source_segments": [
+                  "s1"
+                ],
+                "start": 0,
+                "end": 74,
+                "source_quote": "The source states that the request was submitted in the portal on 3 March.",
+                "proposed_meaning": "The source states that the request was submitted in the portal on 3 March.",
+                "classification": {
+                  "kind": "statement",
+                  "normative_force": "ASSERTED_IN_SOURCE",
+                  "condition_cues": [],
+                  "temporal_cues": [],
+                  "possible_unresolved_reference": false,
+                  "speaker": "",
+                  "prerequisites": [],
+                  "method": "LEXICAL_RULE_HEURISTIC",
+                  "review": "HEURISTIC_UNVERIFIED"
+                },
+                "provenance": "EXACT_SOURCE_SPAN"
+              },
+              {
+                "id": "m2",
+                "source_segments": [
+                  "s2"
+                ],
+                "start": 75,
+                "end": 235,
+                "source_quote": "However, it explicitly notes that the portal record does not clarify whether '3 March' represents the actual submission date or merely the synchronization date.",
+                "proposed_meaning": "However, it explicitly notes that the portal record does not clarify whether '3 March' represents the actual submission date or merely the synchronization date.",
+                "classification": {
+                  "kind": "statement",
+                  "normative_force": "ASSERTED_IN_SOURCE",
+                  "condition_cues": [],
+                  "temporal_cues": [],
+                  "possible_unresolved_reference": false,
+                  "speaker": "",
+                  "prerequisites": [],
+                  "method": "LEXICAL_RULE_HEURISTIC",
+                  "review": "HEURISTIC_UNVERIFIED"
+                },
+                "provenance": "EXACT_SOURCE_SPAN"
+              },
+              {
+                "id": "m3",
+                "source_segments": [
+                  "s3"
+                ],
+                "start": 236,
+                "end": 439,
+                "source_quote": "Because the actual submission date is ambiguous (it could be earlier than 3 March, and potentially before 1 March), the source does not establish whether the condition 'submitted before 1 March' was met.",
+                "proposed_meaning": "Because the actual submission date is ambiguous (it could be earlier than 3 March, and potentially before 1 March), the source does not establish whether the condition 'submitted before 1 March' was met.",
+                "classification": {
+                  "kind": "statement",
+                  "normative_force": "ASSERTED_IN_SOURCE",
+                  "condition_cues": [],
+                  "temporal_cues": [
+                    "before"
+                  ],
+                  "possible_unresolved_reference": false,
+                  "speaker": "",
+                  "prerequisites": [],
+                  "method": "LEXICAL_RULE_HEURISTIC",
+                  "review": "HEURISTIC_UNVERIFIED"
+                },
+                "provenance": "EXACT_SOURCE_SPAN"
+              }
+            ],
+            "relations": [],
+            "context": {
+              "purpose": "Faithful communication to a fresh recipient",
+              "intended_recipient": "Independent reader"
+            },
+            "coverage": {
+              "standing": "NOT_EVALUATED",
+              "source_supportedness": "NOT_EVALUATED",
+              "semantic_completeness": "NOT_ESTABLISHED"
+            },
+            "warnings": [
+              "Labels are lexical heuristics, not verified meaning or permissions.",
+              "No cross-sentence relation, coreference, or semantic completeness checker is implemented.",
+              "Semicolon splitting, prerequisite hints and speaker labels are rule-based candidates, not semantic analysis."
+            ]
+          },
+          "compiler": {
+            "profile": {
+              "id": "technical-policy",
+              "version": "0.2",
+              "sha256": "12287d00977aa52dcc4b142c6bb2829bf72c4636ce7a9cde6caea4b7d2dd669b",
+              "file_sha256": "9d961fac646c1c164019c55b1eaa3f75748f42b47e3aad7862bc50181cdd4a75",
+              "path": "C:\\Projects\\project-language\\core\\understanding\\python\\profiles\\technical-policy.json"
+            },
+            "adapter": "language-understanding-child/0.1",
+            "python": "C:\\Projects\\project-language\\.venv\\Scripts\\python.exe",
+            "timeout_ms": 15000,
+            "max_input_bytes": 262144,
+            "max_output_bytes": 4194304,
+            "require_trained_syntax": false,
+            "source_hashes": {
+              "src/understanding/cli.py": "fdbbaab6d1c51d077046100aef43fcb0fcfac5e278dba1fa30f3a0cddb229ba9",
+              "src/understanding/pipeline.py": "713ddf811112278038b19aaa5995eba929a827e6dee7634d5d5e8d54cba5ed1d",
+              "src/understanding/__init__.py": "c4b5f92990c64643e4907def83a7a62dd00c8bdd3dd738a8ab14c55d523a396f",
+              "src/understanding/contracts.py": "ec17e9c381a22aed695663e4e27ed57f0cdd07491ec78355cb95855a2e08e7d7",
+              "../schemas/request-v0.1.json": "0d1dc60bff65f0baf319fef34d6dd5e141c814d55ed7f865fed629cebd4578c2",
+              "../schemas/inventory-v0.1.json": "aa4c284f4352141ec9fbcc56a51027bdba94e2e588affcaa739fcf2fd8340e5d",
+              "pyproject.toml": "b8b9fb81e47e37041d1fbc7a1a660b35a5b57909a1b370b76826a539af4e8108"
+            },
+            "integration_hashes": {
+              "./workflow.mjs": "3b435c25171ef5dd66785ad93b132c0ed67f833eab63bdd9bd0cff36f5e4bc25",
+              "./analysis.mjs": "c0279d78149f90f6412875dbe0df5eb35f516a90cbd5a235023bb9a93a94ef95",
+              "./decomposition.mjs": "42e5cbc7d12bb55d98d93c5223c8a5edf6eba9de3bfbfe2469ee9ca729c412cb",
+              "../models/prompts.mjs": "5b16ac6b45b60727f8c1467bb6b934e14cd2d9726bb0d750d4f9e9d69cccd32b",
+              "../models/source-anchors.mjs": "04d977f0a67397d568c2c84cf1f6767ea210d6bfb2ecb67c875935909258aa08"
+            }
+          },
+          "provenance": {
+            "arm": "A_SOURCE_ONLY",
+            "json_path": "/explanation",
+            "origin": "RECIPIENT_RESPONSE",
+            "source_hash": "ef17b20e9aa01218e96598cf019b3ff7e34b4936ba9d67bbd75181c1c0326ba9",
+            "accepted_version": "a78fd7604638fbfb174c17e124e490443ccd57dc1a7709df025b93824d407340",
+            "packet_hash": "2e5febd4712ef606818adb237302ac4925d012adf663439ea89be195958f92cd",
+            "response_hash": "f9ff78b18917571de1ecb334e15d2d9a0b4c07a808c886826c19acf1a6813440"
+          },
+          "standing": "HEURISTIC_UNVERIFIED"
+        },
+        "digest": "31b882895776d9b0b07fda7ba4dfa92b0dfba949e7502051ce6847dc4a87da34"
+      },
+      {
+        "seq": 13,
+        "previous": "31b882895776d9b0b07fda7ba4dfa92b0dfba949e7502051ce6847dc4a87da34",
+        "at": "2026-10-23T19:05:45.730Z",
+        "type": "UNDERSTANDING_SECOND_PASS",
+        "data": {
+          "trial_id": "R1E-05-A_SOURCE_ONLY",
+          "arm": "A_SOURCE_ONLY",
+          "accepted_version": "a78fd7604638fbfb174c17e124e490443ccd57dc1a7709df025b93824d407340",
+          "packet_hash": "2e5febd4712ef606818adb237302ac4925d012adf663439ea89be195958f92cd",
+          "response_hash": "f9ff78b18917571de1ecb334e15d2d9a0b4c07a808c886826c19acf1a6813440",
+          "transferred": {
+            "schema": "language-meaning-transferred/0.1",
+            "accepted_version": "a78fd7604638fbfb174c17e124e490443ccd57dc1a7709df025b93824d407340",
+            "source_inventory_hash": "7f044aa45cd80f126f773595cf947a28aa42dcac17e97228a4969f0bf3badbe6",
+            "standing": "MECHANICAL_CANDIDATES_NOT_SEMANTIC_VERDICTS",
+            "embedded_source_present": true,
+            "embedded_source_is_not_understanding": true,
+            "units": [
+              {
+                "unit_id": "m1",
+                "quote": "The request was submitted in the portal on 3 March.",
+                "candidate_paths": [],
+                "analysis_ids": [],
+                "mechanical": "NO_DERIVED_TEXT_MATCH",
+                "assessment": "NOT_ASSESSED",
+                "review_flags": [],
+                "semantic_preservation": "NOT_ASSESSED"
+              },
+              {
+                "unit_id": "m2",
+                "quote": "The exception applies to requests submitted before 1 March.",
+                "candidate_paths": [],
+                "analysis_ids": [],
+                "mechanical": "NO_DERIVED_TEXT_MATCH",
+                "assessment": "NOT_ASSESSED",
+                "review_flags": [],
+                "semantic_preservation": "NOT_ASSESSED"
+              },
+              {
+                "unit_id": "m3",
+                "quote": "The portal record does not show whether 3 March is the submission date or the date the portal synchronized the request.",
+                "candidate_paths": [],
+                "analysis_ids": [],
+                "mechanical": "NO_DERIVED_TEXT_MATCH",
+                "assessment": "NOT_ASSESSED",
+                "review_flags": [],
+                "semantic_preservation": "NOT_ASSESSED"
+              }
+            ],
+            "possible_additions_or_paraphrases": [],
+            "warnings": [
+              "No lexical match establishes preservation.",
+              "No match is not proof of meaning loss.",
+              "Embedded source copies are excluded from candidate derived preservation.",
+              "Unmatched derived wording may be a valid paraphrase, purpose statement, human clarification or inference; it is not automatically an unsupported addition."
+            ]
+          },
+          "reconstructed": {
+            "standing": "NOT_ASSESSED",
+            "reason": "No independently defined question requirements are registered."
+          }
+        },
+        "digest": "a81879f8937874c3ad40235750748cf746a2266956b588e865cc590c7630908b"
+      }
+    ],
+    "models": [
+      {
+        "id": "fixture",
+        "provider": "fixture",
+        "local": false,
+        "api_family": "scripted",
+        "qualification": "SCRIPTED_NOT_MODEL_RESULT",
+        "availability": "AVAILABLE_OFFLINE",
+        "output_limit": null,
+        "price_per_million": null
+      },
+      {
+        "id": "opencode-go/deepseek-v4.1-flash",
+        "provider": "opencode-go",
+        "local": false,
+        "api_family": "openai-completions",
+        "base_url": "https://opencode.ai/inference/go/openai/v1",
+        "expected_route": "https://opencode.ai/inference/go/openai/v1/chat/completions",
+        "context_window": 1000000,
+        "output_limit": 384000,
+        "input_modalities": [
+          "text",
+          "image"
+        ],
+        "output_modalities": [
+          "text"
+        ],
+        "structured_output": "PROMPTED_JSON_STRICT_HOST_VALIDATION",
+        "reasoning": "Pi simple-stream default; no reasoning-token inference",
+        "price_per_million": {
+          "input": 0.3,
+          "output": 1.2,
+          "cacheRead": 0.006,
+          "cacheWrite": 0
+        },
+        "availability": "SCOPED_REGISTERED_NOT_LIVE_PROBED",
+        "qualification": "OFFLINE_TEST_REQUIRED",
+        "metadata_origin": "PINNED_PI_1.0.4_WITH_DOCUMENTED_ENDPOINT_OVERLAY",
+        "config_hash": "78020e5ed7246fa4f787cd8b1f72f721c41caba22e72a20fcf56f07937ebe7ad"
+      },
+      {
+        "id": "opencode-go/gpt-6-luna",
+        "provider": "opencode-go",
+        "local": false,
+        "api_family": "openai-responses",
+        "base_url": "https://opencode.ai/inference/go/openai/v1",
+        "expected_route": "https://opencode.ai/inference/go/openai/v1/responses",
+        "context_window": 1050000,
+        "output_limit": 128000,
+        "input_modalities": [
+          "text",
+          "image"
+        ],
+        "output_modalities": [
+          "text"
+        ],
+        "structured_output": "PROMPTED_JSON_STRICT_HOST_VALIDATION",
+        "reasoning": "Pi simple-stream default; no reasoning-token inference",
+        "price_per_million": {
+          "input": 0.1,
+          "output": 0.5,
+          "cacheRead": 0.01,
+          "cacheWrite": 0.125
+        },
+        "availability": "SCOPED_REGISTERED_NOT_LIVE_PROBED",
+        "qualification": "OFFLINE_TEST_REQUIRED",
+        "metadata_origin": "PINNED_PI_1.0.4_WITH_DOCUMENTED_ENDPOINT_OVERLAY",
+        "config_hash": "78020e5ed7246fa4f787cd8b1f72f721c41caba22e72a20fcf56f07937ebe7ad"
+      },
+      {
+        "id": "opencode-go/qwen3.8-flash",
+        "provider": "opencode-go",
+        "local": false,
+        "api_family": "anthropic-messages",
+        "base_url": "https://opencode.ai/inference/go/anthropic",
+        "expected_route": "https://opencode.ai/inference/go/anthropic/v1/messages",
+        "context_window": 1000000,
+        "output_limit": 131072,
+        "input_modalities": [
+          "text",
+          "image"
+        ],
+        "output_modalities": [
+          "text"
+        ],
+        "structured_output": "PROMPTED_JSON_STRICT_HOST_VALIDATION",
+        "reasoning": "Pi simple-stream default; no reasoning-token inference",
+        "price_per_million": {
+          "input": 0.15,
+          "output": 0.47,
+          "cacheRead": 0.016,
+          "cacheWrite": 0.2
+        },
+        "availability": "SCOPED_REGISTERED_NOT_LIVE_PROBED",
+        "qualification": "OFFLINE_TEST_REQUIRED",
+        "metadata_origin": "PINNED_PI_1.0.4_WITH_DOCUMENTED_ENDPOINT_OVERLAY",
+        "config_hash": "78020e5ed7246fa4f787cd8b1f72f721c41caba22e72a20fcf56f07937ebe7ad"
+      },
+      {
+        "id": "opencode-go/claude-haiku-5-5",
+        "provider": "opencode-go",
+        "local": false,
+        "api_family": "anthropic-messages",
+        "base_url": "https://opencode.ai/inference/go/anthropic",
+        "expected_route": "https://opencode.ai/inference/go/anthropic/v1/messages",
+        "context_window": 1000000,
+        "output_limit": 128000,
+        "input_modalities": [
+          "text",
+          "image"
+        ],
+        "output_modalities": [
+          "text"
+        ],
+        "structured_output": "PROMPTED_JSON_STRICT_HOST_VALIDATION",
+        "reasoning": "Pi simple-stream default; no reasoning-token inference",
+        "price_per_million": {
+          "input": 0.1,
+          "output": 0.5,
+          "cacheRead": 0.01,
+          "cacheWrite": 0.125,
+          "tiers": [
+            {
+              "inputTokensAbove": 100000,
+              "input": 0.5,
+              "output": 2.5,
+              "cacheRead": 0.05,
+              "cacheWrite": 0.625
+            }
+          ]
+        },
+        "availability": "SCOPED_REGISTERED_NOT_LIVE_PROBED",
+        "qualification": "OFFLINE_TEST_REQUIRED",
+        "metadata_origin": "MANAGED_PI_1.4.0_SCOPED_REGISTRATION",
+        "config_hash": "78020e5ed7246fa4f787cd8b1f72f721c41caba22e72a20fcf56f07937ebe7ad"
+      }
+    ],
+    "assignments": {
+      "interpreter": "opencode-go/deepseek-v4.1-flash",
+      "challenger": "opencode-go/gpt-6-luna",
+      "mediator": "opencode-go/deepseek-v4.1-flash",
+      "recipient": "opencode-go/qwen3.8-flash",
+      "advisory_evaluator": "opencode-go/claude-haiku-5-5"
+    },
+    "remote_plan": {
+      "schema": "studio-remote-plan/0.1r",
+      "provider": "opencode-go",
+      "task_identity": {
+        "id": "museum-loan-m12",
+        "digest": "e22911925db7424b874b94b44a60e9250a68e0f0b0b0db5d09713aa754fb28b4",
+        "source_hash": "277b9050c46b1df5f9794bda17829e2acf450e6c4afaf79a7e21cf4692447228",
+        "question_hash": "0f71abc5fbc41f4fb5e3474a0efa15eb02aa33fe6642e99a27688a1fa89fb390",
+        "reference_standing": "UNADJUDICATED_REFERENCE"
+      },
+      "models": [
+        {
+          "role": "interpreter",
+          "model": "opencode-go/deepseek-v4.1-flash",
+          "metadata": {
+            "id": "opencode-go/deepseek-v4.1-flash",
+            "provider": "opencode-go",
+            "local": false,
+            "api_family": "openai-completions",
+            "base_url": "https://opencode.ai/inference/go/openai/v1",
+            "expected_route": "https://opencode.ai/inference/go/openai/v1/chat/completions",
+            "context_window": 1000000,
+            "output_limit": 384000,
+            "input_modalities": [
+              "text",
+              "image"
+            ],
+            "output_modalities": [
+              "text"
+            ],
+            "structured_output": "PROMPTED_JSON_STRICT_HOST_VALIDATION",
+            "reasoning": "Pi simple-stream default; no reasoning-token inference",
+            "price_per_million": {
+              "input": 0.3,
+              "output": 1.2,
+              "cacheRead": 0.006,
+              "cacheWrite": 0
+            },
+            "availability": "SCOPED_REGISTERED_NOT_LIVE_PROBED",
+            "qualification": "OFFLINE_TEST_REQUIRED",
+            "metadata_origin": "PINNED_PI_1.0.4_WITH_DOCUMENTED_ENDPOINT_OVERLAY",
+            "config_hash": "78020e5ed7246fa4f787cd8b1f72f721c41caba22e72a20fcf56f07937ebe7ad"
+          },
+          "output_tokens": 16384
+        },
+        {
+          "role": "challenger",
+          "model": "opencode-go/gpt-6-luna",
+          "metadata": {
+            "id": "opencode-go/gpt-6-luna",
+            "provider": "opencode-go",
+            "local": false,
+            "api_family": "openai-responses",
+            "base_url": "https://opencode.ai/inference/go/openai/v1",
+            "expected_route": "https://opencode.ai/inference/go/openai/v1/responses",
+            "context_window": 1050000,
+            "output_limit": 128000,
+            "input_modalities": [
+              "text",
+              "image"
+            ],
+            "output_modalities": [
+              "text"
+            ],
+            "structured_output": "PROMPTED_JSON_STRICT_HOST_VALIDATION",
+            "reasoning": "Pi simple-stream default; no reasoning-token inference",
+            "price_per_million": {
+              "input": 0.1,
+              "output": 0.5,
+              "cacheRead": 0.01,
+              "cacheWrite": 0.125
+            },
+            "availability": "SCOPED_REGISTERED_NOT_LIVE_PROBED",
+            "qualification": "OFFLINE_TEST_REQUIRED",
+            "metadata_origin": "PINNED_PI_1.0.4_WITH_DOCUMENTED_ENDPOINT_OVERLAY",
+            "config_hash": "78020e5ed7246fa4f787cd8b1f72f721c41caba22e72a20fcf56f07937ebe7ad"
+          },
+          "output_tokens": 16384
+        },
+        {
+          "role": "mediator",
+          "model": "opencode-go/deepseek-v4.1-flash",
+          "metadata": {
+            "id": "opencode-go/deepseek-v4.1-flash",
+            "provider": "opencode-go",
+            "local": false,
+            "api_family": "openai-completions",
+            "base_url": "https://opencode.ai/inference/go/openai/v1",
+            "expected_route": "https://opencode.ai/inference/go/openai/v1/chat/completions",
+            "context_window": 1000000,
+            "output_limit": 384000,
+            "input_modalities": [
+              "text",
+              "image"
+            ],
+            "output_modalities": [
+              "text"
+            ],
+            "structured_output": "PROMPTED_JSON_STRICT_HOST_VALIDATION",
+            "reasoning": "Pi simple-stream default; no reasoning-token inference",
+            "price_per_million": {
+              "input": 0.3,
+              "output": 1.2,
+              "cacheRead": 0.006,
+              "cacheWrite": 0
+            },
+            "availability": "SCOPED_REGISTERED_NOT_LIVE_PROBED",
+            "qualification": "OFFLINE_TEST_REQUIRED",
+            "metadata_origin": "PINNED_PI_1.0.4_WITH_DOCUMENTED_ENDPOINT_OVERLAY",
+            "config_hash": "78020e5ed7246fa4f787cd8b1f72f721c41caba22e72a20fcf56f07937ebe7ad"
+          },
+          "output_tokens": 16384
+        },
+        {
+          "role": "recipient",
+          "model": "opencode-go/qwen3.8-flash",
+          "metadata": {
+            "id": "opencode-go/qwen3.8-flash",
+            "provider": "opencode-go",
+            "local": false,
+            "api_family": "anthropic-messages",
+            "base_url": "https://opencode.ai/inference/go/anthropic",
+            "expected_route": "https://opencode.ai/inference/go/anthropic/v1/messages",
+            "context_window": 1000000,
+            "output_limit": 131072,
+            "input_modalities": [
+              "text",
+              "image"
+            ],
+            "output_modalities": [
+              "text"
+            ],
+            "structured_output": "PROMPTED_JSON_STRICT_HOST_VALIDATION",
+            "reasoning": "Pi simple-stream default; no reasoning-token inference",
+            "price_per_million": {
+              "input": 0.15,
+              "output": 0.47,
+              "cacheRead": 0.016,
+              "cacheWrite": 0.2
+            },
+            "availability": "SCOPED_REGISTERED_NOT_LIVE_PROBED",
+            "qualification": "OFFLINE_TEST_REQUIRED",
+            "metadata_origin": "PINNED_PI_1.0.4_WITH_DOCUMENTED_ENDPOINT_OVERLAY",
+            "config_hash": "78020e5ed7246fa4f787cd8b1f72f721c41caba22e72a20fcf56f07937ebe7ad"
+          },
+          "output_tokens": 16384
+        },
+        {
+          "role": "advisory_evaluator",
+          "model": "opencode-go/claude-haiku-5-5",
+          "metadata": {
+            "id": "opencode-go/claude-haiku-5-5",
+            "provider": "opencode-go",
+            "local": false,
+            "api_family": "anthropic-messages",
+            "base_url": "https://opencode.ai/inference/go/anthropic",
+            "expected_route": "https://opencode.ai/inference/go/anthropic/v1/messages",
+            "context_window": 1000000,
+            "output_limit": 128000,
+            "input_modalities": [
+              "text",
+              "image"
+            ],
+            "output_modalities": [
+              "text"
+            ],
+            "structured_output": "PROMPTED_JSON_STRICT_HOST_VALIDATION",
+            "reasoning": "Pi simple-stream default; no reasoning-token inference",
+            "price_per_million": {
+              "input": 0.1,
+              "output": 0.5,
+              "cacheRead": 0.01,
+              "cacheWrite": 0.125,
+              "tiers": [
+                {
+                  "inputTokensAbove": 100000,
+                  "input": 0.5,
+                  "output": 2.5,
+                  "cacheRead": 0.05,
+                  "cacheWrite": 0.625
+                }
+              ]
+            },
+            "availability": "SCOPED_REGISTERED_NOT_LIVE_PROBED",
+            "qualification": "OFFLINE_TEST_REQUIRED",
+            "metadata_origin": "MANAGED_PI_1.4.0_SCOPED_REGISTRATION",
+            "config_hash": "78020e5ed7246fa4f787cd8b1f72f721c41caba22e72a20fcf56f07937ebe7ad"
+          },
+          "output_tokens": 16384
+        }
+      ],
+      "settings": {
+        "max_requests": 12,
+        "budget_usd": 10,
+        "max_input_bytes": 60000,
+        "max_response_bytes": 33554432,
+        "timeout_ms": 180000,
+        "output_tokens": {
+          "interpreter": 16384,
+          "challenger": 16384,
+          "mediator": 16384,
+          "recipient": 16384,
+          "advisory_evaluator": 16384
+        },
+        "automatic_retries": 0
+      },
+      "config_hash": "78020e5ed7246fa4f787cd8b1f72f721c41caba22e72a20fcf56f07937ebe7ad",
+      "offline_qualification_identity": null,
+      "expected_workflow_calls": 3,
+      "with_mediation_calls": 4,
+      "with_comparison_calls": 5,
+      "maximum_actual_requests": 12,
+      "conservative_estimate_usd": 0.94152,
+      "per_request_reservation_usd": 0.07846,
+      "estimate_standing": "CATALOGUE_BOUND_NOT_INVOICE; UTF8_BYTES_AS_INPUT_TOKEN_BOUND",
+      "service_use": "OPERATOR_MUST_CONFIRM_GO_WORKLOAD_APPROPRIATENESS",
+      "fallback": false,
+      "hash": "c1e6a81b14b40afd0ec1b50f3d90b0753d8f50ccdb0dac8d6d1cc3bfea65c9aa",
+      "launcher_remote_enabled": true,
+      "credential_available": true,
+      "approval_required": false,
+      "execution_policy": "DIRECT_USER_REQUEST",
+      "approval_active": true,
+      "requests_used": 1,
+      "reserved_usd": 0.07846,
+      "last_errors": {},
+      "advisory_evaluator_status": "OPTIONAL_NOT_RUN"
+    },
+    "guided": {
+      "stage": "start",
+      "primary": "Start Test"
+    },
+    "external_actions": "DISABLED",
+    "head": "a81879f8937874c3ad40235750748cf746a2266956b588e865cc590c7630908b"
+  }
+}

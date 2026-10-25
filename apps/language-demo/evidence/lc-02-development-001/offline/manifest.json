@@ -1,0 +1,9 @@
+{
+  "standing": "OFFLINE_ONLY",
+  "files": {
+    "events.jsonl": "6d7a2e300b47bf18fff0288f2b2cafbafa4621a8dc3369e4b361f50f032cf52a",
+    "comparison.json": "81c7fcdd30152ec4c4c78fe0450c5980954ca4a29bb69ff2ee675c9e8e98bf96",
+    "infrastructure.json": "72e2418d29135ea5a2b087d577726112118610fc7da1cd2f978b339e77bd1441",
+    "viewer.html": "972855cad71c78870c8b9a746f81caac251577aa009bae6c4a9677fdbdd75f71"
+  }
+}

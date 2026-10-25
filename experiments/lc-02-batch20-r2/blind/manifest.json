@@ -1,0 +1,26 @@
+{
+  "schema": "lc02-r2-blind-package/0.1",
+  "design_sha256": "2c88429b777baca7207aad13ea3041746bc0a99d0d96fcc217aed81856c78de4",
+  "package_sha256": "dc39fb0cc4dec902e78e5a5c7dfea296cd1534319e0e8c0e1ac460c7c0924c5a",
+  "cases": [
+    "R1E-01",
+    "R1E-02",
+    "R1E-03",
+    "R1E-04",
+    "R1E-05",
+    "R1E-06",
+    "R1E-07",
+    "R1E-08",
+    "R1E-09",
+    "R1E-10",
+    "R1E-11",
+    "R1E-12",
+    "R1E-13",
+    "R1E-14",
+    "R1E-15",
+    "R1E-16"
+  ],
+  "contains_expected_labels": false,
+  "contains_arm_identities": false,
+  "contains_previous_outputs": false
+}

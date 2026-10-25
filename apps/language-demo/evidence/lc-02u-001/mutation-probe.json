@@ -1,0 +1,163 @@
+{
+  "standing": "OFFLINE_SCRIPTED_MUTATION_NOT_MODEL_FINDING",
+  "original": {
+    "schema": "language-understanding-inventory/0.1",
+    "offset_unit": "UNICODE_CODE_POINTS",
+    "standing": "HEURISTIC_UNVERIFIED",
+    "source": {
+      "id": "may-after-probe",
+      "sha256": "d95b0023ba34adf0baccfa1350b45e9f9a5b6b9f2ed62e17558185b8b19b0efb",
+      "text": "Staff may proceed only after owner approval."
+    },
+    "profile": {
+      "id": "technical-policy",
+      "version": "0.1",
+      "schema": "language-understanding-profile/0.1",
+      "sha256": "9fd7528d2916ac479e99c53a8a02a6a17c9b3ba6824f2d294cd185d52b3e60cb"
+    },
+    "engine": {
+      "id": "spacy/blank-en+sentencizer",
+      "version": "0.1.1",
+      "nltk_version": "3.10.4",
+      "spacy_version": "3.8.16",
+      "trained_syntax_available": false
+    },
+    "segments": [
+      {
+        "id": "s1",
+        "start": 0,
+        "end": 44,
+        "text": "Staff may proceed only after owner approval."
+      }
+    ],
+    "meaning_units": [
+      {
+        "id": "m1",
+        "source_segments": [
+          "s1"
+        ],
+        "start": 0,
+        "end": 44,
+        "source_quote": "Staff may proceed only after owner approval.",
+        "proposed_meaning": "Staff may proceed only after owner approval.",
+        "classification": {
+          "kind": "conditional_permission",
+          "normative_force": "PERMITTED_IN_SOURCE",
+          "condition_cues": [
+            "only"
+          ],
+          "temporal_cues": [
+            "after"
+          ],
+          "possible_unresolved_reference": false,
+          "method": "LEXICAL_RULE_HEURISTIC",
+          "review": "HEURISTIC_UNVERIFIED"
+        },
+        "provenance": "EXACT_SOURCE_SPAN"
+      }
+    ],
+    "relations": [],
+    "context": {},
+    "coverage": {
+      "standing": "NOT_EVALUATED",
+      "source_supportedness": "NOT_EVALUATED",
+      "semantic_completeness": "NOT_ESTABLISHED"
+    },
+    "warnings": [
+      "Labels are lexical heuristics, not verified meaning or permissions.",
+      "No cross-sentence relation, coreference, or semantic completeness checker is implemented."
+    ]
+  },
+  "changed_text": "Staff must proceed before owner approval.",
+  "alignment": {
+    "schema": "language-meaning-alignment/0.1",
+    "source_inventory_hash": "02a105b35eb1269422411e62470bd631635a639518ad355ace29f0561e1fb052",
+    "proposal_version": "SCRIPTED_MUTATION_NOT_ACCEPTED_COMMUNICATION",
+    "mechanical_only": true,
+    "semantic_equivalence": "NOT_ASSESSED",
+    "units": [
+      {
+        "unit_id": "m1",
+        "source_quote": "Staff may proceed only after owner approval.",
+        "commitment_ids": [
+          "c1"
+        ],
+        "mechanical": "CANDIDATE_SOURCE_SPAN_OR_TEXT_ALIGNMENT",
+        "assessment": "NEEDS_REVIEW",
+        "review_flags": [
+          "POSSIBLE_MODALITY_CHANGE",
+          "POSSIBLE_CONDITION_LOSS",
+          "POSSIBLE_TIMING_CHANGE"
+        ],
+        "semantic_equivalence": "NOT_ASSESSED"
+      }
+    ],
+    "commitments": [
+      {
+        "id": "c1",
+        "source_binding": "EXACT_QUOTES_ONLY_NOT_ENTAILMENT",
+        "assessment": "NEEDS_REVIEW",
+        "standing": "INFERRED"
+      }
+    ],
+    "limitations": [
+      "Candidate alignment is not semantic preservation.",
+      "No independently evaluated semantic-equivalence reviewer is implemented.",
+      "No cross-sentence relationships, speaker attribution or pronoun resolution are certified."
+    ]
+  },
+  "comparison": {
+    "schema": "language-meaning-transferred/0.1",
+    "accepted_version": "SCRIPTED_MUTATION_NOT_ACCEPTED_COMMUNICATION",
+    "source_inventory_hash": "02a105b35eb1269422411e62470bd631635a639518ad355ace29f0561e1fb052",
+    "standing": "MECHANICAL_CANDIDATES_NOT_SEMANTIC_VERDICTS",
+    "embedded_source_present": true,
+    "embedded_source_is_not_understanding": true,
+    "units": [
+      {
+        "unit_id": "m1",
+        "quote": "Staff may proceed only after owner approval.",
+        "candidate_paths": [
+          "/state/proposal/commitments/0/text"
+        ],
+        "analysis_ids": [
+          "LOCAL_MUTATION_FIELD_2"
+        ],
+        "mechanical": "TEXT_OR_SOURCE_LINKED_FIELD_CANDIDATE",
+        "assessment": "NEEDS_REVIEW",
+        "review_flags": [
+          "POSSIBLE_MODALITY_CHANGE",
+          "POSSIBLE_CONDITION_LOSS",
+          "POSSIBLE_TIMING_CHANGE"
+        ],
+        "semantic_preservation": "NOT_ASSESSED"
+      }
+    ],
+    "possible_additions_or_paraphrases": [
+      {
+        "path": "/state/proposal/interpretation",
+        "unit_id": "m1",
+        "text": "Staff must proceed before owner approval.",
+        "analysis_id": "LOCAL_MUTATION_FIELD_1",
+        "assessment": "NEEDS_REVIEW",
+        "meaning_added": "NOT_ASSESSED"
+      },
+      {
+        "path": "/state/proposal/commitments/0/text",
+        "unit_id": "m1",
+        "text": "Staff must proceed before owner approval.",
+        "analysis_id": "LOCAL_MUTATION_FIELD_2",
+        "assessment": "NEEDS_REVIEW",
+        "meaning_added": "NOT_ASSESSED"
+      }
+    ],
+    "warnings": [
+      "No lexical match establishes preservation.",
+      "No match is not proof of meaning loss.",
+      "Embedded source copies are excluded from candidate derived preservation.",
+      "Unmatched derived wording may be a valid paraphrase, purpose statement, human clarification or inference; it is not automatically an unsupported addition."
+    ]
+  },
+  "limitations": "Flags are mechanical candidates, not validated semantic judgments.",
+  "hosted_calls": 0
+}

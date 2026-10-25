@@ -1,1 +1,19 @@
-{"name":"language-studio","private":true,"type":"module","scripts":{"start":"node --experimental-transform-types server/app.mjs","test":"node --experimental-transform-types --test tests/*.test.mjs","browser":"node --experimental-transform-types tests/browser.mjs","local":"node --experimental-transform-types models/local-check.mjs"}}
+{
+  "name": "language-studio",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "start": "node --experimental-transform-types server/app.mjs",
+    "test": "node --experimental-transform-types --test tests/*.test.mjs",
+    "browser": "node --experimental-transform-types tests/browser.mjs",
+    "fixtures": "node --experimental-transform-types server/app.mjs --fixtures",
+    "browser:go": "node --experimental-transform-types tests/browser-opencode.mjs",
+    "qualify:offline": "node --experimental-transform-types models/qualify-offline.mjs",
+    "local:legacy": "node --experimental-transform-types models/local-check.mjs",
+    "comparison:offline": "node --experimental-transform-types evaluation/run-offline.mjs",
+    "browser:comparison": "node --experimental-transform-types tests/browser-comparison.mjs",
+    "browser:settings": "node --experimental-transform-types tests/browser-settings.mjs",
+    "browser:understanding": "node --experimental-transform-types tests/browser-understanding.mjs",
+    "understanding:demo": "node --experimental-transform-types evaluation/run-understanding-demo.mjs"
+  }
+}

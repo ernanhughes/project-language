@@ -1,0 +1,46 @@
+{
+  "schema": "language-blind-review-response/1.0",
+  "reviewer_id": "reviewer-b2",
+  "reviewer_standing": "MODEL_BASED_PROVISIONAL_NOT_HUMAN",
+  "reviewed_at": "2026-10-23",
+  "cases": [
+    {
+      "case_id": "R1E-04",
+      "decision": "SOURCE_CONFLICT",
+      "explanation": "The excerpt attributes both a permission and an absolute prohibition to Section 4.2, with the same effective date, and expressly supplies no precedence rule. A permission to delete and a duty not to delete any expired draft cannot both be satisfied for the same act, and the text does not resolve which controls. This is unresolved contradictory provisions of equal standing, not merely a gap.",
+      "citations": [
+        "Section 4.2 says the archivist may delete expired drafts after the retention review.",
+        "Section 4.2, with the same effective date, says the archivist must not delete any expired draft.",
+        "The excerpt gives no precedence rule."
+      ],
+      "confidence": 5,
+      "suspected_ambiguity": "A reader might argue 'may' is only discretionary permission while 'must not' is a mandatory prohibition, so the prohibition should dominate as the more specific or stronger modal. The excerpt, however, gives both the same section and effective date and states no precedence rule, so that reconciling reading is not established by the text.",
+      "notes": "SOURCE_RELATIVE. The conflict is resolved neither temporally nor by an express priority rule."
+    },
+    {
+      "case_id": "R1E-08",
+      "decision": "YES",
+      "explanation": "The communication grants the incident desk permission to page the database engineer when replication lag remains above 20 seconds for at least 5 continuous minutes. The dashboard is stated to show 9 uninterrupted minutes above 20 seconds, which exceeds the stated threshold and therefore satisfies the condition. Nothing in the communication withdraws or contradicts that permission. The badge sentence is expressly irrelevant.",
+      "citations": [
+        "The incident desk may page the database engineer when replication lag stays above 20 seconds for at least 5 continuous minutes.",
+        "The dashboard currently shows 9 uninterrupted minutes above 20 seconds."
+      ],
+      "confidence": 4,
+      "suspected_ambiguity": "'May' confers discretion rather than an obligation, so the answer establishes permission, not that paging is required or that it will occur. A reader might also question whether the dashboard reading alone establishes the condition in reality, and whether 'The page is sent to the on-call rotation' identifies a different recipient than the database engineer; the text does not state that the database engineer is on that rotation.",
+      "notes": "SOURCE_RELATIVE. Answer treats the dashboard figure as the communication's own stated premise, not as externally verified measurement; no ACTION_AUTHORITY is asserted."
+    },
+    {
+      "case_id": "R1E-16",
+      "decision": "SOURCE_CONFLICT",
+      "explanation": "Clause 7 permits the auditor to access the log archive while Clause 9, of the same effective date, prohibits that same access. The document expressly states that neither clause takes precedence, so the contradiction is unresolved by any priority rule. Equal-standing, mutually inconsistent provisions therefore yield a source conflict rather than a settled yes or no.",
+      "citations": [
+        "Clause 7 says the auditor may access the log archive.",
+        "Clause 9, with the same effective date, says the auditor must not access the log archive.",
+        "The document states that neither clause takes precedence."
+      ],
+      "confidence": 5,
+      "suspected_ambiguity": "One could read the express no-precedence statement as leaving the matter merely unknown rather than affirmatively contradictory, but because the text contains both a permission and a prohibition of the same act with no rule of resolution, SOURCE_CONFLICT is the more literal characterization.",
+      "notes": "SOURCE_RELATIVE. The document's own statement that neither clause prevails forecloses resolving the conflict by priority."
+    }
+  ]
+}

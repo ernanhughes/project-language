@@ -1,0 +1,150 @@
+{
+  "schema": "lc02-r6-success-criteria/0.1",
+  "created": "2026-10-24",
+  "standing": "FROZEN_BEFORE_HELD_OUT_EXECUTION",
+  "protocol": {
+    "split": "evaluation",
+    "cases": 24,
+    "development_cases": 12,
+    "references_standing": "AUTHOR_CONSTRUCTED_PROVISIONAL_NOT_INDEPENDENT_HUMAN_ADJUDICATION",
+    "comparison": "R5 and R6 run on the same frozen held-out cases",
+    "execution_policy": "The held-out split is executed once. No checker, corpus, reference or criterion may be changed after execution begins. Development probes are not held-out evidence."
+  },
+  "frozen_artifacts": {
+    "evaluation-cases.json": "35fa89f812b59989b55c6ebf8bb5089f019731f24f85cb4d72d3c3505c52b540",
+    "evaluation-references.json": "ce52c8c41a1cfade926e58e90a035d50daa2294122ea8f12c18da45c3dce9f14",
+    "development-cases.json": "7fc0de690911a519b57f5b3d540662b800c1ad5a30bf197de106df755eeaed09",
+    "development-references.json": "e4d99491d81c7f23a36431f6f099f4f222c8f441d31e23c092f5d75365e4a7a6",
+    "FREEZE.json": "2307af8d79ac9527798265e0a183a09fadbf347d8863f748fb3a2b5dc30cfe99",
+    "semantic-checker-v6.mjs": "ed17ecb14a66ebb42b6f1b03427c4bd4b021d4829e66aee9edc2f3a9f5801692",
+    "semantic-checker-v6-contract.mjs": "c56c812c7b32ab8bca2a2e06a1bf2ae03da43fbb435b8772b9ea14c1d30c3064",
+    "semantic-checker-v5.mjs": "2b11a67ca6b44c61523c3901cbb130fa6da81b0815ead3261f640cf848e902d5",
+    "semantic-checker-v5-contract.mjs": "92ab3570a00164123eac5045a838f64e9df8b23efd4592115f88925f9c8bb297",
+    "run-compare.mjs": "ca8305f815317019653792368fc07f5b53d18d02cc4b11c5c909e671dbddb8b4",
+    "build-corpus.mjs": "9c3bdd07eb2b22eb7fc92e1ffd71b11f9bed4677e3fb63fa27e956bd93e95683"
+  },
+  "corpus_composition": {
+    "corruption": 12,
+    "faithful": 8,
+    "ambiguity": 4,
+    "corruption_classes": [
+      "WRITTEN_NUMBER_CHANGE",
+      "INCLUSIVE_EXCLUSIVE_BOUNDARY",
+      "DURATION_THRESHOLD_CHANGE",
+      "MULTIPLE_CONSTRAINTS",
+      "BROADENED_EXCEPTION",
+      "MISSING_PREREQUISITE",
+      "INVENTED_AUTHORITY",
+      "UNKNOWN_TO_ESTABLISHED_FACT",
+      "MISATTRIBUTED_QUOTATION_OR_SPEAKER",
+      "WRONG_CROSS_SENTENCE_REFERENCE",
+      "UNSUPPORTED_CAUSAL",
+      "INVENTED_UNCERTAINTY"
+    ],
+    "required_categories_present": {
+      "written_number": "R6-E01",
+      "inclusive_exclusive_boundary": "R6-E02",
+      "temporal_threshold": "R6-E03",
+      "multiple_constraints": "R6-E04",
+      "broadened_exception": "R6-E05",
+      "changed_prerequisite": "R6-E06",
+      "preserved_uncertainty": ["R6-E21", "R6-E22", "R6-E23", "R6-E24"],
+      "invented_uncertainty": "R6-E12",
+      "preserved_causal_qualification": "R6-E18",
+      "incorrect_causal_promotion": "R6-E11",
+      "reordered_faithful_summary": ["R6-E14", "R6-E19"],
+      "cross_sentence_dependency": ["R6-E10", "R6-E23"],
+      "harmless_omission": "R6-E17"
+    },
+    "corpus_revision_before_execution": {
+      "revision": "R6-E12 was replaced before held-out execution. The original negation-reversal case was removed because invented uncertainty was a required held-out category and was absent. Negation reversal remains represented in R6-E04.",
+      "executed_before_freeze": false
+    }
+  },
+  "hard_gates": [
+    {
+      "id": "HG1",
+      "name": "No material false acceptance",
+      "criterion": "Zero held-out corruption cases receive policy USE_TRANSFORMATION. Any single material false acceptance blocks adoption.",
+      "blocker": true
+    },
+    {
+      "id": "HG2",
+      "name": "Corruption detection",
+      "criterion": "At least 10 of the 12 held-out corruption cases are detected with the expected finding type and distinction, a matching source span, and a matching transformation span when the reference specifies one.",
+      "threshold": ">=10/12",
+      "blocker": true
+    },
+    {
+      "id": "HG3",
+      "name": "False-rejection non-regression",
+      "criterion": "R6 false rejections on the eight held-out faithful cases are no worse than R5 false rejections on the same eight cases. A false rejection is policy PRESERVE_SOURCE on a faithful case.",
+      "threshold": "R6_false_rejections <= R5_false_rejections",
+      "blocker": true
+    },
+    {
+      "id": "HG4",
+      "name": "Uncertainty separation",
+      "criterion": "For R6-E21 through R6-E24, UNRESOLVED is present and no UNSUPPORTED_UNCERTAINTY finding is present. For R6-E12, UNSUPPORTED_UNCERTAINTY is present and no UNRESOLVED finding is present. No held-out case contains both UNRESOLVED and UNSUPPORTED_UNCERTAINTY as primary findings.",
+      "threshold": "4/4 justified and 1/1 invented clean; zero dual-primary cases",
+      "blocker": true
+    },
+    {
+      "id": "HG5",
+      "name": "No fabricated equivalence",
+      "criterion": "Every USE_TRANSFORMATION decision has positive preservation evidence (at least one PRESERVED_CANDIDATE finding) and no MATERIAL, UNRESOLVED or NOT_ASSESSED finding. Silence is never treated as equivalence. Any case with no findings is reported as NOT_ASSESSED and cannot receive USE_TRANSFORMATION.",
+      "threshold": "zero violations",
+      "blocker": true
+    }
+  ],
+  "secondary_targets": [
+    {
+      "id": "ST1",
+      "name": "Faithful acceptance",
+      "target": "At least 7 of 8 held-out faithful cases receive USE_TRANSFORMATION; zero false rejections is the preferred result.",
+      "blocker": false
+    },
+    {
+      "id": "ST2",
+      "name": "Ambiguity routing",
+      "target": "4 of 4 held-out ambiguity cases receive REQUEST_CLARIFICATION.",
+      "blocker": false
+    },
+    {
+      "id": "ST3",
+      "name": "Policy accuracy",
+      "target": "At least 22 of 24 held-out cases receive the reference policy.",
+      "blocker": false
+    },
+    {
+      "id": "ST4",
+      "name": "Evidence grounding",
+      "target": "All matched corruption findings have a source span. Transformation grounding is reported separately, including expected findings that specify no transformation quote.",
+      "blocker": false
+    }
+  ],
+  "required_reporting": [
+    "Per-case outcomes, not only aggregate accuracy.",
+    "Corruption detection, corruption misses and material false acceptances.",
+    "Faithful acceptance and false rejections.",
+    "Ambiguity separation and policy correctness.",
+    "Source and transformation evidence grounding.",
+    "Counts of NOT_ASSESSED and UNRESOLVED, not silently excluded.",
+    "Constraint comparisons and epistemic judgments for each case.",
+    "R5 and R6 measured on the same frozen cases, with paired per-case changes.",
+    "Implementation complexity and the number of new rule patterns.",
+    "Explicit architectural decision: CONTINUE, REVISE_ARCHITECTURE or STOP_THIS_APPROACH."
+  ],
+  "decision_rule": {
+    "continue": "All hard gates pass, R6 shows a credible paired improvement over R5, and the fixes generalise through constraint and epistemic rules rather than case-specific fixtures. CONTINUE still requires independent adjudication before any integration.",
+    "revise_architecture": "At least one hard gate fails, or all hard gates pass but R6 remains dependent on a growing set of case-specific lexical rules, or the improvement is narrow relative to the added complexity. Local rules may remain useful, but they are not reliable as the main semantic comparison mechanism.",
+    "stop_this_approach": "Multiple hard gates fail, especially a material false acceptance combined with detection below 10/12 or no measurable improvement over R5, or the evidence shows the rule-based design cannot separate material change from faithful paraphrase without unbounded case-specific rules.",
+    "not_automatic": "CONTINUE is not the default. The decision must cite the measured gates and the paired R5 comparison."
+  },
+  "notes": [
+    "The author-constructed references are provisional and are not independent human adjudication.",
+    "Passing these gates is experimental qualification, not proof of production safety.",
+    "No hosted model is used. No Studio communication integration, manuscript change, commit or push is permitted.",
+    "Historical R1-R5 artifacts and hashes remain frozen and must not be edited."
+  ]
+}

@@ -1,0 +1,19 @@
+{
+  "status": "PREPARATION_PASS_LIVE_BLOCKED_PENDING_APPROVAL_AND_SERVICE_USE",
+  "studio_tests": {
+    "pass": 39,
+    "fail": 0,
+    "skip": 0
+  },
+  "parent": {
+    "typecheck": "PASS",
+    "pass": 1114,
+    "skip": 3,
+    "fail": 0
+  },
+  "real_provider_requests": 0,
+  "human_acceptance": "NOT_PERFORMED",
+  "remote_transport": "NOT_TESTED_LIVE",
+  "communication_reconstruction": "NOT_ASSESSED",
+  "comparative_advantage": "NOT_TESTED_NOT_CLAIMED"
+}

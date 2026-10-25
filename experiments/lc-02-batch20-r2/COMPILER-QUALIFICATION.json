@@ -1,0 +1,158 @@
+{
+  "schema": "lc02-r2-compiler-qualification/0.1",
+  "standing": "OFFLINE_QUALIFICATION_NOT_SEMANTIC_CERTIFICATION",
+  "python": "C:\\Projects\\project-language\\.venv\\Scripts\\python.exe",
+  "probe": {
+    "python_version": "3.13.15",
+    "spacy_version": "3.8.16",
+    "installed_models": []
+  },
+  "profile": {
+    "id": "technical-policy",
+    "version": "0.2",
+    "sha256": "12287d00977aa52dcc4b142c6bb2829bf72c4636ce7a9cde6caea4b7d2dd669b",
+    "file_sha256": "9d961fac646c1c164019c55b1eaa3f75748f42b47e3aad7862bc50181cdd4a75",
+    "path": "C:\\Projects\\project-language\\core\\understanding\\python\\profiles\\technical-policy.json"
+  },
+  "engine": {
+    "id": "spacy/blank-en+sentencizer",
+    "version": "0.2.0",
+    "nltk_version": "3.10.4",
+    "spacy_version": "3.8.16",
+    "trained_syntax_available": false,
+    "trained_model_requested": "en_core_web_sm",
+    "fallback_reason": "SPACY_MODEL_NOT_INSTALLED"
+  },
+  "trained_syntax_available": false,
+  "fallback_reason": "SPACY_MODEL_NOT_INSTALLED",
+  "controls": [
+    {
+      "case_id": "R1E-01",
+      "control": "POSITIVE_CONTROL_FULLY_SPECIFIED_PERMISSION",
+      "source": "The on-call engineer may fail over to the secondary region when the primary region has been unavailable for ten continuous minutes. Monitoring shows the primary region unavailable for twelve continuous minutes. No other condition applies.",
+      "engine": {
+        "id": "spacy/blank-en+sentencizer",
+        "version": "0.2.0",
+        "nltk_version": "3.10.4",
+        "spacy_version": "3.8.16",
+        "trained_syntax_available": false,
+        "trained_model_requested": "en_core_web_sm",
+        "fallback_reason": "SPACY_MODEL_NOT_INSTALLED"
+      },
+      "profile": {
+        "id": "technical-policy",
+        "version": "0.2",
+        "sha256": "12287d00977aa52dcc4b142c6bb2829bf72c4636ce7a9cde6caea4b7d2dd669b"
+      },
+      "segments": 3,
+      "meaning_units": [
+        {
+          "id": "m1",
+          "quote": "The on-call engineer may fail over to the secondary region when the primary region has been unavailable for ten continuous minutes.",
+          "start": 0,
+          "end": 131,
+          "kind": "conditional_permission",
+          "force": "PERMITTED_IN_SOURCE",
+          "condition_cues": [
+            "when"
+          ],
+          "prerequisites": [
+            "the primary region has been unavailable for ten continuous minutes"
+          ],
+          "speaker": "",
+          "possible_unresolved_reference": false
+        },
+        {
+          "id": "m2",
+          "quote": "Monitoring shows the primary region unavailable for twelve continuous minutes.",
+          "start": 132,
+          "end": 210,
+          "kind": "statement",
+          "force": "ASSERTED_IN_SOURCE",
+          "condition_cues": [],
+          "prerequisites": [],
+          "speaker": "",
+          "possible_unresolved_reference": false
+        },
+        {
+          "id": "m3",
+          "quote": "No other condition applies.",
+          "start": 211,
+          "end": 238,
+          "kind": "statement",
+          "force": "ASSERTED_IN_SOURCE",
+          "condition_cues": [],
+          "prerequisites": [],
+          "speaker": "",
+          "possible_unresolved_reference": false
+        }
+      ],
+      "relations": [],
+      "relationship_candidates_implemented": false,
+      "warnings": [
+        "Labels are lexical heuristics, not verified meaning or permissions.",
+        "No cross-sentence relation, coreference, or semantic completeness checker is implemented.",
+        "Semicolon splitting, prerequisite hints and speaker labels are rule-based candidates, not semantic analysis."
+      ]
+    },
+    {
+      "case_id": "R1E-02",
+      "control": "NEGATIVE_CONTROL_FULLY_SPECIFIED_PROHIBITION",
+      "source": "The staging database must not be copied to removable media. The operator proposes copying the staging database to a removable drive.",
+      "engine": {
+        "id": "spacy/blank-en+sentencizer",
+        "version": "0.2.0",
+        "nltk_version": "3.10.4",
+        "spacy_version": "3.8.16",
+        "trained_syntax_available": false,
+        "trained_model_requested": "en_core_web_sm",
+        "fallback_reason": "SPACY_MODEL_NOT_INSTALLED"
+      },
+      "profile": {
+        "id": "technical-policy",
+        "version": "0.2",
+        "sha256": "12287d00977aa52dcc4b142c6bb2829bf72c4636ce7a9cde6caea4b7d2dd669b"
+      },
+      "segments": 2,
+      "meaning_units": [
+        {
+          "id": "m1",
+          "quote": "The staging database must not be copied to removable media.",
+          "start": 0,
+          "end": 59,
+          "kind": "prohibition",
+          "force": "PROHIBITED",
+          "condition_cues": [],
+          "prerequisites": [],
+          "speaker": "",
+          "possible_unresolved_reference": false
+        },
+        {
+          "id": "m2",
+          "quote": "The operator proposes copying the staging database to a removable drive.",
+          "start": 60,
+          "end": 132,
+          "kind": "statement",
+          "force": "ASSERTED_IN_SOURCE",
+          "condition_cues": [],
+          "prerequisites": [],
+          "speaker": "",
+          "possible_unresolved_reference": false
+        }
+      ],
+      "relations": [],
+      "relationship_candidates_implemented": false,
+      "warnings": [
+        "Labels are lexical heuristics, not verified meaning or permissions.",
+        "No cross-sentence relation, coreference, or semantic completeness checker is implemented.",
+        "Semicolon splitting, prerequisite hints and speaker labels are rule-based candidates, not semantic analysis."
+      ]
+    }
+  ],
+  "limitations": [
+    "No trained spaCy model is installed in the selected environment. Blank-English sentence segmentation was used.",
+    "No automatic download was attempted.",
+    "No cross-sentence relationship candidates are implemented; relations remain empty.",
+    "Counts and labels are heuristic candidates, not semantic completeness or correctness."
+  ]
+}

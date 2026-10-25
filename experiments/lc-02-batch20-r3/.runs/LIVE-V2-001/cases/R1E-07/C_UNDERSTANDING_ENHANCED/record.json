@@ -1,0 +1,1517 @@
+{
+  "case_id": "R1E-07",
+  "split": "fresh_evaluation",
+  "arm": "C_UNDERSTANDING_ENHANCED",
+  "result": {
+    "arm": "C_UNDERSTANDING_ENHANCED",
+    "origin": "HOSTED_OPENCODE_GO",
+    "status": "FAILED",
+    "semantic_quality": "NOT_ASSESSED",
+    "error": "INTERPRETER_QUESTION_LEAK"
+  },
+  "source": {
+    "id": "R1E-07-source-v1",
+    "text": "Reviewer: The chair approved the plan after the note. The note does not say whether 'the plan' refers to the rollout plan or the test plan. Reviewer: Did the chair approve the rollout plan?",
+    "hash": "1536f73f2ba74e2f3167fd46ca1ed8ed62536f21e865372aea0f4433ea310892"
+  },
+  "question": {
+    "id": "R1E-07-question-v1",
+    "text": "Did the chair approve the rollout plan?",
+    "scope": "SOURCE_RELATIVE"
+  },
+  "packet": null,
+  "unvalidated_answer": null,
+  "understanding": {
+    "schema": "language-understanding-trial/0.1",
+    "configuration_hash": "af0800880322f776985fc198bbaa8ac6b526737c259a4503537482a5a79f173e",
+    "source": {
+      "id": "bd39618d800ad146bbd1fc2ecee582d61f6794a88721702a26968226142a3889",
+      "schema": "language-understanding-artifact/0.1",
+      "trial_id": "R1E-07-C_UNDERSTANDING_ENHANCED",
+      "stage": "SOURCE",
+      "at": "2026-10-23T19:07:53.053Z",
+      "request": {
+        "source_id": "R1E-07-source-v1",
+        "source_text": "Reviewer: The chair approved the plan after the note. The note does not say whether 'the plan' refers to the rollout plan or the test plan. Reviewer: Did the chair approve the rollout plan?",
+        "profile": "general",
+        "profile_version": "0.1",
+        "context": {
+          "purpose": "Faithful communication to a fresh recipient",
+          "intended_recipient": "Independent reader",
+          "declared_context": {}
+        }
+      },
+      "inventory": {
+        "schema": "language-understanding-inventory/0.1",
+        "offset_unit": "UNICODE_CODE_POINTS",
+        "standing": "HEURISTIC_UNVERIFIED",
+        "source": {
+          "id": "R1E-07-source-v1",
+          "sha256": "1536f73f2ba74e2f3167fd46ca1ed8ed62536f21e865372aea0f4433ea310892",
+          "text": "Reviewer: The chair approved the plan after the note. The note does not say whether 'the plan' refers to the rollout plan or the test plan. Reviewer: Did the chair approve the rollout plan?"
+        },
+        "profile": {
+          "id": "general",
+          "version": "0.1",
+          "schema": "language-understanding-profile/0.1",
+          "sha256": "37e50a276b075d430dbadc58007e944c537cee98a3b141fad8d55081de53d7d2"
+        },
+        "engine": {
+          "id": "spacy/blank-en+sentencizer",
+          "version": "0.2.0",
+          "nltk_version": "3.10.4",
+          "spacy_version": "3.8.16",
+          "trained_syntax_available": false,
+          "trained_model_requested": "en_core_web_sm",
+          "fallback_reason": "SPACY_MODEL_NOT_INSTALLED"
+        },
+        "segments": [
+          {
+            "id": "s1",
+            "start": 0,
+            "end": 53,
+            "text": "Reviewer: The chair approved the plan after the note."
+          },
+          {
+            "id": "s2",
+            "start": 54,
+            "end": 139,
+            "text": "The note does not say whether 'the plan' refers to the rollout plan or the test plan."
+          },
+          {
+            "id": "s3",
+            "start": 140,
+            "end": 189,
+            "text": "Reviewer: Did the chair approve the rollout plan?"
+          }
+        ],
+        "meaning_units": [
+          {
+            "id": "m1",
+            "source_segments": [
+              "s1"
+            ],
+            "start": 0,
+            "end": 53,
+            "source_quote": "Reviewer: The chair approved the plan after the note.",
+            "proposed_meaning": "Reviewer: The chair approved the plan after the note.",
+            "classification": {
+              "kind": "statement",
+              "normative_force": "ASSERTED_IN_SOURCE",
+              "condition_cues": [],
+              "temporal_cues": [
+                "after"
+              ],
+              "possible_unresolved_reference": false,
+              "speaker": "",
+              "prerequisites": [],
+              "method": "LEXICAL_RULE_HEURISTIC",
+              "review": "HEURISTIC_UNVERIFIED"
+            },
+            "provenance": "EXACT_SOURCE_SPAN"
+          },
+          {
+            "id": "m2",
+            "source_segments": [
+              "s2"
+            ],
+            "start": 54,
+            "end": 139,
+            "source_quote": "The note does not say whether 'the plan' refers to the rollout plan or the test plan.",
+            "proposed_meaning": "The note does not say whether 'the plan' refers to the rollout plan or the test plan.",
+            "classification": {
+              "kind": "statement",
+              "normative_force": "ASSERTED_IN_SOURCE",
+              "condition_cues": [],
+              "temporal_cues": [],
+              "possible_unresolved_reference": false,
+              "speaker": "",
+              "prerequisites": [],
+              "method": "LEXICAL_RULE_HEURISTIC",
+              "review": "HEURISTIC_UNVERIFIED"
+            },
+            "provenance": "EXACT_SOURCE_SPAN"
+          },
+          {
+            "id": "m3",
+            "source_segments": [
+              "s3"
+            ],
+            "start": 140,
+            "end": 189,
+            "source_quote": "Reviewer: Did the chair approve the rollout plan?",
+            "proposed_meaning": "Reviewer: Did the chair approve the rollout plan?",
+            "classification": {
+              "kind": "question",
+              "normative_force": "ASKED",
+              "condition_cues": [],
+              "temporal_cues": [],
+              "possible_unresolved_reference": false,
+              "speaker": "",
+              "prerequisites": [],
+              "method": "LEXICAL_RULE_HEURISTIC",
+              "review": "HEURISTIC_UNVERIFIED"
+            },
+            "provenance": "EXACT_SOURCE_SPAN"
+          }
+        ],
+        "relations": [],
+        "context": {
+          "purpose": "Faithful communication to a fresh recipient",
+          "intended_recipient": "Independent reader",
+          "declared_context": {}
+        },
+        "coverage": {
+          "standing": "NOT_EVALUATED",
+          "source_supportedness": "NOT_EVALUATED",
+          "semantic_completeness": "NOT_ESTABLISHED"
+        },
+        "warnings": [
+          "Labels are lexical heuristics, not verified meaning or permissions.",
+          "No cross-sentence relation, coreference, or semantic completeness checker is implemented.",
+          "Semicolon splitting, prerequisite hints and speaker labels are rule-based candidates, not semantic analysis."
+        ]
+      },
+      "compiler": {
+        "profile": {
+          "id": "general",
+          "version": "0.1",
+          "sha256": "37e50a276b075d430dbadc58007e944c537cee98a3b141fad8d55081de53d7d2",
+          "file_sha256": "8db2bd43f2a8515b049f070123bd34070f14e94a3a4f9ebfb1109e6199eb719f",
+          "path": "C:\\Projects\\project-language\\core\\understanding\\python\\profiles\\general.json"
+        },
+        "adapter": "language-understanding-child/0.1",
+        "python": "C:\\Projects\\project-language\\.venv\\Scripts\\python.exe",
+        "timeout_ms": 15000,
+        "max_input_bytes": 262144,
+        "max_output_bytes": 4194304,
+        "require_trained_syntax": false,
+        "source_hashes": {
+          "src/understanding/cli.py": "fdbbaab6d1c51d077046100aef43fcb0fcfac5e278dba1fa30f3a0cddb229ba9",
+          "src/understanding/pipeline.py": "713ddf811112278038b19aaa5995eba929a827e6dee7634d5d5e8d54cba5ed1d",
+          "src/understanding/__init__.py": "c4b5f92990c64643e4907def83a7a62dd00c8bdd3dd738a8ab14c55d523a396f",
+          "src/understanding/contracts.py": "ec17e9c381a22aed695663e4e27ed57f0cdd07491ec78355cb95855a2e08e7d7",
+          "../schemas/request-v0.1.json": "0d1dc60bff65f0baf319fef34d6dd5e141c814d55ed7f865fed629cebd4578c2",
+          "../schemas/inventory-v0.1.json": "aa4c284f4352141ec9fbcc56a51027bdba94e2e588affcaa739fcf2fd8340e5d",
+          "pyproject.toml": "b8b9fb81e47e37041d1fbc7a1a660b35a5b57909a1b370b76826a539af4e8108"
+        },
+        "integration_hashes": {
+          "./workflow.mjs": "3b435c25171ef5dd66785ad93b132c0ed67f833eab63bdd9bd0cff36f5e4bc25",
+          "./analysis.mjs": "c0279d78149f90f6412875dbe0df5eb35f516a90cbd5a235023bb9a93a94ef95",
+          "./decomposition.mjs": "42e5cbc7d12bb55d98d93c5223c8a5edf6eba9de3bfbfe2469ee9ca729c412cb",
+          "../models/prompts.mjs": "5b16ac6b45b60727f8c1467bb6b934e14cd2d9726bb0d750d4f9e9d69cccd32b",
+          "../models/source-anchors.mjs": "04d977f0a67397d568c2c84cf1f6767ea210d6bfb2ecb67c875935909258aa08"
+        }
+      },
+      "provenance": {
+        "source_hash": "1536f73f2ba74e2f3167fd46ca1ed8ed62536f21e865372aea0f4433ea310892"
+      },
+      "standing": "HEURISTIC_UNVERIFIED"
+    },
+    "proposals": [],
+    "deliveries": [],
+    "responses": [],
+    "comparisons": []
+  },
+  "studio": {
+    "schema": "language-studio-export/0.1",
+    "standing": "EXPLORATORY_DEVELOPMENT_NOT_VALIDATION",
+    "replay": "CAPTURED_OUTPUT_ONLY_NO_REGENERATION",
+    "comparison": {
+      "state": null,
+      "cases": [
+        {
+          "id": "lc02-d1",
+          "name": "Readiness and authority",
+          "standing": "EXPOSED_SYNTHETIC_DEVELOPMENT"
+        },
+        {
+          "id": "lc02-d2",
+          "name": "A straightforward boundary",
+          "standing": "EXPOSED_SYNTHETIC_DEVELOPMENT"
+        },
+        {
+          "id": "lc02-d3",
+          "name": "Mediation can invent certainty",
+          "standing": "EXPOSED_SYNTHETIC_DEVELOPMENT"
+        }
+      ],
+      "rubric": [
+        "correct_interpretation",
+        "important_information_retained",
+        "important_information_lost",
+        "unsupported_inferences",
+        "ambiguity_discovered",
+        "handling_unknowns",
+        "decision_quality",
+        "clarification_and_negotiated_correction"
+      ],
+      "evaluation_gate": {
+        "status": "PENDING_INDEPENDENT_CASE_AUTHOR_AND_REVIEW",
+        "cases": [],
+        "reason": "The implementation agent cannot certify its own cases as independently authored and previously unseen. No development case may be relabelled held-out."
+      },
+      "scope": {
+        "id": "lc02u-development-v1",
+        "case_suite": {
+          "id": "lc02-development-v1",
+          "digest": "17d692dd8a0255e2cc92ea6c7993d9ba53b610e3ee1d6b7dfd0598367aea189c",
+          "case_ids": [
+            "lc02-d1",
+            "lc02-d2",
+            "lc02-d3"
+          ],
+          "standing": "EXPOSED_DEVELOPMENT_NOT_CONFIRMATORY"
+        },
+        "understanding": {
+          "profile": {
+            "id": "general",
+            "version": "0.1",
+            "sha256": "37e50a276b075d430dbadc58007e944c537cee98a3b141fad8d55081de53d7d2",
+            "file_sha256": "8db2bd43f2a8515b049f070123bd34070f14e94a3a4f9ebfb1109e6199eb719f",
+            "path": "C:\\Projects\\project-language\\core\\understanding\\python\\profiles\\general.json"
+          },
+          "adapter": "language-understanding-child/0.1",
+          "python": "C:\\Projects\\project-language\\.venv\\Scripts\\python.exe",
+          "timeout_ms": 15000,
+          "max_input_bytes": 262144,
+          "max_output_bytes": 4194304,
+          "require_trained_syntax": false,
+          "source_hashes": {
+            "src/understanding/cli.py": "fdbbaab6d1c51d077046100aef43fcb0fcfac5e278dba1fa30f3a0cddb229ba9",
+            "src/understanding/pipeline.py": "713ddf811112278038b19aaa5995eba929a827e6dee7634d5d5e8d54cba5ed1d",
+            "src/understanding/__init__.py": "c4b5f92990c64643e4907def83a7a62dd00c8bdd3dd738a8ab14c55d523a396f",
+            "src/understanding/contracts.py": "ec17e9c381a22aed695663e4e27ed57f0cdd07491ec78355cb95855a2e08e7d7",
+            "../schemas/request-v0.1.json": "0d1dc60bff65f0baf319fef34d6dd5e141c814d55ed7f865fed629cebd4578c2",
+            "../schemas/inventory-v0.1.json": "aa4c284f4352141ec9fbcc56a51027bdba94e2e588affcaa739fcf2fd8340e5d",
+            "pyproject.toml": "b8b9fb81e47e37041d1fbc7a1a660b35a5b57909a1b370b76826a539af4e8108"
+          },
+          "integration_hashes": {
+            "./workflow.mjs": "3b435c25171ef5dd66785ad93b132c0ed67f833eab63bdd9bd0cff36f5e4bc25",
+            "./analysis.mjs": "c0279d78149f90f6412875dbe0df5eb35f516a90cbd5a235023bb9a93a94ef95",
+            "./decomposition.mjs": "42e5cbc7d12bb55d98d93c5223c8a5edf6eba9de3bfbfe2469ee9ca729c412cb",
+            "../models/prompts.mjs": "5b16ac6b45b60727f8c1467bb6b934e14cd2d9726bb0d750d4f9e9d69cccd32b",
+            "../models/source-anchors.mjs": "04d977f0a67397d568c2c84cf1f6767ea210d6bfb2ecb67c875935909258aa08"
+          }
+        },
+        "digest": "652e28cd902c06fdfbcf5e3504a6d0c6d20a8c938ccd69a80b521f7c339782b4"
+      }
+    },
+    "comparison_plan": {
+      "schema": "studio-remote-plan/0.1r",
+      "provider": "opencode-go",
+      "task_identity": {
+        "id": "lc02u-development-v1",
+        "case_suite": {
+          "id": "lc02-development-v1",
+          "digest": "17d692dd8a0255e2cc92ea6c7993d9ba53b610e3ee1d6b7dfd0598367aea189c",
+          "case_ids": [
+            "lc02-d1",
+            "lc02-d2",
+            "lc02-d3"
+          ],
+          "standing": "EXPOSED_DEVELOPMENT_NOT_CONFIRMATORY"
+        },
+        "understanding": {
+          "profile": {
+            "id": "general",
+            "version": "0.1",
+            "sha256": "37e50a276b075d430dbadc58007e944c537cee98a3b141fad8d55081de53d7d2",
+            "file_sha256": "8db2bd43f2a8515b049f070123bd34070f14e94a3a4f9ebfb1109e6199eb719f",
+            "path": "C:\\Projects\\project-language\\core\\understanding\\python\\profiles\\general.json"
+          },
+          "adapter": "language-understanding-child/0.1",
+          "python": "C:\\Projects\\project-language\\.venv\\Scripts\\python.exe",
+          "timeout_ms": 15000,
+          "max_input_bytes": 262144,
+          "max_output_bytes": 4194304,
+          "require_trained_syntax": false,
+          "source_hashes": {
+            "src/understanding/cli.py": "fdbbaab6d1c51d077046100aef43fcb0fcfac5e278dba1fa30f3a0cddb229ba9",
+            "src/understanding/pipeline.py": "713ddf811112278038b19aaa5995eba929a827e6dee7634d5d5e8d54cba5ed1d",
+            "src/understanding/__init__.py": "c4b5f92990c64643e4907def83a7a62dd00c8bdd3dd738a8ab14c55d523a396f",
+            "src/understanding/contracts.py": "ec17e9c381a22aed695663e4e27ed57f0cdd07491ec78355cb95855a2e08e7d7",
+            "../schemas/request-v0.1.json": "0d1dc60bff65f0baf319fef34d6dd5e141c814d55ed7f865fed629cebd4578c2",
+            "../schemas/inventory-v0.1.json": "aa4c284f4352141ec9fbcc56a51027bdba94e2e588affcaa739fcf2fd8340e5d",
+            "pyproject.toml": "b8b9fb81e47e37041d1fbc7a1a660b35a5b57909a1b370b76826a539af4e8108"
+          },
+          "integration_hashes": {
+            "./workflow.mjs": "3b435c25171ef5dd66785ad93b132c0ed67f833eab63bdd9bd0cff36f5e4bc25",
+            "./analysis.mjs": "c0279d78149f90f6412875dbe0df5eb35f516a90cbd5a235023bb9a93a94ef95",
+            "./decomposition.mjs": "42e5cbc7d12bb55d98d93c5223c8a5edf6eba9de3bfbfe2469ee9ca729c412cb",
+            "../models/prompts.mjs": "5b16ac6b45b60727f8c1467bb6b934e14cd2d9726bb0d750d4f9e9d69cccd32b",
+            "../models/source-anchors.mjs": "04d977f0a67397d568c2c84cf1f6767ea210d6bfb2ecb67c875935909258aa08"
+          }
+        },
+        "digest": "652e28cd902c06fdfbcf5e3504a6d0c6d20a8c938ccd69a80b521f7c339782b4"
+      },
+      "models": [
+        {
+          "role": "interpreter",
+          "model": "opencode-go/deepseek-v4.1-flash",
+          "metadata": {
+            "id": "opencode-go/deepseek-v4.1-flash",
+            "provider": "opencode-go",
+            "local": false,
+            "api_family": "openai-completions",
+            "base_url": "https://opencode.ai/inference/go/openai/v1",
+            "expected_route": "https://opencode.ai/inference/go/openai/v1/chat/completions",
+            "context_window": 1000000,
+            "output_limit": 384000,
+            "input_modalities": [
+              "text",
+              "image"
+            ],
+            "output_modalities": [
+              "text"
+            ],
+            "structured_output": "PROMPTED_JSON_STRICT_HOST_VALIDATION",
+            "reasoning": "Pi simple-stream default; no reasoning-token inference",
+            "price_per_million": {
+              "input": 0.3,
+              "output": 1.2,
+              "cacheRead": 0.006,
+              "cacheWrite": 0
+            },
+            "availability": "SCOPED_REGISTERED_NOT_LIVE_PROBED",
+            "qualification": "OFFLINE_TEST_REQUIRED",
+            "metadata_origin": "PINNED_PI_1.0.4_WITH_DOCUMENTED_ENDPOINT_OVERLAY",
+            "config_hash": "78020e5ed7246fa4f787cd8b1f72f721c41caba22e72a20fcf56f07937ebe7ad"
+          },
+          "output_tokens": 16384
+        },
+        {
+          "role": "challenger",
+          "model": "opencode-go/gpt-6-luna",
+          "metadata": {
+            "id": "opencode-go/gpt-6-luna",
+            "provider": "opencode-go",
+            "local": false,
+            "api_family": "openai-responses",
+            "base_url": "https://opencode.ai/inference/go/openai/v1",
+            "expected_route": "https://opencode.ai/inference/go/openai/v1/responses",
+            "context_window": 1050000,
+            "output_limit": 128000,
+            "input_modalities": [
+              "text",
+              "image"
+            ],
+            "output_modalities": [
+              "text"
+            ],
+            "structured_output": "PROMPTED_JSON_STRICT_HOST_VALIDATION",
+            "reasoning": "Pi simple-stream default; no reasoning-token inference",
+            "price_per_million": {
+              "input": 0.1,
+              "output": 0.5,
+              "cacheRead": 0.01,
+              "cacheWrite": 0.125
+            },
+            "availability": "SCOPED_REGISTERED_NOT_LIVE_PROBED",
+            "qualification": "OFFLINE_TEST_REQUIRED",
+            "metadata_origin": "PINNED_PI_1.0.4_WITH_DOCUMENTED_ENDPOINT_OVERLAY",
+            "config_hash": "78020e5ed7246fa4f787cd8b1f72f721c41caba22e72a20fcf56f07937ebe7ad"
+          },
+          "output_tokens": 16384
+        },
+        {
+          "role": "mediator",
+          "model": "opencode-go/deepseek-v4.1-flash",
+          "metadata": {
+            "id": "opencode-go/deepseek-v4.1-flash",
+            "provider": "opencode-go",
+            "local": false,
+            "api_family": "openai-completions",
+            "base_url": "https://opencode.ai/inference/go/openai/v1",
+            "expected_route": "https://opencode.ai/inference/go/openai/v1/chat/completions",
+            "context_window": 1000000,
+            "output_limit": 384000,
+            "input_modalities": [
+              "text",
+              "image"
+            ],
+            "output_modalities": [
+              "text"
+            ],
+            "structured_output": "PROMPTED_JSON_STRICT_HOST_VALIDATION",
+            "reasoning": "Pi simple-stream default; no reasoning-token inference",
+            "price_per_million": {
+              "input": 0.3,
+              "output": 1.2,
+              "cacheRead": 0.006,
+              "cacheWrite": 0
+            },
+            "availability": "SCOPED_REGISTERED_NOT_LIVE_PROBED",
+            "qualification": "OFFLINE_TEST_REQUIRED",
+            "metadata_origin": "PINNED_PI_1.0.4_WITH_DOCUMENTED_ENDPOINT_OVERLAY",
+            "config_hash": "78020e5ed7246fa4f787cd8b1f72f721c41caba22e72a20fcf56f07937ebe7ad"
+          },
+          "output_tokens": 16384
+        },
+        {
+          "role": "recipient",
+          "model": "opencode-go/qwen3.8-flash",
+          "metadata": {
+            "id": "opencode-go/qwen3.8-flash",
+            "provider": "opencode-go",
+            "local": false,
+            "api_family": "anthropic-messages",
+            "base_url": "https://opencode.ai/inference/go/anthropic",
+            "expected_route": "https://opencode.ai/inference/go/anthropic/v1/messages",
+            "context_window": 1000000,
+            "output_limit": 131072,
+            "input_modalities": [
+              "text",
+              "image"
+            ],
+            "output_modalities": [
+              "text"
+            ],
+            "structured_output": "PROMPTED_JSON_STRICT_HOST_VALIDATION",
+            "reasoning": "Pi simple-stream default; no reasoning-token inference",
+            "price_per_million": {
+              "input": 0.15,
+              "output": 0.47,
+              "cacheRead": 0.016,
+              "cacheWrite": 0.2
+            },
+            "availability": "SCOPED_REGISTERED_NOT_LIVE_PROBED",
+            "qualification": "OFFLINE_TEST_REQUIRED",
+            "metadata_origin": "PINNED_PI_1.0.4_WITH_DOCUMENTED_ENDPOINT_OVERLAY",
+            "config_hash": "78020e5ed7246fa4f787cd8b1f72f721c41caba22e72a20fcf56f07937ebe7ad"
+          },
+          "output_tokens": 16384
+        },
+        {
+          "role": "advisory_evaluator",
+          "model": "opencode-go/claude-haiku-5-5",
+          "metadata": {
+            "id": "opencode-go/claude-haiku-5-5",
+            "provider": "opencode-go",
+            "local": false,
+            "api_family": "anthropic-messages",
+            "base_url": "https://opencode.ai/inference/go/anthropic",
+            "expected_route": "https://opencode.ai/inference/go/anthropic/v1/messages",
+            "context_window": 1000000,
+            "output_limit": 128000,
+            "input_modalities": [
+              "text",
+              "image"
+            ],
+            "output_modalities": [
+              "text"
+            ],
+            "structured_output": "PROMPTED_JSON_STRICT_HOST_VALIDATION",
+            "reasoning": "Pi simple-stream default; no reasoning-token inference",
+            "price_per_million": {
+              "input": 0.1,
+              "output": 0.5,
+              "cacheRead": 0.01,
+              "cacheWrite": 0.125,
+              "tiers": [
+                {
+                  "inputTokensAbove": 100000,
+                  "input": 0.5,
+                  "output": 2.5,
+                  "cacheRead": 0.05,
+                  "cacheWrite": 0.625
+                }
+              ]
+            },
+            "availability": "SCOPED_REGISTERED_NOT_LIVE_PROBED",
+            "qualification": "OFFLINE_TEST_REQUIRED",
+            "metadata_origin": "MANAGED_PI_1.4.0_SCOPED_REGISTRATION",
+            "config_hash": "78020e5ed7246fa4f787cd8b1f72f721c41caba22e72a20fcf56f07937ebe7ad"
+          },
+          "output_tokens": 16384
+        }
+      ],
+      "settings": {
+        "max_requests": 12,
+        "budget_usd": 10,
+        "max_input_bytes": 60000,
+        "max_response_bytes": 33554432,
+        "timeout_ms": 180000,
+        "output_tokens": {
+          "interpreter": 16384,
+          "challenger": 16384,
+          "mediator": 16384,
+          "recipient": 16384,
+          "advisory_evaluator": 16384
+        },
+        "automatic_retries": 0
+      },
+      "config_hash": "78020e5ed7246fa4f787cd8b1f72f721c41caba22e72a20fcf56f07937ebe7ad",
+      "offline_qualification_identity": null,
+      "expected_workflow_calls": 3,
+      "with_mediation_calls": 4,
+      "with_comparison_calls": 5,
+      "maximum_actual_requests": 12,
+      "conservative_estimate_usd": 0.94152,
+      "per_request_reservation_usd": 0.07846,
+      "estimate_standing": "CATALOGUE_BOUND_NOT_INVOICE; UTF8_BYTES_AS_INPUT_TOKEN_BOUND",
+      "service_use": "OPERATOR_MUST_CONFIRM_GO_WORKLOAD_APPROPRIATENESS",
+      "fallback": false,
+      "hash": "7b71040af9d4e3f154b1fc96f947531ac6c0c277fbc70dd9383ebea042564fae",
+      "launcher_remote_enabled": true,
+      "credential_available": true,
+      "approval_required": false,
+      "execution_policy": "DIRECT_USER_REQUEST",
+      "approval_active": true,
+      "requests_used": 1,
+      "reserved_usd": 0.07846,
+      "last_errors": {},
+      "advisory_evaluator_status": "OPTIONAL_NOT_RUN"
+    },
+    "manual_plan": {
+      "schema": "studio-remote-plan/0.1r",
+      "provider": "opencode-go",
+      "task_identity": {
+        "id": "museum-loan-m12",
+        "digest": "e22911925db7424b874b94b44a60e9250a68e0f0b0b0db5d09713aa754fb28b4",
+        "source_hash": "277b9050c46b1df5f9794bda17829e2acf450e6c4afaf79a7e21cf4692447228",
+        "question_hash": "0f71abc5fbc41f4fb5e3474a0efa15eb02aa33fe6642e99a27688a1fa89fb390",
+        "reference_standing": "UNADJUDICATED_REFERENCE"
+      },
+      "models": [
+        {
+          "role": "interpreter",
+          "model": "opencode-go/deepseek-v4.1-flash",
+          "metadata": {
+            "id": "opencode-go/deepseek-v4.1-flash",
+            "provider": "opencode-go",
+            "local": false,
+            "api_family": "openai-completions",
+            "base_url": "https://opencode.ai/inference/go/openai/v1",
+            "expected_route": "https://opencode.ai/inference/go/openai/v1/chat/completions",
+            "context_window": 1000000,
+            "output_limit": 384000,
+            "input_modalities": [
+              "text",
+              "image"
+            ],
+            "output_modalities": [
+              "text"
+            ],
+            "structured_output": "PROMPTED_JSON_STRICT_HOST_VALIDATION",
+            "reasoning": "Pi simple-stream default; no reasoning-token inference",
+            "price_per_million": {
+              "input": 0.3,
+              "output": 1.2,
+              "cacheRead": 0.006,
+              "cacheWrite": 0
+            },
+            "availability": "SCOPED_REGISTERED_NOT_LIVE_PROBED",
+            "qualification": "OFFLINE_TEST_REQUIRED",
+            "metadata_origin": "PINNED_PI_1.0.4_WITH_DOCUMENTED_ENDPOINT_OVERLAY",
+            "config_hash": "78020e5ed7246fa4f787cd8b1f72f721c41caba22e72a20fcf56f07937ebe7ad"
+          },
+          "output_tokens": 16384
+        },
+        {
+          "role": "challenger",
+          "model": "opencode-go/gpt-6-luna",
+          "metadata": {
+            "id": "opencode-go/gpt-6-luna",
+            "provider": "opencode-go",
+            "local": false,
+            "api_family": "openai-responses",
+            "base_url": "https://opencode.ai/inference/go/openai/v1",
+            "expected_route": "https://opencode.ai/inference/go/openai/v1/responses",
+            "context_window": 1050000,
+            "output_limit": 128000,
+            "input_modalities": [
+              "text",
+              "image"
+            ],
+            "output_modalities": [
+              "text"
+            ],
+            "structured_output": "PROMPTED_JSON_STRICT_HOST_VALIDATION",
+            "reasoning": "Pi simple-stream default; no reasoning-token inference",
+            "price_per_million": {
+              "input": 0.1,
+              "output": 0.5,
+              "cacheRead": 0.01,
+              "cacheWrite": 0.125
+            },
+            "availability": "SCOPED_REGISTERED_NOT_LIVE_PROBED",
+            "qualification": "OFFLINE_TEST_REQUIRED",
+            "metadata_origin": "PINNED_PI_1.0.4_WITH_DOCUMENTED_ENDPOINT_OVERLAY",
+            "config_hash": "78020e5ed7246fa4f787cd8b1f72f721c41caba22e72a20fcf56f07937ebe7ad"
+          },
+          "output_tokens": 16384
+        },
+        {
+          "role": "mediator",
+          "model": "opencode-go/deepseek-v4.1-flash",
+          "metadata": {
+            "id": "opencode-go/deepseek-v4.1-flash",
+            "provider": "opencode-go",
+            "local": false,
+            "api_family": "openai-completions",
+            "base_url": "https://opencode.ai/inference/go/openai/v1",
+            "expected_route": "https://opencode.ai/inference/go/openai/v1/chat/completions",
+            "context_window": 1000000,
+            "output_limit": 384000,
+            "input_modalities": [
+              "text",
+              "image"
+            ],
+            "output_modalities": [
+              "text"
+            ],
+            "structured_output": "PROMPTED_JSON_STRICT_HOST_VALIDATION",
+            "reasoning": "Pi simple-stream default; no reasoning-token inference",
+            "price_per_million": {
+              "input": 0.3,
+              "output": 1.2,
+              "cacheRead": 0.006,
+              "cacheWrite": 0
+            },
+            "availability": "SCOPED_REGISTERED_NOT_LIVE_PROBED",
+            "qualification": "OFFLINE_TEST_REQUIRED",
+            "metadata_origin": "PINNED_PI_1.0.4_WITH_DOCUMENTED_ENDPOINT_OVERLAY",
+            "config_hash": "78020e5ed7246fa4f787cd8b1f72f721c41caba22e72a20fcf56f07937ebe7ad"
+          },
+          "output_tokens": 16384
+        },
+        {
+          "role": "recipient",
+          "model": "opencode-go/qwen3.8-flash",
+          "metadata": {
+            "id": "opencode-go/qwen3.8-flash",
+            "provider": "opencode-go",
+            "local": false,
+            "api_family": "anthropic-messages",
+            "base_url": "https://opencode.ai/inference/go/anthropic",
+            "expected_route": "https://opencode.ai/inference/go/anthropic/v1/messages",
+            "context_window": 1000000,
+            "output_limit": 131072,
+            "input_modalities": [
+              "text",
+              "image"
+            ],
+            "output_modalities": [
+              "text"
+            ],
+            "structured_output": "PROMPTED_JSON_STRICT_HOST_VALIDATION",
+            "reasoning": "Pi simple-stream default; no reasoning-token inference",
+            "price_per_million": {
+              "input": 0.15,
+              "output": 0.47,
+              "cacheRead": 0.016,
+              "cacheWrite": 0.2
+            },
+            "availability": "SCOPED_REGISTERED_NOT_LIVE_PROBED",
+            "qualification": "OFFLINE_TEST_REQUIRED",
+            "metadata_origin": "PINNED_PI_1.0.4_WITH_DOCUMENTED_ENDPOINT_OVERLAY",
+            "config_hash": "78020e5ed7246fa4f787cd8b1f72f721c41caba22e72a20fcf56f07937ebe7ad"
+          },
+          "output_tokens": 16384
+        },
+        {
+          "role": "advisory_evaluator",
+          "model": "opencode-go/claude-haiku-5-5",
+          "metadata": {
+            "id": "opencode-go/claude-haiku-5-5",
+            "provider": "opencode-go",
+            "local": false,
+            "api_family": "anthropic-messages",
+            "base_url": "https://opencode.ai/inference/go/anthropic",
+            "expected_route": "https://opencode.ai/inference/go/anthropic/v1/messages",
+            "context_window": 1000000,
+            "output_limit": 128000,
+            "input_modalities": [
+              "text",
+              "image"
+            ],
+            "output_modalities": [
+              "text"
+            ],
+            "structured_output": "PROMPTED_JSON_STRICT_HOST_VALIDATION",
+            "reasoning": "Pi simple-stream default; no reasoning-token inference",
+            "price_per_million": {
+              "input": 0.1,
+              "output": 0.5,
+              "cacheRead": 0.01,
+              "cacheWrite": 0.125,
+              "tiers": [
+                {
+                  "inputTokensAbove": 100000,
+                  "input": 0.5,
+                  "output": 2.5,
+                  "cacheRead": 0.05,
+                  "cacheWrite": 0.625
+                }
+              ]
+            },
+            "availability": "SCOPED_REGISTERED_NOT_LIVE_PROBED",
+            "qualification": "OFFLINE_TEST_REQUIRED",
+            "metadata_origin": "MANAGED_PI_1.4.0_SCOPED_REGISTRATION",
+            "config_hash": "78020e5ed7246fa4f787cd8b1f72f721c41caba22e72a20fcf56f07937ebe7ad"
+          },
+          "output_tokens": 16384
+        }
+      ],
+      "settings": {
+        "max_requests": 12,
+        "budget_usd": 10,
+        "max_input_bytes": 60000,
+        "max_response_bytes": 33554432,
+        "timeout_ms": 180000,
+        "output_tokens": {
+          "interpreter": 16384,
+          "challenger": 16384,
+          "mediator": 16384,
+          "recipient": 16384,
+          "advisory_evaluator": 16384
+        },
+        "automatic_retries": 0
+      },
+      "config_hash": "78020e5ed7246fa4f787cd8b1f72f721c41caba22e72a20fcf56f07937ebe7ad",
+      "offline_qualification_identity": null,
+      "expected_workflow_calls": 3,
+      "with_mediation_calls": 4,
+      "with_comparison_calls": 5,
+      "maximum_actual_requests": 12,
+      "conservative_estimate_usd": 0.94152,
+      "per_request_reservation_usd": 0.07846,
+      "estimate_standing": "CATALOGUE_BOUND_NOT_INVOICE; UTF8_BYTES_AS_INPUT_TOKEN_BOUND",
+      "service_use": "OPERATOR_MUST_CONFIRM_GO_WORKLOAD_APPROPRIATENESS",
+      "fallback": false,
+      "hash": "c1e6a81b14b40afd0ec1b50f3d90b0753d8f50ccdb0dac8d6d1cc3bfea65c9aa",
+      "launcher_remote_enabled": true,
+      "credential_available": true,
+      "approval_required": false,
+      "execution_policy": "DIRECT_USER_REQUEST",
+      "approval_active": true,
+      "requests_used": 1,
+      "reserved_usd": 0.07846,
+      "last_errors": {},
+      "advisory_evaluator_status": "OPTIONAL_NOT_RUN"
+    },
+    "comparison_mode": "opencode",
+    "exchange": {
+      "id": "6e30c672-49a5-4431-99e7-f2337bf9b60e",
+      "scenario": "museum-loan-m12",
+      "task_identity": {
+        "id": "museum-loan-m12",
+        "digest": "e22911925db7424b874b94b44a60e9250a68e0f0b0b0db5d09713aa754fb28b4",
+        "source_hash": "277b9050c46b1df5f9794bda17829e2acf450e6c4afaf79a7e21cf4692447228",
+        "question_hash": "0f71abc5fbc41f4fb5e3474a0efa15eb02aa33fe6642e99a27688a1fa89fb390",
+        "reference_standing": "UNADJUDICATED_REFERENCE"
+      },
+      "created_at": "2026-10-23T19:07:51.538Z",
+      "intent": "Communicate this source faithfully, preserving attribution, conditions, exceptions, scope and uncertainty. Do not grant action authority.",
+      "original_intent": "Communicate this source faithfully, preserving attribution, conditions, exceptions, scope and uncertainty. Do not grant action authority.",
+      "purpose": "Faithful communication to a fresh recipient",
+      "audience": "Independent reader",
+      "source": {
+        "id": "R1E-07-source-v1",
+        "text": "Reviewer: The chair approved the plan after the note. The note does not say whether 'the plan' refers to the rollout plan or the test plan. Reviewer: Did the chair approve the rollout plan?",
+        "hash": "1536f73f2ba74e2f3167fd46ca1ed8ed62536f21e865372aea0f4433ea310892"
+      },
+      "versions": [],
+      "transfers": [],
+      "question_revealed": false
+    },
+    "events": [
+      {
+        "seq": 0,
+        "previous": null,
+        "at": "2026-10-23T19:07:51.534Z",
+        "type": "USER_SETTINGS_APPLIED",
+        "data": {
+          "understanding": {
+            "profile": "general",
+            "python_executable": "",
+            "timeout_ms": 15000
+          },
+          "version": 2,
+          "comparison_mode": "opencode",
+          "roles": {
+            "interpreter": "opencode-go/deepseek-v4.1-flash",
+            "challenger": "opencode-go/gpt-6-luna",
+            "mediator": "opencode-go/deepseek-v4.1-flash",
+            "recipient": "opencode-go/qwen3.8-flash",
+            "advisory_evaluator": "opencode-go/claude-haiku-5-5"
+          },
+          "limits": {
+            "max_requests": 12,
+            "budget_usd": 10,
+            "max_input_bytes": 60000,
+            "max_response_bytes": 33554432,
+            "timeout_ms": 180000,
+            "automatic_retries": 0,
+            "output_tokens": {
+              "interpreter": 16384,
+              "challenger": 16384,
+              "mediator": 16384,
+              "recipient": 16384,
+              "advisory_evaluator": 16384
+            }
+          },
+          "execution_policy": "DIRECT_USER_REQUEST"
+        },
+        "digest": "57ea7defdf0192f711b7680f5bd1c530a2e4fedf7495039ecc9ed68a44bad83e"
+      },
+      {
+        "seq": 1,
+        "previous": "57ea7defdf0192f711b7680f5bd1c530a2e4fedf7495039ecc9ed68a44bad83e",
+        "at": "2026-10-23T19:07:51.538Z",
+        "type": "STATE",
+        "data": {
+          "id": "6e30c672-49a5-4431-99e7-f2337bf9b60e",
+          "scenario": "museum-loan-m12",
+          "task_identity": {
+            "id": "museum-loan-m12",
+            "digest": "e22911925db7424b874b94b44a60e9250a68e0f0b0b0db5d09713aa754fb28b4",
+            "source_hash": "277b9050c46b1df5f9794bda17829e2acf450e6c4afaf79a7e21cf4692447228",
+            "question_hash": "0f71abc5fbc41f4fb5e3474a0efa15eb02aa33fe6642e99a27688a1fa89fb390",
+            "reference_standing": "UNADJUDICATED_REFERENCE"
+          },
+          "created_at": "2026-10-23T19:07:51.538Z",
+          "intent": "Communicate this source faithfully, preserving attribution, conditions, exceptions, scope and uncertainty. Do not grant action authority.",
+          "original_intent": "Communicate this source faithfully, preserving attribution, conditions, exceptions, scope and uncertainty. Do not grant action authority.",
+          "purpose": "Communicate museum handling policy",
+          "audience": "Independent reader",
+          "source": {
+            "id": "museum-policy-m12",
+            "text": "Reviewer: The chair approved the plan after the note. The note does not say whether 'the plan' refers to the rollout plan or the test plan. Reviewer: Did the chair approve the rollout plan?",
+            "hash": "1536f73f2ba74e2f3167fd46ca1ed8ed62536f21e865372aea0f4433ea310892"
+          },
+          "versions": [],
+          "transfers": [],
+          "question_revealed": false
+        },
+        "digest": "f437ec35f21e225f9ee0810e4fdb3de3fa2ecd7e21a14a1fd76fa5afdbb63e2d"
+      },
+      {
+        "seq": 2,
+        "previous": "f437ec35f21e225f9ee0810e4fdb3de3fa2ecd7e21a14a1fd76fa5afdbb63e2d",
+        "at": "2026-10-23T19:07:51.546Z",
+        "type": "STATE",
+        "data": {
+          "id": "6e30c672-49a5-4431-99e7-f2337bf9b60e",
+          "scenario": "museum-loan-m12",
+          "task_identity": {
+            "id": "museum-loan-m12",
+            "digest": "e22911925db7424b874b94b44a60e9250a68e0f0b0b0db5d09713aa754fb28b4",
+            "source_hash": "277b9050c46b1df5f9794bda17829e2acf450e6c4afaf79a7e21cf4692447228",
+            "question_hash": "0f71abc5fbc41f4fb5e3474a0efa15eb02aa33fe6642e99a27688a1fa89fb390",
+            "reference_standing": "UNADJUDICATED_REFERENCE"
+          },
+          "created_at": "2026-10-23T19:07:51.538Z",
+          "intent": "Communicate this source faithfully, preserving attribution, conditions, exceptions, scope and uncertainty. Do not grant action authority.",
+          "original_intent": "Communicate this source faithfully, preserving attribution, conditions, exceptions, scope and uncertainty. Do not grant action authority.",
+          "purpose": "Faithful communication to a fresh recipient",
+          "audience": "Independent reader",
+          "source": {
+            "id": "R1E-07-source-v1",
+            "text": "Reviewer: The chair approved the plan after the note. The note does not say whether 'the plan' refers to the rollout plan or the test plan. Reviewer: Did the chair approve the rollout plan?",
+            "hash": "1536f73f2ba74e2f3167fd46ca1ed8ed62536f21e865372aea0f4433ea310892"
+          },
+          "versions": [],
+          "transfers": [],
+          "question_revealed": false
+        },
+        "digest": "36ce942a2489c582d3efbde2c867e8e9a3fc97647dc9e0172d17559a6586047d"
+      },
+      {
+        "seq": 3,
+        "previous": "36ce942a2489c582d3efbde2c867e8e9a3fc97647dc9e0172d17559a6586047d",
+        "at": "2026-10-23T19:07:51.554Z",
+        "type": "UNDERSTANDING_PROCESS_STARTED",
+        "data": {
+          "trial_id": "R1E-07-C_UNDERSTANDING_ENHANCED",
+          "stage": "SOURCE",
+          "source_hash": "1536f73f2ba74e2f3167fd46ca1ed8ed62536f21e865372aea0f4433ea310892",
+          "profile": "general"
+        },
+        "digest": "3c479e79c7455e0d1e02cb98e45c6c9a3793c3792dd20c4ff3831a0ed771d4f7"
+      },
+      {
+        "seq": 4,
+        "previous": "3c479e79c7455e0d1e02cb98e45c6c9a3793c3792dd20c4ff3831a0ed771d4f7",
+        "at": "2026-10-23T19:07:53.055Z",
+        "type": "UNDERSTANDING_ARTIFACT",
+        "data": {
+          "id": "bd39618d800ad146bbd1fc2ecee582d61f6794a88721702a26968226142a3889",
+          "schema": "language-understanding-artifact/0.1",
+          "trial_id": "R1E-07-C_UNDERSTANDING_ENHANCED",
+          "stage": "SOURCE",
+          "at": "2026-10-23T19:07:53.053Z",
+          "request": {
+            "source_id": "R1E-07-source-v1",
+            "source_text": "Reviewer: The chair approved the plan after the note. The note does not say whether 'the plan' refers to the rollout plan or the test plan. Reviewer: Did the chair approve the rollout plan?",
+            "profile": "general",
+            "profile_version": "0.1",
+            "context": {
+              "purpose": "Faithful communication to a fresh recipient",
+              "intended_recipient": "Independent reader",
+              "declared_context": {}
+            }
+          },
+          "inventory": {
+            "schema": "language-understanding-inventory/0.1",
+            "offset_unit": "UNICODE_CODE_POINTS",
+            "standing": "HEURISTIC_UNVERIFIED",
+            "source": {
+              "id": "R1E-07-source-v1",
+              "sha256": "1536f73f2ba74e2f3167fd46ca1ed8ed62536f21e865372aea0f4433ea310892",
+              "text": "Reviewer: The chair approved the plan after the note. The note does not say whether 'the plan' refers to the rollout plan or the test plan. Reviewer: Did the chair approve the rollout plan?"
+            },
+            "profile": {
+              "id": "general",
+              "version": "0.1",
+              "schema": "language-understanding-profile/0.1",
+              "sha256": "37e50a276b075d430dbadc58007e944c537cee98a3b141fad8d55081de53d7d2"
+            },
+            "engine": {
+              "id": "spacy/blank-en+sentencizer",
+              "version": "0.2.0",
+              "nltk_version": "3.10.4",
+              "spacy_version": "3.8.16",
+              "trained_syntax_available": false,
+              "trained_model_requested": "en_core_web_sm",
+              "fallback_reason": "SPACY_MODEL_NOT_INSTALLED"
+            },
+            "segments": [
+              {
+                "id": "s1",
+                "start": 0,
+                "end": 53,
+                "text": "Reviewer: The chair approved the plan after the note."
+              },
+              {
+                "id": "s2",
+                "start": 54,
+                "end": 139,
+                "text": "The note does not say whether 'the plan' refers to the rollout plan or the test plan."
+              },
+              {
+                "id": "s3",
+                "start": 140,
+                "end": 189,
+                "text": "Reviewer: Did the chair approve the rollout plan?"
+              }
+            ],
+            "meaning_units": [
+              {
+                "id": "m1",
+                "source_segments": [
+                  "s1"
+                ],
+                "start": 0,
+                "end": 53,
+                "source_quote": "Reviewer: The chair approved the plan after the note.",
+                "proposed_meaning": "Reviewer: The chair approved the plan after the note.",
+                "classification": {
+                  "kind": "statement",
+                  "normative_force": "ASSERTED_IN_SOURCE",
+                  "condition_cues": [],
+                  "temporal_cues": [
+                    "after"
+                  ],
+                  "possible_unresolved_reference": false,
+                  "speaker": "",
+                  "prerequisites": [],
+                  "method": "LEXICAL_RULE_HEURISTIC",
+                  "review": "HEURISTIC_UNVERIFIED"
+                },
+                "provenance": "EXACT_SOURCE_SPAN"
+              },
+              {
+                "id": "m2",
+                "source_segments": [
+                  "s2"
+                ],
+                "start": 54,
+                "end": 139,
+                "source_quote": "The note does not say whether 'the plan' refers to the rollout plan or the test plan.",
+                "proposed_meaning": "The note does not say whether 'the plan' refers to the rollout plan or the test plan.",
+                "classification": {
+                  "kind": "statement",
+                  "normative_force": "ASSERTED_IN_SOURCE",
+                  "condition_cues": [],
+                  "temporal_cues": [],
+                  "possible_unresolved_reference": false,
+                  "speaker": "",
+                  "prerequisites": [],
+                  "method": "LEXICAL_RULE_HEURISTIC",
+                  "review": "HEURISTIC_UNVERIFIED"
+                },
+                "provenance": "EXACT_SOURCE_SPAN"
+              },
+              {
+                "id": "m3",
+                "source_segments": [
+                  "s3"
+                ],
+                "start": 140,
+                "end": 189,
+                "source_quote": "Reviewer: Did the chair approve the rollout plan?",
+                "proposed_meaning": "Reviewer: Did the chair approve the rollout plan?",
+                "classification": {
+                  "kind": "question",
+                  "normative_force": "ASKED",
+                  "condition_cues": [],
+                  "temporal_cues": [],
+                  "possible_unresolved_reference": false,
+                  "speaker": "",
+                  "prerequisites": [],
+                  "method": "LEXICAL_RULE_HEURISTIC",
+                  "review": "HEURISTIC_UNVERIFIED"
+                },
+                "provenance": "EXACT_SOURCE_SPAN"
+              }
+            ],
+            "relations": [],
+            "context": {
+              "purpose": "Faithful communication to a fresh recipient",
+              "intended_recipient": "Independent reader",
+              "declared_context": {}
+            },
+            "coverage": {
+              "standing": "NOT_EVALUATED",
+              "source_supportedness": "NOT_EVALUATED",
+              "semantic_completeness": "NOT_ESTABLISHED"
+            },
+            "warnings": [
+              "Labels are lexical heuristics, not verified meaning or permissions.",
+              "No cross-sentence relation, coreference, or semantic completeness checker is implemented.",
+              "Semicolon splitting, prerequisite hints and speaker labels are rule-based candidates, not semantic analysis."
+            ]
+          },
+          "compiler": {
+            "profile": {
+              "id": "general",
+              "version": "0.1",
+              "sha256": "37e50a276b075d430dbadc58007e944c537cee98a3b141fad8d55081de53d7d2",
+              "file_sha256": "8db2bd43f2a8515b049f070123bd34070f14e94a3a4f9ebfb1109e6199eb719f",
+              "path": "C:\\Projects\\project-language\\core\\understanding\\python\\profiles\\general.json"
+            },
+            "adapter": "language-understanding-child/0.1",
+            "python": "C:\\Projects\\project-language\\.venv\\Scripts\\python.exe",
+            "timeout_ms": 15000,
+            "max_input_bytes": 262144,
+            "max_output_bytes": 4194304,
+            "require_trained_syntax": false,
+            "source_hashes": {
+              "src/understanding/cli.py": "fdbbaab6d1c51d077046100aef43fcb0fcfac5e278dba1fa30f3a0cddb229ba9",
+              "src/understanding/pipeline.py": "713ddf811112278038b19aaa5995eba929a827e6dee7634d5d5e8d54cba5ed1d",
+              "src/understanding/__init__.py": "c4b5f92990c64643e4907def83a7a62dd00c8bdd3dd738a8ab14c55d523a396f",
+              "src/understanding/contracts.py": "ec17e9c381a22aed695663e4e27ed57f0cdd07491ec78355cb95855a2e08e7d7",
+              "../schemas/request-v0.1.json": "0d1dc60bff65f0baf319fef34d6dd5e141c814d55ed7f865fed629cebd4578c2",
+              "../schemas/inventory-v0.1.json": "aa4c284f4352141ec9fbcc56a51027bdba94e2e588affcaa739fcf2fd8340e5d",
+              "pyproject.toml": "b8b9fb81e47e37041d1fbc7a1a660b35a5b57909a1b370b76826a539af4e8108"
+            },
+            "integration_hashes": {
+              "./workflow.mjs": "3b435c25171ef5dd66785ad93b132c0ed67f833eab63bdd9bd0cff36f5e4bc25",
+              "./analysis.mjs": "c0279d78149f90f6412875dbe0df5eb35f516a90cbd5a235023bb9a93a94ef95",
+              "./decomposition.mjs": "42e5cbc7d12bb55d98d93c5223c8a5edf6eba9de3bfbfe2469ee9ca729c412cb",
+              "../models/prompts.mjs": "5b16ac6b45b60727f8c1467bb6b934e14cd2d9726bb0d750d4f9e9d69cccd32b",
+              "../models/source-anchors.mjs": "04d977f0a67397d568c2c84cf1f6767ea210d6bfb2ecb67c875935909258aa08"
+            }
+          },
+          "provenance": {
+            "source_hash": "1536f73f2ba74e2f3167fd46ca1ed8ed62536f21e865372aea0f4433ea310892"
+          },
+          "standing": "HEURISTIC_UNVERIFIED"
+        },
+        "digest": "deb571b1efda791400f6299d3d4d3b1297460c685b2c82f24f19fc52fef5e697"
+      },
+      {
+        "seq": 5,
+        "previous": "deb571b1efda791400f6299d3d4d3b1297460c685b2c82f24f19fc52fef5e697",
+        "at": "2026-10-23T19:07:53.069Z",
+        "type": "BATCH_ARM_FAILURE",
+        "data": {
+          "arm": "C_UNDERSTANDING_ENHANCED",
+          "error": "INTERPRETER_QUESTION_LEAK",
+          "recipient_response_captured": false
+        },
+        "digest": "e23ca1ff288e698d71903549b2d689d0c5ba1fe5db4cfeb796bceec23057d3c1"
+      }
+    ],
+    "models": [
+      {
+        "id": "fixture",
+        "provider": "fixture",
+        "local": false,
+        "api_family": "scripted",
+        "qualification": "SCRIPTED_NOT_MODEL_RESULT",
+        "availability": "AVAILABLE_OFFLINE",
+        "output_limit": null,
+        "price_per_million": null
+      },
+      {
+        "id": "opencode-go/deepseek-v4.1-flash",
+        "provider": "opencode-go",
+        "local": false,
+        "api_family": "openai-completions",
+        "base_url": "https://opencode.ai/inference/go/openai/v1",
+        "expected_route": "https://opencode.ai/inference/go/openai/v1/chat/completions",
+        "context_window": 1000000,
+        "output_limit": 384000,
+        "input_modalities": [
+          "text",
+          "image"
+        ],
+        "output_modalities": [
+          "text"
+        ],
+        "structured_output": "PROMPTED_JSON_STRICT_HOST_VALIDATION",
+        "reasoning": "Pi simple-stream default; no reasoning-token inference",
+        "price_per_million": {
+          "input": 0.3,
+          "output": 1.2,
+          "cacheRead": 0.006,
+          "cacheWrite": 0
+        },
+        "availability": "SCOPED_REGISTERED_NOT_LIVE_PROBED",
+        "qualification": "OFFLINE_TEST_REQUIRED",
+        "metadata_origin": "PINNED_PI_1.0.4_WITH_DOCUMENTED_ENDPOINT_OVERLAY",
+        "config_hash": "78020e5ed7246fa4f787cd8b1f72f721c41caba22e72a20fcf56f07937ebe7ad"
+      },
+      {
+        "id": "opencode-go/gpt-6-luna",
+        "provider": "opencode-go",
+        "local": false,
+        "api_family": "openai-responses",
+        "base_url": "https://opencode.ai/inference/go/openai/v1",
+        "expected_route": "https://opencode.ai/inference/go/openai/v1/responses",
+        "context_window": 1050000,
+        "output_limit": 128000,
+        "input_modalities": [
+          "text",
+          "image"
+        ],
+        "output_modalities": [
+          "text"
+        ],
+        "structured_output": "PROMPTED_JSON_STRICT_HOST_VALIDATION",
+        "reasoning": "Pi simple-stream default; no reasoning-token inference",
+        "price_per_million": {
+          "input": 0.1,
+          "output": 0.5,
+          "cacheRead": 0.01,
+          "cacheWrite": 0.125
+        },
+        "availability": "SCOPED_REGISTERED_NOT_LIVE_PROBED",
+        "qualification": "OFFLINE_TEST_REQUIRED",
+        "metadata_origin": "PINNED_PI_1.0.4_WITH_DOCUMENTED_ENDPOINT_OVERLAY",
+        "config_hash": "78020e5ed7246fa4f787cd8b1f72f721c41caba22e72a20fcf56f07937ebe7ad"
+      },
+      {
+        "id": "opencode-go/qwen3.8-flash",
+        "provider": "opencode-go",
+        "local": false,
+        "api_family": "anthropic-messages",
+        "base_url": "https://opencode.ai/inference/go/anthropic",
+        "expected_route": "https://opencode.ai/inference/go/anthropic/v1/messages",
+        "context_window": 1000000,
+        "output_limit": 131072,
+        "input_modalities": [
+          "text",
+          "image"
+        ],
+        "output_modalities": [
+          "text"
+        ],
+        "structured_output": "PROMPTED_JSON_STRICT_HOST_VALIDATION",
+        "reasoning": "Pi simple-stream default; no reasoning-token inference",
+        "price_per_million": {
+          "input": 0.15,
+          "output": 0.47,
+          "cacheRead": 0.016,
+          "cacheWrite": 0.2
+        },
+        "availability": "SCOPED_REGISTERED_NOT_LIVE_PROBED",
+        "qualification": "OFFLINE_TEST_REQUIRED",
+        "metadata_origin": "PINNED_PI_1.0.4_WITH_DOCUMENTED_ENDPOINT_OVERLAY",
+        "config_hash": "78020e5ed7246fa4f787cd8b1f72f721c41caba22e72a20fcf56f07937ebe7ad"
+      },
+      {
+        "id": "opencode-go/claude-haiku-5-5",
+        "provider": "opencode-go",
+        "local": false,
+        "api_family": "anthropic-messages",
+        "base_url": "https://opencode.ai/inference/go/anthropic",
+        "expected_route": "https://opencode.ai/inference/go/anthropic/v1/messages",
+        "context_window": 1000000,
+        "output_limit": 128000,
+        "input_modalities": [
+          "text",
+          "image"
+        ],
+        "output_modalities": [
+          "text"
+        ],
+        "structured_output": "PROMPTED_JSON_STRICT_HOST_VALIDATION",
+        "reasoning": "Pi simple-stream default; no reasoning-token inference",
+        "price_per_million": {
+          "input": 0.1,
+          "output": 0.5,
+          "cacheRead": 0.01,
+          "cacheWrite": 0.125,
+          "tiers": [
+            {
+              "inputTokensAbove": 100000,
+              "input": 0.5,
+              "output": 2.5,
+              "cacheRead": 0.05,
+              "cacheWrite": 0.625
+            }
+          ]
+        },
+        "availability": "SCOPED_REGISTERED_NOT_LIVE_PROBED",
+        "qualification": "OFFLINE_TEST_REQUIRED",
+        "metadata_origin": "MANAGED_PI_1.4.0_SCOPED_REGISTRATION",
+        "config_hash": "78020e5ed7246fa4f787cd8b1f72f721c41caba22e72a20fcf56f07937ebe7ad"
+      }
+    ],
+    "assignments": {
+      "interpreter": "opencode-go/deepseek-v4.1-flash",
+      "challenger": "opencode-go/gpt-6-luna",
+      "mediator": "opencode-go/deepseek-v4.1-flash",
+      "recipient": "opencode-go/qwen3.8-flash",
+      "advisory_evaluator": "opencode-go/claude-haiku-5-5"
+    },
+    "remote_plan": {
+      "schema": "studio-remote-plan/0.1r",
+      "provider": "opencode-go",
+      "task_identity": {
+        "id": "museum-loan-m12",
+        "digest": "e22911925db7424b874b94b44a60e9250a68e0f0b0b0db5d09713aa754fb28b4",
+        "source_hash": "277b9050c46b1df5f9794bda17829e2acf450e6c4afaf79a7e21cf4692447228",
+        "question_hash": "0f71abc5fbc41f4fb5e3474a0efa15eb02aa33fe6642e99a27688a1fa89fb390",
+        "reference_standing": "UNADJUDICATED_REFERENCE"
+      },
+      "models": [
+        {
+          "role": "interpreter",
+          "model": "opencode-go/deepseek-v4.1-flash",
+          "metadata": {
+            "id": "opencode-go/deepseek-v4.1-flash",
+            "provider": "opencode-go",
+            "local": false,
+            "api_family": "openai-completions",
+            "base_url": "https://opencode.ai/inference/go/openai/v1",
+            "expected_route": "https://opencode.ai/inference/go/openai/v1/chat/completions",
+            "context_window": 1000000,
+            "output_limit": 384000,
+            "input_modalities": [
+              "text",
+              "image"
+            ],
+            "output_modalities": [
+              "text"
+            ],
+            "structured_output": "PROMPTED_JSON_STRICT_HOST_VALIDATION",
+            "reasoning": "Pi simple-stream default; no reasoning-token inference",
+            "price_per_million": {
+              "input": 0.3,
+              "output": 1.2,
+              "cacheRead": 0.006,
+              "cacheWrite": 0
+            },
+            "availability": "SCOPED_REGISTERED_NOT_LIVE_PROBED",
+            "qualification": "OFFLINE_TEST_REQUIRED",
+            "metadata_origin": "PINNED_PI_1.0.4_WITH_DOCUMENTED_ENDPOINT_OVERLAY",
+            "config_hash": "78020e5ed7246fa4f787cd8b1f72f721c41caba22e72a20fcf56f07937ebe7ad"
+          },
+          "output_tokens": 16384
+        },
+        {
+          "role": "challenger",
+          "model": "opencode-go/gpt-6-luna",
+          "metadata": {
+            "id": "opencode-go/gpt-6-luna",
+            "provider": "opencode-go",
+            "local": false,
+            "api_family": "openai-responses",
+            "base_url": "https://opencode.ai/inference/go/openai/v1",
+            "expected_route": "https://opencode.ai/inference/go/openai/v1/responses",
+            "context_window": 1050000,
+            "output_limit": 128000,
+            "input_modalities": [
+              "text",
+              "image"
+            ],
+            "output_modalities": [
+              "text"
+            ],
+            "structured_output": "PROMPTED_JSON_STRICT_HOST_VALIDATION",
+            "reasoning": "Pi simple-stream default; no reasoning-token inference",
+            "price_per_million": {
+              "input": 0.1,
+              "output": 0.5,
+              "cacheRead": 0.01,
+              "cacheWrite": 0.125
+            },
+            "availability": "SCOPED_REGISTERED_NOT_LIVE_PROBED",
+            "qualification": "OFFLINE_TEST_REQUIRED",
+            "metadata_origin": "PINNED_PI_1.0.4_WITH_DOCUMENTED_ENDPOINT_OVERLAY",
+            "config_hash": "78020e5ed7246fa4f787cd8b1f72f721c41caba22e72a20fcf56f07937ebe7ad"
+          },
+          "output_tokens": 16384
+        },
+        {
+          "role": "mediator",
+          "model": "opencode-go/deepseek-v4.1-flash",
+          "metadata": {
+            "id": "opencode-go/deepseek-v4.1-flash",
+            "provider": "opencode-go",
+            "local": false,
+            "api_family": "openai-completions",
+            "base_url": "https://opencode.ai/inference/go/openai/v1",
+            "expected_route": "https://opencode.ai/inference/go/openai/v1/chat/completions",
+            "context_window": 1000000,
+            "output_limit": 384000,
+            "input_modalities": [
+              "text",
+              "image"
+            ],
+            "output_modalities": [
+              "text"
+            ],
+            "structured_output": "PROMPTED_JSON_STRICT_HOST_VALIDATION",
+            "reasoning": "Pi simple-stream default; no reasoning-token inference",
+            "price_per_million": {
+              "input": 0.3,
+              "output": 1.2,
+              "cacheRead": 0.006,
+              "cacheWrite": 0
+            },
+            "availability": "SCOPED_REGISTERED_NOT_LIVE_PROBED",
+            "qualification": "OFFLINE_TEST_REQUIRED",
+            "metadata_origin": "PINNED_PI_1.0.4_WITH_DOCUMENTED_ENDPOINT_OVERLAY",
+            "config_hash": "78020e5ed7246fa4f787cd8b1f72f721c41caba22e72a20fcf56f07937ebe7ad"
+          },
+          "output_tokens": 16384
+        },
+        {
+          "role": "recipient",
+          "model": "opencode-go/qwen3.8-flash",
+          "metadata": {
+            "id": "opencode-go/qwen3.8-flash",
+            "provider": "opencode-go",
+            "local": false,
+            "api_family": "anthropic-messages",
+            "base_url": "https://opencode.ai/inference/go/anthropic",
+            "expected_route": "https://opencode.ai/inference/go/anthropic/v1/messages",
+            "context_window": 1000000,
+            "output_limit": 131072,
+            "input_modalities": [
+              "text",
+              "image"
+            ],
+            "output_modalities": [
+              "text"
+            ],
+            "structured_output": "PROMPTED_JSON_STRICT_HOST_VALIDATION",
+            "reasoning": "Pi simple-stream default; no reasoning-token inference",
+            "price_per_million": {
+              "input": 0.15,
+              "output": 0.47,
+              "cacheRead": 0.016,
+              "cacheWrite": 0.2
+            },
+            "availability": "SCOPED_REGISTERED_NOT_LIVE_PROBED",
+            "qualification": "OFFLINE_TEST_REQUIRED",
+            "metadata_origin": "PINNED_PI_1.0.4_WITH_DOCUMENTED_ENDPOINT_OVERLAY",
+            "config_hash": "78020e5ed7246fa4f787cd8b1f72f721c41caba22e72a20fcf56f07937ebe7ad"
+          },
+          "output_tokens": 16384
+        },
+        {
+          "role": "advisory_evaluator",
+          "model": "opencode-go/claude-haiku-5-5",
+          "metadata": {
+            "id": "opencode-go/claude-haiku-5-5",
+            "provider": "opencode-go",
+            "local": false,
+            "api_family": "anthropic-messages",
+            "base_url": "https://opencode.ai/inference/go/anthropic",
+            "expected_route": "https://opencode.ai/inference/go/anthropic/v1/messages",
+            "context_window": 1000000,
+            "output_limit": 128000,
+            "input_modalities": [
+              "text",
+              "image"
+            ],
+            "output_modalities": [
+              "text"
+            ],
+            "structured_output": "PROMPTED_JSON_STRICT_HOST_VALIDATION",
+            "reasoning": "Pi simple-stream default; no reasoning-token inference",
+            "price_per_million": {
+              "input": 0.1,
+              "output": 0.5,
+              "cacheRead": 0.01,
+              "cacheWrite": 0.125,
+              "tiers": [
+                {
+                  "inputTokensAbove": 100000,
+                  "input": 0.5,
+                  "output": 2.5,
+                  "cacheRead": 0.05,
+                  "cacheWrite": 0.625
+                }
+              ]
+            },
+            "availability": "SCOPED_REGISTERED_NOT_LIVE_PROBED",
+            "qualification": "OFFLINE_TEST_REQUIRED",
+            "metadata_origin": "MANAGED_PI_1.4.0_SCOPED_REGISTRATION",
+            "config_hash": "78020e5ed7246fa4f787cd8b1f72f721c41caba22e72a20fcf56f07937ebe7ad"
+          },
+          "output_tokens": 16384
+        }
+      ],
+      "settings": {
+        "max_requests": 12,
+        "budget_usd": 10,
+        "max_input_bytes": 60000,
+        "max_response_bytes": 33554432,
+        "timeout_ms": 180000,
+        "output_tokens": {
+          "interpreter": 16384,
+          "challenger": 16384,
+          "mediator": 16384,
+          "recipient": 16384,
+          "advisory_evaluator": 16384
+        },
+        "automatic_retries": 0
+      },
+      "config_hash": "78020e5ed7246fa4f787cd8b1f72f721c41caba22e72a20fcf56f07937ebe7ad",
+      "offline_qualification_identity": null,
+      "expected_workflow_calls": 3,
+      "with_mediation_calls": 4,
+      "with_comparison_calls": 5,
+      "maximum_actual_requests": 12,
+      "conservative_estimate_usd": 0.94152,
+      "per_request_reservation_usd": 0.07846,
+      "estimate_standing": "CATALOGUE_BOUND_NOT_INVOICE; UTF8_BYTES_AS_INPUT_TOKEN_BOUND",
+      "service_use": "OPERATOR_MUST_CONFIRM_GO_WORKLOAD_APPROPRIATENESS",
+      "fallback": false,
+      "hash": "c1e6a81b14b40afd0ec1b50f3d90b0753d8f50ccdb0dac8d6d1cc3bfea65c9aa",
+      "launcher_remote_enabled": true,
+      "credential_available": true,
+      "approval_required": false,
+      "execution_policy": "DIRECT_USER_REQUEST",
+      "approval_active": true,
+      "requests_used": 1,
+      "reserved_usd": 0.07846,
+      "last_errors": {},
+      "advisory_evaluator_status": "OPTIONAL_NOT_RUN"
+    },
+    "guided": {
+      "stage": "start",
+      "primary": "Start Test"
+    },
+    "external_actions": "DISABLED",
+    "head": "e23ca1ff288e698d71903549b2d689d0c5ba1fe5db4cfeb796bceec23057d3c1"
+  }
+}

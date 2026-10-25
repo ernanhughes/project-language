@@ -1,0 +1,17 @@
+{
+  "schema": "lc02-r5-evidence-integrity/0.1",
+  "checked_at": "2026-10-24",
+  "standing": "OFFLINE_INTEGRITY_CHECK",
+  "batch20_frozen_artifacts": { "checked": 146, "bad": 0, "path": "experiments/lc-02-batch20/.runs/COMBINED-001" },
+  "r1_v1_design": "2c88429b777baca7207aad13ea3041746bc0a99d0d96fcc217aed81856c78de4",
+  "r1_v2_design": "c1ca37936300384536b3c94d5cf5b38076b3a813bf6c934c0a053b9bd6bc09d9",
+  "r2_protocol": "26009e396fa890c85b573fdeec9f0c3be04e4433fbe84b55e8cbb986918959e3",
+  "r3_approval": "4b10f87b7d84fd08d52a845c7b25cb952b3aab573e17234bdb16c1a3ff123df8",
+  "r3_protocol": "756814ad9598c3d82b6f0a7ba8f7197d385295515bd51cede9e838fd6de6ad50",
+  "r4_corpus_files_unchanged": true,
+  "r5_corpus_freeze": "experiments/lc-02-r5/fixtures/FREEZE.json",
+  "r5_success_criteria": "98a9f5052a9a5ea04f54ad16cb13d6643dbf9c61e816431bbe72034dd7e50805",
+  "r5_checker": "2b11a67ca6b44c61523c3901cbb130fa6da81b0815ead3261f640cf848e902d5",
+  "r5_contract": "92ab3570a00164123eac5045a838f64e9df8b23efd4592115f88925f9c8bb297",
+  "note": "R3 raw requests, responses, events and case records were not modified. R3 derived reports were corrected after the live run for actual-versus-reserved request accounting and failed-arm check logic; those corrections did not alter model outputs."
+}

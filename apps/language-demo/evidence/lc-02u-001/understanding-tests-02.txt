@@ -1,0 +1,19 @@
+(node:50948) ExperimentalWarning: Transform Types is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+✔ real Python adapter validates Unicode spans, hashes and one-to-many units (0.5273ms)
+✔ identity/span/profile/schema tampering is rejected (2.205ms)
+✔ safe child invocation omits credentials, shell interpolation and downloads (1.8075ms)
+✔ bounded child errors are explicit; no substitute inventory (114.7047ms)
+✔ alignment exposes modality/timing changes without certifying equivalence (1.8674ms)
+✔ new comparison preserves exact compiler input, arm isolation, post analyses and short answers (2977.6503ms)
+✔ wrong heuristic classification remains provisional; source priority is explicit (0.6219ms)
+✔ profile change invalidates pending analysis; compiler failures stop before model calls (974.9344ms)
+✔ published JSON contracts match Zod and the narrow profile has honest domain limits (1038.5515ms)
+ℹ tests 9
+ℹ suites 0
+ℹ pass 9
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 6875.6838

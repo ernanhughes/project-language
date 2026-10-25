@@ -1,0 +1,26 @@
+{
+  "version": 2,
+  "comparison_mode": "opencode",
+  "roles": {
+    "interpreter": "opencode-go/deepseek-v4.1-flash",
+    "challenger": "opencode-go/gpt-6-luna",
+    "mediator": "opencode-go/deepseek-v4.1-flash",
+    "recipient": "opencode-go/qwen3.8-flash",
+    "advisory_evaluator": "opencode-go/claude-haiku-5-5"
+  },
+  "limits": {
+    "max_requests": 12,
+    "budget_usd": 10,
+    "max_input_bytes": 60000,
+    "max_response_bytes": 33554432,
+    "timeout_ms": 180000,
+    "output_tokens": {
+      "interpreter": 16384,
+      "challenger": 16384,
+      "mediator": 16384,
+      "recipient": 16384,
+      "advisory_evaluator": 16384
+    },
+    "automatic_retries": 0
+  }
+}

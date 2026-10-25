@@ -1,0 +1,47 @@
+{
+  "schema": "lc02-r3-exploratory-approval/0.1",
+  "approval_id": "LC-02-R3-V2-EXPLORATORY-2026-10-23",
+  "status": "APPROVED",
+  "standing": "EXPLORATORY_APPROVAL_REQUEST",
+  "created": "2026-10-23",
+  "design": {
+    "path": "experiments/lc-02-batch20-r1/fixtures/fresh-evaluation-v2.json",
+    "sha256": "c1ca37936300384536b3c94d5cf5b38076b3a813bf6c934c0a053b9bd6bc09d9",
+    "version": 2
+  },
+  "r2_protocol": {
+    "path": "experiments/lc-02-batch20-r2/FROZEN-LIVE-PROTOCOL.json",
+    "hash": "26009e396fa890c85b573fdeec9f0c3be04e4433fbe84b55e8cbb986918959e3",
+    "live_execution_authorized": false
+  },
+  "requested_scope": {
+    "reference_review": "MODEL_BASED_PROVISIONAL_NOT_INDEPENDENT_HUMAN_ADJUDICATION",
+    "compiler_condition": "BLANK_ENGLISH_FALLBACK",
+    "research_standing": "EXPLORATORY_NOT_CONFIRMATORY",
+    "cases": "V2 frozen 16 cases",
+    "planned_calls": 80,
+    "maximum_calls": 100,
+    "automatic_retries": 0,
+    "fallback": false,
+    "resume": false,
+    "one_execution": true,
+    "post_result_tuning": false,
+    "validation_claim": false
+  },
+  "terms": [
+    "The sixteen frozen V2 cases and their provisional references must not change.",
+    "The compiler condition is BLANK_ENGLISH_FALLBACK; no spaCy model will be installed or downloaded.",
+    "The run is exploratory and cannot establish validated semantic superiority or understanding.",
+    "Exactly one live execution is authorized, with 80 planned calls and an absolute ceiling of 100.",
+    "No automatic retries, fallback, resume or post-result tuning.",
+    "All successful and failed requests must be preserved.",
+    "A null or negative result is valid.",
+    "Any positive result requires later confirmation on fresh unseen cases."
+  ],
+  "approved_by": "USER",
+  "approved_at": "2026-10-23T18:58:20.072Z",
+  "approval_statement": "I approve the exploratory V2 run under the recorded limitations.",
+  "exploratory_live_authorized": true,
+  "approval_phrase": "APPROVE LC-02-R3 V2 EXPLORATORY",
+  "hash": "4b10f87b7d84fd08d52a845c7b25cb952b3aab573e17234bdb16c1a3ff123df8"
+}

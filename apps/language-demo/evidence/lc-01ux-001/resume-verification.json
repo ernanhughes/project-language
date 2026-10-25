@@ -1,0 +1,12 @@
+{
+  "status": "PASS",
+  "digest": "6dad8fdedab27c2746faf67e43f7aabf3e6eba1a4f46baf0632fa01ed4cbb3c6",
+  "automatic_resume": true,
+  "prior_requests": 4,
+  "remaining_requests": 2,
+  "prior_reserved": 0.23192,
+  "saved_spending_limit": 9.61,
+  "original_log_sha256": "070bc3ba56b8d0d2df9ed8b742f899f5c58ce9a7d04c4409987058772e3f70d4",
+  "original_log_unchanged": true,
+  "live_calls": 0
+}

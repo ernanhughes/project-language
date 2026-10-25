@@ -1,0 +1,211 @@
+{
+  "schema": "language-hybrid-checker-cases/0.1",
+  "split": "development",
+  "standing": "AUTHOR_CONSTRUCTED_PROVISIONAL",
+  "cases": [
+    {
+      "id": "R7-D01",
+      "split": "development",
+      "case_type": "CORRUPTION",
+      "corruption_class": "WRITTEN_NUMBER_CHANGE",
+      "profile": "technical-policy",
+      "purpose": "Communicate the reading-room reservation limit.",
+      "source": "The reading room accepts reservations for at most ninety seats. A request for eighty seats is pending.",
+      "transformation": "The reading room accepts reservations for at most one hundred seats. A request for eighty seats is pending.",
+      "obligations": [
+        {
+          "id": "o1",
+          "source_quote": "The reading room accepts reservations for at most ninety seats.",
+          "description": "The numeric reservation limit must survive."
+        }
+      ]
+    },
+    {
+      "id": "R7-D02",
+      "split": "development",
+      "case_type": "CORRUPTION",
+      "corruption_class": "INCLUSIVE_EXCLUSIVE_BOUNDARY",
+      "profile": "technical-policy",
+      "purpose": "Communicate the autoclave load limit.",
+      "source": "The autoclave may process loads of no more than twelve trays.",
+      "transformation": "The autoclave may process loads of fewer than twelve trays.",
+      "obligations": [
+        {
+          "id": "o1",
+          "source_quote": "The autoclave may process loads of no more than twelve trays.",
+          "description": "The inclusive boundary must survive."
+        }
+      ]
+    },
+    {
+      "id": "R7-D03",
+      "split": "development",
+      "case_type": "CORRUPTION",
+      "corruption_class": "DURATION_THRESHOLD_CHANGE",
+      "profile": "technical-policy",
+      "purpose": "Communicate the forklift charging cool-down.",
+      "source": "Forklift charging is permitted after at least thirty minutes of cool-down.",
+      "transformation": "Forklift charging is permitted after more than thirty minutes of cool-down.",
+      "obligations": [
+        {
+          "id": "o1",
+          "source_quote": "Forklift charging is permitted after at least thirty minutes of cool-down.",
+          "description": "The duration threshold must survive."
+        }
+      ]
+    },
+    {
+      "id": "R7-D04",
+      "split": "development",
+      "case_type": "CORRUPTION",
+      "corruption_class": "MISSING_PREREQUISITE",
+      "profile": "technical-policy",
+      "purpose": "Communicate whether the contractor may enter the server room.",
+      "source": "The contractor may enter the server room only if the badge is active and the safety briefing is current. The badge is active. The briefing is not current.",
+      "transformation": "The contractor may enter the server room because the badge is active.",
+      "obligations": [
+        {
+          "id": "o1",
+          "source_quote": "only if the badge is active and the safety briefing is current",
+          "description": "Both conditions must survive."
+        }
+      ]
+    },
+    {
+      "id": "R7-D05",
+      "split": "development",
+      "case_type": "CORRUPTION",
+      "corruption_class": "BROADENED_EXCEPTION",
+      "profile": "technical-policy",
+      "purpose": "Communicate the maintenance-account exception.",
+      "source": "The maintenance account may be used during an outage, except when the change freeze is active.",
+      "transformation": "The maintenance account may be used during an outage, except when the change is unresolved.",
+      "obligations": [
+        {
+          "id": "o1",
+          "source_quote": "except when the change freeze is active",
+          "description": "The exception scope must not be broadened."
+        }
+      ]
+    },
+    {
+      "id": "R7-D06",
+      "split": "development",
+      "case_type": "CORRUPTION",
+      "corruption_class": "UNKNOWN_TO_ESTABLISHED_FACT",
+      "profile": "technical-policy",
+      "purpose": "Communicate the supplier review status.",
+      "source": "The supplier review is unresolved. The file contains neither approval nor rejection.",
+      "transformation": "The supplier is approved; the file contains the approval.",
+      "obligations": [
+        {
+          "id": "o1",
+          "source_quote": "The supplier review is unresolved.",
+          "description": "The unresolved status must remain."
+        }
+      ]
+    },
+    {
+      "id": "R7-D07",
+      "split": "development",
+      "case_type": "FAITHFUL",
+      "corruption_class": null,
+      "profile": "technical-policy",
+      "purpose": "State the expense-claim deadline using an equivalent upper bound.",
+      "source": "Expense claims may be submitted up to fourteen days after the quarter closes.",
+      "transformation": "The deadline for expense claims is no more than fourteen days after quarter close.",
+      "obligations": [
+        {
+          "id": "o1",
+          "source_quote": "Expense claims may be submitted up to fourteen days after the quarter closes.",
+          "description": "The deadline must survive."
+        }
+      ]
+    },
+    {
+      "id": "R7-D08",
+      "split": "development",
+      "case_type": "FAITHFUL",
+      "corruption_class": null,
+      "profile": "technical-policy",
+      "purpose": "Reorder the release conditions without changing them.",
+      "source": "A release requires a completed security review and an approved change ticket.",
+      "transformation": "An approved change ticket and a completed security review are required for release.",
+      "obligations": [
+        {
+          "id": "o1",
+          "source_quote": "A release requires a completed security review and an approved change ticket.",
+          "description": "Both conditions must survive."
+        }
+      ]
+    },
+    {
+      "id": "R7-D09",
+      "split": "development",
+      "case_type": "FAITHFUL",
+      "corruption_class": null,
+      "profile": "technical-policy",
+      "purpose": "Summarize the escalation rule; the office location is irrelevant to the task.",
+      "source": "The on-call engineer may escalate when error rates exceed five percent for ten minutes. The office location is irrelevant.",
+      "transformation": "The on-call engineer may escalate when error rates exceed five percent for ten minutes.",
+      "obligations": [
+        {
+          "id": "o1",
+          "source_quote": "The on-call engineer may escalate when error rates exceed five percent for ten minutes.",
+          "description": "The escalation condition must survive."
+        }
+      ]
+    },
+    {
+      "id": "R7-D10",
+      "split": "development",
+      "case_type": "AMBIGUITY",
+      "corruption_class": null,
+      "profile": "technical-policy",
+      "purpose": "Preserve the unresolved regional-replication decision.",
+      "source": "The privacy office has not decided whether regional replication is permitted. The record contains neither approval nor denial.",
+      "transformation": "It remains unclear whether regional replication is permitted.",
+      "obligations": [
+        {
+          "id": "o1",
+          "source_quote": "The privacy office has not decided whether regional replication is permitted.",
+          "description": "The unresolved status must remain."
+        }
+      ]
+    },
+    {
+      "id": "R7-D11",
+      "split": "development",
+      "case_type": "CORRUPTION",
+      "corruption_class": "INVENTED_UNCERTAINTY",
+      "profile": "technical-policy",
+      "purpose": "Communicate the paging permission.",
+      "source": "Paging is permitted during a severity-one incident. The dashboard shows a severity-one incident.",
+      "transformation": "It is unclear whether paging is permitted during a severity-one incident.",
+      "obligations": [
+        {
+          "id": "o1",
+          "source_quote": "Paging is permitted during a severity-one incident.",
+          "description": "The permission must remain clear."
+        }
+      ]
+    },
+    {
+      "id": "R7-D12",
+      "split": "development",
+      "case_type": "CORRUPTION",
+      "corruption_class": "UNSUPPORTED_CAUSAL",
+      "profile": "technical-policy",
+      "purpose": "Communicate the import failure and the investigation status.",
+      "source": "The import failed after the schema change. The team says the cause has not been verified.",
+      "transformation": "The schema change caused the import failure; the team verified the cause.",
+      "obligations": [
+        {
+          "id": "o1",
+          "source_quote": "The team says the cause has not been verified.",
+          "description": "Causal uncertainty must remain."
+        }
+      ]
+    }
+  ]
+}

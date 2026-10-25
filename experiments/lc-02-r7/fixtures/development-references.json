@@ -1,0 +1,199 @@
+{
+  "schema": "language-hybrid-checker-reference/0.1",
+  "split": "development",
+  "standing": "AUTHOR_CONSTRUCTED_PROVISIONAL_NOT_INDEPENDENT_HUMAN_ADJUDICATION",
+  "cases": [
+    {
+      "id": "R7-D01",
+      "case_type": "CORRUPTION",
+      "corruption_class": "WRITTEN_NUMBER_CHANGE",
+      "expected_policy": "PRESERVE_SOURCE",
+      "expected_findings": [
+        {
+          "type": "CHANGED_CANDIDATE",
+          "distinction": "SCOPE_OR_QUANTITY_CHANGE",
+          "source_quote": "The reading room accepts reservations for at most ninety seats.",
+          "transformation_quote": "The reading room accepts reservations for at most one hundred seats.",
+          "severity": "MATERIAL"
+        }
+      ],
+      "notes": "Deliberate corruption: a miss is a missed detection."
+    },
+    {
+      "id": "R7-D02",
+      "case_type": "CORRUPTION",
+      "corruption_class": "INCLUSIVE_EXCLUSIVE_BOUNDARY",
+      "expected_policy": "PRESERVE_SOURCE",
+      "expected_findings": [
+        {
+          "type": "CHANGED_CANDIDATE",
+          "distinction": "SCOPE_OR_QUANTITY_CHANGE",
+          "source_quote": "The autoclave may process loads of no more than twelve trays.",
+          "transformation_quote": "The autoclave may process loads of fewer than twelve trays.",
+          "severity": "MATERIAL"
+        }
+      ],
+      "notes": "Deliberate corruption: a miss is a missed detection."
+    },
+    {
+      "id": "R7-D03",
+      "case_type": "CORRUPTION",
+      "corruption_class": "DURATION_THRESHOLD_CHANGE",
+      "expected_policy": "PRESERVE_SOURCE",
+      "expected_findings": [
+        {
+          "type": "CHANGED_CANDIDATE",
+          "distinction": "SCOPE_OR_QUANTITY_CHANGE",
+          "source_quote": "Forklift charging is permitted after at least thirty minutes of cool-down.",
+          "transformation_quote": "Forklift charging is permitted after more than thirty minutes of cool-down.",
+          "severity": "MATERIAL"
+        }
+      ],
+      "notes": "Deliberate corruption: a miss is a missed detection."
+    },
+    {
+      "id": "R7-D04",
+      "case_type": "CORRUPTION",
+      "corruption_class": "MISSING_PREREQUISITE",
+      "expected_policy": "PRESERVE_SOURCE",
+      "expected_findings": [
+        {
+          "type": "MISSING_CANDIDATE",
+          "distinction": "MISSING_PREREQUISITE",
+          "source_quote": "only if the badge is active and the safety briefing is current",
+          "transformation_quote": "",
+          "severity": "MATERIAL"
+        }
+      ],
+      "notes": "Deliberate corruption: a miss is a missed detection."
+    },
+    {
+      "id": "R7-D05",
+      "case_type": "CORRUPTION",
+      "corruption_class": "BROADENED_EXCEPTION",
+      "expected_policy": "PRESERVE_SOURCE",
+      "expected_findings": [
+        {
+          "type": "CHANGED_CANDIDATE",
+          "distinction": "BROADENED_EXCEPTION",
+          "source_quote": "except when the change freeze is active",
+          "transformation_quote": "except when the change is unresolved",
+          "severity": "MATERIAL"
+        }
+      ],
+      "notes": "Deliberate corruption: a miss is a missed detection."
+    },
+    {
+      "id": "R7-D06",
+      "case_type": "CORRUPTION",
+      "corruption_class": "UNKNOWN_TO_ESTABLISHED_FACT",
+      "expected_policy": "PRESERVE_SOURCE",
+      "expected_findings": [
+        {
+          "type": "CHANGED_CANDIDATE",
+          "distinction": "UNKNOWN_TO_ESTABLISHED_FACT",
+          "source_quote": "The supplier review is unresolved.",
+          "transformation_quote": "The supplier is approved",
+          "severity": "MATERIAL"
+        }
+      ],
+      "notes": "Deliberate corruption: a miss is a missed detection."
+    },
+    {
+      "id": "R7-D07",
+      "case_type": "FAITHFUL",
+      "corruption_class": null,
+      "expected_policy": "USE_TRANSFORMATION",
+      "expected_findings": [
+        {
+          "type": "PRESERVED_CANDIDATE",
+          "distinction": "PRESERVED",
+          "source_quote": "Expense claims may be submitted up to fourteen days after the quarter closes.",
+          "transformation_quote": "The deadline for expense claims is no more than fourteen days after quarter close.",
+          "severity": "INFO"
+        }
+      ],
+      "notes": "Faithful control: rejection is a false alarm."
+    },
+    {
+      "id": "R7-D08",
+      "case_type": "FAITHFUL",
+      "corruption_class": null,
+      "expected_policy": "USE_TRANSFORMATION",
+      "expected_findings": [
+        {
+          "type": "PRESERVED_CANDIDATE",
+          "distinction": "PRESERVED",
+          "source_quote": "A release requires a completed security review and an approved change ticket.",
+          "transformation_quote": "An approved change ticket and a completed security review are required for release.",
+          "severity": "INFO"
+        }
+      ],
+      "notes": "Faithful control: rejection is a false alarm."
+    },
+    {
+      "id": "R7-D09",
+      "case_type": "FAITHFUL",
+      "corruption_class": null,
+      "expected_policy": "USE_TRANSFORMATION",
+      "expected_findings": [
+        {
+          "type": "PRESERVED_CANDIDATE",
+          "distinction": "PRESERVED",
+          "source_quote": "The on-call engineer may escalate when error rates exceed five percent for ten minutes.",
+          "transformation_quote": "The on-call engineer may escalate when error rates exceed five percent for ten minutes.",
+          "severity": "INFO"
+        }
+      ],
+      "notes": "Faithful control: rejection is a false alarm."
+    },
+    {
+      "id": "R7-D10",
+      "case_type": "AMBIGUITY",
+      "corruption_class": null,
+      "expected_policy": "REQUEST_CLARIFICATION",
+      "expected_findings": [
+        {
+          "type": "UNRESOLVED",
+          "distinction": "SOURCE_AMBIGUITY",
+          "source_quote": "The privacy office has not decided whether regional replication is permitted.",
+          "transformation_quote": "It remains unclear whether regional replication is permitted.",
+          "severity": "MINOR"
+        }
+      ],
+      "notes": "Genuine ambiguity: clarification is appropriate."
+    },
+    {
+      "id": "R7-D11",
+      "case_type": "CORRUPTION",
+      "corruption_class": "INVENTED_UNCERTAINTY",
+      "expected_policy": "PRESERVE_SOURCE",
+      "expected_findings": [
+        {
+          "type": "UNSUPPORTED_ADDITION_CANDIDATE",
+          "distinction": "UNSUPPORTED_UNCERTAINTY",
+          "source_quote": "Paging is permitted during a severity-one incident.",
+          "transformation_quote": "It is unclear whether paging is permitted during a severity-one incident.",
+          "severity": "MATERIAL"
+        }
+      ],
+      "notes": "Deliberate corruption: a miss is a missed detection."
+    },
+    {
+      "id": "R7-D12",
+      "case_type": "CORRUPTION",
+      "corruption_class": "UNSUPPORTED_CAUSAL",
+      "expected_policy": "PRESERVE_SOURCE",
+      "expected_findings": [
+        {
+          "type": "UNSUPPORTED_ADDITION_CANDIDATE",
+          "distinction": "UNSUPPORTED_CAUSAL",
+          "source_quote": "The team says the cause has not been verified.",
+          "transformation_quote": "The schema change caused the import failure",
+          "severity": "MATERIAL"
+        }
+      ],
+      "notes": "Deliberate corruption: a miss is a missed detection."
+    }
+  ]
+}

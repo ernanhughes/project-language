@@ -1,0 +1,23 @@
+{
+  "modified_existing_paths_since_start": [
+    "core/understanding/README.md",
+    "core/understanding/python/pyproject.toml",
+    "core/understanding/python/src/understanding/cli.py",
+    "core/understanding/python/src/understanding/pipeline.py",
+    "core/understanding/python/src/understanding/__init__.py",
+    "core/understanding/python/src/understanding/__main__.py",
+    "apps/language-demo/package.json",
+    "apps/language-demo/README.md",
+    "apps/language-demo/engine/studio.mjs",
+    "apps/language-demo/evaluation/comparison.mjs",
+    "apps/language-demo/models/prompts.mjs",
+    "apps/language-demo/server/app.mjs",
+    "apps/language-demo/server/settings.mjs",
+    "apps/language-demo/ui/comparison.js",
+    "apps/language-demo/ui/index.html",
+    "apps/language-demo/ui/progress.js",
+    "apps/language-demo/ui/settings.html",
+    "apps/language-demo/ui/settings.js",
+    "apps/language-demo/ui/style.css"
+  ]
+}

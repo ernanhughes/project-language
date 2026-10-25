@@ -1,0 +1,129 @@
+{
+  "remote_requests": 0,
+  "plan": {
+    "schema": "studio-remote-plan/0.1r",
+    "provider": "opencode-go",
+    "task_identity": {
+      "id": "lc02-development-v1",
+      "digest": "17d692dd8a0255e2cc92ea6c7993d9ba53b610e3ee1d6b7dfd0598367aea189c",
+      "case_ids": [
+        "lc02-d1",
+        "lc02-d2",
+        "lc02-d3"
+      ],
+      "standing": "EXPOSED_DEVELOPMENT_NOT_CONFIRMATORY"
+    },
+    "models": [
+      {
+        "role": "interpreter",
+        "model": "fixture",
+        "metadata": {
+          "id": "fixture",
+          "provider": "fixture",
+          "local": false,
+          "api_family": "scripted",
+          "qualification": "SCRIPTED_NOT_MODEL_RESULT",
+          "availability": "AVAILABLE_OFFLINE",
+          "output_limit": null,
+          "price_per_million": null
+        },
+        "output_tokens": 8192
+      },
+      {
+        "role": "challenger",
+        "model": "fixture",
+        "metadata": {
+          "id": "fixture",
+          "provider": "fixture",
+          "local": false,
+          "api_family": "scripted",
+          "qualification": "SCRIPTED_NOT_MODEL_RESULT",
+          "availability": "AVAILABLE_OFFLINE",
+          "output_limit": null,
+          "price_per_million": null
+        },
+        "output_tokens": 4096
+      },
+      {
+        "role": "mediator",
+        "model": "fixture",
+        "metadata": {
+          "id": "fixture",
+          "provider": "fixture",
+          "local": false,
+          "api_family": "scripted",
+          "qualification": "SCRIPTED_NOT_MODEL_RESULT",
+          "availability": "AVAILABLE_OFFLINE",
+          "output_limit": null,
+          "price_per_million": null
+        },
+        "output_tokens": 8192
+      },
+      {
+        "role": "recipient",
+        "model": "fixture",
+        "metadata": {
+          "id": "fixture",
+          "provider": "fixture",
+          "local": false,
+          "api_family": "scripted",
+          "qualification": "SCRIPTED_NOT_MODEL_RESULT",
+          "availability": "AVAILABLE_OFFLINE",
+          "output_limit": null,
+          "price_per_million": null
+        },
+        "output_tokens": 4096
+      },
+      {
+        "role": "advisory_evaluator",
+        "model": "fixture",
+        "metadata": {
+          "id": "fixture",
+          "provider": "fixture",
+          "local": false,
+          "api_family": "scripted",
+          "qualification": "SCRIPTED_NOT_MODEL_RESULT",
+          "availability": "AVAILABLE_OFFLINE",
+          "output_limit": null,
+          "price_per_million": null
+        },
+        "output_tokens": 4096
+      }
+    ],
+    "settings": {
+      "max_requests": 6,
+      "budget_usd": 1,
+      "max_input_bytes": 60000,
+      "max_response_bytes": 1048576,
+      "timeout_ms": 90000,
+      "output_tokens": {
+        "interpreter": 8192,
+        "challenger": 4096,
+        "mediator": 8192,
+        "recipient": 4096,
+        "advisory_evaluator": 4096
+      },
+      "automatic_retries": 0
+    },
+    "config_hash": "78020e5ed7246fa4f787cd8b1f72f721c41caba22e72a20fcf56f07937ebe7ad",
+    "offline_qualification_identity": null,
+    "expected_workflow_calls": 3,
+    "with_mediation_calls": 4,
+    "with_comparison_calls": 5,
+    "maximum_actual_requests": 6,
+    "conservative_estimate_usd": 0,
+    "per_request_reservation_usd": 0,
+    "estimate_standing": "CATALOGUE_BOUND_NOT_INVOICE; UTF8_BYTES_AS_INPUT_TOKEN_BOUND",
+    "service_use": "OPERATOR_MUST_CONFIRM_GO_WORKLOAD_APPROPRIATENESS",
+    "fallback": false,
+    "hash": "adfab7671ecd5165f16fdcbc0ca9a9900903ccc6582529b15b2dc100e1d2c243",
+    "launcher_remote_enabled": false,
+    "credential_available": false,
+    "approval_active": false,
+    "requests_used": 0,
+    "reserved_usd": 0,
+    "last_errors": {},
+    "advisory_evaluator_status": "OPTIONAL_NOT_RUN"
+  },
+  "standing": "OPERATIONAL_ONLY_NOT_SEMANTIC_SCORE"
+}

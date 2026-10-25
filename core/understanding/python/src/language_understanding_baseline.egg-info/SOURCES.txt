@@ -1,0 +1,12 @@
+pyproject.toml
+src/language_understanding_baseline.egg-info/PKG-INFO
+src/language_understanding_baseline.egg-info/SOURCES.txt
+src/language_understanding_baseline.egg-info/dependency_links.txt
+src/language_understanding_baseline.egg-info/entry_points.txt
+src/language_understanding_baseline.egg-info/requires.txt
+src/language_understanding_baseline.egg-info/top_level.txt
+src/understanding/__init__.py
+src/understanding/__main__.py
+src/understanding/cli.py
+src/understanding/pipeline.py
+tests/test_pipeline.py

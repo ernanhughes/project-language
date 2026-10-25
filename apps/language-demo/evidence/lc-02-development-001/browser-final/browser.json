@@ -1,0 +1,14 @@
+{
+  "status": "PASS",
+  "normal_buttons": 2,
+  "cases": 3,
+  "recipient_cards": 6,
+  "reload": true,
+  "mobile_no_overflow": true,
+  "unapproved_remote_blocked": true,
+  "remote_calls": 0,
+  "errors": [],
+  "external": [],
+  "browser": "151.0.7922.34",
+  "standing": "SCRIPTED_FIXTURE_NOT_MODEL_EVIDENCE"
+}

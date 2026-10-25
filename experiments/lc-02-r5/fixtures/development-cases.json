@@ -1,0 +1,228 @@
+{
+  "schema": "language-semantic-checker-cases/0.1",
+  "split": "development",
+  "standing": "AUTHOR_CONSTRUCTED_PROVISIONAL",
+  "cases": [
+    {
+      "id": "R5-D01",
+      "split": "development",
+      "case_type": "CORRUPTION",
+      "corruption_class": "MISSING_PREREQUISITE",
+      "domain": "technical-policy",
+      "profile": "technical-policy",
+      "source": "The vendor may access the portal only if the security review is complete and the access ticket is approved. The security review is complete. The access ticket is not approved.",
+      "transformation": "The vendor may access the portal because the security review is complete.",
+      "purpose": "Communicate whether the vendor may access the portal.",
+      "obligations": [
+        {
+          "id": "o1",
+          "source_quote": "only if the security review is complete and the access ticket is approved",
+          "description": "Both prerequisites must survive."
+        }
+      ]
+    },
+    {
+      "id": "R5-D02",
+      "split": "development",
+      "case_type": "CORRUPTION",
+      "corruption_class": "NEGATION_REVERSAL",
+      "domain": "technical-policy",
+      "profile": "technical-policy",
+      "source": "The archive team must not delete legal-hold records. A legal-hold record is present in the proposed batch.",
+      "transformation": "The archive team may delete legal-hold records. A legal-hold record is present in the proposed batch.",
+      "purpose": "Communicate the archive team prohibition.",
+      "obligations": [
+        {
+          "id": "o1",
+          "source_quote": "The archive team must not delete legal-hold records.",
+          "description": "The prohibition must remain a prohibition."
+        }
+      ]
+    },
+    {
+      "id": "R5-D03",
+      "split": "development",
+      "case_type": "CORRUPTION",
+      "corruption_class": "MODALITY_CHANGE",
+      "domain": "technical-policy",
+      "profile": "technical-policy",
+      "source": "The operator may restart the replica after approval. Restarting does not authorise a rollback.",
+      "transformation": "The operator must restart the replica after approval. Restarting does not authorise a rollback.",
+      "purpose": "Communicate the restart permission.",
+      "obligations": [
+        {
+          "id": "o1",
+          "source_quote": "The operator may restart the replica after approval.",
+          "description": "Permission must remain permission."
+        }
+      ]
+    },
+    {
+      "id": "R5-D04",
+      "split": "development",
+      "case_type": "CORRUPTION",
+      "corruption_class": "BROADENED_EXCEPTION",
+      "domain": "technical-policy",
+      "profile": "technical-policy",
+      "source": "Operators may use the emergency key during a declared outage, except during a planned maintenance window. Planned maintenance windows are not declared outages.",
+      "transformation": "Operators may use the emergency key during a declared outage, except during an operational disruption. Operational disruptions include planned maintenance windows.",
+      "purpose": "Communicate the emergency-key exception and its limit.",
+      "obligations": [
+        {
+          "id": "o1",
+          "source_quote": "except during a planned maintenance window",
+          "description": "The exception must not be broadened."
+        }
+      ]
+    },
+    {
+      "id": "R5-D05",
+      "split": "development",
+      "case_type": "FAITHFUL",
+      "corruption_class": null,
+      "domain": "technical-policy",
+      "profile": "technical-policy",
+      "source": "An operator may retrieve the key only if the ticket is open and the audit log remains intact. The key must stay in the isolated terminal.",
+      "transformation": "Provided the ticket stays open and the audit log is unaltered, the operator is allowed to retrieve the key. The key must remain in the isolated terminal.",
+      "purpose": "Paraphrase the retrieval permission.",
+      "obligations": [
+        {
+          "id": "o1",
+          "source_quote": "only if the ticket is open and the audit log remains intact",
+          "description": "Both conditions must survive."
+        }
+      ]
+    },
+    {
+      "id": "R5-D06",
+      "split": "development",
+      "case_type": "FAITHFUL",
+      "corruption_class": null,
+      "domain": "technical-policy",
+      "profile": "technical-policy",
+      "source": "The release requires an accepted security review and an approved ticket.",
+      "transformation": "An approved ticket and an accepted security review are required.",
+      "purpose": "Reorder the conditions without changing meaning.",
+      "obligations": [
+        {
+          "id": "o1",
+          "source_quote": "The release requires an accepted security review and an approved ticket.",
+          "description": "Both conditions must survive."
+        }
+      ]
+    },
+    {
+      "id": "R5-D07",
+      "split": "development",
+      "case_type": "FAITHFUL",
+      "corruption_class": null,
+      "domain": "technical-policy",
+      "profile": "technical-policy",
+      "source": "The vendor may keep the copy for fourteen days only if the privacy review is complete. The vendor must delete it afterwards. The vendor may not share the copy.",
+      "transformation": "Subject to completion of the privacy review, the vendor may keep the copy for no more than fourteen days and must delete it afterwards; the copy may not be shared.",
+      "purpose": "Qualified summary of the retention rules.",
+      "obligations": [
+        {
+          "id": "o1",
+          "source_quote": "The vendor may keep the copy for fourteen days only if the privacy review is complete.",
+          "description": "Duration and privacy condition must survive."
+        },
+        {
+          "id": "o2",
+          "source_quote": "The vendor must delete it afterwards.",
+          "description": "Deletion obligation must survive."
+        }
+      ]
+    },
+    {
+      "id": "R5-D08",
+      "split": "development",
+      "case_type": "FAITHFUL",
+      "corruption_class": null,
+      "domain": "technical-policy",
+      "profile": "technical-policy",
+      "source": "The incident desk may page the engineer when lag exceeds twenty seconds for five minutes. The dashboard shows nine minutes. Office badges are irrelevant.",
+      "transformation": "The incident desk may page the engineer when lag exceeds twenty seconds for five minutes; the dashboard shows nine minutes.",
+      "purpose": "Omit irrelevant badge material.",
+      "obligations": [
+        {
+          "id": "o1",
+          "source_quote": "The incident desk may page the engineer when lag exceeds twenty seconds for five minutes.",
+          "description": "Paging permission must survive."
+        }
+      ]
+    },
+    {
+      "id": "R5-D09",
+      "split": "development",
+      "case_type": "AMBIGUITY",
+      "corruption_class": null,
+      "domain": "technical-policy",
+      "profile": "technical-policy",
+      "source": "The privacy team has not decided whether vendor replication is authorised. The record contains neither approval nor denial.",
+      "transformation": "It remains unclear whether vendor replication is authorised; the record contains neither approval nor denial.",
+      "purpose": "Preserve the unresolved vendor authorisation status.",
+      "obligations": [
+        {
+          "id": "o1",
+          "source_quote": "The privacy team has not decided whether vendor replication is authorised.",
+          "description": "The unresolved status must remain unresolved."
+        }
+      ]
+    },
+    {
+      "id": "R5-D10",
+      "split": "development",
+      "case_type": "AMBIGUITY",
+      "corruption_class": null,
+      "domain": "technical-policy",
+      "profile": "technical-policy",
+      "source": "Requests timestamped after 17:00 are outside the exception. The system recorded the request at 18:00. It is unclear whether 18:00 is the request timestamp or only the recording time.",
+      "transformation": "It is unclear whether the request was timestamped after 17:00, because 18:00 may be the recording time.",
+      "purpose": "Preserve the timestamp ambiguity.",
+      "obligations": [
+        {
+          "id": "o1",
+          "source_quote": "It is unclear whether 18:00 is the request timestamp or only the recording time.",
+          "description": "The timestamp ambiguity must remain unresolved."
+        }
+      ]
+    },
+    {
+      "id": "R5-D11",
+      "split": "development",
+      "case_type": "AMBIGUITY",
+      "corruption_class": null,
+      "domain": "technical-policy",
+      "profile": "technical-policy",
+      "source": "The image signature was verified. The policy requires a signed known-good image.",
+      "transformation": "It is unclear whether the image is known-good despite the verified signature.",
+      "purpose": "Preserve the justified uncertainty about known-good status.",
+      "obligations": [
+        {
+          "id": "o1",
+          "source_quote": "The policy requires a signed known-good image.",
+          "description": "The known-good requirement must remain open."
+        }
+      ]
+    },
+    {
+      "id": "R5-D12",
+      "split": "development",
+      "case_type": "AMBIGUITY",
+      "corruption_class": null,
+      "domain": "interview",
+      "profile": "general",
+      "source": "The reviewer approved the plan. The note does not say whether \"the plan\" means the rollout plan or the test plan.",
+      "transformation": "It remains unclear which plan the reviewer approved.",
+      "purpose": "Preserve the referential ambiguity.",
+      "obligations": [
+        {
+          "id": "o1",
+          "source_quote": "The note does not say whether \"the plan\" means the rollout plan or the test plan.",
+          "description": "The referential ambiguity must remain unresolved."
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,83 @@
+{
+  "schema": "lc01-semantic-closure/0.1",
+  "source_log": "apps/language-demo/.data/lc-01s-s17-01/events.jsonl",
+  "source_sha256": "952c7f2d2d4815d3c4d40dd533feeb8f66e374c260af6d142964aa89526fe980",
+  "event_count": 44,
+  "head": "f901b53b718221aa807782c7d98aa807ef065e0937dfb13fbfd2f435600a0ceb",
+  "accepted_version": "6dad8fdedab27c2746faf67e43f7aabf3e6eba1a4f46baf0632fa01ed4cbb3c6",
+  "acceptance": {
+    "action_authority": false,
+    "actor": "LOCAL_OPERATOR",
+    "at": "2026-10-23T00:12:45.882Z",
+    "digest": "6dad8fdedab27c2746faf67e43f7aabf3e6eba1a4f46baf0632fa01ed4cbb3c6",
+    "scope": "communicate",
+    "source_truth": "UNVERIFIED"
+  },
+  "recipient": "opencode-go/qwen3.8-flash",
+  "arm": "NEGOTIATED_LANGUAGE",
+  "question": {
+    "id": "s17-public-release",
+    "text": "Validation has passed. An urgent restore has a verified backup signature, two maintainers, a retained audit trail and same-day owner notification. The owner has not approved public release. May the coordinator publish the archive under the urgent-restore exception?"
+  },
+  "response": {
+    "citations": [
+      {
+        "end": 170,
+        "origin": "ORIGINAL_SOURCE",
+        "source_hash": "e2600a515566dad94df3632cfff7eb1cd92a0d71693d9dd2c6fa0473f1c682c2",
+        "source_id": "archive-recovery-policy-s17-v1",
+        "start": 99,
+        "text": "The project owner must separately approve every public archive release."
+      },
+      {
+        "end": 474,
+        "origin": "ORIGINAL_SOURCE",
+        "source_hash": "e2600a515566dad94df3632cfff7eb1cd92a0d71693d9dd2c6fa0473f1c682c2",
+        "source_id": "archive-recovery-policy-s17-v1",
+        "start": 400,
+        "text": "This exception never permits a public release or removal of audit records."
+      }
+    ],
+    "decision": "NO",
+    "explanation": "The source explicitly states that the urgent-restore exception 'never permits a public release'. Furthermore, it mandates that 'the project owner must separately approve every public archive release'. Since the scenario specifies that the owner has not approved public release, and the exception itself prohibits public release, the coordinator may not publish the archive."
+  },
+  "mechanical": {
+    "citation_binding": "PASS",
+    "reference_agreement": true,
+    "reference_standing": "UNADJUDICATED_REFERENCE",
+    "schema": "PASS"
+  },
+  "semantic": {
+    "abstention": "REQUIRES_REVIEW",
+    "conditions": "REQUIRES_REVIEW",
+    "unsupported_additions": "REQUIRES_REVIEW"
+  },
+  "errors": [
+    {
+      "seq": 2,
+      "type": "OPERATION_ERROR",
+      "error": "REMOTE_PLAN_NOT_APPROVED"
+    },
+    {
+      "seq": 28,
+      "type": "OPERATION_ERROR",
+      "error": "SOURCE_BINDING"
+    },
+    {
+      "seq": 32,
+      "type": "OPERATION_ERROR",
+      "error": "SENDER_SEALED_QUESTION_ALREADY_EXPOSED"
+    },
+    {
+      "seq": 33,
+      "type": "OPERATION_ERROR",
+      "error": "PROPOSAL_REQUIRED"
+    }
+  ],
+  "finding": "Recipient refused public release without owner approval; no ordinary comparator, semantic enhancement remains untested.",
+  "limits": [
+    "Source binding is not semantic adjudication",
+    "Operator identity is an application assertion, not independent identity verification",
+    "One exposed exploratory example; no general comprehension or advantage claim"
+  ]
+}

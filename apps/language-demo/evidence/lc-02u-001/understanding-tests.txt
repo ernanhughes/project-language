@@ -1,0 +1,39 @@
+(node:24492) ExperimentalWarning: Transform Types is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+✔ real Python adapter validates Unicode spans, hashes and one-to-many units (0.6398ms)
+✔ identity/span/profile/schema tampering is rejected (2.5601ms)
+✔ safe child invocation omits credentials, shell interpolation and downloads (1.9273ms)
+✔ bounded child errors are explicit; no substitute inventory (109.7441ms)
+✔ alignment exposes modality/timing changes without certifying equivalence (2.2542ms)
+✖ new comparison preserves exact compiler input, arm isolation, post analyses and short answers (108.0635ms)
+✔ wrong heuristic classification remains provisional; source priority is explicit (2.3299ms)
+✖ profile change invalidates pending analysis; compiler failures stop before model calls (102.0714ms)
+✔ published JSON contracts match Zod and the narrow profile has honest domain limits (1217.4693ms)
+ℹ tests 9
+ℹ suites 0
+ℹ pass 7
+ℹ fail 2
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 3790.5327
+
+✖ failing tests:
+
+test at apps\language-demo\tests\understanding.test.mjs:10:1
+✖ new comparison preserves exact compiler input, arm isolation, post analyses and short answers (108.0635ms)
+  Error: UNDERSTANDING_PROCESS_FAILED
+      at finish (file:///C:/Projects/project-language/core/understanding/adapter.mjs:22:1042)
+      at ChildProcess.<anonymous> (file:///C:/Projects/project-language/core/understanding/adapter.mjs:22:1795)
+      at ChildProcess.emit (node:events:508:20)
+      at maybeClose (node:internal/child_process:1108:16)
+      at ChildProcess._handle.onexit (node:internal/child_process:305:5)
+
+test at apps\language-demo\tests\understanding.test.mjs:12:1
+✖ profile change invalidates pending analysis; compiler failures stop before model calls (102.0714ms)
+  Error: UNDERSTANDING_PROCESS_FAILED
+      at finish (file:///C:/Projects/project-language/core/understanding/adapter.mjs:22:1042)
+      at ChildProcess.<anonymous> (file:///C:/Projects/project-language/core/understanding/adapter.mjs:22:1795)
+      at ChildProcess.emit (node:events:508:20)
+      at maybeClose (node:internal/child_process:1108:16)
+      at ChildProcess._handle.onexit (node:internal/child_process:305:5)

@@ -1,0 +1,55 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Language Understanding immutable analysis artifact 0.1",
+  "type": "object",
+  "required": [
+    "schema",
+    "id",
+    "trial_id",
+    "stage",
+    "at",
+    "request",
+    "inventory",
+    "compiler",
+    "provenance",
+    "standing"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "schema": {
+      "const": "language-understanding-artifact/0.1"
+    },
+    "id": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    },
+    "trial_id": {
+      "type": "string"
+    },
+    "stage": {
+      "enum": [
+        "SOURCE",
+        "DELIVERY_FIELD",
+        "RECIPIENT_FIELD"
+      ]
+    },
+    "at": {
+      "type": "string"
+    },
+    "request": {
+      "$ref": "./request-v0.1.json"
+    },
+    "inventory": {
+      "$ref": "./inventory-v0.1.json"
+    },
+    "compiler": {
+      "type": "object"
+    },
+    "provenance": {
+      "type": "object"
+    },
+    "standing": {
+      "const": "HEURISTIC_UNVERIFIED"
+    }
+  }
+}

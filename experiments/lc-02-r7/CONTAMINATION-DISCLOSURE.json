@@ -1,0 +1,150 @@
+{
+  "schema": "lc02-r7-contamination-disclosure/0.1",
+  "created": "2026-10-24",
+  "standing": "POST_EXECUTION_DISCLOSURE",
+  "method": {
+    "measure": "Jaccard similarity over lower-cased source tokens",
+    "threshold": 0.45,
+    "comparison_sets": [
+      "experiments/lc-02-r6/fixtures/evaluation-cases.json",
+      "experiments/lc-02-r5/fixtures/evaluation-cases.json"
+    ],
+    "clean_subset_rule": "Exclude every R7 evaluation case whose source Jaccard similarity to any R5/R6 evaluation source is >= 0.45."
+  },
+  "result": {
+    "evaluation_cases": 24,
+    "overlapping_cases": 12,
+    "exact_source_duplicates": 2,
+    "clean_cases": 12,
+    "eligible_as_fresh_held_out": false,
+    "pilot_run": "experiments/lc-02-r7/.runs/EVAL-001",
+    "pilot_standing": "CONTAMINATED_PILOT_NOT_CLEAN_HELD_OUT"
+  },
+  "overlaps": [
+    {
+      "id": "R7-E01",
+      "nearest": "R6-E01",
+      "source_jaccard": 0.765,
+      "exact_source": false,
+      "source": "The archive accepts batches of no more than seventy files. A batch of sixty files is proposed.",
+      "nearest_source": "The archive accepts batches of no more than thirty files. A batch of twenty files is proposed."
+    },
+    {
+      "id": "R7-E02",
+      "nearest": "R6-E02",
+      "source_jaccard": 0.833,
+      "exact_source": false,
+      "source": "The review queue accepts batches of no more than eighteen items.",
+      "nearest_source": "The review queue accepts batches of no more than twelve items."
+    },
+    {
+      "id": "R7-E03",
+      "nearest": "R6-E03",
+      "source_jaccard": 0.875,
+      "exact_source": false,
+      "source": "Escalation is permitted after at least eight continuous minutes of lag. The dashboard shows ten minutes.",
+      "nearest_source": "Escalation is permitted after at least ten continuous minutes of lag. The dashboard shows twelve minutes."
+    },
+    {
+      "id": "R7-E05",
+      "nearest": "R6-E05",
+      "source_jaccard": 0.929,
+      "exact_source": false,
+      "source": "The key may be used during an incident, except when the audit ticket is closed.",
+      "nearest_source": "The key may be used during an incident, except when the incident ticket is closed."
+    },
+    {
+      "id": "R7-E08",
+      "nearest": "R6-E08",
+      "source_jaccard": 0.846,
+      "exact_source": false,
+      "source": "The ethics approval has not been decided. The record contains neither approval nor denial.",
+      "nearest_source": "The vendor approval has not been decided. The record contains neither approval nor denial."
+    },
+    {
+      "id": "R7-E11",
+      "nearest": "R6-E10",
+      "source_jaccard": 0.529,
+      "exact_source": false,
+      "source": "The auditor approved the exception. The note does not say whether \"the exception\" means the retention exception or the access exception.",
+      "nearest_source": "The reviewer approved the plan. The note does not say whether \"the plan\" means the rollout plan or the test plan."
+    },
+    {
+      "id": "R7-E12",
+      "nearest": "R6-E07",
+      "source_jaccard": 0.533,
+      "exact_source": false,
+      "source": "The note records a failed migration. It does not authorise rollback.",
+      "nearest_source": "The note records a failed checksum. It does not grant deletion authority."
+    },
+    {
+      "id": "R7-E16",
+      "nearest": "R6-E11",
+      "source_jaccard": 0.5,
+      "exact_source": false,
+      "source": "The replica became stale after the checksum failed. The investigation has not verified the cause.",
+      "nearest_source": "The checksum failed during transfer. The investigation says the cause has not been verified."
+    },
+    {
+      "id": "R7-E19",
+      "nearest": "R6-E15",
+      "source_jaccard": 0.895,
+      "exact_source": false,
+      "source": "The vendor may keep the copy for thirty days only if the privacy review is complete.\nThe vendor must delete it afterwards.",
+      "nearest_source": "The vendor may keep the copy for fourteen days only if the privacy review is complete. The vendor must delete it afterwards."
+    },
+    {
+      "id": "R7-E20",
+      "nearest": "R6-E20",
+      "source_jaccard": 1,
+      "exact_source": true,
+      "source": "The vendor must delete the copy afterwards. It must keep the audit log intact.",
+      "nearest_source": "The vendor must delete the copy afterwards. It must keep the audit log intact."
+    },
+    {
+      "id": "R7-E22",
+      "nearest": "R6-E22",
+      "source_jaccard": 0.87,
+      "exact_source": false,
+      "source": "Requests after 17:00 are outside the exception. The system recorded the request at 18:00. It is unclear whether 18:00 is the request time or the recording time.",
+      "nearest_source": "Requests timestamped after 17:00 are outside the exception. The system recorded the request at 18:00. It is unclear whether 18:00 is the request timestamp or only the recording time."
+    },
+    {
+      "id": "R7-E23",
+      "nearest": "R6-E10",
+      "source_jaccard": 1,
+      "exact_source": true,
+      "source": "The reviewer approved the plan. The note does not say whether \"the plan\" means the rollout plan or the test plan.",
+      "nearest_source": "The reviewer approved the plan. The note does not say whether \"the plan\" means the rollout plan or the test plan."
+    }
+  ],
+  "clean_subset": {
+    "cases": 12,
+    "ids": ["R7-E04", "R7-E06", "R7-E07", "R7-E09", "R7-E10", "R7-E13", "R7-E14", "R7-E15", "R7-E17", "R7-E18", "R7-E21", "R7-E24"],
+    "A": {
+      "corruption_detection": "5/5",
+      "false_acceptances": [],
+      "faithful_accepted": "4/5",
+      "false_rejections": ["R7-E13"],
+      "ambiguity_clarified": "1/2",
+      "policy_correct": "10/12"
+    },
+    "B": {
+      "corruption_detection": "3/5",
+      "false_acceptances": [],
+      "faithful_accepted": "4/5",
+      "false_rejections": ["R7-E17"],
+      "ambiguity_clarified": "1/2",
+      "policy_correct": "10/12"
+    },
+    "C": {
+      "corruption_detection": "5/5",
+      "false_acceptances": [],
+      "faithful_accepted": "3/5",
+      "false_rejections": ["R7-E13", "R7-E17"],
+      "ambiguity_clarified": "1/2",
+      "policy_correct": "9/12"
+    }
+  },
+  "conclusion": "The pilot run is not clean held-out evidence. On the non-overlapping subset, C does not improve corruption detection over A, increases false rejections, and has lower policy accuracy. The clean evidence favors the deterministic checker. The pilot's apparent gain on E05/E08 is not eligible as unseen evidence because both cases closely paraphrase R6 cases."
+}

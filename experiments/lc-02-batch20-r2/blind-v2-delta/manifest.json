@@ -1,0 +1,13 @@
+{
+  "schema": "lc02-r2-blind-package/0.1",
+  "design_sha256": "c1ca37936300384536b3c94d5cf5b38076b3a813bf6c934c0a053b9bd6bc09d9",
+  "package_sha256": "f903309be34db74a4906758111bd97876b46f1fff081f8b74f432ed827810e2f",
+  "cases": [
+    "R1E-04",
+    "R1E-08",
+    "R1E-16"
+  ],
+  "contains_expected_labels": false,
+  "contains_arm_identities": false,
+  "contains_previous_outputs": false
+}

@@ -1,0 +1,448 @@
+{
+  "schema": "language-fresh-evaluation-design/1.0",
+  "id": "LC-02-R1-FRESH-2026-10",
+  "title": "Fresh three-arm source-relative evaluation design",
+  "standing": "DESIGN_ONLY_FROZEN_NOT_RUN",
+  "created": "2026-10-23",
+  "execution_status": "NOT_RUN",
+  "frozen_before_execution": true,
+  "purpose": "Distinguish ordinary source communication, AI-mediated communication, and Understanding-enhanced communication on cases whose expected reasoning is fixed before any future model execution.",
+  "design_rules": {
+    "same_source_and_question_in_all_arms": true,
+    "oracle_and_references_never_sent_to_interpreter_or_recipient": true,
+    "no_lexical_tricks": "Each case is written so the question type and label meaning fix one answer. Genuine ambiguity cases say explicitly what the source leaves unresolved.",
+    "mechanical_failures_are_not_ties": true,
+    "adjudication_issues_are_not_silently_scored": true,
+    "no_held_out_claim_until_the_frozen_run_completes": true,
+    "c_must_be_compared_with_b_on_question_relevant_structure": true
+  },
+  "arms": {
+    "A_ORDINARY": "Original source plus exact question, with the same task-neutral recipient contract.",
+    "B_AI_MEDIATED": "Interpreter proposal plus original source plus exact question.",
+    "C_UNDERSTANDING_ENHANCED": "Versioned compiler inventory supplied to the same interpreter, then proposal plus original source plus exact question."
+  },
+  "question_scopes": {
+    "SOURCE_RELATIVE": "What does the supplied document or hypothetical scenario state or entail?",
+    "EXTERNAL_FACTUAL_VERIFICATION": "Does the supplied document accurately describe the real world?",
+    "ACTION_AUTHORITY": "May an actual actor or system execute the operation now?"
+  },
+  "label_semantics": {
+    "YES": "The source states or entails the proposition.",
+    "NO": "The source states the negation, expressly prohibits the proposition, or does not establish the requested permission or condition; the explanation must say which.",
+    "UNKNOWN": "The source leaves a question-relevant fact, condition or authority unresolved, or contains a genuine ambiguity that the text does not settle.",
+    "SOURCE_CONFLICT": "The source contains unresolved contradictory provisions of equal standing and supplies no precedence rule."
+  },
+  "cases": [
+    {
+      "id": "R1E-01",
+      "case_class": "FULLY_SPECIFIED_PERMISSION",
+      "scope": "SOURCE_RELATIVE",
+      "domain": "technical-policy",
+      "profile": "technical-policy",
+      "source": "The on-call engineer may fail over to the secondary region when the primary region has been unavailable for ten continuous minutes. Monitoring shows the primary region unavailable for twelve continuous minutes. No other condition applies.",
+      "question": "May the on-call engineer fail over now?",
+      "expected_decision": "YES",
+      "acceptable_alternatives": [],
+      "required_reasoning": [
+        "The rule permits failover after ten continuous minutes of primary unavailability.",
+        "Monitoring reports twelve continuous minutes, which exceeds the threshold.",
+        "The source says no other condition applies."
+      ],
+      "source_evidence_quotes": [
+        "may fail over to the secondary region when the primary region has been unavailable for ten continuous minutes",
+        "unavailable for twelve continuous minutes",
+        "No other condition applies"
+      ],
+      "why_one_label": "All stated conditions are explicit and satisfied; no missing fact or competing provision remains.",
+      "c_difference_probe": "C is substantively different only if it adds a question-relevant source-anchored relation (for example, threshold <= observed duration) that B lacks. Extra wording or more unknowns is not a difference."
+    },
+    {
+      "id": "R1E-02",
+      "case_class": "FULLY_SPECIFIED_PROHIBITION",
+      "scope": "SOURCE_RELATIVE",
+      "domain": "technical-policy",
+      "profile": "technical-policy",
+      "source": "The staging database must not be copied to removable media. The operator proposes copying the staging database to a removable drive.",
+      "question": "Does the policy permit the operator to copy the staging database to removable media?",
+      "expected_decision": "NO",
+      "acceptable_alternatives": [],
+      "required_reasoning": [
+        "The policy expressly prohibits copying the staging database to removable media.",
+        "The proposed action is exactly that prohibited copy."
+      ],
+      "source_evidence_quotes": [
+        "must not be copied to removable media",
+        "copying the staging database to a removable drive"
+      ],
+      "why_one_label": "An express prohibition applies directly to the proposed action.",
+      "c_difference_probe": "C adds no legitimate source-relative structure beyond B if both preserve the prohibition and its scope."
+    },
+    {
+      "id": "R1E-03",
+      "case_class": "FULLY_SPECIFIED_UNKNOWN",
+      "scope": "SOURCE_RELATIVE",
+      "domain": "technical-policy",
+      "profile": "technical-policy",
+      "source": "The vendor's security questionnaire is due on 30 November. The record does not state whether the vendor returned it. No other document is supplied.",
+      "question": "Did the vendor return the security questionnaire?",
+      "expected_decision": "UNKNOWN",
+      "acceptable_alternatives": [],
+      "required_reasoning": [
+        "The record is silent on whether the questionnaire was returned.",
+        "No other document is available."
+      ],
+      "source_evidence_quotes": [
+        "The record does not state whether the vendor returned it",
+        "No other document is supplied"
+      ],
+      "why_one_label": "A question-relevant fact is explicitly absent, not contradicted.",
+      "c_difference_probe": "C must not turn the absence into a denial. Any added inference that the vendor did not return it is an unsupported addition."
+    },
+    {
+      "id": "R1E-04",
+      "case_class": "FULLY_SPECIFIED_CONFLICT",
+      "scope": "SOURCE_RELATIVE",
+      "domain": "technical-policy",
+      "profile": "technical-policy",
+      "source": "Section 4.2 says the archivist may delete expired drafts after the retention review. Section 4.2, with the same effective date, says the archivist must not delete any expired draft. The excerpt gives no precedence rule.",
+      "question": "Does the excerpt unambiguously permit deleting expired drafts after the retention review?",
+      "expected_decision": "SOURCE_CONFLICT",
+      "acceptable_alternatives": [],
+      "required_reasoning": [
+        "Two provisions of equal standing point in opposite directions.",
+        "No precedence rule resolves them."
+      ],
+      "source_evidence_quotes": [
+        "the archivist may delete expired drafts after the retention review",
+        "the archivist must not delete any expired draft",
+        "no precedence rule"
+      ],
+      "why_one_label": "The source itself supplies the conflict and denies a resolution rule.",
+      "c_difference_probe": "C is not better merely by repeating both provisions; it must preserve equal standing and avoid choosing a winner."
+    },
+    {
+      "id": "R1E-05",
+      "case_class": "GENUINE_AMBIGUITY",
+      "scope": "SOURCE_RELATIVE",
+      "domain": "technical-policy",
+      "profile": "technical-policy",
+      "source": "The request was submitted in the portal on 3 March. The exception applies to requests submitted before 1 March. The portal record does not show whether 3 March is the submission date or the date the portal synchronized the request.",
+      "question": "Was the request submitted before 1 March?",
+      "expected_decision": "UNKNOWN",
+      "acceptable_alternatives": [],
+      "required_reasoning": [
+        "The operative submission date is not established.",
+        "3 March may be the submission date or only the synchronization date."
+      ],
+      "source_evidence_quotes": [
+        "does not show whether 3 March is the submission date or the date the portal synchronized the request",
+        "submitted before 1 March"
+      ],
+      "why_one_label": "The source explicitly leaves the operative date unresolved; neither YES nor NO is established.",
+      "c_difference_probe": "C may legitimately make the two readings explicit. It is not better if it selects either date without a source basis."
+    },
+    {
+      "id": "R1E-06",
+      "case_class": "AUTHORITY_DENIAL",
+      "scope": "SOURCE_RELATIVE",
+      "domain": "technical-policy",
+      "profile": "technical-policy",
+      "source": "The policy says the archive team is not authorised to delete legal-hold records. The archive team proposes deleting a legal-hold record.",
+      "question": "Does the policy authorise the archive team to delete the legal-hold record?",
+      "expected_decision": "NO",
+      "acceptable_alternatives": [],
+      "required_reasoning": [
+        "The policy expressly denies the requested authority.",
+        "The proposed action is the denied action."
+      ],
+      "source_evidence_quotes": [
+        "not authorised to delete legal-hold records",
+        "proposes deleting a legal-hold record"
+      ],
+      "why_one_label": "NO records an express denial of authority, not a missing fact.",
+      "c_difference_probe": "C must not convert 'not authorised' into a universal prohibition or into UNKNOWN. The authority limit is explicit."
+    },
+    {
+      "id": "R1E-07",
+      "case_class": "GENUINE_AMBIGUITY",
+      "scope": "SOURCE_RELATIVE",
+      "domain": "interview",
+      "profile": "general",
+      "source": "Reviewer: The chair approved the plan after the note. The note does not say whether 'the plan' refers to the rollout plan or the test plan. Reviewer: Did the chair approve the rollout plan?",
+      "question": "Did the chair approve the rollout plan?",
+      "expected_decision": "UNKNOWN",
+      "acceptable_alternatives": [],
+      "required_reasoning": [
+        "The source does not resolve the referent of 'the plan'.",
+        "Approval of the rollout plan is therefore not established."
+      ],
+      "source_evidence_quotes": [
+        "does not say whether 'the plan' refers to the rollout plan or the test plan",
+        "Did the chair approve the rollout plan?"
+      ],
+      "why_one_label": "The referential ambiguity is stated in the source and not resolved by context.",
+      "c_difference_probe": "C is substantively better only if it surfaces both referents and their different consequences without silently choosing one."
+    },
+    {
+      "id": "R1E-08",
+      "case_class": "COMPLETE_BUT_DISTRACTED",
+      "scope": "SOURCE_RELATIVE",
+      "domain": "technical-policy",
+      "profile": "technical-policy",
+      "source": "The incident desk may page the database engineer when replication lag stays above 20 seconds for at least 5 continuous minutes. The dashboard shows 9 uninterrupted minutes above 20 seconds. The page is sent to the on-call rotation. The policy also discusses office access badges, which are irrelevant here.",
+      "question": "May the incident desk page the database engineer now?",
+      "expected_decision": "YES",
+      "acceptable_alternatives": [],
+      "required_reasoning": [
+        "The threshold and duration are satisfied.",
+        "The paging action is the action the rule permits.",
+        "The badge discussion is irrelevant."
+      ],
+      "source_evidence_quotes": [
+        "may page the database engineer when replication lag stays above 20 seconds for at least 5 continuous minutes",
+        "9 uninterrupted minutes above 20 seconds"
+      ],
+      "why_one_label": "All paging conditions are explicit. The distractor does not qualify paging.",
+      "c_difference_probe": "C fails the benefit test if it invents a link between the badge discussion and paging, or if it treats a non-repeated condition as unresolved."
+    },
+    {
+      "id": "R1E-09",
+      "case_class": "QUALIFIED_EXCEPTION",
+      "scope": "SOURCE_RELATIVE",
+      "domain": "technical-policy",
+      "profile": "technical-policy",
+      "source": "During an outage, operators may copy the backup key into an isolated terminal for diagnostics. The exception does not allow sending the key by email. An operator proposes emailing the key during an outage.",
+      "question": "Does the exception permit emailing the key?",
+      "expected_decision": "NO",
+      "acceptable_alternatives": [],
+      "required_reasoning": [
+        "The exception is limited to an isolated terminal for diagnostics.",
+        "The exception expressly excludes email."
+      ],
+      "source_evidence_quotes": [
+        "The exception does not allow sending the key by email",
+        "proposes emailing the key"
+      ],
+      "why_one_label": "A later sentence expressly excludes the proposed action.",
+      "c_difference_probe": "C is better only if it preserves the exception's scope and the later exclusion without treating the exclusion as a new permission."
+    },
+    {
+      "id": "R1E-10",
+      "case_class": "SPEAKER_SCOPE",
+      "scope": "SOURCE_RELATIVE",
+      "domain": "interview",
+      "profile": "general",
+      "source": "Reviewer: May we circulate the draft to the client? Lead: No, the client copy needs legal clearance. Reviewer: May we circulate it internally? Lead: Yes, internal circulation is approved.",
+      "question": "May the team circulate the draft to the client?",
+      "expected_decision": "NO",
+      "acceptable_alternatives": [],
+      "required_reasoning": [
+        "The Lead denies client circulation pending legal clearance.",
+        "The Lead's approval is limited to internal circulation."
+      ],
+      "source_evidence_quotes": [
+        "No, the client copy needs legal clearance",
+        "Yes, internal circulation is approved"
+      ],
+      "why_one_label": "The speaker expressly denies the client-circulation question and grants only the internal one.",
+      "c_difference_probe": "C must attribute each answer to the Lead and not merge the two scopes. More commitments without correct attribution is not an improvement."
+    },
+    {
+      "id": "R1E-11",
+      "case_class": "SPEAKER_SCOPE",
+      "scope": "SOURCE_RELATIVE",
+      "domain": "interview",
+      "profile": "general",
+      "source": "Reviewer: May we circulate the draft to the client? Lead: No, the client copy needs legal clearance. Reviewer: May we circulate it internally? Lead: Yes, internal circulation is approved.",
+      "question": "May the team circulate the draft internally?",
+      "expected_decision": "YES",
+      "acceptable_alternatives": [],
+      "required_reasoning": [
+        "The Lead expressly approves internal circulation.",
+        "The client restriction does not apply to internal circulation."
+      ],
+      "source_evidence_quotes": [
+        "Yes, internal circulation is approved",
+        "No, the client copy needs legal clearance"
+      ],
+      "why_one_label": "The approval is expressly scoped to internal circulation.",
+      "c_difference_probe": "C is better only if it keeps the two speaker scopes separate and does not let the client denial swallow the internal approval."
+    },
+    {
+      "id": "R1E-12",
+      "case_class": "TEMPORAL_BOUNDARY",
+      "scope": "SOURCE_RELATIVE",
+      "domain": "technical-policy",
+      "profile": "technical-policy",
+      "source": "The exception closes at 17:00 UTC. A request timestamped after 17:00 UTC requires fresh approval. This request is timestamped 17:00:01 UTC. No fresh approval is recorded.",
+      "question": "May this request use the exception without fresh approval?",
+      "expected_decision": "NO",
+      "acceptable_alternatives": [],
+      "required_reasoning": [
+        "17:00:01 UTC is after 17:00 UTC.",
+        "The rule requires fresh approval after the closing time.",
+        "No fresh approval is recorded."
+      ],
+      "source_evidence_quotes": [
+        "A request timestamped after 17:00 UTC requires fresh approval",
+        "timestamped 17:00:01 UTC",
+        "No fresh approval is recorded"
+      ],
+      "why_one_label": "The request timestamp is explicit; this is not the system-record ambiguity from LC20-19.",
+      "c_difference_probe": "C must not introduce a recording-time ambiguity that the source does not contain."
+    },
+    {
+      "id": "R1E-13",
+      "case_class": "EXTERNAL_VERIFICATION",
+      "scope": "EXTERNAL_FACTUAL_VERIFICATION",
+      "domain": "technical-policy",
+      "profile": "technical-policy",
+      "source": "The supplied policy document states that the production backup is encrypted at rest. No independent audit or system evidence is supplied.",
+      "question": "Is the production backup actually encrypted at rest?",
+      "expected_decision": "UNKNOWN",
+      "acceptable_alternatives": [],
+      "required_reasoning": [
+        "The document states encryption at rest.",
+        "The question asks about the external production system, not what the document says.",
+        "No independent verification is supplied."
+      ],
+      "source_evidence_quotes": [
+        "states that the production backup is encrypted at rest",
+        "No independent audit or system evidence is supplied"
+      ],
+      "why_one_label": "The question scope is external verification; a document assertion alone does not establish the external fact.",
+      "c_difference_probe": "C is not better if it simply repeats the document claim as external truth. The scope distinction is the test."
+    },
+    {
+      "id": "R1E-14",
+      "case_class": "SOURCE_RELATIVE_SCOPE_PAIR",
+      "scope": "SOURCE_RELATIVE",
+      "domain": "technical-policy",
+      "profile": "technical-policy",
+      "source": "The supplied policy document states that the production backup is encrypted at rest. No independent audit or system evidence is supplied.",
+      "question": "Does the supplied document state that the production backup is encrypted at rest?",
+      "expected_decision": "YES",
+      "acceptable_alternatives": [],
+      "required_reasoning": [
+        "The document expressly states encryption at rest.",
+        "This question asks only what the document states."
+      ],
+      "source_evidence_quotes": [
+        "states that the production backup is encrypted at rest"
+      ],
+      "why_one_label": "A source-relative question about the document's content is directly answered by the document.",
+      "c_difference_probe": "Paired with R1E-13, this distinguishes a correct source-relative YES from a mistaken external-verification YES."
+    },
+    {
+      "id": "R1E-15",
+      "case_class": "MULTI_CONDITION",
+      "scope": "SOURCE_RELATIVE",
+      "domain": "technical-policy",
+      "profile": "technical-policy",
+      "source": "A release may be deployed only if the security review is accepted and the change ticket is approved. The security review is accepted. The change ticket is not approved. No other approval applies.",
+      "question": "May the release be deployed?",
+      "expected_decision": "NO",
+      "acceptable_alternatives": [],
+      "required_reasoning": [
+        "Both conditions are necessary.",
+        "The change ticket is not approved.",
+        "The missing condition defeats the permission."
+      ],
+      "source_evidence_quotes": [
+        "only if the security review is accepted and the change ticket is approved",
+        "The change ticket is not approved"
+      ],
+      "why_one_label": "A necessary condition is expressly absent.",
+      "c_difference_probe": "C is better only if it represents both prerequisites separately and preserves their joint necessity. More relations without that structure is not an improvement."
+    },
+    {
+      "id": "R1E-16",
+      "case_class": "FULLY_SPECIFIED_CONFLICT",
+      "scope": "SOURCE_RELATIVE",
+      "domain": "technical-policy",
+      "profile": "technical-policy",
+      "source": "Clause 7 says the auditor may access the log archive. Clause 9, with the same effective date, says the auditor must not access the log archive. The document states that neither clause takes precedence.",
+      "question": "May the auditor access the log archive under this document?",
+      "expected_decision": "SOURCE_CONFLICT",
+      "acceptable_alternatives": [],
+      "required_reasoning": [
+        "The two clauses contradict on the same subject and date.",
+        "The document expressly denies precedence."
+      ],
+      "source_evidence_quotes": [
+        "the auditor may access the log archive",
+        "the auditor must not access the log archive",
+        "neither clause takes precedence"
+      ],
+      "why_one_label": "Equal-standing contradiction is explicit; neither permission nor prohibition may silently win.",
+      "c_difference_probe": "C must not resolve the conflict by choosing the later clause, the more specific clause, or the safer clause."
+    }
+  ],
+  "preflight": {
+    "required_before_live_execution": true,
+    "human_readability_review": "Two readers who do not know the experimental hypothesis answer each case from source and question only. If they disagree on the label, record an adjudication issue. Rewrite the case or retire it before freezing a new design; do not resolve the disagreement after seeing model outputs.",
+    "mechanical_dry_run": "Run the full three-arm pipeline with scripted responses to verify packet isolation, exact spans, citation resolution, failure accounting and that no reference label enters a request.",
+    "trained_syntax_decision": "Either install the trained spaCy pipeline manually and record its version, or explicitly label the run BLANK_ENGLISH_FALLBACK. Do not describe a fallback run as a test of trained syntax.",
+    "no_live_run_until_frozen": true
+  },
+  "analysis_plan": {
+    "primary_outcomes": [
+      "Decision label agreement with the frozen source-relative reference.",
+      "Acceptable-alternative rate where the design declares one.",
+      "Explanation fidelity to required reasoning, assessed separately from the label.",
+      "Uncertainty calibration: correct UNKNOWN vs unnecessary abstention vs overconfident YES/NO.",
+      "Mechanical validity: schema, exact spans, host-resolved citation identifiers, provider completion."
+    ],
+    "paired_comparisons": [
+      "B vs A: improved, worsened, tied both correct, tied both wrong, unassessable.",
+      "C vs B: the primary incremental test of the compiler inventory.",
+      "C vs A: overall mediation comparison."
+    ],
+    "stratification": [
+      "fully specified vs genuine ambiguity vs source conflict",
+      "source-relative vs external-verification scope",
+      "permission vs prohibition vs missing-fact vs conflict",
+      "mechanical failure excluded from semantic denominators"
+    ],
+    "quality_vs_detection": {
+      "communication_quality": "Whether a recipient reaches the source-relative answer with faithful reasoning and calibrated uncertainty.",
+      "error_detection": "Whether mediation identifies a genuine missing condition, scope limit or conflict that a reasonable ordinary reader might miss.",
+      "rule": "Do not count a correct decision as improved communication quality if the explanation is unfaithful, and do not count an added warning as error detection unless the warned condition is actually in the source."
+    },
+    "stopping_rule": "Freeze this design and its references before any live call. Do not add cases or change expected labels after observing outputs. A failed arm is mechanical, not a tie."
+  },
+  "c_difference_audit": {
+    "question": "Is C's additional semantic structure substantively different from B's, or only longer?",
+    "pre_registered_criteria": [
+      "Count question-relevant source-anchored conditions, exceptions, scope limits and relations in each packet.",
+      "Identify at least one C-only item that changes the recipient's decision or explanation in the direction of the source-relative reference.",
+      "Reject as non-substantive: extra unknowns that merely restate the same doubt; longer paraphrases; relations with no source anchor; added doubts not present in the source.",
+      "Report C-only items that are unsupported additions or overcaution separately from C-only items that improve fidelity."
+    ],
+    "blinding": "Strip arm labels and packet lengths before comparison where feasible. A reviewer who knows the hypothesis must not be the only rater.",
+    "possible_outcomes": [
+      "C_NOT_SUBSTANTIVELY_DIFFERENT",
+      "C_SUBSTANTIVE_BENEFIT",
+      "C_SUBSTANTIVE_HARM",
+      "C_MIXED",
+      "NOT_ASSESSABLE"
+    ],
+    "current_expectation": "NOT_YET_TESTED. The batch-20 evidence does not support a C benefit; this design must be run before any such claim."
+  },
+  "run_plan": {
+    "split": "fresh_evaluation",
+    "held_out": true,
+    "planned_calls_per_case": 5,
+    "planned_calls_total": 80,
+    "absolute_request_ceiling": 100,
+    "model_policy": "Use the same configured interpreter and recipient models across all arms. Record actual provider and model IDs before the first call and do not change them mid-run.",
+    "tuning_policy": "No prompt, compiler or reference changes after the first live call. If a runtime bug is found, stop, preserve the trace and version a new design.",
+    "result_handling": "Report all 16 cases, including mechanical failures. Do not delete a case or relabel a reference after seeing outputs."
+  },
+  "freeze": {
+    "frozen_before_execution": true,
+    "reference_standing": "AUTHOR_CONSTRUCTED_AND_FROZEN_BEFORE_EXECUTION_NOT_INDEPENDENTLY_ADJUDICATED",
+    "design_sha256": "2c88429b777baca7207aad13ea3041746bc0a99d0d96fcc217aed81856c78de4",
+    "note": "The hash is computed over this design with the design_sha256 field removed. A future runner must refuse to start if the file hash differs."
+  }
+}

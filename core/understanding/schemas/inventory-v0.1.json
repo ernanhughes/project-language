@@ -1,0 +1,326 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "properties": {
+    "schema": {
+      "type": "string",
+      "const": "language-understanding-inventory/0.1"
+    },
+    "offset_unit": {
+      "type": "string",
+      "const": "UNICODE_CODE_POINTS"
+    },
+    "standing": {
+      "type": "string",
+      "const": "HEURISTIC_UNVERIFIED"
+    },
+    "source": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "sha256": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{64}$"
+        },
+        "text": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "id",
+        "sha256",
+        "text"
+      ],
+      "additionalProperties": false
+    },
+    "profile": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "version": {
+          "type": "string"
+        },
+        "schema": {
+          "type": "string",
+          "const": "language-understanding-profile/0.1"
+        },
+        "sha256": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{64}$"
+        }
+      },
+      "required": [
+        "id",
+        "version",
+        "schema",
+        "sha256"
+      ],
+      "additionalProperties": false
+    },
+    "engine": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "version": {
+          "type": "string"
+        },
+        "nltk_version": {
+          "type": "string"
+        },
+        "spacy_version": {
+          "type": "string"
+        },
+        "trained_syntax_available": {
+          "type": "boolean"
+        },
+        "trained_model_requested": {
+          "type": "string"
+        },
+        "fallback_reason": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "id",
+        "version",
+        "nltk_version",
+        "spacy_version",
+        "trained_syntax_available"
+      ],
+      "additionalProperties": false
+    },
+    "segments": {
+      "minItems": 1,
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "start": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 9007199254740991
+          },
+          "end": {
+            "type": "integer",
+            "exclusiveMinimum": 0,
+            "maximum": 9007199254740991
+          },
+          "text": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "id",
+          "start",
+          "end",
+          "text"
+        ],
+        "additionalProperties": false
+      }
+    },
+    "meaning_units": {
+      "minItems": 1,
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "source_segments": {
+            "minItems": 1,
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "start": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 9007199254740991
+          },
+          "end": {
+            "type": "integer",
+            "exclusiveMinimum": 0,
+            "maximum": 9007199254740991
+          },
+          "source_quote": {
+            "type": "string",
+            "minLength": 1
+          },
+          "proposed_meaning": {
+            "type": "string"
+          },
+          "classification": {
+            "type": "object",
+            "properties": {
+              "kind": {
+                "type": "string",
+                "enum": [
+                  "unknown",
+                  "authority_limit",
+                  "prohibition",
+                  "requirement",
+                  "conditional_permission",
+                  "permission",
+                  "recommendation",
+                  "question",
+                  "warning",
+                  "statement"
+                ]
+              },
+              "normative_force": {
+                "type": "string",
+                "enum": [
+                  "UNRESOLVED",
+                  "DOES_NOT_CONFER_PERMISSION",
+                  "PROHIBITED",
+                  "REQUIRED",
+                  "PERMITTED_IN_SOURCE",
+                  "RECOMMENDED",
+                  "ASKED",
+                  "CAUTION",
+                  "ASSERTED_IN_SOURCE"
+                ]
+              },
+              "condition_cues": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "temporal_cues": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "possible_unresolved_reference": {
+                "type": "boolean"
+              },
+              "speaker": {
+                "type": "string"
+              },
+              "prerequisites": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "method": {
+                "type": "string",
+                "const": "LEXICAL_RULE_HEURISTIC"
+              },
+              "review": {
+                "type": "string",
+                "const": "HEURISTIC_UNVERIFIED"
+              }
+            },
+            "required": [
+              "kind",
+              "normative_force",
+              "condition_cues",
+              "temporal_cues",
+              "possible_unresolved_reference",
+              "method",
+              "review"
+            ],
+            "additionalProperties": false
+          },
+          "provenance": {
+            "type": "string",
+            "const": "EXACT_SOURCE_SPAN"
+          }
+        },
+        "required": [
+          "id",
+          "source_segments",
+          "start",
+          "end",
+          "source_quote",
+          "proposed_meaning",
+          "classification",
+          "provenance"
+        ],
+        "additionalProperties": false
+      }
+    },
+    "relations": {
+      "maxItems": 0,
+      "type": "array",
+      "items": {}
+    },
+    "context": {
+      "type": "object",
+      "properties": {
+        "purpose": {
+          "type": "string"
+        },
+        "intended_recipient": {
+          "type": "string"
+        },
+        "declared_context": {
+          "type": "object",
+          "propertyNames": {
+            "type": "string"
+          },
+          "additionalProperties": {}
+        }
+      },
+      "additionalProperties": false
+    },
+    "coverage": {
+      "type": "object",
+      "properties": {
+        "standing": {
+          "type": "string",
+          "const": "NOT_EVALUATED"
+        },
+        "source_supportedness": {
+          "type": "string",
+          "const": "NOT_EVALUATED"
+        },
+        "semantic_completeness": {
+          "type": "string",
+          "const": "NOT_ESTABLISHED"
+        }
+      },
+      "required": [
+        "standing",
+        "source_supportedness",
+        "semantic_completeness"
+      ],
+      "additionalProperties": false
+    },
+    "warnings": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    }
+  },
+  "required": [
+    "schema",
+    "offset_unit",
+    "standing",
+    "source",
+    "profile",
+    "engine",
+    "segments",
+    "meaning_units",
+    "relations",
+    "coverage",
+    "warnings"
+  ],
+  "additionalProperties": false
+}

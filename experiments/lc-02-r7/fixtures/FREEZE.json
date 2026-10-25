@@ -1,0 +1,11 @@
+{
+  "schema": "language-hybrid-checker-freeze/0.1",
+  "created": "2026-10-24",
+  "standing": "FROZEN_BEFORE_MODEL_EXECUTION",
+  "files": {
+    "development-cases.json": "686467eeee3af23f01eacfab958c6953a969c3734b2f2c58f8e3b11af8764963",
+    "evaluation-cases.json": "4a1d64ef4a0d26b7c68b23177052168b92862b93a451ccf17444ab20e6b0177a",
+    "development-references.json": "ca26544c699ff3d4fc6e1ef8d3b2dd52a54fa349a7468d9ada8cefa67d6dba84",
+    "evaluation-references.json": "9a1a4b6aec363cf3482af94d3f90fda7d738748e1e959768faec853624a32529"
+  }
+}

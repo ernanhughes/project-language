@@ -1,0 +1,46 @@
+{
+  "schema": "language-blind-review-response/1.0",
+  "reviewer_id": "reviewer-a2",
+  "reviewer_standing": "MODEL_BASED_PROVISIONAL_NOT_HUMAN",
+  "reviewed_at": "2026-10-23",
+  "cases": [
+    {
+      "case_id": "R1E-04",
+      "decision": "SOURCE_CONFLICT",
+      "explanation": "The communication sets out two directly opposing provisions of equal standing: permission to delete expired drafts after the retention review and an unconditional prohibition on deleting any expired draft. Both are attributed to Section 4.2 with the same effective date, and the excerpt expressly states that no precedence rule is given. Because the text supplies no way to resolve which provision controls, the status of deleting expired drafts after the retention review is unresolved. This fits the SOURCE_CONFLICT definition rather than YES or NO.",
+      "citations": [
+        "Section 4.2 says the archivist may delete expired drafts after the retention review.",
+        "Section 4.2, with the same effective date, says the archivist must not delete any expired draft.",
+        "The excerpt gives no precedence rule."
+      ],
+      "confidence": 5,
+      "suspected_ambiguity": "A reasonable reader might argue there is no true conflict because the prohibition is unconditional ('any expired draft') while the permission is conditional on the retention review, so the prohibition could be read as controlling. Conversely, one might read 'may' as mere discretion rather than an affirmative permission, making the two clauses compatible. The excerpt also does not confirm that both statements are accurate quotations of the same operative text beyond sharing a section number and effective date. These readings are plausible but do not displace the equal-standing contradiction the excerpt itself flags.",
+      "notes": "SOURCE_RELATIVE; decided only from the supplied excerpt, treating its description of Section 4.2 as the source content and not as external verification."
+    },
+    {
+      "case_id": "R1E-08",
+      "decision": "YES",
+      "explanation": "The stated condition for paging is replication lag staying above 20 seconds for at least 5 continuous minutes. The communication states the dashboard currently shows 9 uninterrupted minutes above 20 seconds, which satisfies that threshold on the face of the source. The operative verb is 'may', so the incident desk is permitted, though not required, to page the database engineer. The remaining sentences concern routing and an irrelevant topic and add no further condition.",
+      "citations": [
+        "The incident desk may page the database engineer when replication lag stays above 20 seconds for at least 5 continuous minutes.",
+        "The dashboard currently shows 9 uninterrupted minutes above 20 seconds."
+      ],
+      "confidence": 5,
+      "suspected_ambiguity": "One could note that 'may' grants discretion rather than imposing a duty, and that 'the page is sent to the on-call rotation' is descriptive rather than a condition. '9 uninterrupted minutes' is read as satisfying 'at least 5 continuous minutes,' which is the natural reading but is not independently verified beyond the dashboard statement.",
+      "notes": ""
+    },
+    {
+      "case_id": "R1E-16",
+      "decision": "SOURCE_CONFLICT",
+      "explanation": "Clause 7 permits the auditor to access the log archive, while Clause 9 of the same effective date prohibits that same access. The document expressly states that neither clause takes precedence, so there is no rule by which one provision defeats the other. The result is an unresolved contradiction between provisions of equal standing, which is precisely SOURCE_CONFLICT; the document does not establish either access or non-access as the controlling status.",
+      "citations": [
+        "Clause 7 says the auditor may access the log archive.",
+        "Clause 9, with the same effective date, says the auditor must not access the log archive.",
+        "The document states that neither clause takes precedence."
+      ],
+      "confidence": 5,
+      "suspected_ambiguity": "A reader might argue that the mandatory prohibition ('must not') should prevail over the permissive 'may,' or that 'may' merely expresses discretion and therefore never conflicts with a prohibition. However, the document's own statement that neither clause takes precedence removes any textual basis for preferring one, so the conflict remains unresolved rather than resolvable to NO.",
+      "notes": ""
+    }
+  ]
+}

@@ -1,0 +1,118 @@
+{
+  "schema": "lc03-p0-summary/0.1",
+  "standing": "OFFLINE_DESIGN_AND_FEASIBILITY_ONLY",
+  "decision": {
+    "lc02": "CLOSE_WITH_PREFER_DETERMINISTIC",
+    "keep": [
+      "R6 typed constraints",
+      "exact source spans and provenance",
+      "conditional/prerequisite checks as advisory",
+      "R7 reviewer and reconciliation evidence as experimental record"
+    ],
+    "do_not": [
+      "deploy automatic Preserve/Enhance/Clarify routing",
+      "continue extending the hybrid as the primary checker",
+      "treat the retrospective R7 clean subset as confirmatory",
+      "execute hosted model requests in LC-03-P0"
+    ],
+    "next": "LC-03 communication-utility design and bounded feasibility, not a full application"
+  },
+  "lc02": {
+    "r4": {
+      "detection": "5/6",
+      "false_rejections": "2/6",
+      "decision": "REVISE"
+    },
+    "r5": {
+      "detection": "8/12",
+      "false_rejections": "2/8",
+      "false_acceptance": ["R5-E11"],
+      "ambiguity": "4/4",
+      "decision": "REVISE"
+    },
+    "r6": {
+      "detection": "10/12",
+      "false_acceptances": 0,
+      "faithful_accepted": "8/8",
+      "ambiguity": "4/4",
+      "policy_correct": "23/24",
+      "decision": "REVISE_ARCHITECTURE"
+    },
+    "r7": {
+      "decision": "PREFER_DETERMINISTIC",
+      "pilot": "CONTAMINATED_PILOT_NOT_CLEAN_HELD_OUT",
+      "overlap_cases": 12,
+      "exact_duplicates": 2,
+      "clean_cases": 12,
+      "clean_subset": {
+        "A": {"detection": "5/5", "faithful_accepted": "4/5", "ambiguity": "1/2", "policy_correct": "10/12"},
+        "B": {"detection": "3/5", "faithful_accepted": "4/5", "ambiguity": "1/2", "policy_correct": "10/12"},
+        "C": {"detection": "5/5", "faithful_accepted": "3/5", "ambiguity": "1/2", "policy_correct": "9/12"}
+      }
+    }
+  },
+  "lc03": {
+    "question": "Does AI-mediated task-specific representation improve a recipient's ability to reconstruct and apply meaning from substantial sources compared with competent source access?",
+    "arms": {
+      "A": "original source plus navigation/retrieval",
+      "B": "AI-mediated task-specific representation with the same source access",
+      "C": "B plus optional advisory constraint inspection"
+    },
+    "development_fixture": {
+      "source": "core/browser/fixtures/incident.ts",
+      "source_chars": 1378,
+      "cases": 4,
+      "standing": "EXPOSED_DEVELOPMENT_FIXTURE_NOT_HELD_OUT"
+    },
+    "overlap_audit": {
+      "status": "CLEAN",
+      "comparison_sources": 195,
+      "corpora": 9,
+      "nearest_jaccard": 0.0888,
+      "path": "experiments/lc-03-p0/overlap-report.json"
+    },
+    "feasibility": {
+      "status": "COMPLETE_OFFLINE",
+      "record_validation": "PASS",
+      "A_lookup": "FOUND",
+      "B_views": 3,
+      "B_representation_chars": 2674,
+      "source_chars": 1378,
+      "lossy_control_detected": "row-condition-q1",
+      "r6_advisory_findings": ["NEGATION_REVERSAL", "MISSING_PREREQUISITE", "UNSUPPORTED_CONTENT"],
+      "scripted_scores": {
+        "A": 1,
+        "B": 0.833,
+        "C": 1
+      },
+      "score_standing": "SCRIPTED_ILLUSTRATION_NOT_MODEL_RESULT",
+      "path": "experiments/lc-03-p0/feasibility.json"
+    },
+    "infrastructure": {
+      "reusable": [
+        "core/browser record/task/representation/gate",
+        "core/record source-linked document record",
+        "core/preservation obligations and three-valued checks",
+        "core/sidecar and core/relations annotations",
+        "Studio evidence ledger, source anchors, runtime gates, comparison journal",
+        "R6 typed-constraint checker as advisory"
+      ],
+      "missing": [
+        "three-arm comparison harness",
+        "structured multi-part task answer schema and scorer",
+        "representation generation for arbitrary substantial sources",
+        "per-source-type renderers beyond incident records",
+        "multi-page navigation and retrieval",
+        "independent source/reference authoring and blinding"
+      ],
+      "recommendation": "Existing infrastructure supports a bounded single-source incident feasibility study with moderate orchestration. The full multi-source LC-03 experiment requires substantial new development."
+    }
+  },
+  "non_actions": {
+    "hosted_models": false,
+    "studio_communication_integration": false,
+    "manuscript_modified": false,
+    "committed": false,
+    "pushed": false
+  }
+}

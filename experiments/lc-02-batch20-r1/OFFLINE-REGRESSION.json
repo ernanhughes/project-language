@@ -1,0 +1,594 @@
+{
+  "schema": "lc02-r1-offline-regression/0.1",
+  "standing": "OFFLINE_CONTRACT_AND_MECHANICAL_TESTS_NOT_MODEL_EVIDENCE",
+  "frozen_results_sha256": "35fcf7326392d6154a90c0aaeb6350c57911a85d9b5d9985831c7b99b8c6d047",
+  "checks": [
+    {
+      "check": "all-frozen-artifacts-unchanged",
+      "status": "PASS",
+      "before": "146 recorded artifact hashes",
+      "after": "146/146 exact",
+      "control": "Diagnosis writes only new files under experiments/lc-02-batch20-r1/.",
+      "failure_mode": "Any rewritten request, response, event, failure or hash would invalidate the evidence base.",
+      "evidence": "artifact-hashes.json"
+    },
+    {
+      "check": "frozen-results-unchanged",
+      "status": "PASS",
+      "before": "35fcf7326392d6154a90c0aaeb6350c57911a85d9b5d9985831c7b99b8c6d047",
+      "after": "35fcf7326392d6154a90c0aaeb6350c57911a85d9b5d9985831c7b99b8c6d047",
+      "control": "All case records remain addressable; no rewrite or rescore.",
+      "failure_mode": "Any silent alteration of the frozen comparison would invalidate the diagnosis.",
+      "evidence": "artifact-hashes.json results.json digest"
+    },
+    {
+      "check": "citation-hash-host-resolution",
+      "status": "PASS",
+      "before": "frozen arm status=FAILED; strict=SOURCE_BINDING; supplied hash length=58",
+      "after": "resolveCitations=HOST_RESOLVED_HASH,HOST_RESOLVED_HASH,HOST_RESOLVED_HASH,HOST_RESOLVED_HASH; canonical hash restored=true",
+      "control": "A wrong span is still rejected (SOURCE_SPAN); a wrong source id is still rejected (SOURCE_BINDING).",
+      "failure_mode": "Model truncation of a 64-character hash can turn a correct answer into UNASSESSABLE.",
+      "evidence": "LC20-15/A_SOURCE_ONLY captured MODEL_RESULT"
+    },
+    {
+      "check": "host-resolution-does-not-repair-spans",
+      "status": "PASS",
+      "before": "wrong span=SOURCE_SPAN; wrong id=SOURCE_BINDING",
+      "after": "Both remain rejected",
+      "control": "This is the control that prevents host resolution from becoming citation fabrication.",
+      "failure_mode": "Repairing a wrong span would let a model attach an unsupported claim to arbitrary text.",
+      "evidence": "resolveCitations negative controls"
+    },
+    {
+      "check": "source-relative-contract",
+      "status": "PASS",
+      "before": "packet carried source_truth=UNVERIFIED with no scope explanation; recipient could cite it as a reason to abstain",
+      "after": "contract=lc02-r1/source-relative/1; answer_scope=SOURCE_RELATIVE; source_truth_scope=EXTERNAL_FACTUAL_VERIFICATION_ONLY; interpretation=FALLIBLE_AID_NOT_SOURCE; authority=false",
+      "control": "Action authority remains false; source verification remains UNVERIFIED.",
+      "failure_mode": "Provenance metadata can be mistaken for a prohibition on source-relative reasoning (observed in LC20-10 C).",
+      "evidence": "source-contract.mjs and prompts.recipient"
+    },
+    {
+      "check": "provenance-confusion-detector",
+      "status": "PASS",
+      "before": "No evaluator distinguished source-relative reasoning from external verification; LC20-10 C counted as a plain UNKNOWN.",
+      "after": "LC20-10 C flags=[\"PROVENANCE_SCOPE_CONFUSION\"]",
+      "control": "LC20-10 A flags=[] (no provenance confusion)",
+      "failure_mode": "A provenance warning used as an abstention reason can be mistaken for justified uncertainty.",
+      "evidence": "LC20-10 C and A frozen explanations"
+    },
+    {
+      "check": "one-sentence-multiple-units",
+      "status": "PASS",
+      "before": "LC20-10 inventory: 4 units; final unit kind=requirement (REQUIRED)",
+      "after": "LC20-10 inventory: 5 units; explicit permission unit='Paging is permitted' kind=permission",
+      "control": "General profile remains unsplit for the same source (checked separately).",
+      "failure_mode": "A semicolon-joined independent permission and requirement were collapsed into one requirement unit.",
+      "evidence": "frozen LC20-10 C inventory vs new compiler"
+    },
+    {
+      "check": "classifier-corrections",
+      "status": "PASS",
+      "before": "LC20-07: 'can be sent...once'=statement; 'Neither review may substitute'=permission; LC20-11 'may indicate'=permission",
+      "after": "LC20-07: 'can be sent...once'=conditional_permission; 'Neither review may substitute'=prohibition; LC20-11 'may indicate'=statement",
+      "control": "The source text and exact spans are unchanged.",
+      "failure_mode": "Lexical \"may\" and \"can\" rules mislabelled a role prohibition as a permission and a conditional permission as a statement.",
+      "evidence": "frozen inventories vs new compiler"
+    },
+    {
+      "check": "prerequisites-separate",
+      "status": "PASS",
+      "before": "LC20-02 condition was one undifferentiated unit; no prerequisite list existed",
+      "after": "LC20-02 prerequisites=[\"a signed known-good image is used\",\"the audit log remains intact\"]",
+      "control": "The exact quoted source span is unchanged and the prerequisite strings are substrings of it.",
+      "failure_mode": "Two independently attached conditions were not separately inspectable.",
+      "evidence": "new compiler LC20-02"
+    },
+    {
+      "check": "label-rubric-separates-statuses",
+      "status": "PASS",
+      "before": "Frozen table counts every non-match as WORSENED and every failed arm as UNASSESSABLE, without distinguishing label conventions from semantic errors.",
+      "after": "{\"REFERENCE_MATCH\":47,\"ACCEPTABLE_ALTERNATIVE\":7,\"REFERENCE_DISAGREEMENT\":4,\"MECHANICAL_FAILURE\":2}",
+      "control": "The frozen table is not rewritten; this is a separate provisional re-read.",
+      "failure_mode": "Treating NO/UNKNOWN conventions as comprehension failures overstates mediation harm.",
+      "evidence": "frozen outputs + provisional adjudication ledger"
+    },
+    {
+      "check": "c-vs-b-has-no-semantic-improvement",
+      "status": "PASS",
+      "before": "C_vs_B: 1 improved, 0 worsened, 5 both-wrong, 13 both-correct, 1 unassessable",
+      "after": "C/B label differences: {\"A\":\"CORRECT\",\"B\":\"ACCEPTABLE_ALTERNATIVE\",\"C\":\"CORRECT\"} and {\"A\":\"CORRECT\",\"B\":\"CORRECT\",\"C\":\"MECHANICAL_FAILURE\"}",
+      "control": "C and B remain tied on every clear case; the one difference is a label convention, the other is a provider failure.",
+      "failure_mode": "Reporting a label-convention win as an Understanding advantage.",
+      "evidence": "frozen C_vs_B plus provisional ledger"
+    }
+  ],
+  "label_counts": {
+    "REFERENCE_MATCH": 47,
+    "ACCEPTABLE_ALTERNATIVE": 7,
+    "REFERENCE_DISAGREEMENT": 4,
+    "MECHANICAL_FAILURE": 2
+  },
+  "label_rows": [
+    {
+      "id": "LC20-01",
+      "arm": "A",
+      "decision": "NO",
+      "decision_source": "VALIDATED",
+      "mechanical": "PASS",
+      "status": "REFERENCE_MATCH"
+    },
+    {
+      "id": "LC20-01",
+      "arm": "B",
+      "decision": "NO",
+      "decision_source": "VALIDATED",
+      "mechanical": "PASS",
+      "status": "REFERENCE_MATCH"
+    },
+    {
+      "id": "LC20-01",
+      "arm": "C",
+      "decision": "NO",
+      "decision_source": "VALIDATED",
+      "mechanical": "PASS",
+      "status": "REFERENCE_MATCH"
+    },
+    {
+      "id": "LC20-02",
+      "arm": "A",
+      "decision": "YES",
+      "decision_source": "VALIDATED",
+      "mechanical": "PASS",
+      "status": "ACCEPTABLE_ALTERNATIVE"
+    },
+    {
+      "id": "LC20-02",
+      "arm": "B",
+      "decision": "UNKNOWN",
+      "decision_source": "VALIDATED",
+      "mechanical": "PASS",
+      "status": "REFERENCE_MATCH"
+    },
+    {
+      "id": "LC20-02",
+      "arm": "C",
+      "decision": "UNKNOWN",
+      "decision_source": "VALIDATED",
+      "mechanical": "PASS",
+      "status": "REFERENCE_MATCH"
+    },
+    {
+      "id": "LC20-03",
+      "arm": "A",
+      "decision": "UNKNOWN",
+      "decision_source": "VALIDATED",
+      "mechanical": "PASS",
+      "status": "REFERENCE_MATCH"
+    },
+    {
+      "id": "LC20-03",
+      "arm": "B",
+      "decision": "NO",
+      "decision_source": "VALIDATED",
+      "mechanical": "PASS",
+      "status": "ACCEPTABLE_ALTERNATIVE"
+    },
+    {
+      "id": "LC20-03",
+      "arm": "C",
+      "decision": "NO",
+      "decision_source": "VALIDATED",
+      "mechanical": "PASS",
+      "status": "ACCEPTABLE_ALTERNATIVE"
+    },
+    {
+      "id": "LC20-04",
+      "arm": "A",
+      "decision": "NO",
+      "decision_source": "VALIDATED",
+      "mechanical": "PASS",
+      "status": "REFERENCE_MATCH"
+    },
+    {
+      "id": "LC20-04",
+      "arm": "B",
+      "decision": "NO",
+      "decision_source": "VALIDATED",
+      "mechanical": "PASS",
+      "status": "REFERENCE_MATCH"
+    },
+    {
+      "id": "LC20-04",
+      "arm": "C",
+      "decision": "NO",
+      "decision_source": "VALIDATED",
+      "mechanical": "PASS",
+      "status": "REFERENCE_MATCH"
+    },
+    {
+      "id": "LC20-05",
+      "arm": "A",
+      "decision": "NO",
+      "decision_source": "VALIDATED",
+      "mechanical": "PASS",
+      "status": "REFERENCE_MATCH"
+    },
+    {
+      "id": "LC20-05",
+      "arm": "B",
+      "decision": "NO",
+      "decision_source": "VALIDATED",
+      "mechanical": "PASS",
+      "status": "REFERENCE_MATCH"
+    },
+    {
+      "id": "LC20-05",
+      "arm": "C",
+      "decision": "NO",
+      "decision_source": "VALIDATED",
+      "mechanical": "PASS",
+      "status": "REFERENCE_MATCH"
+    },
+    {
+      "id": "LC20-06",
+      "arm": "A",
+      "decision": "UNKNOWN",
+      "decision_source": "VALIDATED",
+      "mechanical": "PASS",
+      "status": "REFERENCE_MATCH"
+    },
+    {
+      "id": "LC20-06",
+      "arm": "B",
+      "decision": "UNKNOWN",
+      "decision_source": "VALIDATED",
+      "mechanical": "PASS",
+      "status": "REFERENCE_MATCH"
+    },
+    {
+      "id": "LC20-06",
+      "arm": "C",
+      "decision": "UNKNOWN",
+      "decision_source": "VALIDATED",
+      "mechanical": "PASS",
+      "status": "REFERENCE_MATCH"
+    },
+    {
+      "id": "LC20-07",
+      "arm": "A",
+      "decision": "YES",
+      "decision_source": "VALIDATED",
+      "mechanical": "PASS",
+      "status": "REFERENCE_MATCH"
+    },
+    {
+      "id": "LC20-07",
+      "arm": "B",
+      "decision": "UNKNOWN",
+      "decision_source": "VALIDATED",
+      "mechanical": "PASS",
+      "status": "REFERENCE_DISAGREEMENT"
+    },
+    {
+      "id": "LC20-07",
+      "arm": "C",
+      "decision": "UNKNOWN",
+      "decision_source": "VALIDATED",
+      "mechanical": "PASS",
+      "status": "REFERENCE_DISAGREEMENT"
+    },
+    {
+      "id": "LC20-08",
+      "arm": "A",
+      "decision": "NO",
+      "decision_source": "VALIDATED",
+      "mechanical": "PASS",
+      "status": "REFERENCE_MATCH"
+    },
+    {
+      "id": "LC20-08",
+      "arm": "B",
+      "decision": "NO",
+      "decision_source": "VALIDATED",
+      "mechanical": "PASS",
+      "status": "REFERENCE_MATCH"
+    },
+    {
+      "id": "LC20-08",
+      "arm": "C",
+      "decision": "NO",
+      "decision_source": "VALIDATED",
+      "mechanical": "PASS",
+      "status": "REFERENCE_MATCH"
+    },
+    {
+      "id": "LC20-09",
+      "arm": "A",
+      "decision": "UNKNOWN",
+      "decision_source": "VALIDATED",
+      "mechanical": "PASS",
+      "status": "REFERENCE_MATCH"
+    },
+    {
+      "id": "LC20-09",
+      "arm": "B",
+      "decision": "NO",
+      "decision_source": "VALIDATED",
+      "mechanical": "PASS",
+      "status": "ACCEPTABLE_ALTERNATIVE"
+    },
+    {
+      "id": "LC20-09",
+      "arm": "C",
+      "decision": "UNKNOWN",
+      "decision_source": "VALIDATED",
+      "mechanical": "PASS",
+      "status": "REFERENCE_MATCH"
+    },
+    {
+      "id": "LC20-10",
+      "arm": "A",
+      "decision": "YES",
+      "decision_source": "VALIDATED",
+      "mechanical": "PASS",
+      "status": "REFERENCE_MATCH"
+    },
+    {
+      "id": "LC20-10",
+      "arm": "B",
+      "decision": "UNKNOWN",
+      "decision_source": "VALIDATED",
+      "mechanical": "PASS",
+      "status": "REFERENCE_DISAGREEMENT"
+    },
+    {
+      "id": "LC20-10",
+      "arm": "C",
+      "decision": "UNKNOWN",
+      "decision_source": "VALIDATED",
+      "mechanical": "PASS",
+      "status": "REFERENCE_DISAGREEMENT"
+    },
+    {
+      "id": "LC20-11",
+      "arm": "A",
+      "decision": "NO",
+      "decision_source": "VALIDATED",
+      "mechanical": "PASS",
+      "status": "REFERENCE_MATCH"
+    },
+    {
+      "id": "LC20-11",
+      "arm": "B",
+      "decision": "NO",
+      "decision_source": "VALIDATED",
+      "mechanical": "PASS",
+      "status": "REFERENCE_MATCH"
+    },
+    {
+      "id": "LC20-11",
+      "arm": "C",
+      "decision": null,
+      "decision_source": "NONE",
+      "mechanical": "FAILED",
+      "status": "MECHANICAL_FAILURE"
+    },
+    {
+      "id": "LC20-12",
+      "arm": "A",
+      "decision": "UNKNOWN",
+      "decision_source": "VALIDATED",
+      "mechanical": "PASS",
+      "status": "REFERENCE_MATCH"
+    },
+    {
+      "id": "LC20-12",
+      "arm": "B",
+      "decision": "UNKNOWN",
+      "decision_source": "VALIDATED",
+      "mechanical": "PASS",
+      "status": "REFERENCE_MATCH"
+    },
+    {
+      "id": "LC20-12",
+      "arm": "C",
+      "decision": "UNKNOWN",
+      "decision_source": "VALIDATED",
+      "mechanical": "PASS",
+      "status": "REFERENCE_MATCH"
+    },
+    {
+      "id": "LC20-13",
+      "arm": "A",
+      "decision": "YES",
+      "decision_source": "VALIDATED",
+      "mechanical": "PASS",
+      "status": "REFERENCE_MATCH"
+    },
+    {
+      "id": "LC20-13",
+      "arm": "B",
+      "decision": "YES",
+      "decision_source": "VALIDATED",
+      "mechanical": "PASS",
+      "status": "REFERENCE_MATCH"
+    },
+    {
+      "id": "LC20-13",
+      "arm": "C",
+      "decision": "YES",
+      "decision_source": "VALIDATED",
+      "mechanical": "PASS",
+      "status": "REFERENCE_MATCH"
+    },
+    {
+      "id": "LC20-14",
+      "arm": "A",
+      "decision": "NO",
+      "decision_source": "VALIDATED",
+      "mechanical": "PASS",
+      "status": "REFERENCE_MATCH"
+    },
+    {
+      "id": "LC20-14",
+      "arm": "B",
+      "decision": "NO",
+      "decision_source": "VALIDATED",
+      "mechanical": "PASS",
+      "status": "REFERENCE_MATCH"
+    },
+    {
+      "id": "LC20-14",
+      "arm": "C",
+      "decision": "NO",
+      "decision_source": "VALIDATED",
+      "mechanical": "PASS",
+      "status": "REFERENCE_MATCH"
+    },
+    {
+      "id": "LC20-15",
+      "arm": "A",
+      "decision": "YES",
+      "decision_source": "CAPTURED_UNVALIDATED",
+      "mechanical": "FAILED",
+      "status": "MECHANICAL_FAILURE"
+    },
+    {
+      "id": "LC20-15",
+      "arm": "B",
+      "decision": "YES",
+      "decision_source": "VALIDATED",
+      "mechanical": "PASS",
+      "status": "REFERENCE_MATCH"
+    },
+    {
+      "id": "LC20-15",
+      "arm": "C",
+      "decision": "YES",
+      "decision_source": "VALIDATED",
+      "mechanical": "PASS",
+      "status": "REFERENCE_MATCH"
+    },
+    {
+      "id": "LC20-16",
+      "arm": "A",
+      "decision": "NO",
+      "decision_source": "VALIDATED",
+      "mechanical": "PASS",
+      "status": "ACCEPTABLE_ALTERNATIVE"
+    },
+    {
+      "id": "LC20-16",
+      "arm": "B",
+      "decision": "UNKNOWN",
+      "decision_source": "VALIDATED",
+      "mechanical": "PASS",
+      "status": "REFERENCE_MATCH"
+    },
+    {
+      "id": "LC20-16",
+      "arm": "C",
+      "decision": "UNKNOWN",
+      "decision_source": "VALIDATED",
+      "mechanical": "PASS",
+      "status": "REFERENCE_MATCH"
+    },
+    {
+      "id": "LC20-17",
+      "arm": "A",
+      "decision": "NO",
+      "decision_source": "VALIDATED",
+      "mechanical": "PASS",
+      "status": "REFERENCE_MATCH"
+    },
+    {
+      "id": "LC20-17",
+      "arm": "B",
+      "decision": "NO",
+      "decision_source": "VALIDATED",
+      "mechanical": "PASS",
+      "status": "REFERENCE_MATCH"
+    },
+    {
+      "id": "LC20-17",
+      "arm": "C",
+      "decision": "NO",
+      "decision_source": "VALIDATED",
+      "mechanical": "PASS",
+      "status": "REFERENCE_MATCH"
+    },
+    {
+      "id": "LC20-18",
+      "arm": "A",
+      "decision": "YES",
+      "decision_source": "VALIDATED",
+      "mechanical": "PASS",
+      "status": "REFERENCE_MATCH"
+    },
+    {
+      "id": "LC20-18",
+      "arm": "B",
+      "decision": "YES",
+      "decision_source": "VALIDATED",
+      "mechanical": "PASS",
+      "status": "REFERENCE_MATCH"
+    },
+    {
+      "id": "LC20-18",
+      "arm": "C",
+      "decision": "YES",
+      "decision_source": "VALIDATED",
+      "mechanical": "PASS",
+      "status": "REFERENCE_MATCH"
+    },
+    {
+      "id": "LC20-19",
+      "arm": "A",
+      "decision": "NO",
+      "decision_source": "VALIDATED",
+      "mechanical": "PASS",
+      "status": "REFERENCE_MATCH"
+    },
+    {
+      "id": "LC20-19",
+      "arm": "B",
+      "decision": "UNKNOWN",
+      "decision_source": "VALIDATED",
+      "mechanical": "PASS",
+      "status": "ACCEPTABLE_ALTERNATIVE"
+    },
+    {
+      "id": "LC20-19",
+      "arm": "C",
+      "decision": "UNKNOWN",
+      "decision_source": "VALIDATED",
+      "mechanical": "PASS",
+      "status": "ACCEPTABLE_ALTERNATIVE"
+    },
+    {
+      "id": "LC20-20",
+      "arm": "A",
+      "decision": "SOURCE_CONFLICT",
+      "decision_source": "VALIDATED",
+      "mechanical": "PASS",
+      "status": "REFERENCE_MATCH"
+    },
+    {
+      "id": "LC20-20",
+      "arm": "B",
+      "decision": "SOURCE_CONFLICT",
+      "decision_source": "VALIDATED",
+      "mechanical": "PASS",
+      "status": "REFERENCE_MATCH"
+    },
+    {
+      "id": "LC20-20",
+      "arm": "C",
+      "decision": "SOURCE_CONFLICT",
+      "decision_source": "VALIDATED",
+      "mechanical": "PASS",
+      "status": "REFERENCE_MATCH"
+    }
+  ]
+}

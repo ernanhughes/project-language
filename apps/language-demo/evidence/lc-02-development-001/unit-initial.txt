@@ -1,0 +1,128 @@
+(node:34768) ExperimentalWarning: Transform Types is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+✔ guided start runs interpreter/challenger once; human approval finishes only recipient (287.754ms)
+✔ expired remote approval never restored by guided resume; no prior role repeated (33.8173ms)
+(node:32248) ExperimentalWarning: Transform Types is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+✔ historical-size SSE exceeds old cap but passes bounded 1 MiB; exact boundary enforced (202.8333ms)
+✔ only configured response-byte ceiling changes from LC-01R; reservations/tokens/retries unchanged (3.5179ms)
+✔ fresh task is source-bound, locks original inputs and binds the displayed remote plan (5.5986ms)
+✔ model/settings changes revoke approval; no real-operator acceptance is created by a model (35.0023ms)
+✔ custom task recipient packet excludes transcript/rejected proposal/question/reference; replay stays captured (65.7319ms)
+✔ accepted content digest is checked before communication and cannot be silently edited (6.6429ms)
+✔ prospective startup hash mismatch stops before listening; injected credential availability does not change plan identity (18.0974ms)
+(node:45400) ExperimentalWarning: Transform Types is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+✔ all four scoped IDs resolve with required families; no network or private credential store (17.2681ms)
+✔ installed Pi serializes deepseek-v4.1-flash via openai-completions (161.309ms)
+✔ installed Pi serializes gpt-6-luna via openai-responses (15.924ms)
+✔ installed Pi serializes qwen3.8-flash via anthropic-messages (86.9657ms)
+✔ installed Pi serializes claude-haiku-5-5 via anthropic-messages (7.7973ms)
+✔ launcher, plan, service confirmation, credential and budget gates precede dispatch (20.5449ms)
+✔ OpenCode workflow through actual three-family adapters remains isolated and human-gated (42.4952ms)
+✔ recorded failed length attempt never fabricates state or retries (11.0238ms)
+✔ recorded failed incomplete attempt never fabricates state or retries (9.6716ms)
+✔ recorded failed http429 attempt never fabricates state or retries (8.8698ms)
+✔ recorded failed http500 attempt never fabricates state or retries (8.4497ms)
+✔ recorded failed timeout attempt never fabricates state or retries (40.0017ms)
+✔ recorded failed malformed attempt never fabricates state or retries (8.6693ms)
+✔ recorded failed schema attempt never fabricates state or retries (13.869ms)
+✔ manual development retries preserve distinct requests and respect cap; replay never reauthorizes (44.1892ms)
+✔ missing optional Haiku does not block core roles, evaluation remains explicitly unavailable (7.9958ms)
+✔ redaction handles nested keys, bearer strings and echoed raw response without exposing secret (0.1598ms)
+✔ wire input and response bounds reject precisely without retry or state (13.2513ms)
+✔ Console endpoint and non-Go provider are refused; no fallback (1.5857ms)
+(node:21616) ExperimentalWarning: Transform Types is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+✔ strict protocol, source/hash/span/origin and inferred/source standing (3.61ms)
+✔ contradiction is explicit review state; unresolved information never grants authority (15.3247ms)
+✔ challenge cannot accept; missing qualification remains visible; human acceptance exact version and scope (16.4594ms)
+✔ rejection blocks communication; no implicit negotiation (9.3764ms)
+✔ sender isolation, sealing, parity, context denial and fresh recipient (19.1034ms)
+✔ append-only persisted replay and integrity rejection (36.6292ms)
+✖ local registry, role rotation, exact no-history request and usage (2.7472ms)
+✖ provider timeout records failure with no retry/fallback (0.3188ms)
+✖ provider truncation records failure with no retry/fallback (0.2334ms)
+✖ provider malformed records failure with no retry/fallback (0.2365ms)
+✖ provider http records failure with no retry/fallback (0.1816ms)
+✔ full application HTTP end to end, export and restart without regeneration (100.5648ms)
+✔ intent evolution retains original expression and invalidates acceptance (6.3959ms)
+ℹ tests 41
+ℹ suites 0
+ℹ pass 36
+ℹ fail 5
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 1677.5768
+
+✖ failing tests:
+
+test at apps\language-demo\tests\studio.test.mjs:11:1
+✖ local registry, role rotation, exact no-history request and usage (2.7472ms)
+  TypeError: this.parent.runtime.plan is not a function
+      at Comparison.plan (file:///C:/Projects/project-language/apps/language-demo/evaluation/comparison.mjs:8:36)
+      at Studio.view (file:///C:/Projects/project-language/apps/language-demo/engine/studio.mjs:13:91)
+      at Studio.save (file:///C:/Projects/project-language/apps/language-demo/engine/studio.mjs:12:56)
+      at Studio.create (file:///C:/Projects/project-language/apps/language-demo/engine/studio.mjs:16:822)
+      at Studio.act (file:///C:/Projects/project-language/apps/language-demo/engine/studio.mjs:34:920)
+      at TestContext.<anonymous> (file:///C:/Projects/project-language/apps/language-demo/tests/studio.test.mjs:11:734)
+      at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+      at async Test.run (node:internal/test_runner/test:1208:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:831:7)
+
+test at apps\language-demo\tests\studio.test.mjs:12:63
+✖ provider timeout records failure with no retry/fallback (0.3188ms)
+  TypeError: this.parent.runtime.plan is not a function
+      at Comparison.plan (file:///C:/Projects/project-language/apps/language-demo/evaluation/comparison.mjs:8:36)
+      at Studio.view (file:///C:/Projects/project-language/apps/language-demo/engine/studio.mjs:13:91)
+      at Studio.save (file:///C:/Projects/project-language/apps/language-demo/engine/studio.mjs:12:56)
+      at Studio.create (file:///C:/Projects/project-language/apps/language-demo/engine/studio.mjs:16:822)
+      at Studio.act (file:///C:/Projects/project-language/apps/language-demo/engine/studio.mjs:34:920)
+      at TestContext.<anonymous> (file:///C:/Projects/project-language/apps/language-demo/tests/studio.test.mjs:12:542)
+      at Test.runInAsyncScope (node:async_hooks:226:14)
+      at Test.run (node:internal/test_runner/test:1201:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:831:18)
+      at Test.postRun (node:internal/test_runner/test:1330:19)
+
+test at apps\language-demo\tests\studio.test.mjs:12:63
+✖ provider truncation records failure with no retry/fallback (0.2334ms)
+  TypeError: this.parent.runtime.plan is not a function
+      at Comparison.plan (file:///C:/Projects/project-language/apps/language-demo/evaluation/comparison.mjs:8:36)
+      at Studio.view (file:///C:/Projects/project-language/apps/language-demo/engine/studio.mjs:13:91)
+      at Studio.save (file:///C:/Projects/project-language/apps/language-demo/engine/studio.mjs:12:56)
+      at Studio.create (file:///C:/Projects/project-language/apps/language-demo/engine/studio.mjs:16:822)
+      at Studio.act (file:///C:/Projects/project-language/apps/language-demo/engine/studio.mjs:34:920)
+      at TestContext.<anonymous> (file:///C:/Projects/project-language/apps/language-demo/tests/studio.test.mjs:12:542)
+      at Test.runInAsyncScope (node:async_hooks:226:14)
+      at Test.run (node:internal/test_runner/test:1201:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:831:18)
+      at Test.postRun (node:internal/test_runner/test:1330:19)
+
+test at apps\language-demo\tests\studio.test.mjs:12:63
+✖ provider malformed records failure with no retry/fallback (0.2365ms)
+  TypeError: this.parent.runtime.plan is not a function
+      at Comparison.plan (file:///C:/Projects/project-language/apps/language-demo/evaluation/comparison.mjs:8:36)
+      at Studio.view (file:///C:/Projects/project-language/apps/language-demo/engine/studio.mjs:13:91)
+      at Studio.save (file:///C:/Projects/project-language/apps/language-demo/engine/studio.mjs:12:56)
+      at Studio.create (file:///C:/Projects/project-language/apps/language-demo/engine/studio.mjs:16:822)
+      at Studio.act (file:///C:/Projects/project-language/apps/language-demo/engine/studio.mjs:34:920)
+      at TestContext.<anonymous> (file:///C:/Projects/project-language/apps/language-demo/tests/studio.test.mjs:12:542)
+      at Test.runInAsyncScope (node:async_hooks:226:14)
+      at Test.run (node:internal/test_runner/test:1201:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:831:18)
+      at Test.postRun (node:internal/test_runner/test:1330:19)
+
+test at apps\language-demo\tests\studio.test.mjs:12:63
+✖ provider http records failure with no retry/fallback (0.1816ms)
+  TypeError: this.parent.runtime.plan is not a function
+      at Comparison.plan (file:///C:/Projects/project-language/apps/language-demo/evaluation/comparison.mjs:8:36)
+      at Studio.view (file:///C:/Projects/project-language/apps/language-demo/engine/studio.mjs:13:91)
+      at Studio.save (file:///C:/Projects/project-language/apps/language-demo/engine/studio.mjs:12:56)
+      at Studio.create (file:///C:/Projects/project-language/apps/language-demo/engine/studio.mjs:16:822)
+      at Studio.act (file:///C:/Projects/project-language/apps/language-demo/engine/studio.mjs:34:920)
+      at TestContext.<anonymous> (file:///C:/Projects/project-language/apps/language-demo/tests/studio.test.mjs:12:542)
+      at Test.runInAsyncScope (node:async_hooks:226:14)
+      at Test.run (node:internal/test_runner/test:1201:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:831:18)
+      at Test.postRun (node:internal/test_runner/test:1330:19)

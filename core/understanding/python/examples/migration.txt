@@ -1,0 +1,1 @@
+A green migration rehearsal is readiness evidence only and not permission to run a production migration. Production changes require the service owner's separate approval. An emergency rollback may precede review only for a signed known-good build with audit records retained. This emergency rollback never permits a new migration. Vendor replication approval is unknown.

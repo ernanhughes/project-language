@@ -1,0 +1,18 @@
+{
+  "status": "PASS",
+  "checks": [
+    {
+      "case": "exact-review-and-pair",
+      "status": "PASS",
+      "injected_requests": 3,
+      "real_requests": 0
+    },
+    {
+      "case": "provider-failure-no-retry",
+      "status": "PASS",
+      "injected_requests": 1,
+      "real_requests": 0
+    }
+  ],
+  "standing": "INJECTED_ADAPTERS_NOT_LIVE_RESULTS"
+}

@@ -1,0 +1,77 @@
+{
+  "schema": "lc02-r7-evidence-integrity/0.1",
+  "checked_at": "2026-10-24",
+  "standing": "OFFLINE_INTEGRITY_CHECK",
+  "decision": "PREFER_DETERMINISTIC",
+  "contamination": {
+    "evaluation_cases": 24,
+    "overlapping_cases": 12,
+    "exact_source_duplicates": 2,
+    "clean_cases": 12,
+    "eligible_as_fresh_held_out": false,
+    "disclosure_sha256": "92a3034a60e0f37b9d01982b9255e3e831fecf159405e028f2aff2a062fe1e10"
+  },
+  "batch20_frozen_artifacts": {
+    "path": "experiments/lc-02-batch20/.runs/COMBINED-001",
+    "checked": 231,
+    "bad": 0,
+    "method": "raw-byte SHA-256 against FINAL-HASHES.json"
+  },
+  "r5_r6_historical": {
+    "r5_checker_sha256": "2b11a67ca6b44c61523c3901cbb130fa6da81b0815ead3261f640cf848e902d5",
+    "r5_contract_sha256": "92ab3570a00164123eac5045a838f64e9df8b23efd4592115f88925f9c8bb297",
+    "r6_checker_sha256": "ed17ecb14a66ebb42b6f1b03427c4bd4b021d4829e66aee9edc2f3a9f5801692",
+    "r6_contract_sha256": "c56c812c7b32ab8bca2a2e06a1bf2ae03da43fbb435b8772b9ea14c1d30c3064",
+    "not_modified_by_r7": true
+  },
+  "r7_frozen_artifacts": {
+    "evaluation-cases.json": "4a1d64ef4a0d26b7c68b23177052168b92862b93a451ccf17444ab20e6b0177a",
+    "evaluation-references.json": "9a1a4b6aec363cf3482af94d3f90fda7d738748e1e959768faec853624a32529",
+    "development-cases.json": "686467eeee3af23f01eacfab958c6953a969c3734b2f2c58f8e3b11af8764963",
+    "development-references.json": "ca26544c699ff3d4fc6e1ef8d3b2dd52a54fa349a7468d9ada8cefa67d6dba84",
+    "FREEZE.json": "b53f14bf13f8da8e5cdec7f9d13f05cb14cc95768aaa10af0462fdfa5f82ec52",
+    "SUCCESS-CRITERIA.json": "deb6401aa205e16bf410c9423c21dee535cbbddd65b7ffdab71040a36ffdb25e",
+    "CRITERIA-FREEZE.json": "d8f672500135e5585ba95a746cc0ca1d166d9f9ad6657b835d4b76397b02a8db",
+    "semantic-reviewer-v7-contract.mjs": "e7873b22192923a9ebaf93211ac278c669d28f607427216130716a2b44334980",
+    "semantic-reviewer-v7.mjs": "6216b9fd8051f034f36e9f46253b5a0bc5c3f57e397959cef9ad85714a8c5e15",
+    "hybrid-checker-v7.mjs": "7fad10f7e131f4d537bed6fc607491da6f43735da9aba02c48852cff36b07235",
+    "run-hybrid.mjs": "c7338b5c6b844730e1141e5a88d5aaa5baf10b7d3fe2eae5275c0d002ea826c8",
+    "build-corpus.mjs": "6d5846e4b6505c2fd2d4c49fa225ab0cb43282af33250518b2d434bd9f758f05"
+  },
+  "held_out_run": {
+    "path": "experiments/lc-02-r7/.runs/EVAL-001",
+    "standing": "CONTAMINATED_PILOT_NOT_CLEAN_HELD_OUT",
+    "executed_once": true,
+    "results_sha256": "e34849e9e73bbbb7d81484f5bb6d0a43a9d58abc330a8c600edcf15a2f498b65",
+    "results_md_sha256": "24773ca2d670e24d79fbcea0d4a4def09aa3295f6d77eba4bddc95a04c8af3ac",
+    "analysis_sha256": "3dc97a81abed98680b2de7994e3ee2b1b3aacad5bd73fdc239570d11cd080690",
+    "reviewer_ledger_sha256": "9cf6ad7748f6296a2de14270941035dd2bc94c649fc18e2b9d237b0e8e14203a",
+    "clean_subset_sha256": "15b5e8556b4c8f9b6daff6880662bc80cf492d58bb43089451f0956b34b662bb",
+    "post_execution_checker_or_corpus_changes": false
+  },
+  "supporting_evidence": {
+    "qualification_sha256": "a9e95bd41055f26086a7eb9b799246a5e381fd7fce7e42d6d9443ebbe0a7d974",
+    "historical_controls_sha256": "aaf14293e81677a4fe5c5c6c4a54a19cb73be9fc65d6199b0f31b3eeb1e922c2",
+    "contamination_disclosure_sha256": "92a3034a60e0f37b9d01982b9255e3e831fecf159405e028f2aff2a062fe1e10",
+    "summary_sha256": "276c32651e3aed08fa6b694653c0657b4e8a01bf730adc268749ece1712de0e1",
+    "report_sha256": "78e6923488476fadaea71d9cd3c04e557237bd88fd2224d836ba7d843c4908a1"
+  },
+  "verification": {
+    "root_typecheck": "PASS",
+    "root_tests": {"pass": 1114, "skip": 3, "fail": 0},
+    "studio_tests": {"pass": 100, "fail": 0},
+    "python_tests": {"pass": 25, "fail": 0},
+    "r7_offline_tests": {"pass": 7, "fail": 0}
+  },
+  "policy": {
+    "hosted_models": false,
+    "local_model_only": true,
+    "studio_communication_integration": false,
+    "manuscript_modified": false,
+    "committed": false,
+    "pushed": false,
+    "action_authority": false,
+    "human_acceptance_required": true
+  },
+  "note": "R7 used the already-installed local Ollama model qwen3.5:latest. No model download or system configuration change was made. Historical R1-R6 artifacts were not edited by R7. The review report was written after the frozen held-out run."
+}

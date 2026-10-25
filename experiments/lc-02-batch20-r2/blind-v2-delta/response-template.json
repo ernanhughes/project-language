@@ -1,0 +1,35 @@
+{
+  "schema": "language-blind-review-response/1.0",
+  "reviewer_id": null,
+  "reviewer_standing": "HUMAN_INDEPENDENT_REVIEWER_OR_MODEL_BASED_PROVISIONAL",
+  "reviewed_at": null,
+  "cases": [
+    {
+      "case_id": "R1E-04",
+      "decision": null,
+      "explanation": "",
+      "citations": [],
+      "confidence": null,
+      "suspected_ambiguity": "",
+      "notes": ""
+    },
+    {
+      "case_id": "R1E-08",
+      "decision": null,
+      "explanation": "",
+      "citations": [],
+      "confidence": null,
+      "suspected_ambiguity": "",
+      "notes": ""
+    },
+    {
+      "case_id": "R1E-16",
+      "decision": null,
+      "explanation": "",
+      "citations": [],
+      "confidence": null,
+      "suspected_ambiguity": "",
+      "notes": ""
+    }
+  ]
+}

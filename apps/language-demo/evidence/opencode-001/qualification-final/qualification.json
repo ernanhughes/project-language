@@ -1,0 +1,208 @@
+{
+  "schema": "studio-offline-provider-qualification/0.1r",
+  "standing": "INJECTED_NOT_LIVE_INFERENCE",
+  "config_hash": "78020e5ed7246fa4f787cd8b1f72f721c41caba22e72a20fcf56f07937ebe7ad",
+  "real_provider_requests": 0,
+  "receipts": [
+    {
+      "id": "deepseek-v4.1-flash",
+      "api": "openai-completions",
+      "base_url": "https://opencode.ai/inference/go/openai/v1",
+      "expected_route": "https://opencode.ai/inference/go/openai/v1/chat/completions",
+      "status": "OFFLINE_ADAPTER_PASS_LIVE_NOT_PROBED",
+      "usage_standing": "INJECTED_NOT_MODEL_MEASUREMENT",
+      "result": {
+        "raw": "{\"ok\":true}",
+        "usage": {
+          "input": 100,
+          "output": 40,
+          "cacheRead": 0,
+          "cacheWrite": 0,
+          "reasoning": 0,
+          "totalTokens": 140,
+          "cost": {
+            "input": 0.000029999999999999997,
+            "output": 0.000048,
+            "cacheRead": 0,
+            "cacheWrite": 0,
+            "total": 0.000078
+          }
+        },
+        "attempts": 1,
+        "stop_reason": "stop",
+        "http_status": 200
+      },
+      "events": [
+        {
+          "type": "PROVIDER_REQUEST",
+          "data": {
+            "request_hash": "eb1394ac7fc44dc30655e16d1ca9bc59b8549b0f3144076e0e467982d17b4474",
+            "model": "opencode-go/deepseek-v4.1-flash",
+            "api": "openai-completions",
+            "url": "https://opencode.ai/inference/go/openai/v1/chat/completions",
+            "method": "POST",
+            "body": "{\"model\":\"deepseek-v4.1-flash\",\"messages\":[{\"role\":\"system\",\"content\":\"Return only JSON {\\\"ok\\\":true}. Synthetic adapter qualification only.\"},{\"role\":\"user\",\"content\":[{\"type\":\"text\",\"text\":\"{}\"}]}],\"stream\":true,\"stream_options\":{\"include_usage\":true},\"max_tokens\":1024}",
+            "body_hash": "acf56236f4a6065a7e19a86bae1ba7a0b41b4364ed59ad3ba683e37c4c74b222",
+            "input_bytes": 272,
+            "session_id": "studio-offline-deepseek-v4.1-flash",
+            "public_headers": {
+              "user-agent": "language-studio/0.1r",
+              "x-opencode-session": "studio-offline-deepseek-v4.1-flash"
+            },
+            "authentication": "PROCESS_ENV_ONLY_REDACTED"
+          }
+        }
+      ]
+    },
+    {
+      "id": "gpt-6-luna",
+      "api": "openai-responses",
+      "base_url": "https://opencode.ai/inference/go/openai/v1",
+      "expected_route": "https://opencode.ai/inference/go/openai/v1/responses",
+      "status": "OFFLINE_ADAPTER_PASS_LIVE_NOT_PROBED",
+      "usage_standing": "INJECTED_NOT_MODEL_MEASUREMENT",
+      "result": {
+        "raw": "{\"ok\":true}",
+        "usage": {
+          "input": 100,
+          "output": 40,
+          "cacheRead": 0,
+          "cacheWrite": 0,
+          "reasoning": 0,
+          "totalTokens": 140,
+          "cost": {
+            "input": 0.00001,
+            "output": 0.000019999999999999998,
+            "cacheRead": 0,
+            "cacheWrite": 0,
+            "total": 0.000029999999999999997
+          }
+        },
+        "attempts": 1,
+        "stop_reason": "stop",
+        "http_status": 200
+      },
+      "events": [
+        {
+          "type": "PROVIDER_REQUEST",
+          "data": {
+            "request_hash": "9a7e60cd1c7bb9d5493832103af02aca05272564b29e49852a9a0b5d8d96ec2c",
+            "model": "opencode-go/gpt-6-luna",
+            "api": "openai-responses",
+            "url": "https://opencode.ai/inference/go/openai/v1/responses",
+            "method": "POST",
+            "body": "{\"model\":\"gpt-6-luna\",\"input\":[{\"role\":\"developer\",\"content\":\"Return only JSON {\\\"ok\\\":true}. Synthetic adapter qualification only.\"},{\"role\":\"user\",\"content\":[{\"type\":\"input_text\",\"text\":\"{}\"}]}],\"stream\":true,\"store\":false,\"max_output_tokens\":1024,\"reasoning\":{\"effort\":\"none\"}}",
+            "body_hash": "7c98a6a329b614bb40bfd1e81e2dc2471dcc8b97018070d3a4b9ef64e9d3b0ab",
+            "input_bytes": 280,
+            "session_id": "studio-offline-gpt-6-luna",
+            "public_headers": {
+              "user-agent": "language-studio/0.1r",
+              "x-opencode-session": "studio-offline-gpt-6-luna"
+            },
+            "authentication": "PROCESS_ENV_ONLY_REDACTED"
+          }
+        }
+      ]
+    },
+    {
+      "id": "qwen3.8-flash",
+      "api": "anthropic-messages",
+      "base_url": "https://opencode.ai/inference/go/anthropic",
+      "expected_route": "https://opencode.ai/inference/go/anthropic/v1/messages",
+      "status": "OFFLINE_ADAPTER_PASS_LIVE_NOT_PROBED",
+      "usage_standing": "INJECTED_NOT_MODEL_MEASUREMENT",
+      "result": {
+        "raw": "{\"ok\":true}",
+        "usage": {
+          "input": 100,
+          "output": 40,
+          "cacheRead": 0,
+          "cacheWrite": 0,
+          "totalTokens": 140,
+          "cost": {
+            "input": 0.000014999999999999999,
+            "output": 0.000018799999999999996,
+            "cacheRead": 0,
+            "cacheWrite": 0,
+            "total": 0.000033799999999999995
+          },
+          "cacheWrite1h": 0
+        },
+        "attempts": 1,
+        "stop_reason": "stop",
+        "http_status": 200
+      },
+      "events": [
+        {
+          "type": "PROVIDER_REQUEST",
+          "data": {
+            "request_hash": "da666201edb53dbb6e359b4d32e09ca8b87a976359f7cf576196f29d4adbcf93",
+            "model": "opencode-go/qwen3.8-flash",
+            "api": "anthropic-messages",
+            "url": "https://opencode.ai/inference/go/anthropic/v1/messages?beta=true",
+            "method": "POST",
+            "body": "{\"model\":\"qwen3.8-flash\",\"messages\":[{\"role\":\"user\",\"content\":[{\"type\":\"text\",\"text\":\"{}\"}]}],\"max_tokens\":1024,\"stream\":true,\"system\":[{\"type\":\"text\",\"text\":\"Return only JSON {\\\"ok\\\":true}. Synthetic adapter qualification only.\"}],\"thinking\":{\"type\":\"disabled\"}}",
+            "body_hash": "a6be7c05551905c54ae8edb061857b316b8627d5051d2d9c670c23d6d8f69d34",
+            "input_bytes": 263,
+            "session_id": "studio-offline-qwen3.8-flash",
+            "public_headers": {
+              "user-agent": "language-studio/0.1r",
+              "x-opencode-session": "studio-offline-qwen3.8-flash"
+            },
+            "authentication": "PROCESS_ENV_ONLY_REDACTED"
+          }
+        }
+      ]
+    },
+    {
+      "id": "claude-haiku-5-5",
+      "api": "anthropic-messages",
+      "base_url": "https://opencode.ai/inference/go/anthropic",
+      "expected_route": "https://opencode.ai/inference/go/anthropic/v1/messages",
+      "status": "OFFLINE_ADAPTER_PASS_LIVE_NOT_PROBED",
+      "usage_standing": "INJECTED_NOT_MODEL_MEASUREMENT",
+      "result": {
+        "raw": "{\"ok\":true}",
+        "usage": {
+          "input": 100,
+          "output": 40,
+          "cacheRead": 0,
+          "cacheWrite": 0,
+          "totalTokens": 140,
+          "cost": {
+            "input": 0.00001,
+            "output": 0.000019999999999999998,
+            "cacheRead": 0,
+            "cacheWrite": 0,
+            "total": 0.000029999999999999997
+          },
+          "cacheWrite1h": 0
+        },
+        "attempts": 1,
+        "stop_reason": "stop",
+        "http_status": 200
+      },
+      "events": [
+        {
+          "type": "PROVIDER_REQUEST",
+          "data": {
+            "request_hash": "26f6cf65acbd60862113d9e31ae957c4adf5fb966ae79f33a6fa8ac45e228e41",
+            "model": "opencode-go/claude-haiku-5-5",
+            "api": "anthropic-messages",
+            "url": "https://opencode.ai/inference/go/anthropic/v1/messages?beta=true",
+            "method": "POST",
+            "body": "{\"model\":\"claude-haiku-5-5\",\"messages\":[{\"role\":\"user\",\"content\":[{\"type\":\"text\",\"text\":\"{}\"}]}],\"max_tokens\":1024,\"stream\":true,\"system\":[{\"type\":\"text\",\"text\":\"Return only JSON {\\\"ok\\\":true}. Synthetic adapter qualification only.\"}],\"thinking\":{\"type\":\"disabled\"}}",
+            "body_hash": "e6e98c6055fdea21a96201ca119253ddf604e22617c0a8a1d4f2d40ccf13cb6c",
+            "input_bytes": 266,
+            "session_id": "studio-offline-claude-haiku-5-5",
+            "public_headers": {
+              "user-agent": "language-studio/0.1r",
+              "x-opencode-session": "studio-offline-claude-haiku-5-5"
+            },
+            "authentication": "PROCESS_ENV_ONLY_REDACTED"
+          }
+        }
+      ]
+    }
+  ]
+}

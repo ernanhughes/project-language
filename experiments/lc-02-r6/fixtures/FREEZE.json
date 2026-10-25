@@ -1,0 +1,11 @@
+{
+  "schema": "language-semantic-checker-freeze/0.1",
+  "created": "2026-10-24",
+  "standing": "FROZEN_BEFORE_CHECKER_EXECUTION",
+  "files": {
+    "development-cases.json": "7fc0de690911a519b57f5b3d540662b800c1ad5a30bf197de106df755eeaed09",
+    "evaluation-cases.json": "35fa89f812b59989b55c6ebf8bb5089f019731f24f85cb4d72d3c3505c52b540",
+    "development-references.json": "e4d99491d81c7f23a36431f6f099f4f222c8f441d31e23c092f5d75365e4a7a6",
+    "evaluation-references.json": "ce52c8c41a1cfade926e58e90a035d50daa2294122ea8f12c18da45c3dce9f14"
+  }
+}

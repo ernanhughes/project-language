@@ -1,0 +1,199 @@
+{
+  "schema": "language-semantic-checker-reference/0.1",
+  "split": "evaluation",
+  "standing": "AUTHOR_CONSTRUCTED_PROVISIONAL_NOT_INDEPENDENT_HUMAN_ADJUDICATION",
+  "cases": [
+    {
+      "id": "R4-E01",
+      "faithful": false,
+      "corruption_class": "UNKNOWN_TO_ESTABLISHED_FACT",
+      "expected_policy": "PRESERVE_SOURCE",
+      "expected_findings": [
+        {
+          "type": "CHANGED_CANDIDATE",
+          "distinction": "UNKNOWN_TO_ESTABLISHED_FACT",
+          "source_quote": "The privacy team has not decided whether vendor replication will be authorised.",
+          "transformation_quote": "The privacy team has authorised vendor replication.",
+          "severity": "MATERIAL"
+        }
+      ],
+      "notes": "Deliberate corruption: a miss is a missed detection."
+    },
+    {
+      "id": "R4-E02",
+      "faithful": false,
+      "corruption_class": "MISATTRIBUTED_QUOTATION_OR_SPEAKER",
+      "expected_policy": "PRESERVE_SOURCE",
+      "expected_findings": [
+        {
+          "type": "CHANGED_CANDIDATE",
+          "distinction": "MISATTRIBUTED_QUOTATION_OR_SPEAKER",
+          "source_quote": "Reviewer: \"The rollout is approved.\"",
+          "transformation_quote": "Chair: \"The rollout is approved.\"",
+          "severity": "MATERIAL"
+        }
+      ],
+      "notes": "Deliberate corruption: a miss is a missed detection."
+    },
+    {
+      "id": "R4-E03",
+      "faithful": false,
+      "corruption_class": "WRONG_CROSS_SENTENCE_REFERENCE",
+      "expected_policy": "PRESERVE_SOURCE",
+      "expected_findings": [
+        {
+          "type": "CHANGED_CANDIDATE",
+          "distinction": "WRONG_CROSS_SENTENCE_REFERENCE",
+          "source_quote": "The note does not say whether \"the plan\" refers to the rollout plan or the test plan.",
+          "transformation_quote": "The reviewer approved the rollout plan after the chair’s note.",
+          "severity": "MATERIAL"
+        }
+      ],
+      "notes": "Deliberate corruption: a miss is a missed detection."
+    },
+    {
+      "id": "R4-E04",
+      "faithful": false,
+      "corruption_class": "UNSUPPORTED_CAUSAL",
+      "expected_policy": "PRESERVE_SOURCE",
+      "expected_findings": [
+        {
+          "type": "UNSUPPORTED_ADDITION_CANDIDATE",
+          "distinction": "UNSUPPORTED_CAUSAL",
+          "source_quote": "The investigation note says the cause has not been verified and offers one possible explanation.",
+          "transformation_quote": "The checksum failure caused the replica to become stale. The investigation confirmed the causal link.",
+          "severity": "MATERIAL"
+        }
+      ],
+      "notes": "Deliberate corruption: a miss is a missed detection."
+    },
+    {
+      "id": "R4-E05",
+      "faithful": false,
+      "corruption_class": "MISSING_PREREQUISITE",
+      "expected_policy": "PRESERVE_SOURCE",
+      "expected_findings": [
+        {
+          "type": "MISSING_CANDIDATE",
+          "distinction": "MISSING_PREREQUISITE",
+          "source_quote": "the change ticket is approved",
+          "transformation_quote": "",
+          "severity": "MATERIAL"
+        }
+      ],
+      "notes": "Deliberate corruption: a miss is a missed detection."
+    },
+    {
+      "id": "R4-E06",
+      "faithful": false,
+      "corruption_class": "NEGATION_REVERSAL",
+      "expected_policy": "PRESERVE_SOURCE",
+      "expected_findings": [
+        {
+          "type": "CHANGED_CANDIDATE",
+          "distinction": "NEGATION_REVERSAL",
+          "source_quote": "The archive team is not authorised to delete legal-hold records.",
+          "transformation_quote": "The archive team is authorised to delete legal-hold records.",
+          "severity": "MATERIAL"
+        }
+      ],
+      "notes": "Deliberate corruption: a miss is a missed detection."
+    },
+    {
+      "id": "R4-E07",
+      "faithful": true,
+      "corruption_class": null,
+      "expected_policy": "USE_TRANSFORMATION",
+      "expected_findings": [
+        {
+          "type": "PRESERVED_CANDIDATE",
+          "distinction": "PRESERVED",
+          "source_quote": "only if the incident ticket is open and the audit log remains intact",
+          "transformation_quote": "Provided the incident ticket stays open and the audit log is unaltered",
+          "severity": "INFO"
+        }
+      ],
+      "notes": "Faithful control: a rejection is a false alarm."
+    },
+    {
+      "id": "R4-E08",
+      "faithful": true,
+      "corruption_class": null,
+      "expected_policy": "USE_TRANSFORMATION",
+      "expected_findings": [
+        {
+          "type": "PRESERVED_CANDIDATE",
+          "distinction": "PRESERVED",
+          "source_quote": "The release requires an accepted security review, an approved change ticket, and a named production owner.",
+          "transformation_quote": "The release requires all three.",
+          "severity": "INFO"
+        }
+      ],
+      "notes": "Faithful control: a rejection is a false alarm."
+    },
+    {
+      "id": "R4-E09",
+      "faithful": true,
+      "corruption_class": null,
+      "expected_policy": "USE_TRANSFORMATION",
+      "expected_findings": [
+        {
+          "type": "PRESERVED_CANDIDATE",
+          "distinction": "PRESERVED",
+          "source_quote": "The incident desk may page the database engineer when replication lag stays above twenty seconds for five continuous minutes.",
+          "transformation_quote": "The incident desk may page the database engineer because the dashboard shows nine uninterrupted minutes of replication lag above twenty seconds.",
+          "severity": "INFO"
+        }
+      ],
+      "notes": "Faithful control: a rejection is a false alarm."
+    },
+    {
+      "id": "R4-E10",
+      "faithful": true,
+      "corruption_class": null,
+      "expected_policy": "USE_TRANSFORMATION",
+      "expected_findings": [
+        {
+          "type": "PRESERVED_CANDIDATE",
+          "distinction": "PRESERVED",
+          "source_quote": "operators may copy the backup credential into a temporary isolated terminal for diagnostics",
+          "transformation_quote": "operators are allowed to duplicate the recovery key into a standalone diagnostic terminal",
+          "severity": "INFO"
+        }
+      ],
+      "notes": "Faithful control: a rejection is a false alarm."
+    },
+    {
+      "id": "R4-E11",
+      "faithful": true,
+      "corruption_class": null,
+      "expected_policy": "USE_TRANSFORMATION",
+      "expected_findings": [
+        {
+          "type": "PRESERVED_CANDIDATE",
+          "distinction": "PRESERVED",
+          "source_quote": "The vendor may retain its recovery copy only for fourteen days and only if the privacy review is complete.",
+          "transformation_quote": "Subject to completion of the privacy review, the vendor may keep its recovery copy for no more than fourteen days",
+          "severity": "INFO"
+        }
+      ],
+      "notes": "Faithful control: a rejection is a false alarm."
+    },
+    {
+      "id": "R4-E12",
+      "faithful": true,
+      "corruption_class": null,
+      "expected_policy": "USE_TRANSFORMATION",
+      "expected_findings": [
+        {
+          "type": "PRESERVED_CANDIDATE",
+          "distinction": "PRESERVED",
+          "source_quote": "Requests must be submitted before 17:00 UTC to use the exception.",
+          "transformation_quote": "Requests must be submitted prior to 17:00 UTC to use the exception.",
+          "severity": "INFO"
+        }
+      ],
+      "notes": "Faithful control: a rejection is a false alarm."
+    }
+  ]
+}

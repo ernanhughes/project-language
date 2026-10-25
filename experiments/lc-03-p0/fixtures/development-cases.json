@@ -1,0 +1,199 @@
+{
+  "schema": "lc03-development-cases/0.1",
+  "source_provenance": "core/browser/fixtures/incident.ts",
+  "source_id": "incident-2026-03-17",
+  "source_sha256": "4764c4aebfb3ddb8c18ed337f72f2729d0f61496dece48551f33d2135da42da1",
+  "components": [
+    "checkout-api",
+    "ledger"
+  ],
+  "cases": [
+    {
+      "id": "LC03-D01",
+      "source_id": "incident-2026-03-17",
+      "source_type": "technical-incident-report",
+      "standing": "EXPOSED_DEVELOPMENT_FIXTURE_NOT_HELD_OUT",
+      "task": "approve_fix",
+      "purpose": "Prepare a handoff note for the on-call engineer who must decide whether to approve the proposed disk alert.",
+      "audience": "Fresh on-call engineer",
+      "questions": [
+        "Which hypotheses are supported, contradicted, or uncertain? Cite the source for each.",
+        "Is the root cause established? Explain the disagreement.",
+        "What fix is proposed, by whom, and on what evidence?",
+        "What is the recovery order, and what exception applies?",
+        "Which services were affected, and what should a service owner take from the report?"
+      ],
+      "reference": {
+        "required_atoms": [
+          {
+            "id": "h2-support",
+            "text": "H2 is supported by the migration lock logs.",
+            "evidence": "The migration lock logs support H2"
+          },
+          {
+            "id": "h1-support",
+            "text": "H1 is supported by the volume graph.",
+            "evidence": "The volume graph supports H1"
+          },
+          {
+            "id": "h4-contradicted",
+            "text": "H4 is contradicted by the partition report because packet loss ended before writes stopped.",
+            "evidence": "The partition report contradicts H4 because loss ended before writes stopped"
+          },
+          {
+            "id": "fix-proposal",
+            "text": "Ben proposes a disk alert at 85 percent because the volume reached 98 percent before any migration lock.",
+            "evidence": "Ben proposes adding a disk alert at 85 percent, because the volume reached 98 percent before any migration lock was taken"
+          },
+          {
+            "id": "recovery-order",
+            "text": "Run the failover script, confirm the writer is healthy, then re-enable the nightly job.",
+            "evidence": "run the failover script. Then confirm the writer is healthy. Then re-enable the nightly job"
+          },
+          {
+            "id": "services-affected",
+            "text": "checkout-api and ledger were degraded throughout.",
+            "evidence": "The services checkout-api and ledger were degraded throughout"
+          }
+        ],
+        "conditions": [
+          {
+            "id": "h3-condition",
+            "text": "H3 is ruled out only if replication lag was under one second.",
+            "evidence": "H3 is ruled out only if replication lag was under one second"
+          },
+          {
+            "id": "h3-gap",
+            "text": "The lag data has a gap from 09:00 to 09:06.",
+            "evidence": "the lag data has a gap from 09:00 to 09:06"
+          },
+          {
+            "id": "recovery-exception",
+            "text": "The nightly job waits if the migration is still running.",
+            "evidence": "unless the migration is still running, in which case wait for it to finish"
+          }
+        ],
+        "uncertainty": [
+          {
+            "id": "disputed-root-cause",
+            "text": "The root cause is disputed: Ana holds H2 and Ben holds H1.",
+            "evidence": "Ana holds that H2 is the root cause. Ben holds that H1 is the root cause. The conclusion is disputed."
+          },
+          {
+            "id": "h3-uncertain",
+            "text": "H3 remains uncertain because the lag data is incomplete.",
+            "evidence": "H3 is ruled out only if replication lag was under one second, and the lag data has a gap from 09:00 to 09:06"
+          }
+        ]
+      },
+      "source_preferable": false,
+      "representation_preference": [
+        "diagram",
+        "table",
+        "annotated_source"
+      ]
+    },
+    {
+      "id": "LC03-D02",
+      "source_id": "incident-2026-03-17",
+      "source_type": "technical-incident-report",
+      "standing": "EXPOSED_DEVELOPMENT_FIXTURE_NOT_HELD_OUT",
+      "task": "look_up_fact",
+      "purpose": "Quote the exact condition and gap, because the handoff must not paraphrase them.",
+      "audience": "Fresh on-call engineer",
+      "questions": [
+        "Quote the exact condition that would rule out H3 and the exact interval of missing lag data."
+      ],
+      "reference": {
+        "required_atoms": [
+          {
+            "id": "h3-condition-quote",
+            "text": "H3 is ruled out only if replication lag was under one second.",
+            "evidence": "H3 is ruled out only if replication lag was under one second"
+          },
+          {
+            "id": "h3-gap-quote",
+            "text": "The lag data has a gap from 09:00 to 09:06.",
+            "evidence": "the lag data has a gap from 09:00 to 09:06"
+          }
+        ],
+        "conditions": [],
+        "uncertainty": []
+      },
+      "source_preferable": true,
+      "representation_preference": [
+        "source_highlight"
+      ]
+    },
+    {
+      "id": "LC03-D03",
+      "source_id": "incident-2026-03-17",
+      "source_type": "technical-incident-report",
+      "standing": "EXPOSED_DEVELOPMENT_FIXTURE_NOT_HELD_OUT",
+      "task": "follow_procedure",
+      "purpose": "Explain the recovery sequence to an operator who must execute it under time pressure.",
+      "audience": "Fresh on-call operator",
+      "questions": [
+        "What is the order of recovery steps? When should the nightly job wait?"
+      ],
+      "reference": {
+        "required_atoms": [
+          {
+            "id": "step-1",
+            "text": "Run the failover script.",
+            "evidence": "run the failover script"
+          },
+          {
+            "id": "step-2",
+            "text": "Confirm the writer is healthy.",
+            "evidence": "Then confirm the writer is healthy"
+          },
+          {
+            "id": "step-3",
+            "text": "Re-enable the nightly job.",
+            "evidence": "Then re-enable the nightly job"
+          }
+        ],
+        "conditions": [
+          {
+            "id": "wait-exception",
+            "text": "Wait for the migration to finish if it is still running.",
+            "evidence": "unless the migration is still running, in which case wait for it to finish"
+          }
+        ],
+        "uncertainty": []
+      },
+      "source_preferable": false,
+      "representation_preference": [
+        "annotated_source"
+      ]
+    },
+    {
+      "id": "LC03-D04",
+      "source_id": "incident-2026-03-17",
+      "source_type": "technical-incident-report",
+      "standing": "EXPOSED_DEVELOPMENT_FIXTURE_NOT_HELD_OUT",
+      "task": "decide_to_open",
+      "purpose": "Decide whether the ledger owner should read the report now.",
+      "audience": "Ledger service owner",
+      "questions": [
+        "Does this incident affect the ledger service? Should its owner read the report now?"
+      ],
+      "reference": {
+        "required_atoms": [
+          {
+            "id": "ledger-affected",
+            "text": "The ledger service was degraded throughout the incident.",
+            "evidence": "The services checkout-api and ledger were degraded throughout"
+          }
+        ],
+        "conditions": [],
+        "uncertainty": []
+      },
+      "source_preferable": false,
+      "representation_preference": [
+        "preview"
+      ]
+    }
+  ]
+}

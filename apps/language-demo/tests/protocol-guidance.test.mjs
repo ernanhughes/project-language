@@ -1,0 +1,10 @@
+import test from 'node:test';import assert from 'node:assert/strict';
+import {prompts} from '../models/prompts.mjs';
+import {protocolFailure} from '../ui/comparison-errors.js';
+import {validateProposal,validateAnchors,hash} from '../protocol/state.mjs';
+const text='Vendor replication approval is unknown.',source={id:'regression-source',text,hash:hash(text)},anchor={origin:'ORIGINAL_SOURCE',source_id:source.id,source_hash:source.hash,start:0,end:text.length,text};
+const proposal={schema:'language-state/0.1',interpretation:text,outcome:'',commitments:[{id:'c1',kind:'unknown',standing:'SOURCE_STATED',text,evidence:[anchor],conditions:[],exceptions:[]}],unknowns:[text],relations:[],preservation:[],contradictions:[]};
+test('captured unknown/source-stated pattern is reproducibly rejected without repair',()=>{assert.throws(()=>validateProposal(proposal,source),/UNKNOWN_IS_NOT_PERMISSION/);assert.equal(proposal.commitments[0].standing,'SOURCE_STATED');const valid=structuredClone(proposal);valid.commitments[0].standing='UNKNOWN';assert.equal(validateProposal(valid,source).mechanical,'PASS');});
+test('interpreter and mediator explicitly describe the enforced cross-field convention',()=>{for(const role of ['interpreter','mediator']){assert.match(prompts[role],/standing MUST be "UNKNOWN"/);assert.match(prompts[role],/even when the original source explicitly states/);}});
+test('wrong recipient offsets remain rejected; empty citations remain permitted',()=>{assert.throws(()=>validateAnchors([{...anchor,end:anchor.end-1}],source),/SOURCE_SPAN/);assert.doesNotThrow(()=>validateAnchors([],source));assert.match(prompts.recipient,/citations: \[\]/);assert.match(prompts.recipient,/UTF-16/);});
+test('failed proposal recovery does not direct user to nonexistent correction controls',()=>{const message=protocolFailure('UNKNOWN_IS_NOT_PERMISSION');assert.match(message,/no reviewable proposal/);assert.match(message,/Start Comparison/);assert.doesNotMatch(message,/use Request a correction/i);assert.match(protocolFailure('SOURCE_SPAN'),/positions/);assert.equal(protocolFailure('other'),null);});

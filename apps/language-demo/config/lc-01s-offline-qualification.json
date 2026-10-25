@@ -1,0 +1,33 @@
+{
+  "schema": "studio-lc01s-source-bound-offline-qualification/1",
+  "date": "2026-10-23",
+  "standing": "OFFLINE_ONLY_LIVE_NOT_PROBED",
+  "pi_adapter_version": "1.0.4",
+  "haiku_metadata_catalogue_version": "1.4.0",
+  "config_hash": "78020e5ed7246fa4f787cd8b1f72f721c41caba22e72a20fcf56f07937ebe7ad",
+  "source_hashes": {
+    "models/opencode.mjs": "c72aa413c4836707dda0a3d336bfa04a95dc137db1a1f8abe53bea81c124a914",
+    "models/runtime.mjs": "52a4ee03f98e7f4767398827a29e521e84557da4e42aac827665d7a235b8e19f",
+    "models/prompts.mjs": "cc7ff5a8a8e9986271abd4774a80ea5e84a81b28be9317936487f328a6ba0132",
+    "models/ollama-legacy.mjs": "7330fc3f733faf39c6b69fd3101074dde6ccabb983a930c0ea3e031ec66d1e14",
+    "config/studio.json": "ce61dd1036235c1885c31fd3adbfd62318ab8e0d3acbaecaa670986b567e9d09",
+    "config/models.json": "78020e5ed7246fa4f787cd8b1f72f721c41caba22e72a20fcf56f07937ebe7ad",
+    "protocol/state.mjs": "d67765ed2ef92bd154e22b18a2521f6d7c919cc7e223a0d3081b40b09d8b437e",
+    "engine/studio.mjs": "c295b76f7ce516700a84518d9220dd9218eadbb5ddc55e765019e575f468359a",
+    "engine/scenario.mjs": "159bcaf0dce0099b57e170a0e048f15d20e46a200e92b4fbd3ffe21243cc5227",
+    "server/app.mjs": "79d705f44192fa92daa972f7cd4b8f79a046f26f4c0ddb6e257c916c134a94f7",
+    "storage/log.mjs": "91d5a071fd1f7eec324ad87a48cd76afc8cebcc344767592b1249fb2055a3d3d",
+    "ui/app.js": "8d4ead3141f1621d675aada161b063c8c741eed2329828e9d37225bf683afa56",
+    "ui/index.html": "cbe8e547a1549f3335c8929e0c8cb6825b5d915020ceef8e7c9df318f72a3ed5",
+    "tests/opencode.test.mjs": "fe8072fdf984fc552727c1a7194597d02b6f1ab3d9a9e9b5f93f78f6313588ca",
+    "tests/go-fixtures.mjs": "d490fcb48ee8cc27d928100f13f2eb3e58f0e2adf0620120f03d3ed042e2d5cc",
+    "tests/studio.test.mjs": "bb57add1572e4503471255ed24107d2044a5938df4c8113e4932c746518965ae",
+    "tests/browser-opencode.mjs": "592c3f647d927759e0c15537c58e29cd4ab0eab4894ef52e75b9357ae8778b55",
+    "engine/task.mjs": "eb8bc2c0c878f5c93ff29387006c403b83e246e215fca2b9b33b3c223cc353be",
+    "tasks/lc-01s-s17-v1.json": "c5cac9bbe9d7a19eaec37624da1de5782552b46c45aade863df62fbb095aea54",
+    "tests/lc01s.test.mjs": "1b04ebbe4867c50d67731427703315f47825bd3984695e40e6e0191c9573bc28",
+    "tests/browser-lc01s.mjs": "f3e6730d429f991ac3a5d2dbcf8b8eb4d7676280c86e378db2596b0fc062bf12"
+  },
+  "observations": "39 offline Studio tests pass; 1 MiB stream boundary and 268138-byte historical-size accounting checked; no process secrets or live inference used",
+  "evidence": "evidence/lc-01s-preparation-001/qualification/qualification.json"
+}

@@ -1,0 +1,40 @@
+{
+  "status": "PASS",
+  "checks": [
+    {
+      "name": "new-three-button-flow",
+      "status": "PASS",
+      "errors": [],
+      "external_requests": []
+    },
+    {
+      "name": "accepted-s17-finish-only",
+      "status": "PASS",
+      "errors": [],
+      "external_requests": []
+    },
+    {
+      "name": "accepted-but-unapproved-blocked",
+      "status": "PASS",
+      "errors": [],
+      "external_requests": []
+    },
+    {
+      "name": "unapproved-state-blocked",
+      "status": "PASS",
+      "errors": [],
+      "external_requests": []
+    },
+    {
+      "name": "failed-model-understandable",
+      "status": "PASS",
+      "errors": [],
+      "external_requests": []
+    }
+  ],
+  "normal_main_button_presses": 3,
+  "resume_main_button_presses": 1,
+  "real_provider_calls": 0,
+  "original_s17_log_unchanged": true,
+  "standing": "INJECTED_OFFLINE_UI_TEST_NOT_REAL_COMMUNICATION"
+}

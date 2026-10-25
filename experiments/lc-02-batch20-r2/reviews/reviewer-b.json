@@ -1,0 +1,184 @@
+{
+  "schema": "language-blind-review-response/1.0",
+  "reviewer_id": "reviewer-b",
+  "reviewer_standing": "MODEL_BASED_PROVISIONAL_NOT_HUMAN",
+  "reviewed_at": "2026-10-23",
+  "cases": [
+    {
+      "case_id": "R1E-01",
+      "decision": "YES",
+      "explanation": "The stated permission is conditioned on the primary region being unavailable for ten continuous minutes. The communication states it has been unavailable for twelve continuous minutes and that no other condition applies, so the condition for permission is satisfied.",
+      "citations": [
+        "The on-call engineer may fail over to the secondary region when the primary region has been unavailable for ten continuous minutes. Monitoring shows the primary region unavailable for twelve continuous minutes. No other condition applies."
+      ],
+      "confidence": 5,
+      "suspected_ambiguity": "None material; 'may' is read as permission, which is what the question asks.",
+      "notes": ""
+    },
+    {
+      "case_id": "R1E-02",
+      "decision": "NO",
+      "explanation": "The policy expressly prohibits copying the staging database to removable media, and the proposed removable drive is removable media. This is an express prohibition, not merely an absence of permission.",
+      "citations": [
+        "The staging database must not be copied to removable media."
+      ],
+      "confidence": 5,
+      "suspected_ambiguity": "None material.",
+      "notes": ""
+    },
+    {
+      "case_id": "R1E-03",
+      "decision": "UNKNOWN",
+      "explanation": "The communication gives a due date but expressly says the record does not state whether the vendor returned the questionnaire, and no other document is supplied. Return is therefore unresolved; the due date alone does not establish return.",
+      "citations": [
+        "The vendor's security questionnaire is due on 30 November. The record does not state whether the vendor returned it. No other document is supplied."
+      ],
+      "confidence": 5,
+      "suspected_ambiguity": "None material; silence about return is not evidence either way.",
+      "notes": ""
+    },
+    {
+      "case_id": "R1E-04",
+      "decision": "SOURCE_CONFLICT",
+      "explanation": "The excerpt contains a permission and a direct prohibition on the same subject, with the same effective date, and expressly supplies no precedence rule. The contradiction is unresolved on the face of the text, so it does not unambiguously permit deletion.",
+      "citations": [
+        "Section 4.2 says the archivist may delete expired drafts after the retention review. Section 4.2, with the same effective date, says the archivist must not delete any expired draft. The excerpt gives no precedence rule."
+      ],
+      "confidence": 4,
+      "suspected_ambiguity": "Because the question asks whether the excerpt 'unambiguously permit[s],' a reader could answer NO on the ground that the prohibition prevents unambiguous permission. I use SOURCE_CONFLICT because the communication presents unresolved contradictory provisions of equal standing with no precedence rule, which matches the defined label.",
+      "notes": ""
+    },
+    {
+      "case_id": "R1E-05",
+      "decision": "UNKNOWN",
+      "explanation": "The exception turns on the submission date, but the communication expressly leaves unresolved whether 3 March is the submission date or only the synchronization date. If it is the synchronization date, the actual submission date could be earlier and could fall before 1 March; the text does not settle this.",
+      "citations": [
+        "The exception applies to requests submitted before 1 March. The portal record does not show whether 3 March is the submission date or the date the portal synchronized the request."
+      ],
+      "confidence": 5,
+      "suspected_ambiguity": "The communication itself identifies the unresolved date ambiguity, so UNKNOWN reflects that ambiguity rather than a gap in my reading.",
+      "notes": ""
+    },
+    {
+      "case_id": "R1E-06",
+      "decision": "NO",
+      "explanation": "The policy expressly states that the archive team is not authorised to delete legal-hold records, and the proposed action is deletion of a legal-hold record. The policy therefore does not authorise the proposed deletion.",
+      "citations": [
+        "The policy says the archive team is not authorised to delete legal-hold records."
+      ],
+      "confidence": 5,
+      "suspected_ambiguity": "'Not authorised' denies authority rather than using the word 'prohibited,' but either way it does not grant the requested authorisation.",
+      "notes": ""
+    },
+    {
+      "case_id": "R1E-07",
+      "decision": "UNKNOWN",
+      "explanation": "The chair approved 'the plan,' but the note expressly leaves unresolved whether that phrase means the rollout plan or the test plan. Approval of the rollout plan therefore cannot be established from the communication.",
+      "citations": [
+        "The chair approved the plan after the note. The note does not say whether 'the plan' refers to the rollout plan or the test plan."
+      ],
+      "confidence": 5,
+      "suspected_ambiguity": "The referent of 'the plan' is explicitly ambiguous in the source; the interview question does not resolve it.",
+      "notes": ""
+    },
+    {
+      "case_id": "R1E-08",
+      "decision": "YES",
+      "explanation": "Permission requires replication lag above 20 seconds for at least 5 continuous minutes. The dashboard shows 9 uninterrupted minutes above 20 seconds, which satisfies that threshold. The unrelated badge discussion does not affect this condition.",
+      "citations": [
+        "The incident desk may page the database engineer when replication lag stays above 20 seconds for at least 5 continuous minutes. The dashboard shows 9 uninterrupted minutes above 20 seconds."
+      ],
+      "confidence": 4,
+      "suspected_ambiguity": "The dashboard reading is stated in the present tense; I read it as describing the current uninterrupted episode. If it were a stale historical episode, the 'now' question could be less certain, but the text gives no such indication.",
+      "notes": ""
+    },
+    {
+      "case_id": "R1E-09",
+      "decision": "NO",
+      "explanation": "The exception expressly does not allow sending the key by email. Emailing the key therefore falls outside the exception and is not permitted by it.",
+      "citations": [
+        "During an outage, operators may copy the backup key into an isolated terminal for diagnostics. The exception does not allow sending the key by email."
+      ],
+      "confidence": 5,
+      "suspected_ambiguity": "None material.",
+      "notes": ""
+    },
+    {
+      "case_id": "R1E-10",
+      "decision": "NO",
+      "explanation": "The lead directly answered 'No' to the question whether the draft may be circulated to the client and stated that the client copy needs legal clearance. No clearance is stated to have been obtained.",
+      "citations": [
+        "Reviewer: May we circulate the draft to the client? Lead: No, the client copy needs legal clearance."
+      ],
+      "confidence": 5,
+      "suspected_ambiguity": "None material; the answer is an express refusal at this time.",
+      "notes": ""
+    },
+    {
+      "case_id": "R1E-11",
+      "decision": "YES",
+      "explanation": "The lead expressly approved internal circulation in response to the question whether the draft may be circulated internally.",
+      "citations": [
+        "Reviewer: May we circulate it internally? Lead: Yes, internal circulation is approved."
+      ],
+      "confidence": 5,
+      "suspected_ambiguity": "None material.",
+      "notes": ""
+    },
+    {
+      "case_id": "R1E-12",
+      "decision": "NO",
+      "explanation": "The request is timestamped 17:00:01 UTC, which is after the 17:00 UTC closing time. A request after that time requires fresh approval, and no fresh approval is recorded, so the exception may not be used without it.",
+      "citations": [
+        "The exception closes at 17:00 UTC. A request timestamped after 17:00 UTC requires fresh approval. This request is timestamped 17:00:01 UTC. No fresh approval is recorded."
+      ],
+      "confidence": 5,
+      "suspected_ambiguity": "None material; 17:00:01 is plainly after 17:00.",
+      "notes": ""
+    },
+    {
+      "case_id": "R1E-13",
+      "decision": "UNKNOWN",
+      "explanation": "This is an external factual verification question. The only support for encryption at rest is the document's own assertion, and the communication expressly says no independent audit or system evidence is supplied. An assertion in a policy document does not establish the actual state of the production backup.",
+      "citations": [
+        "The supplied policy document states that the production backup is encrypted at rest. No independent audit or system evidence is supplied."
+      ],
+      "confidence": 5,
+      "suspected_ambiguity": "A reader might answer YES by treating the document's assertion as proof, but that would conflate what the document says with external reality, which this question scope expressly separates.",
+      "notes": ""
+    },
+    {
+      "case_id": "R1E-14",
+      "decision": "YES",
+      "explanation": "This question asks only what the supplied document states. The communication directly reports that the document states the production backup is encrypted at rest; the absence of independent evidence does not change what the document states.",
+      "citations": [
+        "The supplied policy document states that the production backup is encrypted at rest."
+      ],
+      "confidence": 5,
+      "suspected_ambiguity": "None material; this is a source-relative question about the document's statement, not its truth.",
+      "notes": ""
+    },
+    {
+      "case_id": "R1E-15",
+      "decision": "NO",
+      "explanation": "Deployment is permitted only if both the security review is accepted and the change ticket is approved. The review is accepted, but the ticket is not approved and no other approval applies, so the conjunctive condition for deployment is not satisfied.",
+      "citations": [
+        "A release may be deployed only if the security review is accepted and the change ticket is approved. The security review is accepted. The change ticket is not approved. No other approval applies."
+      ],
+      "confidence": 5,
+      "suspected_ambiguity": "None material; 'only if ... and ...' requires both conditions.",
+      "notes": ""
+    },
+    {
+      "case_id": "R1E-16",
+      "decision": "SOURCE_CONFLICT",
+      "explanation": "Clause 7 permits access and Clause 9 prohibits the same access, both have the same effective date, and the document expressly states that neither clause takes precedence. The document therefore contains unresolved contradictory provisions of equal standing with no precedence rule.",
+      "citations": [
+        "Clause 7 says the auditor may access the log archive. Clause 9, with the same effective date, says the auditor must not access the log archive. The document states that neither clause takes precedence."
+      ],
+      "confidence": 5,
+      "suspected_ambiguity": "A reader could answer UNKNOWN because the document does not resolve the conflict, but SOURCE_CONFLICT is the defined label for unresolved contradictory provisions of equal standing with no precedence rule.",
+      "notes": ""
+    }
+  ]
+}

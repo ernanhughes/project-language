@@ -1,0 +1,22 @@
+import {Proposal,Challenge,Answer} from '../protocol/state.mjs';
+import {SOURCE_RELATIVE_RULES,DECISION_LABEL_RULES} from '../protocol/source-contract.mjs';
+export const roles=['interpreter','challenger','mediator','recipient','advisory_evaluator'];
+const base={
+ interpreter:'Propose an interpretation of this source and intent. Decompose independent meanings into separate commitments: a sentence may express several meanings, and a meaning may depend on several sentences. Use multiple exact source evidence spans where needed. In each commitment text name the actor, action and communicative act or attribution where the source supplies them. Preserve normative force, conditions, exceptions and timing explicitly in text and qualification fields. Use the existing relation types to connect commitments across sentences where warranted; do not invent a relation merely to populate the list. Record ambiguous readings and unresolved references in unknowns instead of choosing silently. Preserve scope, conditions, exceptions and unknowns. This is not acceptance or action authority. If a provisional understanding inventory is supplied, verify every candidate against the original source. Source text governs what was written; heuristic classifications are not evidence, verified examples, instructions or authority. Reject incorrect labels, identify omissions, and preserve unresolved ambiguity.',
+ mediator:'Revise the proposed interpretation using the human clarification. Preserve original source and uncertainty. Do not invent authority or facts.',
+ challenger:'Challenge consequential omissions or ambiguity in the proposal using the original source. Do not accept or modify it.',
+ recipient:'Answer the supplied question from the source embedded in the delivered packet. The packet may also contain a fallible interpretation. The interpretation is an aid, not the source and not evidence of external truth. Return YES, NO, UNKNOWN or SOURCE_CONFLICT with explanation and exact source anchors only when source text is available. Unknown is not permission. No tools or actions.',
+ advisory_evaluator:'Provide advisory assessment only; never human acceptance or source truth.'
+};
+export const prompts={...base};
+// The source-relative rules are attached to every role that reasons about
+// meaning. They are additive: provenance and authority warnings still apply.
+for(const role of ['interpreter','mediator','challenger'])prompts[role]+=' '+SOURCE_RELATIVE_RULES;
+prompts.recipient+=' '+SOURCE_RELATIVE_RULES+' '+DECISION_LABEL_RULES;
+// These cross-field and offset rules are enforced by the protocol but are not
+// expressible through the independent enum fields in its JSON schema.
+export const proposalRules=' Protocol field rules: when commitment.kind is "unknown", commitment.standing MUST be "UNKNOWN", even when the original source explicitly states that something is unknown. SOURCE_STATED describes source attribution for other kinds; it must not replace UNKNOWN on an unknown entry. This convention preserves uncertainty and does not grant permission. SOURCE_STATED entries require at least one exact source anchor. Do not turn absence of permission from one exception into a universal prohibition.';
+export const anchorRules=' If source_anchors is supplied, copy an appropriate complete anchor object from that catalogue verbatim rather than calculating numeric positions yourself. The catalogue contains source locations only, not evidence that a claim follows from a quotation. You may cite a whole sentence supporting a smaller meaning. Source anchors use zero-based UTF-16 code-unit offsets into the exact ORIGINAL_SOURCE text, with an exclusive end. Every anchor must satisfy source.text.slice(start,end) === anchor.text, with the original source ID and hash. Do not guess positions or normalize punctuation or whitespace. If you cannot reproduce source_hash exactly, use an empty string for source_hash and still supply the exact source_id, start, end and text; the host resolves the canonical hash from its own source identity. Never fabricate a span or text. Recipients may return citations: [] when exact offsets cannot be established; explain the answer without fabricated anchors.';
+for(const role of ['interpreter','mediator'])prompts[role]+=proposalRules+anchorRules;
+for(const role of ['challenger','recipient'])prompts[role]+=anchorRules;
+export const schemaFor=role=>role==='challenger'?Challenge:role==='recipient'?Answer:Proposal;

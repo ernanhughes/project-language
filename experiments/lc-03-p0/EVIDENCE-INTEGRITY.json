@@ -1,0 +1,77 @@
+{
+  "schema": "lc03-p0-evidence-integrity/0.1",
+  "checked_at": "2026-10-24",
+  "standing": "OFFLINE_DESIGN_AND_FEASIBILITY_INTEGRITY_CHECK",
+  "decision": "CLOSE_LC02_WITH_PREFER_DETERMINISTIC; LC03_DESIGNED_NOT_EXECUTED",
+  "artifacts": {
+    "LC-03-P0-COMMUNICATION-UTILITY.md": "b525a0c80886192eb896da079e7075f93d6d184b58bf81950e684eea79cc2a72",
+    "fixtures/incident-source.txt": "ca8d51cad443bb830c6a0a4e1d0a542aa24c3b8ff7ed26bd50ab23dcdae50857",
+    "fixtures/development-cases.json": "345c9d8d46164382fce9cf5cd9e11868051684e947fc6b29bc62cfd0452b8e01",
+    "fixtures/evaluation-plan.json": "4afbdfcc01ecca03b845aaeeaa6b32dbc81de974af0ecca0474ec6b3a8367a96",
+    "fixtures/DEV-FREEZE.json": "1e12e0dc36fdc4257438a8cc94d6f45b6e414005d79f25c34926701c7d52f8d4",
+    "overlap-report.json": "3ab16c73ee2447fb6c71e7a788decf5784226e9fb6fc33eefc022591e24f98d1",
+    "feasibility.json": "0e97d3152ee063a3fdd0f3918483a23152223c62a82961802da7667ae83f96ec",
+    "feasibility.md": "433cda959a26a7b3fdc11d80c53261eeb52685b3c60946c5aae4c7e0b84dbc22",
+    "SUMMARY.json": "03356ac3e5063db21c29f58fb4d22c8b32f2102f989b7bc1754111d334c03678",
+    "build-fixtures.mjs": "fa6c2daec9bec17b02392a3d1248b5a26078eefaebb95880ad6193bb96292636",
+    "overlap-audit.mjs": "303bafc4235fd6dff27469ffb9fedb49a83b08d916e5c4697ff412e5ee031587",
+    "feasibility.mjs": "99d2aa7c61c53e50b8ca47ed624eb6264c89decf68d30c51380ee4d07732e536"
+  },
+  "lc02_prior_evidence": {
+    "r6_checker_sha256": "ed17ecb14a66ebb42b6f1b03427c4bd4b021d4829e66aee9edc2f3a9f5801692",
+    "r6_contract_sha256": "c56c812c7b32ab8bca2a2e06a1bf2ae03da43fbb435b8772b9ea14c1d30c3064",
+    "r7_decision": "PREFER_DETERMINISTIC",
+    "r7_pilot_standing": "CONTAMINATED_PILOT_NOT_CLEAN_HELD_OUT",
+    "modified_by_lc03_p0": false
+  },
+  "overlap_audit": {
+    "comparison_sources": 195,
+    "corpora": 9,
+    "threshold": 0.45,
+    "nearest_jaccard": 0.0888,
+    "status": "CLEAN_FOR_DEVELOPMENT_SOURCE",
+    "evaluation_sources_authored": false
+  },
+  "feasibility": {
+    "record_validation": "PASS",
+    "source_chars": 1378,
+    "b_representation_chars": 2674,
+    "b_views": 3,
+    "lossy_control_lost": "row-condition-q1",
+    "r6_advisory_findings": 3,
+    "scripted_scores": {
+      "A": 1,
+      "B": 0.833,
+      "C": 1
+    },
+    "score_standing": "SCRIPTED_ILLUSTRATION_NOT_MODEL_RESULT",
+    "model_calls": 0
+  },
+  "verification": {
+    "root_typecheck": "PASS",
+    "root_tests": {
+      "pass": 1114,
+      "skip": 3,
+      "fail": 0
+    },
+    "studio_tests": {
+      "pass": 100,
+      "fail": 0
+    },
+    "python_tests": {
+      "pass": 25
+    },
+    "lc03_feasibility": "PASS",
+    "lc03_overlap_audit": "PASS"
+  },
+  "policy": {
+    "hosted_models": false,
+    "local_model_calls": 0,
+    "studio_communication_integration": false,
+    "manuscript_modified": false,
+    "committed": false,
+    "pushed": false,
+    "automatic_routing": false
+  },
+  "note": "LC-03-P0 is design and offline feasibility only. The incident fixture is exposed development material. The scripted score table is not a communication-utility measurement. Evaluation sources are not authored or frozen."
+}

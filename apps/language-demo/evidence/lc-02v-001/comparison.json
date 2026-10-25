@@ -1,0 +1,1702 @@
+{
+  "schema": "lc02v-development-comparison/0.1",
+  "standing": "EXPLORATORY_UNADJUDICATED",
+  "reference_authorship": {
+    "role": "SEPARATE_AI_BLIND_AUTHOR",
+    "agent": "blind_reference",
+    "independent_human_validation": false
+  },
+  "compiler": {
+    "adapter": "language-understanding-child/0.1",
+    "python": "C:\\Projects\\project-language\\.venv\\Scripts\\python.exe",
+    "timeout_ms": 15000,
+    "max_input_bytes": 262144,
+    "max_output_bytes": 4194304,
+    "profile": {
+      "id": "technical-policy",
+      "version": "0.1",
+      "sha256": "9fd7528d2916ac479e99c53a8a02a6a17c9b3ba6824f2d294cd185d52b3e60cb",
+      "file_sha256": "3efcc4abac78357b4bf254011f6852ae92d89fb5bc56cedb886a463a9899880f",
+      "path": "C:\\Projects\\project-language\\core\\understanding\\python\\profiles\\technical-policy.json"
+    },
+    "source_hashes": {
+      "src/understanding/cli.py": "fdbbaab6d1c51d077046100aef43fcb0fcfac5e278dba1fa30f3a0cddb229ba9",
+      "src/understanding/pipeline.py": "3e68bc5c268c3ebde1952fb6ded2c796289cebc7f2548335580ddf1a5c5054e6",
+      "src/understanding/__init__.py": "c4b5f92990c64643e4907def83a7a62dd00c8bdd3dd738a8ab14c55d523a396f",
+      "src/understanding/contracts.py": "ec17e9c381a22aed695663e4e27ed57f0cdd07491ec78355cb95855a2e08e7d7",
+      "../schemas/request-v0.1.json": "0d1dc60bff65f0baf319fef34d6dd5e141c814d55ed7f865fed629cebd4578c2",
+      "../schemas/inventory-v0.1.json": "e28546071cd64fee94472619b3e7f6f67a38614e5bb2484e0992929f9d778787",
+      "pyproject.toml": "8b22beb1f275e370f242b83b1534e5412318e685b10b8e19a0228e6e40f89a91"
+    }
+  },
+  "results": [
+    {
+      "passage_id": "lc02-d1",
+      "reference": {
+        "id": "lc02-d1",
+        "source": {
+          "id": "lc02-d1-source",
+          "text": "A green migration rehearsal is readiness evidence, not permission to run a production migration. Production changes require the service owner’s separate approval. An emergency rollback may precede review only for a signed known-good build with audit records retained. It never permits a new migration. Vendor replication approval is unknown.",
+          "sha256": "ae0c465f5f6eb6e1233d981f4d4933440f90d71283b21a41fd2fb4f44caeb671"
+        },
+        "units": [
+          {
+            "id": "lc02-d1-u1",
+            "text": "A green migration rehearsal is readiness evidence",
+            "act": "ASSERTION",
+            "force": "ASSERTED",
+            "actors": [],
+            "actions": [
+              "migration rehearsal supplies readiness evidence"
+            ],
+            "conditions": [],
+            "exceptions": [],
+            "temporal": [],
+            "ambiguities": [],
+            "spans": [
+              {
+                "start": 0,
+                "end": 49,
+                "text": "A green migration rehearsal is readiness evidence"
+              }
+            ]
+          },
+          {
+            "id": "lc02-d1-u2",
+            "text": "A green migration rehearsal is readiness evidence, not permission to run a production migration.",
+            "act": "AUTHORITY_BOUNDARY",
+            "force": "EXPLICIT_NON_AUTHORIZATION",
+            "actors": [],
+            "actions": [
+              "run production migration"
+            ],
+            "conditions": [],
+            "exceptions": [],
+            "temporal": [],
+            "ambiguities": [],
+            "spans": [
+              {
+                "start": 0,
+                "end": 96,
+                "text": "A green migration rehearsal is readiness evidence, not permission to run a production migration."
+              }
+            ]
+          },
+          {
+            "id": "lc02-d1-u3",
+            "text": "Production changes require the service owner’s separate approval.",
+            "act": "REQUIREMENT",
+            "force": "REQUIRED",
+            "actors": [
+              "service owner"
+            ],
+            "actions": [
+              "production changes"
+            ],
+            "conditions": [
+              "separate owner approval"
+            ],
+            "exceptions": [],
+            "temporal": [],
+            "ambiguities": [],
+            "spans": [
+              {
+                "start": 97,
+                "end": 162,
+                "text": "Production changes require the service owner’s separate approval."
+              }
+            ]
+          },
+          {
+            "id": "lc02-d1-u4",
+            "text": "An emergency rollback may precede review only for a signed known-good build with audit records retained.",
+            "act": "PERMISSION",
+            "force": "CONDITIONAL_PERMISSION",
+            "actors": [],
+            "actions": [
+              "emergency rollback"
+            ],
+            "conditions": [
+              "signed known-good build",
+              "audit records retained"
+            ],
+            "exceptions": [],
+            "temporal": [
+              "may precede review"
+            ],
+            "ambiguities": [],
+            "spans": [
+              {
+                "start": 163,
+                "end": 267,
+                "text": "An emergency rollback may precede review only for a signed known-good build with audit records retained."
+              }
+            ]
+          },
+          {
+            "id": "lc02-d1-u5",
+            "text": "It never permits a new migration.",
+            "act": "AUTHORITY_BOUNDARY",
+            "force": "EXPLICIT_NON_AUTHORIZATION",
+            "actors": [],
+            "actions": [
+              "new migration"
+            ],
+            "conditions": [],
+            "exceptions": [],
+            "temporal": [],
+            "ambiguities": [
+              "It most naturally refers to the rollback allowance."
+            ],
+            "spans": [
+              {
+                "start": 268,
+                "end": 301,
+                "text": "It never permits a new migration."
+              }
+            ]
+          },
+          {
+            "id": "lc02-d1-u6",
+            "text": "Vendor replication approval is unknown.",
+            "act": "UNKNOWN_STATUS",
+            "force": "UNKNOWN",
+            "actors": [],
+            "actions": [
+              "vendor replication approval"
+            ],
+            "conditions": [],
+            "exceptions": [],
+            "temporal": [],
+            "ambiguities": [],
+            "spans": [
+              {
+                "start": 302,
+                "end": 341,
+                "text": "Vendor replication approval is unknown."
+              }
+            ]
+          }
+        ],
+        "relations": [
+          {
+            "from": "lc02-d1-u3",
+            "to": "lc02-d1-u2",
+            "type": "SUPPORTS",
+            "spans": [
+              {
+                "start": 97,
+                "end": 162,
+                "text": "Production changes require the service owner’s separate approval."
+              },
+              {
+                "start": 0,
+                "end": 96,
+                "text": "A green migration rehearsal is readiness evidence, not permission to run a production migration."
+              }
+            ],
+            "uncertainty": "Approval requirement reinforces authority distinction; approval alone is not stated sufficient."
+          },
+          {
+            "from": "lc02-d1-u4",
+            "to": "lc02-d1-u3",
+            "type": "QUALIFIES",
+            "spans": [
+              {
+                "start": 163,
+                "end": 267,
+                "text": "An emergency rollback may precede review only for a signed known-good build with audit records retained."
+              },
+              {
+                "start": 97,
+                "end": 162,
+                "text": "Production changes require the service owner’s separate approval."
+              }
+            ],
+            "uncertainty": "Review and owner approval are not explicitly equated; no owner-approval waiver is inferred."
+          },
+          {
+            "from": "lc02-d1-u5",
+            "to": "lc02-d1-u4",
+            "type": "LIMITS",
+            "spans": [
+              {
+                "start": 268,
+                "end": 301,
+                "text": "It never permits a new migration."
+              },
+              {
+                "start": 163,
+                "end": 267,
+                "text": "An emergency rollback may precede review only for a signed known-good build with audit records retained."
+              }
+            ],
+            "uncertainty": "Pronoun referent inferred from context."
+          }
+        ],
+        "ambiguities": [
+          "Review and owner approval may be distinct.",
+          "Rollback conditions are necessary for preceding review; general production permission is not inferred."
+        ]
+      },
+      "baseline": {
+        "schema": "language-understanding-inventory/0.1",
+        "offset_unit": "UNICODE_CODE_POINTS",
+        "standing": "HEURISTIC_UNVERIFIED",
+        "source": {
+          "id": "lc02-d1-source",
+          "sha256": "ae0c465f5f6eb6e1233d981f4d4933440f90d71283b21a41fd2fb4f44caeb671",
+          "text": "A green migration rehearsal is readiness evidence, not permission to run a production migration. Production changes require the service owner’s separate approval. An emergency rollback may precede review only for a signed known-good build with audit records retained. It never permits a new migration. Vendor replication approval is unknown."
+        },
+        "profile": {
+          "id": "technical-policy",
+          "version": "0.1",
+          "schema": "language-understanding-profile/0.1",
+          "sha256": "9fd7528d2916ac479e99c53a8a02a6a17c9b3ba6824f2d294cd185d52b3e60cb"
+        },
+        "engine": {
+          "id": "spacy/blank-en+sentencizer",
+          "version": "0.1.1",
+          "nltk_version": "3.10.4",
+          "spacy_version": "3.8.16",
+          "trained_syntax_available": false
+        },
+        "segments": [
+          {
+            "id": "s1",
+            "start": 0,
+            "end": 96,
+            "text": "A green migration rehearsal is readiness evidence, not permission to run a production migration."
+          },
+          {
+            "id": "s2",
+            "start": 97,
+            "end": 162,
+            "text": "Production changes require the service owner’s separate approval."
+          },
+          {
+            "id": "s3",
+            "start": 163,
+            "end": 267,
+            "text": "An emergency rollback may precede review only for a signed known-good build with audit records retained."
+          },
+          {
+            "id": "s4",
+            "start": 268,
+            "end": 301,
+            "text": "It never permits a new migration."
+          },
+          {
+            "id": "s5",
+            "start": 302,
+            "end": 341,
+            "text": "Vendor replication approval is unknown."
+          }
+        ],
+        "meaning_units": [
+          {
+            "id": "m1",
+            "source_segments": [
+              "s1"
+            ],
+            "start": 0,
+            "end": 96,
+            "source_quote": "A green migration rehearsal is readiness evidence, not permission to run a production migration.",
+            "proposed_meaning": "A green migration rehearsal is readiness evidence, not permission to run a production migration.",
+            "classification": {
+              "kind": "authority_limit",
+              "normative_force": "DOES_NOT_CONFER_PERMISSION",
+              "condition_cues": [],
+              "temporal_cues": [],
+              "possible_unresolved_reference": false,
+              "method": "LEXICAL_RULE_HEURISTIC",
+              "review": "HEURISTIC_UNVERIFIED"
+            },
+            "provenance": "EXACT_SOURCE_SPAN"
+          },
+          {
+            "id": "m2",
+            "source_segments": [
+              "s2"
+            ],
+            "start": 97,
+            "end": 162,
+            "source_quote": "Production changes require the service owner’s separate approval.",
+            "proposed_meaning": "Production changes require the service owner’s separate approval.",
+            "classification": {
+              "kind": "requirement",
+              "normative_force": "REQUIRED",
+              "condition_cues": [],
+              "temporal_cues": [],
+              "possible_unresolved_reference": false,
+              "method": "LEXICAL_RULE_HEURISTIC",
+              "review": "HEURISTIC_UNVERIFIED"
+            },
+            "provenance": "EXACT_SOURCE_SPAN"
+          },
+          {
+            "id": "m3",
+            "source_segments": [
+              "s3"
+            ],
+            "start": 163,
+            "end": 267,
+            "source_quote": "An emergency rollback may precede review only for a signed known-good build with audit records retained.",
+            "proposed_meaning": "An emergency rollback may precede review only for a signed known-good build with audit records retained.",
+            "classification": {
+              "kind": "conditional_permission",
+              "normative_force": "PERMITTED_IN_SOURCE",
+              "condition_cues": [
+                "only",
+                "with"
+              ],
+              "temporal_cues": [],
+              "possible_unresolved_reference": false,
+              "method": "LEXICAL_RULE_HEURISTIC",
+              "review": "HEURISTIC_UNVERIFIED"
+            },
+            "provenance": "EXACT_SOURCE_SPAN"
+          },
+          {
+            "id": "m4",
+            "source_segments": [
+              "s4"
+            ],
+            "start": 268,
+            "end": 301,
+            "source_quote": "It never permits a new migration.",
+            "proposed_meaning": "It never permits a new migration.",
+            "classification": {
+              "kind": "authority_limit",
+              "normative_force": "DOES_NOT_CONFER_PERMISSION",
+              "condition_cues": [],
+              "temporal_cues": [],
+              "possible_unresolved_reference": true,
+              "method": "LEXICAL_RULE_HEURISTIC",
+              "review": "HEURISTIC_UNVERIFIED"
+            },
+            "provenance": "EXACT_SOURCE_SPAN"
+          },
+          {
+            "id": "m5",
+            "source_segments": [
+              "s5"
+            ],
+            "start": 302,
+            "end": 341,
+            "source_quote": "Vendor replication approval is unknown.",
+            "proposed_meaning": "Vendor replication approval is unknown.",
+            "classification": {
+              "kind": "unknown",
+              "normative_force": "UNRESOLVED",
+              "condition_cues": [],
+              "temporal_cues": [],
+              "possible_unresolved_reference": false,
+              "method": "LEXICAL_RULE_HEURISTIC",
+              "review": "HEURISTIC_UNVERIFIED"
+            },
+            "provenance": "EXACT_SOURCE_SPAN"
+          }
+        ],
+        "relations": [],
+        "context": {},
+        "coverage": {
+          "standing": "NOT_EVALUATED",
+          "source_supportedness": "NOT_EVALUATED",
+          "semantic_completeness": "NOT_ESTABLISHED"
+        },
+        "warnings": [
+          "Labels are lexical heuristics, not verified meaning or permissions.",
+          "No cross-sentence relation, coreference, or semantic completeness checker is implemented."
+        ]
+      },
+      "baseline_review": {
+        "schema": "language-semantic-review/0.1",
+        "reference_standing": "UNADJUDICATED_REFERENCE",
+        "reference_hash": "8e85c65afdd206e318d817ba9d3e7b52d9525c7eae08da889ddb468ba6cfd564",
+        "candidate_hash": "0b56e89eb5d34c8bf2802408a71207b9182bf41dd410dc1436a8e2b1b8aa7e60",
+        "semantic_quality": "NOT_ADJUDICATED",
+        "coverage": [
+          {
+            "reference_id": "lc02-d1-u1",
+            "candidates": [
+              "m1"
+            ],
+            "verdict": "UNKNOWN"
+          },
+          {
+            "reference_id": "lc02-d1-u2",
+            "candidates": [
+              "m1"
+            ],
+            "verdict": "UNKNOWN"
+          },
+          {
+            "reference_id": "lc02-d1-u3",
+            "candidates": [
+              "m2"
+            ],
+            "verdict": "UNKNOWN"
+          },
+          {
+            "reference_id": "lc02-d1-u4",
+            "candidates": [
+              "m3"
+            ],
+            "verdict": "UNKNOWN"
+          },
+          {
+            "reference_id": "lc02-d1-u5",
+            "candidates": [
+              "m4"
+            ],
+            "verdict": "UNKNOWN"
+          },
+          {
+            "reference_id": "lc02-d1-u6",
+            "candidates": [
+              "m5"
+            ],
+            "verdict": "UNKNOWN"
+          }
+        ],
+        "support": [
+          {
+            "candidate_id": "m1",
+            "exact_spans_valid": true,
+            "entailment": "UNKNOWN"
+          },
+          {
+            "candidate_id": "m2",
+            "exact_spans_valid": true,
+            "entailment": "UNKNOWN"
+          },
+          {
+            "candidate_id": "m3",
+            "exact_spans_valid": true,
+            "entailment": "UNKNOWN"
+          },
+          {
+            "candidate_id": "m4",
+            "exact_spans_valid": true,
+            "entailment": "UNKNOWN"
+          },
+          {
+            "candidate_id": "m5",
+            "exact_spans_valid": true,
+            "entailment": "UNKNOWN"
+          }
+        ],
+        "dimensions": [
+          {
+            "dimension": "classification",
+            "verdict": "UNKNOWN"
+          },
+          {
+            "dimension": "qualifications",
+            "verdict": "UNKNOWN"
+          },
+          {
+            "dimension": "relationships",
+            "verdict": "UNKNOWN"
+          },
+          {
+            "dimension": "unsupported_additions",
+            "verdict": "UNKNOWN"
+          },
+          {
+            "dimension": "appropriate_uncertainty",
+            "verdict": "UNKNOWN"
+          }
+        ],
+        "limitations": [
+          "Exact quotation is not entailment.",
+          "Absent wording matches can be faithful paraphrases.",
+          "A sentence is not an atomic meaning unit.",
+          "Unknown judgments must not be counted as correct or incorrect."
+        ]
+      },
+      "observations": {
+        "sentences": 5,
+        "baseline_units": 5,
+        "reference_units": 6,
+        "baseline_relations": 0,
+        "reference_relations": 3,
+        "counts_are_not_semantic_scores": true
+      },
+      "model_assisted": [],
+      "model_evidence": "NOT_RUN_NO_HOSTED_AUTHORIZATION"
+    },
+    {
+      "passage_id": "lc02v-dev-interview",
+      "reference": {
+        "id": "lc02v-dev-interview",
+        "source": {
+          "id": "lc02v-dev-interview-source",
+          "text": "During the interview, Mara reported that the facilities lead had approved opening the west gate. The interviewer did not see an approval record. Mara later said she had heard the claim from a contractor, rather than from the lead. The gate remained closed that afternoon.",
+          "sha256": "4e11700b5ee6a5217b93960cf690d20e962df0fbc4c32db389711396bfeb9d7c"
+        },
+        "units": [
+          {
+            "id": "lc02v-dev-interview-u1",
+            "text": "During the interview, Mara reported that the facilities lead had approved opening the west gate.",
+            "act": "REPORTED_CLAIM",
+            "force": "ATTRIBUTED_UNVERIFIED",
+            "actors": [
+              "Mara",
+              "facilities lead"
+            ],
+            "actions": [
+              "report approval of opening west gate"
+            ],
+            "conditions": [],
+            "exceptions": [],
+            "temporal": [
+              "during interview"
+            ],
+            "ambiguities": [],
+            "spans": [
+              {
+                "start": 0,
+                "end": 96,
+                "text": "During the interview, Mara reported that the facilities lead had approved opening the west gate."
+              }
+            ]
+          },
+          {
+            "id": "lc02v-dev-interview-u2",
+            "text": "The interviewer did not see an approval record.",
+            "act": "OBSERVATION_REPORT",
+            "force": "ASSERTED",
+            "actors": [
+              "interviewer"
+            ],
+            "actions": [
+              "did not see approval record"
+            ],
+            "conditions": [],
+            "exceptions": [],
+            "temporal": [],
+            "ambiguities": [],
+            "spans": [
+              {
+                "start": 97,
+                "end": 144,
+                "text": "The interviewer did not see an approval record."
+              }
+            ]
+          },
+          {
+            "id": "lc02v-dev-interview-u3",
+            "text": "Mara later said she had heard the claim from a contractor, rather than from the lead.",
+            "act": "REPORTED_SOURCE",
+            "force": "ATTRIBUTED",
+            "actors": [
+              "Mara",
+              "contractor",
+              "facilities lead"
+            ],
+            "actions": [
+              "hear claim from contractor"
+            ],
+            "conditions": [],
+            "exceptions": [],
+            "temporal": [
+              "later"
+            ],
+            "ambiguities": [],
+            "spans": [
+              {
+                "start": 145,
+                "end": 230,
+                "text": "Mara later said she had heard the claim from a contractor, rather than from the lead."
+              }
+            ]
+          },
+          {
+            "id": "lc02v-dev-interview-u4",
+            "text": "The gate remained closed that afternoon.",
+            "act": "STATE_REPORT",
+            "force": "ASSERTED",
+            "actors": [],
+            "actions": [
+              "gate remains closed"
+            ],
+            "conditions": [],
+            "exceptions": [],
+            "temporal": [
+              "that afternoon"
+            ],
+            "ambiguities": [],
+            "spans": [
+              {
+                "start": 231,
+                "end": 271,
+                "text": "The gate remained closed that afternoon."
+              }
+            ]
+          }
+        ],
+        "relations": [
+          {
+            "from": "lc02v-dev-interview-u2",
+            "to": "lc02v-dev-interview-u1",
+            "type": "LIMITS_EVIDENTIAL_SUPPORT",
+            "spans": [
+              {
+                "start": 97,
+                "end": 144,
+                "text": "The interviewer did not see an approval record."
+              },
+              {
+                "start": 0,
+                "end": 96,
+                "text": "During the interview, Mara reported that the facilities lead had approved opening the west gate."
+              }
+            ],
+            "uncertainty": "Non-observation does not establish absence of approval."
+          },
+          {
+            "from": "lc02v-dev-interview-u3",
+            "to": "lc02v-dev-interview-u1",
+            "type": "QUALIFIES_ATTRIBUTION",
+            "spans": [
+              {
+                "start": 145,
+                "end": 230,
+                "text": "Mara later said she had heard the claim from a contractor, rather than from the lead."
+              },
+              {
+                "start": 0,
+                "end": 96,
+                "text": "During the interview, Mara reported that the facilities lead had approved opening the west gate."
+              }
+            ],
+            "uncertainty": "Contractor source and accuracy remain unknown."
+          }
+        ],
+        "ambiguities": [
+          "Reported approval is not independently established.",
+          "Closure does not establish lack of permission or its cause."
+        ]
+      },
+      "baseline": {
+        "schema": "language-understanding-inventory/0.1",
+        "offset_unit": "UNICODE_CODE_POINTS",
+        "standing": "HEURISTIC_UNVERIFIED",
+        "source": {
+          "id": "lc02v-dev-interview-source",
+          "sha256": "4e11700b5ee6a5217b93960cf690d20e962df0fbc4c32db389711396bfeb9d7c",
+          "text": "During the interview, Mara reported that the facilities lead had approved opening the west gate. The interviewer did not see an approval record. Mara later said she had heard the claim from a contractor, rather than from the lead. The gate remained closed that afternoon."
+        },
+        "profile": {
+          "id": "technical-policy",
+          "version": "0.1",
+          "schema": "language-understanding-profile/0.1",
+          "sha256": "9fd7528d2916ac479e99c53a8a02a6a17c9b3ba6824f2d294cd185d52b3e60cb"
+        },
+        "engine": {
+          "id": "spacy/blank-en+sentencizer",
+          "version": "0.1.1",
+          "nltk_version": "3.10.4",
+          "spacy_version": "3.8.16",
+          "trained_syntax_available": false
+        },
+        "segments": [
+          {
+            "id": "s1",
+            "start": 0,
+            "end": 96,
+            "text": "During the interview, Mara reported that the facilities lead had approved opening the west gate."
+          },
+          {
+            "id": "s2",
+            "start": 97,
+            "end": 144,
+            "text": "The interviewer did not see an approval record."
+          },
+          {
+            "id": "s3",
+            "start": 145,
+            "end": 230,
+            "text": "Mara later said she had heard the claim from a contractor, rather than from the lead."
+          },
+          {
+            "id": "s4",
+            "start": 231,
+            "end": 271,
+            "text": "The gate remained closed that afternoon."
+          }
+        ],
+        "meaning_units": [
+          {
+            "id": "m1",
+            "source_segments": [
+              "s1"
+            ],
+            "start": 0,
+            "end": 96,
+            "source_quote": "During the interview, Mara reported that the facilities lead had approved opening the west gate.",
+            "proposed_meaning": "During the interview, Mara reported that the facilities lead had approved opening the west gate.",
+            "classification": {
+              "kind": "statement",
+              "normative_force": "ASSERTED_IN_SOURCE",
+              "condition_cues": [],
+              "temporal_cues": [
+                "during"
+              ],
+              "possible_unresolved_reference": false,
+              "method": "LEXICAL_RULE_HEURISTIC",
+              "review": "HEURISTIC_UNVERIFIED"
+            },
+            "provenance": "EXACT_SOURCE_SPAN"
+          },
+          {
+            "id": "m2",
+            "source_segments": [
+              "s2"
+            ],
+            "start": 97,
+            "end": 144,
+            "source_quote": "The interviewer did not see an approval record.",
+            "proposed_meaning": "The interviewer did not see an approval record.",
+            "classification": {
+              "kind": "statement",
+              "normative_force": "ASSERTED_IN_SOURCE",
+              "condition_cues": [],
+              "temporal_cues": [],
+              "possible_unresolved_reference": false,
+              "method": "LEXICAL_RULE_HEURISTIC",
+              "review": "HEURISTIC_UNVERIFIED"
+            },
+            "provenance": "EXACT_SOURCE_SPAN"
+          },
+          {
+            "id": "m3",
+            "source_segments": [
+              "s3"
+            ],
+            "start": 145,
+            "end": 230,
+            "source_quote": "Mara later said she had heard the claim from a contractor, rather than from the lead.",
+            "proposed_meaning": "Mara later said she had heard the claim from a contractor, rather than from the lead.",
+            "classification": {
+              "kind": "statement",
+              "normative_force": "ASSERTED_IN_SOURCE",
+              "condition_cues": [],
+              "temporal_cues": [],
+              "possible_unresolved_reference": false,
+              "method": "LEXICAL_RULE_HEURISTIC",
+              "review": "HEURISTIC_UNVERIFIED"
+            },
+            "provenance": "EXACT_SOURCE_SPAN"
+          },
+          {
+            "id": "m4",
+            "source_segments": [
+              "s4"
+            ],
+            "start": 231,
+            "end": 271,
+            "source_quote": "The gate remained closed that afternoon.",
+            "proposed_meaning": "The gate remained closed that afternoon.",
+            "classification": {
+              "kind": "statement",
+              "normative_force": "ASSERTED_IN_SOURCE",
+              "condition_cues": [],
+              "temporal_cues": [
+                "after"
+              ],
+              "possible_unresolved_reference": false,
+              "method": "LEXICAL_RULE_HEURISTIC",
+              "review": "HEURISTIC_UNVERIFIED"
+            },
+            "provenance": "EXACT_SOURCE_SPAN"
+          }
+        ],
+        "relations": [],
+        "context": {},
+        "coverage": {
+          "standing": "NOT_EVALUATED",
+          "source_supportedness": "NOT_EVALUATED",
+          "semantic_completeness": "NOT_ESTABLISHED"
+        },
+        "warnings": [
+          "Labels are lexical heuristics, not verified meaning or permissions.",
+          "No cross-sentence relation, coreference, or semantic completeness checker is implemented."
+        ]
+      },
+      "baseline_review": {
+        "schema": "language-semantic-review/0.1",
+        "reference_standing": "UNADJUDICATED_REFERENCE",
+        "reference_hash": "77f61e3d2e1b30d6751a988e72a1bef572b13588d1d5734b879a75255f487090",
+        "candidate_hash": "fbbe4fce0832a66e165a37deb2b2daaa190ed50b7c8f1639e9c57466e9ef5547",
+        "semantic_quality": "NOT_ADJUDICATED",
+        "coverage": [
+          {
+            "reference_id": "lc02v-dev-interview-u1",
+            "candidates": [
+              "m1"
+            ],
+            "verdict": "UNKNOWN"
+          },
+          {
+            "reference_id": "lc02v-dev-interview-u2",
+            "candidates": [
+              "m2"
+            ],
+            "verdict": "UNKNOWN"
+          },
+          {
+            "reference_id": "lc02v-dev-interview-u3",
+            "candidates": [
+              "m3"
+            ],
+            "verdict": "UNKNOWN"
+          },
+          {
+            "reference_id": "lc02v-dev-interview-u4",
+            "candidates": [
+              "m4"
+            ],
+            "verdict": "UNKNOWN"
+          }
+        ],
+        "support": [
+          {
+            "candidate_id": "m1",
+            "exact_spans_valid": true,
+            "entailment": "UNKNOWN"
+          },
+          {
+            "candidate_id": "m2",
+            "exact_spans_valid": true,
+            "entailment": "UNKNOWN"
+          },
+          {
+            "candidate_id": "m3",
+            "exact_spans_valid": true,
+            "entailment": "UNKNOWN"
+          },
+          {
+            "candidate_id": "m4",
+            "exact_spans_valid": true,
+            "entailment": "UNKNOWN"
+          }
+        ],
+        "dimensions": [
+          {
+            "dimension": "classification",
+            "verdict": "UNKNOWN"
+          },
+          {
+            "dimension": "qualifications",
+            "verdict": "UNKNOWN"
+          },
+          {
+            "dimension": "relationships",
+            "verdict": "UNKNOWN"
+          },
+          {
+            "dimension": "unsupported_additions",
+            "verdict": "UNKNOWN"
+          },
+          {
+            "dimension": "appropriate_uncertainty",
+            "verdict": "UNKNOWN"
+          }
+        ],
+        "limitations": [
+          "Exact quotation is not entailment.",
+          "Absent wording matches can be faithful paraphrases.",
+          "A sentence is not an atomic meaning unit.",
+          "Unknown judgments must not be counted as correct or incorrect."
+        ]
+      },
+      "observations": {
+        "sentences": 4,
+        "baseline_units": 4,
+        "reference_units": 4,
+        "baseline_relations": 0,
+        "reference_relations": 2,
+        "counts_are_not_semantic_scores": true
+      },
+      "model_assisted": [],
+      "model_evidence": "NOT_RUN_NO_HOSTED_AUTHORIZATION"
+    },
+    {
+      "passage_id": "lc02v-dev-temporal",
+      "reference": {
+        "id": "lc02v-dev-temporal",
+        "source": {
+          "id": "lc02v-dev-temporal-source",
+          "text": "The archive team may export the public catalogue after 18:00 on Friday. Until the privacy review is complete, entries containing personal contact details must be excluded. An on-call archivist may export those entries earlier only to restore a damaged internal index. This exception expires at noon on Saturday.",
+          "sha256": "7640cd264cf7d2a9e0a9fa6a17bed45e080a9c922851d0b0ee9d0b2915581d5a"
+        },
+        "units": [
+          {
+            "id": "lc02v-dev-temporal-u1",
+            "text": "The archive team may export the public catalogue after 18:00 on Friday.",
+            "act": "PERMISSION",
+            "force": "CONDITIONAL_PERMISSION",
+            "actors": [
+              "archive team"
+            ],
+            "actions": [
+              "export public catalogue"
+            ],
+            "conditions": [],
+            "exceptions": [],
+            "temporal": [
+              "after Friday 18:00"
+            ],
+            "ambiguities": [],
+            "spans": [
+              {
+                "start": 0,
+                "end": 71,
+                "text": "The archive team may export the public catalogue after 18:00 on Friday."
+              }
+            ]
+          },
+          {
+            "id": "lc02v-dev-temporal-u2",
+            "text": "Until the privacy review is complete, entries containing personal contact details must be excluded.",
+            "act": "REQUIREMENT",
+            "force": "REQUIRED",
+            "actors": [],
+            "actions": [
+              "exclude contact-detail entries"
+            ],
+            "conditions": [
+              "privacy review incomplete"
+            ],
+            "exceptions": [],
+            "temporal": [
+              "until privacy review complete"
+            ],
+            "ambiguities": [],
+            "spans": [
+              {
+                "start": 72,
+                "end": 171,
+                "text": "Until the privacy review is complete, entries containing personal contact details must be excluded."
+              }
+            ]
+          },
+          {
+            "id": "lc02v-dev-temporal-u3",
+            "text": "An on-call archivist may export those entries earlier only to restore a damaged internal index.",
+            "act": "EXCEPTION_PERMISSION",
+            "force": "CONDITIONAL_PERMISSION",
+            "actors": [
+              "on-call archivist"
+            ],
+            "actions": [
+              "export contact-detail entries"
+            ],
+            "conditions": [
+              "restore damaged internal index"
+            ],
+            "exceptions": [
+              "natural reading: exception to contact-detail exclusion"
+            ],
+            "temporal": [
+              "earlier"
+            ],
+            "ambiguities": [
+              "Earlier may mean before Friday 18:00 or before review completion."
+            ],
+            "spans": [
+              {
+                "start": 172,
+                "end": 267,
+                "text": "An on-call archivist may export those entries earlier only to restore a damaged internal index."
+              }
+            ]
+          },
+          {
+            "id": "lc02v-dev-temporal-u4",
+            "text": "This exception expires at noon on Saturday.",
+            "act": "TEMPORAL_LIMIT",
+            "force": "ASSERTED_LIMIT",
+            "actors": [],
+            "actions": [],
+            "conditions": [],
+            "exceptions": [],
+            "temporal": [
+              "Saturday noon expiry"
+            ],
+            "ambiguities": [],
+            "spans": [
+              {
+                "start": 268,
+                "end": 311,
+                "text": "This exception expires at noon on Saturday."
+              }
+            ]
+          }
+        ],
+        "relations": [
+          {
+            "from": "lc02v-dev-temporal-u2",
+            "to": "lc02v-dev-temporal-u1",
+            "type": "LIMITS",
+            "spans": [
+              {
+                "start": 72,
+                "end": 171,
+                "text": "Until the privacy review is complete, entries containing personal contact details must be excluded."
+              },
+              {
+                "start": 0,
+                "end": 71,
+                "text": "The archive team may export the public catalogue after 18:00 on Friday."
+              }
+            ],
+            "uncertainty": ""
+          },
+          {
+            "from": "lc02v-dev-temporal-u3",
+            "to": "lc02v-dev-temporal-u2",
+            "type": "EXCEPTION_TO",
+            "spans": [
+              {
+                "start": 172,
+                "end": 267,
+                "text": "An on-call archivist may export those entries earlier only to restore a damaged internal index."
+              },
+              {
+                "start": 72,
+                "end": 171,
+                "text": "Until the privacy review is complete, entries containing personal contact details must be excluded."
+              }
+            ],
+            "uncertainty": "Those entries naturally refers to contact-detail entries; earlier has unresolved comparison point."
+          },
+          {
+            "from": "lc02v-dev-temporal-u4",
+            "to": "lc02v-dev-temporal-u3",
+            "type": "LIMITS",
+            "spans": [
+              {
+                "start": 268,
+                "end": 311,
+                "text": "This exception expires at noon on Saturday."
+              },
+              {
+                "start": 172,
+                "end": 267,
+                "text": "An on-call archivist may export those entries earlier only to restore a damaged internal index."
+              }
+            ],
+            "uncertainty": ""
+          }
+        ],
+        "ambiguities": [
+          "No timezone or calendar date is supplied.",
+          "Exception relation to Friday opening time is unresolved.",
+          "Review completion removes the stated exclusion condition; other authorization is not independently established."
+        ]
+      },
+      "baseline": {
+        "schema": "language-understanding-inventory/0.1",
+        "offset_unit": "UNICODE_CODE_POINTS",
+        "standing": "HEURISTIC_UNVERIFIED",
+        "source": {
+          "id": "lc02v-dev-temporal-source",
+          "sha256": "7640cd264cf7d2a9e0a9fa6a17bed45e080a9c922851d0b0ee9d0b2915581d5a",
+          "text": "The archive team may export the public catalogue after 18:00 on Friday. Until the privacy review is complete, entries containing personal contact details must be excluded. An on-call archivist may export those entries earlier only to restore a damaged internal index. This exception expires at noon on Saturday."
+        },
+        "profile": {
+          "id": "technical-policy",
+          "version": "0.1",
+          "schema": "language-understanding-profile/0.1",
+          "sha256": "9fd7528d2916ac479e99c53a8a02a6a17c9b3ba6824f2d294cd185d52b3e60cb"
+        },
+        "engine": {
+          "id": "spacy/blank-en+sentencizer",
+          "version": "0.1.1",
+          "nltk_version": "3.10.4",
+          "spacy_version": "3.8.16",
+          "trained_syntax_available": false
+        },
+        "segments": [
+          {
+            "id": "s1",
+            "start": 0,
+            "end": 71,
+            "text": "The archive team may export the public catalogue after 18:00 on Friday."
+          },
+          {
+            "id": "s2",
+            "start": 72,
+            "end": 171,
+            "text": "Until the privacy review is complete, entries containing personal contact details must be excluded."
+          },
+          {
+            "id": "s3",
+            "start": 172,
+            "end": 267,
+            "text": "An on-call archivist may export those entries earlier only to restore a damaged internal index."
+          },
+          {
+            "id": "s4",
+            "start": 268,
+            "end": 311,
+            "text": "This exception expires at noon on Saturday."
+          }
+        ],
+        "meaning_units": [
+          {
+            "id": "m1",
+            "source_segments": [
+              "s1"
+            ],
+            "start": 0,
+            "end": 71,
+            "source_quote": "The archive team may export the public catalogue after 18:00 on Friday.",
+            "proposed_meaning": "The archive team may export the public catalogue after 18:00 on Friday.",
+            "classification": {
+              "kind": "permission",
+              "normative_force": "PERMITTED_IN_SOURCE",
+              "condition_cues": [],
+              "temporal_cues": [
+                "after"
+              ],
+              "possible_unresolved_reference": false,
+              "method": "LEXICAL_RULE_HEURISTIC",
+              "review": "HEURISTIC_UNVERIFIED"
+            },
+            "provenance": "EXACT_SOURCE_SPAN"
+          },
+          {
+            "id": "m2",
+            "source_segments": [
+              "s2"
+            ],
+            "start": 72,
+            "end": 171,
+            "source_quote": "Until the privacy review is complete, entries containing personal contact details must be excluded.",
+            "proposed_meaning": "Until the privacy review is complete, entries containing personal contact details must be excluded.",
+            "classification": {
+              "kind": "requirement",
+              "normative_force": "REQUIRED",
+              "condition_cues": [],
+              "temporal_cues": [
+                "until"
+              ],
+              "possible_unresolved_reference": false,
+              "method": "LEXICAL_RULE_HEURISTIC",
+              "review": "HEURISTIC_UNVERIFIED"
+            },
+            "provenance": "EXACT_SOURCE_SPAN"
+          },
+          {
+            "id": "m3",
+            "source_segments": [
+              "s3"
+            ],
+            "start": 172,
+            "end": 267,
+            "source_quote": "An on-call archivist may export those entries earlier only to restore a damaged internal index.",
+            "proposed_meaning": "An on-call archivist may export those entries earlier only to restore a damaged internal index.",
+            "classification": {
+              "kind": "conditional_permission",
+              "normative_force": "PERMITTED_IN_SOURCE",
+              "condition_cues": [
+                "only"
+              ],
+              "temporal_cues": [],
+              "possible_unresolved_reference": false,
+              "method": "LEXICAL_RULE_HEURISTIC",
+              "review": "HEURISTIC_UNVERIFIED"
+            },
+            "provenance": "EXACT_SOURCE_SPAN"
+          },
+          {
+            "id": "m4",
+            "source_segments": [
+              "s4"
+            ],
+            "start": 268,
+            "end": 311,
+            "source_quote": "This exception expires at noon on Saturday.",
+            "proposed_meaning": "This exception expires at noon on Saturday.",
+            "classification": {
+              "kind": "statement",
+              "normative_force": "ASSERTED_IN_SOURCE",
+              "condition_cues": [],
+              "temporal_cues": [],
+              "possible_unresolved_reference": true,
+              "method": "LEXICAL_RULE_HEURISTIC",
+              "review": "HEURISTIC_UNVERIFIED"
+            },
+            "provenance": "EXACT_SOURCE_SPAN"
+          }
+        ],
+        "relations": [],
+        "context": {},
+        "coverage": {
+          "standing": "NOT_EVALUATED",
+          "source_supportedness": "NOT_EVALUATED",
+          "semantic_completeness": "NOT_ESTABLISHED"
+        },
+        "warnings": [
+          "Labels are lexical heuristics, not verified meaning or permissions.",
+          "No cross-sentence relation, coreference, or semantic completeness checker is implemented."
+        ]
+      },
+      "baseline_review": {
+        "schema": "language-semantic-review/0.1",
+        "reference_standing": "UNADJUDICATED_REFERENCE",
+        "reference_hash": "b59634d7d8772a8c0411b33ae58c8db99c65f9158b48e5c59b4432869c4f1b83",
+        "candidate_hash": "1a34d80e277836ae6e10b3b65983562b8340bb377dad371b0e25eeb2fcafa45d",
+        "semantic_quality": "NOT_ADJUDICATED",
+        "coverage": [
+          {
+            "reference_id": "lc02v-dev-temporal-u1",
+            "candidates": [
+              "m1"
+            ],
+            "verdict": "UNKNOWN"
+          },
+          {
+            "reference_id": "lc02v-dev-temporal-u2",
+            "candidates": [
+              "m2"
+            ],
+            "verdict": "UNKNOWN"
+          },
+          {
+            "reference_id": "lc02v-dev-temporal-u3",
+            "candidates": [
+              "m3"
+            ],
+            "verdict": "UNKNOWN"
+          },
+          {
+            "reference_id": "lc02v-dev-temporal-u4",
+            "candidates": [
+              "m4"
+            ],
+            "verdict": "UNKNOWN"
+          }
+        ],
+        "support": [
+          {
+            "candidate_id": "m1",
+            "exact_spans_valid": true,
+            "entailment": "UNKNOWN"
+          },
+          {
+            "candidate_id": "m2",
+            "exact_spans_valid": true,
+            "entailment": "UNKNOWN"
+          },
+          {
+            "candidate_id": "m3",
+            "exact_spans_valid": true,
+            "entailment": "UNKNOWN"
+          },
+          {
+            "candidate_id": "m4",
+            "exact_spans_valid": true,
+            "entailment": "UNKNOWN"
+          }
+        ],
+        "dimensions": [
+          {
+            "dimension": "classification",
+            "verdict": "UNKNOWN"
+          },
+          {
+            "dimension": "qualifications",
+            "verdict": "UNKNOWN"
+          },
+          {
+            "dimension": "relationships",
+            "verdict": "UNKNOWN"
+          },
+          {
+            "dimension": "unsupported_additions",
+            "verdict": "UNKNOWN"
+          },
+          {
+            "dimension": "appropriate_uncertainty",
+            "verdict": "UNKNOWN"
+          }
+        ],
+        "limitations": [
+          "Exact quotation is not entailment.",
+          "Absent wording matches can be faithful paraphrases.",
+          "A sentence is not an atomic meaning unit.",
+          "Unknown judgments must not be counted as correct or incorrect."
+        ]
+      },
+      "observations": {
+        "sentences": 4,
+        "baseline_units": 4,
+        "reference_units": 4,
+        "baseline_relations": 0,
+        "reference_relations": 3,
+        "counts_are_not_semantic_scores": true
+      },
+      "model_assisted": [],
+      "model_evidence": "NOT_RUN_NO_HOSTED_AUTHORIZATION"
+    },
+    {
+      "passage_id": "lc02v-dev-pronoun",
+      "reference": {
+        "id": "lc02v-dev-pronoun",
+        "source": {
+          "id": "lc02v-dev-pronoun-source",
+          "text": "Nadia told Elise that she could approve the repair after inspecting the pump. She asked Tomas to keep it offline until then. The supervisor recorded the conversation but did not identify who would inspect the pump.",
+          "sha256": "367f61c2a7ddbddf1e51e3b1bada53c1411a0212b8551449da3712250da19438"
+        },
+        "units": [
+          {
+            "id": "lc02v-dev-pronoun-u1",
+            "text": "Nadia told Elise that she could approve the repair after inspecting the pump.",
+            "act": "REPORTED_PERMISSION",
+            "force": "ATTRIBUTED_CONDITIONAL_PERMISSION",
+            "actors": [
+              "Nadia",
+              "Elise",
+              "unresolved she"
+            ],
+            "actions": [
+              "approve repair",
+              "inspect pump"
+            ],
+            "conditions": [
+              "inspection before approval"
+            ],
+            "exceptions": [],
+            "temporal": [
+              "after inspecting pump"
+            ],
+            "ambiguities": [
+              "She may refer to Nadia or Elise; inspector correspondingly unresolved."
+            ],
+            "spans": [
+              {
+                "start": 0,
+                "end": 77,
+                "text": "Nadia told Elise that she could approve the repair after inspecting the pump."
+              }
+            ]
+          },
+          {
+            "id": "lc02v-dev-pronoun-u2",
+            "text": "She asked Tomas to keep it offline until then.",
+            "act": "REQUEST",
+            "force": "REQUESTED",
+            "actors": [
+              "Tomas",
+              "unresolved She"
+            ],
+            "actions": [
+              "keep it offline"
+            ],
+            "conditions": [],
+            "exceptions": [],
+            "temporal": [
+              "until then"
+            ],
+            "ambiguities": [
+              "She may be Nadia or Elise.",
+              "It most naturally means pump.",
+              "Then may mean inspection or approval."
+            ],
+            "spans": [
+              {
+                "start": 78,
+                "end": 124,
+                "text": "She asked Tomas to keep it offline until then."
+              }
+            ]
+          },
+          {
+            "id": "lc02v-dev-pronoun-u3",
+            "text": "The supervisor recorded the conversation but did not identify who would inspect the pump.",
+            "act": "RECORD_REPORT",
+            "force": "ASSERTED",
+            "actors": [
+              "supervisor"
+            ],
+            "actions": [
+              "record conversation"
+            ],
+            "conditions": [],
+            "exceptions": [],
+            "temporal": [],
+            "ambiguities": [
+              "Inspector identity remains unresolved."
+            ],
+            "spans": [
+              {
+                "start": 125,
+                "end": 214,
+                "text": "The supervisor recorded the conversation but did not identify who would inspect the pump."
+              }
+            ]
+          }
+        ],
+        "relations": [
+          {
+            "from": "lc02v-dev-pronoun-u2",
+            "to": "lc02v-dev-pronoun-u1",
+            "type": "TEMPORAL_DEPENDENCY",
+            "spans": [
+              {
+                "start": 78,
+                "end": 124,
+                "text": "She asked Tomas to keep it offline until then."
+              },
+              {
+                "start": 0,
+                "end": 77,
+                "text": "Nadia told Elise that she could approve the repair after inspecting the pump."
+              }
+            ],
+            "uncertainty": "Endpoint and pronoun referents unresolved; request is not an independently stated prohibition."
+          },
+          {
+            "from": "lc02v-dev-pronoun-u3",
+            "to": "lc02v-dev-pronoun-u1",
+            "type": "PRESERVES_UNCERTAINTY",
+            "spans": [
+              {
+                "start": 125,
+                "end": 214,
+                "text": "The supervisor recorded the conversation but did not identify who would inspect the pump."
+              },
+              {
+                "start": 0,
+                "end": 77,
+                "text": "Nadia told Elise that she could approve the repair after inspecting the pump."
+              }
+            ],
+            "uncertainty": ""
+          }
+        ],
+        "ambiguities": [
+          "Nadia’s authority to grant permission is unspecified.",
+          "Request compliance and outcome are unspecified."
+        ]
+      },
+      "baseline": {
+        "schema": "language-understanding-inventory/0.1",
+        "offset_unit": "UNICODE_CODE_POINTS",
+        "standing": "HEURISTIC_UNVERIFIED",
+        "source": {
+          "id": "lc02v-dev-pronoun-source",
+          "sha256": "367f61c2a7ddbddf1e51e3b1bada53c1411a0212b8551449da3712250da19438",
+          "text": "Nadia told Elise that she could approve the repair after inspecting the pump. She asked Tomas to keep it offline until then. The supervisor recorded the conversation but did not identify who would inspect the pump."
+        },
+        "profile": {
+          "id": "technical-policy",
+          "version": "0.1",
+          "schema": "language-understanding-profile/0.1",
+          "sha256": "9fd7528d2916ac479e99c53a8a02a6a17c9b3ba6824f2d294cd185d52b3e60cb"
+        },
+        "engine": {
+          "id": "spacy/blank-en+sentencizer",
+          "version": "0.1.1",
+          "nltk_version": "3.10.4",
+          "spacy_version": "3.8.16",
+          "trained_syntax_available": false
+        },
+        "segments": [
+          {
+            "id": "s1",
+            "start": 0,
+            "end": 77,
+            "text": "Nadia told Elise that she could approve the repair after inspecting the pump."
+          },
+          {
+            "id": "s2",
+            "start": 78,
+            "end": 124,
+            "text": "She asked Tomas to keep it offline until then."
+          },
+          {
+            "id": "s3",
+            "start": 125,
+            "end": 214,
+            "text": "The supervisor recorded the conversation but did not identify who would inspect the pump."
+          }
+        ],
+        "meaning_units": [
+          {
+            "id": "m1",
+            "source_segments": [
+              "s1"
+            ],
+            "start": 0,
+            "end": 77,
+            "source_quote": "Nadia told Elise that she could approve the repair after inspecting the pump.",
+            "proposed_meaning": "Nadia told Elise that she could approve the repair after inspecting the pump.",
+            "classification": {
+              "kind": "statement",
+              "normative_force": "ASSERTED_IN_SOURCE",
+              "condition_cues": [],
+              "temporal_cues": [
+                "after"
+              ],
+              "possible_unresolved_reference": false,
+              "method": "LEXICAL_RULE_HEURISTIC",
+              "review": "HEURISTIC_UNVERIFIED"
+            },
+            "provenance": "EXACT_SOURCE_SPAN"
+          },
+          {
+            "id": "m2",
+            "source_segments": [
+              "s2"
+            ],
+            "start": 78,
+            "end": 124,
+            "source_quote": "She asked Tomas to keep it offline until then.",
+            "proposed_meaning": "She asked Tomas to keep it offline until then.",
+            "classification": {
+              "kind": "statement",
+              "normative_force": "ASSERTED_IN_SOURCE",
+              "condition_cues": [],
+              "temporal_cues": [
+                "until"
+              ],
+              "possible_unresolved_reference": false,
+              "method": "LEXICAL_RULE_HEURISTIC",
+              "review": "HEURISTIC_UNVERIFIED"
+            },
+            "provenance": "EXACT_SOURCE_SPAN"
+          },
+          {
+            "id": "m3",
+            "source_segments": [
+              "s3"
+            ],
+            "start": 125,
+            "end": 214,
+            "source_quote": "The supervisor recorded the conversation but did not identify who would inspect the pump.",
+            "proposed_meaning": "The supervisor recorded the conversation but did not identify who would inspect the pump.",
+            "classification": {
+              "kind": "statement",
+              "normative_force": "ASSERTED_IN_SOURCE",
+              "condition_cues": [],
+              "temporal_cues": [],
+              "possible_unresolved_reference": false,
+              "method": "LEXICAL_RULE_HEURISTIC",
+              "review": "HEURISTIC_UNVERIFIED"
+            },
+            "provenance": "EXACT_SOURCE_SPAN"
+          }
+        ],
+        "relations": [],
+        "context": {},
+        "coverage": {
+          "standing": "NOT_EVALUATED",
+          "source_supportedness": "NOT_EVALUATED",
+          "semantic_completeness": "NOT_ESTABLISHED"
+        },
+        "warnings": [
+          "Labels are lexical heuristics, not verified meaning or permissions.",
+          "No cross-sentence relation, coreference, or semantic completeness checker is implemented."
+        ]
+      },
+      "baseline_review": {
+        "schema": "language-semantic-review/0.1",
+        "reference_standing": "UNADJUDICATED_REFERENCE",
+        "reference_hash": "98b63c24ab5a55718fdf8e1f5373f338292c1306ca25ce7416b041d96554dc7d",
+        "candidate_hash": "44e3a7110bc69271aa92bb53f194df6196472c37dc42ba0a0274176d202b8193",
+        "semantic_quality": "NOT_ADJUDICATED",
+        "coverage": [
+          {
+            "reference_id": "lc02v-dev-pronoun-u1",
+            "candidates": [
+              "m1"
+            ],
+            "verdict": "UNKNOWN"
+          },
+          {
+            "reference_id": "lc02v-dev-pronoun-u2",
+            "candidates": [
+              "m2"
+            ],
+            "verdict": "UNKNOWN"
+          },
+          {
+            "reference_id": "lc02v-dev-pronoun-u3",
+            "candidates": [
+              "m3"
+            ],
+            "verdict": "UNKNOWN"
+          }
+        ],
+        "support": [
+          {
+            "candidate_id": "m1",
+            "exact_spans_valid": true,
+            "entailment": "UNKNOWN"
+          },
+          {
+            "candidate_id": "m2",
+            "exact_spans_valid": true,
+            "entailment": "UNKNOWN"
+          },
+          {
+            "candidate_id": "m3",
+            "exact_spans_valid": true,
+            "entailment": "UNKNOWN"
+          }
+        ],
+        "dimensions": [
+          {
+            "dimension": "classification",
+            "verdict": "UNKNOWN"
+          },
+          {
+            "dimension": "qualifications",
+            "verdict": "UNKNOWN"
+          },
+          {
+            "dimension": "relationships",
+            "verdict": "UNKNOWN"
+          },
+          {
+            "dimension": "unsupported_additions",
+            "verdict": "UNKNOWN"
+          },
+          {
+            "dimension": "appropriate_uncertainty",
+            "verdict": "UNKNOWN"
+          }
+        ],
+        "limitations": [
+          "Exact quotation is not entailment.",
+          "Absent wording matches can be faithful paraphrases.",
+          "A sentence is not an atomic meaning unit.",
+          "Unknown judgments must not be counted as correct or incorrect."
+        ]
+      },
+      "observations": {
+        "sentences": 3,
+        "baseline_units": 3,
+        "reference_units": 3,
+        "baseline_relations": 0,
+        "reference_relations": 2,
+        "counts_are_not_semantic_scores": true
+      },
+      "model_assisted": [],
+      "model_evidence": "NOT_RUN_NO_HOSTED_AUTHORIZATION"
+    }
+  ],
+  "limitations": [
+    "Reference author independence does not validate labels.",
+    "No independently adjudicated semantic scores.",
+    "Structural differences are not automatically extraction defects.",
+    "No hosted calls performed by this runner."
+  ]
+}

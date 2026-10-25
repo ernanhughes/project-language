@@ -1,0 +1,10 @@
+{
+  "stage": "start",
+  "error": null,
+  "requests": 1,
+  "files": {
+    "events.jsonl": "a9377d0159f0a092fea5b6b034ab81aaae0e682a4ab1bd385cea322e90a62fec",
+    "after-interpreter.json": "080ccbe6a42691a28b620eeadff2fe3811a1759aee19745aa461d8dd12cdcd91",
+    "start-report.html": "5224c60bacccf797ec84ea7ccbc43176bec8d0938bf176800a52ad12ccdf2792"
+  }
+}

@@ -1,0 +1,77 @@
+{
+  "schema": "lc02-r6-summary/0.1",
+  "standing": "OFFLINE_EXPLORATORY_PROVISIONAL_REFERENCES",
+  "checker": {
+    "version": "lc02-r6-semantic-check/0.1",
+    "code_sha256": "ed17ecb14a66ebb42b6f1b03427c4bd4b021d4829e66aee9edc2f3a9f5801692",
+    "contract_sha256": "c56c812c7b32ab8bca2a2e06a1bf2ae03da43fbb435b8772b9ea14c1d30c3064"
+  },
+  "corpus_freeze": {
+    "evaluation-cases.json": "35fa89f812b59989b55c6ebf8bb5089f019731f24f85cb4d72d3c3505c52b540",
+    "evaluation-references.json": "ce52c8c41a1cfade926e58e90a035d50daa2294122ea8f12c18da45c3dce9f14",
+    "development-cases.json": "7fc0de690911a519b57f5b3d540662b800c1ad5a30bf197de106df755eeaed09",
+    "development-references.json": "e4d99491d81c7f23a36431f6f099f4f222c8f441d31e23c092f5d75365e4a7a6"
+  },
+  "criteria": {
+    "sha256": "c8692715c89aab8b265752b4dbbcc4cdbd36f5ba37e26522931c89e318210ceb",
+    "freeze": "CRITERIA-FREEZE.json",
+    "hard_gates_passed": true
+  },
+  "held_out": {
+    "path": "experiments/lc-02-r6/.runs/EVAL-001",
+    "cases": 24,
+    "r5": {
+      "corruption_detection": "6/12",
+      "false_acceptances": ["R6-E01", "R6-E02", "R6-E03"],
+      "faithful_accepted": "7/8",
+      "false_rejections": ["R6-E20"],
+      "ambiguity_clarified": "4/4",
+      "policy_correct": "19/24"
+    },
+    "r6": {
+      "corruption_detection": "10/12",
+      "missed_corruptions": ["R6-E05", "R6-E08"],
+      "false_acceptances": [],
+      "faithful_accepted": "8/8",
+      "false_rejections": [],
+      "ambiguity_clarified": "4/4",
+      "justified_uncertainty_clean": 4,
+      "invented_uncertainty_clean": 1,
+      "dual_primary_uncertainty": [],
+      "not_assessed": [],
+      "source_grounded": "22/24",
+      "transformation_grounded": "22/24",
+      "policy_correct": "23/24"
+    }
+  },
+  "hard_gate_results": {
+    "HG1_no_material_false_acceptance": "PASS",
+    "HG2_corruption_detection": "PASS (10/12)",
+    "HG3_false_rejection_non_regression": "PASS (0 vs 1)",
+    "HG4_uncertainty_separation": "PASS (4/4 justified, 1/1 invented, 0 dual)",
+    "HG5_no_fabricated_equivalence": "PASS (8/8 USE cases have positive preservation evidence)"
+  },
+  "historical_reproduction": {
+    "standing": "DEVELOPMENT_REPRODUCTION_NOT_HELD_OUT",
+    "path": "experiments/lc-02-r6/.runs/REPRO-R5-001",
+    "fixed": ["R5-E11", "R5-E16", "R5-E10 evidence anchor"],
+    "partial": ["R5-E18 causal false positive removed; prerequisite rejection remains"],
+    "not_fixed": ["R5-E04", "R5-E07", "LC20-07/10/02/19 uncertainty co-occurrence"]
+  },
+  "decision": "REVISE_ARCHITECTURE",
+  "rationale": [
+    "Typed constraints close the numeric false-acceptance class and are worth keeping.",
+    "The held-out gates pass, but HG2 is met exactly at 10/12.",
+    "The two held-out misses concern exception scope and status-label precedence, not quantities.",
+    "Historical prior-failure cases still emit both UNRESOLVED and UNSUPPORTED_UNCERTAINTY; the new separation does not govern the older pathway.",
+    "The checker still depends on lexical cue patterns for alignment, exception scope and distinction precedence.",
+    "A separately evaluated hybrid constraint/model-assisted checker is the appropriate next experiment."
+  ],
+  "non_actions": {
+    "hosted_models": false,
+    "studio_communication_integration": false,
+    "manuscript_modified": false,
+    "committed": false,
+    "pushed": false
+  }
+}

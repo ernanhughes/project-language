@@ -1,0 +1,30 @@
+{
+  "status": "PASS",
+  "standing": "INJECTED_PI_ADAPTERS_NOT_LIVE_MODELS",
+  "checks": [
+    "configure",
+    "configure",
+    "create",
+    "interpret",
+    "authorize",
+    "interpret",
+    "challenge",
+    "correct",
+    "accept",
+    "preview",
+    "deliver",
+    "deliver"
+  ],
+  "model_selection_persistence": true,
+  "approval_gate": true,
+  "api_families": [
+    "openai-completions",
+    "openai-responses",
+    "anthropic-messages"
+  ],
+  "model_transport_attempts": 5,
+  "real_provider_requests": 0,
+  "errors": [],
+  "external_browser_requests": [],
+  "browser": "151.0.7922.34"
+}

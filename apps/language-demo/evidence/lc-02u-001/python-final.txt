@@ -1,0 +1,20 @@
+test_bad_profile_refused (test_pipeline.BaselineTests.test_bad_profile_refused) ... ok
+test_different_forces (test_pipeline.BaselineTests.test_different_forces) ... ok
+test_five_sentences_and_six_meaning_units (test_pipeline.BaselineTests.test_five_sentences_and_six_meaning_units) ... ok
+test_general_profile_does_not_force_split (test_pipeline.BaselineTests.test_general_profile_does_not_force_split) ... ok
+test_no_implied_verification (test_pipeline.BaselineTests.test_no_implied_verification) ... ok
+test_one_to_many_meanings (test_pipeline.BaselineTests.test_one_to_many_meanings) ... ok
+test_source_and_all_spans_exact (test_pipeline.BaselineTests.test_source_and_all_spans_exact) ... ok
+test_table (test_pipeline.BaselineTests.test_table) ... ok
+test_unknown_stays_unknown (test_pipeline.BaselineTests.test_unknown_stays_unknown) ... ok
+test_adversarial_limits_are_preserved (test_wire.WireTests.test_adversarial_limits_are_preserved) ... ok
+test_batch_is_independent_and_versioned (test_wire.WireTests.test_batch_is_independent_and_versioned) ... ok
+test_file_mode_preserves_crlf_and_cli (test_wire.WireTests.test_file_mode_preserves_crlf_and_cli) ... ok
+test_invalid_inputs_and_output_schema_are_refused (test_wire.WireTests.test_invalid_inputs_and_output_schema_are_refused) ... ok
+test_json_unicode_crlf_exact (test_wire.WireTests.test_json_unicode_crlf_exact) ... ok
+test_missing_dependencies_are_explicit_without_fallback (test_wire.WireTests.test_missing_dependencies_are_explicit_without_fallback) ... ok
+
+----------------------------------------------------------------------
+Ran 15 tests in 4.427s
+
+OK

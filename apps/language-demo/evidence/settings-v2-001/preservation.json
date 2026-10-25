@@ -1,0 +1,15 @@
+{
+  "protected_baseline_files_checked": 121,
+  "changed_original_content": [],
+  "extended_journals_since_earlier_baseline": [
+    {
+      "path": ".data/lc-01s-s17-01/events.jsonl",
+      "baseline_prefix_events": 44,
+      "current_events": 95,
+      "status": "ORIGINAL_PREFIX_UNCHANGED_WITH_LATER_APPENDS"
+    }
+  ],
+  "original_profile": "UNCHANGED",
+  "new_profile": "config/studio-v2.json",
+  "no_agent_writes_to_existing_run_logs": true
+}

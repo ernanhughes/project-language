@@ -1,0 +1,14 @@
+{
+  "schema": "live-test-evidence-manifest/0.1",
+  "start_journal_prefix_verified": true,
+  "files": {
+    "accept-manifest.json": "04d2f743d4ff0974adbdae3818748227ce4f718eb37d6f5319cc522c25de734f",
+    "accept-report.html": "bba19dc448f5822ccf1398288da48d211af2047b8da823462e1940540347f97c",
+    "after-interpreter.json": "080ccbe6a42691a28b620eeadff2fe3811a1759aee19745aa461d8dd12cdcd91",
+    "after-recipients.json": "b15e510045da41bcb78d2bfef318d5225db2ed58c64793ff4a046a1c2ffe2ed0",
+    "events.jsonl": "a86101ac4d293643c139686328bcf712dec1bc425f8406148acea425d818989d",
+    "RESULTS.md": "176183d9ab2867028845d982c40a2c3e468384d6e5c95858b422c053a33a489a",
+    "start-manifest.json": "d3215b1ac803daab1cd24c07567c8272e8e8ce8ee3ce32e43a9647e0a57c2200",
+    "start-report.html": "5224c60bacccf797ec84ea7ccbc43176bec8d0938bf176800a52ad12ccdf2792"
+  }
+}

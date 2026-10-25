@@ -1,0 +1,228 @@
+{
+  "schema": "language-semantic-checker-cases/0.1",
+  "split": "development",
+  "standing": "AUTHOR_CONSTRUCTED_PROVISIONAL",
+  "cases": [
+    {
+      "id": "R6-D01",
+      "split": "development",
+      "case_type": "CORRUPTION",
+      "corruption_class": "WRITTEN_NUMBER_CHANGE",
+      "domain": "technical-policy",
+      "profile": "technical-policy",
+      "source": "The queue accepts batches of no more than forty records. A batch of thirty records is proposed.",
+      "transformation": "The queue accepts batches of no more than fifty records. A batch of thirty records is proposed.",
+      "purpose": "Communicate the queue limit.",
+      "obligations": [
+        {
+          "id": "o1",
+          "source_quote": "The queue accepts batches of no more than forty records.",
+          "description": "The numeric limit must survive."
+        }
+      ]
+    },
+    {
+      "id": "R6-D02",
+      "split": "development",
+      "case_type": "CORRUPTION",
+      "corruption_class": "INCLUSIVE_EXCLUSIVE_BOUNDARY",
+      "domain": "technical-policy",
+      "profile": "technical-policy",
+      "source": "The queue accepts batches of no more than forty records. A batch of forty records is proposed.",
+      "transformation": "The queue accepts batches of fewer than forty records. A batch of forty records is proposed.",
+      "purpose": "Communicate the queue boundary.",
+      "obligations": [
+        {
+          "id": "o1",
+          "source_quote": "The queue accepts batches of no more than forty records.",
+          "description": "Inclusive boundary must remain inclusive."
+        }
+      ]
+    },
+    {
+      "id": "R6-D03",
+      "split": "development",
+      "case_type": "CORRUPTION",
+      "corruption_class": "DURATION_THRESHOLD_CHANGE",
+      "domain": "technical-policy",
+      "profile": "technical-policy",
+      "source": "Paging is permitted after at least five continuous minutes above the threshold. The dashboard shows seven minutes.",
+      "transformation": "Paging is permitted after more than five continuous minutes above the threshold. The dashboard shows seven minutes.",
+      "purpose": "Communicate the paging threshold.",
+      "obligations": [
+        {
+          "id": "o1",
+          "source_quote": "Paging is permitted after at least five continuous minutes above the threshold.",
+          "description": "The duration threshold must survive."
+        }
+      ]
+    },
+    {
+      "id": "R6-D04",
+      "split": "development",
+      "case_type": "CORRUPTION",
+      "corruption_class": "MULTIPLE_CONSTRAINTS",
+      "domain": "technical-policy",
+      "profile": "technical-policy",
+      "source": "Paging is permitted after five minutes. Restarting requires separate approval.",
+      "transformation": "Paging is permitted after ten minutes. Restarting requires separate approval.",
+      "purpose": "Communicate the paging and restart rules.",
+      "obligations": [
+        {
+          "id": "o1",
+          "source_quote": "Paging is permitted after five minutes.",
+          "description": "Paging threshold must survive."
+        },
+        {
+          "id": "o2",
+          "source_quote": "Restarting requires separate approval.",
+          "description": "Restart rule must survive."
+        }
+      ]
+    },
+    {
+      "id": "R6-D05",
+      "split": "development",
+      "case_type": "FAITHFUL",
+      "corruption_class": null,
+      "domain": "technical-policy",
+      "profile": "technical-policy",
+      "source": "An operator may retrieve the key only if the ticket is open and the audit log remains intact.",
+      "transformation": "Provided the ticket stays open and the audit log is unaltered, the operator is allowed to retrieve the key.",
+      "purpose": "Paraphrase the retrieval permission.",
+      "obligations": [
+        {
+          "id": "o1",
+          "source_quote": "only if the ticket is open and the audit log remains intact",
+          "description": "Both conditions must survive."
+        }
+      ]
+    },
+    {
+      "id": "R6-D06",
+      "split": "development",
+      "case_type": "FAITHFUL",
+      "corruption_class": null,
+      "domain": "technical-policy",
+      "profile": "technical-policy",
+      "source": "The release requires an accepted security review and an approved ticket.",
+      "transformation": "An approved ticket and an accepted security review are required.",
+      "purpose": "Reorder the conditions.",
+      "obligations": [
+        {
+          "id": "o1",
+          "source_quote": "The release requires an accepted security review and an approved ticket.",
+          "description": "Both conditions must survive."
+        }
+      ]
+    },
+    {
+      "id": "R6-D07",
+      "split": "development",
+      "case_type": "FAITHFUL",
+      "corruption_class": null,
+      "domain": "technical-policy",
+      "profile": "technical-policy",
+      "source": "The checksum failed during transfer. The investigation says the cause has not been verified.",
+      "transformation": "The checksum failed during transfer; the investigation has not verified the cause.",
+      "purpose": "Preserve the causal qualification.",
+      "obligations": [
+        {
+          "id": "o1",
+          "source_quote": "The investigation says the cause has not been verified.",
+          "description": "Causal uncertainty must survive."
+        }
+      ]
+    },
+    {
+      "id": "R6-D08",
+      "split": "development",
+      "case_type": "FAITHFUL",
+      "corruption_class": null,
+      "domain": "technical-policy",
+      "profile": "technical-policy",
+      "source": "The vendor must delete the copy afterwards. It must keep the audit log intact.",
+      "transformation": "The vendor must delete the copy afterwards and must keep the audit log intact.",
+      "purpose": "Preserve two obligations with a sentence-initial pronoun.",
+      "obligations": [
+        {
+          "id": "o1",
+          "source_quote": "It must keep the audit log intact.",
+          "description": "The log obligation must survive."
+        }
+      ]
+    },
+    {
+      "id": "R6-D09",
+      "split": "development",
+      "case_type": "AMBIGUITY",
+      "corruption_class": null,
+      "domain": "technical-policy",
+      "profile": "technical-policy",
+      "source": "The privacy team has not decided whether vendor replication is authorised. The record contains neither approval nor denial.",
+      "transformation": "It remains unclear whether vendor replication is authorised.",
+      "purpose": "Preserve the unresolved authorisation status.",
+      "obligations": [
+        {
+          "id": "o1",
+          "source_quote": "The privacy team has not decided whether vendor replication is authorised.",
+          "description": "The unresolved status must remain."
+        }
+      ]
+    },
+    {
+      "id": "R6-D10",
+      "split": "development",
+      "case_type": "AMBIGUITY",
+      "corruption_class": null,
+      "domain": "technical-policy",
+      "profile": "technical-policy",
+      "source": "Requests timestamped after 17:00 are outside the exception. The system recorded the request at 18:00. It is unclear whether 18:00 is the request timestamp or only the recording time.",
+      "transformation": "It is unclear whether the request was timestamped after 17:00, because 18:00 may be the recording time.",
+      "purpose": "Preserve the timestamp ambiguity.",
+      "obligations": [
+        {
+          "id": "o1",
+          "source_quote": "It is unclear whether 18:00 is the request timestamp or only the recording time.",
+          "description": "The ambiguity must remain."
+        }
+      ]
+    },
+    {
+      "id": "R6-D11",
+      "split": "development",
+      "case_type": "AMBIGUITY",
+      "corruption_class": null,
+      "domain": "technical-policy",
+      "profile": "technical-policy",
+      "source": "The image signature was verified. The policy requires a signed known-good image.",
+      "transformation": "It is unclear whether the image is known-good despite the verified signature.",
+      "purpose": "Preserve the justified known-good uncertainty.",
+      "obligations": [
+        {
+          "id": "o1",
+          "source_quote": "The policy requires a signed known-good image.",
+          "description": "The known-good requirement must remain open."
+        }
+      ]
+    },
+    {
+      "id": "R6-D12",
+      "split": "development",
+      "case_type": "CORRUPTION",
+      "corruption_class": "MANUFACTURED_UNCERTAINTY",
+      "domain": "technical-policy",
+      "profile": "technical-policy",
+      "source": "Paging is permitted. The dashboard shows nine minutes above the threshold.",
+      "transformation": "It is unclear whether paging is permitted.",
+      "purpose": "Communicate the paging permission.",
+      "obligations": [
+        {
+          "id": "o1",
+          "source_quote": "Paging is permitted.",
+          "description": "The permission must remain clear."
+        }
+      ]
+    }
+  ]
+}

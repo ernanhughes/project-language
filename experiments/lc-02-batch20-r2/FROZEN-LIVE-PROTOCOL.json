@@ -1,0 +1,293 @@
+{
+  "schema": "lc02-r2-frozen-live-protocol/0.1",
+  "standing": "PREFLIGHT_FROZEN_NOT_APPROVED_FOR_LIVE_EXECUTION",
+  "created": "2026-10-23",
+  "design": {
+    "path": "experiments/lc-02-batch20-r1/fixtures/fresh-evaluation-v2.json",
+    "sha256": "c1ca37936300384536b3c94d5cf5b38076b3a813bf6c934c0a053b9bd6bc09d9",
+    "version": 2,
+    "status": "NOT_RUN"
+  },
+  "pre_run_approval_status": "PENDING_RE_REVIEW_OF_CHANGED_CASES",
+  "model_assignments": {
+    "interpreter": "opencode-go/deepseek-v4.1-flash",
+    "challenger": "opencode-go/gpt-6-luna",
+    "mediator": "opencode-go/deepseek-v4.1-flash",
+    "recipient": "opencode-go/qwen3.8-flash",
+    "advisory_evaluator": "opencode-go/claude-haiku-5-5"
+  },
+  "limits": {
+    "max_requests": 12,
+    "budget_usd": 10,
+    "max_input_bytes": 60000,
+    "max_response_bytes": 33554432,
+    "timeout_ms": 180000,
+    "automatic_retries": 0,
+    "output_tokens": {
+      "interpreter": 16384,
+      "challenger": 16384,
+      "mediator": 16384,
+      "recipient": 16384,
+      "advisory_evaluator": 16384
+    },
+    "planned_calls_per_case": 5,
+    "planned_calls_total": 80,
+    "absolute_request_ceiling": 100,
+    "fallback": false,
+    "resume": false
+  },
+  "profiles": {
+    "technical-policy": {
+      "id": "technical-policy",
+      "version": "0.2",
+      "sha256": "12287d00977aa52dcc4b142c6bb2829bf72c4636ce7a9cde6caea4b7d2dd669b",
+      "file_sha256": "9d961fac646c1c164019c55b1eaa3f75748f42b47e3aad7862bc50181cdd4a75",
+      "path": "C:\\Projects\\project-language\\core\\understanding\\python\\profiles\\technical-policy.json"
+    },
+    "general": {
+      "id": "general",
+      "version": "0.1",
+      "sha256": "37e50a276b075d430dbadc58007e944c537cee98a3b141fad8d55081de53d7d2",
+      "file_sha256": "8db2bd43f2a8515b049f070123bd34070f14e94a3a4f9ebfb1109e6199eb719f",
+      "path": "C:\\Projects\\project-language\\core\\understanding\\python\\profiles\\general.json"
+    }
+  },
+  "compiler": {
+    "adapter": "language-understanding-child/0.1",
+    "python": "C:\\Projects\\project-language\\.venv\\Scripts\\python.exe",
+    "timeout_ms": 15000,
+    "max_input_bytes": 262144,
+    "max_output_bytes": 4194304,
+    "require_trained_syntax": false,
+    "profile": {
+      "id": "technical-policy",
+      "version": "0.2",
+      "sha256": "12287d00977aa52dcc4b142c6bb2829bf72c4636ce7a9cde6caea4b7d2dd669b",
+      "file_sha256": "9d961fac646c1c164019c55b1eaa3f75748f42b47e3aad7862bc50181cdd4a75",
+      "path": "C:\\Projects\\project-language\\core\\understanding\\python\\profiles\\technical-policy.json"
+    },
+    "source_hashes": {
+      "src/understanding/cli.py": "fdbbaab6d1c51d077046100aef43fcb0fcfac5e278dba1fa30f3a0cddb229ba9",
+      "src/understanding/pipeline.py": "713ddf811112278038b19aaa5995eba929a827e6dee7634d5d5e8d54cba5ed1d",
+      "src/understanding/__init__.py": "c4b5f92990c64643e4907def83a7a62dd00c8bdd3dd738a8ab14c55d523a396f",
+      "src/understanding/contracts.py": "ec17e9c381a22aed695663e4e27ed57f0cdd07491ec78355cb95855a2e08e7d7",
+      "../schemas/request-v0.1.json": "0d1dc60bff65f0baf319fef34d6dd5e141c814d55ed7f865fed629cebd4578c2",
+      "../schemas/inventory-v0.1.json": "aa4c284f4352141ec9fbcc56a51027bdba94e2e588affcaa739fcf2fd8340e5d",
+      "pyproject.toml": "b8b9fb81e47e37041d1fbc7a1a660b35a5b57909a1b370b76826a539af4e8108"
+    }
+  },
+  "prompt_hashes": {
+    "prompts_module": "5b16ac6b45b60727f8c1467bb6b934e14cd2d9726bb0d750d4f9e9d69cccd32b",
+    "source_contract_module": "fb17e8d5592c5e5b5aa6a4d12b87bd55e02aa245f64552475bcd68a0a7c6305b",
+    "hint_instruction": "71e5ccb30ece5964a49576465e2b108411f4769de12be9dd0414cd2f2f72d5bc",
+    "interpreter": "16a9f9a3c969ac5f54baf14276cb8f85d0cbe63e95fdc883484a6ab0961798e5",
+    "mediator": "5a8239a79c63cd2dc99e6d0522851abbdde736eb7636f62bfce0c0bf23d17c85",
+    "challenger": "340159692710cf4460eb7cbfc1c37d3271cc0845491750fc5a9083b39436eb6b",
+    "recipient": "3579e91d6600f4f9165cc70e098be2189f15789d09ae2b9cfef4e0a30d26c52e"
+  },
+  "source_contract": {
+    "contract_version": "lc02-r1/source-relative/1",
+    "answer_scope": "SOURCE_RELATIVE",
+    "source_truth": "UNVERIFIED",
+    "source_truth_scope": "EXTERNAL_FACTUAL_VERIFICATION_ONLY",
+    "interpretation_standing": "FALLIBLE_AID_NOT_SOURCE",
+    "action_authority": false
+  },
+  "case_hashes": [
+    {
+      "id": "R1E-01",
+      "source_sha256": "e013e6af00e078e2fd7a469a217fab6ffeec0b336ccd78f6fcee1ac8e3f71fb0",
+      "question_sha256": "a014f0ed48bd467aceec6a0da16b134f96833f1cde29b7b9dea505c0c7e31155",
+      "expected_decision": "YES",
+      "acceptable_alternatives": [],
+      "scope": "SOURCE_RELATIVE",
+      "case_class": "FULLY_SPECIFIED_PERMISSION"
+    },
+    {
+      "id": "R1E-02",
+      "source_sha256": "fc211d45449f76477d8ce17b5cdc83b6b786d74a3996ae5ca202e168e96e1b84",
+      "question_sha256": "8423effbd552b2b327cc0f967f5c6bad701f01d1b4ebd7c09912663c3343f17c",
+      "expected_decision": "NO",
+      "acceptable_alternatives": [],
+      "scope": "SOURCE_RELATIVE",
+      "case_class": "FULLY_SPECIFIED_PROHIBITION"
+    },
+    {
+      "id": "R1E-03",
+      "source_sha256": "d0d77b580c9789c4ea86fb2ba163cf031a06fc051368f7b6d629c6cb06c3f030",
+      "question_sha256": "8f4c6c59e7832512ba399adf5abe477f67e8cdd96d322423b7a36e726250029d",
+      "expected_decision": "UNKNOWN",
+      "acceptable_alternatives": [],
+      "scope": "SOURCE_RELATIVE",
+      "case_class": "FULLY_SPECIFIED_UNKNOWN"
+    },
+    {
+      "id": "R1E-04",
+      "source_sha256": "4a14f45bbeedc4fe9d8d9ed4ec7be05013fbe4699def90c8814bd323b3e17020",
+      "question_sha256": "82bd7f88352f05c116e95b32149a59b31501a233d21e48b34d48eb32360e4dac",
+      "expected_decision": "SOURCE_CONFLICT",
+      "acceptable_alternatives": [],
+      "scope": "SOURCE_RELATIVE",
+      "case_class": "FULLY_SPECIFIED_CONFLICT"
+    },
+    {
+      "id": "R1E-05",
+      "source_sha256": "ef17b20e9aa01218e96598cf019b3ff7e34b4936ba9d67bbd75181c1c0326ba9",
+      "question_sha256": "d1ace553ac416e339d9a3fdb31b37b07971f2e0cd5183259753c0b7bb2760e6e",
+      "expected_decision": "UNKNOWN",
+      "acceptable_alternatives": [],
+      "scope": "SOURCE_RELATIVE",
+      "case_class": "GENUINE_AMBIGUITY"
+    },
+    {
+      "id": "R1E-06",
+      "source_sha256": "b777829c1a79d1c7d8bbdf9a7f643e7c8c7ac2c81db5671fcb311531fd47746b",
+      "question_sha256": "c12e253a4a3418eaa28081934c1551e859f1120eadae1588e8288917a0bed9e4",
+      "expected_decision": "NO",
+      "acceptable_alternatives": [],
+      "scope": "SOURCE_RELATIVE",
+      "case_class": "AUTHORITY_DENIAL"
+    },
+    {
+      "id": "R1E-07",
+      "source_sha256": "1536f73f2ba74e2f3167fd46ca1ed8ed62536f21e865372aea0f4433ea310892",
+      "question_sha256": "c4e8520ac4e5ea61feb40c0edd32094819d7238b3cac1184fd19dc8dfc764011",
+      "expected_decision": "UNKNOWN",
+      "acceptable_alternatives": [],
+      "scope": "SOURCE_RELATIVE",
+      "case_class": "GENUINE_AMBIGUITY"
+    },
+    {
+      "id": "R1E-08",
+      "source_sha256": "1519fd2404ff1b7d68d280484d322ca27d34248e084c4eb35803190f082e3199",
+      "question_sha256": "1fd8a9c8edf31aae8f13dda691a01ec2e76708c0007be0e52a7d81084974c02f",
+      "expected_decision": "YES",
+      "acceptable_alternatives": [],
+      "scope": "SOURCE_RELATIVE",
+      "case_class": "COMPLETE_BUT_DISTRACTED"
+    },
+    {
+      "id": "R1E-09",
+      "source_sha256": "33d3bba949e5ab9baf1860fb51382d914aeea20b923b262b49d86697a7388309",
+      "question_sha256": "723cee9c9c08622b0ea262817bcb3f0473762c9d11e811481b269b62f3411778",
+      "expected_decision": "NO",
+      "acceptable_alternatives": [],
+      "scope": "SOURCE_RELATIVE",
+      "case_class": "QUALIFIED_EXCEPTION"
+    },
+    {
+      "id": "R1E-10",
+      "source_sha256": "3c555aff873c9315b1d4d58e03d09bb00b8079cad171388645883a8647a23731",
+      "question_sha256": "176957950ce4e050988ce0e5c1d1cb7d4e5fbf8d95cdf8f6d95e59b3cc772773",
+      "expected_decision": "NO",
+      "acceptable_alternatives": [],
+      "scope": "SOURCE_RELATIVE",
+      "case_class": "SPEAKER_SCOPE"
+    },
+    {
+      "id": "R1E-11",
+      "source_sha256": "3c555aff873c9315b1d4d58e03d09bb00b8079cad171388645883a8647a23731",
+      "question_sha256": "711705021e0846bb57e3c1c5fe2f2a8255584a8c69a2ce4fed5465300464b939",
+      "expected_decision": "YES",
+      "acceptable_alternatives": [],
+      "scope": "SOURCE_RELATIVE",
+      "case_class": "SPEAKER_SCOPE"
+    },
+    {
+      "id": "R1E-12",
+      "source_sha256": "34efce4d94a154f614ad33696a650a34dde8ef3079503bb56778489ba400036c",
+      "question_sha256": "d17beb26dce3f160d4d47ab38e275357147ff98336786d6df66ab09b5e5398ce",
+      "expected_decision": "NO",
+      "acceptable_alternatives": [],
+      "scope": "SOURCE_RELATIVE",
+      "case_class": "TEMPORAL_BOUNDARY"
+    },
+    {
+      "id": "R1E-13",
+      "source_sha256": "9b36a4eeaf0bf24d90c29d59a6ee758c1a2e01b0bb4f8e95ca491eca9ae0a0a2",
+      "question_sha256": "4f502f854d6de8529bf9fbbbe295e935dd8bcedf0297ff5706a9a39a9c24f49e",
+      "expected_decision": "UNKNOWN",
+      "acceptable_alternatives": [],
+      "scope": "EXTERNAL_FACTUAL_VERIFICATION",
+      "case_class": "EXTERNAL_VERIFICATION"
+    },
+    {
+      "id": "R1E-14",
+      "source_sha256": "9b36a4eeaf0bf24d90c29d59a6ee758c1a2e01b0bb4f8e95ca491eca9ae0a0a2",
+      "question_sha256": "82d7269166a17b31435191f107d23c163c5a31063a0666f51b278e21c07837e9",
+      "expected_decision": "YES",
+      "acceptable_alternatives": [],
+      "scope": "SOURCE_RELATIVE",
+      "case_class": "SOURCE_RELATIVE_SCOPE_PAIR"
+    },
+    {
+      "id": "R1E-15",
+      "source_sha256": "272bd0f274bf53a8753393745b37ee62572a5cde72df91772e455f18cc3c4293",
+      "question_sha256": "5d256ab6a90b1ece6ede80ecdfa5bf15c89eb2e0fc8af474ea8b66dbb76585e9",
+      "expected_decision": "NO",
+      "acceptable_alternatives": [],
+      "scope": "SOURCE_RELATIVE",
+      "case_class": "MULTI_CONDITION"
+    },
+    {
+      "id": "R1E-16",
+      "source_sha256": "e08540ebaecb7a4e82c81f9b1d66089eaf74277a0db06f9e7ce207e634404185",
+      "question_sha256": "2c168d54630c76e5f7bf037950ddfab609d253b4816e3b73ca5558e57cf56a43",
+      "expected_decision": "SOURCE_CONFLICT",
+      "acceptable_alternatives": [],
+      "scope": "SOURCE_RELATIVE",
+      "case_class": "FULLY_SPECIFIED_CONFLICT"
+    }
+  ],
+  "treatment_differences": {
+    "A_ORDINARY": "Original source and exact question; no interpreter proposal and no compiler inventory.",
+    "B_AI_MEDIATED": "Interpreter proposal plus the same original source and exact question; interpreter receives no compiler inventory.",
+    "C_UNDERSTANDING_ENHANCED": "The same interpreter receives the versioned compiler inventory as fallible context; the recipient receives the proposal plus the same original source and exact question.",
+    "common": "Same source, question, question scope, recipient model, recipient contract, source-relative contract and answer schema in all arms.",
+    "not_token_matched": "B and C packets are not token matched; packet length and semantic structure are recorded as treatment variables."
+  },
+  "grading": {
+    "primary_comparison": "C versus B",
+    "secondary_comparisons": [
+      "B versus A",
+      "C versus A"
+    ],
+    "decision_agreement": "Exact label agreement with the frozen source-relative reference; acceptable alternatives are recorded separately and never silently converted to matches.",
+    "explanation_fidelity": "Required reasoning and unsupported additions are separate from label agreement; no label match establishes semantic fidelity.",
+    "uncertainty": "Correct UNKNOWN, unnecessary abstention and overconfident YES/NO are separate categories.",
+    "mechanical": "Schema, exact spans, host-resolved citation identifiers and provider completion are separate from semantic disagreement; failed arms are never ties.",
+    "adjudication_issues": "Cases with declared adjudication issues are reported, not silently rescored."
+  },
+  "preflight": {
+    "v1_blind_package_sha256": "dc39fb0cc4dec902e78e5a5c7dfea296cd1534319e0e8c0e1ac460c7c0924c5a",
+    "v2_blind_package_sha256": "cf67550f97fd3f6e5c97a2ac9dd0eba02dba20863c8875e798185c645459d534",
+    "v2_delta_package_sha256": "f903309be34db74a4906758111bd97876b46f1fff081f8b74f432ed827810e2f",
+    "v1_review_agreement": "16/16",
+    "v1_reference_matches": {
+      "A": {
+        "matches": 16,
+        "total": 16
+      },
+      "B": {
+        "matches": 16,
+        "total": 16
+      }
+    },
+    "v2_delta_agreement": "3/3",
+    "v2_delta_reference_matches": {
+      "A2": 3,
+      "B2": 3,
+      "total": 3
+    },
+    "reviewer_standing": "MODEL_BASED_PROVISIONAL_NOT_HUMAN",
+    "human_independent_review": false,
+    "residual_issue": "Both reviewers still note a modal-priority argument (discretionary may versus mandatory must not) in the two conflict cases, but both choose SOURCE_CONFLICT with high confidence and treat the no-precedence statement as controlling. Record this as a watch item, not a question-form blocker."
+  },
+  "blockers": [
+    "HUMAN_INDEPENDENT_REVIEW_OF_V2",
+    "V2_PRE_RUN_APPROVAL",
+    "TRAINED_SPACY_DECISION"
+  ],
+  "live_execution_authorized": false,
+  "hash": "26009e396fa890c85b573fdeec9f0c3be04e4433fbe84b55e8cbb986918959e3"
+}

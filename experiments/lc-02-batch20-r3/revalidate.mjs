@@ -1,0 +1,40 @@
+import {readFileSync,existsSync} from 'node:fs';
+import {writeFileSync} from 'node:fs';
+import {resolve,join} from 'node:path';
+import {fileURLToPath} from 'node:url';
+import {hash} from '../../apps/language-demo/protocol/state.mjs';
+
+const root=resolve(fileURLToPath(new URL('../../',import.meta.url)));process.chdir(root);
+const j=p=>JSON.parse(readFileSync(p,'utf8'));
+const approval=j('experiments/lc-02-batch20-r3/EXPLORATORY-APPROVAL-V2.json');
+const protocol=j('experiments/lc-02-batch20-r3/EXPLORATORY-PROTOCOL-V2.json');
+const design=j('experiments/lc-02-batch20-r1/fixtures/fresh-evaluation-v2.json');
+const v1=j('experiments/lc-02-batch20-r1/fixtures/fresh-evaluation-v1.json');
+const r2=j('experiments/lc-02-batch20-r2/FROZEN-LIVE-PROTOCOL.json');
+const dry=j('experiments/lc-02-batch20-r2/.runs/DRY-RUN-V2-001/mechanical-checks.json');
+const failure=j('experiments/lc-02-batch20-r2/.runs/FAILURE-CONTROL-V2-001/failure-control.json');
+const compiler=j('experiments/lc-02-batch20-r2/COMPILER-QUALIFICATION.json');
+const artifactHashes=j('experiments/lc-02-batch20/.runs/COMBINED-001/artifact-hashes.json').files;
+const checks=[];
+const add=(check,status,detail)=>checks.push({check,status,detail});
+const {hash:aHash,...aBody}=approval;add('approval-hash',aHash===hash(aBody)?'PASS':'FAIL',{hash:aHash});
+const {hash:pHash,...pBody}=protocol;add('protocol-hash',pHash===hash(pBody)?'PASS':'FAIL',{hash:pHash});
+const dBody={...design,freeze:{...design.freeze,design_sha256:null}};add('v2-design-hash',design.freeze.design_sha256===hash(dBody)?'PASS':'FAIL',{hash:design.freeze.design_sha256});
+const v1Body={...v1,freeze:{...v1.freeze,design_sha256:null}};add('v1-preserved-hash',v1.freeze.design_sha256===hash(v1Body)?'PASS':'FAIL',{hash:v1.freeze.design_sha256});
+const {hash:r2Hash,...r2Body}=r2;add('r2-protocol-unchanged',r2Hash===hash(r2Body)&&r2.live_execution_authorized===false?'PASS':'FAIL',{hash:r2Hash,authorized:r2.live_execution_authorized});
+add('approval-state',(approval.status==='PENDING_EXPLICIT_USER_APPROVAL'&&approval.exploratory_live_authorized===false)||(approval.status==='APPROVED'&&approval.exploratory_live_authorized===true&&approval.approved_by&&approval.approved_at&&approval.approval_statement)?'PASS':'FAIL',{status:approval.status,authorized:approval.exploratory_live_authorized,approved_by:approval.approved_by??null});
+add('exploratory-protocol-state',(protocol.standing==='EXPLORATORY_PROTOCOL_PENDING_APPROVAL'&&protocol.live_execution_authorized===false)||(protocol.standing==='EXPLORATORY_PROTOCOL_APPROVED_FOR_SINGLE_RUN'&&protocol.live_execution_authorized===true)?'PASS':'FAIL',{standing:protocol.standing,authorized:protocol.live_execution_authorized});
+add('dry-run-v2',dry.checks.every(c=>c.status==='PASS')?'PASS':'FAIL',{checks:dry.checks.length,passed:dry.checks.filter(c=>c.status==='PASS').length});
+for(const name of ['compiler-hints-only-to-c','fresh-sessions','identical-source-across-arms','identical-question-across-arms','source-relative-contract','frozen-references-excluded','no-implicit-authority'])add(name,dry.checks.find(c=>c.check===name)?.status==='PASS'?'PASS':'FAIL',{});
+add('failure-accounting',failure.results.length===2&&failure.results[0].status==='FAILED'&&failure.results[0].recipient_response_captured===false&&failure.results[1].status==='FAILED'&&failure.results[1].error==='SOURCE_SPAN'&&failure.results[1].recipient_response_captured===true?'PASS':'FAIL',{results:failure.results});
+add('compiler-blank-fallback',compiler.trained_syntax_available===false&&compiler.engine.id==='spacy/blank-en+sentencizer'&&compiler.fallback_reason==='SPACY_MODEL_NOT_INSTALLED'?'PASS':'FAIL',{engine:compiler.engine.id,trained:compiler.trained_syntax_available,fallback:compiler.fallback_reason});
+add('model-assignments-match-r2',JSON.stringify(protocol.models)===JSON.stringify(r2.model_assignments)?'PASS':'FAIL',{models:protocol.models});
+let sourceMismatch=[];for(const c of design.cases){const frozen=r2.case_hashes.find(x=>x.id===c.id);if(!frozen||frozen.source_sha256!==hash(c.source)||frozen.question_sha256!==hash(c.question)||frozen.expected_decision!==c.expected_decision)sourceMismatch.push(c.id);}
+add('case-references-match-v2',sourceMismatch.length===0?'PASS':'FAIL',{mismatches:sourceMismatch});
+let artifactBad=[];for(const [rel,h] of Object.entries(artifactHashes)){const p=join('experiments/lc-02-batch20/.runs/COMBINED-001',rel);if(!existsSync(p)||hash(readFileSync(p,'utf8'))!==h)artifactBad.push(rel);}
+add('frozen-batch20-artifacts',artifactBad.length===0?'PASS':'FAIL',{checked:Object.keys(artifactHashes).length,bad:artifactBad});
+add('live-output-absent',!existsSync('experiments/lc-02-batch20-r3/.runs/LIVE-V2-001')?'PASS':'FAIL',{path:'experiments/lc-02-batch20-r3/.runs/LIVE-V2-001'});
+add('no-hosted-requests',j('experiments/lc-02-batch20-r2/.runs/DRY-RUN-V2-001/manifest.json').hosted_requests===0?'PASS':'FAIL',{hosted:j('experiments/lc-02-batch20-r2/.runs/DRY-RUN-V2-001/manifest.json').hosted_requests??0});
+const result={schema:'lc02-r3-pre-execution-revalidation/0.1',standing:approval.status==='APPROVED'?'OFFLINE_PREFLIGHT_READY_FOR_LIVE_EXECUTION':'OFFLINE_PREFLIGHT_READY_PENDING_EXPLICIT_APPROVAL',design_hash:design.freeze.design_sha256,approval_hash:approval.hash,protocol_hash:protocol.hash,r2_protocol_hash:r2.hash,checks,overall:checks.every(c=>c.status==='PASS')?(approval.status==='APPROVED'?'READY_FOR_LIVE_EXECUTION':'READY_FOR_EXPLICIT_APPROVAL'):'BLOCKED'};
+writeFileSync('experiments/lc-02-batch20-r3/PRE-EXECUTION-REVALIDATION.json',JSON.stringify(result,null,2)+'\n');
+console.log(JSON.stringify({status:result.overall,checks:checks.length,failed:checks.filter(c=>c.status!=='PASS').map(c=>c.check),approval_hash:approval.hash,protocol_hash:protocol.hash},null,2));

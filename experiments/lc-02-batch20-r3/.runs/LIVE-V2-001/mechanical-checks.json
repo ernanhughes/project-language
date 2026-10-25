@@ -1,0 +1,121 @@
+{
+  "schema": "lc02-r2-mechanical-checks/0.1",
+  "standing": "EXPLORATORY_LIVE_UNADJUDICATED",
+  "checks": [
+    {
+      "check": "case-count",
+      "status": "PASS",
+      "detail": {
+        "cases": 16
+      }
+    },
+    {
+      "check": "three-arms",
+      "status": "PASS",
+      "detail": {
+        "arms": 3
+      }
+    },
+    {
+      "check": "all-arms-complete",
+      "status": "PASS",
+      "detail": {
+        "valid": 46,
+        "failed": 2
+      }
+    },
+    {
+      "check": "identical-source-across-arms",
+      "status": "PASS",
+      "detail": {
+        "mismatches": [],
+        "note": "Failed arms are excluded and reported separately."
+      }
+    },
+    {
+      "check": "identical-question-across-arms",
+      "status": "PASS",
+      "detail": {
+        "mismatches": [],
+        "note": "Failed arms are excluded and reported separately."
+      }
+    },
+    {
+      "check": "compiler-hints-only-to-c",
+      "status": "PASS",
+      "detail": {
+        "errors": [],
+        "note": "Failed arms are excluded and reported separately."
+      }
+    },
+    {
+      "check": "fresh-sessions",
+      "status": "PASS",
+      "detail": {
+        "requests": 76,
+        "unique": 76
+      }
+    },
+    {
+      "check": "frozen-references-excluded",
+      "status": "PASS",
+      "detail": {
+        "leaks": []
+      }
+    },
+    {
+      "check": "source-relative-contract",
+      "status": "PASS",
+      "detail": {
+        "errors": [],
+        "note": "Failed arms are excluded and reported separately."
+      }
+    },
+    {
+      "check": "citation-validation",
+      "status": "PASS",
+      "detail": {
+        "errors": [],
+        "host_resolved": 0,
+        "note": "Exact spans remain mandatory; host resolution is recorded separately."
+      }
+    },
+    {
+      "check": "mechanical-failure-accounting",
+      "status": "PASS",
+      "detail": {
+        "failed": [
+          [
+            "R1E-07",
+            "B",
+            "INTERPRETER_QUESTION_LEAK"
+          ],
+          [
+            "R1E-07",
+            "C",
+            "INTERPRETER_QUESTION_LEAK"
+          ]
+        ],
+        "note": "Failed arms are preserved and excluded from semantic ties; they are not repaired."
+      }
+    },
+    {
+      "check": "no-implicit-authority",
+      "status": "PASS",
+      "detail": {
+        "note": "Packets grant no action authority; failed arms without packets are reported separately."
+      }
+    },
+    {
+      "check": "request-count",
+      "status": "PASS",
+      "detail": {
+        "requests": 76,
+        "maximum": 80,
+        "ceiling": 100,
+        "hosted": 76,
+        "scripted": 0
+      }
+    }
+  ]
+}

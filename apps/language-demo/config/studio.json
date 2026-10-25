@@ -1,0 +1,24 @@
+{
+  "roles": {
+    "interpreter": "opencode-go/deepseek-v4.1-flash",
+    "challenger": "opencode-go/gpt-6-luna",
+    "mediator": "opencode-go/deepseek-v4.1-flash",
+    "recipient": "opencode-go/qwen3.8-flash",
+    "advisory_evaluator": "opencode-go/claude-haiku-5-5"
+  },
+  "limits": {
+    "max_requests": 6,
+    "budget_usd": 1,
+    "max_input_bytes": 60000,
+    "max_response_bytes": 1048576,
+    "timeout_ms": 90000,
+    "output_tokens": {
+      "interpreter": 8192,
+      "challenger": 4096,
+      "mediator": 8192,
+      "recipient": 4096,
+      "advisory_evaluator": 4096
+    },
+    "automatic_retries": 0
+  }
+}

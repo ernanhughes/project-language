@@ -1,0 +1,24 @@
+{
+  "standing": "HISTORICAL_ACCOUNTING_COMPARISON_AND_SYNTHETIC_BOUNDARY_REGRESSION",
+  "historical_file": "experiments/communication-transfer-v1/artifacts/live-smoke-v3-20261022-213515/A-attempt-1.json",
+  "historical_sha256": "021be099f98f2165be9ff917726523167aae65a06b237f59c183bcc3b492e294",
+  "historical_transport": {
+    "wire_bytes": 268138,
+    "wire_chunks": 1479,
+    "provider_events": 1160,
+    "http_status": 200,
+    "max_stream_bytes": 16777216,
+    "completion_bytes": 1449
+  },
+  "measurement": "Fetch Response.body Uint8Array.byteLength before SSE parsing; not final text or TCP/TLS bytes",
+  "old_cap": 262144,
+  "new_cap": 1048576,
+  "historical_over_old_cap": 5994,
+  "regression_sizes": [
+    268138,
+    1048576,
+    1048577
+  ],
+  "old_limits_preserved_except_stream_cap": true,
+  "raw_historical_SSE_replayed": false
+}

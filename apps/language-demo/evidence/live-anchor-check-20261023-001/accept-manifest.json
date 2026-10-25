@@ -1,0 +1,10 @@
+{
+  "stage": "accept",
+  "error": null,
+  "requests": 3,
+  "files": {
+    "events.jsonl": "a86101ac4d293643c139686328bcf712dec1bc425f8406148acea425d818989d",
+    "after-recipients.json": "b15e510045da41bcb78d2bfef318d5225db2ed58c64793ff4a046a1c2ffe2ed0",
+    "accept-report.html": "bba19dc448f5822ccf1398288da48d211af2047b8da823462e1940540347f97c"
+  }
+}

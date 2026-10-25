@@ -1,0 +1,20 @@
+{
+  "status": "PASS",
+  "original_inventory_visible_before_interpreter_returns": true,
+  "source_rows": 5,
+  "exact_source_reveal": true,
+  "three_main_buttons": true,
+  "human_acceptance": true,
+  "ordinary_has_no_inventory": true,
+  "two_second_passes": true,
+  "no_additional_recipient_call": true,
+  "short_answer_unrelated_omissions_not_scored": true,
+  "reload_no_regeneration": true,
+  "profile_selection_persists": true,
+  "mobile_no_overflow": true,
+  "injected_provider_requests": 3,
+  "real_provider_requests": 0,
+  "errors": [],
+  "external": [],
+  "browser": "151.0.7922.34"
+}

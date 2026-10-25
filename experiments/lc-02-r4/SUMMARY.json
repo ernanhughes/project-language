@@ -1,0 +1,170 @@
+{
+  "schema": "lc02-r4-summary/0.1",
+  "standing": "OFFLINE_EXPLORATORY_PROVISIONAL_REFERENCES",
+  "development": {
+    "new": {
+      "cases": 12,
+      "corruption_cases": 6,
+      "detected_corruptions": 6,
+      "missed_corruptions": [],
+      "detection_rate": 1,
+      "faithful_cases": 6,
+      "false_rejections": 0,
+      "false_alarm_rate": 0,
+      "faithful_accepted": 6,
+      "policy_correct": 12,
+      "policy_accuracy": 1,
+      "abstentions": [],
+      "latency_ms": {
+        "avg": 942.7061583333334,
+        "max": 995.0748999999996
+      }
+    },
+    "baseline": {
+      "cases": 12,
+      "corruption_cases": 6,
+      "detected_corruptions": 0,
+      "missed_corruptions": [
+        "R4-D01",
+        "R4-D02",
+        "R4-D03",
+        "R4-D04",
+        "R4-D05",
+        "R4-D06"
+      ],
+      "detection_rate": 0,
+      "faithful_cases": 6,
+      "false_rejections": 6,
+      "false_alarm_rate": 1,
+      "faithful_accepted": 0,
+      "policy_correct": 6,
+      "policy_accuracy": 0.5,
+      "abstentions": [],
+      "latency_ms": {
+        "avg": 942.5820833333337,
+        "max": 1011.950499999999
+      }
+    },
+    "policy": {
+      "PRESERVE_SOURCE": 6,
+      "USE_TRANSFORMATION": 6
+    }
+  },
+  "evaluation": {
+    "new": {
+      "cases": 12,
+      "corruption_cases": 6,
+      "detected_corruptions": 5,
+      "missed_corruptions": [
+        "R4-E04"
+      ],
+      "detection_rate": 0.8333333333333334,
+      "faithful_cases": 6,
+      "false_rejections": 2,
+      "false_alarm_rate": 0.3333333333333333,
+      "faithful_accepted": 4,
+      "policy_correct": 10,
+      "policy_accuracy": 0.8333333333333334,
+      "abstentions": [],
+      "latency_ms": {
+        "avg": 937.92605,
+        "max": 1000.1774000000005
+      }
+    },
+    "baseline": {
+      "cases": 12,
+      "corruption_cases": 6,
+      "detected_corruptions": 0,
+      "missed_corruptions": [
+        "R4-E01",
+        "R4-E02",
+        "R4-E03",
+        "R4-E04",
+        "R4-E05",
+        "R4-E06"
+      ],
+      "detection_rate": 0,
+      "faithful_cases": 6,
+      "false_rejections": 6,
+      "false_alarm_rate": 1,
+      "faithful_accepted": 0,
+      "policy_correct": 6,
+      "policy_accuracy": 0.5,
+      "abstentions": [],
+      "latency_ms": {
+        "avg": 936.3504083333328,
+        "max": 999.2217
+      }
+    },
+    "policy": {
+      "PRESERVE_SOURCE": 8,
+      "USE_TRANSFORMATION": 4
+    }
+  },
+  "prior_failures": {
+    "rows": [
+      {
+        "case": "LC20-07",
+        "arm": "B_AI_MEDIATED",
+        "expected": "UNSUPPORTED_UNCERTAINTY",
+        "matched": true,
+        "policy": "PRESERVE_SOURCE"
+      },
+      {
+        "case": "LC20-07",
+        "arm": "C_UNDERSTANDING_ENHANCED",
+        "expected": "UNSUPPORTED_UNCERTAINTY",
+        "matched": true,
+        "policy": "PRESERVE_SOURCE"
+      },
+      {
+        "case": "LC20-10",
+        "arm": "B_AI_MEDIATED",
+        "expected": "UNSUPPORTED_UNCERTAINTY",
+        "matched": true,
+        "policy": "PRESERVE_SOURCE"
+      },
+      {
+        "case": "LC20-10",
+        "arm": "C_UNDERSTANDING_ENHANCED",
+        "expected": "UNSUPPORTED_UNCERTAINTY",
+        "matched": true,
+        "policy": "PRESERVE_SOURCE"
+      },
+      {
+        "case": "LC20-02",
+        "arm": "B_AI_MEDIATED",
+        "expected": "UNRESOLVED",
+        "matched": false,
+        "policy": "PRESERVE_SOURCE"
+      },
+      {
+        "case": "LC20-02",
+        "arm": "C_UNDERSTANDING_ENHANCED",
+        "expected": "UNRESOLVED",
+        "matched": false,
+        "policy": "PRESERVE_SOURCE"
+      },
+      {
+        "case": "LC20-19",
+        "arm": "B_AI_MEDIATED",
+        "expected": "UNRESOLVED",
+        "matched": false,
+        "policy": "PRESERVE_SOURCE"
+      },
+      {
+        "case": "LC20-19",
+        "arm": "C_UNDERSTANDING_ENHANCED",
+        "expected": "UNRESOLVED",
+        "matched": false,
+        "policy": "PRESERVE_SOURCE"
+      }
+    ]
+  },
+  "decision": "REVISE_DO_NOT_INTEGRATE",
+  "checker": {
+    "version": "lc02-r4-semantic-check/0.1",
+    "code_sha256": "8c1dd8e5a4edc2ea84f93aff3c092ac39839d6d02c63456bd6bec715938609ee",
+    "contract_sha256": "13e815f911d22156add00a4203ea43aeb1596f3c23dbd28b8a89a65cc5329753"
+  }
+}

@@ -1,0 +1,375 @@
+{
+  "model": {
+    "provider": "ollama-local",
+    "id": "qwen3.5:latest",
+    "digest": "6488c96fa5faab64bb65cbd30d4289e20e6130ef535a93ef9a49f42eda893ea7",
+    "size": 6594474711,
+    "parameter_size": "9.7B",
+    "quantization": "Q4_K_M"
+  },
+  "records": [
+    {
+      "type": "REVIEW_REQUEST",
+      "at": "2026-10-24T01:31:02.555Z",
+      "request_hash": "61e543db89f0212be7c5e9395a5e09154dd6e85f195a0af1623021cadd853be4",
+      "prompt_version": "lc02-r7-review-prompt/0.4",
+      "reviewer_version": "lc02-r7-local-review/0.1",
+      "model": {
+        "provider": "ollama-local",
+        "id": "qwen3.5:latest",
+        "digest": "6488c96fa5faab64bb65cbd30d4289e20e6130ef535a93ef9a49f42eda893ea7",
+        "size": 6594474711,
+        "parameter_size": "9.7B",
+        "quantization": "Q4_K_M"
+      },
+      "input": {
+        "purpose": "Communicate the key exception.",
+        "source": {
+          "id": "R6-E05-source",
+          "text": "The key may be used during an incident, except when the incident ticket is closed.",
+          "hash": "38853a9a96218cc3b44b53c647261a7b126b3fe9b41a9da4e6355c441b984337"
+        },
+        "transformation": {
+          "id": "R6-E05-transformation",
+          "text": "The key may be used during an incident, except when the incident is unresolved.",
+          "hash": "f787e30e7a3867c412b19295db0704bed64c51df86651f8f108201f6f5b55c25"
+        },
+        "declared_obligations": [
+          {
+            "id": "o1",
+            "source_quote": "except when the incident ticket is closed",
+            "description": "Exception must not be broadened."
+          }
+        ]
+      },
+      "request_body": {
+        "model": "qwen3.5:latest",
+        "stream": false,
+        "think": false,
+        "format": "<json-schema>",
+        "messages": [
+          {
+            "role": "system",
+            "content": "You are a semantic reviewer. Compare SOURCE and TRANSFORMATION and report only material semantic changes, faithful paraphrase, or genuine uncertainty.\n\nReturn only JSON matching the supplied schema. Do not add prose outside JSON.\n\nFor each assessment choose exactly one change_kind:\n- QUANTITY_OR_BOUNDARY: a number, written number, operator, unit, threshold, duration, or inclusive/exclusive boundary changed.\n- EXCEPTION_SCOPE: the set of cases covered by an exception, permission, or prohibition was broadened or narrowed. Set material=true.\n- PREREQUISITE: a required condition, prerequisite, or dependency is missing or changed.\n- EPISTEMIC_STATUS: an unresolved or uncertain matter became established (epistemic_direction=ESTABLISHED_FROM_UNRESOLVED), new uncertainty was added (UNCERTAINTY_ADDED), or genuine ambiguity was preserved (AMBIGUITY_PRESERVED).\n- CAUSAL: a causal relation was added, promoted, or reversed beyond what the source states.\n- REFERENT_OR_SPEAKER: a referent, quotation, attribution, or speaker changed.\n- UNSUPPORTED_ADDITION: new authority, permission, fact, or content is asserted without source support.\n- NO_MATERIAL_CHANGE: faithful paraphrase, reordering, terminology substitution, or task-appropriate omission.\n- UNCERTAIN: the available evidence does not support a definite judgment. Use an abstention when appropriate.\n\nRules:\n- material must be true for every change except NO_MATERIAL_CHANGE and UNCERTAIN. material must be false for NO_MATERIAL_CHANGE.\n- For every change_kind except EPISTEMIC_STATUS, set epistemic_direction to NONE.\n- For NO_MATERIAL_CHANGE, set material=false and epistemic_direction=NONE.\n- If an exception changes which cases are covered, use EXCEPTION_SCOPE and material=true. Do not call it mere ambiguity.\n- An incident labelled \"unresolved\" is a status label, not necessarily epistemic uncertainty about a proposition.\n- Distinguish \"has not been decided\" (unresolved status) from ordinary negation. If the source leaves a matter unresolved and the transformation states it as fact, use EPISTEMIC_STATUS/ESTABLISHED_FROM_UNRESOLVED.\n- If the transformation adds doubt that the source does not support, use EPISTEMIC_STATUS/UNCERTAINTY_ADDED.\n- If the source explicitly leaves a matter unresolved and the transformation preserves that unresolved status, use EPISTEMIC_STATUS/AMBIGUITY_PRESERVED, not NO_MATERIAL_CHANGE.\n- Use exact, verbatim source_quote and transformation_quote from the supplied texts. Do not paraphrase inside a quote. transformation_quote may be empty only when a source obligation is missing from the transformation.\n- A task-appropriate omission is NO_MATERIAL_CHANGE when the purpose states that the omitted detail is irrelevant. If the purpose permits a supplied reading to show that a threshold is met, do not require the summary to restate the threshold arithmetic.\n- Do not invent evidence. Do not infer a change from the declared obligations alone; inspect the source.\n- The declared obligations are provided for context and may be incomplete.\n- Do not claim that the transformation is equivalent unless the assessments support that conclusion.\n- Keep the summary short and factual."
+          },
+          {
+            "role": "user",
+            "content": "{\"purpose\":\"Communicate the key exception.\",\"source\":{\"id\":\"R6-E05-source\",\"text\":\"The key may be used during an incident, except when the incident ticket is closed.\",\"hash\":\"38853a9a96218cc3b44b53c647261a7b126b3fe9b41a9da4e6355c441b984337\"},\"transformation\":{\"id\":\"R6-E05-transformation\",\"text\":\"The key may be used during an incident, except when the incident is unresolved.\",\"hash\":\"f787e30e7a3867c412b19295db0704bed64c51df86651f8f108201f6f5b55c25\"},\"declared_obligations\":[{\"id\":\"o1\",\"source_quote\":\"except when the incident ticket is closed\",\"description\":\"Exception must not be broadened.\"}]}"
+          }
+        ],
+        "options": {
+          "num_predict": 1400,
+          "temperature": 0
+        },
+        "keep_alive": "10m"
+      },
+      "standing": "LOCAL_MODEL_OBSERVATION"
+    },
+    {
+      "type": "REVIEW_RESULT",
+      "at": "2026-10-24T01:31:09.679Z",
+      "request_hash": "61e543db89f0212be7c5e9395a5e09154dd6e85f195a0af1623021cadd853be4",
+      "model": {
+        "provider": "ollama-local",
+        "id": "qwen3.5:latest",
+        "digest": "6488c96fa5faab64bb65cbd30d4289e20e6130ef535a93ef9a49f42eda893ea7",
+        "size": 6594474711,
+        "parameter_size": "9.7B",
+        "quantization": "Q4_K_M"
+      },
+      "raw": "{\n  \"assessments\": [\n    {\n      \"claim\": \"The exception condition changed from 'incident ticket is closed' to 'incident is unresolved'.\",\n      \"change_kind\": \"EXCEPTION_SCOPE\",\n      \"epistemic_direction\": \"NONE\",\n      \"material\": true,\n      \"source_quote\": \"except when the incident ticket is closed\",\n      \"transformation_quote\": \"except when the incident is unresolved\",\n      \"explanation\": \"The transformation broadens the exception scope. The source prohibits key use only when the ticket is 'closed'. The transformation prohibits key use when the incident is 'unresolved'. Since an incident can be unresolved without being closed (e.g., in progress), the set of cases where the key is prohibited has been expanded beyond what the source states.\",\n      \"confidence\": \"HIGH\"\n    }\n  ],\n  \"abstentions\": [],\n  \"summary\": \"The transformation broadens the exception scope by changing the condition from 'incident ticket is closed' to 'incident is unresolved', thereby prohibiting key use in more cases than the source allows.\"\n}",
+      "output": {
+        "schema": "language-semantic-review/0.1",
+        "reviewer_version": "lc02-r7-local-review/0.1",
+        "prompt_version": "lc02-r7-review-prompt/0.4",
+        "standing": "MODEL_ASSISTED_PROVISIONAL",
+        "model": {
+          "provider": "ollama-local",
+          "id": "qwen3.5:latest",
+          "digest": "6488c96fa5faab64bb65cbd30d4289e20e6130ef535a93ef9a49f42eda893ea7",
+          "size": 6594474711,
+          "parameter_size": "9.7B",
+          "quantization": "Q4_K_M"
+        },
+        "source": {
+          "id": "R6-E05-source",
+          "hash": "38853a9a96218cc3b44b53c647261a7b126b3fe9b41a9da4e6355c441b984337"
+        },
+        "transformation": {
+          "id": "R6-E05-transformation",
+          "hash": "f787e30e7a3867c412b19295db0704bed64c51df86651f8f108201f6f5b55c25"
+        },
+        "assessments": [
+          {
+            "id": "ra1",
+            "claim": "The exception condition changed from 'incident ticket is closed' to 'incident is unresolved'.",
+            "change_kind": "EXCEPTION_SCOPE",
+            "epistemic_direction": "NONE",
+            "material": true,
+            "source_quote": "except when the incident ticket is closed",
+            "transformation_quote": "except when the incident is unresolved",
+            "explanation": "The transformation broadens the exception scope. The source prohibits key use only when the ticket is 'closed'. The transformation prohibits key use when the incident is 'unresolved'. Since an incident can be unresolved without being closed (e.g., in progress), the set of cases where the key is prohibited has been expanded beyond what the source states.",
+            "confidence": "HIGH",
+            "standing": "PROVISIONAL_MODEL_PROPOSAL"
+          }
+        ],
+        "abstentions": [],
+        "summary": "The transformation broadens the exception scope by changing the condition from 'incident ticket is closed' to 'incident is unresolved', thereby prohibiting key use in more cases than the source allows.",
+        "model_assisted": true,
+        "action_authority": false,
+        "human_acceptance": "REQUIRED_FOR_ANY_TRANSMISSION"
+      },
+      "usage": {
+        "input_tokens": 928,
+        "output_tokens": 242,
+        "reasoning_tokens": null
+      },
+      "latency_ms": 7125.6467999999995,
+      "retries": 0,
+      "status": "VALID_SCHEMA_AND_EVIDENCE",
+      "standing": "LOCAL_MODEL_OBSERVATION"
+    },
+    {
+      "type": "REVIEW_REQUEST",
+      "at": "2026-10-24T01:31:09.680Z",
+      "request_hash": "052de74694bdc3ffcc6ff7999d386be67a7299abda5865c0331e7f76d95b445c",
+      "prompt_version": "lc02-r7-review-prompt/0.4",
+      "reviewer_version": "lc02-r7-local-review/0.1",
+      "model": {
+        "provider": "ollama-local",
+        "id": "qwen3.5:latest",
+        "digest": "6488c96fa5faab64bb65cbd30d4289e20e6130ef535a93ef9a49f42eda893ea7",
+        "size": 6594474711,
+        "parameter_size": "9.7B",
+        "quantization": "Q4_K_M"
+      },
+      "input": {
+        "purpose": "Communicate the vendor approval status.",
+        "source": {
+          "id": "R6-E08-source",
+          "text": "The vendor approval has not been decided. The record contains neither approval nor denial.",
+          "hash": "93e16b52a990859c0540619bac453b2b9b6f1798e3214cc68873f921bbcd4ba3"
+        },
+        "transformation": {
+          "id": "R6-E08-transformation",
+          "text": "The vendor is approved; the record contains the approval.",
+          "hash": "c81b97a9ba8eaa95211c0b1a10b9232d5b9f90643eda19bdbc3cd79fc5f862fb"
+        },
+        "declared_obligations": [
+          {
+            "id": "o1",
+            "source_quote": "The vendor approval has not been decided.",
+            "description": "Unresolved status must remain."
+          }
+        ]
+      },
+      "request_body": {
+        "model": "qwen3.5:latest",
+        "stream": false,
+        "think": false,
+        "format": "<json-schema>",
+        "messages": [
+          {
+            "role": "system",
+            "content": "You are a semantic reviewer. Compare SOURCE and TRANSFORMATION and report only material semantic changes, faithful paraphrase, or genuine uncertainty.\n\nReturn only JSON matching the supplied schema. Do not add prose outside JSON.\n\nFor each assessment choose exactly one change_kind:\n- QUANTITY_OR_BOUNDARY: a number, written number, operator, unit, threshold, duration, or inclusive/exclusive boundary changed.\n- EXCEPTION_SCOPE: the set of cases covered by an exception, permission, or prohibition was broadened or narrowed. Set material=true.\n- PREREQUISITE: a required condition, prerequisite, or dependency is missing or changed.\n- EPISTEMIC_STATUS: an unresolved or uncertain matter became established (epistemic_direction=ESTABLISHED_FROM_UNRESOLVED), new uncertainty was added (UNCERTAINTY_ADDED), or genuine ambiguity was preserved (AMBIGUITY_PRESERVED).\n- CAUSAL: a causal relation was added, promoted, or reversed beyond what the source states.\n- REFERENT_OR_SPEAKER: a referent, quotation, attribution, or speaker changed.\n- UNSUPPORTED_ADDITION: new authority, permission, fact, or content is asserted without source support.\n- NO_MATERIAL_CHANGE: faithful paraphrase, reordering, terminology substitution, or task-appropriate omission.\n- UNCERTAIN: the available evidence does not support a definite judgment. Use an abstention when appropriate.\n\nRules:\n- material must be true for every change except NO_MATERIAL_CHANGE and UNCERTAIN. material must be false for NO_MATERIAL_CHANGE.\n- For every change_kind except EPISTEMIC_STATUS, set epistemic_direction to NONE.\n- For NO_MATERIAL_CHANGE, set material=false and epistemic_direction=NONE.\n- If an exception changes which cases are covered, use EXCEPTION_SCOPE and material=true. Do not call it mere ambiguity.\n- An incident labelled \"unresolved\" is a status label, not necessarily epistemic uncertainty about a proposition.\n- Distinguish \"has not been decided\" (unresolved status) from ordinary negation. If the source leaves a matter unresolved and the transformation states it as fact, use EPISTEMIC_STATUS/ESTABLISHED_FROM_UNRESOLVED.\n- If the transformation adds doubt that the source does not support, use EPISTEMIC_STATUS/UNCERTAINTY_ADDED.\n- If the source explicitly leaves a matter unresolved and the transformation preserves that unresolved status, use EPISTEMIC_STATUS/AMBIGUITY_PRESERVED, not NO_MATERIAL_CHANGE.\n- Use exact, verbatim source_quote and transformation_quote from the supplied texts. Do not paraphrase inside a quote. transformation_quote may be empty only when a source obligation is missing from the transformation.\n- A task-appropriate omission is NO_MATERIAL_CHANGE when the purpose states that the omitted detail is irrelevant. If the purpose permits a supplied reading to show that a threshold is met, do not require the summary to restate the threshold arithmetic.\n- Do not invent evidence. Do not infer a change from the declared obligations alone; inspect the source.\n- The declared obligations are provided for context and may be incomplete.\n- Do not claim that the transformation is equivalent unless the assessments support that conclusion.\n- Keep the summary short and factual."
+          },
+          {
+            "role": "user",
+            "content": "{\"purpose\":\"Communicate the vendor approval status.\",\"source\":{\"id\":\"R6-E08-source\",\"text\":\"The vendor approval has not been decided. The record contains neither approval nor denial.\",\"hash\":\"93e16b52a990859c0540619bac453b2b9b6f1798e3214cc68873f921bbcd4ba3\"},\"transformation\":{\"id\":\"R6-E08-transformation\",\"text\":\"The vendor is approved; the record contains the approval.\",\"hash\":\"c81b97a9ba8eaa95211c0b1a10b9232d5b9f90643eda19bdbc3cd79fc5f862fb\"},\"declared_obligations\":[{\"id\":\"o1\",\"source_quote\":\"The vendor approval has not been decided.\",\"description\":\"Unresolved status must remain.\"}]}"
+          }
+        ],
+        "options": {
+          "num_predict": 1400,
+          "temperature": 0
+        },
+        "keep_alive": "10m"
+      },
+      "standing": "LOCAL_MODEL_OBSERVATION"
+    },
+    {
+      "type": "REVIEW_RESULT",
+      "at": "2026-10-24T01:31:15.794Z",
+      "request_hash": "052de74694bdc3ffcc6ff7999d386be67a7299abda5865c0331e7f76d95b445c",
+      "model": {
+        "provider": "ollama-local",
+        "id": "qwen3.5:latest",
+        "digest": "6488c96fa5faab64bb65cbd30d4289e20e6130ef535a93ef9a49f42eda893ea7",
+        "size": 6594474711,
+        "parameter_size": "9.7B",
+        "quantization": "Q4_K_M"
+      },
+      "raw": "{\n  \"assessments\": [\n    {\n      \"claim\": \"The vendor is approved; the record contains the approval.\",\n      \"change_kind\": \"EPISTEMIC_STATUS\",\n      \"epistemic_direction\": \"ESTABLISHED_FROM_UNRESOLVED\",\n      \"material\": true,\n      \"source_quote\": \"The vendor approval has not been decided. The record contains neither approval nor denial.\",\n      \"transformation_quote\": \"The vendor is approved; the record contains the approval.\",\n      \"explanation\": \"The source explicitly states the status is unresolved ('has not been decided', 'neither approval nor denial'). The transformation asserts a definitive fact ('is approved', 'contains the approval'), converting an unresolved matter into an established one.\",\n      \"confidence\": \"HIGH\"\n    }\n  ],\n  \"abstentions\": [],\n  \"summary\": \"The transformation establishes as fact that the vendor is approved and the record contains approval, contradicting the source's explicit statement that the status is unresolved and no decision has been made.\"\n}",
+      "output": {
+        "schema": "language-semantic-review/0.1",
+        "reviewer_version": "lc02-r7-local-review/0.1",
+        "prompt_version": "lc02-r7-review-prompt/0.4",
+        "standing": "MODEL_ASSISTED_PROVISIONAL",
+        "model": {
+          "provider": "ollama-local",
+          "id": "qwen3.5:latest",
+          "digest": "6488c96fa5faab64bb65cbd30d4289e20e6130ef535a93ef9a49f42eda893ea7",
+          "size": 6594474711,
+          "parameter_size": "9.7B",
+          "quantization": "Q4_K_M"
+        },
+        "source": {
+          "id": "R6-E08-source",
+          "hash": "93e16b52a990859c0540619bac453b2b9b6f1798e3214cc68873f921bbcd4ba3"
+        },
+        "transformation": {
+          "id": "R6-E08-transformation",
+          "hash": "c81b97a9ba8eaa95211c0b1a10b9232d5b9f90643eda19bdbc3cd79fc5f862fb"
+        },
+        "assessments": [
+          {
+            "id": "ra1",
+            "claim": "The vendor is approved; the record contains the approval.",
+            "change_kind": "EPISTEMIC_STATUS",
+            "epistemic_direction": "ESTABLISHED_FROM_UNRESOLVED",
+            "material": true,
+            "source_quote": "The vendor approval has not been decided. The record contains neither approval nor denial.",
+            "transformation_quote": "The vendor is approved; the record contains the approval.",
+            "explanation": "The source explicitly states the status is unresolved ('has not been decided', 'neither approval nor denial'). The transformation asserts a definitive fact ('is approved', 'contains the approval'), converting an unresolved matter into an established one.",
+            "confidence": "HIGH",
+            "standing": "PROVISIONAL_MODEL_PROPOSAL"
+          }
+        ],
+        "abstentions": [],
+        "summary": "The transformation establishes as fact that the vendor is approved and the record contains approval, contradicting the source's explicit statement that the status is unresolved and no decision has been made.",
+        "model_assisted": true,
+        "action_authority": false,
+        "human_acceptance": "REQUIRED_FOR_ANY_TRANSMISSION"
+      },
+      "usage": {
+        "input_tokens": 914,
+        "output_tokens": 233,
+        "reasoning_tokens": null
+      },
+      "latency_ms": 6114.5455999999995,
+      "retries": 0,
+      "status": "VALID_SCHEMA_AND_EVIDENCE",
+      "standing": "LOCAL_MODEL_OBSERVATION"
+    },
+    {
+      "type": "REVIEW_REQUEST",
+      "at": "2026-10-24T01:31:15.794Z",
+      "request_hash": "6da70ed2f8a8fe6a3043c1fbae6e8a2e2337d0799ba15f8a3695c5bc8a51f6a7",
+      "prompt_version": "lc02-r7-review-prompt/0.4",
+      "reviewer_version": "lc02-r7-local-review/0.1",
+      "model": {
+        "provider": "ollama-local",
+        "id": "qwen3.5:latest",
+        "digest": "6488c96fa5faab64bb65cbd30d4289e20e6130ef535a93ef9a49f42eda893ea7",
+        "size": 6594474711,
+        "parameter_size": "9.7B",
+        "quantization": "Q4_K_M"
+      },
+      "input": {
+        "purpose": "Paraphrase the retrieval permission.",
+        "source": {
+          "id": "R6-E13-source",
+          "text": "The operator may retrieve the key only if the ticket is open and the audit log remains intact.",
+          "hash": "3a55250ed15cc9e4122039cf08cf4e766bbdd29503fc1ff0833ae3cbb84bcd2b"
+        },
+        "transformation": {
+          "id": "R6-E13-transformation",
+          "text": "Provided the ticket stays open and the audit log is unaltered, the operator is allowed to retrieve the key.",
+          "hash": "6d8d6751427c5201899ac13c9f0908478ac1f340f681840b76491784ec60e363"
+        },
+        "declared_obligations": [
+          {
+            "id": "o1",
+            "source_quote": "only if the ticket is open and the audit log remains intact",
+            "description": "Both conditions must survive."
+          }
+        ]
+      },
+      "request_body": {
+        "model": "qwen3.5:latest",
+        "stream": false,
+        "think": false,
+        "format": "<json-schema>",
+        "messages": [
+          {
+            "role": "system",
+            "content": "You are a semantic reviewer. Compare SOURCE and TRANSFORMATION and report only material semantic changes, faithful paraphrase, or genuine uncertainty.\n\nReturn only JSON matching the supplied schema. Do not add prose outside JSON.\n\nFor each assessment choose exactly one change_kind:\n- QUANTITY_OR_BOUNDARY: a number, written number, operator, unit, threshold, duration, or inclusive/exclusive boundary changed.\n- EXCEPTION_SCOPE: the set of cases covered by an exception, permission, or prohibition was broadened or narrowed. Set material=true.\n- PREREQUISITE: a required condition, prerequisite, or dependency is missing or changed.\n- EPISTEMIC_STATUS: an unresolved or uncertain matter became established (epistemic_direction=ESTABLISHED_FROM_UNRESOLVED), new uncertainty was added (UNCERTAINTY_ADDED), or genuine ambiguity was preserved (AMBIGUITY_PRESERVED).\n- CAUSAL: a causal relation was added, promoted, or reversed beyond what the source states.\n- REFERENT_OR_SPEAKER: a referent, quotation, attribution, or speaker changed.\n- UNSUPPORTED_ADDITION: new authority, permission, fact, or content is asserted without source support.\n- NO_MATERIAL_CHANGE: faithful paraphrase, reordering, terminology substitution, or task-appropriate omission.\n- UNCERTAIN: the available evidence does not support a definite judgment. Use an abstention when appropriate.\n\nRules:\n- material must be true for every change except NO_MATERIAL_CHANGE and UNCERTAIN. material must be false for NO_MATERIAL_CHANGE.\n- For every change_kind except EPISTEMIC_STATUS, set epistemic_direction to NONE.\n- For NO_MATERIAL_CHANGE, set material=false and epistemic_direction=NONE.\n- If an exception changes which cases are covered, use EXCEPTION_SCOPE and material=true. Do not call it mere ambiguity.\n- An incident labelled \"unresolved\" is a status label, not necessarily epistemic uncertainty about a proposition.\n- Distinguish \"has not been decided\" (unresolved status) from ordinary negation. If the source leaves a matter unresolved and the transformation states it as fact, use EPISTEMIC_STATUS/ESTABLISHED_FROM_UNRESOLVED.\n- If the transformation adds doubt that the source does not support, use EPISTEMIC_STATUS/UNCERTAINTY_ADDED.\n- If the source explicitly leaves a matter unresolved and the transformation preserves that unresolved status, use EPISTEMIC_STATUS/AMBIGUITY_PRESERVED, not NO_MATERIAL_CHANGE.\n- Use exact, verbatim source_quote and transformation_quote from the supplied texts. Do not paraphrase inside a quote. transformation_quote may be empty only when a source obligation is missing from the transformation.\n- A task-appropriate omission is NO_MATERIAL_CHANGE when the purpose states that the omitted detail is irrelevant. If the purpose permits a supplied reading to show that a threshold is met, do not require the summary to restate the threshold arithmetic.\n- Do not invent evidence. Do not infer a change from the declared obligations alone; inspect the source.\n- The declared obligations are provided for context and may be incomplete.\n- Do not claim that the transformation is equivalent unless the assessments support that conclusion.\n- Keep the summary short and factual."
+          },
+          {
+            "role": "user",
+            "content": "{\"purpose\":\"Paraphrase the retrieval permission.\",\"source\":{\"id\":\"R6-E13-source\",\"text\":\"The operator may retrieve the key only if the ticket is open and the audit log remains intact.\",\"hash\":\"3a55250ed15cc9e4122039cf08cf4e766bbdd29503fc1ff0833ae3cbb84bcd2b\"},\"transformation\":{\"id\":\"R6-E13-transformation\",\"text\":\"Provided the ticket stays open and the audit log is unaltered, the operator is allowed to retrieve the key.\",\"hash\":\"6d8d6751427c5201899ac13c9f0908478ac1f340f681840b76491784ec60e363\"},\"declared_obligations\":[{\"id\":\"o1\",\"source_quote\":\"only if the ticket is open and the audit log remains intact\",\"description\":\"Both conditions must survive.\"}]}"
+          }
+        ],
+        "options": {
+          "num_predict": 1400,
+          "temperature": 0
+        },
+        "keep_alive": "10m"
+      },
+      "standing": "LOCAL_MODEL_OBSERVATION"
+    },
+    {
+      "type": "REVIEW_RESULT",
+      "at": "2026-10-24T01:31:21.541Z",
+      "request_hash": "6da70ed2f8a8fe6a3043c1fbae6e8a2e2337d0799ba15f8a3695c5bc8a51f6a7",
+      "model": {
+        "provider": "ollama-local",
+        "id": "qwen3.5:latest",
+        "digest": "6488c96fa5faab64bb65cbd30d4289e20e6130ef535a93ef9a49f42eda893ea7",
+        "size": 6594474711,
+        "parameter_size": "9.7B",
+        "quantization": "Q4_K_M"
+      },
+      "raw": "{\n  \"assessments\": [\n    {\n      \"claim\": \"The transformation faithfully paraphrases the source's permission condition.\",\n      \"change_kind\": \"NO_MATERIAL_CHANGE\",\n      \"epistemic_direction\": \"NONE\",\n      \"material\": false,\n      \"source_quote\": \"only if the ticket is open and the audit log remains intact\",\n      \"transformation_quote\": \"Provided the ticket stays open and the audit log is unaltered\",\n      \"explanation\": \"The transformation uses synonymous phrasing ('Provided... stays' vs 'only if... is open') and a near-synonym for 'remains intact' ('unaltered'), preserving the exact logical conditions without adding or removing constraints.\",\n      \"confidence\": \"HIGH\"\n    }\n  ],\n  \"abstentions\": [],\n  \"summary\": \"The transformation is a faithful paraphrase of the source text.\"\n}",
+      "output": {
+        "schema": "language-semantic-review/0.1",
+        "reviewer_version": "lc02-r7-local-review/0.1",
+        "prompt_version": "lc02-r7-review-prompt/0.4",
+        "standing": "MODEL_ASSISTED_PROVISIONAL",
+        "model": {
+          "provider": "ollama-local",
+          "id": "qwen3.5:latest",
+          "digest": "6488c96fa5faab64bb65cbd30d4289e20e6130ef535a93ef9a49f42eda893ea7",
+          "size": 6594474711,
+          "parameter_size": "9.7B",
+          "quantization": "Q4_K_M"
+        },
+        "source": {
+          "id": "R6-E13-source",
+          "hash": "3a55250ed15cc9e4122039cf08cf4e766bbdd29503fc1ff0833ae3cbb84bcd2b"
+        },
+        "transformation": {
+          "id": "R6-E13-transformation",
+          "hash": "6d8d6751427c5201899ac13c9f0908478ac1f340f681840b76491784ec60e363"
+        },
+        "assessments": [
+          {
+            "id": "ra1",
+            "claim": "The transformation faithfully paraphrases the source's permission condition.",
+            "change_kind": "NO_MATERIAL_CHANGE",
+            "epistemic_direction": "NONE",
+            "material": false,
+            "source_quote": "only if the ticket is open and the audit log remains intact",
+            "transformation_quote": "Provided the ticket stays open and the audit log is unaltered",
+            "explanation": "The transformation uses synonymous phrasing ('Provided... stays' vs 'only if... is open') and a near-synonym for 'remains intact' ('unaltered'), preserving the exact logical conditions without adding or removing constraints.",
+            "confidence": "HIGH",
+            "standing": "PROVISIONAL_MODEL_PROPOSAL"
+          }
+        ],
+        "abstentions": [],
+        "summary": "The transformation is a faithful paraphrase of the source text.",
+        "model_assisted": true,
+        "action_authority": false,
+        "human_acceptance": "REQUIRED_FOR_ANY_TRANSMISSION"
+      },
+      "usage": {
+        "input_tokens": 934,
+        "output_tokens": 203,
+        "reasoning_tokens": null
+      },
+      "latency_ms": 5746.421500000002,
+      "retries": 0,
+      "status": "VALID_SCHEMA_AND_EVIDENCE",
+      "standing": "LOCAL_MODEL_OBSERVATION"
+    }
+  ]
+}

@@ -1,0 +1,69 @@
+(node:36956) ExperimentalWarning: Transform Types is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+✔ paired development paths preserve source, tasks, fresh recipients and withheld questions (90.8398ms)
+✔ replay preserves captured comparison without regeneration or implicit authorization (57.9512ms)
+✔ candidate agreement does not create semantic adjudication; manual assessments remain distinct (62.8524ms)
+✔ unapproved remote mode cannot consume calls or autoaccept (2.4406ms)
+✔ real path stops for exact human review; both receive same clarification; unchanged approval reused (17.8929ms)
+✔ partial failure preserved without retry or output repair (14.8619ms)
+✔ independent evaluation cannot be represented by the exposed development suite (1.2884ms)
+✔ saving identical settings/roles preserves approval; material change revokes it (1.4638ms)
+✔ paired requests traverse actual Pi adapters offline with separate sessions and identical questions (234.5034ms)
+✔ switching to manual workflow requires its own explicit approval and preserves comparison state (13.1419ms)
+(node:45108) ExperimentalWarning: Transform Types is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+✔ guided start runs interpreter/challenger once; human approval finishes only recipient (308.2526ms)
+✔ expired remote approval never restored by guided resume; no prior role repeated (30.9545ms)
+(node:41624) ExperimentalWarning: Transform Types is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+✔ historical-size SSE exceeds old cap but passes bounded 1 MiB; exact boundary enforced (205.3081ms)
+✔ only configured response-byte ceiling changes from LC-01R; reservations/tokens/retries unchanged (3.3162ms)
+✔ fresh task is source-bound, locks original inputs and binds the displayed remote plan (7.7887ms)
+✔ model/settings changes revoke approval; no real-operator acceptance is created by a model (36.5068ms)
+✔ custom task recipient packet excludes transcript/rejected proposal/question/reference; replay stays captured (61.0218ms)
+✔ accepted content digest is checked before communication and cannot be silently edited (6.4891ms)
+✔ prospective startup hash mismatch stops before listening; injected credential availability does not change plan identity (15.1089ms)
+(node:11964) ExperimentalWarning: Transform Types is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+✔ all four scoped IDs resolve with required families; no network or private credential store (17.0038ms)
+✔ installed Pi serializes deepseek-v4.1-flash via openai-completions (155.2524ms)
+✔ installed Pi serializes gpt-6-luna via openai-responses (14.9283ms)
+✔ installed Pi serializes qwen3.8-flash via anthropic-messages (81.6256ms)
+✔ installed Pi serializes claude-haiku-5-5 via anthropic-messages (11.1312ms)
+✔ launcher, plan, service confirmation, credential and budget gates precede dispatch (15.7392ms)
+✔ OpenCode workflow through actual three-family adapters remains isolated and human-gated (42.3588ms)
+✔ recorded failed length attempt never fabricates state or retries (13.7785ms)
+✔ recorded failed incomplete attempt never fabricates state or retries (10.6019ms)
+✔ recorded failed http429 attempt never fabricates state or retries (10.4132ms)
+✔ recorded failed http500 attempt never fabricates state or retries (9.5258ms)
+✔ recorded failed timeout attempt never fabricates state or retries (32.1652ms)
+✔ recorded failed malformed attempt never fabricates state or retries (12.8233ms)
+✔ recorded failed schema attempt never fabricates state or retries (9.2588ms)
+✔ manual development retries preserve distinct requests and respect cap; replay never reauthorizes (46.1671ms)
+✔ missing optional Haiku does not block core roles, evaluation remains explicitly unavailable (9.1781ms)
+✔ redaction handles nested keys, bearer strings and echoed raw response without exposing secret (0.1424ms)
+✔ wire input and response bounds reject precisely without retry or state (14.2433ms)
+✔ Console endpoint and non-Go provider are refused; no fallback (1.9026ms)
+(node:27164) ExperimentalWarning: Transform Types is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+✔ strict protocol, source/hash/span/origin and inferred/source standing (4.8756ms)
+✔ contradiction is explicit review state; unresolved information never grants authority (14.6918ms)
+✔ challenge cannot accept; missing qualification remains visible; human acceptance exact version and scope (28.9654ms)
+✔ rejection blocks communication; no implicit negotiation (16.0053ms)
+✔ sender isolation, sealing, parity, context denial and fresh recipient (26.4664ms)
+✔ append-only persisted replay and integrity rejection (37.246ms)
+✔ local registry, role rotation, exact no-history request and usage (5.0839ms)
+✔ provider timeout records failure with no retry/fallback (1.077ms)
+✔ provider truncation records failure with no retry/fallback (0.928ms)
+✔ provider malformed records failure with no retry/fallback (0.9218ms)
+✔ provider http records failure with no retry/fallback (0.8863ms)
+✔ full application HTTP end to end, export and restart without regeneration (109.0433ms)
+✔ intent evolution retains original expression and invalidates acceptance (7.4019ms)
+ℹ tests 51
+ℹ suites 0
+ℹ pass 51
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 1599.2298

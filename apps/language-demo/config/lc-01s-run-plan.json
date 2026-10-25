@@ -1,0 +1,303 @@
+{
+  "schema": "studio-lc01s-prospective-plan/1",
+  "date": "2026-10-23",
+  "status": "PREPARED_NOT_AUTHORIZED_NOT_EXECUTED",
+  "plan_id": "b9e3fdc5595f7397c4507047cb717a789b7eb63aa89e1da9335ae1eaac8c01d6",
+  "task_identity": {
+    "id": "archive-recovery-s17-v1",
+    "digest": "dd6ecdebf0a88a7dc414726c7118b498a9a95d648b32c8036ffb92e26eb0e2ee",
+    "source_hash": "e2600a515566dad94df3632cfff7eb1cd92a0d71693d9dd2c6fa0473f1c682c2",
+    "question_hash": "c625728d8e94939a5de237f51a339ad002517f9c7e493489915ae810301082c3",
+    "reference_standing": "UNADJUDICATED_REFERENCE"
+  },
+  "settings_identity": "39465c1889694d6c4398ba51928c5b82fcf4f41239c394493fc728d3fe667e35",
+  "source_qualification_identity": "92448506cad48c62254ca99451d7ac405823fa74d82633aba20634acec2366b3",
+  "source_hashes": {
+    "models/opencode.mjs": "c72aa413c4836707dda0a3d336bfa04a95dc137db1a1f8abe53bea81c124a914",
+    "models/runtime.mjs": "52a4ee03f98e7f4767398827a29e521e84557da4e42aac827665d7a235b8e19f",
+    "models/prompts.mjs": "cc7ff5a8a8e9986271abd4774a80ea5e84a81b28be9317936487f328a6ba0132",
+    "models/ollama-legacy.mjs": "7330fc3f733faf39c6b69fd3101074dde6ccabb983a930c0ea3e031ec66d1e14",
+    "config/studio.json": "ce61dd1036235c1885c31fd3adbfd62318ab8e0d3acbaecaa670986b567e9d09",
+    "config/models.json": "78020e5ed7246fa4f787cd8b1f72f721c41caba22e72a20fcf56f07937ebe7ad",
+    "protocol/state.mjs": "d67765ed2ef92bd154e22b18a2521f6d7c919cc7e223a0d3081b40b09d8b437e",
+    "engine/studio.mjs": "c295b76f7ce516700a84518d9220dd9218eadbb5ddc55e765019e575f468359a",
+    "engine/scenario.mjs": "159bcaf0dce0099b57e170a0e048f15d20e46a200e92b4fbd3ffe21243cc5227",
+    "server/app.mjs": "79d705f44192fa92daa972f7cd4b8f79a046f26f4c0ddb6e257c916c134a94f7",
+    "storage/log.mjs": "91d5a071fd1f7eec324ad87a48cd76afc8cebcc344767592b1249fb2055a3d3d",
+    "ui/app.js": "8d4ead3141f1621d675aada161b063c8c741eed2329828e9d37225bf683afa56",
+    "ui/index.html": "cbe8e547a1549f3335c8929e0c8cb6825b5d915020ceef8e7c9df318f72a3ed5",
+    "tests/opencode.test.mjs": "fe8072fdf984fc552727c1a7194597d02b6f1ab3d9a9e9b5f93f78f6313588ca",
+    "tests/go-fixtures.mjs": "d490fcb48ee8cc27d928100f13f2eb3e58f0e2adf0620120f03d3ed042e2d5cc",
+    "tests/studio.test.mjs": "bb57add1572e4503471255ed24107d2044a5938df4c8113e4932c746518965ae",
+    "tests/browser-opencode.mjs": "592c3f647d927759e0c15537c58e29cd4ab0eab4894ef52e75b9357ae8778b55",
+    "engine/task.mjs": "eb8bc2c0c878f5c93ff29387006c403b83e246e215fca2b9b33b3c223cc353be",
+    "tasks/lc-01s-s17-v1.json": "c5cac9bbe9d7a19eaec37624da1de5782552b46c45aade863df62fbb095aea54",
+    "tests/lc01s.test.mjs": "1b04ebbe4867c50d67731427703315f47825bd3984695e40e6e0191c9573bc28",
+    "tests/browser-lc01s.mjs": "f3e6730d429f991ac3a5d2dbcf8b8eb4d7676280c86e378db2596b0fc062bf12"
+  },
+  "configuration": {
+    "schema": "studio-remote-plan/0.1r",
+    "provider": "opencode-go",
+    "task_identity": {
+      "id": "archive-recovery-s17-v1",
+      "digest": "dd6ecdebf0a88a7dc414726c7118b498a9a95d648b32c8036ffb92e26eb0e2ee",
+      "source_hash": "e2600a515566dad94df3632cfff7eb1cd92a0d71693d9dd2c6fa0473f1c682c2",
+      "question_hash": "c625728d8e94939a5de237f51a339ad002517f9c7e493489915ae810301082c3",
+      "reference_standing": "UNADJUDICATED_REFERENCE"
+    },
+    "models": [
+      {
+        "role": "interpreter",
+        "model": "opencode-go/deepseek-v4.1-flash",
+        "metadata": {
+          "id": "opencode-go/deepseek-v4.1-flash",
+          "provider": "opencode-go",
+          "local": false,
+          "api_family": "openai-completions",
+          "base_url": "https://opencode.ai/inference/go/openai/v1",
+          "expected_route": "https://opencode.ai/inference/go/openai/v1/chat/completions",
+          "context_window": 1000000,
+          "output_limit": 384000,
+          "input_modalities": [
+            "text",
+            "image"
+          ],
+          "output_modalities": [
+            "text"
+          ],
+          "structured_output": "PROMPTED_JSON_STRICT_HOST_VALIDATION",
+          "reasoning": "Pi simple-stream default; no reasoning-token inference",
+          "price_per_million": {
+            "input": 0.3,
+            "output": 1.2,
+            "cacheRead": 0.006,
+            "cacheWrite": 0
+          },
+          "availability": "SCOPED_REGISTERED_NOT_LIVE_PROBED",
+          "qualification": "OFFLINE_ADAPTER_VERIFIED_LIVE_NOT_PROBED",
+          "metadata_origin": "PINNED_PI_1.0.4_WITH_DOCUMENTED_ENDPOINT_OVERLAY",
+          "config_hash": "78020e5ed7246fa4f787cd8b1f72f721c41caba22e72a20fcf56f07937ebe7ad"
+        },
+        "output_tokens": 8192
+      },
+      {
+        "role": "challenger",
+        "model": "opencode-go/gpt-6-luna",
+        "metadata": {
+          "id": "opencode-go/gpt-6-luna",
+          "provider": "opencode-go",
+          "local": false,
+          "api_family": "openai-responses",
+          "base_url": "https://opencode.ai/inference/go/openai/v1",
+          "expected_route": "https://opencode.ai/inference/go/openai/v1/responses",
+          "context_window": 1050000,
+          "output_limit": 128000,
+          "input_modalities": [
+            "text",
+            "image"
+          ],
+          "output_modalities": [
+            "text"
+          ],
+          "structured_output": "PROMPTED_JSON_STRICT_HOST_VALIDATION",
+          "reasoning": "Pi simple-stream default; no reasoning-token inference",
+          "price_per_million": {
+            "input": 0.1,
+            "output": 0.5,
+            "cacheRead": 0.01,
+            "cacheWrite": 0.125
+          },
+          "availability": "SCOPED_REGISTERED_NOT_LIVE_PROBED",
+          "qualification": "OFFLINE_ADAPTER_VERIFIED_LIVE_NOT_PROBED",
+          "metadata_origin": "PINNED_PI_1.0.4_WITH_DOCUMENTED_ENDPOINT_OVERLAY",
+          "config_hash": "78020e5ed7246fa4f787cd8b1f72f721c41caba22e72a20fcf56f07937ebe7ad"
+        },
+        "output_tokens": 4096
+      },
+      {
+        "role": "mediator",
+        "model": "opencode-go/deepseek-v4.1-flash",
+        "metadata": {
+          "id": "opencode-go/deepseek-v4.1-flash",
+          "provider": "opencode-go",
+          "local": false,
+          "api_family": "openai-completions",
+          "base_url": "https://opencode.ai/inference/go/openai/v1",
+          "expected_route": "https://opencode.ai/inference/go/openai/v1/chat/completions",
+          "context_window": 1000000,
+          "output_limit": 384000,
+          "input_modalities": [
+            "text",
+            "image"
+          ],
+          "output_modalities": [
+            "text"
+          ],
+          "structured_output": "PROMPTED_JSON_STRICT_HOST_VALIDATION",
+          "reasoning": "Pi simple-stream default; no reasoning-token inference",
+          "price_per_million": {
+            "input": 0.3,
+            "output": 1.2,
+            "cacheRead": 0.006,
+            "cacheWrite": 0
+          },
+          "availability": "SCOPED_REGISTERED_NOT_LIVE_PROBED",
+          "qualification": "OFFLINE_ADAPTER_VERIFIED_LIVE_NOT_PROBED",
+          "metadata_origin": "PINNED_PI_1.0.4_WITH_DOCUMENTED_ENDPOINT_OVERLAY",
+          "config_hash": "78020e5ed7246fa4f787cd8b1f72f721c41caba22e72a20fcf56f07937ebe7ad"
+        },
+        "output_tokens": 8192
+      },
+      {
+        "role": "recipient",
+        "model": "opencode-go/qwen3.8-flash",
+        "metadata": {
+          "id": "opencode-go/qwen3.8-flash",
+          "provider": "opencode-go",
+          "local": false,
+          "api_family": "anthropic-messages",
+          "base_url": "https://opencode.ai/inference/go/anthropic",
+          "expected_route": "https://opencode.ai/inference/go/anthropic/v1/messages",
+          "context_window": 1000000,
+          "output_limit": 131072,
+          "input_modalities": [
+            "text",
+            "image"
+          ],
+          "output_modalities": [
+            "text"
+          ],
+          "structured_output": "PROMPTED_JSON_STRICT_HOST_VALIDATION",
+          "reasoning": "Pi simple-stream default; no reasoning-token inference",
+          "price_per_million": {
+            "input": 0.15,
+            "output": 0.47,
+            "cacheRead": 0.016,
+            "cacheWrite": 0.2
+          },
+          "availability": "SCOPED_REGISTERED_NOT_LIVE_PROBED",
+          "qualification": "OFFLINE_ADAPTER_VERIFIED_LIVE_NOT_PROBED",
+          "metadata_origin": "PINNED_PI_1.0.4_WITH_DOCUMENTED_ENDPOINT_OVERLAY",
+          "config_hash": "78020e5ed7246fa4f787cd8b1f72f721c41caba22e72a20fcf56f07937ebe7ad"
+        },
+        "output_tokens": 4096
+      },
+      {
+        "role": "advisory_evaluator",
+        "model": "opencode-go/claude-haiku-5-5",
+        "metadata": {
+          "id": "opencode-go/claude-haiku-5-5",
+          "provider": "opencode-go",
+          "local": false,
+          "api_family": "anthropic-messages",
+          "base_url": "https://opencode.ai/inference/go/anthropic",
+          "expected_route": "https://opencode.ai/inference/go/anthropic/v1/messages",
+          "context_window": 1000000,
+          "output_limit": 128000,
+          "input_modalities": [
+            "text",
+            "image"
+          ],
+          "output_modalities": [
+            "text"
+          ],
+          "structured_output": "PROMPTED_JSON_STRICT_HOST_VALIDATION",
+          "reasoning": "Pi simple-stream default; no reasoning-token inference",
+          "price_per_million": {
+            "input": 0.1,
+            "output": 0.5,
+            "cacheRead": 0.01,
+            "cacheWrite": 0.125,
+            "tiers": [
+              {
+                "inputTokensAbove": 100000,
+                "input": 0.5,
+                "output": 2.5,
+                "cacheRead": 0.05,
+                "cacheWrite": 0.625
+              }
+            ]
+          },
+          "availability": "SCOPED_REGISTERED_NOT_LIVE_PROBED",
+          "qualification": "OFFLINE_ADAPTER_VERIFIED_LIVE_NOT_PROBED",
+          "metadata_origin": "MANAGED_PI_1.4.0_SCOPED_REGISTRATION",
+          "config_hash": "78020e5ed7246fa4f787cd8b1f72f721c41caba22e72a20fcf56f07937ebe7ad"
+        },
+        "output_tokens": 4096
+      }
+    ],
+    "settings": {
+      "max_requests": 6,
+      "budget_usd": 1,
+      "max_input_bytes": 60000,
+      "max_response_bytes": 1048576,
+      "timeout_ms": 90000,
+      "output_tokens": {
+        "interpreter": 8192,
+        "challenger": 4096,
+        "mediator": 8192,
+        "recipient": 4096,
+        "advisory_evaluator": 4096
+      },
+      "automatic_retries": 0
+    },
+    "config_hash": "78020e5ed7246fa4f787cd8b1f72f721c41caba22e72a20fcf56f07937ebe7ad",
+    "offline_qualification_identity": "92448506cad48c62254ca99451d7ac405823fa74d82633aba20634acec2366b3",
+    "expected_workflow_calls": 3,
+    "with_mediation_calls": 4,
+    "with_comparison_calls": 5,
+    "maximum_actual_requests": 6,
+    "conservative_estimate_usd": 0.34787999999999997,
+    "per_request_reservation_usd": 0.05798,
+    "estimate_standing": "CATALOGUE_BOUND_NOT_INVOICE; UTF8_BYTES_AS_INPUT_TOKEN_BOUND",
+    "service_use": "OPERATOR_MUST_CONFIRM_GO_WORKLOAD_APPROPRIATENESS",
+    "fallback": false,
+    "hash": "b9e3fdc5595f7397c4507047cb717a789b7eb63aa89e1da9335ae1eaac8c01d6",
+    "launcher_remote_enabled": false,
+    "approval_active": false,
+    "requests_used": 0,
+    "reserved_usd": 0,
+    "last_errors": {},
+    "advisory_evaluator_status": "OPTIONAL_NOT_RUN"
+  },
+  "advisory_evaluation": "DEFERRED_NO_CALL",
+  "task_public": {
+    "id": "archive-recovery-s17-v1",
+    "name": "Archive recovery and the release boundary · S-17",
+    "intent": "Prepare an archive-recovery handoff that preserves release approval, every urgent-restore condition, rehearsal scope and the unresolved vendor-copy question.",
+    "purpose": "Communicate a software archive recovery policy without granting execution authority",
+    "audience": "Fresh archive recovery coordinator",
+    "source": {
+      "id": "archive-recovery-policy-s17-v1",
+      "text": "A passing validation report is evidence of archive readiness, not approval to release the archive. The project owner must separately approve every public archive release.\nAn urgent restore to the private recovery workspace may precede release review only when the backup signature is verified, two maintainers are present, the audit trail is retained, and the project owner is notified the same day. This exception never permits a public release or removal of audit records.\nThe recovery rehearsal covers synthetic test records only, not customer records. Whether the external vendor may retain a recovery copy is unresolved; no permission to send a copy to that vendor has been granted.",
+      "hash": "e2600a515566dad94df3632cfff7eb1cd92a0d71693d9dd2c6fa0473f1c682c2"
+    }
+  },
+  "application_question_standing": "HOST_ONLY_FILE_NOT_SUPPLIED_TO_SENDER_OR_CHALLENGER",
+  "credential_availability": "NOT_CHECKED_NO_PROCESS_SECRETS_READ",
+  "planned_requests": {
+    "basic": 3,
+    "with_mediation": 4,
+    "ceiling_including_failed_and_manual_repeat_attempts": 6
+  },
+  "service_use": {
+    "status": "UNRESOLVED_REQUIRES_APPLICABLE_SERVICE_CONFIRMATION",
+    "checked_on": "2026-10-23",
+    "sources": [
+      "https://dev.opencode.ai/v2/docs/console/go",
+      "https://opencode.ai/legal/terms-of-service"
+    ],
+    "finding": "Go guidance is scoped to typical coding-agent traffic. General internal-use terms do not establish affirmative permission for this communication research workload."
+  },
+  "human_acceptance": "PRODUCT_OWNER_MUST_PERSONALLY_DECIDE_IN_UI; TEST_OPERATOR_REFUSED_FOR_REAL_RECIPIENT",
+  "preparation_command": "node --experimental-transform-types apps/language-demo/server/app.mjs --task apps/language-demo/tasks/lc-01s-s17-v1.json --data apps/language-demo/.data/lc-01s-s17-01 --expected-plan-hash b9e3fdc5595f7397c4507047cb717a789b7eb63aa89e1da9335ae1eaac8c01d6",
+  "future_authorized_command": "node --experimental-transform-types apps/language-demo/server/app.mjs --task apps/language-demo/tasks/lc-01s-s17-v1.json --data apps/language-demo/.data/lc-01s-s17-01 --expected-plan-hash b9e3fdc5595f7397c4507047cb717a789b7eb63aa89e1da9335ae1eaac8c01d6 --enable-remote",
+  "execution_requirements": [
+    "product owner accepts exact displayed plan",
+    "applicable Go workload use confirmed",
+    "human launches with --enable-remote and OPENCODE_API_KEY in process env",
+    "human approves matching finite plan in UI",
+    "human personally accepts/rejects/corrects exact semantic version before recipient transfer"
+  ],
+  "live_provider_requests": 0
+}

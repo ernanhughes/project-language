@@ -1,0 +1,535 @@
+{
+  "schema": "lc02-r7-gate-analysis/0.1",
+  "standing": "POST_EXECUTION_ANALYSIS_OF_FROZEN_RESULTS",
+  "created": "2026-10-24",
+  "criteria_sha256": "deb6401aa205e16bf410c9423c21dee535cbbddd65b7ffdab71040a36ffdb25e",
+  "model": {
+    "provider": "ollama-local",
+    "id": "qwen3.5:latest",
+    "digest": "6488c96fa5faab64bb65cbd30d4289e20e6130ef535a93ef9a49f42eda893ea7",
+    "size": 6594474711,
+    "parameter_size": "9.7B",
+    "quantization": "Q4_K_M"
+  },
+  "prompt_version": "lc02-r7-review-prompt/0.4",
+  "metrics": {
+    "A": {
+      "cases": 24,
+      "corruption_cases": 12,
+      "detected_corruptions": 9,
+      "missed_corruptions": [
+        "R7-E05",
+        "R7-E08",
+        "R7-E12"
+      ],
+      "detection_rate": 0.75,
+      "false_acceptances": [],
+      "faithful_cases": 8,
+      "faithful_accepted": 7,
+      "false_rejections": [
+        "R7-E13"
+      ],
+      "unnecessary_clarifications": [
+        "R7-E05"
+      ],
+      "ambiguity_cases": 4,
+      "ambiguity_correct": 3,
+      "justified_uncertainty_clean": [
+        "R7-E21",
+        "R7-E22",
+        "R7-E23"
+      ],
+      "invented_uncertainty_clean": [
+        "R7-E09"
+      ],
+      "missing_condition_correct": [
+        "R7-E06"
+      ],
+      "exception_scope_correct": [],
+      "causal_correct": [
+        "R7-E10"
+      ],
+      "epistemic_correct": [],
+      "source_grounded": 19,
+      "policy_correct": 21,
+      "policy_accuracy": 0.875,
+      "latency_ms": {
+        "avg": 1205.4067000000005,
+        "max": 2951.5580999999947
+      },
+      "usage": null
+    },
+    "B": {
+      "cases": 24,
+      "corruption_cases": 12,
+      "detected_corruptions": 8,
+      "missed_corruptions": [
+        "R7-E06",
+        "R7-E10",
+        "R7-E11",
+        "R7-E12"
+      ],
+      "detection_rate": 0.6666666666666666,
+      "false_acceptances": [],
+      "faithful_cases": 8,
+      "faithful_accepted": 7,
+      "false_rejections": [
+        "R7-E17"
+      ],
+      "unnecessary_clarifications": [],
+      "ambiguity_cases": 4,
+      "ambiguity_correct": 3,
+      "justified_uncertainty_clean": [
+        "R7-E21",
+        "R7-E22",
+        "R7-E23"
+      ],
+      "invented_uncertainty_clean": [
+        "R7-E09"
+      ],
+      "missing_condition_correct": [],
+      "exception_scope_correct": [
+        "R7-E05"
+      ],
+      "causal_correct": [],
+      "epistemic_correct": [
+        "R7-E08"
+      ],
+      "source_grounded": 17,
+      "policy_correct": 22,
+      "policy_accuracy": 0.9166666666666666,
+      "reviewer_errors": [],
+      "latency_ms": {
+        "avg": 6573.289487499999,
+        "max": 9313.632299999997
+      },
+      "usage": {
+        "input": 22329,
+        "output": 5460
+      }
+    },
+    "C": {
+      "cases": 24,
+      "corruption_cases": 12,
+      "detected_corruptions": 11,
+      "missed_corruptions": [
+        "R7-E12"
+      ],
+      "detection_rate": 0.9166666666666666,
+      "false_acceptances": [],
+      "faithful_cases": 8,
+      "faithful_accepted": 6,
+      "false_rejections": [
+        "R7-E13",
+        "R7-E17"
+      ],
+      "unnecessary_clarifications": [],
+      "ambiguity_cases": 4,
+      "ambiguity_correct": 3,
+      "justified_uncertainty_clean": [
+        "R7-E21",
+        "R7-E22",
+        "R7-E23"
+      ],
+      "invented_uncertainty_clean": [
+        "R7-E09"
+      ],
+      "missing_condition_correct": [
+        "R7-E06"
+      ],
+      "exception_scope_correct": [
+        "R7-E05"
+      ],
+      "causal_correct": [
+        "R7-E10"
+      ],
+      "epistemic_correct": [
+        "R7-E08"
+      ],
+      "source_grounded": 22,
+      "policy_correct": 21,
+      "policy_accuracy": 0.875,
+      "disagreements": 26,
+      "latency_ms": {
+        "avg": 7778.696187499999,
+        "max": 10594.111399999994
+      },
+      "usage": null
+    }
+  },
+  "gates": {
+    "HG1": {
+      "pass": true,
+      "observed": []
+    },
+    "HG2": {
+      "pass": true,
+      "observed": {
+        "C": 11,
+        "A": 9
+      }
+    },
+    "HG3": {
+      "pass": false,
+      "observed": {
+        "C": [
+          "R7-E13",
+          "R7-E17"
+        ],
+        "A": [
+          "R7-E13"
+        ]
+      }
+    },
+    "HG4": {
+      "pass": false,
+      "observed": {
+        "justified": [
+          "R7-E21",
+          "R7-E22",
+          "R7-E23"
+        ],
+        "invented": [
+          "R7-E09"
+        ],
+        "ambiguity": 3
+      }
+    },
+    "HG5": {
+      "pass": false,
+      "observed": {
+        "gainsOverA": [
+          "R7-E05",
+          "R7-E08",
+          "R7-E13"
+        ],
+        "lossesVsA": [],
+        "falseRejectionDelta": 1
+      }
+    },
+    "HG6": {
+      "pass": true,
+      "observed": {
+        "valid": 24,
+        "total": 24,
+        "invalid": []
+      }
+    },
+    "HG7": {
+      "pass": true,
+      "observed": {
+        "violations": [],
+        "useCases": [
+          "R7-E14",
+          "R7-E15",
+          "R7-E16",
+          "R7-E18",
+          "R7-E19",
+          "R7-E20"
+        ]
+      }
+    },
+    "HG8": {
+      "pass": true,
+      "observed": {
+        "matched_expected": 22,
+        "matched_source": 22,
+        "matched_transformation": 22,
+        "case_level_source_grounded": 22
+      }
+    }
+  },
+  "hard_gates_passed": false,
+  "secondary": {
+    "ST1": {
+      "pass": false,
+      "observed": {
+        "faithful_accepted": 6,
+        "unnecessary": []
+      }
+    },
+    "ST2": {
+      "pass": false,
+      "observed": 21
+    },
+    "ST3": {
+      "pass": true,
+      "observed": {
+        "detection": 8,
+        "faithful": 7
+      }
+    },
+    "ST4": {
+      "pass": true,
+      "observed": {
+        "B_latency_avg_ms": 6573.289487499999,
+        "B_latency_max_ms": 9313.632299999997,
+        "C_latency_avg_ms": 7778.696187499999,
+        "input_tokens": 22329,
+        "output_tokens": 5460
+      }
+    }
+  },
+  "detection_gains_over_A": [
+    "R7-E05",
+    "R7-E08",
+    "R7-E13"
+  ],
+  "detection_losses_vs_A": [],
+  "reviewer_valid": 24,
+  "reviewer_invalid": [],
+  "integrity_violations": [],
+  "matched_evidence": {
+    "matched_expected": 22,
+    "matched_source": 22,
+    "matched_transformation": 22
+  },
+  "misses": [
+    {
+      "id": "R7-E12",
+      "class": "INVENTED_AUTHORITY",
+      "policy": "PRESERVE_SOURCE",
+      "expected": [
+        {
+          "type": "UNSUPPORTED_ADDITION_CANDIDATE",
+          "distinction": "INVENTED_AUTHORITY",
+          "source_quote": "It does not authorise rollback.",
+          "transformation_quote": "The operator may roll back the release without approval.",
+          "severity": "MATERIAL"
+        }
+      ],
+      "deterministic": [
+        {
+          "type": "MISSING_CANDIDATE",
+          "distinction": "MISSING_MEANING",
+          "source_spans": [
+            "It does not authorise rollback."
+          ]
+        },
+        {
+          "type": "UNSUPPORTED_ADDITION_CANDIDATE",
+          "distinction": "INVENTED_AUTHORITY",
+          "source_spans": [
+            "The note records a failed migration."
+          ]
+        }
+      ],
+      "reviewer": [
+        {
+          "id": "ra1",
+          "claim": "The transformation asserts that the operator may roll back the release without approval, whereas the source explicitly states that the note does not authorise rollback.",
+          "change_kind": "EXCEPTION_SCOPE",
+          "epistemic_direction": "NONE",
+          "material": true,
+          "source_quote": "It does not authorise rollback.",
+          "transformation_quote": "The operator may roll back the release without approval.",
+          "explanation": "The transformation broadens the scope of permitted actions by granting rollback authority ('may roll back') which is explicitly denied in the source ('does not authorise rollback'). This constitutes a material change to the set of cases covered by the prohibition/permission.",
+          "confidence": "HIGH",
+          "standing": "PROVISIONAL_MODEL_PROPOSAL"
+        }
+      ],
+      "hybrid": [
+        {
+          "origin": "DETERMINISTIC",
+          "type": "MISSING_CANDIDATE",
+          "distinction": "MISSING_MEANING",
+          "status": "DISPUTED",
+          "severity": "MATERIAL",
+          "source_spans": [
+            "It does not authorise rollback."
+          ]
+        },
+        {
+          "origin": "DETERMINISTIC",
+          "type": "UNSUPPORTED_ADDITION_CANDIDATE",
+          "distinction": "INVENTED_AUTHORITY",
+          "status": "DETERMINISTIC_ONLY",
+          "severity": "MATERIAL",
+          "source_spans": [
+            "The note records a failed migration."
+          ]
+        },
+        {
+          "origin": "MODEL_ASSISTED",
+          "type": "CHANGED_CANDIDATE",
+          "distinction": "BROADENED_EXCEPTION",
+          "status": "DISPUTED",
+          "severity": "MATERIAL",
+          "source_spans": [
+            "It does not authorise rollback."
+          ]
+        }
+      ]
+    }
+  ],
+  "false_rejections": [
+    {
+      "id": "R7-E13",
+      "expected": [
+        {
+          "type": "PRESERVED_CANDIDATE",
+          "distinction": "PRESERVED",
+          "source_quote": "Samples may be stored for up to twenty-one days.",
+          "transformation_quote": "The sample storage limit is no more than twenty-one days.",
+          "severity": "INFO"
+        }
+      ],
+      "deterministic": [
+        {
+          "type": "CHANGED_CANDIDATE",
+          "distinction": "MODALITY_CHANGE",
+          "source_spans": [
+            "Samples may be stored for up to twenty-one days."
+          ]
+        },
+        {
+          "type": "UNSUPPORTED_ADDITION_CANDIDATE",
+          "distinction": "UNSUPPORTED_CONTENT",
+          "source_spans": [
+            "Samples may be stored for up to twenty-one days."
+          ]
+        },
+        {
+          "type": "UNSUPPORTED_ADDITION_CANDIDATE",
+          "distinction": "UNSUPPORTED_CONTENT",
+          "source_spans": [
+            "Samples may be stored for up to twenty-one days."
+          ]
+        }
+      ],
+      "reviewer": [
+        {
+          "id": "ra1",
+          "claim": "The sample storage limit is no more than twenty-one days.",
+          "change_kind": "NO_MATERIAL_CHANGE",
+          "epistemic_direction": "NONE",
+          "material": false,
+          "source_quote": "Samples may be stored for up to twenty-one days.",
+          "transformation_quote": "The sample storage limit is no more than twenty-one days.",
+          "explanation": "The transformation faithfully paraphrases the source's upper bound of 'up to twenty-one days' into 'no more than twenty-one days' without altering the semantic meaning or introducing new constraints.",
+          "confidence": "HIGH",
+          "standing": "PROVISIONAL_MODEL_PROPOSAL"
+        }
+      ],
+      "hybrid": [
+        {
+          "origin": "DETERMINISTIC",
+          "type": "CHANGED_CANDIDATE",
+          "distinction": "MODALITY_CHANGE",
+          "status": "DISPUTED",
+          "severity": "MATERIAL",
+          "source_spans": [
+            "Samples may be stored for up to twenty-one days."
+          ]
+        },
+        {
+          "origin": "DETERMINISTIC",
+          "type": "UNSUPPORTED_ADDITION_CANDIDATE",
+          "distinction": "UNSUPPORTED_CONTENT",
+          "status": "DETERMINISTIC_ONLY",
+          "severity": "MATERIAL",
+          "source_spans": [
+            "Samples may be stored for up to twenty-one days."
+          ]
+        },
+        {
+          "origin": "DETERMINISTIC",
+          "type": "UNSUPPORTED_ADDITION_CANDIDATE",
+          "distinction": "UNSUPPORTED_CONTENT",
+          "status": "DETERMINISTIC_ONLY",
+          "severity": "MATERIAL",
+          "source_spans": [
+            "Samples may be stored for up to twenty-one days."
+          ]
+        },
+        {
+          "origin": "MODEL_ASSISTED",
+          "type": "PRESERVED_CANDIDATE",
+          "distinction": "PRESERVED",
+          "status": "DISPUTED",
+          "severity": "INFO",
+          "source_spans": [
+            "Samples may be stored for up to twenty-one days."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "R7-E17",
+      "expected": [
+        {
+          "type": "PRESERVED_CANDIDATE",
+          "distinction": "PRESERVED",
+          "source_quote": "During a storm, operators may copy the recovery key into a sealed laptop.",
+          "transformation_quote": "During a storm, operators are allowed to duplicate the recovery key into an isolated laptop.",
+          "severity": "INFO"
+        }
+      ],
+      "deterministic": [
+        {
+          "type": "PRESERVED_CANDIDATE",
+          "distinction": "PRESERVED",
+          "source_spans": [
+            "During a storm, operators may copy the recovery key into a sealed laptop."
+          ]
+        }
+      ],
+      "reviewer": [
+        {
+          "id": "ra1",
+          "claim": "The transformation changes 'sealed' to 'isolated' without source support.",
+          "change_kind": "UNSUPPORTED_ADDITION",
+          "epistemic_direction": "NONE",
+          "material": true,
+          "source_quote": "sealed laptop",
+          "transformation_quote": "isolated laptop",
+          "explanation": "The transformation substitutes 'sealed' with 'isolated'. While semantically similar in a security context, the source explicitly specifies 'sealed', and the transformation introduces a new term ('isolated') that is not verbatim or strictly equivalent to the source's specific condition without additional evidence.",
+          "confidence": "HIGH",
+          "standing": "PROVISIONAL_MODEL_PROPOSAL"
+        },
+        {
+          "id": "ra2",
+          "claim": "The transformation changes 'may' to 'are allowed to'.",
+          "change_kind": "NO_MATERIAL_CHANGE",
+          "epistemic_direction": "NONE",
+          "material": false,
+          "source_quote": "operators may copy",
+          "transformation_quote": "operators are allowed to duplicate",
+          "explanation": "The change from 'may' to 'are allowed to' and 'copy' to 'duplicate' constitutes a faithful paraphrase of the permission granted.",
+          "confidence": "HIGH",
+          "standing": "PROVISIONAL_MODEL_PROPOSAL"
+        }
+      ],
+      "hybrid": [
+        {
+          "origin": "BOTH",
+          "type": "PRESERVED_CANDIDATE",
+          "distinction": "PRESERVED",
+          "status": "CORROBORATED",
+          "severity": "INFO",
+          "source_spans": [
+            "During a storm, operators may copy the recovery key into a sealed laptop."
+          ]
+        },
+        {
+          "origin": "MODEL_ASSISTED",
+          "type": "UNSUPPORTED_ADDITION_CANDIDATE",
+          "distinction": "UNSUPPORTED_CONTENT",
+          "status": "DISPUTED",
+          "severity": "MATERIAL",
+          "source_spans": [
+            "sealed laptop"
+          ]
+        }
+      ]
+    }
+  ],
+  "use_cases_C": [
+    "R7-E14",
+    "R7-E15",
+    "R7-E16",
+    "R7-E18",
+    "R7-E19",
+    "R7-E20"
+  ]
+}

@@ -1,0 +1,417 @@
+{
+  "schema": "lc03-p0-feasibility/0.1",
+  "standing": "OFFLINE_FEASIBILITY_ONLY_SCRIPTED_ANSWERS_NOT_MODEL_OBSERVATION",
+  "created": "2026-10-24",
+  "source": {
+    "id": "incident-2026-03-17",
+    "chars": 1378,
+    "sha256": "4764c4aebfb3ddb8c18ed337f72f2729d0f61496dece48551f33d2135da42da1"
+  },
+  "record": {
+    "claims": 12,
+    "relations": 3,
+    "qualifiers": 1,
+    "problems": []
+  },
+  "arms": {
+    "A": {
+      "arm": "A",
+      "name": "original source + navigation",
+      "source_chars": 1378,
+      "query": "replication lag was under one second",
+      "found": {
+        "start": 848,
+        "end": 884
+      },
+      "source_is_byte_equal": true,
+      "source_sha256": "4764c4aebfb3ddb8c18ed337f72f2729d0f61496dece48551f33d2135da42da1",
+      "model_calls": 0
+    },
+    "B": {
+      "arm": "B",
+      "name": "task-specific representation",
+      "source_chars": 1378,
+      "representation_chars": 2674,
+      "views": [
+        {
+          "task": "approve_fix",
+          "representation": "diagram",
+          "decision": "SHOW",
+          "why": "every declared obligation survived",
+          "is_source": false,
+          "chars": 520,
+          "lost": []
+        },
+        {
+          "task": "approve_fix",
+          "representation": "table",
+          "decision": "SHOW",
+          "why": "every declared obligation survived",
+          "is_source": false,
+          "chars": 495,
+          "lost": []
+        },
+        {
+          "task": "follow_procedure",
+          "representation": "annotated_source",
+          "decision": "SHOW",
+          "why": "the source is shown as it is",
+          "is_source": true,
+          "chars": 1659,
+          "lost": []
+        }
+      ],
+      "trace": [
+        {
+          "stage": "record",
+          "note": "12 claims, 3 relations, 1 qualifiers, each citing the source"
+        },
+        {
+          "stage": "validate the record",
+          "note": "traces to the source"
+        },
+        {
+          "stage": "choose",
+          "note": "diagram + table: she needs the structure of the argument and a comparison"
+        },
+        {
+          "stage": "render diagram",
+          "note": "520 characters"
+        },
+        {
+          "stage": "validate the check for diagram",
+          "note": "validated; faithful reference passes: true"
+        },
+        {
+          "stage": "check diagram",
+          "note": "SHOW: every declared obligation survived"
+        },
+        {
+          "stage": "render table",
+          "note": "495 characters"
+        },
+        {
+          "stage": "validate the check for table",
+          "note": "validated; faithful reference passes: true"
+        },
+        {
+          "stage": "check table",
+          "note": "SHOW: every declared obligation survived"
+        },
+        {
+          "stage": "record",
+          "note": "12 claims, 3 relations, 1 qualifiers, each citing the source"
+        },
+        {
+          "stage": "validate the record",
+          "note": "traces to the source"
+        },
+        {
+          "stage": "choose",
+          "note": "annotated_source (source unchanged): the prose already does the job; changing its form invites loss of qualifiers"
+        },
+        {
+          "stage": "render annotated_source",
+          "note": "1659 characters"
+        },
+        {
+          "stage": "check annotated_source",
+          "note": "skipped: nothing was transformed"
+        }
+      ],
+      "model_calls": 0
+    },
+    "C": {
+      "arm": "C",
+      "name": "representation + advisory constraint inspection",
+      "representation_chars": 2674,
+      "advisory": {
+        "browser_gate": {
+          "lossy_control_lost": [
+            "row-condition-q1"
+          ],
+          "lossy_control_decision": "FALL_BACK_TO_SOURCE",
+          "lossy_control_why": "still losing row-condition-q1 after 1 attempt(s)"
+        },
+        "r6": {
+          "findings": [
+            {
+              "type": "CHANGED_CANDIDATE",
+              "distinction": "NEGATION_REVERSAL",
+              "severity": "MATERIAL",
+              "source_spans": [
+                "H3 is ruled out only if replication lag was under one second, and the lag data has a gap from 09:00 to 09:06."
+              ],
+              "transformation_spans": [
+                "H3 stale replica promoted | none cited | uncertain"
+              ],
+              "reason": "Source says “H3 is ruled out only if replication lag was under one second, and the lag data has a gap from 09:00 to 09:06.”; transformation says “H3 stale replica promoted | none cited | uncertain”. Negation polarity differs."
+            },
+            {
+              "type": "MISSING_CANDIDATE",
+              "distinction": "MISSING_PREREQUISITE",
+              "severity": "MATERIAL",
+              "source_spans": [
+                "H3 is ruled out only if replication lag was under one second, and the lag data has a gap from 09:00 to 09:06."
+              ],
+              "transformation_spans": [
+                "H3 stale replica promoted | none cited | uncertain"
+              ],
+              "reason": "Source says “H3 is ruled out only if replication lag was under one second, and the lag data has a gap from 09:00 to 09:06.”; transformation says “H3 stale replica promoted | none cited | uncertain”. The required condition “the lag data has a gap from 09:00 to 09:06” is not preserved in the transformation."
+            },
+            {
+              "type": "UNSUPPORTED_ADDITION_CANDIDATE",
+              "distinction": "UNSUPPORTED_CONTENT",
+              "severity": "MATERIAL",
+              "source_spans": [
+                "H3 is ruled out only if replication lag was under one second, and the lag data has a gap from 09:00 to 09:06."
+              ],
+              "transformation_spans": [
+                "H3 stale replica promoted | none cited | uncertain"
+              ],
+              "reason": "No adequate source counterpart supports the transformation unit “H3 stale replica promoted | none cited | uncertain” (best alignment 0.10)."
+            }
+          ],
+          "policy": "PRESERVE_SOURCE",
+          "action_authority": false,
+          "advisory_only": true
+        }
+      },
+      "model_calls": 0
+    }
+  },
+  "negative_control": {
+    "name": "lossy H3 table row",
+    "lost_obligations": [
+      "row-condition-q1"
+    ],
+    "gate_decision": "FALL_BACK_TO_SOURCE",
+    "gate_why": "still losing row-condition-q1 after 1 attempt(s)",
+    "gate_would_show_source": true
+  },
+  "scoring": {
+    "case": "LC03-D01",
+    "standing": "SCRIPTED_ILLUSTRATION",
+    "answers": {
+      "A": {
+        "atoms": [
+          "h2-support",
+          "h1-support",
+          "h4-contradicted",
+          "fix-proposal",
+          "recovery-order",
+          "services-affected"
+        ],
+        "conditions": [
+          "h3-condition",
+          "h3-gap",
+          "recovery-exception"
+        ],
+        "uncertainty": [
+          "disputed-root-cause",
+          "h3-uncertain"
+        ],
+        "evidence": {
+          "h2-support": "The migration lock logs support H2",
+          "h1-support": "The volume graph supports H1",
+          "h4-contradicted": "The partition report contradicts H4 because loss ended before writes stopped",
+          "fix-proposal": "Ben proposes adding a disk alert at 85 percent, because the volume reached 98 percent before any migration lock was taken",
+          "recovery-order": "run the failover script. Then confirm the writer is healthy. Then re-enable the nightly job",
+          "services-affected": "The services checkout-api and ledger were degraded throughout"
+        },
+        "selected": [
+          "h2-support",
+          "h1-support",
+          "h4-contradicted",
+          "fix-proposal",
+          "recovery-order",
+          "services-affected",
+          "h3-condition",
+          "h3-gap",
+          "recovery-exception",
+          "disputed-root-cause",
+          "h3-uncertain"
+        ],
+        "unsupported": []
+      },
+      "B": {
+        "atoms": [
+          "h2-support",
+          "h1-support",
+          "fix-proposal",
+          "recovery-order",
+          "services-affected"
+        ],
+        "conditions": [
+          "h3-condition"
+        ],
+        "uncertainty": [
+          "disputed-root-cause"
+        ],
+        "evidence": {
+          "h2-support": "The migration lock logs support H2",
+          "h1-support": "The volume graph supports H1",
+          "fix-proposal": "Ben proposes adding a disk alert at 85 percent, because the volume reached 98 percent before any migration lock was taken",
+          "recovery-order": "run the failover script. Then confirm the writer is healthy. Then re-enable the nightly job",
+          "services-affected": "The services checkout-api and ledger were degraded throughout"
+        },
+        "selected": [
+          "h2-support",
+          "h1-support",
+          "h4-contradicted",
+          "fix-proposal",
+          "recovery-order",
+          "services-affected",
+          "h3-condition",
+          "h3-gap",
+          "recovery-exception"
+        ],
+        "unsupported": [
+          "H2 caused the outage."
+        ]
+      },
+      "C": {
+        "atoms": [
+          "h2-support",
+          "h1-support",
+          "h4-contradicted",
+          "fix-proposal",
+          "recovery-order",
+          "services-affected"
+        ],
+        "conditions": [
+          "h3-condition",
+          "h3-gap",
+          "recovery-exception"
+        ],
+        "uncertainty": [
+          "disputed-root-cause",
+          "h3-uncertain"
+        ],
+        "evidence": {
+          "h2-support": "The migration lock logs support H2",
+          "h1-support": "The volume graph supports H1",
+          "h4-contradicted": "The partition report contradicts H4 because loss ended before writes stopped",
+          "fix-proposal": "Ben proposes adding a disk alert at 85 percent, because the volume reached 98 percent before any migration lock was taken",
+          "recovery-order": "run the failover script. Then confirm the writer is healthy. Then re-enable the nightly job",
+          "services-affected": "The services checkout-api and ledger were degraded throughout"
+        },
+        "selected": [
+          "h2-support",
+          "h1-support",
+          "h4-contradicted",
+          "fix-proposal",
+          "recovery-order",
+          "services-affected",
+          "h3-condition",
+          "h3-gap",
+          "recovery-exception",
+          "disputed-root-cause",
+          "h3-uncertain"
+        ],
+        "unsupported": []
+      }
+    },
+    "scores": {
+      "A": {
+        "required_atoms": {
+          "present": 6,
+          "total": 6
+        },
+        "evidence": {
+          "exact": 6,
+          "total": 6
+        },
+        "conditions": {
+          "present": 3,
+          "total": 3
+        },
+        "uncertainty": {
+          "present": 2,
+          "total": 2
+        },
+        "unsupported_additions": 0,
+        "selection": {
+          "relevant_selected": true,
+          "ratio": 1
+        },
+        "correctness": 1,
+        "source_preferable": false
+      },
+      "B": {
+        "required_atoms": {
+          "present": 5,
+          "total": 6
+        },
+        "evidence": {
+          "exact": 5,
+          "total": 6
+        },
+        "conditions": {
+          "present": 1,
+          "total": 3
+        },
+        "uncertainty": {
+          "present": 1,
+          "total": 2
+        },
+        "unsupported_additions": 1,
+        "selection": {
+          "relevant_selected": true,
+          "ratio": 1
+        },
+        "correctness": 0.833,
+        "source_preferable": false
+      },
+      "C": {
+        "required_atoms": {
+          "present": 6,
+          "total": 6
+        },
+        "evidence": {
+          "exact": 6,
+          "total": 6
+        },
+        "conditions": {
+          "present": 3,
+          "total": 3
+        },
+        "uncertainty": {
+          "present": 2,
+          "total": 2
+        },
+        "unsupported_additions": 0,
+        "selection": {
+          "relevant_selected": true,
+          "ratio": 1
+        },
+        "correctness": 1,
+        "source_preferable": false
+      }
+    },
+    "lookupScore": {
+      "standing": "SCRIPTED_LOOKUP_FIXTURE",
+      "source_preferable": true,
+      "A_exact_quotes": true,
+      "B_exact_quotes": false,
+      "C_exact_quotes": true,
+      "note": "The lookup case is marked source-preferable because the task requires exact quotation; a representation must not paraphrase the condition or gap."
+    }
+  },
+  "cost": {
+    "A_chars": 1378,
+    "B_chars": 2674,
+    "C_chars": 3274,
+    "A_stages": 1,
+    "B_stages": 14,
+    "C_stages": 15,
+    "model_calls": 0
+  },
+  "limitations": [
+    "The answers are scripted, not generated by a recipient model.",
+    "The B representation is deterministic core/browser output, not an AI-mediated representation.",
+    "The R6 advisory check is run on a deliberately lossy H3 row, not on a model-generated handoff.",
+    "The single incident source is exposed development material, not held-out evidence.",
+    "No benefit, superiority or production claim follows from this feasibility run."
+  ]
+}

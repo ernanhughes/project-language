@@ -1,0 +1,73 @@
+{
+  "schema": "lc02-r6-evidence-integrity/0.1",
+  "checked_at": "2026-10-24",
+  "standing": "OFFLINE_INTEGRITY_CHECK",
+  "batch20_frozen_artifacts": {
+    "path": "experiments/lc-02-batch20/.runs/COMBINED-001",
+    "checked": 231,
+    "bad": 0,
+    "method": "raw-byte SHA-256 against FINAL-HASHES.json"
+  },
+  "r5_historical": {
+    "checker_sha256": "2b11a67ca6b44c61523c3901cbb130fa6da81b0815ead3261f640cf848e902d5",
+    "contract_sha256": "92ab3570a00164123eac5045a838f64e9df8b23efd4592115f88925f9c8bb297",
+    "matches_r5_summary": true,
+    "evaluation_cases_sha256": "60e738896aeb9212d0eb7e4de5a5b9ab63ec5ffb591e0fe44894fe40f7faf083",
+    "evaluation_references_sha256": "2c909a845b1e341652fa30b22c8fb05d2b7eb2b63dd2309529c6a5182bb07eb9",
+    "development_cases_sha256": "c09f4dc6365aebfaa2281262a1987a7007c1dfe1172b551a91fef501529335c4",
+    "development_references_sha256": "ed29863c8b10675e0d91bad719f073c81515325418614ded01b375a8900ed82c",
+    "evaluation_results_sha256": "1a76e8454c75c23b22c41034236362b049b6415072853d18002c3ee64240e32b",
+    "corpus_and_results_unchanged": true
+  },
+  "r6_frozen_artifacts": {
+    "evaluation-cases.json": "35fa89f812b59989b55c6ebf8bb5089f019731f24f85cb4d72d3c3505c52b540",
+    "evaluation-references.json": "ce52c8c41a1cfade926e58e90a035d50daa2294122ea8f12c18da45c3dce9f14",
+    "development-cases.json": "7fc0de690911a519b57f5b3d540662b800c1ad5a30bf197de106df755eeaed09",
+    "development-references.json": "e4d99491d81c7f23a36431f6f099f4f222c8f441d31e23c092f5d75365e4a7a6",
+    "FREEZE.json": "2307af8d79ac9527798265e0a183a09fadbf347d8863f748fb3a2b5dc30cfe99",
+    "semantic-checker-v6.mjs": "ed17ecb14a66ebb42b6f1b03427c4bd4b021d4829e66aee9edc2f3a9f5801692",
+    "semantic-checker-v6-contract.mjs": "c56c812c7b32ab8bca2a2e06a1bf2ae03da43fbb435b8772b9ea14c1d30c3064",
+    "run-compare.mjs": "ca8305f815317019653792368fc07f5b53d18d02cc4b11c5c909e671dbddb8b4",
+    "SUCCESS-CRITERIA.json": "c8692715c89aab8b265752b4dbbcc4cdbd36f5ba37e26522931c89e318210ceb",
+    "CRITERIA-FREEZE.json": "eeb3dba5ebada7ff12e35dc876fda8d7d614c26c860a6bb7c7e4e9db035db005"
+  },
+  "held_out_run": {
+    "path": "experiments/lc-02-r6/.runs/EVAL-001",
+    "executed_once": true,
+    "results_sha256": "b88cf278fd4968aeea2381b621e744e96b2f3f1b9cd65096d7e811c7584d2bdd",
+    "analysis_sha256": "a1aeab96e3eb07739449b85e2489a16ac75c702c926c0223440239048e651f3d",
+    "post_execution_checker_or_corpus_changes": false
+  },
+  "r6_review": {
+    "path": "LC-02-R6-REVIEW.md",
+    "sha256": "5e114c3a209f58e21cf6bb553c97c5d019bae287df1d3580fa8517a63eecc919"
+  },
+  "r6_summary": {
+    "path": "experiments/lc-02-r6/SUMMARY.json",
+    "sha256": "2ede224713e2c0e56262f1e500401aa8972e0444ec452162cb84cfcb72a460b4"
+  },
+  "verification": {
+    "root_typecheck": "PASS",
+    "root_tests": {
+      "pass": 1114,
+      "skip": 3,
+      "fail": 0
+    },
+    "studio_tests": {
+      "pass": 93,
+      "fail": 0
+    },
+    "python_tests": {
+      "pass": 25,
+      "fail": 0
+    }
+  },
+  "policy": {
+    "hosted_models": false,
+    "studio_communication_integration": false,
+    "manuscript_modified": false,
+    "committed": false,
+    "pushed": false
+  },
+  "note": "The repository contained unrelated uncommitted changes before R6. Historical R1-R5 artifacts were not edited by R6. The R6 review report was written after the frozen held-out run."
+}

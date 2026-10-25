@@ -1,0 +1,202 @@
+{
+  "schema": "transfer-01d-v3-baseline/1",
+  "source_directory": "experiments/communication-transfer-v1/artifacts/live-smoke-v3-20261022-213515",
+  "manifest_verified": true,
+  "attempt_receipts_match_results": true,
+  "status": "COMPLETED",
+  "attempts": [
+    {
+      "role": "A",
+      "model": "opencode-go/deepseek-v4.1-flash",
+      "attempt_number": 1,
+      "status": "COMPLETED",
+      "failure": null,
+      "elapsed_ms": 30405.063,
+      "usage": {
+        "input": 354,
+        "output": 4086,
+        "cacheRead": 0,
+        "cacheWrite": 0,
+        "reasoning": 3841,
+        "totalTokens": 4440,
+        "cost": {
+          "input": 0.000053099999999999996,
+          "output": 0.0024516,
+          "cacheRead": 0,
+          "cacheWrite": 0,
+          "total": 0.0025047
+        }
+      },
+      "monetary_usage_standing": "PI_CATALOG_ESTIMATE_NOT_PROVIDER_INVOICE"
+    },
+    {
+      "role": "B",
+      "model": "opencode-go/qwen3.8-flash",
+      "attempt_number": 1,
+      "status": "COMPLETED",
+      "failure": null,
+      "elapsed_ms": 4943.055799999998,
+      "usage": {
+        "input": 359,
+        "output": 268,
+        "cacheRead": 0,
+        "cacheWrite": 0,
+        "totalTokens": 627,
+        "cost": {
+          "input": 0.000053849999999999994,
+          "output": 0.00012596,
+          "cacheRead": 0,
+          "cacheWrite": 0,
+          "total": 0.00017980999999999997
+        },
+        "cacheWrite1h": 0
+      },
+      "monetary_usage_standing": "PI_CATALOG_ESTIMATE_NOT_PROVIDER_INVOICE"
+    },
+    {
+      "role": "C",
+      "model": "opencode-go/glm-5.3",
+      "attempt_number": 1,
+      "status": "FAILED",
+      "failure": "TIMEOUT",
+      "elapsed_ms": 60008.58320000001,
+      "usage": null,
+      "monetary_usage_standing": "PI_CATALOG_ESTIMATE_NOT_PROVIDER_INVOICE"
+    },
+    {
+      "role": "C",
+      "model": "opencode-go/glm-5.3",
+      "attempt_number": 2,
+      "status": "FAILED",
+      "failure": "MALFORMED_JSON",
+      "elapsed_ms": 48660.81890000001,
+      "usage": {
+        "input": 1,
+        "output": 3536,
+        "cacheRead": 480,
+        "cacheWrite": 0,
+        "reasoning": 3242,
+        "totalTokens": 4017,
+        "cost": {
+          "input": 0.0000014,
+          "output": 0.0155584,
+          "cacheRead": 0.0001248,
+          "cacheWrite": 0,
+          "total": 0.0156846
+        }
+      },
+      "monetary_usage_standing": "PI_CATALOG_ESTIMATE_NOT_PROVIDER_INVOICE"
+    },
+    {
+      "role": "C",
+      "model": "opencode-go/glm-5.3",
+      "attempt_number": 3,
+      "status": "FAILED",
+      "failure": "TIMEOUT",
+      "elapsed_ms": 60006.3493,
+      "usage": null,
+      "monetary_usage_standing": "PI_CATALOG_ESTIMATE_NOT_PROVIDER_INVOICE"
+    },
+    {
+      "role": "C",
+      "model": "opencode-go/glm-5.3",
+      "attempt_number": 4,
+      "status": "COMPLETED",
+      "failure": null,
+      "elapsed_ms": 36051.11659999998,
+      "usage": {
+        "input": 1,
+        "output": 2416,
+        "cacheRead": 480,
+        "cacheWrite": 0,
+        "reasoning": 2115,
+        "totalTokens": 2897,
+        "cost": {
+          "input": 0.0000014,
+          "output": 0.0106304,
+          "cacheRead": 0.0001248,
+          "cacheWrite": 0,
+          "total": 0.0107566
+        }
+      },
+      "monetary_usage_standing": "PI_CATALOG_ESTIMATE_NOT_PROVIDER_INVOICE"
+    }
+  ],
+  "sender_spans": [
+    {
+      "id": "p1-prohibition",
+      "valid": true
+    },
+    {
+      "id": "p1-exception",
+      "valid": true
+    },
+    {
+      "id": "p2",
+      "valid": true
+    },
+    {
+      "id": "p3",
+      "valid": true
+    }
+  ],
+  "sender_saw_receiver_questions": true,
+  "source_anchors_transmitted": false,
+  "receiver_decisions": [
+    {
+      "id": "p1",
+      "decision": "NO",
+      "citations": [
+        {
+          "text": "Production audit-log deletion is prohibited even during an incident, and the staging-reset exception never applies to production.",
+          "original_source_verbatim": false,
+          "sender_message_verbatim": true
+        }
+      ]
+    },
+    {
+      "id": "p2",
+      "decision": "YES",
+      "citations": [
+        {
+          "text": "Yes, but only if the emergency rollback restores the last approved build and preserves audit logs; under those conditions no new release review is required.",
+          "original_source_verbatim": false,
+          "sender_message_verbatim": true
+        }
+      ]
+    },
+    {
+      "id": "p3",
+      "decision": "UNKNOWN",
+      "citations": [
+        {
+          "text": "the source says whether third-party archive copies may be erased is unresolved",
+          "original_source_verbatim": false,
+          "sender_message_verbatim": true
+        }
+      ]
+    }
+  ],
+  "advisory": {
+    "supported": true,
+    "unsupported_claims": [],
+    "valid_abstention": true,
+    "rationale": "All three decisions align with the source. p1 (NO): the source prohibits deleting production audit logs 'even during an incident' and explicitly states the staging-reset exception 'never applies to production,' so the staging-reset route to production deletion is correctly denied. p2 (YES): the source permits emergency production rollback without a new release review 'only when it restores the last approved build and preserves audit logs'; the question's scenario satisfies both stated conditions (last approved build restored, logs preserved), so YES is directly grounded. p3 (UNKNOWN): the source explicitly says 'Whether third-party archive copies may be erased is unresolved,' so abstention mirrors the source rather than inventing an authorization or prohibition — a valid abstention, not an evasion. Caveat on evidence quality: the 'quotes' fields are faithful paraphrases rather than verbatim source text (e.g., the p2 quote begins 'Yes, but only if...,' and the p3 quote is a meta-statement about the source), so they should not be treated as literal citations; however, no substantive claim misrepresents the source, and no permissions, prohibitions, or resolved statuses were fabricated. The response makes no claims about the unaddressed source details (policy version P-8, the Cedar service, deployment endpoints), so there is nothing unsupported there either."
+  },
+  "reference_status": "PROPOSED_UNADJUDICATED",
+  "independent_accuracy_rate": null,
+  "reservations": {
+    "planned_calls": 6,
+    "input_admission_units": 20058,
+    "output_tokens_reserved": 98304,
+    "estimated_usd_reserved": 0.33727438000000004,
+    "actual_provider_cost_usd": null,
+    "billing": "UNKNOWN",
+    "dollar_guarantee": false
+  },
+  "actual_invoice_usd": null,
+  "baseline_files": {
+    "results.json": "9c9f9dfe707b2ab3709a527c096790a674e44568fb9ad7ddde4fea5c47a8b03f",
+    "viewer.html": "d3a4ec3cd605a2d5eaf43e509d38e2579e13f6e31ae9a3fc5e8dc1fea96f3633"
+  }
+}

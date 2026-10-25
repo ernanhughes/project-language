@@ -1,0 +1,4 @@
+{
+  "error": "locator.click: Error: strict mode violation: locator('#exact-meaning summary') resolved to 4 elements:\n    1) <summary>Review exact meaning — all claims, conditions and…</summary> aka getByText('Review exact meaning — all')\n    2) <summary>Check original source quotation</summary> aka getByText('Check original source').first()\n    3) <summary>Check original source quotation</summary> aka getByText('Check original source').nth(1)\n    4) <summary>Check original source quotation</summary> aka getByText('Check original source').nth(2)\n\nCall log:\n\u001b[2m  - waiting for locator('#exact-meaning summary')\u001b[22m\n",
+  "checks": []
+}

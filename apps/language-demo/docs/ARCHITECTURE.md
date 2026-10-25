@@ -6,6 +6,10 @@ Reuse audit: reuse `core/evidence/src/canonical.ts` for canonical serialization 
 
 Canonical application state: strict Language Protocol v0.1 proposals plus immutable source and version lineage. Acceptance is a separate event binding a state digest and communication scope. Editing creates a new proposed version. Model responses cannot supply acceptance, permissions to act or human identity. Mechanical evidence validation is distinct from semantic review and source truth.
 
-Native Node HTTP and JSONL avoid a framework/database dependency. Each model call is a fresh stateless request without tools; Pi remains the repository host for agent use, but an Ollama text request needs no orchestration framework or agent tools. No OpenCode/remote adapter is enabled in LC-01.
+Native Node HTTP and JSONL avoid a framework/database dependency. Each model call is a fresh stateless request without tools; Pi remains the repository host; LC-01R reuses its native OpenCode provider adapters without introducing an orchestration framework or agent tools. Remote dispatch remains disabled until separately approved.
 
 Order: define contracts; implement fixture workflow; validate rejection/staleness/replay; exercise actual browser; attempt a genuinely local backend. LC-02 comparisons remain exploratory, not a frozen evaluation.
+
+## LC-01R provider revision
+
+OpenCode Go replaces Ollama as the active transport without changing the Language protocol. Use `models/runtime.mjs`, the installed Pi ModelRuntime, scoped `config/models.json`, and the explicit remote execution gate. The original fixture and Ollama observations remain historical. See MODEL-RUNTIME.md and LC-01R-OPENCODE-REPORT.md for current controls and qualification limits.

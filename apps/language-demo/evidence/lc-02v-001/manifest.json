@@ -1,0 +1,7 @@
+{
+  "schema": "lc02v-artifact-manifest/0.1",
+  "files": {
+    "comparison.json": "326e4b0ac63520f0263d8fc3a2d4e28538fe2ca1579f6109c96f67ec4a1bdf25",
+    "references.json": "2de03c2adab9817ab41a2fb3695f56ac39e48d002d279250aabef9005b8c06d6"
+  }
+}

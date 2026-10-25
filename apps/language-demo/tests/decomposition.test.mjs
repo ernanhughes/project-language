@@ -1,0 +1,5 @@
+import test from 'node:test';import assert from 'node:assert/strict';
+import {decompositionReview} from '../understanding/decomposition.mjs';
+import {prompts} from '../models/prompts.mjs';
+test('model instructions explicitly permit multi-meaning sentences and cross-sentence evidence',()=>{assert.match(prompts.interpreter,/sentence may express several meanings/);assert.match(prompts.interpreter,/several sentences/);assert.match(prompts.interpreter,/ambiguous readings/);});
+test('diagnostics are advisory and never mutate accepted content',()=>{const p={commitments:[{id:'c1',text:'May deploy and must retain logs',kind:'claim',evidence:[]},{id:'c2',text:'Scope unknown',kind:'unknown',evidence:[]}],relations:[],unknowns:[]};const before=JSON.stringify(p),r=decompositionReview(p);assert.equal(JSON.stringify(p),before);assert.equal(r.semantic_support,'UNKNOWN');assert.ok(r.findings.some(f=>f.dimension==='atomicity'));assert.ok(r.findings.some(f=>f.dimension==='relationships'));assert.ok(r.findings.some(f=>f.dimension==='uncertainty'));});

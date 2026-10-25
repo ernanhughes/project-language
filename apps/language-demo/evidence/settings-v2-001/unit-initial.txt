@@ -1,0 +1,99 @@
+(node:29584) ExperimentalWarning: Transform Types is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+✔ paired development paths preserve source, tasks, fresh recipients and withheld questions (83.1391ms)
+✔ replay preserves captured comparison without regeneration or implicit authorization (42.3503ms)
+✔ candidate agreement does not create semantic adjudication; manual assessments remain distinct (42.3472ms)
+✔ unapproved remote mode cannot consume calls or autoaccept (2.4291ms)
+✖ real path stops for exact human review; both receive same clarification; unchanged approval reused (1.91ms)
+✖ partial failure preserved without retry or output repair (1.7201ms)
+✔ independent evaluation cannot be represented by the exposed development suite (0.904ms)
+✔ saving identical settings/roles preserves approval; material change revokes it (1.1294ms)
+✔ paired requests traverse actual Pi adapters offline with separate sessions and identical questions (228.9045ms)
+✔ switching to manual workflow requires its own explicit approval and preserves comparison state (9.5411ms)
+(node:41324) ExperimentalWarning: Transform Types is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+✔ guided start runs interpreter/challenger once; human approval finishes only recipient (273.7882ms)
+✔ expired remote approval never restored by guided resume; no prior role repeated (25.5232ms)
+(node:46700) ExperimentalWarning: Transform Types is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+✔ historical-size SSE exceeds old cap but passes bounded 1 MiB; exact boundary enforced (191.9373ms)
+✔ only configured response-byte ceiling changes from LC-01R; reservations/tokens/retries unchanged (3.7913ms)
+✔ fresh task is source-bound, locks original inputs and binds the displayed remote plan (7.1141ms)
+✔ model/settings changes revoke approval; no real-operator acceptance is created by a model (33.605ms)
+✔ custom task recipient packet excludes transcript/rejected proposal/question/reference; replay stays captured (54.8889ms)
+✔ accepted content digest is checked before communication and cannot be silently edited (5.3295ms)
+✔ prospective startup hash mismatch stops before listening; injected credential availability does not change plan identity (13.3359ms)
+(node:47512) ExperimentalWarning: Transform Types is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+✔ all four scoped IDs resolve with required families; no network or private credential store (29.252ms)
+✔ installed Pi serializes deepseek-v4.1-flash via openai-completions (125.2956ms)
+✔ installed Pi serializes gpt-6-luna via openai-responses (18.3166ms)
+✔ installed Pi serializes qwen3.8-flash via anthropic-messages (80.4548ms)
+✔ installed Pi serializes claude-haiku-5-5 via anthropic-messages (8.4861ms)
+✔ launcher, plan, service confirmation, credential and budget gates precede dispatch (11.8104ms)
+✔ OpenCode workflow through actual three-family adapters remains isolated and human-gated (37.4289ms)
+✔ recorded failed length attempt never fabricates state or retries (9.8729ms)
+✔ recorded failed incomplete attempt never fabricates state or retries (8.491ms)
+✔ recorded failed http429 attempt never fabricates state or retries (8.3172ms)
+✔ recorded failed http500 attempt never fabricates state or retries (8.0144ms)
+✔ recorded failed timeout attempt never fabricates state or retries (36.3702ms)
+✔ recorded failed malformed attempt never fabricates state or retries (8.4562ms)
+✔ recorded failed schema attempt never fabricates state or retries (12.3239ms)
+✔ manual development retries preserve distinct requests and respect cap; replay never reauthorizes (41.1629ms)
+✔ missing optional Haiku does not block core roles, evaluation remains explicitly unavailable (7.8711ms)
+✔ redaction handles nested keys, bearer strings and echoed raw response without exposing secret (0.1631ms)
+✔ wire input and response bounds reject precisely without retry or state (12.5985ms)
+✔ Console endpoint and non-Go provider are refused; no fallback (1.6933ms)
+(node:37920) ExperimentalWarning: Transform Types is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+✔ strict protocol, source/hash/span/origin and inferred/source standing (6.528ms)
+✔ contradiction is explicit review state; unresolved information never grants authority (14.393ms)
+✔ challenge cannot accept; missing qualification remains visible; human acceptance exact version and scope (21.4456ms)
+✔ rejection blocks communication; no implicit negotiation (13.037ms)
+✔ sender isolation, sealing, parity, context denial and fresh recipient (22.1589ms)
+✔ append-only persisted replay and integrity rejection (29.0398ms)
+✔ local registry, role rotation, exact no-history request and usage (3.7426ms)
+✔ provider timeout records failure with no retry/fallback (0.915ms)
+✔ provider truncation records failure with no retry/fallback (0.8418ms)
+✔ provider malformed records failure with no retry/fallback (0.8239ms)
+✔ provider http records failure with no retry/fallback (0.873ms)
+✔ full application HTTP end to end, export and restart without regeneration (97.6509ms)
+✔ intent evolution retains original expression and invalidates acceptance (6.807ms)
+ℹ tests 51
+ℹ suites 0
+ℹ pass 49
+ℹ fail 2
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 1524.9532
+
+✖ failing tests:
+
+test at apps\language-demo\tests\comparison.test.mjs:8:1
+✖ real path stops for exact human review; both receive same clarification; unchanged approval reused (1.91ms)
+  Error: REMOTE_DISABLED_BY_LAUNCHER
+      at assert (file:///C:/Projects/project-language/apps/language-demo/protocol/state.mjs:9:45)
+      at Comparison.gate (file:///C:/Projects/project-language/apps/language-demo/evaluation/comparison.mjs:12:222)
+      at Comparison.start (file:///C:/Projects/project-language/apps/language-demo/evaluation/comparison.mjs:19:179)
+      at Studio.act (file:///C:/Projects/project-language/apps/language-demo/engine/studio.mjs:35:692)
+      at TestContext.<anonymous> (file:///C:/Projects/project-language/apps/language-demo/tests/comparison.test.mjs:8:178)
+      at Test.runInAsyncScope (node:async_hooks:226:14)
+      at Test.run (node:internal/test_runner/test:1201:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:831:18)
+      at Test.postRun (node:internal/test_runner/test:1330:19)
+      at Test.run (node:internal/test_runner/test:1258:12)
+
+test at apps\language-demo\tests\comparison.test.mjs:9:1
+✖ partial failure preserved without retry or output repair (1.7201ms)
+  Error: REMOTE_DISABLED_BY_LAUNCHER
+      at assert (file:///C:/Projects/project-language/apps/language-demo/protocol/state.mjs:9:45)
+      at Comparison.gate (file:///C:/Projects/project-language/apps/language-demo/evaluation/comparison.mjs:12:222)
+      at Comparison.start (file:///C:/Projects/project-language/apps/language-demo/evaluation/comparison.mjs:19:179)
+      at Studio.act (file:///C:/Projects/project-language/apps/language-demo/engine/studio.mjs:35:692)
+      at TestContext.<anonymous> (file:///C:/Projects/project-language/apps/language-demo/tests/comparison.test.mjs:9:136)
+      at Test.runInAsyncScope (node:async_hooks:226:14)
+      at Test.run (node:internal/test_runner/test:1201:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:831:18)
+      at Test.postRun (node:internal/test_runner/test:1330:19)
+      at Test.run (node:internal/test_runner/test:1258:12)

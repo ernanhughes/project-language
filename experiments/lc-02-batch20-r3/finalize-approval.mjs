@@ -1,0 +1,33 @@
+import {readFileSync,writeFileSync} from 'node:fs';
+import {resolve} from 'node:path';
+import {fileURLToPath} from 'node:url';
+import {hash} from '../../apps/language-demo/protocol/state.mjs';
+
+const root=resolve(fileURLToPath(new URL('../../',import.meta.url)));process.chdir(root);
+const args=process.argv.slice(2),opts={};for(let i=0;i<args.length;i++){const key=args[i];if(['--approved-by','--statement','--approval-phrase','--approval','--protocol','--record'].includes(key)&&args[i+1]&&!args[i+1].startsWith('--'))opts[key]=args[++i];else throw Error('UNKNOWN_OR_MISSING_ARGUMENT '+key);}
+for(const k of ['--approved-by','--statement','--approval-phrase'])if(!opts[k]?.trim())throw Error('EXPLICIT_APPROVAL_ARGUMENT_REQUIRED '+k);
+const approvalPath=resolve(opts['--approval']??'experiments/lc-02-batch20-r3/EXPLORATORY-APPROVAL-V2.json');
+const protocolPath=resolve(opts['--protocol']??'experiments/lc-02-batch20-r3/EXPLORATORY-PROTOCOL-V2.json');
+const recordPath=resolve(opts['--record']??'experiments/lc-02-batch20-r3/APPROVAL-RECORD.md');
+const approval=JSON.parse(readFileSync(approvalPath,'utf8'));
+const protocol=JSON.parse(readFileSync(protocolPath,'utf8'));
+if(approval.status==='APPROVED'||protocol.live_execution_authorized===true)throw Error('ALREADY_APPROVED');
+const {hash:oldApprovalHash,...approvalBody}=approval;
+if(oldApprovalHash!==hash(approvalBody))throw Error('APPROVAL_HASH_MISMATCH');
+const {hash:oldProtocolHash,...protocolBody}=protocol;
+if(oldProtocolHash!==hash(protocolBody))throw Error('PROTOCOL_HASH_MISMATCH');
+approval.status='APPROVED';
+approval.approved_by=opts['--approved-by'].trim();
+approval.approved_at=new Date().toISOString();
+approval.approval_statement=opts['--statement'].trim();
+approval.approval_phrase=opts['--approval-phrase'].trim();
+approval.exploratory_live_authorized=true;
+delete approval.hash;approval.hash=hash(approval);
+writeFileSync(approvalPath,JSON.stringify(approval,null,2)+'\n');
+protocol.approval={path:approvalPath,hash:approval.hash,status:approval.status,approved_by:approval.approved_by,approved_at:approval.approved_at};
+protocol.live_execution_authorized=true;
+protocol.standing='EXPLORATORY_PROTOCOL_APPROVED_FOR_SINGLE_RUN';
+delete protocol.hash;protocol.hash=hash(protocol);
+writeFileSync(protocolPath,JSON.stringify(protocol,null,2)+'\n');
+writeFileSync(recordPath,`# Exploratory approval record\n\n- Approval ID: ${approval.approval_id}\n- Status: APPROVED\n- Approved by: ${approval.approved_by}\n- Approved at: ${approval.approved_at}\n- Approval phrase: ${approval.approval_phrase}\n- Statement: ${approval.approval_statement}\n- Design hash: \`${approval.design.sha256}\`\n- R2 protocol hash: \`${approval.r2_protocol.hash}\`\n- Approval hash: \`${approval.hash}\`\n- Exploratory protocol hash: \`${protocol.hash}\`\n\nThis approval is exploratory only. It accepts model-based rather than independent human reference review, the BLANK_ENGLISH_FALLBACK compiler condition, one execution of the sixteen frozen V2 cases, 80 planned calls with an absolute ceiling of 100, no retries/fallback/resume, and no post-result tuning. It does not establish semantic superiority.\n`);
+console.log(JSON.stringify({status:'APPROVED',approval_hash:approval.hash,protocol_hash:protocol.hash,approved_by:approval.approved_by},null,2));

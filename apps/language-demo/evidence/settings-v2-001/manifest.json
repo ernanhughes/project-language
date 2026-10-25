@@ -1,0 +1,29 @@
+{
+  "hosted_model_requests": 0,
+  "credentials_included": false,
+  "files": {
+    "browser/browser.json": "d5ecef72946a52748275e07de94c73f290334edc4973deb2fb250ac660b81116",
+    "browser/comparison.png": "467d397efa485783ac61b6a071989f49b330efc3dce0a26233a3ce81516c6f2b",
+    "browser/settings-mobile.png": "6ff6d27db9e0bfd38891f190ed821bb1894f67113dc20456c30976794fddc57e",
+    "browser/settings.png": "11d3122d8c3abf926814a5955a1409b26592f53cb5c82a2782fa7753e01a24f4",
+    "browser-final/browser.json": "d5ecef72946a52748275e07de94c73f290334edc4973deb2fb250ac660b81116",
+    "browser-final/comparison.png": "467d397efa485783ac61b6a071989f49b330efc3dce0a26233a3ce81516c6f2b",
+    "browser-final/settings-mobile.png": "ca1801ef166539a577f7effd633758f3e80abc2d81b66532324162fd40123b0a",
+    "browser-final/settings.png": "4ca747f72eaede52adcfe99db45f6d97586fcb0826edce9504b48a7b4e975735",
+    "legacy-comparison/browser.json": "13367e26cc99b40cc6a5dbe66298f548913ec8ffd3d86b198a35d919ae1b9d31",
+    "legacy-comparison/human-review-result.png": "28543ef16ecf639967a7c89f1d3baece03331f86bc72c383618b5cb95f3c667f",
+    "legacy-comparison/provider-failure.png": "0bfb168aee04b31b916b432b472fc77f5009acd8013f6172226f53c6b2ca4d80",
+    "legacy-provider/browser.json": "9a1427db56fbaccbd63a853a613fb4c5df0c3594900d48d673ce336f93fe3983",
+    "legacy-provider/comparison.png": "b79c8d5236d6826622dbd3fc1c763a12c4801bc8defe391b4c862b8ec36b3054",
+    "legacy-provider/export.json": "b30bf22e670d878777e645a35b2f664eaedaabbf647806c325b66cfcf23d4f84",
+    "parent-verify.txt": "9af8c7562850f9cd1dd158b74930402e249b4925b1e7d38ea9c20145f0da3e82",
+    "preservation.json": "6f8f5fa5554a983fa2e944f2efffee41393680d394c8e2687f2edef8dbbac977",
+    "source-manifest.json": "e5f8be089e4caabbe6fbb9f6240c69fc352d05a0342c76f8fb8321c263874274",
+    "unit-complete-02.txt": "aea6e23b315aefdfe49fe94a0826887c1b33eb2defdf0f094b19c5395ef6a0ad",
+    "unit-complete.txt": "c79cf38b103243c3385fcb3a57b5ce7dbce96dd29f6e512a6fc39e48e8ea9cb2",
+    "unit-delivery.txt": "c2037bd76f5cc02491d9b923e549201fe53659fbd1e436c213ad0f9659c3bbe0",
+    "unit-final.txt": "14acd5134c668c4304ea67c7843a4815072a855434c8cf59638c8d4c2b7774be",
+    "unit-initial.txt": "fea74ac8d41809844e0889361636433507b74e4cba4f6c7fd08d175d1ccc24f5",
+    "unit.txt": "46a3cfd35ed6b8db96b08c0b643de02e7e5b81ec0e798a848ddc248de147b3ea"
+  }
+}

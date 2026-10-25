@@ -1,0 +1,54 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "properties": {
+    "source_id": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 256
+    },
+    "source_text": {
+      "type": "string",
+      "minLength": 1
+    },
+    "profile": {
+      "type": "string",
+      "enum": [
+        "technical-policy",
+        "general"
+      ]
+    },
+    "profile_version": {
+      "type": "string",
+      "minLength": 1
+    },
+    "context": {
+      "default": {},
+      "type": "object",
+      "properties": {
+        "purpose": {
+          "type": "string"
+        },
+        "intended_recipient": {
+          "type": "string"
+        },
+        "declared_context": {
+          "type": "object",
+          "propertyNames": {
+            "type": "string"
+          },
+          "additionalProperties": {}
+        }
+      },
+      "additionalProperties": false
+    }
+  },
+  "required": [
+    "source_id",
+    "source_text",
+    "profile",
+    "profile_version",
+    "context"
+  ],
+  "additionalProperties": false
+}

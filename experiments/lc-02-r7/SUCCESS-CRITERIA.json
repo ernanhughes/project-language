@@ -1,0 +1,191 @@
+{
+  "schema": "lc02-r7-success-criteria/0.1",
+  "created": "2026-10-24",
+  "standing": "FROZEN_BEFORE_HELD_OUT_EXECUTION",
+  "protocol": {
+    "split": "evaluation",
+    "cases": 24,
+    "development_cases": 12,
+    "references_standing": "AUTHOR_CONSTRUCTED_PROVISIONAL_NOT_INDEPENDENT_HUMAN_ADJUDICATION",
+    "comparison": "A = R6 deterministic; B = local model-assisted reviewer alone; C = deterministic + reviewer reconciliation. All three run on identical frozen cases.",
+    "execution_policy": "The held-out split is executed once. No checker, reviewer prompt, corpus, reference, reconciliation rule or criterion may be changed after execution begins. Historical R4/R5/R6 cases are development material only."
+  },
+  "frozen_artifacts": {
+    "evaluation-cases.json": "4a1d64ef4a0d26b7c68b23177052168b92862b93a451ccf17444ab20e6b0177a",
+    "evaluation-references.json": "9a1a4b6aec363cf3482af94d3f90fda7d738748e1e959768faec853624a32529",
+    "development-cases.json": "686467eeee3af23f01eacfab958c6953a969c3734b2f2c58f8e3b11af8764963",
+    "development-references.json": "ca26544c699ff3d4fc6e1ef8d3b2dd52a54fa349a7468d9ada8cefa67d6dba84",
+    "FREEZE.json": "b53f14bf13f8da8e5cdec7f9d13f05cb14cc95768aaa10af0462fdfa5f82ec52",
+    "semantic-checker-v6.mjs": "ed17ecb14a66ebb42b6f1b03427c4bd4b021d4829e66aee9edc2f3a9f5801692",
+    "semantic-checker-v6-contract.mjs": "c56c812c7b32ab8bca2a2e06a1bf2ae03da43fbb435b8772b9ea14c1d30c3064",
+    "semantic-reviewer-v7-contract.mjs": "e7873b22192923a9ebaf93211ac278c669d28f607427216130716a2b44334980",
+    "semantic-reviewer-v7.mjs": "6216b9fd8051f034f36e9f46253b5a0bc5c3f57e397959cef9ad85714a8c5e15",
+    "hybrid-checker-v7.mjs": "7fad10f7e131f4d537bed6fc607491da6f43735da9aba02c48852cff36b07235",
+    "run-hybrid.mjs": "c7338b5c6b844730e1141e5a88d5aaa5baf10b7d3fe2eae5275c0d002ea826c8",
+    "build-corpus.mjs": "6d5846e4b6505c2fd2d4c49fa225ab0cb43282af33250518b2d434bd9f758f05",
+    "qualification.json": "a9e95bd41055f26086a7eb9b799246a5e381fd7fce7e42d6d9443ebbe0a7d974"
+  },
+  "model": {
+    "provider": "ollama-local",
+    "id": "qwen3.5:latest",
+    "digest": "6488c96fa5faab64bb65cbd30d4289e20e6130ef535a93ef9a49f42eda893ea7",
+    "size": 6594474711,
+    "parameter_size": "9.7B",
+    "quantization": "Q4_K_M",
+    "prompt_version": "lc02-r7-review-prompt/0.4",
+    "reviewer_version": "lc02-r7-local-review/0.1",
+    "think": false,
+    "temperature": 0,
+    "num_predict": 1400,
+    "timeout_ms": 120000,
+    "max_requests": 80,
+    "retries": 0,
+    "fallback": false,
+    "standing": "LOCAL_MODEL_OBSERVATION_NOT_HOSTED_NOT_INDEPENDENT_HUMAN_ADJUDICATION"
+  },
+  "corpus_composition": {
+    "corruption": 12,
+    "faithful": 8,
+    "ambiguity": 4,
+    "corruption_classes": [
+      "WRITTEN_NUMBER_CHANGE",
+      "INCLUSIVE_EXCLUSIVE_BOUNDARY",
+      "DURATION_THRESHOLD_CHANGE",
+      "MULTIPLE_CONSTRAINTS",
+      "BROADENED_EXCEPTION",
+      "MISSING_PREREQUISITE",
+      "MISATTRIBUTED_QUOTATION_OR_SPEAKER",
+      "UNKNOWN_TO_ESTABLISHED_FACT",
+      "INVENTED_UNCERTAINTY",
+      "UNSUPPORTED_CAUSAL",
+      "WRONG_CROSS_SENTENCE_REFERENCE",
+      "INVENTED_AUTHORITY"
+    ],
+    "faithful_classes": [
+      "quantitative paraphrase",
+      "reordered conditions",
+      "harmless omission",
+      "causal qualification preserved",
+      "terminology paraphrase",
+      "multi-rule reorder",
+      "cross-section retention summary",
+      "pronoun-initial obligation"
+    ],
+    "ambiguity_classes": [
+      "unresolved approval",
+      "timestamp ambiguity",
+      "referent ambiguity",
+      "conflicting evidence"
+    ]
+  },
+  "hard_gates": [
+    {
+      "id": "HG1",
+      "name": "No material false acceptance in the hybrid",
+      "criterion": "C receives USE_TRANSFORMATION on zero of the 12 held-out corruption cases. A single material false acceptance blocks integration.",
+      "threshold": "0",
+      "blocker": true
+    },
+    {
+      "id": "HG2",
+      "name": "Hybrid detection and non-regression",
+      "criterion": "C detects at least 10 of 12 held-out corruptions with the expected distinction and exact evidence, and C detects at least as many corruptions as A.",
+      "threshold": "C >= 10/12 and C >= A",
+      "blocker": true
+    },
+    {
+      "id": "HG3",
+      "name": "False-rejection non-regression",
+      "criterion": "C false rejections on the eight faithful cases (PRESERVE_SOURCE) are no worse than A false rejections on the same cases.",
+      "threshold": "C_false_rejections <= A_false_rejections",
+      "blocker": true
+    },
+    {
+      "id": "HG4",
+      "name": "Uncertainty and epistemic attribution",
+      "criterion": "All four genuine ambiguity cases produce UNRESOLVED/SOURCE_AMBIGUITY under C with REQUEST_CLARIFICATION; the invented-uncertainty corruption produces UNSUPPORTED_UNCERTAINTY under C with PRESERVE_SOURCE; no case contains both UNRESOLVED and UNSUPPORTED_UNCERTAINTY as primary findings.",
+      "threshold": "4/4 ambiguity, 1/1 invented, 0 dual",
+      "blocker": true
+    },
+    {
+      "id": "HG5",
+      "name": "Hybrid adds measurable value",
+      "criterion": "C adds at least one net detection or classification gain over A on the held-out sample without losing any A detection and without increasing false rejections; or C removes at least one A false rejection without introducing a false acceptance. Equality with A is not sufficient for adoption.",
+      "threshold": "at least one net gain, no regression",
+      "blocker": true
+    },
+    {
+      "id": "HG6",
+      "name": "Reviewer technical validity",
+      "criterion": "At least 20 of 24 held-out reviewer outputs are VALID: schema-valid JSON with exact source and transformation quotes. Invalid outputs are reported, not repaired or replaced by a different model.",
+      "threshold": ">=20/24",
+      "blocker": true
+    },
+    {
+      "id": "HG7",
+      "name": "Reconciliation integrity",
+      "criterion": "No hybrid USE_TRANSFORMATION occurs when a material deterministic finding, an unresolved/disputed finding, or an unavailable reviewer is present. Deterministic constraint findings are never silently removed or downgraded by the model.",
+      "threshold": "zero violations",
+      "blocker": true
+    },
+    {
+      "id": "HG8",
+      "name": "Evidence grounding",
+      "criterion": "Every matched held-out expected finding has an exact source span; every reviewer finding used by C has exact source and transformation evidence or is marked invalid.",
+      "threshold": "24/24 source-grounded matched findings",
+      "blocker": true
+    }
+  ],
+  "secondary_targets": [
+    {
+      "id": "ST1",
+      "name": "Hybrid faithful acceptance",
+      "target": "At least 7 of 8 faithful cases receive USE_TRANSFORMATION; no more than 1 unnecessary clarification.",
+      "blocker": false
+    },
+    {
+      "id": "ST2",
+      "name": "Hybrid policy accuracy",
+      "target": "At least 22 of 24 held-out cases receive the reference policy.",
+      "blocker": false
+    },
+    {
+      "id": "ST3",
+      "name": "Reviewer-alone usefulness",
+      "target": "B detects at least 8 of 12 corruptions and accepts at least 7 of 8 faithful cases.",
+      "blocker": false
+    },
+    {
+      "id": "ST4",
+      "name": "Cost and latency",
+      "target": "Report total and average local-model latency and token usage. Average reviewer latency below 60 seconds per case is desirable but not a qualification gate.",
+      "blocker": false
+    }
+  ],
+  "required_reporting": [
+    "Per-case outcomes for A, B and C, not only aggregates.",
+    "Corruption detection, missed corruptions and material false acceptances for each method.",
+    "Faithful acceptance, false rejections and unnecessary clarifications for each method.",
+    "Correct and incorrect uncertainty attribution.",
+    "Missing-condition and exception-scope detection.",
+    "Causal and epistemic distinction classification.",
+    "Reviewer evidence validity and source-grounding accuracy.",
+    "Appropriate and inappropriate abstention.",
+    "Reconciliation disagreements and whether deterministic findings were preserved.",
+    "Model identity, prompt version, token usage, latency, failures and raw-response ledger.",
+    "Explicit architectural decision: ADOPT_FOR_FURTHER_RESEARCH, REVISE_HYBRID, PREFER_DETERMINISTIC or STOP_CHECKER_RESEARCH."
+  ],
+  "decision_rule": {
+    "ADOPT_FOR_FURTHER_RESEARCH": "All hard gates pass. C adds a measurable, source-grounded gain over A without regression. This is permission for further research, not production integration.",
+    "REVISE_HYBRID": "C is safe but the gain is marginal or mixed, or reviewer validity/reconciliation needs work, or a single repairable hard gate fails while the hybrid remains promising.",
+    "PREFER_DETERMINISTIC": "C does not add value over A, or B is unreliable and C collapses to A. Keep the typed-constraint checker and stop extending the hybrid as the primary route.",
+    "STOP_CHECKER_RESEARCH": "C has a material false acceptance combined with detection below A, or multiple hard gates fail and neither B nor C provides meaningful value.",
+    "READY_NOT_EVALUATED": "No suitable model execution is authorized or qualified. Deliver architecture, contracts, fixtures and offline tests without invented performance results."
+  },
+  "notes": [
+    "The references are author-constructed and provisional, not independent human adjudication.",
+    "Passing these gates is experimental qualification, not proof of production safety.",
+    "No hosted model calls, Studio communication integration, manuscript changes, commits or pushes are permitted.",
+    "The local model is a bounded observational instrument, not an independent semantic authority."
+  ]
+}

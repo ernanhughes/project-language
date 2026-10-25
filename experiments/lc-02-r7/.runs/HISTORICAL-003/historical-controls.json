@@ -1,0 +1,2519 @@
+{
+  "schema": "lc02-r7-historical-controls/0.1",
+  "standing": "DISCLOSED_DEVELOPMENT_NOT_HELD_OUT",
+  "created": "2026-10-24",
+  "model": {
+    "provider": "ollama-local",
+    "id": "qwen3.5:latest",
+    "digest": "6488c96fa5faab64bb65cbd30d4289e20e6130ef535a93ef9a49f42eda893ea7",
+    "size": 6594474711,
+    "parameter_size": "9.7B",
+    "quantization": "Q4_K_M"
+  },
+  "prompt_version": "lc02-r7-review-prompt/0.4",
+  "rows": [
+    {
+      "id": "R6-E05",
+      "label": "BROADENED_EXCEPTION",
+      "expected": "BROADENED_EXCEPTION",
+      "deterministic": {
+        "policy": "REQUEST_CLARIFICATION",
+        "matched": false,
+        "findings": [
+          "UNRESOLVED/SOURCE_AMBIGUITY"
+        ]
+      },
+      "reviewer": {
+        "status": "VALID",
+        "error": null,
+        "policy": "PRESERVE_SOURCE",
+        "matched": true,
+        "assessments": [
+          {
+            "id": "ra1",
+            "claim": "The exception condition changed from 'incident ticket is closed' to 'incident is unresolved'.",
+            "change_kind": "EXCEPTION_SCOPE",
+            "epistemic_direction": "NONE",
+            "material": true,
+            "source_quote": "except when the incident ticket is closed",
+            "transformation_quote": "except when the incident is unresolved",
+            "explanation": "The transformation broadens the exception scope. The source prohibits key use only when the ticket is 'closed'. The transformation prohibits key use when the incident is 'unresolved'. Since an incident can be unresolved without being closed (e.g., in progress), the set of cases where the key is prohibited has been expanded beyond what the source states.",
+            "confidence": "HIGH",
+            "standing": "PROVISIONAL_MODEL_PROPOSAL"
+          }
+        ],
+        "summary": "The transformation broadens the exception scope by changing the condition from 'incident ticket is closed' to 'incident is unresolved', thereby prohibiting key use in more cases than the source allows."
+      },
+      "hybrid": {
+        "policy": "PRESERVE_SOURCE",
+        "matched": true,
+        "findings": [
+          {
+            "origin": "DETERMINISTIC",
+            "type": "UNRESOLVED",
+            "distinction": "SOURCE_AMBIGUITY",
+            "status": "DISPUTED",
+            "severity": "MINOR"
+          },
+          {
+            "origin": "MODEL_ASSISTED",
+            "type": "CHANGED_CANDIDATE",
+            "distinction": "BROADENED_EXCEPTION",
+            "status": "DISPUTED",
+            "severity": "MATERIAL"
+          }
+        ],
+        "disagreements": [
+          {
+            "kind": "DISTINCTION_DISAGREEMENT",
+            "deterministic_finding_ids": [
+              "f1"
+            ],
+            "reviewer_finding_ids": [
+              "ra1"
+            ],
+            "note": "Both findings and their exact evidence are retained; the deterministic finding remains primary for the overlapping claim."
+          }
+        ]
+      }
+    },
+    {
+      "id": "R6-E08",
+      "label": "UNKNOWN_TO_ESTABLISHED_FACT",
+      "expected": "UNKNOWN_TO_ESTABLISHED_FACT",
+      "deterministic": {
+        "policy": "PRESERVE_SOURCE",
+        "matched": false,
+        "findings": [
+          "CHANGED_CANDIDATE/NEGATION_REVERSAL"
+        ]
+      },
+      "reviewer": {
+        "status": "VALID",
+        "error": null,
+        "policy": "PRESERVE_SOURCE",
+        "matched": true,
+        "assessments": [
+          {
+            "id": "ra1",
+            "claim": "The transformation states the vendor is approved and the record contains the approval.",
+            "change_kind": "EPISTEMIC_STATUS",
+            "epistemic_direction": "ESTABLISHED_FROM_UNRESOLVED",
+            "material": true,
+            "source_quote": "The vendor approval has not been decided. The record contains neither approval nor denial.",
+            "transformation_quote": "The vendor is approved; the record contains the approval.",
+            "explanation": "The source explicitly states the status is unresolved ('has not been decided', 'neither approval nor denial'). The transformation asserts a definitive fact ('is approved', 'contains the approval'), converting an unresolved matter into an established one.",
+            "confidence": "HIGH",
+            "standing": "PROVISIONAL_MODEL_PROPOSAL"
+          }
+        ],
+        "summary": "The transformation establishes as fact that the vendor is approved and the record contains approval, contradicting the source's explicit statement that the status is unresolved and neither approval nor denial exists."
+      },
+      "hybrid": {
+        "policy": "PRESERVE_SOURCE",
+        "matched": true,
+        "findings": [
+          {
+            "origin": "DETERMINISTIC",
+            "type": "CHANGED_CANDIDATE",
+            "distinction": "NEGATION_REVERSAL",
+            "status": "DISPUTED",
+            "severity": "MATERIAL"
+          },
+          {
+            "origin": "MODEL_ASSISTED",
+            "type": "CHANGED_CANDIDATE",
+            "distinction": "UNKNOWN_TO_ESTABLISHED_FACT",
+            "status": "DISPUTED",
+            "severity": "MATERIAL"
+          }
+        ],
+        "disagreements": [
+          {
+            "kind": "DISTINCTION_DISAGREEMENT",
+            "deterministic_finding_ids": [
+              "f1"
+            ],
+            "reviewer_finding_ids": [
+              "ra1"
+            ],
+            "note": "Both findings and their exact evidence are retained; the deterministic finding remains primary for the overlapping claim."
+          }
+        ]
+      }
+    },
+    {
+      "id": "R6-E09",
+      "label": "MISATTRIBUTED_QUOTATION_OR_SPEAKER",
+      "expected": "MISATTRIBUTED_QUOTATION_OR_SPEAKER",
+      "deterministic": {
+        "policy": "PRESERVE_SOURCE",
+        "matched": true,
+        "findings": [
+          "CHANGED_CANDIDATE/MISATTRIBUTED_QUOTATION_OR_SPEAKER",
+          "CHANGED_CANDIDATE/MISATTRIBUTED_QUOTATION_OR_SPEAKER"
+        ]
+      },
+      "reviewer": {
+        "status": "VALID",
+        "error": null,
+        "policy": "PRESERVE_SOURCE",
+        "matched": true,
+        "assessments": [
+          {
+            "id": "ra1",
+            "claim": "The attribution of 'The rollout is approved' was changed from Reviewer to Chair.",
+            "change_kind": "REFERENT_OR_SPEAKER",
+            "epistemic_direction": "NONE",
+            "material": true,
+            "source_quote": "Reviewer: \"The rollout is approved.\"",
+            "transformation_quote": "Chair: \"The rollout is approved.\"",
+            "explanation": "The transformation swaps the speaker for the statement 'The rollout is approved' from Reviewer to Chair.",
+            "confidence": "HIGH",
+            "standing": "PROVISIONAL_MODEL_PROPOSAL"
+          },
+          {
+            "id": "ra2",
+            "claim": "The attribution of 'The test plan is approved' was changed from Chair to Reviewer.",
+            "change_kind": "REFERENT_OR_SPEAKER",
+            "epistemic_direction": "NONE",
+            "material": true,
+            "source_quote": "Chair: \"The test plan is approved.\"",
+            "transformation_quote": "Reviewer: \"The test plan is approved.\"",
+            "explanation": "The transformation swaps the speaker for the statement 'The test plan is approved' from Chair to Reviewer.",
+            "confidence": "HIGH",
+            "standing": "PROVISIONAL_MODEL_PROPOSAL"
+          }
+        ],
+        "summary": "The transformation incorrectly swapped the attributions of the approval statements between the Reviewer and the Chair."
+      },
+      "hybrid": {
+        "policy": "PRESERVE_SOURCE",
+        "matched": true,
+        "findings": [
+          {
+            "origin": "BOTH",
+            "type": "CHANGED_CANDIDATE",
+            "distinction": "MISATTRIBUTED_QUOTATION_OR_SPEAKER",
+            "status": "CORROBORATED",
+            "severity": "MATERIAL"
+          },
+          {
+            "origin": "BOTH",
+            "type": "CHANGED_CANDIDATE",
+            "distinction": "MISATTRIBUTED_QUOTATION_OR_SPEAKER",
+            "status": "CORROBORATED",
+            "severity": "MATERIAL"
+          }
+        ],
+        "disagreements": [
+          {
+            "kind": "CORROBORATED",
+            "deterministic_finding_ids": [
+              "f1"
+            ],
+            "reviewer_finding_ids": [
+              "ra1"
+            ],
+            "note": "Deterministic and model-assisted findings agree on type, distinction and source evidence."
+          },
+          {
+            "kind": "CORROBORATED",
+            "deterministic_finding_ids": [
+              "f2"
+            ],
+            "reviewer_finding_ids": [
+              "ra2"
+            ],
+            "note": "Deterministic and model-assisted findings agree on type, distinction and source evidence."
+          }
+        ]
+      }
+    },
+    {
+      "id": "R6-E10",
+      "label": "WRONG_CROSS_SENTENCE_REFERENCE",
+      "expected": "WRONG_CROSS_SENTENCE_REFERENCE",
+      "deterministic": {
+        "policy": "PRESERVE_SOURCE",
+        "matched": true,
+        "findings": [
+          "CHANGED_CANDIDATE/NEGATION_REVERSAL",
+          "CHANGED_CANDIDATE/UNKNOWN_TO_ESTABLISHED_FACT",
+          "CHANGED_CANDIDATE/WRONG_CROSS_SENTENCE_REFERENCE"
+        ]
+      },
+      "reviewer": {
+        "status": "VALID",
+        "error": null,
+        "policy": "PRESERVE_SOURCE",
+        "matched": false,
+        "assessments": [
+          {
+            "id": "ra1",
+            "claim": "The reviewer approved the rollout plan.",
+            "change_kind": "EPISTEMIC_STATUS",
+            "epistemic_direction": "ESTABLISHED_FROM_UNRESOLVED",
+            "material": true,
+            "source_quote": "The note does not say whether \"the plan\" means the rollout plan or the test plan.",
+            "transformation_quote": "",
+            "explanation": "The source explicitly states that it is unresolved whether 'the plan' refers to the rollout plan or the test plan. The transformation asserts as fact that the reviewer approved the rollout plan, thereby resolving the ambiguity present in the source.",
+            "confidence": "HIGH",
+            "standing": "PROVISIONAL_MODEL_PROPOSAL"
+          }
+        ],
+        "summary": "The transformation resolves an explicit ambiguity from the source by asserting a specific meaning for 'the plan' that was previously left unresolved."
+      },
+      "hybrid": {
+        "policy": "PRESERVE_SOURCE",
+        "matched": true,
+        "findings": [
+          {
+            "origin": "DETERMINISTIC",
+            "type": "CHANGED_CANDIDATE",
+            "distinction": "NEGATION_REVERSAL",
+            "status": "DETERMINISTIC_ONLY",
+            "severity": "MATERIAL"
+          },
+          {
+            "origin": "BOTH",
+            "type": "CHANGED_CANDIDATE",
+            "distinction": "UNKNOWN_TO_ESTABLISHED_FACT",
+            "status": "CORROBORATED",
+            "severity": "MATERIAL"
+          },
+          {
+            "origin": "DETERMINISTIC",
+            "type": "CHANGED_CANDIDATE",
+            "distinction": "WRONG_CROSS_SENTENCE_REFERENCE",
+            "status": "DETERMINISTIC_ONLY",
+            "severity": "MATERIAL"
+          }
+        ],
+        "disagreements": [
+          {
+            "kind": "CORROBORATED",
+            "deterministic_finding_ids": [
+              "f2"
+            ],
+            "reviewer_finding_ids": [
+              "ra1"
+            ],
+            "note": "Deterministic and model-assisted findings agree on type, distinction and source evidence."
+          }
+        ]
+      }
+    },
+    {
+      "id": "R6-E11",
+      "label": "UNSUPPORTED_CAUSAL",
+      "expected": "UNSUPPORTED_CAUSAL",
+      "deterministic": {
+        "policy": "PRESERVE_SOURCE",
+        "matched": true,
+        "findings": [
+          "CHANGED_CANDIDATE/NEGATION_REVERSAL",
+          "UNSUPPORTED_ADDITION_CANDIDATE/UNSUPPORTED_CAUSAL"
+        ]
+      },
+      "reviewer": {
+        "status": "VALID",
+        "error": null,
+        "policy": "PRESERVE_SOURCE",
+        "matched": false,
+        "assessments": [
+          {
+            "id": "ra1",
+            "claim": "The checksum failure caused the replica to become stale",
+            "change_kind": "UNSUPPORTED_ADDITION",
+            "epistemic_direction": "NONE",
+            "material": true,
+            "source_quote": "The checksum failed during transfer.",
+            "transformation_quote": "The checksum failure caused the replica to become stale",
+            "explanation": "The source states a checksum failure occurred but does not assert that it caused the replica to become stale. The transformation adds this causal link without source support.",
+            "confidence": "HIGH",
+            "standing": "PROVISIONAL_MODEL_PROPOSAL"
+          },
+          {
+            "id": "ra2",
+            "claim": "the investigation confirmed the cause",
+            "change_kind": "EPISTEMIC_STATUS",
+            "epistemic_direction": "ESTABLISHED_FROM_UNRESOLVED",
+            "material": true,
+            "source_quote": "The investigation says the cause has not been verified.",
+            "transformation_quote": "the investigation confirmed the cause.",
+            "explanation": "The source explicitly states the cause has not been verified (unresolved). The transformation asserts it was confirmed (established), contradicting the source's epistemic status and violating the declared obligation to maintain causal uncertainty.",
+            "confidence": "HIGH",
+            "standing": "PROVISIONAL_MODEL_PROPOSAL"
+          }
+        ],
+        "summary": "The transformation adds an unsupported causal link between checksum failure and replica staleness. It also resolves a matter explicitly left unresolved in the source (cause verification), violating the declared obligation to maintain uncertainty."
+      },
+      "hybrid": {
+        "policy": "PRESERVE_SOURCE",
+        "matched": true,
+        "findings": [
+          {
+            "origin": "DETERMINISTIC",
+            "type": "CHANGED_CANDIDATE",
+            "distinction": "NEGATION_REVERSAL",
+            "status": "DISPUTED",
+            "severity": "MATERIAL"
+          },
+          {
+            "origin": "DETERMINISTIC",
+            "type": "UNSUPPORTED_ADDITION_CANDIDATE",
+            "distinction": "UNSUPPORTED_CAUSAL",
+            "status": "DETERMINISTIC_ONLY",
+            "severity": "MATERIAL"
+          },
+          {
+            "origin": "MODEL_ASSISTED",
+            "type": "UNSUPPORTED_ADDITION_CANDIDATE",
+            "distinction": "UNSUPPORTED_CONTENT",
+            "status": "MODEL_ONLY",
+            "severity": "MATERIAL"
+          },
+          {
+            "origin": "MODEL_ASSISTED",
+            "type": "CHANGED_CANDIDATE",
+            "distinction": "UNKNOWN_TO_ESTABLISHED_FACT",
+            "status": "DISPUTED",
+            "severity": "MATERIAL"
+          }
+        ],
+        "disagreements": [
+          {
+            "kind": "DISTINCTION_DISAGREEMENT",
+            "deterministic_finding_ids": [
+              "f1",
+              "f2"
+            ],
+            "reviewer_finding_ids": [
+              "ra2"
+            ],
+            "note": "Both findings and their exact evidence are retained; the deterministic finding remains primary for the overlapping claim."
+          }
+        ]
+      }
+    },
+    {
+      "id": "R6-E12",
+      "label": "INVENTED_UNCERTAINTY",
+      "expected": "UNSUPPORTED_UNCERTAINTY",
+      "deterministic": {
+        "policy": "PRESERVE_SOURCE",
+        "matched": true,
+        "findings": [
+          "UNSUPPORTED_ADDITION_CANDIDATE/UNSUPPORTED_UNCERTAINTY"
+        ]
+      },
+      "reviewer": {
+        "status": "VALID",
+        "error": null,
+        "policy": "PRESERVE_SOURCE",
+        "matched": true,
+        "assessments": [
+          {
+            "id": "ra1",
+            "claim": "It is unclear whether the archive team is authorised to delete legal-hold records.",
+            "change_kind": "EPISTEMIC_STATUS",
+            "epistemic_direction": "UNCERTAINTY_ADDED",
+            "material": true,
+            "source_quote": "The archive team is authorised to delete legal-hold records.",
+            "transformation_quote": "It is unclear whether the archive team is authorised to delete legal-hold records.",
+            "explanation": "The source explicitly states that the archive team is authorised. The transformation introduces uncertainty ('It is unclear') regarding this same authorization, adding doubt not present in the source text.",
+            "confidence": "HIGH",
+            "standing": "PROVISIONAL_MODEL_PROPOSAL"
+          }
+        ],
+        "summary": "The transformation adds uncertainty to a statement of fact provided in the source."
+      },
+      "hybrid": {
+        "policy": "PRESERVE_SOURCE",
+        "matched": true,
+        "findings": [
+          {
+            "origin": "BOTH",
+            "type": "UNSUPPORTED_ADDITION_CANDIDATE",
+            "distinction": "UNSUPPORTED_UNCERTAINTY",
+            "status": "CORROBORATED",
+            "severity": "MATERIAL"
+          }
+        ],
+        "disagreements": [
+          {
+            "kind": "CORROBORATED",
+            "deterministic_finding_ids": [
+              "f1"
+            ],
+            "reviewer_finding_ids": [
+              "ra1"
+            ],
+            "note": "Deterministic and model-assisted findings agree on type, distinction and source evidence."
+          }
+        ]
+      }
+    },
+    {
+      "id": "R5-E11",
+      "label": "SCOPE_OR_QUANTITY_CHANGE",
+      "expected": "SCOPE_OR_QUANTITY_CHANGE",
+      "deterministic": {
+        "policy": "PRESERVE_SOURCE",
+        "matched": true,
+        "findings": [
+          "CHANGED_CANDIDATE/SCOPE_OR_QUANTITY_CHANGE"
+        ]
+      },
+      "reviewer": {
+        "status": "VALID",
+        "error": null,
+        "policy": "PRESERVE_SOURCE",
+        "matched": true,
+        "assessments": [
+          {
+            "id": "ra1",
+            "claim": "The transformation states the queue accepts batches of no more than fifty records, whereas the source states no more than forty records.",
+            "change_kind": "QUANTITY_OR_BOUNDARY",
+            "epistemic_direction": "NONE",
+            "material": true,
+            "source_quote": "no more than forty records",
+            "transformation_quote": "no more than fifty records",
+            "explanation": "The numeric boundary changed from forty to fifty, violating the declared obligation that the limit must survive.",
+            "confidence": "HIGH",
+            "standing": "PROVISIONAL_MODEL_PROPOSAL"
+          }
+        ],
+        "summary": "The transformation altered the batch size limit from forty to fifty records, contradicting the source text and the declared obligation to preserve the numeric limit."
+      },
+      "hybrid": {
+        "policy": "PRESERVE_SOURCE",
+        "matched": true,
+        "findings": [
+          {
+            "origin": "BOTH",
+            "type": "CHANGED_CANDIDATE",
+            "distinction": "SCOPE_OR_QUANTITY_CHANGE",
+            "status": "CORROBORATED",
+            "severity": "MATERIAL"
+          }
+        ],
+        "disagreements": [
+          {
+            "kind": "CORROBORATED",
+            "deterministic_finding_ids": [
+              "f2"
+            ],
+            "reviewer_finding_ids": [
+              "ra1"
+            ],
+            "note": "Deterministic and model-assisted findings agree on type, distinction and source evidence."
+          }
+        ]
+      }
+    },
+    {
+      "id": "R5-E18",
+      "label": "FAITHFUL",
+      "expected": "PRESERVED",
+      "deterministic": {
+        "policy": "PRESERVE_SOURCE",
+        "matched": false,
+        "findings": [
+          "MISSING_CANDIDATE/MISSING_PREREQUISITE",
+          "MISSING_CANDIDATE/MISSING_PREREQUISITE"
+        ]
+      },
+      "reviewer": {
+        "status": "VALID",
+        "error": null,
+        "policy": "PRESERVE_SOURCE",
+        "matched": false,
+        "assessments": [
+          {
+            "id": "ra1",
+            "claim": "The transformation states 'because the dashboard shows nine minutes above the threshold' while the source states paging is permitted 'when lag exceeds twenty seconds for five minutes'.",
+            "change_kind": "EPISTEMIC_STATUS",
+            "epistemic_direction": "ESTABLISHED_FROM_UNRESOLVED",
+            "material": true,
+            "source_quote": "The incident desk may page the engineer when lag exceeds twenty seconds for five minutes.",
+            "transformation_quote": "The incident desk may page the engineer because the dashboard shows nine minutes above the threshold.",
+            "explanation": "The source leaves the condition 'when lag exceeds twenty seconds' as a general rule without explicitly stating whether the current state (9 minutes) meets it. The transformation asserts that 9 minutes is 'above the threshold', establishing the condition as fact rather than preserving the unresolved status of whether 9 minutes satisfies the 'twenty seconds for five minutes' requirement.",
+            "confidence": "HIGH",
+            "standing": "PROVISIONAL_MODEL_PROPOSAL"
+          },
+          {
+            "id": "ra2",
+            "claim": "The transformation omits the specific duration requirement ('for five minutes') present in the source.",
+            "change_kind": "QUANTITY_OR_BOUNDARY",
+            "epistemic_direction": "NONE",
+            "material": true,
+            "source_quote": "when lag exceeds twenty seconds for five minutes",
+            "transformation_quote": "",
+            "explanation": "The transformation fails to include the 'for five minutes' duration constraint found in the source, altering the boundary of the condition under which paging is permitted.",
+            "confidence": "HIGH",
+            "standing": "PROVISIONAL_MODEL_PROPOSAL"
+          }
+        ],
+        "summary": "The transformation establishes the lag condition as met (ESTABLISHED_FROM_UNRESOLVED) and omits the five-minute duration boundary (QUANTITY_OR_BOUNDARY)."
+      },
+      "hybrid": {
+        "policy": "PRESERVE_SOURCE",
+        "matched": false,
+        "findings": [
+          {
+            "origin": "DETERMINISTIC",
+            "type": "MISSING_CANDIDATE",
+            "distinction": "MISSING_PREREQUISITE",
+            "status": "DISPUTED",
+            "severity": "MATERIAL"
+          },
+          {
+            "origin": "DETERMINISTIC",
+            "type": "MISSING_CANDIDATE",
+            "distinction": "MISSING_PREREQUISITE",
+            "status": "DETERMINISTIC_ONLY",
+            "severity": "MATERIAL"
+          },
+          {
+            "origin": "MODEL_ASSISTED",
+            "type": "CHANGED_CANDIDATE",
+            "distinction": "UNKNOWN_TO_ESTABLISHED_FACT",
+            "status": "DISPUTED",
+            "severity": "MATERIAL"
+          },
+          {
+            "origin": "MODEL_ASSISTED",
+            "type": "CHANGED_CANDIDATE",
+            "distinction": "SCOPE_OR_QUANTITY_CHANGE",
+            "status": "DISPUTED",
+            "severity": "MATERIAL"
+          }
+        ],
+        "disagreements": [
+          {
+            "kind": "DISTINCTION_DISAGREEMENT",
+            "deterministic_finding_ids": [
+              "f1",
+              "f2"
+            ],
+            "reviewer_finding_ids": [
+              "ra1"
+            ],
+            "note": "Both findings and their exact evidence are retained; the deterministic finding remains primary for the overlapping claim."
+          },
+          {
+            "kind": "DISTINCTION_DISAGREEMENT",
+            "deterministic_finding_ids": [
+              "f1",
+              "f2"
+            ],
+            "reviewer_finding_ids": [
+              "ra2"
+            ],
+            "note": "Both findings and their exact evidence are retained; the deterministic finding remains primary for the overlapping claim."
+          }
+        ]
+      }
+    },
+    {
+      "id": "R5-E04",
+      "label": "BROADENED_EXCEPTION",
+      "expected": "BROADENED_EXCEPTION",
+      "deterministic": {
+        "policy": "PRESERVE_SOURCE",
+        "matched": false,
+        "findings": [
+          "UNSUPPORTED_ADDITION_CANDIDATE/UNSUPPORTED_UNCERTAINTY",
+          "UNSUPPORTED_ADDITION_CANDIDATE/UNSUPPORTED_UNCERTAINTY"
+        ]
+      },
+      "reviewer": {
+        "status": "VALID",
+        "error": null,
+        "policy": "PRESERVE_SOURCE",
+        "matched": true,
+        "assessments": [
+          {
+            "id": "ra1",
+            "claim": "The transformation states 'except when the incident is unresolved' instead of 'except when the incident ticket is closed'.",
+            "change_kind": "EXCEPTION_SCOPE",
+            "epistemic_direction": "NONE",
+            "material": true,
+            "source_quote": "except when the incident ticket is closed",
+            "transformation_quote": "except when the incident is unresolved",
+            "explanation": "The source restricts key usage to incidents where the ticket is not closed. The transformation broadens this exception to any 'unresolved' incident, explicitly including closed tickets as unresolved. This contradicts the declared obligation that the exception must not be broadened.",
+            "confidence": "HIGH",
+            "standing": "PROVISIONAL_MODEL_PROPOSAL"
+          }
+        ],
+        "summary": "The transformation broadens the exception for key usage from 'incident ticket is closed' to 'incident is unresolved', which includes closed tickets. This violates the obligation not to broaden the exception."
+      },
+      "hybrid": {
+        "policy": "PRESERVE_SOURCE",
+        "matched": true,
+        "findings": [
+          {
+            "origin": "DETERMINISTIC",
+            "type": "UNSUPPORTED_ADDITION_CANDIDATE",
+            "distinction": "UNSUPPORTED_UNCERTAINTY",
+            "status": "DISPUTED",
+            "severity": "MATERIAL"
+          },
+          {
+            "origin": "DETERMINISTIC",
+            "type": "UNSUPPORTED_ADDITION_CANDIDATE",
+            "distinction": "UNSUPPORTED_UNCERTAINTY",
+            "status": "DETERMINISTIC_ONLY",
+            "severity": "MATERIAL"
+          },
+          {
+            "origin": "MODEL_ASSISTED",
+            "type": "CHANGED_CANDIDATE",
+            "distinction": "BROADENED_EXCEPTION",
+            "status": "DISPUTED",
+            "severity": "MATERIAL"
+          }
+        ],
+        "disagreements": [
+          {
+            "kind": "DISTINCTION_DISAGREEMENT",
+            "deterministic_finding_ids": [
+              "f1",
+              "f2"
+            ],
+            "reviewer_finding_ids": [
+              "ra1"
+            ],
+            "note": "Both findings and their exact evidence are retained; the deterministic finding remains primary for the overlapping claim."
+          }
+        ]
+      }
+    },
+    {
+      "id": "R5-E07",
+      "label": "UNKNOWN_TO_ESTABLISHED_FACT",
+      "expected": "UNKNOWN_TO_ESTABLISHED_FACT",
+      "deterministic": {
+        "policy": "PRESERVE_SOURCE",
+        "matched": false,
+        "findings": [
+          "CHANGED_CANDIDATE/NEGATION_REVERSAL"
+        ]
+      },
+      "reviewer": {
+        "status": "VALID",
+        "error": null,
+        "policy": "PRESERVE_SOURCE",
+        "matched": true,
+        "assessments": [
+          {
+            "id": "ra1",
+            "claim": "The transformation states the vendor is approved and the record contains approval, whereas the source states the approval has not been decided and the record contains neither.",
+            "change_kind": "EPISTEMIC_STATUS",
+            "epistemic_direction": "ESTABLISHED_FROM_UNRESOLVED",
+            "material": true,
+            "source_quote": "The vendor approval has not been decided. The record contains neither approval nor denial.",
+            "transformation_quote": "The vendor is approved; the record contains the approval.",
+            "explanation": "The transformation asserts a fact (approval) that directly contradicts the source's explicit statement of an unresolved status ('has not been decided', 'neither approval nor denial'). This converts an unresolved matter into an established fact, violating the declared obligation to maintain the unresolved status.",
+            "confidence": "HIGH",
+            "standing": "PROVISIONAL_MODEL_PROPOSAL"
+          }
+        ],
+        "summary": "The transformation asserts a definitive approval, contradicting the source's explicit statement that the matter is undecided and contains neither approval nor denial. This converts an unresolved status into an established fact."
+      },
+      "hybrid": {
+        "policy": "PRESERVE_SOURCE",
+        "matched": true,
+        "findings": [
+          {
+            "origin": "DETERMINISTIC",
+            "type": "CHANGED_CANDIDATE",
+            "distinction": "NEGATION_REVERSAL",
+            "status": "DISPUTED",
+            "severity": "MATERIAL"
+          },
+          {
+            "origin": "MODEL_ASSISTED",
+            "type": "CHANGED_CANDIDATE",
+            "distinction": "UNKNOWN_TO_ESTABLISHED_FACT",
+            "status": "DISPUTED",
+            "severity": "MATERIAL"
+          }
+        ],
+        "disagreements": [
+          {
+            "kind": "DISTINCTION_DISAGREEMENT",
+            "deterministic_finding_ids": [
+              "f1"
+            ],
+            "reviewer_finding_ids": [
+              "ra1"
+            ],
+            "note": "Both findings and their exact evidence are retained; the deterministic finding remains primary for the overlapping claim."
+          }
+        ]
+      }
+    },
+    {
+      "id": "LC20-07-B_AI_MEDIATED",
+      "label": "LC20-07",
+      "expected": "UNSUPPORTED_UNCERTAINTY",
+      "deterministic": {
+        "policy": "PRESERVE_SOURCE",
+        "matched": true,
+        "findings": [
+          "UNSUPPORTED_ADDITION_CANDIDATE/UNSUPPORTED_CONTENT",
+          "UNSUPPORTED_ADDITION_CANDIDATE/UNSUPPORTED_CONTENT",
+          "UNSUPPORTED_ADDITION_CANDIDATE/UNSUPPORTED_UNCERTAINTY",
+          "UNSUPPORTED_ADDITION_CANDIDATE/UNSUPPORTED_CONTENT",
+          "UNSUPPORTED_ADDITION_CANDIDATE/UNSUPPORTED_CONTENT",
+          "UNSUPPORTED_ADDITION_CANDIDATE/INVENTED_AUTHORITY",
+          "UNSUPPORTED_ADDITION_CANDIDATE/UNSUPPORTED_CONTENT",
+          "UNSUPPORTED_ADDITION_CANDIDATE/UNSUPPORTED_CONTENT",
+          "UNSUPPORTED_ADDITION_CANDIDATE/UNSUPPORTED_CONTENT",
+          "UNSUPPORTED_ADDITION_CANDIDATE/UNSUPPORTED_CONTENT",
+          "UNSUPPORTED_ADDITION_CANDIDATE/UNSUPPORTED_UNCERTAINTY",
+          "UNSUPPORTED_ADDITION_CANDIDATE/UNSUPPORTED_UNCERTAINTY",
+          "UNSUPPORTED_ADDITION_CANDIDATE/UNSUPPORTED_UNCERTAINTY",
+          "UNSUPPORTED_ADDITION_CANDIDATE/UNSUPPORTED_CONTENT",
+          "UNRESOLVED/SOURCE_AMBIGUITY",
+          "UNSUPPORTED_ADDITION_CANDIDATE/UNSUPPORTED_UNCERTAINTY",
+          "UNRESOLVED/SOURCE_AMBIGUITY",
+          "UNRESOLVED/SOURCE_AMBIGUITY",
+          "UNRESOLVED/SOURCE_AMBIGUITY"
+        ]
+      },
+      "reviewer": {
+        "status": "INVALID_EVIDENCE",
+        "error": "SOURCE_QUOTE_NOT_FOUND",
+        "policy": "REQUEST_CLARIFICATION",
+        "matched": false,
+        "assessments": [],
+        "summary": null
+      },
+      "hybrid": {
+        "policy": "PRESERVE_SOURCE",
+        "matched": true,
+        "findings": [
+          {
+            "origin": "DETERMINISTIC",
+            "type": "UNSUPPORTED_ADDITION_CANDIDATE",
+            "distinction": "UNSUPPORTED_CONTENT",
+            "status": "DETERMINISTIC_ONLY",
+            "severity": "MATERIAL"
+          },
+          {
+            "origin": "DETERMINISTIC",
+            "type": "UNSUPPORTED_ADDITION_CANDIDATE",
+            "distinction": "UNSUPPORTED_CONTENT",
+            "status": "DETERMINISTIC_ONLY",
+            "severity": "MATERIAL"
+          },
+          {
+            "origin": "DETERMINISTIC",
+            "type": "UNSUPPORTED_ADDITION_CANDIDATE",
+            "distinction": "UNSUPPORTED_UNCERTAINTY",
+            "status": "DETERMINISTIC_ONLY",
+            "severity": "MATERIAL"
+          },
+          {
+            "origin": "DETERMINISTIC",
+            "type": "UNSUPPORTED_ADDITION_CANDIDATE",
+            "distinction": "UNSUPPORTED_CONTENT",
+            "status": "DETERMINISTIC_ONLY",
+            "severity": "MATERIAL"
+          },
+          {
+            "origin": "DETERMINISTIC",
+            "type": "UNSUPPORTED_ADDITION_CANDIDATE",
+            "distinction": "UNSUPPORTED_CONTENT",
+            "status": "DETERMINISTIC_ONLY",
+            "severity": "MATERIAL"
+          },
+          {
+            "origin": "DETERMINISTIC",
+            "type": "UNSUPPORTED_ADDITION_CANDIDATE",
+            "distinction": "INVENTED_AUTHORITY",
+            "status": "DETERMINISTIC_ONLY",
+            "severity": "MATERIAL"
+          },
+          {
+            "origin": "DETERMINISTIC",
+            "type": "UNSUPPORTED_ADDITION_CANDIDATE",
+            "distinction": "UNSUPPORTED_CONTENT",
+            "status": "DETERMINISTIC_ONLY",
+            "severity": "MATERIAL"
+          },
+          {
+            "origin": "DETERMINISTIC",
+            "type": "UNSUPPORTED_ADDITION_CANDIDATE",
+            "distinction": "UNSUPPORTED_CONTENT",
+            "status": "DETERMINISTIC_ONLY",
+            "severity": "MATERIAL"
+          },
+          {
+            "origin": "DETERMINISTIC",
+            "type": "UNSUPPORTED_ADDITION_CANDIDATE",
+            "distinction": "UNSUPPORTED_CONTENT",
+            "status": "DETERMINISTIC_ONLY",
+            "severity": "MATERIAL"
+          },
+          {
+            "origin": "DETERMINISTIC",
+            "type": "UNSUPPORTED_ADDITION_CANDIDATE",
+            "distinction": "UNSUPPORTED_CONTENT",
+            "status": "DETERMINISTIC_ONLY",
+            "severity": "MATERIAL"
+          },
+          {
+            "origin": "DETERMINISTIC",
+            "type": "UNSUPPORTED_ADDITION_CANDIDATE",
+            "distinction": "UNSUPPORTED_UNCERTAINTY",
+            "status": "DETERMINISTIC_ONLY",
+            "severity": "MATERIAL"
+          },
+          {
+            "origin": "DETERMINISTIC",
+            "type": "UNSUPPORTED_ADDITION_CANDIDATE",
+            "distinction": "UNSUPPORTED_UNCERTAINTY",
+            "status": "DETERMINISTIC_ONLY",
+            "severity": "MATERIAL"
+          },
+          {
+            "origin": "DETERMINISTIC",
+            "type": "UNSUPPORTED_ADDITION_CANDIDATE",
+            "distinction": "UNSUPPORTED_UNCERTAINTY",
+            "status": "DETERMINISTIC_ONLY",
+            "severity": "MATERIAL"
+          },
+          {
+            "origin": "DETERMINISTIC",
+            "type": "UNSUPPORTED_ADDITION_CANDIDATE",
+            "distinction": "UNSUPPORTED_CONTENT",
+            "status": "DETERMINISTIC_ONLY",
+            "severity": "MATERIAL"
+          },
+          {
+            "origin": "DETERMINISTIC",
+            "type": "UNRESOLVED",
+            "distinction": "SOURCE_AMBIGUITY",
+            "status": "DETERMINISTIC_ONLY",
+            "severity": "MINOR"
+          },
+          {
+            "origin": "DETERMINISTIC",
+            "type": "UNSUPPORTED_ADDITION_CANDIDATE",
+            "distinction": "UNSUPPORTED_UNCERTAINTY",
+            "status": "DETERMINISTIC_ONLY",
+            "severity": "MATERIAL"
+          },
+          {
+            "origin": "DETERMINISTIC",
+            "type": "UNRESOLVED",
+            "distinction": "SOURCE_AMBIGUITY",
+            "status": "DETERMINISTIC_ONLY",
+            "severity": "MINOR"
+          },
+          {
+            "origin": "DETERMINISTIC",
+            "type": "UNRESOLVED",
+            "distinction": "SOURCE_AMBIGUITY",
+            "status": "DETERMINISTIC_ONLY",
+            "severity": "MINOR"
+          },
+          {
+            "origin": "DETERMINISTIC",
+            "type": "UNRESOLVED",
+            "distinction": "SOURCE_AMBIGUITY",
+            "status": "DETERMINISTIC_ONLY",
+            "severity": "MINOR"
+          }
+        ],
+        "disagreements": []
+      }
+    },
+    {
+      "id": "LC20-07-C_UNDERSTANDING_ENHANCED",
+      "label": "LC20-07",
+      "expected": "UNSUPPORTED_UNCERTAINTY",
+      "deterministic": {
+        "policy": "PRESERVE_SOURCE",
+        "matched": true,
+        "findings": [
+          "UNSUPPORTED_ADDITION_CANDIDATE/INVENTED_AUTHORITY",
+          "UNSUPPORTED_ADDITION_CANDIDATE/UNSUPPORTED_CONTENT",
+          "UNSUPPORTED_ADDITION_CANDIDATE/UNSUPPORTED_CONTENT",
+          "UNSUPPORTED_ADDITION_CANDIDATE/INVENTED_AUTHORITY",
+          "UNSUPPORTED_ADDITION_CANDIDATE/INVENTED_AUTHORITY",
+          "UNSUPPORTED_ADDITION_CANDIDATE/UNSUPPORTED_CONTENT",
+          "UNSUPPORTED_ADDITION_CANDIDATE/UNSUPPORTED_CONTENT",
+          "UNSUPPORTED_ADDITION_CANDIDATE/UNSUPPORTED_CONTENT",
+          "UNSUPPORTED_ADDITION_CANDIDATE/UNSUPPORTED_CONTENT",
+          "UNSUPPORTED_ADDITION_CANDIDATE/UNSUPPORTED_CONTENT",
+          "UNSUPPORTED_ADDITION_CANDIDATE/UNSUPPORTED_UNCERTAINTY",
+          "UNSUPPORTED_ADDITION_CANDIDATE/UNSUPPORTED_CONTENT",
+          "UNSUPPORTED_ADDITION_CANDIDATE/UNSUPPORTED_CAUSAL",
+          "UNSUPPORTED_ADDITION_CANDIDATE/UNSUPPORTED_UNCERTAINTY",
+          "UNSUPPORTED_ADDITION_CANDIDATE/UNSUPPORTED_UNCERTAINTY",
+          "UNSUPPORTED_ADDITION_CANDIDATE/UNSUPPORTED_CONTENT",
+          "UNSUPPORTED_ADDITION_CANDIDATE/UNSUPPORTED_CAUSAL",
+          "UNSUPPORTED_ADDITION_CANDIDATE/UNSUPPORTED_UNCERTAINTY",
+          "UNRESOLVED/SOURCE_AMBIGUITY",
+          "UNRESOLVED/SOURCE_AMBIGUITY",
+          "UNSUPPORTED_ADDITION_CANDIDATE/UNSUPPORTED_UNCERTAINTY"
+        ]
+      },
+      "reviewer": {
+        "status": "INVALID_EVIDENCE",
+        "error": "SOURCE_QUOTE_NOT_FOUND",
+        "policy": "REQUEST_CLARIFICATION",
+        "matched": false,
+        "assessments": [],
+        "summary": null
+      },
+      "hybrid": {
+        "policy": "PRESERVE_SOURCE",
+        "matched": true,
+        "findings": [
+          {
+            "origin": "DETERMINISTIC",
+            "type": "UNSUPPORTED_ADDITION_CANDIDATE",
+            "distinction": "INVENTED_AUTHORITY",
+            "status": "DETERMINISTIC_ONLY",
+            "severity": "MATERIAL"
+          },
+          {
+            "origin": "DETERMINISTIC",
+            "type": "UNSUPPORTED_ADDITION_CANDIDATE",
+            "distinction": "UNSUPPORTED_CONTENT",
+            "status": "DETERMINISTIC_ONLY",
+            "severity": "MATERIAL"
+          },
+          {
+            "origin": "DETERMINISTIC",
+            "type": "UNSUPPORTED_ADDITION_CANDIDATE",
+            "distinction": "UNSUPPORTED_CONTENT",
+            "status": "DETERMINISTIC_ONLY",
+            "severity": "MATERIAL"
+          },
+          {
+            "origin": "DETERMINISTIC",
+            "type": "UNSUPPORTED_ADDITION_CANDIDATE",
+            "distinction": "INVENTED_AUTHORITY",
+            "status": "DETERMINISTIC_ONLY",
+            "severity": "MATERIAL"
+          },
+          {
+            "origin": "DETERMINISTIC",
+            "type": "UNSUPPORTED_ADDITION_CANDIDATE",
+            "distinction": "INVENTED_AUTHORITY",
+            "status": "DETERMINISTIC_ONLY",
+            "severity": "MATERIAL"
+          },
+          {
+            "origin": "DETERMINISTIC",
+            "type": "UNSUPPORTED_ADDITION_CANDIDATE",
+            "distinction": "UNSUPPORTED_CONTENT",
+            "status": "DETERMINISTIC_ONLY",
+            "severity": "MATERIAL"
+          },
+          {
+            "origin": "DETERMINISTIC",
+            "type": "UNSUPPORTED_ADDITION_CANDIDATE",
+            "distinction": "UNSUPPORTED_CONTENT",
+            "status": "DETERMINISTIC_ONLY",
+            "severity": "MATERIAL"
+          },
+          {
+            "origin": "DETERMINISTIC",
+            "type": "UNSUPPORTED_ADDITION_CANDIDATE",
+            "distinction": "UNSUPPORTED_CONTENT",
+            "status": "DETERMINISTIC_ONLY",
+            "severity": "MATERIAL"
+          },
+          {
+            "origin": "DETERMINISTIC",
+            "type": "UNSUPPORTED_ADDITION_CANDIDATE",
+            "distinction": "UNSUPPORTED_CONTENT",
+            "status": "DETERMINISTIC_ONLY",
+            "severity": "MATERIAL"
+          },
+          {
+            "origin": "DETERMINISTIC",
+            "type": "UNSUPPORTED_ADDITION_CANDIDATE",
+            "distinction": "UNSUPPORTED_CONTENT",
+            "status": "DETERMINISTIC_ONLY",
+            "severity": "MATERIAL"
+          },
+          {
+            "origin": "DETERMINISTIC",
+            "type": "UNSUPPORTED_ADDITION_CANDIDATE",
+            "distinction": "UNSUPPORTED_UNCERTAINTY",
+            "status": "DETERMINISTIC_ONLY",
+            "severity": "MATERIAL"
+          },
+          {
+            "origin": "DETERMINISTIC",
+            "type": "UNSUPPORTED_ADDITION_CANDIDATE",
+            "distinction": "UNSUPPORTED_CONTENT",
+            "status": "DETERMINISTIC_ONLY",
+            "severity": "MATERIAL"
+          },
+          {
+            "origin": "DETERMINISTIC",
+            "type": "UNSUPPORTED_ADDITION_CANDIDATE",
+            "distinction": "UNSUPPORTED_CAUSAL",
+            "status": "DETERMINISTIC_ONLY",
+            "severity": "MATERIAL"
+          },
+          {
+            "origin": "DETERMINISTIC",
+            "type": "UNSUPPORTED_ADDITION_CANDIDATE",
+            "distinction": "UNSUPPORTED_UNCERTAINTY",
+            "status": "DETERMINISTIC_ONLY",
+            "severity": "MATERIAL"
+          },
+          {
+            "origin": "DETERMINISTIC",
+            "type": "UNSUPPORTED_ADDITION_CANDIDATE",
+            "distinction": "UNSUPPORTED_UNCERTAINTY",
+            "status": "DETERMINISTIC_ONLY",
+            "severity": "MATERIAL"
+          },
+          {
+            "origin": "DETERMINISTIC",
+            "type": "UNSUPPORTED_ADDITION_CANDIDATE",
+            "distinction": "UNSUPPORTED_CONTENT",
+            "status": "DETERMINISTIC_ONLY",
+            "severity": "MATERIAL"
+          },
+          {
+            "origin": "DETERMINISTIC",
+            "type": "UNSUPPORTED_ADDITION_CANDIDATE",
+            "distinction": "UNSUPPORTED_CAUSAL",
+            "status": "DETERMINISTIC_ONLY",
+            "severity": "MATERIAL"
+          },
+          {
+            "origin": "DETERMINISTIC",
+            "type": "UNSUPPORTED_ADDITION_CANDIDATE",
+            "distinction": "UNSUPPORTED_UNCERTAINTY",
+            "status": "DETERMINISTIC_ONLY",
+            "severity": "MATERIAL"
+          },
+          {
+            "origin": "DETERMINISTIC",
+            "type": "UNRESOLVED",
+            "distinction": "SOURCE_AMBIGUITY",
+            "status": "DETERMINISTIC_ONLY",
+            "severity": "MINOR"
+          },
+          {
+            "origin": "DETERMINISTIC",
+            "type": "UNRESOLVED",
+            "distinction": "SOURCE_AMBIGUITY",
+            "status": "DETERMINISTIC_ONLY",
+            "severity": "MINOR"
+          },
+          {
+            "origin": "DETERMINISTIC",
+            "type": "UNSUPPORTED_ADDITION_CANDIDATE",
+            "distinction": "UNSUPPORTED_UNCERTAINTY",
+            "status": "DETERMINISTIC_ONLY",
+            "severity": "MATERIAL"
+          }
+        ],
+        "disagreements": []
+      }
+    },
+    {
+      "id": "LC20-10-B_AI_MEDIATED",
+      "label": "LC20-10",
+      "expected": "UNSUPPORTED_UNCERTAINTY",
+      "deterministic": {
+        "policy": "PRESERVE_SOURCE",
+        "matched": true,
+        "findings": [
+          "UNSUPPORTED_ADDITION_CANDIDATE/UNSUPPORTED_CONTENT",
+          "UNSUPPORTED_ADDITION_CANDIDATE/UNSUPPORTED_CONTENT",
+          "UNSUPPORTED_ADDITION_CANDIDATE/UNSUPPORTED_UNCERTAINTY",
+          "UNSUPPORTED_ADDITION_CANDIDATE/UNSUPPORTED_CONTENT",
+          "UNSUPPORTED_ADDITION_CANDIDATE/UNSUPPORTED_CONTENT",
+          "UNSUPPORTED_ADDITION_CANDIDATE/UNSUPPORTED_UNCERTAINTY",
+          "UNSUPPORTED_ADDITION_CANDIDATE/UNSUPPORTED_CONTENT",
+          "UNSUPPORTED_ADDITION_CANDIDATE/UNSUPPORTED_UNCERTAINTY",
+          "UNSUPPORTED_ADDITION_CANDIDATE/UNSUPPORTED_CONTENT",
+          "UNSUPPORTED_ADDITION_CANDIDATE/UNSUPPORTED_CONTENT",
+          "UNRESOLVED/SOURCE_AMBIGUITY",
+          "UNSUPPORTED_ADDITION_CANDIDATE/UNSUPPORTED_UNCERTAINTY",
+          "UNSUPPORTED_ADDITION_CANDIDATE/UNSUPPORTED_UNCERTAINTY",
+          "UNSUPPORTED_ADDITION_CANDIDATE/UNSUPPORTED_UNCERTAINTY",
+          "UNRESOLVED/SOURCE_AMBIGUITY",
+          "UNRESOLVED/SOURCE_AMBIGUITY"
+        ]
+      },
+      "reviewer": {
+        "status": "INVALID_EVIDENCE",
+        "error": "TRANSFORMATION_QUOTE_NOT_FOUND",
+        "policy": "REQUEST_CLARIFICATION",
+        "matched": false,
+        "assessments": [],
+        "summary": null
+      },
+      "hybrid": {
+        "policy": "PRESERVE_SOURCE",
+        "matched": true,
+        "findings": [
+          {
+            "origin": "DETERMINISTIC",
+            "type": "UNSUPPORTED_ADDITION_CANDIDATE",
+            "distinction": "UNSUPPORTED_CONTENT",
+            "status": "DETERMINISTIC_ONLY",
+            "severity": "MATERIAL"
+          },
+          {
+            "origin": "DETERMINISTIC",
+            "type": "UNSUPPORTED_ADDITION_CANDIDATE",
+            "distinction": "UNSUPPORTED_CONTENT",
+            "status": "DETERMINISTIC_ONLY",
+            "severity": "MATERIAL"
+          },
+          {
+            "origin": "DETERMINISTIC",
+            "type": "UNSUPPORTED_ADDITION_CANDIDATE",
+            "distinction": "UNSUPPORTED_UNCERTAINTY",
+            "status": "DETERMINISTIC_ONLY",
+            "severity": "MATERIAL"
+          },
+          {
+            "origin": "DETERMINISTIC",
+            "type": "UNSUPPORTED_ADDITION_CANDIDATE",
+            "distinction": "UNSUPPORTED_CONTENT",
+            "status": "DETERMINISTIC_ONLY",
+            "severity": "MATERIAL"
+          },
+          {
+            "origin": "DETERMINISTIC",
+            "type": "UNSUPPORTED_ADDITION_CANDIDATE",
+            "distinction": "UNSUPPORTED_CONTENT",
+            "status": "DETERMINISTIC_ONLY",
+            "severity": "MATERIAL"
+          },
+          {
+            "origin": "DETERMINISTIC",
+            "type": "UNSUPPORTED_ADDITION_CANDIDATE",
+            "distinction": "UNSUPPORTED_UNCERTAINTY",
+            "status": "DETERMINISTIC_ONLY",
+            "severity": "MATERIAL"
+          },
+          {
+            "origin": "DETERMINISTIC",
+            "type": "UNSUPPORTED_ADDITION_CANDIDATE",
+            "distinction": "UNSUPPORTED_CONTENT",
+            "status": "DETERMINISTIC_ONLY",
+            "severity": "MATERIAL"
+          },
+          {
+            "origin": "DETERMINISTIC",
+            "type": "UNSUPPORTED_ADDITION_CANDIDATE",
+            "distinction": "UNSUPPORTED_UNCERTAINTY",
+            "status": "DETERMINISTIC_ONLY",
+            "severity": "MATERIAL"
+          },
+          {
+            "origin": "DETERMINISTIC",
+            "type": "UNSUPPORTED_ADDITION_CANDIDATE",
+            "distinction": "UNSUPPORTED_CONTENT",
+            "status": "DETERMINISTIC_ONLY",
+            "severity": "MATERIAL"
+          },
+          {
+            "origin": "DETERMINISTIC",
+            "type": "UNSUPPORTED_ADDITION_CANDIDATE",
+            "distinction": "UNSUPPORTED_CONTENT",
+            "status": "DETERMINISTIC_ONLY",
+            "severity": "MATERIAL"
+          },
+          {
+            "origin": "DETERMINISTIC",
+            "type": "UNRESOLVED",
+            "distinction": "SOURCE_AMBIGUITY",
+            "status": "DETERMINISTIC_ONLY",
+            "severity": "MINOR"
+          },
+          {
+            "origin": "DETERMINISTIC",
+            "type": "UNSUPPORTED_ADDITION_CANDIDATE",
+            "distinction": "UNSUPPORTED_UNCERTAINTY",
+            "status": "DETERMINISTIC_ONLY",
+            "severity": "MATERIAL"
+          },
+          {
+            "origin": "DETERMINISTIC",
+            "type": "UNSUPPORTED_ADDITION_CANDIDATE",
+            "distinction": "UNSUPPORTED_UNCERTAINTY",
+            "status": "DETERMINISTIC_ONLY",
+            "severity": "MATERIAL"
+          },
+          {
+            "origin": "DETERMINISTIC",
+            "type": "UNSUPPORTED_ADDITION_CANDIDATE",
+            "distinction": "UNSUPPORTED_UNCERTAINTY",
+            "status": "DETERMINISTIC_ONLY",
+            "severity": "MATERIAL"
+          },
+          {
+            "origin": "DETERMINISTIC",
+            "type": "UNRESOLVED",
+            "distinction": "SOURCE_AMBIGUITY",
+            "status": "DETERMINISTIC_ONLY",
+            "severity": "MINOR"
+          },
+          {
+            "origin": "DETERMINISTIC",
+            "type": "UNRESOLVED",
+            "distinction": "SOURCE_AMBIGUITY",
+            "status": "DETERMINISTIC_ONLY",
+            "severity": "MINOR"
+          }
+        ],
+        "disagreements": []
+      }
+    },
+    {
+      "id": "LC20-10-C_UNDERSTANDING_ENHANCED",
+      "label": "LC20-10",
+      "expected": "UNSUPPORTED_UNCERTAINTY",
+      "deterministic": {
+        "policy": "PRESERVE_SOURCE",
+        "matched": true,
+        "findings": [
+          "UNSUPPORTED_ADDITION_CANDIDATE/UNSUPPORTED_UNCERTAINTY",
+          "UNSUPPORTED_ADDITION_CANDIDATE/UNSUPPORTED_CONTENT",
+          "UNSUPPORTED_ADDITION_CANDIDATE/UNSUPPORTED_CONTENT",
+          "UNSUPPORTED_ADDITION_CANDIDATE/UNSUPPORTED_CONTENT",
+          "UNSUPPORTED_ADDITION_CANDIDATE/UNSUPPORTED_CONTENT",
+          "UNSUPPORTED_ADDITION_CANDIDATE/UNSUPPORTED_CONTENT",
+          "UNSUPPORTED_ADDITION_CANDIDATE/UNSUPPORTED_CONTENT",
+          "UNSUPPORTED_ADDITION_CANDIDATE/UNSUPPORTED_CONTENT",
+          "UNSUPPORTED_ADDITION_CANDIDATE/UNSUPPORTED_CONTENT",
+          "UNSUPPORTED_ADDITION_CANDIDATE/UNSUPPORTED_UNCERTAINTY",
+          "UNSUPPORTED_ADDITION_CANDIDATE/UNSUPPORTED_CONTENT",
+          "UNSUPPORTED_ADDITION_CANDIDATE/UNSUPPORTED_UNCERTAINTY",
+          "UNSUPPORTED_ADDITION_CANDIDATE/UNSUPPORTED_CONTENT",
+          "UNSUPPORTED_ADDITION_CANDIDATE/UNSUPPORTED_CONTENT",
+          "UNSUPPORTED_ADDITION_CANDIDATE/UNSUPPORTED_UNCERTAINTY",
+          "UNSUPPORTED_ADDITION_CANDIDATE/UNSUPPORTED_UNCERTAINTY",
+          "UNSUPPORTED_ADDITION_CANDIDATE/UNSUPPORTED_CONTENT",
+          "UNSUPPORTED_ADDITION_CANDIDATE/UNSUPPORTED_CONTENT",
+          "UNSUPPORTED_ADDITION_CANDIDATE/UNSUPPORTED_UNCERTAINTY",
+          "UNSUPPORTED_ADDITION_CANDIDATE/UNSUPPORTED_CONTENT",
+          "UNSUPPORTED_ADDITION_CANDIDATE/UNSUPPORTED_UNCERTAINTY",
+          "UNRESOLVED/SOURCE_AMBIGUITY",
+          "UNSUPPORTED_ADDITION_CANDIDATE/UNSUPPORTED_UNCERTAINTY",
+          "UNSUPPORTED_ADDITION_CANDIDATE/UNSUPPORTED_UNCERTAINTY",
+          "UNRESOLVED/SOURCE_AMBIGUITY",
+          "UNRESOLVED/SOURCE_AMBIGUITY"
+        ]
+      },
+      "reviewer": {
+        "status": "INVALID_EVIDENCE",
+        "error": "TRANSFORMATION_QUOTE_NOT_FOUND",
+        "policy": "REQUEST_CLARIFICATION",
+        "matched": false,
+        "assessments": [],
+        "summary": null
+      },
+      "hybrid": {
+        "policy": "PRESERVE_SOURCE",
+        "matched": true,
+        "findings": [
+          {
+            "origin": "DETERMINISTIC",
+            "type": "UNSUPPORTED_ADDITION_CANDIDATE",
+            "distinction": "UNSUPPORTED_UNCERTAINTY",
+            "status": "DETERMINISTIC_ONLY",
+            "severity": "MATERIAL"
+          },
+          {
+            "origin": "DETERMINISTIC",
+            "type": "UNSUPPORTED_ADDITION_CANDIDATE",
+            "distinction": "UNSUPPORTED_CONTENT",
+            "status": "DETERMINISTIC_ONLY",
+            "severity": "MATERIAL"
+          },
+          {
+            "origin": "DETERMINISTIC",
+            "type": "UNSUPPORTED_ADDITION_CANDIDATE",
+            "distinction": "UNSUPPORTED_CONTENT",
+            "status": "DETERMINISTIC_ONLY",
+            "severity": "MATERIAL"
+          },
+          {
+            "origin": "DETERMINISTIC",
+            "type": "UNSUPPORTED_ADDITION_CANDIDATE",
+            "distinction": "UNSUPPORTED_CONTENT",
+            "status": "DETERMINISTIC_ONLY",
+            "severity": "MATERIAL"
+          },
+          {
+            "origin": "DETERMINISTIC",
+            "type": "UNSUPPORTED_ADDITION_CANDIDATE",
+            "distinction": "UNSUPPORTED_CONTENT",
+            "status": "DETERMINISTIC_ONLY",
+            "severity": "MATERIAL"
+          },
+          {
+            "origin": "DETERMINISTIC",
+            "type": "UNSUPPORTED_ADDITION_CANDIDATE",
+            "distinction": "UNSUPPORTED_CONTENT",
+            "status": "DETERMINISTIC_ONLY",
+            "severity": "MATERIAL"
+          },
+          {
+            "origin": "DETERMINISTIC",
+            "type": "UNSUPPORTED_ADDITION_CANDIDATE",
+            "distinction": "UNSUPPORTED_CONTENT",
+            "status": "DETERMINISTIC_ONLY",
+            "severity": "MATERIAL"
+          },
+          {
+            "origin": "DETERMINISTIC",
+            "type": "UNSUPPORTED_ADDITION_CANDIDATE",
+            "distinction": "UNSUPPORTED_CONTENT",
+            "status": "DETERMINISTIC_ONLY",
+            "severity": "MATERIAL"
+          },
+          {
+            "origin": "DETERMINISTIC",
+            "type": "UNSUPPORTED_ADDITION_CANDIDATE",
+            "distinction": "UNSUPPORTED_CONTENT",
+            "status": "DETERMINISTIC_ONLY",
+            "severity": "MATERIAL"
+          },
+          {
+            "origin": "DETERMINISTIC",
+            "type": "UNSUPPORTED_ADDITION_CANDIDATE",
+            "distinction": "UNSUPPORTED_UNCERTAINTY",
+            "status": "DETERMINISTIC_ONLY",
+            "severity": "MATERIAL"
+          },
+          {
+            "origin": "DETERMINISTIC",
+            "type": "UNSUPPORTED_ADDITION_CANDIDATE",
+            "distinction": "UNSUPPORTED_CONTENT",
+            "status": "DETERMINISTIC_ONLY",
+            "severity": "MATERIAL"
+          },
+          {
+            "origin": "DETERMINISTIC",
+            "type": "UNSUPPORTED_ADDITION_CANDIDATE",
+            "distinction": "UNSUPPORTED_UNCERTAINTY",
+            "status": "DETERMINISTIC_ONLY",
+            "severity": "MATERIAL"
+          },
+          {
+            "origin": "DETERMINISTIC",
+            "type": "UNSUPPORTED_ADDITION_CANDIDATE",
+            "distinction": "UNSUPPORTED_CONTENT",
+            "status": "DETERMINISTIC_ONLY",
+            "severity": "MATERIAL"
+          },
+          {
+            "origin": "DETERMINISTIC",
+            "type": "UNSUPPORTED_ADDITION_CANDIDATE",
+            "distinction": "UNSUPPORTED_CONTENT",
+            "status": "DETERMINISTIC_ONLY",
+            "severity": "MATERIAL"
+          },
+          {
+            "origin": "DETERMINISTIC",
+            "type": "UNSUPPORTED_ADDITION_CANDIDATE",
+            "distinction": "UNSUPPORTED_UNCERTAINTY",
+            "status": "DETERMINISTIC_ONLY",
+            "severity": "MATERIAL"
+          },
+          {
+            "origin": "DETERMINISTIC",
+            "type": "UNSUPPORTED_ADDITION_CANDIDATE",
+            "distinction": "UNSUPPORTED_UNCERTAINTY",
+            "status": "DETERMINISTIC_ONLY",
+            "severity": "MATERIAL"
+          },
+          {
+            "origin": "DETERMINISTIC",
+            "type": "UNSUPPORTED_ADDITION_CANDIDATE",
+            "distinction": "UNSUPPORTED_CONTENT",
+            "status": "DETERMINISTIC_ONLY",
+            "severity": "MATERIAL"
+          },
+          {
+            "origin": "DETERMINISTIC",
+            "type": "UNSUPPORTED_ADDITION_CANDIDATE",
+            "distinction": "UNSUPPORTED_CONTENT",
+            "status": "DETERMINISTIC_ONLY",
+            "severity": "MATERIAL"
+          },
+          {
+            "origin": "DETERMINISTIC",
+            "type": "UNSUPPORTED_ADDITION_CANDIDATE",
+            "distinction": "UNSUPPORTED_UNCERTAINTY",
+            "status": "DETERMINISTIC_ONLY",
+            "severity": "MATERIAL"
+          },
+          {
+            "origin": "DETERMINISTIC",
+            "type": "UNSUPPORTED_ADDITION_CANDIDATE",
+            "distinction": "UNSUPPORTED_CONTENT",
+            "status": "DETERMINISTIC_ONLY",
+            "severity": "MATERIAL"
+          },
+          {
+            "origin": "DETERMINISTIC",
+            "type": "UNSUPPORTED_ADDITION_CANDIDATE",
+            "distinction": "UNSUPPORTED_UNCERTAINTY",
+            "status": "DETERMINISTIC_ONLY",
+            "severity": "MATERIAL"
+          },
+          {
+            "origin": "DETERMINISTIC",
+            "type": "UNRESOLVED",
+            "distinction": "SOURCE_AMBIGUITY",
+            "status": "DETERMINISTIC_ONLY",
+            "severity": "MINOR"
+          },
+          {
+            "origin": "DETERMINISTIC",
+            "type": "UNSUPPORTED_ADDITION_CANDIDATE",
+            "distinction": "UNSUPPORTED_UNCERTAINTY",
+            "status": "DETERMINISTIC_ONLY",
+            "severity": "MATERIAL"
+          },
+          {
+            "origin": "DETERMINISTIC",
+            "type": "UNSUPPORTED_ADDITION_CANDIDATE",
+            "distinction": "UNSUPPORTED_UNCERTAINTY",
+            "status": "DETERMINISTIC_ONLY",
+            "severity": "MATERIAL"
+          },
+          {
+            "origin": "DETERMINISTIC",
+            "type": "UNRESOLVED",
+            "distinction": "SOURCE_AMBIGUITY",
+            "status": "DETERMINISTIC_ONLY",
+            "severity": "MINOR"
+          },
+          {
+            "origin": "DETERMINISTIC",
+            "type": "UNRESOLVED",
+            "distinction": "SOURCE_AMBIGUITY",
+            "status": "DETERMINISTIC_ONLY",
+            "severity": "MINOR"
+          }
+        ],
+        "disagreements": []
+      }
+    },
+    {
+      "id": "LC20-02-B_AI_MEDIATED",
+      "label": "LC20-02",
+      "expected": "UNRESOLVED",
+      "deterministic": {
+        "policy": "PRESERVE_SOURCE",
+        "matched": true,
+        "findings": [
+          "UNSUPPORTED_ADDITION_CANDIDATE/UNSUPPORTED_CONTENT",
+          "UNSUPPORTED_ADDITION_CANDIDATE/UNSUPPORTED_CONTENT",
+          "UNSUPPORTED_ADDITION_CANDIDATE/UNSUPPORTED_CONTENT",
+          "UNSUPPORTED_ADDITION_CANDIDATE/UNSUPPORTED_CONTENT",
+          "UNSUPPORTED_ADDITION_CANDIDATE/UNSUPPORTED_CONTENT",
+          "UNSUPPORTED_ADDITION_CANDIDATE/UNSUPPORTED_CONTENT",
+          "UNSUPPORTED_ADDITION_CANDIDATE/UNSUPPORTED_CONTENT",
+          "UNSUPPORTED_ADDITION_CANDIDATE/UNSUPPORTED_UNCERTAINTY",
+          "UNSUPPORTED_ADDITION_CANDIDATE/UNSUPPORTED_CONTENT",
+          "UNSUPPORTED_ADDITION_CANDIDATE/UNSUPPORTED_UNCERTAINTY",
+          "UNSUPPORTED_ADDITION_CANDIDATE/UNSUPPORTED_UNCERTAINTY",
+          "UNSUPPORTED_ADDITION_CANDIDATE/UNSUPPORTED_UNCERTAINTY",
+          "UNSUPPORTED_ADDITION_CANDIDATE/UNSUPPORTED_UNCERTAINTY",
+          "UNSUPPORTED_ADDITION_CANDIDATE/INVENTED_AUTHORITY",
+          "UNSUPPORTED_ADDITION_CANDIDATE/UNSUPPORTED_CONTENT",
+          "UNSUPPORTED_ADDITION_CANDIDATE/UNSUPPORTED_UNCERTAINTY",
+          "UNSUPPORTED_ADDITION_CANDIDATE/UNSUPPORTED_UNCERTAINTY",
+          "UNSUPPORTED_ADDITION_CANDIDATE/UNSUPPORTED_CONTENT",
+          "UNSUPPORTED_ADDITION_CANDIDATE/UNSUPPORTED_UNCERTAINTY",
+          "UNRESOLVED/SOURCE_AMBIGUITY",
+          "UNRESOLVED/SOURCE_AMBIGUITY",
+          "UNRESOLVED/SOURCE_AMBIGUITY",
+          "UNRESOLVED/SOURCE_AMBIGUITY",
+          "UNRESOLVED/SOURCE_AMBIGUITY",
+          "UNSUPPORTED_ADDITION_CANDIDATE/UNSUPPORTED_UNCERTAINTY",
+          "UNRESOLVED/SOURCE_AMBIGUITY"
+        ]
+      },
+      "reviewer": {
+        "status": "VALID",
+        "error": null,
+        "policy": "PRESERVE_SOURCE",
+        "matched": false,
+        "assessments": [
+          {
+            "id": "ra1",
+            "claim": "The transformation introduces 'Unknown' assertions regarding the sufficiency of conditions, the specific status of the image as 'used', the identity of the operator, and the definition of 'private restore'.",
+            "change_kind": "EPISTEMIC_STATUS",
+            "epistemic_direction": "UNCERTAINTY_ADDED",
+            "material": true,
+            "source_quote": "An incident operator may restore a service into the isolated recovery environment before the normal change review, but only if a signed known-good image is used and the audit log remains intact. Such a restore must not expose the recovery environment to customers. For incident I42 the image signature was verified, the audit log is intact, and the target is the isolated recovery environment. The operator is proposing only this private restore.",
+            "transformation_quote": "Unknown: The source says 'only if' the two conditions are met, but it does not explicitly state whether satisfying them is sufficient for the restore or only necessary; other approvals or conditions could be unresolved.\nUnknown: For incident I42, the source states that the image signature was verified, but it does not explicitly state that the image is a 'signed known-good image' or that it 'is used' in the proposed restore.\nUnknown: The source does not name who verified the I42 image signature.\nUnknown: The source does not state that the proposed I42 restore has been approved, authorized, or performed; it says the operator is proposing only this private restore.\nUnknown: The source does not define 'private restore' beyond that phrase; it is unresolved whether 'private' is identical to the prohibition on exposing the recovery environment to customers or an additional restriction.\nUnknown: The source does not explicitly identify whether 'the operator' in the final sentence is the same incident operator mentioned earlier, although the context suggests it.\nUnknown: The source does not state whether any exceptions apply to the conditional permission or to the prohibition.",
+            "explanation": "The transformation adds explicit uncertainty labels ('Unknown') and assertions about missing information (e.g., sufficiency of conditions, identity of operators) that are not present in the source text. While the source leaves some details implicit, the transformation explicitly frames them as unresolved gaps or unknowns, thereby adding epistemic uncertainty beyond what is strictly required to communicate the source faithfully.",
+            "confidence": "HIGH",
+            "standing": "PROVISIONAL_MODEL_PROPOSAL"
+          },
+          {
+            "id": "ra2",
+            "claim": "The transformation states that the source does not name who verified the signature.",
+            "change_kind": "EPISTEMIC_STATUS",
+            "epistemic_direction": "UNCERTAINTY_ADDED",
+            "material": true,
+            "source_quote": "For incident I42 the image signature was verified",
+            "transformation_quote": "Unknown: The source does not name who verified the I42 image signature.",
+            "explanation": "The transformation explicitly asserts that the source fails to name the verifier. While this is factually true regarding the text, framing it as an 'Unknown' or a specific gap in the source's explicit statement adds a layer of epistemic commentary (highlighting missing information) that goes beyond a faithful paraphrase of the source's content.",
+            "confidence": "HIGH",
+            "standing": "PROVISIONAL_MODEL_PROPOSAL"
+          },
+          {
+            "id": "ra3",
+            "claim": "The transformation states that the source does not state whether any exceptions apply.",
+            "change_kind": "EPISTEMIC_STATUS",
+            "epistemic_direction": "UNCERTAINTY_ADDED",
+            "material": true,
+            "source_quote": "An incident operator may restore a service into the isolated recovery environment before the normal change review, but only if a signed known-good image is used and the audit log remains intact.",
+            "transformation_quote": "Unknown: The source does not state whether any exceptions apply to the conditional permission or to the prohibition.",
+            "explanation": "The transformation introduces uncertainty about the existence of exceptions. The source text presents a rule but does not explicitly discuss exceptions; however, the transformation's explicit labeling of this as an 'Unknown' regarding exceptions adds epistemic uncertainty about the scope of the rule that is not strictly necessary for faithful communication.",
+            "confidence": "HIGH",
+            "standing": "PROVISIONAL_MODEL_PROPOSAL"
+          }
+        ],
+        "summary": "The transformation adds multiple 'Unknown' assertions and explicit statements about missing information (e.g., sufficiency of conditions, identity of operators, existence of exceptions) that are not present in the source text. These additions introduce epistemic uncertainty beyond what is required for faithful communication."
+      },
+      "hybrid": {
+        "policy": "PRESERVE_SOURCE",
+        "matched": true,
+        "findings": [
+          {
+            "origin": "DETERMINISTIC",
+            "type": "UNSUPPORTED_ADDITION_CANDIDATE",
+            "distinction": "UNSUPPORTED_CONTENT",
+            "status": "DETERMINISTIC_ONLY",
+            "severity": "MATERIAL"
+          },
+          {
+            "origin": "DETERMINISTIC",
+            "type": "UNSUPPORTED_ADDITION_CANDIDATE",
+            "distinction": "UNSUPPORTED_CONTENT",
+            "status": "DETERMINISTIC_ONLY",
+            "severity": "MATERIAL"
+          },
+          {
+            "origin": "DETERMINISTIC",
+            "type": "UNSUPPORTED_ADDITION_CANDIDATE",
+            "distinction": "UNSUPPORTED_CONTENT",
+            "status": "DETERMINISTIC_ONLY",
+            "severity": "MATERIAL"
+          },
+          {
+            "origin": "DETERMINISTIC",
+            "type": "UNSUPPORTED_ADDITION_CANDIDATE",
+            "distinction": "UNSUPPORTED_CONTENT",
+            "status": "DETERMINISTIC_ONLY",
+            "severity": "MATERIAL"
+          },
+          {
+            "origin": "DETERMINISTIC",
+            "type": "UNSUPPORTED_ADDITION_CANDIDATE",
+            "distinction": "UNSUPPORTED_CONTENT",
+            "status": "DETERMINISTIC_ONLY",
+            "severity": "MATERIAL"
+          },
+          {
+            "origin": "DETERMINISTIC",
+            "type": "UNSUPPORTED_ADDITION_CANDIDATE",
+            "distinction": "UNSUPPORTED_CONTENT",
+            "status": "DISPUTED",
+            "severity": "MATERIAL"
+          },
+          {
+            "origin": "DETERMINISTIC",
+            "type": "UNSUPPORTED_ADDITION_CANDIDATE",
+            "distinction": "UNSUPPORTED_CONTENT",
+            "status": "DETERMINISTIC_ONLY",
+            "severity": "MATERIAL"
+          },
+          {
+            "origin": "BOTH",
+            "type": "UNSUPPORTED_ADDITION_CANDIDATE",
+            "distinction": "UNSUPPORTED_UNCERTAINTY",
+            "status": "CORROBORATED",
+            "severity": "MATERIAL"
+          },
+          {
+            "origin": "DETERMINISTIC",
+            "type": "UNSUPPORTED_ADDITION_CANDIDATE",
+            "distinction": "UNSUPPORTED_CONTENT",
+            "status": "DETERMINISTIC_ONLY",
+            "severity": "MATERIAL"
+          },
+          {
+            "origin": "BOTH",
+            "type": "UNSUPPORTED_ADDITION_CANDIDATE",
+            "distinction": "UNSUPPORTED_UNCERTAINTY",
+            "status": "CORROBORATED",
+            "severity": "MATERIAL"
+          },
+          {
+            "origin": "BOTH",
+            "type": "UNSUPPORTED_ADDITION_CANDIDATE",
+            "distinction": "UNSUPPORTED_UNCERTAINTY",
+            "status": "CORROBORATED",
+            "severity": "MATERIAL"
+          },
+          {
+            "origin": "BOTH",
+            "type": "UNSUPPORTED_ADDITION_CANDIDATE",
+            "distinction": "UNSUPPORTED_UNCERTAINTY",
+            "status": "CORROBORATED",
+            "severity": "MATERIAL"
+          },
+          {
+            "origin": "BOTH",
+            "type": "UNSUPPORTED_ADDITION_CANDIDATE",
+            "distinction": "UNSUPPORTED_UNCERTAINTY",
+            "status": "CORROBORATED",
+            "severity": "MATERIAL"
+          },
+          {
+            "origin": "DETERMINISTIC",
+            "type": "UNSUPPORTED_ADDITION_CANDIDATE",
+            "distinction": "INVENTED_AUTHORITY",
+            "status": "DETERMINISTIC_ONLY",
+            "severity": "MATERIAL"
+          },
+          {
+            "origin": "DETERMINISTIC",
+            "type": "UNSUPPORTED_ADDITION_CANDIDATE",
+            "distinction": "UNSUPPORTED_CONTENT",
+            "status": "DETERMINISTIC_ONLY",
+            "severity": "MATERIAL"
+          },
+          {
+            "origin": "BOTH",
+            "type": "UNSUPPORTED_ADDITION_CANDIDATE",
+            "distinction": "UNSUPPORTED_UNCERTAINTY",
+            "status": "CORROBORATED",
+            "severity": "MATERIAL"
+          },
+          {
+            "origin": "BOTH",
+            "type": "UNSUPPORTED_ADDITION_CANDIDATE",
+            "distinction": "UNSUPPORTED_UNCERTAINTY",
+            "status": "CORROBORATED",
+            "severity": "MATERIAL"
+          },
+          {
+            "origin": "DETERMINISTIC",
+            "type": "UNSUPPORTED_ADDITION_CANDIDATE",
+            "distinction": "UNSUPPORTED_CONTENT",
+            "status": "DETERMINISTIC_ONLY",
+            "severity": "MATERIAL"
+          },
+          {
+            "origin": "BOTH",
+            "type": "UNSUPPORTED_ADDITION_CANDIDATE",
+            "distinction": "UNSUPPORTED_UNCERTAINTY",
+            "status": "CORROBORATED",
+            "severity": "MATERIAL"
+          },
+          {
+            "origin": "DETERMINISTIC",
+            "type": "UNRESOLVED",
+            "distinction": "SOURCE_AMBIGUITY",
+            "status": "DETERMINISTIC_ONLY",
+            "severity": "MINOR"
+          },
+          {
+            "origin": "DETERMINISTIC",
+            "type": "UNRESOLVED",
+            "distinction": "SOURCE_AMBIGUITY",
+            "status": "DETERMINISTIC_ONLY",
+            "severity": "MINOR"
+          },
+          {
+            "origin": "DETERMINISTIC",
+            "type": "UNRESOLVED",
+            "distinction": "SOURCE_AMBIGUITY",
+            "status": "DETERMINISTIC_ONLY",
+            "severity": "MINOR"
+          },
+          {
+            "origin": "DETERMINISTIC",
+            "type": "UNRESOLVED",
+            "distinction": "SOURCE_AMBIGUITY",
+            "status": "DETERMINISTIC_ONLY",
+            "severity": "MINOR"
+          },
+          {
+            "origin": "DETERMINISTIC",
+            "type": "UNRESOLVED",
+            "distinction": "SOURCE_AMBIGUITY",
+            "status": "DETERMINISTIC_ONLY",
+            "severity": "MINOR"
+          },
+          {
+            "origin": "BOTH",
+            "type": "UNSUPPORTED_ADDITION_CANDIDATE",
+            "distinction": "UNSUPPORTED_UNCERTAINTY",
+            "status": "CORROBORATED",
+            "severity": "MATERIAL"
+          },
+          {
+            "origin": "DETERMINISTIC",
+            "type": "UNRESOLVED",
+            "distinction": "SOURCE_AMBIGUITY",
+            "status": "DETERMINISTIC_ONLY",
+            "severity": "MINOR"
+          },
+          {
+            "origin": "MODEL_ASSISTED",
+            "type": "UNSUPPORTED_ADDITION_CANDIDATE",
+            "distinction": "UNSUPPORTED_UNCERTAINTY",
+            "status": "DISPUTED",
+            "severity": "MATERIAL"
+          }
+        ],
+        "disagreements": [
+          {
+            "kind": "CORROBORATED",
+            "deterministic_finding_ids": [
+              "f10"
+            ],
+            "reviewer_finding_ids": [
+              "ra1",
+              "ra3"
+            ],
+            "note": "Deterministic and model-assisted findings agree on type, distinction and source evidence."
+          },
+          {
+            "kind": "CORROBORATED",
+            "deterministic_finding_ids": [
+              "f12"
+            ],
+            "reviewer_finding_ids": [
+              "ra1",
+              "ra3"
+            ],
+            "note": "Deterministic and model-assisted findings agree on type, distinction and source evidence."
+          },
+          {
+            "kind": "CORROBORATED",
+            "deterministic_finding_ids": [
+              "f13"
+            ],
+            "reviewer_finding_ids": [
+              "ra1"
+            ],
+            "note": "Deterministic and model-assisted findings agree on type, distinction and source evidence."
+          },
+          {
+            "kind": "CORROBORATED",
+            "deterministic_finding_ids": [
+              "f14"
+            ],
+            "reviewer_finding_ids": [
+              "ra1",
+              "ra3"
+            ],
+            "note": "Deterministic and model-assisted findings agree on type, distinction and source evidence."
+          },
+          {
+            "kind": "CORROBORATED",
+            "deterministic_finding_ids": [
+              "f15"
+            ],
+            "reviewer_finding_ids": [
+              "ra1"
+            ],
+            "note": "Deterministic and model-assisted findings agree on type, distinction and source evidence."
+          },
+          {
+            "kind": "CORROBORATED",
+            "deterministic_finding_ids": [
+              "f18"
+            ],
+            "reviewer_finding_ids": [
+              "ra1"
+            ],
+            "note": "Deterministic and model-assisted findings agree on type, distinction and source evidence."
+          },
+          {
+            "kind": "CORROBORATED",
+            "deterministic_finding_ids": [
+              "f19"
+            ],
+            "reviewer_finding_ids": [
+              "ra1",
+              "ra3"
+            ],
+            "note": "Deterministic and model-assisted findings agree on type, distinction and source evidence."
+          },
+          {
+            "kind": "CORROBORATED",
+            "deterministic_finding_ids": [
+              "f21"
+            ],
+            "reviewer_finding_ids": [
+              "ra1",
+              "ra3"
+            ],
+            "note": "Deterministic and model-assisted findings agree on type, distinction and source evidence."
+          },
+          {
+            "kind": "CORROBORATED",
+            "deterministic_finding_ids": [
+              "f27"
+            ],
+            "reviewer_finding_ids": [
+              "ra1"
+            ],
+            "note": "Deterministic and model-assisted findings agree on type, distinction and source evidence."
+          },
+          {
+            "kind": "DISTINCTION_DISAGREEMENT",
+            "deterministic_finding_ids": [
+              "f8",
+              "f11"
+            ],
+            "reviewer_finding_ids": [
+              "ra2"
+            ],
+            "note": "Both findings and their exact evidence are retained; the deterministic finding remains primary for the overlapping claim."
+          }
+        ]
+      }
+    },
+    {
+      "id": "LC20-02-C_UNDERSTANDING_ENHANCED",
+      "label": "LC20-02",
+      "expected": "UNRESOLVED",
+      "deterministic": {
+        "policy": "PRESERVE_SOURCE",
+        "matched": true,
+        "findings": [
+          "UNSUPPORTED_ADDITION_CANDIDATE/UNSUPPORTED_CONTENT",
+          "UNSUPPORTED_ADDITION_CANDIDATE/UNSUPPORTED_CONTENT",
+          "UNSUPPORTED_ADDITION_CANDIDATE/UNSUPPORTED_CONTENT",
+          "UNSUPPORTED_ADDITION_CANDIDATE/UNSUPPORTED_CONTENT",
+          "UNSUPPORTED_ADDITION_CANDIDATE/UNSUPPORTED_CONTENT",
+          "UNSUPPORTED_ADDITION_CANDIDATE/UNSUPPORTED_CONTENT",
+          "UNSUPPORTED_ADDITION_CANDIDATE/UNSUPPORTED_CONTENT",
+          "UNSUPPORTED_ADDITION_CANDIDATE/UNSUPPORTED_CONTENT",
+          "UNSUPPORTED_ADDITION_CANDIDATE/UNSUPPORTED_CONTENT",
+          "UNSUPPORTED_ADDITION_CANDIDATE/UNSUPPORTED_UNCERTAINTY",
+          "UNSUPPORTED_ADDITION_CANDIDATE/UNSUPPORTED_UNCERTAINTY",
+          "UNSUPPORTED_ADDITION_CANDIDATE/UNSUPPORTED_CONTENT",
+          "UNSUPPORTED_ADDITION_CANDIDATE/UNSUPPORTED_CONTENT",
+          "UNSUPPORTED_ADDITION_CANDIDATE/UNSUPPORTED_UNCERTAINTY",
+          "UNSUPPORTED_ADDITION_CANDIDATE/UNSUPPORTED_CONTENT",
+          "UNSUPPORTED_ADDITION_CANDIDATE/UNSUPPORTED_CONTENT",
+          "UNSUPPORTED_ADDITION_CANDIDATE/UNSUPPORTED_CONTENT",
+          "UNSUPPORTED_ADDITION_CANDIDATE/UNSUPPORTED_UNCERTAINTY",
+          "UNSUPPORTED_ADDITION_CANDIDATE/UNSUPPORTED_CONTENT",
+          "UNRESOLVED/SOURCE_AMBIGUITY",
+          "UNRESOLVED/SOURCE_AMBIGUITY",
+          "UNSUPPORTED_ADDITION_CANDIDATE/UNSUPPORTED_UNCERTAINTY"
+        ]
+      },
+      "reviewer": {
+        "status": "INVALID_EVIDENCE",
+        "error": "TRANSFORMATION_QUOTE_NOT_FOUND",
+        "policy": "REQUEST_CLARIFICATION",
+        "matched": false,
+        "assessments": [],
+        "summary": null
+      },
+      "hybrid": {
+        "policy": "PRESERVE_SOURCE",
+        "matched": true,
+        "findings": [
+          {
+            "origin": "DETERMINISTIC",
+            "type": "UNSUPPORTED_ADDITION_CANDIDATE",
+            "distinction": "UNSUPPORTED_CONTENT",
+            "status": "DETERMINISTIC_ONLY",
+            "severity": "MATERIAL"
+          },
+          {
+            "origin": "DETERMINISTIC",
+            "type": "UNSUPPORTED_ADDITION_CANDIDATE",
+            "distinction": "UNSUPPORTED_CONTENT",
+            "status": "DETERMINISTIC_ONLY",
+            "severity": "MATERIAL"
+          },
+          {
+            "origin": "DETERMINISTIC",
+            "type": "UNSUPPORTED_ADDITION_CANDIDATE",
+            "distinction": "UNSUPPORTED_CONTENT",
+            "status": "DETERMINISTIC_ONLY",
+            "severity": "MATERIAL"
+          },
+          {
+            "origin": "DETERMINISTIC",
+            "type": "UNSUPPORTED_ADDITION_CANDIDATE",
+            "distinction": "UNSUPPORTED_CONTENT",
+            "status": "DETERMINISTIC_ONLY",
+            "severity": "MATERIAL"
+          },
+          {
+            "origin": "DETERMINISTIC",
+            "type": "UNSUPPORTED_ADDITION_CANDIDATE",
+            "distinction": "UNSUPPORTED_CONTENT",
+            "status": "DETERMINISTIC_ONLY",
+            "severity": "MATERIAL"
+          },
+          {
+            "origin": "DETERMINISTIC",
+            "type": "UNSUPPORTED_ADDITION_CANDIDATE",
+            "distinction": "UNSUPPORTED_CONTENT",
+            "status": "DETERMINISTIC_ONLY",
+            "severity": "MATERIAL"
+          },
+          {
+            "origin": "DETERMINISTIC",
+            "type": "UNSUPPORTED_ADDITION_CANDIDATE",
+            "distinction": "UNSUPPORTED_CONTENT",
+            "status": "DETERMINISTIC_ONLY",
+            "severity": "MATERIAL"
+          },
+          {
+            "origin": "DETERMINISTIC",
+            "type": "UNSUPPORTED_ADDITION_CANDIDATE",
+            "distinction": "UNSUPPORTED_CONTENT",
+            "status": "DETERMINISTIC_ONLY",
+            "severity": "MATERIAL"
+          },
+          {
+            "origin": "DETERMINISTIC",
+            "type": "UNSUPPORTED_ADDITION_CANDIDATE",
+            "distinction": "UNSUPPORTED_CONTENT",
+            "status": "DETERMINISTIC_ONLY",
+            "severity": "MATERIAL"
+          },
+          {
+            "origin": "DETERMINISTIC",
+            "type": "UNSUPPORTED_ADDITION_CANDIDATE",
+            "distinction": "UNSUPPORTED_UNCERTAINTY",
+            "status": "DETERMINISTIC_ONLY",
+            "severity": "MATERIAL"
+          },
+          {
+            "origin": "DETERMINISTIC",
+            "type": "UNSUPPORTED_ADDITION_CANDIDATE",
+            "distinction": "UNSUPPORTED_UNCERTAINTY",
+            "status": "DETERMINISTIC_ONLY",
+            "severity": "MATERIAL"
+          },
+          {
+            "origin": "DETERMINISTIC",
+            "type": "UNSUPPORTED_ADDITION_CANDIDATE",
+            "distinction": "UNSUPPORTED_CONTENT",
+            "status": "DETERMINISTIC_ONLY",
+            "severity": "MATERIAL"
+          },
+          {
+            "origin": "DETERMINISTIC",
+            "type": "UNSUPPORTED_ADDITION_CANDIDATE",
+            "distinction": "UNSUPPORTED_CONTENT",
+            "status": "DETERMINISTIC_ONLY",
+            "severity": "MATERIAL"
+          },
+          {
+            "origin": "DETERMINISTIC",
+            "type": "UNSUPPORTED_ADDITION_CANDIDATE",
+            "distinction": "UNSUPPORTED_UNCERTAINTY",
+            "status": "DETERMINISTIC_ONLY",
+            "severity": "MATERIAL"
+          },
+          {
+            "origin": "DETERMINISTIC",
+            "type": "UNSUPPORTED_ADDITION_CANDIDATE",
+            "distinction": "UNSUPPORTED_CONTENT",
+            "status": "DETERMINISTIC_ONLY",
+            "severity": "MATERIAL"
+          },
+          {
+            "origin": "DETERMINISTIC",
+            "type": "UNSUPPORTED_ADDITION_CANDIDATE",
+            "distinction": "UNSUPPORTED_CONTENT",
+            "status": "DETERMINISTIC_ONLY",
+            "severity": "MATERIAL"
+          },
+          {
+            "origin": "DETERMINISTIC",
+            "type": "UNSUPPORTED_ADDITION_CANDIDATE",
+            "distinction": "UNSUPPORTED_CONTENT",
+            "status": "DETERMINISTIC_ONLY",
+            "severity": "MATERIAL"
+          },
+          {
+            "origin": "DETERMINISTIC",
+            "type": "UNSUPPORTED_ADDITION_CANDIDATE",
+            "distinction": "UNSUPPORTED_UNCERTAINTY",
+            "status": "DETERMINISTIC_ONLY",
+            "severity": "MATERIAL"
+          },
+          {
+            "origin": "DETERMINISTIC",
+            "type": "UNSUPPORTED_ADDITION_CANDIDATE",
+            "distinction": "UNSUPPORTED_CONTENT",
+            "status": "DETERMINISTIC_ONLY",
+            "severity": "MATERIAL"
+          },
+          {
+            "origin": "DETERMINISTIC",
+            "type": "UNRESOLVED",
+            "distinction": "SOURCE_AMBIGUITY",
+            "status": "DETERMINISTIC_ONLY",
+            "severity": "MINOR"
+          },
+          {
+            "origin": "DETERMINISTIC",
+            "type": "UNRESOLVED",
+            "distinction": "SOURCE_AMBIGUITY",
+            "status": "DETERMINISTIC_ONLY",
+            "severity": "MINOR"
+          },
+          {
+            "origin": "DETERMINISTIC",
+            "type": "UNSUPPORTED_ADDITION_CANDIDATE",
+            "distinction": "UNSUPPORTED_UNCERTAINTY",
+            "status": "DETERMINISTIC_ONLY",
+            "severity": "MATERIAL"
+          }
+        ],
+        "disagreements": []
+      }
+    },
+    {
+      "id": "LC20-19-B_AI_MEDIATED",
+      "label": "LC20-19",
+      "expected": "UNRESOLVED",
+      "deterministic": {
+        "policy": "PRESERVE_SOURCE",
+        "matched": true,
+        "findings": [
+          "UNSUPPORTED_ADDITION_CANDIDATE/UNSUPPORTED_CONTENT",
+          "UNSUPPORTED_ADDITION_CANDIDATE/INVENTED_AUTHORITY",
+          "UNSUPPORTED_ADDITION_CANDIDATE/UNSUPPORTED_CONTENT",
+          "UNSUPPORTED_ADDITION_CANDIDATE/UNSUPPORTED_CONTENT",
+          "UNSUPPORTED_ADDITION_CANDIDATE/UNSUPPORTED_UNCERTAINTY",
+          "UNSUPPORTED_ADDITION_CANDIDATE/UNSUPPORTED_CONTENT",
+          "UNSUPPORTED_ADDITION_CANDIDATE/UNSUPPORTED_CONTENT",
+          "UNSUPPORTED_ADDITION_CANDIDATE/UNSUPPORTED_UNCERTAINTY",
+          "UNSUPPORTED_ADDITION_CANDIDATE/UNSUPPORTED_CAUSAL",
+          "UNRESOLVED/SOURCE_AMBIGUITY",
+          "UNRESOLVED/SOURCE_AMBIGUITY",
+          "UNSUPPORTED_ADDITION_CANDIDATE/UNSUPPORTED_UNCERTAINTY",
+          "UNRESOLVED/SOURCE_AMBIGUITY",
+          "UNRESOLVED/SOURCE_AMBIGUITY",
+          "UNSUPPORTED_ADDITION_CANDIDATE/UNSUPPORTED_UNCERTAINTY",
+          "UNSUPPORTED_ADDITION_CANDIDATE/UNSUPPORTED_UNCERTAINTY",
+          "UNSUPPORTED_ADDITION_CANDIDATE/UNSUPPORTED_UNCERTAINTY",
+          "UNRESOLVED/SOURCE_AMBIGUITY",
+          "UNSUPPORTED_ADDITION_CANDIDATE/UNSUPPORTED_UNCERTAINTY"
+        ]
+      },
+      "reviewer": {
+        "status": "INVALID_EVIDENCE",
+        "error": "TRANSFORMATION_QUOTE_NOT_FOUND",
+        "policy": "REQUEST_CLARIFICATION",
+        "matched": false,
+        "assessments": [],
+        "summary": null
+      },
+      "hybrid": {
+        "policy": "PRESERVE_SOURCE",
+        "matched": true,
+        "findings": [
+          {
+            "origin": "DETERMINISTIC",
+            "type": "UNSUPPORTED_ADDITION_CANDIDATE",
+            "distinction": "UNSUPPORTED_CONTENT",
+            "status": "DETERMINISTIC_ONLY",
+            "severity": "MATERIAL"
+          },
+          {
+            "origin": "DETERMINISTIC",
+            "type": "UNSUPPORTED_ADDITION_CANDIDATE",
+            "distinction": "INVENTED_AUTHORITY",
+            "status": "DETERMINISTIC_ONLY",
+            "severity": "MATERIAL"
+          },
+          {
+            "origin": "DETERMINISTIC",
+            "type": "UNSUPPORTED_ADDITION_CANDIDATE",
+            "distinction": "UNSUPPORTED_CONTENT",
+            "status": "DETERMINISTIC_ONLY",
+            "severity": "MATERIAL"
+          },
+          {
+            "origin": "DETERMINISTIC",
+            "type": "UNSUPPORTED_ADDITION_CANDIDATE",
+            "distinction": "UNSUPPORTED_CONTENT",
+            "status": "DETERMINISTIC_ONLY",
+            "severity": "MATERIAL"
+          },
+          {
+            "origin": "DETERMINISTIC",
+            "type": "UNSUPPORTED_ADDITION_CANDIDATE",
+            "distinction": "UNSUPPORTED_UNCERTAINTY",
+            "status": "DETERMINISTIC_ONLY",
+            "severity": "MATERIAL"
+          },
+          {
+            "origin": "DETERMINISTIC",
+            "type": "UNSUPPORTED_ADDITION_CANDIDATE",
+            "distinction": "UNSUPPORTED_CONTENT",
+            "status": "DETERMINISTIC_ONLY",
+            "severity": "MATERIAL"
+          },
+          {
+            "origin": "DETERMINISTIC",
+            "type": "UNSUPPORTED_ADDITION_CANDIDATE",
+            "distinction": "UNSUPPORTED_CONTENT",
+            "status": "DETERMINISTIC_ONLY",
+            "severity": "MATERIAL"
+          },
+          {
+            "origin": "DETERMINISTIC",
+            "type": "UNSUPPORTED_ADDITION_CANDIDATE",
+            "distinction": "UNSUPPORTED_UNCERTAINTY",
+            "status": "DETERMINISTIC_ONLY",
+            "severity": "MATERIAL"
+          },
+          {
+            "origin": "DETERMINISTIC",
+            "type": "UNSUPPORTED_ADDITION_CANDIDATE",
+            "distinction": "UNSUPPORTED_CAUSAL",
+            "status": "DETERMINISTIC_ONLY",
+            "severity": "MATERIAL"
+          },
+          {
+            "origin": "DETERMINISTIC",
+            "type": "UNRESOLVED",
+            "distinction": "SOURCE_AMBIGUITY",
+            "status": "DETERMINISTIC_ONLY",
+            "severity": "MINOR"
+          },
+          {
+            "origin": "DETERMINISTIC",
+            "type": "UNRESOLVED",
+            "distinction": "SOURCE_AMBIGUITY",
+            "status": "DETERMINISTIC_ONLY",
+            "severity": "MINOR"
+          },
+          {
+            "origin": "DETERMINISTIC",
+            "type": "UNSUPPORTED_ADDITION_CANDIDATE",
+            "distinction": "UNSUPPORTED_UNCERTAINTY",
+            "status": "DETERMINISTIC_ONLY",
+            "severity": "MATERIAL"
+          },
+          {
+            "origin": "DETERMINISTIC",
+            "type": "UNRESOLVED",
+            "distinction": "SOURCE_AMBIGUITY",
+            "status": "DETERMINISTIC_ONLY",
+            "severity": "MINOR"
+          },
+          {
+            "origin": "DETERMINISTIC",
+            "type": "UNRESOLVED",
+            "distinction": "SOURCE_AMBIGUITY",
+            "status": "DETERMINISTIC_ONLY",
+            "severity": "MINOR"
+          },
+          {
+            "origin": "DETERMINISTIC",
+            "type": "UNSUPPORTED_ADDITION_CANDIDATE",
+            "distinction": "UNSUPPORTED_UNCERTAINTY",
+            "status": "DETERMINISTIC_ONLY",
+            "severity": "MATERIAL"
+          },
+          {
+            "origin": "DETERMINISTIC",
+            "type": "UNSUPPORTED_ADDITION_CANDIDATE",
+            "distinction": "UNSUPPORTED_UNCERTAINTY",
+            "status": "DETERMINISTIC_ONLY",
+            "severity": "MATERIAL"
+          },
+          {
+            "origin": "DETERMINISTIC",
+            "type": "UNSUPPORTED_ADDITION_CANDIDATE",
+            "distinction": "UNSUPPORTED_UNCERTAINTY",
+            "status": "DETERMINISTIC_ONLY",
+            "severity": "MATERIAL"
+          },
+          {
+            "origin": "DETERMINISTIC",
+            "type": "UNRESOLVED",
+            "distinction": "SOURCE_AMBIGUITY",
+            "status": "DETERMINISTIC_ONLY",
+            "severity": "MINOR"
+          },
+          {
+            "origin": "DETERMINISTIC",
+            "type": "UNSUPPORTED_ADDITION_CANDIDATE",
+            "distinction": "UNSUPPORTED_UNCERTAINTY",
+            "status": "DETERMINISTIC_ONLY",
+            "severity": "MATERIAL"
+          }
+        ],
+        "disagreements": []
+      }
+    },
+    {
+      "id": "LC20-19-C_UNDERSTANDING_ENHANCED",
+      "label": "LC20-19",
+      "expected": "UNRESOLVED",
+      "deterministic": {
+        "policy": "PRESERVE_SOURCE",
+        "matched": true,
+        "findings": [
+          "UNSUPPORTED_ADDITION_CANDIDATE/UNSUPPORTED_CAUSAL",
+          "UNSUPPORTED_ADDITION_CANDIDATE/UNSUPPORTED_CONTENT",
+          "UNSUPPORTED_ADDITION_CANDIDATE/UNSUPPORTED_CONTENT",
+          "UNSUPPORTED_ADDITION_CANDIDATE/UNSUPPORTED_CONTENT",
+          "UNSUPPORTED_ADDITION_CANDIDATE/UNSUPPORTED_CONTENT",
+          "UNSUPPORTED_ADDITION_CANDIDATE/UNSUPPORTED_UNCERTAINTY",
+          "UNSUPPORTED_ADDITION_CANDIDATE/UNSUPPORTED_CONTENT",
+          "UNSUPPORTED_ADDITION_CANDIDATE/UNSUPPORTED_CONTENT",
+          "UNSUPPORTED_ADDITION_CANDIDATE/UNSUPPORTED_CAUSAL",
+          "UNSUPPORTED_ADDITION_CANDIDATE/UNSUPPORTED_UNCERTAINTY",
+          "UNSUPPORTED_ADDITION_CANDIDATE/UNSUPPORTED_CONTENT",
+          "UNSUPPORTED_ADDITION_CANDIDATE/UNSUPPORTED_UNCERTAINTY",
+          "UNSUPPORTED_ADDITION_CANDIDATE/UNSUPPORTED_CONTENT",
+          "UNSUPPORTED_ADDITION_CANDIDATE/UNSUPPORTED_UNCERTAINTY",
+          "UNSUPPORTED_ADDITION_CANDIDATE/UNSUPPORTED_UNCERTAINTY",
+          "UNRESOLVED/SOURCE_AMBIGUITY",
+          "UNRESOLVED/SOURCE_AMBIGUITY",
+          "UNRESOLVED/SOURCE_AMBIGUITY",
+          "UNRESOLVED/SOURCE_AMBIGUITY",
+          "UNRESOLVED/SOURCE_AMBIGUITY",
+          "UNSUPPORTED_ADDITION_CANDIDATE/UNSUPPORTED_UNCERTAINTY",
+          "UNRESOLVED/SOURCE_AMBIGUITY",
+          "UNRESOLVED/SOURCE_AMBIGUITY",
+          "UNRESOLVED/SOURCE_AMBIGUITY",
+          "UNRESOLVED/SOURCE_AMBIGUITY",
+          "UNRESOLVED/SOURCE_AMBIGUITY"
+        ]
+      },
+      "reviewer": {
+        "status": "INVALID_EVIDENCE",
+        "error": "SOURCE_QUOTE_NOT_FOUND",
+        "policy": "REQUEST_CLARIFICATION",
+        "matched": false,
+        "assessments": [],
+        "summary": null
+      },
+      "hybrid": {
+        "policy": "PRESERVE_SOURCE",
+        "matched": true,
+        "findings": [
+          {
+            "origin": "DETERMINISTIC",
+            "type": "UNSUPPORTED_ADDITION_CANDIDATE",
+            "distinction": "UNSUPPORTED_CAUSAL",
+            "status": "DETERMINISTIC_ONLY",
+            "severity": "MATERIAL"
+          },
+          {
+            "origin": "DETERMINISTIC",
+            "type": "UNSUPPORTED_ADDITION_CANDIDATE",
+            "distinction": "UNSUPPORTED_CONTENT",
+            "status": "DETERMINISTIC_ONLY",
+            "severity": "MATERIAL"
+          },
+          {
+            "origin": "DETERMINISTIC",
+            "type": "UNSUPPORTED_ADDITION_CANDIDATE",
+            "distinction": "UNSUPPORTED_CONTENT",
+            "status": "DETERMINISTIC_ONLY",
+            "severity": "MATERIAL"
+          },
+          {
+            "origin": "DETERMINISTIC",
+            "type": "UNSUPPORTED_ADDITION_CANDIDATE",
+            "distinction": "UNSUPPORTED_CONTENT",
+            "status": "DETERMINISTIC_ONLY",
+            "severity": "MATERIAL"
+          },
+          {
+            "origin": "DETERMINISTIC",
+            "type": "UNSUPPORTED_ADDITION_CANDIDATE",
+            "distinction": "UNSUPPORTED_CONTENT",
+            "status": "DETERMINISTIC_ONLY",
+            "severity": "MATERIAL"
+          },
+          {
+            "origin": "DETERMINISTIC",
+            "type": "UNSUPPORTED_ADDITION_CANDIDATE",
+            "distinction": "UNSUPPORTED_UNCERTAINTY",
+            "status": "DETERMINISTIC_ONLY",
+            "severity": "MATERIAL"
+          },
+          {
+            "origin": "DETERMINISTIC",
+            "type": "UNSUPPORTED_ADDITION_CANDIDATE",
+            "distinction": "UNSUPPORTED_CONTENT",
+            "status": "DETERMINISTIC_ONLY",
+            "severity": "MATERIAL"
+          },
+          {
+            "origin": "DETERMINISTIC",
+            "type": "UNSUPPORTED_ADDITION_CANDIDATE",
+            "distinction": "UNSUPPORTED_CONTENT",
+            "status": "DETERMINISTIC_ONLY",
+            "severity": "MATERIAL"
+          },
+          {
+            "origin": "DETERMINISTIC",
+            "type": "UNSUPPORTED_ADDITION_CANDIDATE",
+            "distinction": "UNSUPPORTED_CAUSAL",
+            "status": "DETERMINISTIC_ONLY",
+            "severity": "MATERIAL"
+          },
+          {
+            "origin": "DETERMINISTIC",
+            "type": "UNSUPPORTED_ADDITION_CANDIDATE",
+            "distinction": "UNSUPPORTED_UNCERTAINTY",
+            "status": "DETERMINISTIC_ONLY",
+            "severity": "MATERIAL"
+          },
+          {
+            "origin": "DETERMINISTIC",
+            "type": "UNSUPPORTED_ADDITION_CANDIDATE",
+            "distinction": "UNSUPPORTED_CONTENT",
+            "status": "DETERMINISTIC_ONLY",
+            "severity": "MATERIAL"
+          },
+          {
+            "origin": "DETERMINISTIC",
+            "type": "UNSUPPORTED_ADDITION_CANDIDATE",
+            "distinction": "UNSUPPORTED_UNCERTAINTY",
+            "status": "DETERMINISTIC_ONLY",
+            "severity": "MATERIAL"
+          },
+          {
+            "origin": "DETERMINISTIC",
+            "type": "UNSUPPORTED_ADDITION_CANDIDATE",
+            "distinction": "UNSUPPORTED_CONTENT",
+            "status": "DETERMINISTIC_ONLY",
+            "severity": "MATERIAL"
+          },
+          {
+            "origin": "DETERMINISTIC",
+            "type": "UNSUPPORTED_ADDITION_CANDIDATE",
+            "distinction": "UNSUPPORTED_UNCERTAINTY",
+            "status": "DETERMINISTIC_ONLY",
+            "severity": "MATERIAL"
+          },
+          {
+            "origin": "DETERMINISTIC",
+            "type": "UNSUPPORTED_ADDITION_CANDIDATE",
+            "distinction": "UNSUPPORTED_UNCERTAINTY",
+            "status": "DETERMINISTIC_ONLY",
+            "severity": "MATERIAL"
+          },
+          {
+            "origin": "DETERMINISTIC",
+            "type": "UNRESOLVED",
+            "distinction": "SOURCE_AMBIGUITY",
+            "status": "DETERMINISTIC_ONLY",
+            "severity": "MINOR"
+          },
+          {
+            "origin": "DETERMINISTIC",
+            "type": "UNRESOLVED",
+            "distinction": "SOURCE_AMBIGUITY",
+            "status": "DETERMINISTIC_ONLY",
+            "severity": "MINOR"
+          },
+          {
+            "origin": "DETERMINISTIC",
+            "type": "UNRESOLVED",
+            "distinction": "SOURCE_AMBIGUITY",
+            "status": "DETERMINISTIC_ONLY",
+            "severity": "MINOR"
+          },
+          {
+            "origin": "DETERMINISTIC",
+            "type": "UNRESOLVED",
+            "distinction": "SOURCE_AMBIGUITY",
+            "status": "DETERMINISTIC_ONLY",
+            "severity": "MINOR"
+          },
+          {
+            "origin": "DETERMINISTIC",
+            "type": "UNRESOLVED",
+            "distinction": "SOURCE_AMBIGUITY",
+            "status": "DETERMINISTIC_ONLY",
+            "severity": "MINOR"
+          },
+          {
+            "origin": "DETERMINISTIC",
+            "type": "UNSUPPORTED_ADDITION_CANDIDATE",
+            "distinction": "UNSUPPORTED_UNCERTAINTY",
+            "status": "DETERMINISTIC_ONLY",
+            "severity": "MATERIAL"
+          },
+          {
+            "origin": "DETERMINISTIC",
+            "type": "UNRESOLVED",
+            "distinction": "SOURCE_AMBIGUITY",
+            "status": "DETERMINISTIC_ONLY",
+            "severity": "MINOR"
+          },
+          {
+            "origin": "DETERMINISTIC",
+            "type": "UNRESOLVED",
+            "distinction": "SOURCE_AMBIGUITY",
+            "status": "DETERMINISTIC_ONLY",
+            "severity": "MINOR"
+          },
+          {
+            "origin": "DETERMINISTIC",
+            "type": "UNRESOLVED",
+            "distinction": "SOURCE_AMBIGUITY",
+            "status": "DETERMINISTIC_ONLY",
+            "severity": "MINOR"
+          },
+          {
+            "origin": "DETERMINISTIC",
+            "type": "UNRESOLVED",
+            "distinction": "SOURCE_AMBIGUITY",
+            "status": "DETERMINISTIC_ONLY",
+            "severity": "MINOR"
+          },
+          {
+            "origin": "DETERMINISTIC",
+            "type": "UNRESOLVED",
+            "distinction": "SOURCE_AMBIGUITY",
+            "status": "DETERMINISTIC_ONLY",
+            "severity": "MINOR"
+          }
+        ],
+        "disagreements": []
+      }
+    }
+  ]
+}

@@ -1,0 +1,11 @@
+{
+  "status": "PASS",
+  "scenario": "archive-recovery-s17-v1",
+  "original_source_visible": true,
+  "question_hidden": true,
+  "remote_disabled": true,
+  "real_provider_requests": 0,
+  "human_acceptance": "NOT_PERFORMED",
+  "errors": [],
+  "external_browser_requests": []
+}

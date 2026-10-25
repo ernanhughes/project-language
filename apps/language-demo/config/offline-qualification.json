@@ -1,0 +1,29 @@
+{
+  "schema": "studio-source-bound-offline-qualification/0.1r",
+  "date": "2026-10-23",
+  "standing": "OFFLINE_ONLY_LIVE_NOT_PROBED",
+  "pi_adapter_version": "1.0.4",
+  "haiku_metadata_catalogue_version": "1.4.0",
+  "config_hash": "78020e5ed7246fa4f787cd8b1f72f721c41caba22e72a20fcf56f07937ebe7ad",
+  "source_hashes": {
+    "models/opencode.mjs": "c6c092b194c9a36718793c6aca5aa03c05c7bce971c5c9b4a54350660d2c904e",
+    "models/runtime.mjs": "0c5d4be052cbdd91cf2bc736ded6472005cb531ba1667cae1b8354e9e409d8df",
+    "models/prompts.mjs": "cc7ff5a8a8e9986271abd4774a80ea5e84a81b28be9317936487f328a6ba0132",
+    "models/ollama-legacy.mjs": "7330fc3f733faf39c6b69fd3101074dde6ccabb983a930c0ea3e031ec66d1e14",
+    "config/studio.json": "24646226c14320c946ef38b2cd82bc91fefa4c989073834b970c9a81abb6d56a",
+    "config/models.json": "78020e5ed7246fa4f787cd8b1f72f721c41caba22e72a20fcf56f07937ebe7ad",
+    "protocol/state.mjs": "d67765ed2ef92bd154e22b18a2521f6d7c919cc7e223a0d3081b40b09d8b437e",
+    "engine/studio.mjs": "8ba21ebd2be68681d81eecfe797b06bffd79419e4015754b4bd343661fa30da5",
+    "engine/scenario.mjs": "159bcaf0dce0099b57e170a0e048f15d20e46a200e92b4fbd3ffe21243cc5227",
+    "server/app.mjs": "6b7814fdf5143c146e71c6d09bafe713d71abfedf80b7a54ae2be2584254872d",
+    "storage/log.mjs": "91d5a071fd1f7eec324ad87a48cd76afc8cebcc344767592b1249fb2055a3d3d",
+    "ui/app.js": "e81f52a884120d2108e81721df3354ba66e1db65077ef2571147eda3ee4d5e30",
+    "ui/index.html": "cbe8e547a1549f3335c8929e0c8cb6825b5d915020ceef8e7c9df318f72a3ed5",
+    "tests/opencode.test.mjs": "fe8072fdf984fc552727c1a7194597d02b6f1ab3d9a9e9b5f93f78f6313588ca",
+    "tests/go-fixtures.mjs": "d490fcb48ee8cc27d928100f13f2eb3e58f0e2adf0620120f03d3ed042e2d5cc",
+    "tests/studio.test.mjs": "bb57add1572e4503471255ed24107d2044a5938df4c8113e4932c746518965ae",
+    "tests/browser-opencode.mjs": "592c3f647d927759e0c15537c58e29cd4ab0eab4894ef52e75b9357ae8778b55"
+  },
+  "observations": "32 passing offline tests; all four serializers exercised; no live provider requests",
+  "evidence": "evidence/opencode-001/qualification-final/qualification.json"
+}

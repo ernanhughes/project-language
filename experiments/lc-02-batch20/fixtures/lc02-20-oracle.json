@@ -1,0 +1,363 @@
+{
+  "schema": "language-batch-oracle/1.0",
+  "suite_id": "LC-02-BATCH20-2026-10-23",
+  "standing": "AUTHOR_CONSTRUCTED_NOT_INDEPENDENTLY_ADJUDICATED",
+  "evaluation_policy": "Store separately from all recipient/interpreter requests. Adjudicate references before reporting answer accuracy; do not modify them post hoc to favour an arm.",
+  "references": [
+    {
+      "id": "LC20-01",
+      "expected_decision": "NO",
+      "rationale": "Passing rehearsal does not substitute for explicitly absent owner sign-off.",
+      "source_evidence_quotes": [
+        "it does not authorise production rollout",
+        "Every production rollout requires separate sign-off from the service owner",
+        "No service-owner sign-off has been issued for release R17"
+      ],
+      "required_reasoning": [
+        "Owner sign-off is a separate prerequisite",
+        "Sign-off for R17 is absent",
+        "Green rehearsal has no authorising force"
+      ],
+      "unsupported_conclusions_to_flag": [
+        "Green rehearsal grants rollout authority"
+      ],
+      "oracle_standing": "AUTHOR_CONSTRUCTED_NOT_INDEPENDENTLY_ADJUDICATED"
+    },
+    {
+      "id": "LC20-02",
+      "expected_decision": "YES",
+      "rationale": "The narrow private-restore permission applies because all stated conditions hold.",
+      "source_evidence_quotes": [
+        "may restore a service into the isolated recovery environment before the normal change review",
+        "only if a signed known-good image is used and the audit log remains intact",
+        "For incident I42 the image signature was verified, the audit log is intact, and the target is the isolated recovery environment"
+      ],
+      "required_reasoning": [
+        "Exception applies to isolated private restore",
+        "Signed image verified and audit intact",
+        "No customer exposure"
+      ],
+      "unsupported_conclusions_to_flag": [
+        "The permission also authorises public deployment"
+      ],
+      "oracle_standing": "AUTHOR_CONSTRUCTED_NOT_INDEPENDENTLY_ADJUDICATED"
+    },
+    {
+      "id": "LC20-03",
+      "expected_decision": "UNKNOWN",
+      "rationale": "Approval is expressly unresolved; unknown is distinct from yes and categorical no.",
+      "source_evidence_quotes": [
+        "Whether the outside replication vendor may retain its own recovery copy has not been decided",
+        "neither an approval nor a denial of vendor retention"
+      ],
+      "required_reasoning": [
+        "Vendor retention approval is not determined"
+      ],
+      "unsupported_conclusions_to_flag": [
+        "Vendor permission was granted",
+        "Vendor retention was expressly prohibited"
+      ],
+      "oracle_standing": "AUTHOR_CONSTRUCTED_NOT_INDEPENDENTLY_ADJUDICATED"
+    },
+    {
+      "id": "LC20-04",
+      "expected_decision": "NO",
+      "rationale": "Scope expressly excludes customer records.",
+      "source_evidence_quotes": [
+        "The permission does not cover customer accounts or production customer records",
+        "The requested copy contains twenty production customer records"
+      ],
+      "required_reasoning": [
+        "Permission only covers synthetic accounts",
+        "Requested data is customer records"
+      ],
+      "unsupported_conclusions_to_flag": [
+        "Test-data permission extends to customer records"
+      ],
+      "oracle_standing": "AUTHOR_CONSTRUCTED_NOT_INDEPENDENTLY_ADJUDICATED"
+    },
+    {
+      "id": "LC20-05",
+      "expected_decision": "NO",
+      "rationale": "The deletion instruction is quoted as retired, not operative current policy.",
+      "source_evidence_quotes": [
+        "It said, “Delete all audit records after a rollback.”",
+        "No. The current policy requires preserving all audit records and the old handbook has been retired"
+      ],
+      "required_reasoning": [
+        "Quoted text is from the old handbook",
+        "Current policy preserves audit records"
+      ],
+      "unsupported_conclusions_to_flag": [
+        "The interview quotation is a live instruction"
+      ],
+      "oracle_standing": "AUTHOR_CONSTRUCTED_NOT_INDEPENDENTLY_ADJUDICATED"
+    },
+    {
+      "id": "LC20-06",
+      "expected_decision": "UNKNOWN",
+      "rationale": "Missing evidence from a non-authoritative log is not proof review did not occur.",
+      "source_evidence_quotes": [
+        "the operations log is not the repository where signatures are stored",
+        "No independent review status is provided in the available documents"
+      ],
+      "required_reasoning": [
+        "Independent reviewer signature is required",
+        "Available records do not establish signature status"
+      ],
+      "unsupported_conclusions_to_flag": [
+        "No log entry proves the signature never happened"
+      ],
+      "oracle_standing": "AUTHOR_CONSTRUCTED_NOT_INDEPENDENTLY_ADJUDICATED"
+    },
+    {
+      "id": "LC20-07",
+      "expected_decision": "YES",
+      "rationale": "Both independent staging-review conditions are explicitly satisfied.",
+      "source_evidence_quotes": [
+        "security review and release-management review have both been accepted",
+        "The security review of candidate K8 is accepted",
+        "Release management recorded acceptance of K8 yesterday"
+      ],
+      "required_reasoning": [
+        "Staging needs two distinct accepted reviews",
+        "Both accepted for K8"
+      ],
+      "unsupported_conclusions_to_flag": [
+        "Staging approval also permits production deployment"
+      ],
+      "oracle_standing": "AUTHOR_CONSTRUCTED_NOT_INDEPENDENTLY_ADJUDICATED"
+    },
+    {
+      "id": "LC20-08",
+      "expected_decision": "NO",
+      "rationale": "The exception allows only isolated diagnostic retrieval, not chat disclosure.",
+      "source_evidence_quotes": [
+        "This exception does not allow posting the credential in a shared chat",
+        "an operator proposes posting the credential into the incident chat"
+      ],
+      "required_reasoning": [
+        "Outage exception concerns isolated terminal diagnostics",
+        "Posting in shared chat is excluded"
+      ],
+      "unsupported_conclusions_to_flag": [
+        "An incident ticket makes chat disclosure permitted"
+      ],
+      "oracle_standing": "AUTHOR_CONSTRUCTED_NOT_INDEPENDENTLY_ADJUDICATED"
+    },
+    {
+      "id": "LC20-09",
+      "expected_decision": "UNKNOWN",
+      "rationale": "The portal access guarantee is not a global deletion or retention policy.",
+      "source_evidence_quotes": [
+        "does not state how long older offline archives may be retained",
+        "no retention schedule for that storage location is provided"
+      ],
+      "required_reasoning": [
+        "Three-snapshot guarantee concerns automated portal",
+        "Off-site archival deletion schedule unspecified"
+      ],
+      "unsupported_conclusions_to_flag": [
+        "Three snapshots means all older copies must be deleted"
+      ],
+      "oracle_standing": "AUTHOR_CONSTRUCTED_NOT_INDEPENDENTLY_ADJUDICATED"
+    },
+    {
+      "id": "LC20-10",
+      "expected_decision": "YES",
+      "rationale": "All threshold, duration, and environment preconditions have been met.",
+      "source_evidence_quotes": [
+        "may page the on-call database engineer when replication lag stays above twenty seconds for at least five continuous minutes",
+        "the last seven uninterrupted minutes",
+        "measured on the production replica specified by the policy"
+      ],
+      "required_reasoning": [
+        "Lag exceeds threshold continuously for required duration",
+        "Paging permission is separate from restarting"
+      ],
+      "unsupported_conclusions_to_flag": [
+        "Paging permission authorises a restart"
+      ],
+      "oracle_standing": "AUTHOR_CONSTRUCTED_NOT_INDEPENDENTLY_ADJUDICATED"
+    },
+    {
+      "id": "LC20-11",
+      "expected_decision": "NO",
+      "rationale": "An epistemic may about causation cannot be promoted to deletion authority.",
+      "source_evidence_quotes": [
+        "does not grant an operator permission to discard the replica",
+        "Replica deletion remains subject to the separate change-control policy"
+      ],
+      "required_reasoning": [
+        "Possible explanation is not verified",
+        "No deletion authority is granted by this note"
+      ],
+      "unsupported_conclusions_to_flag": [
+        "A possible cause gives authority to delete"
+      ],
+      "oracle_standing": "AUTHOR_CONSTRUCTED_NOT_INDEPENDENTLY_ADJUDICATED"
+    },
+    {
+      "id": "LC20-12",
+      "expected_decision": "UNKNOWN",
+      "rationale": "No basis is given for predicting or presuming the future decision.",
+      "source_evidence_quotes": [
+        "has not yet decided whether vendor replication will be authorised",
+        "No future decision or commitment is recorded"
+      ],
+      "required_reasoning": [
+        "Approval decision is future and unresolved"
+      ],
+      "unsupported_conclusions_to_flag": [
+        "The announced review guarantees approval",
+        "Silence means rejection"
+      ],
+      "oracle_standing": "AUTHOR_CONSTRUCTED_NOT_INDEPENDENTLY_ADJUDICATED"
+    },
+    {
+      "id": "LC20-13",
+      "expected_decision": "YES",
+      "rationale": "The chair expressly approved the narrower internal circulation.",
+      "source_evidence_quotes": [
+        "Yes, I approve circulating the draft inside that group",
+        "I will prepare the group copy only"
+      ],
+      "required_reasoning": [
+        "Internal group circulation approved",
+        "Public publication separately unapproved"
+      ],
+      "unsupported_conclusions_to_flag": [
+        "Internal permission authorises publication"
+      ],
+      "oracle_standing": "AUTHOR_CONSTRUCTED_NOT_INDEPENDENTLY_ADJUDICATED"
+    },
+    {
+      "id": "LC20-14",
+      "expected_decision": "NO",
+      "rationale": "The automatic-approval text is a quoted discarded draft.",
+      "source_evidence_quotes": [
+        "that was a discarded draft from last year",
+        "requires a named approver for every deployment",
+        "It does not"
+      ],
+      "required_reasoning": [
+        "Old quoted statement is non-operative",
+        "Current named approver requirement persists"
+      ],
+      "unsupported_conclusions_to_flag": [
+        "Quoted discarded policy overrides the current requirement"
+      ],
+      "oracle_standing": "AUTHOR_CONSTRUCTED_NOT_INDEPENDENTLY_ADJUDICATED"
+    },
+    {
+      "id": "LC20-15",
+      "expected_decision": "YES",
+      "rationale": "Within the fictional world, the condition is satisfied.",
+      "source_evidence_quotes": [
+        "may be crossed only while its blue lantern is burning",
+        "Mara reached the bridge an hour after midnight, saw the lantern still burning"
+      ],
+      "required_reasoning": [
+        "Permission is contextual to the fictional world",
+        "Blue lantern is burning at crossing"
+      ],
+      "unsupported_conclusions_to_flag": [
+        "This proves a real-world permission"
+      ],
+      "oracle_standing": "AUTHOR_CONSTRUCTED_NOT_INDEPENDENTLY_ADJUDICATED"
+    },
+    {
+      "id": "LC20-16",
+      "expected_decision": "UNKNOWN",
+      "rationale": "The scene communicates uncertainty rather than establishing the glass broke.",
+      "source_evidence_quotes": [
+        "might have broken",
+        "she could not see the door",
+        "the narrator never confirmed its condition"
+      ],
+      "required_reasoning": [
+        "Character speculation is not narrated fact",
+        "Damage status unconfirmed"
+      ],
+      "unsupported_conclusions_to_flag": [
+        "Hearing a crash proves the glass broke"
+      ],
+      "oracle_standing": "AUTHOR_CONSTRUCTED_NOT_INDEPENDENTLY_ADJUDICATED"
+    },
+    {
+      "id": "LC20-17",
+      "expected_decision": "NO",
+      "rationale": "Design/test approvals are insufficient; version-specific grant absent.",
+      "source_evidence_quotes": [
+        "Neither approval authorises deployment",
+        "only after the production owner signs a release grant",
+        "No production-owner grant has been signed for version V9"
+      ],
+      "required_reasoning": [
+        "Distinct actors sign different approvals",
+        "Production owner V9 grant absent"
+      ],
+      "unsupported_conclusions_to_flag": [
+        "The change committee or security lead replaces the production owner"
+      ],
+      "oracle_standing": "AUTHOR_CONSTRUCTED_NOT_INDEPENDENTLY_ADJUDICATED"
+    },
+    {
+      "id": "LC20-18",
+      "expected_decision": "YES",
+      "rationale": "Forty is included in the permitted threshold.",
+      "source_evidence_quotes": [
+        "no more than forty records",
+        "forty-one or more records must be split",
+        "exactly forty records"
+      ],
+      "required_reasoning": [
+        "At most 40 records accepted",
+        "Batch size equals 40"
+      ],
+      "unsupported_conclusions_to_flag": [
+        "The batch is publicly releasable"
+      ],
+      "oracle_standing": "AUTHOR_CONSTRUCTED_NOT_INDEPENDENTLY_ADJUDICATED"
+    },
+    {
+      "id": "LC20-19",
+      "expected_decision": "NO",
+      "rationale": "The request is after the expiry and no replacement approval is present.",
+      "source_evidence_quotes": [
+        "closes at 17:00 UTC on 16 October 2026",
+        "Requests timestamped after the closing time are outside the exception",
+        "18:00 UTC on 16 October 2026",
+        "No fresh approval has been recorded"
+      ],
+      "required_reasoning": [
+        "Exception expires at 17:00 UTC",
+        "Request at 18:00 UTC",
+        "Fresh approval absent"
+      ],
+      "unsupported_conclusions_to_flag": [
+        "Old exception remains valid indefinitely"
+      ],
+      "oracle_standing": "AUTHOR_CONSTRUCTED_NOT_INDEPENDENTLY_ADJUDICATED"
+    },
+    {
+      "id": "LC20-20",
+      "expected_decision": "SOURCE_CONFLICT",
+      "rationale": "The two equally effective source provisions contradict; neither permission nor prohibition may silently win.",
+      "source_evidence_quotes": [
+        "may publish the internal report",
+        "must never publish that internal report",
+        "no precedence rule, correction notice, or authority to resolve the conflict"
+      ],
+      "required_reasoning": [
+        "Conflicting provisions have same effective date",
+        "No precedence rule resolves them"
+      ],
+      "unsupported_conclusions_to_flag": [
+        "Conflict proves publication is allowed",
+        "Conflict proves only prohibition applies"
+      ],
+      "oracle_standing": "AUTHOR_CONSTRUCTED_NOT_INDEPENDENTLY_ADJUDICATED"
+    }
+  ]
+}

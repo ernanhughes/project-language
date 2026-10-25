@@ -1,0 +1,1256 @@
+{
+  "schema": "lc02-r6-development-probes/0.1",
+  "standing": "DEVELOPMENT_ONLY_NOT_HELD_OUT",
+  "created": "2026-10-24",
+  "rows": [
+    {
+      "id": "P01",
+      "kind": "CORRUPTION",
+      "label": "broadened exception",
+      "expected": [
+        "CHANGED_CANDIDATE/BROADENED_EXCEPTION"
+      ],
+      "found": [
+        "CHANGED_CANDIDATE/BROADENED_EXCEPTION",
+        "MISSING_CANDIDATE/MISSING_PREREQUISITE"
+      ],
+      "policy": "PRESERVE_SOURCE",
+      "pass": true,
+      "constraints": [],
+      "epistemic": [
+        {
+          "id": "e1",
+          "claim": "Source says “The service bridge may be used by maintenance staff, except when the inspection certificate has expired.”; transformation says “The service bridge may be used by maintenance staff, except when the inspection is incomplete.”. Exception changed from “when the inspection certificate has expired.” to “when the inspection is incomplete.”.",
+          "source_spans": [
+            {
+              "origin": "ORIGINAL_SOURCE",
+              "source_id": "P01-source",
+              "source_hash": "0f735e9f6d8e01150f27cfc2132504aa5669ddd6c0a978ed09a7e042816b42a1",
+              "start": 0,
+              "end": 104,
+              "text": "The service bridge may be used by maintenance staff, except when the inspection certificate has expired."
+            }
+          ],
+          "transformation_spans": [
+            {
+              "origin": "ORIGINAL_SOURCE",
+              "source_id": "P01-transformation",
+              "source_hash": "958fd7a012a2c5dfe5ef483e277a5abbf63d9c4da2bcd177deff507fb8eeca72",
+              "start": 0,
+              "end": 94,
+              "text": "The service bridge may be used by maintenance staff, except when the inspection is incomplete."
+            }
+          ],
+          "source_standing": "ESTABLISHED_IN_SOURCE",
+          "transformation_assessment": "UNSUPPORTED_CHANGE_CANDIDATE",
+          "primary_verdict": "CHANGED_CANDIDATE",
+          "evidence_signals": [
+            "BROADENED_EXCEPTION"
+          ],
+          "reason": "Source says “The service bridge may be used by maintenance staff, except when the inspection certificate has expired.”; transformation says “The service bridge may be used by maintenance staff, except when the inspection is incomplete.”. Exception changed from “when the inspection certificate has expired.” to “when the inspection is incomplete.”.",
+          "method": "LEXICAL_RULE_HEURISTIC",
+          "standing": "CANDIDATE_REQUIRES_REVIEW"
+        },
+        {
+          "id": "e2",
+          "claim": "Source says “The service bridge may be used by maintenance staff, except when the inspection certificate has expired.”; transformation says “The service bridge may be used by maintenance staff, except when the inspection is incomplete.”. The required condition “the inspection certificate has expired” is not preserved in the transformation.",
+          "source_spans": [
+            {
+              "origin": "ORIGINAL_SOURCE",
+              "source_id": "P01-source",
+              "source_hash": "0f735e9f6d8e01150f27cfc2132504aa5669ddd6c0a978ed09a7e042816b42a1",
+              "start": 0,
+              "end": 104,
+              "text": "The service bridge may be used by maintenance staff, except when the inspection certificate has expired."
+            }
+          ],
+          "transformation_spans": [
+            {
+              "origin": "ORIGINAL_SOURCE",
+              "source_id": "P01-transformation",
+              "source_hash": "958fd7a012a2c5dfe5ef483e277a5abbf63d9c4da2bcd177deff507fb8eeca72",
+              "start": 0,
+              "end": 94,
+              "text": "The service bridge may be used by maintenance staff, except when the inspection is incomplete."
+            }
+          ],
+          "source_standing": "ESTABLISHED_IN_SOURCE",
+          "transformation_assessment": "UNSUPPORTED_CHANGE_CANDIDATE",
+          "primary_verdict": "MISSING_CANDIDATE",
+          "evidence_signals": [
+            "MISSING_PREREQUISITE"
+          ],
+          "reason": "Source says “The service bridge may be used by maintenance staff, except when the inspection certificate has expired.”; transformation says “The service bridge may be used by maintenance staff, except when the inspection is incomplete.”. The required condition “the inspection certificate has expired” is not preserved in the transformation.",
+          "method": "LEXICAL_RULE_HEURISTIC",
+          "standing": "CANDIDATE_REQUIRES_REVIEW"
+        }
+      ]
+    },
+    {
+      "id": "P02",
+      "kind": "CORRUPTION",
+      "label": "dropped prerequisite",
+      "expected": [
+        "MISSING_CANDIDATE/MISSING_PREREQUISITE"
+      ],
+      "found": [
+        "MISSING_CANDIDATE/MISSING_PREREQUISITE"
+      ],
+      "policy": "PRESERVE_SOURCE",
+      "pass": true,
+      "constraints": [],
+      "epistemic": [
+        {
+          "id": "e1",
+          "claim": "Source says “The contractor may enter the lab only if the safety briefing is complete and the badge is active.”; transformation says “The contractor may enter the lab because the safety briefing is complete.”. The required condition “the badge is active” is not preserved in the transformation.",
+          "source_spans": [
+            {
+              "origin": "ORIGINAL_SOURCE",
+              "source_id": "P02-source",
+              "source_hash": "5eb2b4d54828687cda5079aff970bdd2137459edd3b735666c10c59a9c0ab157",
+              "start": 0,
+              "end": 97,
+              "text": "The contractor may enter the lab only if the safety briefing is complete and the badge is active."
+            }
+          ],
+          "transformation_spans": [
+            {
+              "origin": "ORIGINAL_SOURCE",
+              "source_id": "P02-transformation",
+              "source_hash": "28e9bcb2d18c3cba3368e86e7f61ba87ccfc3defc89ed57d118d59b9630d1c14",
+              "start": 0,
+              "end": 73,
+              "text": "The contractor may enter the lab because the safety briefing is complete."
+            }
+          ],
+          "source_standing": "ESTABLISHED_IN_SOURCE",
+          "transformation_assessment": "UNSUPPORTED_CHANGE_CANDIDATE",
+          "primary_verdict": "MISSING_CANDIDATE",
+          "evidence_signals": [
+            "MISSING_PREREQUISITE"
+          ],
+          "reason": "Source says “The contractor may enter the lab only if the safety briefing is complete and the badge is active.”; transformation says “The contractor may enter the lab because the safety briefing is complete.”. The required condition “the badge is active” is not preserved in the transformation.",
+          "method": "LEXICAL_RULE_HEURISTIC",
+          "standing": "CANDIDATE_REQUIRES_REVIEW"
+        }
+      ]
+    },
+    {
+      "id": "P03",
+      "kind": "CORRUPTION",
+      "label": "causal promotion",
+      "expected": [
+        "UNSUPPORTED_ADDITION_CANDIDATE/UNSUPPORTED_CAUSAL"
+      ],
+      "found": [
+        "CHANGED_CANDIDATE/NEGATION_REVERSAL",
+        "UNSUPPORTED_ADDITION_CANDIDATE/UNSUPPORTED_CAUSAL"
+      ],
+      "policy": "PRESERVE_SOURCE",
+      "pass": true,
+      "constraints": [],
+      "epistemic": [
+        {
+          "id": "e1",
+          "claim": "Source says “The team says the cause has not been established.”; transformation says “the team established the cause.”. Negation polarity differs.",
+          "source_spans": [
+            {
+              "origin": "ORIGINAL_SOURCE",
+              "source_id": "P03-source",
+              "source_hash": "d098345538bc9dbdb4e82f7cbe22ef9356e6b50c9a83e19f6a807e08cb9fca85",
+              "start": 45,
+              "end": 94,
+              "text": "The team says the cause has not been established."
+            }
+          ],
+          "transformation_spans": [
+            {
+              "origin": "ORIGINAL_SOURCE",
+              "source_id": "P03-transformation",
+              "source_hash": "a9fc6e87a7639fabf4aa8e8d804a7d8705e556425186c48b5c5d7d0cd8555d79",
+              "start": 44,
+              "end": 75,
+              "text": "the team established the cause."
+            }
+          ],
+          "source_standing": "ESTABLISHED_IN_SOURCE",
+          "transformation_assessment": "UNSUPPORTED_CHANGE_CANDIDATE",
+          "primary_verdict": "CHANGED_CANDIDATE",
+          "evidence_signals": [
+            "NEGATION_REVERSAL"
+          ],
+          "reason": "Source says “The team says the cause has not been established.”; transformation says “the team established the cause.”. Negation polarity differs.",
+          "method": "LEXICAL_RULE_HEURISTIC",
+          "standing": "CANDIDATE_REQUIRES_REVIEW"
+        },
+        {
+          "id": "e2",
+          "claim": "The transformation asserts a causal relation in “The firmware update caused the packet loss”; the source evidence concerning the cause does not establish that relation.",
+          "source_spans": [
+            {
+              "origin": "ORIGINAL_SOURCE",
+              "source_id": "P03-source",
+              "source_hash": "d098345538bc9dbdb4e82f7cbe22ef9356e6b50c9a83e19f6a807e08cb9fca85",
+              "start": 45,
+              "end": 94,
+              "text": "The team says the cause has not been established."
+            }
+          ],
+          "transformation_spans": [
+            {
+              "origin": "ORIGINAL_SOURCE",
+              "source_id": "P03-transformation",
+              "source_hash": "a9fc6e87a7639fabf4aa8e8d804a7d8705e556425186c48b5c5d7d0cd8555d79",
+              "start": 0,
+              "end": 42,
+              "text": "The firmware update caused the packet loss"
+            }
+          ],
+          "source_standing": "NOT_ADDRESSED",
+          "transformation_assessment": "UNSUPPORTED_CHANGE_CANDIDATE",
+          "primary_verdict": "UNSUPPORTED_ADDITION_CANDIDATE",
+          "evidence_signals": [
+            "UNSUPPORTED_CAUSAL"
+          ],
+          "reason": "The transformation asserts a causal relation in “The firmware update caused the packet loss”; the source evidence concerning the cause does not establish that relation.",
+          "method": "LEXICAL_RULE_HEURISTIC",
+          "standing": "CANDIDATE_REQUIRES_REVIEW"
+        }
+      ]
+    },
+    {
+      "id": "P04",
+      "kind": "CORRUPTION",
+      "label": "cross-sentence reference resolved",
+      "expected": [
+        "CHANGED_CANDIDATE/WRONG_CROSS_SENTENCE_REFERENCE"
+      ],
+      "found": [
+        "CHANGED_CANDIDATE/NEGATION_REVERSAL",
+        "CHANGED_CANDIDATE/UNKNOWN_TO_ESTABLISHED_FACT",
+        "CHANGED_CANDIDATE/WRONG_CROSS_SENTENCE_REFERENCE"
+      ],
+      "policy": "PRESERVE_SOURCE",
+      "pass": true,
+      "constraints": [],
+      "epistemic": [
+        {
+          "id": "e1",
+          "claim": "Source says “The minute does not say whether \"the change\" means the schema change or the permission change.”; transformation says “The auditor approved the schema change.”. Negation polarity differs.",
+          "source_spans": [
+            {
+              "origin": "ORIGINAL_SOURCE",
+              "source_id": "P04-source",
+              "source_hash": "d653f4aad0e547168c1b0eceb5e2cedffa9685bb40a4b57964a4c2353b6015e3",
+              "start": 33,
+              "end": 127,
+              "text": "The minute does not say whether \"the change\" means the schema change or the permission change."
+            }
+          ],
+          "transformation_spans": [
+            {
+              "origin": "ORIGINAL_SOURCE",
+              "source_id": "P04-transformation",
+              "source_hash": "9b9a68c72d90962136bba234accd42875839398e62287606e11124b2e2800ba0",
+              "start": 0,
+              "end": 39,
+              "text": "The auditor approved the schema change."
+            }
+          ],
+          "source_standing": "ESTABLISHED_IN_SOURCE",
+          "transformation_assessment": "UNSUPPORTED_CHANGE_CANDIDATE",
+          "primary_verdict": "CHANGED_CANDIDATE",
+          "evidence_signals": [
+            "NEGATION_REVERSAL"
+          ],
+          "reason": "Source says “The minute does not say whether \"the change\" means the schema change or the permission change.”; transformation says “The auditor approved the schema change.”. Negation polarity differs.",
+          "method": "LEXICAL_RULE_HEURISTIC",
+          "standing": "CANDIDATE_REQUIRES_REVIEW"
+        },
+        {
+          "id": "e2",
+          "claim": "Source says “The minute does not say whether \"the change\" means the schema change or the permission change.”; transformation says “The auditor approved the schema change.”. Source hedges or leaves the matter unresolved; transformation states it without the hedge.",
+          "source_spans": [
+            {
+              "origin": "ORIGINAL_SOURCE",
+              "source_id": "P04-source",
+              "source_hash": "d653f4aad0e547168c1b0eceb5e2cedffa9685bb40a4b57964a4c2353b6015e3",
+              "start": 33,
+              "end": 127,
+              "text": "The minute does not say whether \"the change\" means the schema change or the permission change."
+            }
+          ],
+          "transformation_spans": [
+            {
+              "origin": "ORIGINAL_SOURCE",
+              "source_id": "P04-transformation",
+              "source_hash": "9b9a68c72d90962136bba234accd42875839398e62287606e11124b2e2800ba0",
+              "start": 0,
+              "end": 39,
+              "text": "The auditor approved the schema change."
+            }
+          ],
+          "source_standing": "ESTABLISHED_IN_SOURCE",
+          "transformation_assessment": "UNSUPPORTED_CHANGE_CANDIDATE",
+          "primary_verdict": "CHANGED_CANDIDATE",
+          "evidence_signals": [
+            "UNKNOWN_TO_ESTABLISHED_FACT"
+          ],
+          "reason": "Source says “The minute does not say whether \"the change\" means the schema change or the permission change.”; transformation says “The auditor approved the schema change.”. Source hedges or leaves the matter unresolved; transformation states it without the hedge.",
+          "method": "LEXICAL_RULE_HEURISTIC",
+          "standing": "CANDIDATE_REQUIRES_REVIEW"
+        },
+        {
+          "id": "e3",
+          "claim": "Source says “The minute does not say whether \"the change\" means the schema change or the permission change.”; transformation says “The auditor approved the schema change.”. The source flags an unresolved reference; the transformation resolves or replaces it without preserving the ambiguity.",
+          "source_spans": [
+            {
+              "origin": "ORIGINAL_SOURCE",
+              "source_id": "P04-source",
+              "source_hash": "d653f4aad0e547168c1b0eceb5e2cedffa9685bb40a4b57964a4c2353b6015e3",
+              "start": 33,
+              "end": 127,
+              "text": "The minute does not say whether \"the change\" means the schema change or the permission change."
+            }
+          ],
+          "transformation_spans": [
+            {
+              "origin": "ORIGINAL_SOURCE",
+              "source_id": "P04-transformation",
+              "source_hash": "9b9a68c72d90962136bba234accd42875839398e62287606e11124b2e2800ba0",
+              "start": 0,
+              "end": 39,
+              "text": "The auditor approved the schema change."
+            }
+          ],
+          "source_standing": "ESTABLISHED_IN_SOURCE",
+          "transformation_assessment": "UNSUPPORTED_CHANGE_CANDIDATE",
+          "primary_verdict": "CHANGED_CANDIDATE",
+          "evidence_signals": [
+            "WRONG_CROSS_SENTENCE_REFERENCE"
+          ],
+          "reason": "Source says “The minute does not say whether \"the change\" means the schema change or the permission change.”; transformation says “The auditor approved the schema change.”. The source flags an unresolved reference; the transformation resolves or replaces it without preserving the ambiguity.",
+          "method": "LEXICAL_RULE_HEURISTIC",
+          "standing": "CANDIDATE_REQUIRES_REVIEW"
+        }
+      ]
+    },
+    {
+      "id": "P05",
+      "kind": "FAITHFUL",
+      "label": "harmless omission",
+      "expected": [
+        "PRESERVED_CANDIDATE/PRESERVED"
+      ],
+      "found": [
+        "PRESERVED_CANDIDATE/PRESERVED"
+      ],
+      "policy": "USE_TRANSFORMATION",
+      "pass": true,
+      "constraints": [],
+      "epistemic": [
+        {
+          "id": "e1",
+          "claim": "The obligated source meaning has a candidate counterpart in the transformation (alignment 1.60).",
+          "source_spans": [
+            {
+              "origin": "ORIGINAL_SOURCE",
+              "source_id": "P05-source",
+              "source_hash": "8632279d3eb3a27e943d162c6916537a046a21576f6f48e5166549faa0991741",
+              "start": 0,
+              "end": 57,
+              "text": "The operator may rotate the token when the lease expires."
+            }
+          ],
+          "transformation_spans": [
+            {
+              "origin": "ORIGINAL_SOURCE",
+              "source_id": "P05-transformation",
+              "source_hash": "65bfa325c3eb7506397accd3783afddf6da598785d075749b446c81e9a7d546b",
+              "start": 0,
+              "end": 57,
+              "text": "The operator may rotate the token when the lease expires."
+            }
+          ],
+          "source_standing": "ESTABLISHED_IN_SOURCE",
+          "transformation_assessment": "PRESERVATION_CANDIDATE",
+          "primary_verdict": "PRESERVED_CANDIDATE",
+          "evidence_signals": [
+            "PRESERVED"
+          ],
+          "reason": "The obligated source meaning has a candidate counterpart in the transformation (alignment 1.60).",
+          "method": "LEXICAL_RULE_HEURISTIC",
+          "standing": "CANDIDATE_REQUIRES_REVIEW"
+        }
+      ]
+    },
+    {
+      "id": "P06",
+      "kind": "CORRUPTION",
+      "label": "invented authority",
+      "expected": [
+        "UNSUPPORTED_ADDITION_CANDIDATE/INVENTED_AUTHORITY"
+      ],
+      "found": [
+        "MISSING_CANDIDATE/MISSING_MEANING",
+        "UNSUPPORTED_ADDITION_CANDIDATE/INVENTED_AUTHORITY"
+      ],
+      "policy": "PRESERVE_SOURCE",
+      "pass": true,
+      "constraints": [],
+      "epistemic": [
+        {
+          "id": "e1",
+          "claim": "The obligated source meaning “It does not authorise restoration.” has no adequate counterpart in the transformation.",
+          "source_spans": [
+            {
+              "origin": "ORIGINAL_SOURCE",
+              "source_id": "P06-source",
+              "source_hash": "a4859dfce42b7a9ca8cc2539d5a777c3e3ddbfe06dffb942fe0b3b5bfdcdd072",
+              "start": 34,
+              "end": 68,
+              "text": "It does not authorise restoration."
+            }
+          ],
+          "transformation_spans": [
+            {
+              "origin": "ORIGINAL_SOURCE",
+              "source_id": "P06-transformation",
+              "source_hash": "f4f55c73c9df32d8727d950950e086a8900209e981f381050ce3c4e882b0b798",
+              "start": 0,
+              "end": 51,
+              "text": "The team may restore the database without approval."
+            }
+          ],
+          "source_standing": "ESTABLISHED_IN_SOURCE",
+          "transformation_assessment": "UNSUPPORTED_CHANGE_CANDIDATE",
+          "primary_verdict": "MISSING_CANDIDATE",
+          "evidence_signals": [
+            "MISSING_MEANING"
+          ],
+          "reason": "The obligated source meaning “It does not authorise restoration.” has no adequate counterpart in the transformation.",
+          "method": "LEXICAL_RULE_HEURISTIC",
+          "standing": "CANDIDATE_REQUIRES_REVIEW"
+        },
+        {
+          "id": "e2",
+          "claim": "No adequate source counterpart supports the transformation unit “The team may restore the database without approval.” (best alignment 0.23).",
+          "source_spans": [
+            {
+              "origin": "ORIGINAL_SOURCE",
+              "source_id": "P06-source",
+              "source_hash": "a4859dfce42b7a9ca8cc2539d5a777c3e3ddbfe06dffb942fe0b3b5bfdcdd072",
+              "start": 34,
+              "end": 68,
+              "text": "It does not authorise restoration."
+            }
+          ],
+          "transformation_spans": [
+            {
+              "origin": "ORIGINAL_SOURCE",
+              "source_id": "P06-transformation",
+              "source_hash": "f4f55c73c9df32d8727d950950e086a8900209e981f381050ce3c4e882b0b798",
+              "start": 0,
+              "end": 51,
+              "text": "The team may restore the database without approval."
+            }
+          ],
+          "source_standing": "NOT_ADDRESSED",
+          "transformation_assessment": "UNSUPPORTED_CHANGE_CANDIDATE",
+          "primary_verdict": "UNSUPPORTED_ADDITION_CANDIDATE",
+          "evidence_signals": [
+            "INVENTED_AUTHORITY"
+          ],
+          "reason": "No adequate source counterpart supports the transformation unit “The team may restore the database without approval.” (best alignment 0.23).",
+          "method": "LEXICAL_RULE_HEURISTIC",
+          "standing": "CANDIDATE_REQUIRES_REVIEW"
+        }
+      ]
+    },
+    {
+      "id": "P07",
+      "kind": "CORRUPTION",
+      "label": "unknown to established",
+      "expected": [
+        "CHANGED_CANDIDATE/UNKNOWN_TO_ESTABLISHED_FACT"
+      ],
+      "found": [
+        "CHANGED_CANDIDATE/UNKNOWN_TO_ESTABLISHED_FACT",
+        "CHANGED_CANDIDATE/WRONG_CROSS_SENTENCE_REFERENCE"
+      ],
+      "policy": "PRESERVE_SOURCE",
+      "pass": true,
+      "constraints": [],
+      "epistemic": [
+        {
+          "id": "e1",
+          "claim": "Source says “The release approval is unresolved.”; transformation says “The release is approved”. Source hedges or leaves the matter unresolved; transformation states it without the hedge.",
+          "source_spans": [
+            {
+              "origin": "ORIGINAL_SOURCE",
+              "source_id": "P07-source",
+              "source_hash": "3b9a363ffa015816768f757b2075c1f852edc94bfd8acddede29b35281b0b71f",
+              "start": 0,
+              "end": 35,
+              "text": "The release approval is unresolved."
+            }
+          ],
+          "transformation_spans": [
+            {
+              "origin": "ORIGINAL_SOURCE",
+              "source_id": "P07-transformation",
+              "source_hash": "6745a729784d79f2ca0303c4b4d2ea919798096f30f8962210a2c95eefa4523f",
+              "start": 0,
+              "end": 23,
+              "text": "The release is approved"
+            }
+          ],
+          "source_standing": "ESTABLISHED_IN_SOURCE",
+          "transformation_assessment": "UNSUPPORTED_CHANGE_CANDIDATE",
+          "primary_verdict": "CHANGED_CANDIDATE",
+          "evidence_signals": [
+            "UNKNOWN_TO_ESTABLISHED_FACT"
+          ],
+          "reason": "Source says “The release approval is unresolved.”; transformation says “The release is approved”. Source hedges or leaves the matter unresolved; transformation states it without the hedge.",
+          "method": "LEXICAL_RULE_HEURISTIC",
+          "standing": "CANDIDATE_REQUIRES_REVIEW"
+        },
+        {
+          "id": "e2",
+          "claim": "Source says “The release approval is unresolved.”; transformation says “The release is approved”. The source flags an unresolved reference; the transformation resolves or replaces it without preserving the ambiguity.",
+          "source_spans": [
+            {
+              "origin": "ORIGINAL_SOURCE",
+              "source_id": "P07-source",
+              "source_hash": "3b9a363ffa015816768f757b2075c1f852edc94bfd8acddede29b35281b0b71f",
+              "start": 0,
+              "end": 35,
+              "text": "The release approval is unresolved."
+            }
+          ],
+          "transformation_spans": [
+            {
+              "origin": "ORIGINAL_SOURCE",
+              "source_id": "P07-transformation",
+              "source_hash": "6745a729784d79f2ca0303c4b4d2ea919798096f30f8962210a2c95eefa4523f",
+              "start": 0,
+              "end": 23,
+              "text": "The release is approved"
+            }
+          ],
+          "source_standing": "ESTABLISHED_IN_SOURCE",
+          "transformation_assessment": "UNSUPPORTED_CHANGE_CANDIDATE",
+          "primary_verdict": "CHANGED_CANDIDATE",
+          "evidence_signals": [
+            "WRONG_CROSS_SENTENCE_REFERENCE"
+          ],
+          "reason": "Source says “The release approval is unresolved.”; transformation says “The release is approved”. The source flags an unresolved reference; the transformation resolves or replaces it without preserving the ambiguity.",
+          "method": "LEXICAL_RULE_HEURISTIC",
+          "standing": "CANDIDATE_REQUIRES_REVIEW"
+        }
+      ]
+    },
+    {
+      "id": "P08",
+      "kind": "CORRUPTION",
+      "label": "speaker swap",
+      "expected": [
+        "CHANGED_CANDIDATE/MISATTRIBUTED_QUOTATION_OR_SPEAKER"
+      ],
+      "found": [
+        "CHANGED_CANDIDATE/MISATTRIBUTED_QUOTATION_OR_SPEAKER",
+        "PRESERVED_CANDIDATE/PRESERVED"
+      ],
+      "policy": "PRESERVE_SOURCE",
+      "pass": true,
+      "constraints": [],
+      "epistemic": [
+        {
+          "id": "e1",
+          "claim": "Source says “Auditor: \"The schema is approved.\"”; transformation says “Lead: \"The schema is approved.\"”. Speaker changed from Auditor to Lead.",
+          "source_spans": [
+            {
+              "origin": "ORIGINAL_SOURCE",
+              "source_id": "P08-source",
+              "source_hash": "6c02cf22a7055693d60e9cc1b524b4aeff7d53be29b167751ae0dc52c355e878",
+              "start": 0,
+              "end": 34,
+              "text": "Auditor: \"The schema is approved.\""
+            }
+          ],
+          "transformation_spans": [
+            {
+              "origin": "ORIGINAL_SOURCE",
+              "source_id": "P08-transformation",
+              "source_hash": "6afccfad848157f695c219bb94fb59aadcaa3ba4789b9686bd98ac9866d2d4b9",
+              "start": 0,
+              "end": 31,
+              "text": "Lead: \"The schema is approved.\""
+            }
+          ],
+          "source_standing": "ESTABLISHED_IN_SOURCE",
+          "transformation_assessment": "UNSUPPORTED_CHANGE_CANDIDATE",
+          "primary_verdict": "CHANGED_CANDIDATE",
+          "evidence_signals": [
+            "MISATTRIBUTED_QUOTATION_OR_SPEAKER"
+          ],
+          "reason": "Source says “Auditor: \"The schema is approved.\"”; transformation says “Lead: \"The schema is approved.\"”. Speaker changed from Auditor to Lead.",
+          "method": "LEXICAL_RULE_HEURISTIC",
+          "standing": "CANDIDATE_REQUIRES_REVIEW"
+        },
+        {
+          "id": "e2",
+          "claim": "The obligated source meaning has a candidate counterpart in the transformation (alignment 1.16).",
+          "source_spans": [
+            {
+              "origin": "ORIGINAL_SOURCE",
+              "source_id": "P08-source",
+              "source_hash": "6c02cf22a7055693d60e9cc1b524b4aeff7d53be29b167751ae0dc52c355e878",
+              "start": 35,
+              "end": 69,
+              "text": "Lead: \"The migration is approved.\""
+            }
+          ],
+          "transformation_spans": [
+            {
+              "origin": "ORIGINAL_SOURCE",
+              "source_id": "P08-transformation",
+              "source_hash": "6afccfad848157f695c219bb94fb59aadcaa3ba4789b9686bd98ac9866d2d4b9",
+              "start": 0,
+              "end": 31,
+              "text": "Lead: \"The schema is approved.\""
+            }
+          ],
+          "source_standing": "ESTABLISHED_IN_SOURCE",
+          "transformation_assessment": "PRESERVATION_CANDIDATE",
+          "primary_verdict": "PRESERVED_CANDIDATE",
+          "evidence_signals": [
+            "PRESERVED"
+          ],
+          "reason": "The obligated source meaning has a candidate counterpart in the transformation (alignment 1.16).",
+          "method": "LEXICAL_RULE_HEURISTIC",
+          "standing": "CANDIDATE_REQUIRES_REVIEW"
+        }
+      ]
+    },
+    {
+      "id": "P09",
+      "kind": "CORRUPTION",
+      "label": "negation reversal",
+      "expected": [
+        "CHANGED_CANDIDATE/NEGATION_REVERSAL"
+      ],
+      "found": [
+        "CHANGED_CANDIDATE/NEGATION_REVERSAL"
+      ],
+      "policy": "PRESERVE_SOURCE",
+      "pass": true,
+      "constraints": [],
+      "epistemic": [
+        {
+          "id": "e1",
+          "claim": "Source says “The support team is not permitted to modify production data.”; transformation says “The support team is permitted to modify production data.”. Negation polarity differs.",
+          "source_spans": [
+            {
+              "origin": "ORIGINAL_SOURCE",
+              "source_id": "P09-source",
+              "source_hash": "de06810ebfb95be4ee38301d3508ac7661d28e08b45f9b09f915068ed4fa6da8",
+              "start": 0,
+              "end": 60,
+              "text": "The support team is not permitted to modify production data."
+            }
+          ],
+          "transformation_spans": [
+            {
+              "origin": "ORIGINAL_SOURCE",
+              "source_id": "P09-transformation",
+              "source_hash": "d8709fc4529084c9dd5722f3c8569bfe234d71110d20ba5787629b11b900f73b",
+              "start": 0,
+              "end": 56,
+              "text": "The support team is permitted to modify production data."
+            }
+          ],
+          "source_standing": "ESTABLISHED_IN_SOURCE",
+          "transformation_assessment": "UNSUPPORTED_CHANGE_CANDIDATE",
+          "primary_verdict": "CHANGED_CANDIDATE",
+          "evidence_signals": [
+            "NEGATION_REVERSAL"
+          ],
+          "reason": "Source says “The support team is not permitted to modify production data.”; transformation says “The support team is permitted to modify production data.”. Negation polarity differs.",
+          "method": "LEXICAL_RULE_HEURISTIC",
+          "standing": "CANDIDATE_REQUIRES_REVIEW"
+        }
+      ]
+    },
+    {
+      "id": "P10",
+      "kind": "CORRUPTION",
+      "label": "retention duration change",
+      "expected": [
+        "CHANGED_CANDIDATE/SCOPE_OR_QUANTITY_CHANGE"
+      ],
+      "found": [
+        "PRESERVED_CANDIDATE/PRESERVED",
+        "CHANGED_CANDIDATE/SCOPE_OR_QUANTITY_CHANGE"
+      ],
+      "policy": "PRESERVE_SOURCE",
+      "pass": true,
+      "constraints": [
+        {
+          "id": "cc1",
+          "source_constraint": "sc1",
+          "transformation_constraint": "tc1",
+          "result": "CHANGED_CANDIDATE",
+          "distinction": "CONSTRAINT_CHANGE",
+          "reason": "Source constraint <= 10 minutes; transformation <= 20 minutes.",
+          "standing": "CANDIDATE_REQUIRES_REVIEW"
+        }
+      ],
+      "epistemic": [
+        {
+          "id": "e1",
+          "claim": "The obligated source meaning has a candidate counterpart in the transformation (alignment 1.60).",
+          "source_spans": [
+            {
+              "origin": "ORIGINAL_SOURCE",
+              "source_id": "P10-source",
+              "source_hash": "b1e863bc5c362ce898484b7ad90246e1ea5525535f1ade88f9c4245838e5e434",
+              "start": 46,
+              "end": 81,
+              "text": "Deletion requires a signed request."
+            }
+          ],
+          "transformation_spans": [
+            {
+              "origin": "ORIGINAL_SOURCE",
+              "source_id": "P10-transformation",
+              "source_hash": "062d093b29270ff02e8619e7b100377f20c5ed617bca4cc2776962bdd11597a5",
+              "start": 49,
+              "end": 84,
+              "text": "Deletion requires a signed request."
+            }
+          ],
+          "source_standing": "ESTABLISHED_IN_SOURCE",
+          "transformation_assessment": "PRESERVATION_CANDIDATE",
+          "primary_verdict": "PRESERVED_CANDIDATE",
+          "evidence_signals": [
+            "PRESERVED"
+          ],
+          "reason": "The obligated source meaning has a candidate counterpart in the transformation (alignment 1.60).",
+          "method": "LEXICAL_RULE_HEURISTIC",
+          "standing": "CANDIDATE_REQUIRES_REVIEW"
+        },
+        {
+          "id": "e2",
+          "claim": "Source constraint <= 10 minutes; transformation <= 20 minutes.",
+          "source_spans": [
+            {
+              "origin": "ORIGINAL_SOURCE",
+              "source_id": "P10-source",
+              "source_hash": "b1e863bc5c362ce898484b7ad90246e1ea5525535f1ade88f9c4245838e5e434",
+              "start": 29,
+              "end": 44,
+              "text": "for ten minutes"
+            }
+          ],
+          "transformation_spans": [
+            {
+              "origin": "ORIGINAL_SOURCE",
+              "source_id": "P10-transformation",
+              "source_hash": "062d093b29270ff02e8619e7b100377f20c5ed617bca4cc2776962bdd11597a5",
+              "start": 29,
+              "end": 47,
+              "text": "for twenty minutes"
+            }
+          ],
+          "source_standing": "ESTABLISHED_IN_SOURCE",
+          "transformation_assessment": "UNSUPPORTED_CHANGE_CANDIDATE",
+          "primary_verdict": "CHANGED_CANDIDATE",
+          "evidence_signals": [
+            "SCOPE_OR_QUANTITY_CHANGE"
+          ],
+          "reason": "Source constraint <= 10 minutes; transformation <= 20 minutes.",
+          "method": "LEXICAL_RULE_HEURISTIC",
+          "standing": "CANDIDATE_REQUIRES_REVIEW"
+        }
+      ]
+    },
+    {
+      "id": "P11",
+      "kind": "CORRUPTION",
+      "label": "inclusive to exclusive decimal",
+      "expected": [
+        "CHANGED_CANDIDATE/SCOPE_OR_QUANTITY_CHANGE"
+      ],
+      "found": [
+        "CHANGED_CANDIDATE/SCOPE_OR_QUANTITY_CHANGE"
+      ],
+      "policy": "PRESERVE_SOURCE",
+      "pass": true,
+      "constraints": [
+        {
+          "id": "cc1",
+          "source_constraint": "sc1",
+          "transformation_constraint": "tc1",
+          "result": "CHANGED_CANDIDATE",
+          "distinction": "CONSTRAINT_CHANGE",
+          "reason": "Source constraint <= 2.5 seconds; transformation < 2.5 seconds.",
+          "standing": "CANDIDATE_REQUIRES_REVIEW"
+        }
+      ],
+      "epistemic": [
+        {
+          "id": "e1",
+          "claim": "Source constraint <= 2.5 seconds; transformation < 2.5 seconds.",
+          "source_spans": [
+            {
+              "origin": "ORIGINAL_SOURCE",
+              "source_id": "P11-source",
+              "source_hash": "7d61187b22c2c8b6db4bf2ce0b94e3641d357f220ffa69f3e2b192c9597c1c19",
+              "start": 32,
+              "end": 51,
+              "text": "at most 2.5 seconds"
+            }
+          ],
+          "transformation_spans": [
+            {
+              "origin": "ORIGINAL_SOURCE",
+              "source_id": "P11-transformation",
+              "source_hash": "3f4c260a5c242e322bd548e09c0d427846186e44d5c0e3bf8fb30638d91d7629",
+              "start": 32,
+              "end": 53,
+              "text": "less than 2.5 seconds"
+            }
+          ],
+          "source_standing": "ESTABLISHED_IN_SOURCE",
+          "transformation_assessment": "UNSUPPORTED_CHANGE_CANDIDATE",
+          "primary_verdict": "CHANGED_CANDIDATE",
+          "evidence_signals": [
+            "SCOPE_OR_QUANTITY_CHANGE"
+          ],
+          "reason": "Source constraint <= 2.5 seconds; transformation < 2.5 seconds.",
+          "method": "LEXICAL_RULE_HEURISTIC",
+          "standing": "CANDIDATE_REQUIRES_REVIEW"
+        }
+      ]
+    },
+    {
+      "id": "P12",
+      "kind": "CORRUPTION",
+      "label": "compound written number",
+      "expected": [
+        "CHANGED_CANDIDATE/SCOPE_OR_QUANTITY_CHANGE"
+      ],
+      "found": [
+        "CHANGED_CANDIDATE/SCOPE_OR_QUANTITY_CHANGE"
+      ],
+      "policy": "PRESERVE_SOURCE",
+      "pass": true,
+      "constraints": [
+        {
+          "id": "cc1",
+          "source_constraint": "sc1",
+          "transformation_constraint": "tc1",
+          "result": "CHANGED_CANDIDATE",
+          "distinction": "CONSTRAINT_CHANGE",
+          "reason": "Source constraint <= 200 entries; transformation <= 300 entries.",
+          "standing": "CANDIDATE_REQUIRES_REVIEW"
+        }
+      ],
+      "epistemic": [
+        {
+          "id": "e1",
+          "claim": "Source constraint <= 200 entries; transformation <= 300 entries.",
+          "source_spans": [
+            {
+              "origin": "ORIGINAL_SOURCE",
+              "source_id": "P12-source",
+              "source_hash": "9bb66b4b9d28a21cdd8d7202e00858a1e4bddcf3a2e8bf1322aca728107e19dc",
+              "start": 19,
+              "end": 46,
+              "text": "at most two hundred entries"
+            }
+          ],
+          "transformation_spans": [
+            {
+              "origin": "ORIGINAL_SOURCE",
+              "source_id": "P12-transformation",
+              "source_hash": "e5363eda9e3f6c68c4c7b7ff0057ce2420bb6ea42dc9d8008f00f3d0747810ac",
+              "start": 19,
+              "end": 48,
+              "text": "at most three hundred entries"
+            }
+          ],
+          "source_standing": "ESTABLISHED_IN_SOURCE",
+          "transformation_assessment": "UNSUPPORTED_CHANGE_CANDIDATE",
+          "primary_verdict": "CHANGED_CANDIDATE",
+          "evidence_signals": [
+            "SCOPE_OR_QUANTITY_CHANGE"
+          ],
+          "reason": "Source constraint <= 200 entries; transformation <= 300 entries.",
+          "method": "LEXICAL_RULE_HEURISTIC",
+          "standing": "CANDIDATE_REQUIRES_REVIEW"
+        }
+      ]
+    },
+    {
+      "id": "P13",
+      "kind": "FAITHFUL",
+      "label": "reordered and paraphrased conditions",
+      "expected": [
+        "PRESERVED_CANDIDATE/PRESERVED"
+      ],
+      "found": [
+        "PRESERVED_CANDIDATE/PRESERVED"
+      ],
+      "policy": "USE_TRANSFORMATION",
+      "pass": true,
+      "constraints": [],
+      "epistemic": [
+        {
+          "id": "e1",
+          "claim": "The obligated source meaning has a candidate counterpart in the transformation (alignment 1.60).",
+          "source_spans": [
+            {
+              "origin": "ORIGINAL_SOURCE",
+              "source_id": "P13-source",
+              "source_hash": "ad8c5a0f675417a739a34cfd7ef05c8512639d623d7e3cdc82ac915e780693ed",
+              "start": 0,
+              "end": 57,
+              "text": "Access requires a current badge and a completed briefing."
+            }
+          ],
+          "transformation_spans": [
+            {
+              "origin": "ORIGINAL_SOURCE",
+              "source_id": "P13-transformation",
+              "source_hash": "a76c7aa991d8971a80e386684e240ebe511a01eb19ba9fbd010d79439a15300c",
+              "start": 0,
+              "end": 63,
+              "text": "A completed briefing and a current badge are needed for access."
+            }
+          ],
+          "source_standing": "ESTABLISHED_IN_SOURCE",
+          "transformation_assessment": "PRESERVATION_CANDIDATE",
+          "primary_verdict": "PRESERVED_CANDIDATE",
+          "evidence_signals": [
+            "PRESERVED"
+          ],
+          "reason": "The obligated source meaning has a candidate counterpart in the transformation (alignment 1.60).",
+          "method": "LEXICAL_RULE_HEURISTIC",
+          "standing": "CANDIDATE_REQUIRES_REVIEW"
+        }
+      ]
+    },
+    {
+      "id": "P14",
+      "kind": "AMBIGUITY",
+      "label": "justified unresolved approval",
+      "expected": [
+        "UNRESOLVED/SOURCE_AMBIGUITY"
+      ],
+      "found": [
+        "UNRESOLVED/SOURCE_AMBIGUITY"
+      ],
+      "policy": "REQUEST_CLARIFICATION",
+      "pass": true,
+      "constraints": [],
+      "epistemic": [
+        {
+          "id": "e1",
+          "claim": "It is unclear whether the merger is approved.",
+          "source_spans": [
+            {
+              "origin": "ORIGINAL_SOURCE",
+              "source_id": "P14-source",
+              "source_hash": "54e7069d8799c6db116cd8e6ad6ced12aa338e31d0b215ec36a3adaaafa8b8e1",
+              "start": 0,
+              "end": 57,
+              "text": "The board has not decided whether the merger is approved."
+            }
+          ],
+          "transformation_spans": [
+            {
+              "origin": "ORIGINAL_SOURCE",
+              "source_id": "P14-transformation",
+              "source_hash": "e0680b5b6a69c5747ca4cdd35d8f93c80ebcb966dc81967912d381e52d8e3ccb",
+              "start": 0,
+              "end": 45,
+              "text": "It is unclear whether the merger is approved."
+            }
+          ],
+          "source_standing": "UNRESOLVED_IN_SOURCE",
+          "transformation_assessment": "PRESERVATION_CANDIDATE",
+          "primary_verdict": "UNRESOLVED",
+          "evidence_signals": [
+            "TRANSFORMATION_UNCERTAINTY",
+            "SOURCE_UNRESOLVED:The board has not decided whether the merger is approved."
+          ],
+          "reason": "The source leaves the relevant condition or reference unresolved; the transformation preserves that uncertainty.",
+          "method": "LEXICAL_RULE_HEURISTIC",
+          "standing": "CANDIDATE_REQUIRES_REVIEW"
+        }
+      ]
+    },
+    {
+      "id": "P15",
+      "kind": "CORRUPTION",
+      "label": "invented uncertainty",
+      "expected": [
+        "UNSUPPORTED_ADDITION_CANDIDATE/UNSUPPORTED_UNCERTAINTY"
+      ],
+      "found": [
+        "UNSUPPORTED_ADDITION_CANDIDATE/UNSUPPORTED_UNCERTAINTY"
+      ],
+      "policy": "PRESERVE_SOURCE",
+      "pass": true,
+      "constraints": [],
+      "epistemic": [
+        {
+          "id": "e1",
+          "claim": "It is unclear whether the merger is approved.",
+          "source_spans": [
+            {
+              "origin": "ORIGINAL_SOURCE",
+              "source_id": "P15-source",
+              "source_hash": "d9004004000364cc9ea10c295dca1550e2b59ffb9e2709b9e35df9692cdc285f",
+              "start": 0,
+              "end": 23,
+              "text": "The merger is approved."
+            }
+          ],
+          "transformation_spans": [
+            {
+              "origin": "ORIGINAL_SOURCE",
+              "source_id": "P15-transformation",
+              "source_hash": "e0680b5b6a69c5747ca4cdd35d8f93c80ebcb966dc81967912d381e52d8e3ccb",
+              "start": 0,
+              "end": 45,
+              "text": "It is unclear whether the merger is approved."
+            }
+          ],
+          "source_standing": "ESTABLISHED_IN_SOURCE",
+          "transformation_assessment": "UNSUPPORTED_CHANGE_CANDIDATE",
+          "primary_verdict": "UNSUPPORTED_ADDITION_CANDIDATE",
+          "evidence_signals": [
+            "TRANSFORMATION_UNCERTAINTY"
+          ],
+          "reason": "The source states the relevant matter without an unresolved condition; the transformation adds uncertainty.",
+          "method": "LEXICAL_RULE_HEURISTIC",
+          "standing": "CANDIDATE_REQUIRES_REVIEW"
+        }
+      ]
+    },
+    {
+      "id": "P16",
+      "kind": "FAITHFUL",
+      "label": "retention paraphrase with upper bound",
+      "expected": [
+        "PRESERVED_CANDIDATE/PRESERVED"
+      ],
+      "found": [
+        "PRESERVED_CANDIDATE/PRESERVED"
+      ],
+      "policy": "USE_TRANSFORMATION",
+      "pass": true,
+      "constraints": [
+        {
+          "id": "cc1",
+          "source_constraint": "sc1",
+          "transformation_constraint": "tc1",
+          "result": "PRESERVED_CANDIDATE",
+          "distinction": "CONSTRAINT_PRESERVED",
+          "reason": "Source constraint <= 30 days; transformation <= 30 days.",
+          "standing": "CANDIDATE_REQUIRES_REVIEW"
+        }
+      ],
+      "epistemic": [
+        {
+          "id": "e1",
+          "claim": "The obligated source meaning has a candidate counterpart in the transformation (alignment 1.42).",
+          "source_spans": [
+            {
+              "origin": "ORIGINAL_SOURCE",
+              "source_id": "P16-source",
+              "source_hash": "74171ed218dede13888c484c786f486fb62216f4966a9edf632bf1047db1d35d",
+              "start": 0,
+              "end": 79,
+              "text": "The tenant may store the archive for thirty days only if the audit is complete."
+            }
+          ],
+          "transformation_spans": [
+            {
+              "origin": "ORIGINAL_SOURCE",
+              "source_id": "P16-transformation",
+              "source_hash": "a1ba03817eb28de425e93f94cf6e8bb14c72597492ce67fdae62474cce547aaa",
+              "start": 0,
+              "end": 98,
+              "text": "Subject to completion of the audit, the tenant may store the archive for no more than thirty days."
+            }
+          ],
+          "source_standing": "ESTABLISHED_IN_SOURCE",
+          "transformation_assessment": "PRESERVATION_CANDIDATE",
+          "primary_verdict": "PRESERVED_CANDIDATE",
+          "evidence_signals": [
+            "PRESERVED"
+          ],
+          "reason": "The obligated source meaning has a candidate counterpart in the transformation (alignment 1.42).",
+          "method": "LEXICAL_RULE_HEURISTIC",
+          "standing": "CANDIDATE_REQUIRES_REVIEW"
+        }
+      ]
+    },
+    {
+      "id": "P17",
+      "kind": "FAITHFUL",
+      "label": "relative threshold paraphrase",
+      "expected": [
+        "PRESERVED_CANDIDATE/PRESERVED"
+      ],
+      "found": [
+        "PRESERVED_CANDIDATE/PRESERVED"
+      ],
+      "policy": "USE_TRANSFORMATION",
+      "pass": true,
+      "constraints": [
+        {
+          "id": "cc1",
+          "source_constraint": "sc1",
+          "transformation_constraint": "tc1",
+          "result": "PRESERVED_CANDIDATE",
+          "distinction": "CONSTRAINT_PRESERVED",
+          "reason": "Source constraint >= 5 minutes; transformation >= 5 minutes.",
+          "standing": "CANDIDATE_REQUIRES_REVIEW"
+        }
+      ],
+      "epistemic": [
+        {
+          "id": "e1",
+          "claim": "The obligated source meaning has a candidate counterpart in the transformation (alignment 1.34).",
+          "source_spans": [
+            {
+              "origin": "ORIGINAL_SOURCE",
+              "source_id": "P17-source",
+              "source_hash": "171369957a48f5c9bee1ae929a5d15657480a5fc17877d0ceb48fe926063d0a4",
+              "start": 0,
+              "end": 60,
+              "text": "Escalation is permitted after five minutes of sustained lag."
+            }
+          ],
+          "transformation_spans": [
+            {
+              "origin": "ORIGINAL_SOURCE",
+              "source_id": "P17-transformation",
+              "source_hash": "abca16b447de23ad0e80b9a43c5d3349011fdfc6f15c751da6c212def7b6df39",
+              "start": 0,
+              "end": 81,
+              "text": "Escalation is permitted once at least five minutes of sustained lag have elapsed."
+            }
+          ],
+          "source_standing": "ESTABLISHED_IN_SOURCE",
+          "transformation_assessment": "PRESERVATION_CANDIDATE",
+          "primary_verdict": "PRESERVED_CANDIDATE",
+          "evidence_signals": [
+            "PRESERVED"
+          ],
+          "reason": "The obligated source meaning has a candidate counterpart in the transformation (alignment 1.34).",
+          "method": "LEXICAL_RULE_HEURISTIC",
+          "standing": "CANDIDATE_REQUIRES_REVIEW"
+        }
+      ]
+    },
+    {
+      "id": "P18",
+      "kind": "FAITHFUL",
+      "label": "reordered operational rules",
+      "expected": [
+        "PRESERVED_CANDIDATE/PRESERVED"
+      ],
+      "found": [
+        "PRESERVED_CANDIDATE/PRESERVED",
+        "PRESERVED_CANDIDATE/PRESERVED"
+      ],
+      "policy": "USE_TRANSFORMATION",
+      "pass": true,
+      "constraints": [
+        {
+          "id": "cc1",
+          "source_constraint": "sc1",
+          "transformation_constraint": "tc1",
+          "result": "PRESERVED_CANDIDATE",
+          "distinction": "CONSTRAINT_PRESERVED",
+          "reason": "Source constraint <= 10 minutes; transformation <= 10 minutes.",
+          "standing": "CANDIDATE_REQUIRES_REVIEW"
+        }
+      ],
+      "epistemic": [
+        {
+          "id": "e1",
+          "claim": "The obligated source meaning has a candidate counterpart in the transformation (alignment 1.60).",
+          "source_spans": [
+            {
+              "origin": "ORIGINAL_SOURCE",
+              "source_id": "P18-source",
+              "source_hash": "6e8ad24dc06d1e787b9a6a8b6e02920c83525d2f777aa82845744f6b3c670bb0",
+              "start": 0,
+              "end": 45,
+              "text": "The cache may retain entries for ten minutes."
+            }
+          ],
+          "transformation_spans": [
+            {
+              "origin": "ORIGINAL_SOURCE",
+              "source_id": "P18-transformation",
+              "source_hash": "e9338feed84e3fe9425d2eb615676b6c5661184249c16a94a2645c9ee00d6847",
+              "start": 45,
+              "end": 90,
+              "text": "The cache may retain entries for ten minutes."
+            }
+          ],
+          "source_standing": "ESTABLISHED_IN_SOURCE",
+          "transformation_assessment": "PRESERVATION_CANDIDATE",
+          "primary_verdict": "PRESERVED_CANDIDATE",
+          "evidence_signals": [
+            "PRESERVED"
+          ],
+          "reason": "The obligated source meaning has a candidate counterpart in the transformation (alignment 1.60).",
+          "method": "LEXICAL_RULE_HEURISTIC",
+          "standing": "CANDIDATE_REQUIRES_REVIEW"
+        },
+        {
+          "id": "e2",
+          "claim": "The obligated source meaning has a candidate counterpart in the transformation (alignment 1.60).",
+          "source_spans": [
+            {
+              "origin": "ORIGINAL_SOURCE",
+              "source_id": "P18-source",
+              "source_hash": "6e8ad24dc06d1e787b9a6a8b6e02920c83525d2f777aa82845744f6b3c670bb0",
+              "start": 46,
+              "end": 83,
+              "text": "Restarting requires a signed request."
+            }
+          ],
+          "transformation_spans": [
+            {
+              "origin": "ORIGINAL_SOURCE",
+              "source_id": "P18-transformation",
+              "source_hash": "e9338feed84e3fe9425d2eb615676b6c5661184249c16a94a2645c9ee00d6847",
+              "start": 0,
+              "end": 44,
+              "text": "A signed request is required for restarting."
+            }
+          ],
+          "source_standing": "ESTABLISHED_IN_SOURCE",
+          "transformation_assessment": "PRESERVATION_CANDIDATE",
+          "primary_verdict": "PRESERVED_CANDIDATE",
+          "evidence_signals": [
+            "PRESERVED"
+          ],
+          "reason": "The obligated source meaning has a candidate counterpart in the transformation (alignment 1.60).",
+          "method": "LEXICAL_RULE_HEURISTIC",
+          "standing": "CANDIDATE_REQUIRES_REVIEW"
+        }
+      ]
+    }
+  ]
+}

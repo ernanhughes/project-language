@@ -1,0 +1,12 @@
+{
+  "schema": "language-understanding-profile/0.1",
+  "id": "general",
+  "version": "0.1",
+  "language": "en",
+  "segment_by": ["sentence"],
+  "facets": ["communicative_act", "source_evidence"],
+  "candidate_relations": [],
+  "rules_enabled": true,
+  "preserve_unknowns": true,
+  "unmatched_policy": "UNCLASSIFIED_NEEDS_REVIEW"
+}

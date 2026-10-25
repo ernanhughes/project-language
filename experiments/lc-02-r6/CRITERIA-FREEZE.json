@@ -1,0 +1,10 @@
+{
+  "schema": "lc02-r6-criteria-freeze/0.1",
+  "created": "2026-10-24",
+  "standing": "FROZEN_BEFORE_HELD_OUT_EXECUTION",
+  "criteria": "SUCCESS-CRITERIA.json",
+  "criteria_sha256": "c8692715c89aab8b265752b4dbbcc4cdbd36f5ba37e26522931c89e318210ceb",
+  "artifacts_verified": true,
+  "held_out_executed": false,
+  "note": "The held-out split may be executed once after this freeze. No checker, corpus, reference or criterion may be changed after execution begins."
+}

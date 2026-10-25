@@ -1,0 +1,7 @@
+INCIDENT REPORT 2026-03-17: primary database outage (constructed for illustration)
+Timeline. 09:02 the primary database stopped accepting writes. 09:07 failover to replica B began. 09:19 failover completed. The services checkout-api and ledger were degraded throughout.
+Candidate causes. H1 disk full on the primary: the volume was at 98 percent at 08:50. H2 runaway migration: a schema migration started at 08:58 and held locks. H3 stale replica promoted: the failover promoted a replica that was behind. H4 network partition between zones: packet loss was reported between 09:00 and 09:04. H5 operator error during maintenance: a maintenance command was run at 08:55.
+Evidence. The migration lock logs support H2. The volume graph supports H1. The partition report contradicts H4 because loss ended before writes stopped. H3 is ruled out only if replication lag was under one second, and the lag data has a gap from 09:00 to 09:06.
+Conclusion. Ana holds that H2 is the root cause. Ben holds that H1 is the root cause. The conclusion is disputed.
+Remediation. To recover, run the failover script. Then confirm the writer is healthy. Then re-enable the nightly job, unless the migration is still running, in which case wait for it to finish.
+Proposed fix. Ben proposes adding a disk alert at 85 percent, because the volume reached 98 percent before any migration lock was taken.

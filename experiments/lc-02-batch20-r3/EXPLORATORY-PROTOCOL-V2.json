@@ -1,0 +1,108 @@
+{
+  "schema": "lc02-r3-exploratory-protocol/0.1",
+  "standing": "EXPLORATORY_PROTOCOL_APPROVED_FOR_SINGLE_RUN",
+  "created": "2026-10-23",
+  "design": {
+    "path": "experiments/lc-02-batch20-r1/fixtures/fresh-evaluation-v2.json",
+    "sha256": "c1ca37936300384536b3c94d5cf5b38076b3a813bf6c934c0a053b9bd6bc09d9",
+    "version": 2
+  },
+  "r2_protocol": {
+    "path": "experiments/lc-02-batch20-r2/FROZEN-LIVE-PROTOCOL.json",
+    "hash": "26009e396fa890c85b573fdeec9f0c3be04e4433fbe84b55e8cbb986918959e3",
+    "live_execution_authorized": false
+  },
+  "approval": {
+    "path": "C:\\Projects\\project-language\\experiments\\lc-02-batch20-r3\\EXPLORATORY-APPROVAL-V2.json",
+    "hash": "4b10f87b7d84fd08d52a845c7b25cb952b3aab573e17234bdb16c1a3ff123df8",
+    "status": "APPROVED",
+    "approved_by": "USER",
+    "approved_at": "2026-10-23T18:58:20.072Z"
+  },
+  "execution": {
+    "mode": "live",
+    "split": "fresh_evaluation",
+    "cases": 16,
+    "planned_calls": 80,
+    "maximum_calls": 100,
+    "automatic_retries": 0,
+    "fallback": false,
+    "resume": false,
+    "one_execution": true,
+    "post_result_tuning": false,
+    "output": "experiments/lc-02-batch20-r3/.runs/LIVE-V2-001"
+  },
+  "compiler": {
+    "condition": "BLANK_ENGLISH_FALLBACK",
+    "trained_syntax_available": false,
+    "fallback_reason": "SPACY_MODEL_NOT_INSTALLED",
+    "profile": {
+      "id": "technical-policy",
+      "version": "0.2",
+      "sha256": "12287d00977aa52dcc4b142c6bb2829bf72c4636ce7a9cde6caea4b7d2dd669b",
+      "file_sha256": "9d961fac646c1c164019c55b1eaa3f75748f42b47e3aad7862bc50181cdd4a75",
+      "path": "C:\\Projects\\project-language\\core\\understanding\\python\\profiles\\technical-policy.json"
+    }
+  },
+  "models": {
+    "interpreter": "opencode-go/deepseek-v4.1-flash",
+    "challenger": "opencode-go/gpt-6-luna",
+    "mediator": "opencode-go/deepseek-v4.1-flash",
+    "recipient": "opencode-go/qwen3.8-flash",
+    "advisory_evaluator": "opencode-go/claude-haiku-5-5"
+  },
+  "prompts": {
+    "prompts_module": "5b16ac6b45b60727f8c1467bb6b934e14cd2d9726bb0d750d4f9e9d69cccd32b",
+    "source_contract_module": "fb17e8d5592c5e5b5aa6a4d12b87bd55e02aa245f64552475bcd68a0a7c6305b",
+    "hint_instruction": "71e5ccb30ece5964a49576465e2b108411f4769de12be9dd0414cd2f2f72d5bc",
+    "interpreter": "16a9f9a3c969ac5f54baf14276cb8f85d0cbe63e95fdc883484a6ab0961798e5",
+    "mediator": "5a8239a79c63cd2dc99e6d0522851abbdde736eb7636f62bfce0c0bf23d17c85",
+    "challenger": "340159692710cf4460eb7cbfc1c37d3271cc0845491750fc5a9083b39436eb6b",
+    "recipient": "3579e91d6600f4f9165cc70e098be2189f15789d09ae2b9cfef4e0a30d26c52e"
+  },
+  "profiles": {
+    "technical-policy": {
+      "id": "technical-policy",
+      "version": "0.2",
+      "sha256": "12287d00977aa52dcc4b142c6bb2829bf72c4636ce7a9cde6caea4b7d2dd669b",
+      "file_sha256": "9d961fac646c1c164019c55b1eaa3f75748f42b47e3aad7862bc50181cdd4a75",
+      "path": "C:\\Projects\\project-language\\core\\understanding\\python\\profiles\\technical-policy.json"
+    },
+    "general": {
+      "id": "general",
+      "version": "0.1",
+      "sha256": "37e50a276b075d430dbadc58007e944c537cee98a3b141fad8d55081de53d7d2",
+      "file_sha256": "8db2bd43f2a8515b049f070123bd34070f14e94a3a4f9ebfb1109e6199eb719f",
+      "path": "C:\\Projects\\project-language\\core\\understanding\\python\\profiles\\general.json"
+    }
+  },
+  "source_contract": {
+    "contract_version": "lc02-r1/source-relative/1",
+    "answer_scope": "SOURCE_RELATIVE",
+    "source_truth": "UNVERIFIED",
+    "source_truth_scope": "EXTERNAL_FACTUAL_VERIFICATION_ONLY",
+    "interpretation_standing": "FALLIBLE_AID_NOT_SOURCE",
+    "action_authority": false
+  },
+  "treatment_differences": {
+    "A_ORDINARY": "Original source and exact question; no interpreter proposal and no compiler inventory.",
+    "B_AI_MEDIATED": "Interpreter proposal plus the same original source and exact question; interpreter receives no compiler inventory.",
+    "C_UNDERSTANDING_ENHANCED": "The same interpreter receives the versioned compiler inventory as fallible context; the recipient receives the proposal plus the same original source and exact question.",
+    "common": "Same source, question, question scope, recipient model, recipient contract, source-relative contract and answer schema in all arms.",
+    "not_token_matched": "B and C packets are not token matched; packet length and semantic structure are recorded as treatment variables."
+  },
+  "grading": {
+    "primary_comparison": "C versus B",
+    "secondary_comparisons": [
+      "B versus A",
+      "C versus A"
+    ],
+    "decision_agreement": "Exact label agreement with the frozen source-relative reference; acceptable alternatives are recorded separately and never silently converted to matches.",
+    "explanation_fidelity": "Required reasoning and unsupported additions are separate from label agreement; no label match establishes semantic fidelity.",
+    "uncertainty": "Correct UNKNOWN, unnecessary abstention and overconfident YES/NO are separate categories.",
+    "mechanical": "Schema, exact spans, host-resolved citation identifiers and provider completion are separate from semantic disagreement; failed arms are never ties.",
+    "adjudication_issues": "Cases with declared adjudication issues are reported, not silently rescored."
+  },
+  "live_execution_authorized": true,
+  "hash": "756814ad9598c3d82b6f0a7ba8f7197d385295515bd51cede9e838fd6de6ad50"
+}

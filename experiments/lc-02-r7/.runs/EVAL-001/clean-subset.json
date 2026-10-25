@@ -1,0 +1,81 @@
+{
+  "schema": "lc02-r7-clean-subset/0.1",
+  "standing": "POST_EXECUTION_CLEAN_SUBSET_ANALYSIS",
+  "source_run": "EVAL-001",
+  "method": {
+    "measure": "Jaccard similarity over lower-cased source tokens",
+    "threshold": 0.45,
+    "comparison_sets": [
+      "experiments/lc-02-r6/fixtures/evaluation-cases.json",
+      "experiments/lc-02-r5/fixtures/evaluation-cases.json"
+    ],
+    "clean_subset_rule": "Exclude every R7 evaluation case whose source Jaccard similarity to any R5/R6 evaluation source is >= 0.45."
+  },
+  "threshold": 0.45,
+  "clean_ids": [
+    "R7-E04",
+    "R7-E06",
+    "R7-E07",
+    "R7-E09",
+    "R7-E10",
+    "R7-E13",
+    "R7-E14",
+    "R7-E15",
+    "R7-E17",
+    "R7-E18",
+    "R7-E21",
+    "R7-E24"
+  ],
+  "A": {
+    "cases": 12,
+    "corruption_cases": 5,
+    "detected": 5,
+    "missed": [],
+    "false_acceptances": [],
+    "faithful_cases": 5,
+    "faithful_accepted": 4,
+    "false_rejections": [
+      "R7-E13"
+    ],
+    "unnecessary_clarifications": [],
+    "ambiguity_cases": 2,
+    "ambiguity_clarified": 1,
+    "policy_correct": 10
+  },
+  "B": {
+    "cases": 12,
+    "corruption_cases": 5,
+    "detected": 3,
+    "missed": [
+      "R7-E06",
+      "R7-E10"
+    ],
+    "false_acceptances": [],
+    "faithful_cases": 5,
+    "faithful_accepted": 4,
+    "false_rejections": [
+      "R7-E17"
+    ],
+    "unnecessary_clarifications": [],
+    "ambiguity_cases": 2,
+    "ambiguity_clarified": 1,
+    "policy_correct": 10
+  },
+  "C": {
+    "cases": 12,
+    "corruption_cases": 5,
+    "detected": 5,
+    "missed": [],
+    "false_acceptances": [],
+    "faithful_cases": 5,
+    "faithful_accepted": 3,
+    "false_rejections": [
+      "R7-E13",
+      "R7-E17"
+    ],
+    "unnecessary_clarifications": [],
+    "ambiguity_cases": 2,
+    "ambiguity_clarified": 1,
+    "policy_correct": 9
+  }
+}

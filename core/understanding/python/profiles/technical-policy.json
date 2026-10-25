@@ -1,0 +1,14 @@
+{
+  "schema": "language-understanding-profile/0.1",
+  "id": "technical-policy",
+  "version": "0.2",
+  "language": "en",
+  "segment_by": ["sentence", "clause", "semicolon"],
+  "extract_prerequisites": true,
+  "attribute_speakers": true,
+  "facets": ["communicative_act", "normative_force", "negation", "conditions", "time", "source_evidence"],
+  "candidate_relations": ["REFERS_TO", "REQUIRES", "QUALIFIES", "EXCEPTION_TO"],
+  "rules_enabled": true,
+  "preserve_unknowns": true,
+  "unmatched_policy": "UNCLASSIFIED_NEEDS_REVIEW"
+}

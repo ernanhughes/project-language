@@ -1,0 +1,2985 @@
+{
+  "case_id": "R1E-13",
+  "split": "fresh_evaluation",
+  "arm": "A_SOURCE_ONLY",
+  "result": {
+    "arm": "A_SOURCE_ONLY",
+    "origin": "HOSTED_OPENCODE_GO",
+    "status": "VALID",
+    "semantic_quality": "NOT_ASSESSED",
+    "output": {
+      "decision": "UNKNOWN",
+      "explanation": "The question asks for EXTERNAL_FACTUAL_VERIFICATION (whether the backup is *actually* encrypted). The source text explicitly states that 'No independent audit or system evidence is supplied.' Therefore, the provided packet does not contain sufficient information to verify the real-world factual status of the encryption; it only reports what a policy document claims. Since external verification cannot be performed based on this source alone, the answer is UNKNOWN.",
+      "citations": [
+        {
+          "origin": "ORIGINAL_SOURCE",
+          "source_id": "R1E-13-source-v1",
+          "source_hash": "9b36a4eeaf0bf24d90c29d59a6ee758c1a2e01b0bb4f8e95ca491eca9ae0a0a2",
+          "start": 85,
+          "end": 137,
+          "text": "No independent audit or system evidence is supplied."
+        }
+      ]
+    },
+    "mechanical": {
+      "schema": "PASS",
+      "source_binding": "PASS",
+      "citation_resolution": [
+        "EXACT"
+      ],
+      "host_repaired_hashes": 0
+    }
+  },
+  "source": {
+    "id": "R1E-13-source-v1",
+    "text": "The supplied policy document states that the production backup is encrypted at rest. No independent audit or system evidence is supplied.",
+    "hash": "9b36a4eeaf0bf24d90c29d59a6ee758c1a2e01b0bb4f8e95ca491eca9ae0a0a2"
+  },
+  "question": {
+    "id": "R1E-13-question-v1",
+    "text": "Is the production backup actually encrypted at rest?",
+    "scope": "EXTERNAL_FACTUAL_VERIFICATION"
+  },
+  "packet": {
+    "schema": "language-delivery/0.1",
+    "purpose": "Faithful communication to a fresh recipient",
+    "audience": "Independent reader",
+    "contract_version": "lc02-r1/source-relative/1",
+    "answer_scope": "EXTERNAL_FACTUAL_VERIFICATION",
+    "source_truth": "UNVERIFIED",
+    "source_truth_scope": "EXTERNAL_FACTUAL_VERIFICATION_ONLY",
+    "interpretation_standing": "FALLIBLE_AID_NOT_SOURCE",
+    "action_authority": false,
+    "source": {
+      "id": "R1E-13-source-v1",
+      "text": "The supplied policy document states that the production backup is encrypted at rest. No independent audit or system evidence is supplied.",
+      "hash": "9b36a4eeaf0bf24d90c29d59a6ee758c1a2e01b0bb4f8e95ca491eca9ae0a0a2"
+    }
+  },
+  "unvalidated_answer": {
+    "decision": "UNKNOWN",
+    "explanation": "The question asks for EXTERNAL_FACTUAL_VERIFICATION (whether the backup is *actually* encrypted). The source text explicitly states that 'No independent audit or system evidence is supplied.' Therefore, the provided packet does not contain sufficient information to verify the real-world factual status of the encryption; it only reports what a policy document claims. Since external verification cannot be performed based on this source alone, the answer is UNKNOWN.",
+    "citations": [
+      {
+        "origin": "ORIGINAL_SOURCE",
+        "source_id": "R1E-13-source-v1",
+        "source_hash": "9b36a4eeaf0bf24d90c29d59a6ee758c1a2e01b0bb4f8e95ca491eca9ae0a0a2",
+        "start": 85,
+        "end": 137,
+        "text": "No independent audit or system evidence is supplied."
+      }
+    ]
+  },
+  "understanding": {
+    "schema": "language-understanding-trial/0.1",
+    "configuration_hash": "e91c6cd23e00e360e53c3b221095301fc3eed659e42d8f603224c80322175aa1",
+    "source": {
+      "id": "2c8aa1ef031a3b01358c42e72275a614dba9468227844ca6bab4f35fc07a2a84",
+      "schema": "language-understanding-artifact/0.1",
+      "trial_id": "R1E-13-A_SOURCE_ONLY",
+      "stage": "SOURCE",
+      "at": "2026-10-23T19:18:11.123Z",
+      "request": {
+        "source_id": "R1E-13-source-v1",
+        "source_text": "The supplied policy document states that the production backup is encrypted at rest. No independent audit or system evidence is supplied.",
+        "profile": "technical-policy",
+        "profile_version": "0.2",
+        "context": {
+          "purpose": "Faithful communication to a fresh recipient",
+          "intended_recipient": "Independent reader",
+          "declared_context": {}
+        }
+      },
+      "inventory": {
+        "schema": "language-understanding-inventory/0.1",
+        "offset_unit": "UNICODE_CODE_POINTS",
+        "standing": "HEURISTIC_UNVERIFIED",
+        "source": {
+          "id": "R1E-13-source-v1",
+          "sha256": "9b36a4eeaf0bf24d90c29d59a6ee758c1a2e01b0bb4f8e95ca491eca9ae0a0a2",
+          "text": "The supplied policy document states that the production backup is encrypted at rest. No independent audit or system evidence is supplied."
+        },
+        "profile": {
+          "id": "technical-policy",
+          "version": "0.2",
+          "schema": "language-understanding-profile/0.1",
+          "sha256": "12287d00977aa52dcc4b142c6bb2829bf72c4636ce7a9cde6caea4b7d2dd669b"
+        },
+        "engine": {
+          "id": "spacy/blank-en+sentencizer",
+          "version": "0.2.0",
+          "nltk_version": "3.10.4",
+          "spacy_version": "3.8.16",
+          "trained_syntax_available": false,
+          "trained_model_requested": "en_core_web_sm",
+          "fallback_reason": "SPACY_MODEL_NOT_INSTALLED"
+        },
+        "segments": [
+          {
+            "id": "s1",
+            "start": 0,
+            "end": 84,
+            "text": "The supplied policy document states that the production backup is encrypted at rest."
+          },
+          {
+            "id": "s2",
+            "start": 85,
+            "end": 137,
+            "text": "No independent audit or system evidence is supplied."
+          }
+        ],
+        "meaning_units": [
+          {
+            "id": "m1",
+            "source_segments": [
+              "s1"
+            ],
+            "start": 0,
+            "end": 84,
+            "source_quote": "The supplied policy document states that the production backup is encrypted at rest.",
+            "proposed_meaning": "The supplied policy document states that the production backup is encrypted at rest.",
+            "classification": {
+              "kind": "statement",
+              "normative_force": "ASSERTED_IN_SOURCE",
+              "condition_cues": [],
+              "temporal_cues": [],
+              "possible_unresolved_reference": false,
+              "speaker": "",
+              "prerequisites": [],
+              "method": "LEXICAL_RULE_HEURISTIC",
+              "review": "HEURISTIC_UNVERIFIED"
+            },
+            "provenance": "EXACT_SOURCE_SPAN"
+          },
+          {
+            "id": "m2",
+            "source_segments": [
+              "s2"
+            ],
+            "start": 85,
+            "end": 137,
+            "source_quote": "No independent audit or system evidence is supplied.",
+            "proposed_meaning": "No independent audit or system evidence is supplied.",
+            "classification": {
+              "kind": "statement",
+              "normative_force": "ASSERTED_IN_SOURCE",
+              "condition_cues": [],
+              "temporal_cues": [],
+              "possible_unresolved_reference": false,
+              "speaker": "",
+              "prerequisites": [],
+              "method": "LEXICAL_RULE_HEURISTIC",
+              "review": "HEURISTIC_UNVERIFIED"
+            },
+            "provenance": "EXACT_SOURCE_SPAN"
+          }
+        ],
+        "relations": [],
+        "context": {
+          "purpose": "Faithful communication to a fresh recipient",
+          "intended_recipient": "Independent reader",
+          "declared_context": {}
+        },
+        "coverage": {
+          "standing": "NOT_EVALUATED",
+          "source_supportedness": "NOT_EVALUATED",
+          "semantic_completeness": "NOT_ESTABLISHED"
+        },
+        "warnings": [
+          "Labels are lexical heuristics, not verified meaning or permissions.",
+          "No cross-sentence relation, coreference, or semantic completeness checker is implemented.",
+          "Semicolon splitting, prerequisite hints and speaker labels are rule-based candidates, not semantic analysis."
+        ]
+      },
+      "compiler": {
+        "profile": {
+          "id": "technical-policy",
+          "version": "0.2",
+          "sha256": "12287d00977aa52dcc4b142c6bb2829bf72c4636ce7a9cde6caea4b7d2dd669b",
+          "file_sha256": "9d961fac646c1c164019c55b1eaa3f75748f42b47e3aad7862bc50181cdd4a75",
+          "path": "C:\\Projects\\project-language\\core\\understanding\\python\\profiles\\technical-policy.json"
+        },
+        "adapter": "language-understanding-child/0.1",
+        "python": "C:\\Projects\\project-language\\.venv\\Scripts\\python.exe",
+        "timeout_ms": 15000,
+        "max_input_bytes": 262144,
+        "max_output_bytes": 4194304,
+        "require_trained_syntax": false,
+        "source_hashes": {
+          "src/understanding/cli.py": "fdbbaab6d1c51d077046100aef43fcb0fcfac5e278dba1fa30f3a0cddb229ba9",
+          "src/understanding/pipeline.py": "713ddf811112278038b19aaa5995eba929a827e6dee7634d5d5e8d54cba5ed1d",
+          "src/understanding/__init__.py": "c4b5f92990c64643e4907def83a7a62dd00c8bdd3dd738a8ab14c55d523a396f",
+          "src/understanding/contracts.py": "ec17e9c381a22aed695663e4e27ed57f0cdd07491ec78355cb95855a2e08e7d7",
+          "../schemas/request-v0.1.json": "0d1dc60bff65f0baf319fef34d6dd5e141c814d55ed7f865fed629cebd4578c2",
+          "../schemas/inventory-v0.1.json": "aa4c284f4352141ec9fbcc56a51027bdba94e2e588affcaa739fcf2fd8340e5d",
+          "pyproject.toml": "b8b9fb81e47e37041d1fbc7a1a660b35a5b57909a1b370b76826a539af4e8108"
+        },
+        "integration_hashes": {
+          "./workflow.mjs": "3b435c25171ef5dd66785ad93b132c0ed67f833eab63bdd9bd0cff36f5e4bc25",
+          "./analysis.mjs": "c0279d78149f90f6412875dbe0df5eb35f516a90cbd5a235023bb9a93a94ef95",
+          "./decomposition.mjs": "42e5cbc7d12bb55d98d93c5223c8a5edf6eba9de3bfbfe2469ee9ca729c412cb",
+          "../models/prompts.mjs": "5b16ac6b45b60727f8c1467bb6b934e14cd2d9726bb0d750d4f9e9d69cccd32b",
+          "../models/source-anchors.mjs": "04d977f0a67397d568c2c84cf1f6767ea210d6bfb2ecb67c875935909258aa08"
+        }
+      },
+      "provenance": {
+        "source_hash": "9b36a4eeaf0bf24d90c29d59a6ee758c1a2e01b0bb4f8e95ca491eca9ae0a0a2"
+      },
+      "standing": "HEURISTIC_UNVERIFIED"
+    },
+    "proposals": [],
+    "deliveries": [
+      {
+        "arm": "A_SOURCE_ONLY",
+        "accepted_version": "2b212ee7e89ceb0cf4eaf29b144445d5a7a2288141802b60c247583fb53363f7",
+        "packet_hash": "5377d819029fbea01640811ad5ba3623ac2f0de5b35837ed0f6f18d2527af406",
+        "fields": [
+          {
+            "path": "/source/text",
+            "text": "The supplied policy document states that the production backup is encrypted at rest. No independent audit or system evidence is supplied.",
+            "origin": "ORIGINAL_SOURCE_EMBEDDED",
+            "artifact": {
+              "id": "b791865f6f6e59d7a27d15dd86719ef990281897129e281390417ff50b50427e",
+              "schema": "language-understanding-artifact/0.1",
+              "trial_id": "R1E-13-A_SOURCE_ONLY",
+              "stage": "DELIVERY_FIELD",
+              "at": "2026-10-23T19:18:16.939Z",
+              "request": {
+                "source_id": "u-55e5b8056dd6440e909fddea89535d77f81ab412",
+                "source_text": "The supplied policy document states that the production backup is encrypted at rest. No independent audit or system evidence is supplied.",
+                "profile": "technical-policy",
+                "profile_version": "0.2",
+                "context": {
+                  "purpose": "Faithful communication to a fresh recipient",
+                  "intended_recipient": "Independent reader"
+                }
+              },
+              "inventory": {
+                "schema": "language-understanding-inventory/0.1",
+                "offset_unit": "UNICODE_CODE_POINTS",
+                "standing": "HEURISTIC_UNVERIFIED",
+                "source": {
+                  "id": "u-55e5b8056dd6440e909fddea89535d77f81ab412",
+                  "sha256": "9b36a4eeaf0bf24d90c29d59a6ee758c1a2e01b0bb4f8e95ca491eca9ae0a0a2",
+                  "text": "The supplied policy document states that the production backup is encrypted at rest. No independent audit or system evidence is supplied."
+                },
+                "profile": {
+                  "id": "technical-policy",
+                  "version": "0.2",
+                  "schema": "language-understanding-profile/0.1",
+                  "sha256": "12287d00977aa52dcc4b142c6bb2829bf72c4636ce7a9cde6caea4b7d2dd669b"
+                },
+                "engine": {
+                  "id": "spacy/blank-en+sentencizer",
+                  "version": "0.2.0",
+                  "nltk_version": "3.10.4",
+                  "spacy_version": "3.8.16",
+                  "trained_syntax_available": false,
+                  "trained_model_requested": "en_core_web_sm",
+                  "fallback_reason": "SPACY_MODEL_NOT_INSTALLED"
+                },
+                "segments": [
+                  {
+                    "id": "s1",
+                    "start": 0,
+                    "end": 84,
+                    "text": "The supplied policy document states that the production backup is encrypted at rest."
+                  },
+                  {
+                    "id": "s2",
+                    "start": 85,
+                    "end": 137,
+                    "text": "No independent audit or system evidence is supplied."
+                  }
+                ],
+                "meaning_units": [
+                  {
+                    "id": "m1",
+                    "source_segments": [
+                      "s1"
+                    ],
+                    "start": 0,
+                    "end": 84,
+                    "source_quote": "The supplied policy document states that the production backup is encrypted at rest.",
+                    "proposed_meaning": "The supplied policy document states that the production backup is encrypted at rest.",
+                    "classification": {
+                      "kind": "statement",
+                      "normative_force": "ASSERTED_IN_SOURCE",
+                      "condition_cues": [],
+                      "temporal_cues": [],
+                      "possible_unresolved_reference": false,
+                      "speaker": "",
+                      "prerequisites": [],
+                      "method": "LEXICAL_RULE_HEURISTIC",
+                      "review": "HEURISTIC_UNVERIFIED"
+                    },
+                    "provenance": "EXACT_SOURCE_SPAN"
+                  },
+                  {
+                    "id": "m2",
+                    "source_segments": [
+                      "s2"
+                    ],
+                    "start": 85,
+                    "end": 137,
+                    "source_quote": "No independent audit or system evidence is supplied.",
+                    "proposed_meaning": "No independent audit or system evidence is supplied.",
+                    "classification": {
+                      "kind": "statement",
+                      "normative_force": "ASSERTED_IN_SOURCE",
+                      "condition_cues": [],
+                      "temporal_cues": [],
+                      "possible_unresolved_reference": false,
+                      "speaker": "",
+                      "prerequisites": [],
+                      "method": "LEXICAL_RULE_HEURISTIC",
+                      "review": "HEURISTIC_UNVERIFIED"
+                    },
+                    "provenance": "EXACT_SOURCE_SPAN"
+                  }
+                ],
+                "relations": [],
+                "context": {
+                  "purpose": "Faithful communication to a fresh recipient",
+                  "intended_recipient": "Independent reader"
+                },
+                "coverage": {
+                  "standing": "NOT_EVALUATED",
+                  "source_supportedness": "NOT_EVALUATED",
+                  "semantic_completeness": "NOT_ESTABLISHED"
+                },
+                "warnings": [
+                  "Labels are lexical heuristics, not verified meaning or permissions.",
+                  "No cross-sentence relation, coreference, or semantic completeness checker is implemented.",
+                  "Semicolon splitting, prerequisite hints and speaker labels are rule-based candidates, not semantic analysis."
+                ]
+              },
+              "compiler": {
+                "profile": {
+                  "id": "technical-policy",
+                  "version": "0.2",
+                  "sha256": "12287d00977aa52dcc4b142c6bb2829bf72c4636ce7a9cde6caea4b7d2dd669b",
+                  "file_sha256": "9d961fac646c1c164019c55b1eaa3f75748f42b47e3aad7862bc50181cdd4a75",
+                  "path": "C:\\Projects\\project-language\\core\\understanding\\python\\profiles\\technical-policy.json"
+                },
+                "adapter": "language-understanding-child/0.1",
+                "python": "C:\\Projects\\project-language\\.venv\\Scripts\\python.exe",
+                "timeout_ms": 15000,
+                "max_input_bytes": 262144,
+                "max_output_bytes": 4194304,
+                "require_trained_syntax": false,
+                "source_hashes": {
+                  "src/understanding/cli.py": "fdbbaab6d1c51d077046100aef43fcb0fcfac5e278dba1fa30f3a0cddb229ba9",
+                  "src/understanding/pipeline.py": "713ddf811112278038b19aaa5995eba929a827e6dee7634d5d5e8d54cba5ed1d",
+                  "src/understanding/__init__.py": "c4b5f92990c64643e4907def83a7a62dd00c8bdd3dd738a8ab14c55d523a396f",
+                  "src/understanding/contracts.py": "ec17e9c381a22aed695663e4e27ed57f0cdd07491ec78355cb95855a2e08e7d7",
+                  "../schemas/request-v0.1.json": "0d1dc60bff65f0baf319fef34d6dd5e141c814d55ed7f865fed629cebd4578c2",
+                  "../schemas/inventory-v0.1.json": "aa4c284f4352141ec9fbcc56a51027bdba94e2e588affcaa739fcf2fd8340e5d",
+                  "pyproject.toml": "b8b9fb81e47e37041d1fbc7a1a660b35a5b57909a1b370b76826a539af4e8108"
+                },
+                "integration_hashes": {
+                  "./workflow.mjs": "3b435c25171ef5dd66785ad93b132c0ed67f833eab63bdd9bd0cff36f5e4bc25",
+                  "./analysis.mjs": "c0279d78149f90f6412875dbe0df5eb35f516a90cbd5a235023bb9a93a94ef95",
+                  "./decomposition.mjs": "42e5cbc7d12bb55d98d93c5223c8a5edf6eba9de3bfbfe2469ee9ca729c412cb",
+                  "../models/prompts.mjs": "5b16ac6b45b60727f8c1467bb6b934e14cd2d9726bb0d750d4f9e9d69cccd32b",
+                  "../models/source-anchors.mjs": "04d977f0a67397d568c2c84cf1f6767ea210d6bfb2ecb67c875935909258aa08"
+                }
+              },
+              "provenance": {
+                "arm": "A_SOURCE_ONLY",
+                "json_path": "/source/text",
+                "origin": "ORIGINAL_SOURCE_EMBEDDED",
+                "source_hash": "9b36a4eeaf0bf24d90c29d59a6ee758c1a2e01b0bb4f8e95ca491eca9ae0a0a2",
+                "accepted_version": "2b212ee7e89ceb0cf4eaf29b144445d5a7a2288141802b60c247583fb53363f7",
+                "packet_hash": "5377d819029fbea01640811ad5ba3623ac2f0de5b35837ed0f6f18d2527af406",
+                "response_hash": "3735c80366ac2ee895ee58f23964df3bfc9289efddc4461399a9444852d31056"
+              },
+              "standing": "HEURISTIC_UNVERIFIED"
+            }
+          }
+        ]
+      }
+    ],
+    "responses": [
+      {
+        "arm": "A_SOURCE_ONLY",
+        "response_hash": "3735c80366ac2ee895ee58f23964df3bfc9289efddc4461399a9444852d31056",
+        "fields": [
+          {
+            "path": "/decision",
+            "text": "UNKNOWN",
+            "origin": "RECIPIENT_RESPONSE",
+            "artifact": {
+              "id": "2c47358103e690932438929a347dda1df490f1f28010c22e9ea03caf538c6c3c",
+              "schema": "language-understanding-artifact/0.1",
+              "trial_id": "R1E-13-A_SOURCE_ONLY",
+              "stage": "RECIPIENT_FIELD",
+              "at": "2026-10-23T19:18:16.946Z",
+              "request": {
+                "source_id": "u-1afa1e911896d7b03a72a4f088d1982c0ce6c3c1",
+                "source_text": "UNKNOWN",
+                "profile": "technical-policy",
+                "profile_version": "0.2",
+                "context": {
+                  "purpose": "Faithful communication to a fresh recipient",
+                  "intended_recipient": "Independent reader"
+                }
+              },
+              "inventory": {
+                "schema": "language-understanding-inventory/0.1",
+                "offset_unit": "UNICODE_CODE_POINTS",
+                "standing": "HEURISTIC_UNVERIFIED",
+                "source": {
+                  "id": "u-1afa1e911896d7b03a72a4f088d1982c0ce6c3c1",
+                  "sha256": "23759997b3c59884dc4c0ff5320d6301b0e7f63bf0f6483a7b54d7d43bc5ccd1",
+                  "text": "UNKNOWN"
+                },
+                "profile": {
+                  "id": "technical-policy",
+                  "version": "0.2",
+                  "schema": "language-understanding-profile/0.1",
+                  "sha256": "12287d00977aa52dcc4b142c6bb2829bf72c4636ce7a9cde6caea4b7d2dd669b"
+                },
+                "engine": {
+                  "id": "spacy/blank-en+sentencizer",
+                  "version": "0.2.0",
+                  "nltk_version": "3.10.4",
+                  "spacy_version": "3.8.16",
+                  "trained_syntax_available": false,
+                  "trained_model_requested": "en_core_web_sm",
+                  "fallback_reason": "SPACY_MODEL_NOT_INSTALLED"
+                },
+                "segments": [
+                  {
+                    "id": "s1",
+                    "start": 0,
+                    "end": 7,
+                    "text": "UNKNOWN"
+                  }
+                ],
+                "meaning_units": [
+                  {
+                    "id": "m1",
+                    "source_segments": [
+                      "s1"
+                    ],
+                    "start": 0,
+                    "end": 7,
+                    "source_quote": "UNKNOWN",
+                    "proposed_meaning": "UNKNOWN",
+                    "classification": {
+                      "kind": "unknown",
+                      "normative_force": "UNRESOLVED",
+                      "condition_cues": [],
+                      "temporal_cues": [],
+                      "possible_unresolved_reference": false,
+                      "speaker": "",
+                      "prerequisites": [],
+                      "method": "LEXICAL_RULE_HEURISTIC",
+                      "review": "HEURISTIC_UNVERIFIED"
+                    },
+                    "provenance": "EXACT_SOURCE_SPAN"
+                  }
+                ],
+                "relations": [],
+                "context": {
+                  "purpose": "Faithful communication to a fresh recipient",
+                  "intended_recipient": "Independent reader"
+                },
+                "coverage": {
+                  "standing": "NOT_EVALUATED",
+                  "source_supportedness": "NOT_EVALUATED",
+                  "semantic_completeness": "NOT_ESTABLISHED"
+                },
+                "warnings": [
+                  "Labels are lexical heuristics, not verified meaning or permissions.",
+                  "No cross-sentence relation, coreference, or semantic completeness checker is implemented.",
+                  "Semicolon splitting, prerequisite hints and speaker labels are rule-based candidates, not semantic analysis."
+                ]
+              },
+              "compiler": {
+                "profile": {
+                  "id": "technical-policy",
+                  "version": "0.2",
+                  "sha256": "12287d00977aa52dcc4b142c6bb2829bf72c4636ce7a9cde6caea4b7d2dd669b",
+                  "file_sha256": "9d961fac646c1c164019c55b1eaa3f75748f42b47e3aad7862bc50181cdd4a75",
+                  "path": "C:\\Projects\\project-language\\core\\understanding\\python\\profiles\\technical-policy.json"
+                },
+                "adapter": "language-understanding-child/0.1",
+                "python": "C:\\Projects\\project-language\\.venv\\Scripts\\python.exe",
+                "timeout_ms": 15000,
+                "max_input_bytes": 262144,
+                "max_output_bytes": 4194304,
+                "require_trained_syntax": false,
+                "source_hashes": {
+                  "src/understanding/cli.py": "fdbbaab6d1c51d077046100aef43fcb0fcfac5e278dba1fa30f3a0cddb229ba9",
+                  "src/understanding/pipeline.py": "713ddf811112278038b19aaa5995eba929a827e6dee7634d5d5e8d54cba5ed1d",
+                  "src/understanding/__init__.py": "c4b5f92990c64643e4907def83a7a62dd00c8bdd3dd738a8ab14c55d523a396f",
+                  "src/understanding/contracts.py": "ec17e9c381a22aed695663e4e27ed57f0cdd07491ec78355cb95855a2e08e7d7",
+                  "../schemas/request-v0.1.json": "0d1dc60bff65f0baf319fef34d6dd5e141c814d55ed7f865fed629cebd4578c2",
+                  "../schemas/inventory-v0.1.json": "aa4c284f4352141ec9fbcc56a51027bdba94e2e588affcaa739fcf2fd8340e5d",
+                  "pyproject.toml": "b8b9fb81e47e37041d1fbc7a1a660b35a5b57909a1b370b76826a539af4e8108"
+                },
+                "integration_hashes": {
+                  "./workflow.mjs": "3b435c25171ef5dd66785ad93b132c0ed67f833eab63bdd9bd0cff36f5e4bc25",
+                  "./analysis.mjs": "c0279d78149f90f6412875dbe0df5eb35f516a90cbd5a235023bb9a93a94ef95",
+                  "./decomposition.mjs": "42e5cbc7d12bb55d98d93c5223c8a5edf6eba9de3bfbfe2469ee9ca729c412cb",
+                  "../models/prompts.mjs": "5b16ac6b45b60727f8c1467bb6b934e14cd2d9726bb0d750d4f9e9d69cccd32b",
+                  "../models/source-anchors.mjs": "04d977f0a67397d568c2c84cf1f6767ea210d6bfb2ecb67c875935909258aa08"
+                }
+              },
+              "provenance": {
+                "arm": "A_SOURCE_ONLY",
+                "json_path": "/decision",
+                "origin": "RECIPIENT_RESPONSE",
+                "source_hash": "9b36a4eeaf0bf24d90c29d59a6ee758c1a2e01b0bb4f8e95ca491eca9ae0a0a2",
+                "accepted_version": "2b212ee7e89ceb0cf4eaf29b144445d5a7a2288141802b60c247583fb53363f7",
+                "packet_hash": "5377d819029fbea01640811ad5ba3623ac2f0de5b35837ed0f6f18d2527af406",
+                "response_hash": "3735c80366ac2ee895ee58f23964df3bfc9289efddc4461399a9444852d31056"
+              },
+              "standing": "HEURISTIC_UNVERIFIED"
+            }
+          },
+          {
+            "path": "/explanation",
+            "text": "The question asks for EXTERNAL_FACTUAL_VERIFICATION (whether the backup is *actually* encrypted). The source text explicitly states that 'No independent audit or system evidence is supplied.' Therefore, the provided packet does not contain sufficient information to verify the real-world factual status of the encryption; it only reports what a policy document claims. Since external verification cannot be performed based on this source alone, the answer is UNKNOWN.",
+            "origin": "RECIPIENT_RESPONSE",
+            "artifact": {
+              "id": "3839a97f91fb19866007c5c9b34b1f8ec53d8f0f2f220d8aa809a96e6d2aa7cc",
+              "schema": "language-understanding-artifact/0.1",
+              "trial_id": "R1E-13-A_SOURCE_ONLY",
+              "stage": "RECIPIENT_FIELD",
+              "at": "2026-10-23T19:18:16.954Z",
+              "request": {
+                "source_id": "u-e6d6416fe4a9ddf258ebdce74818006f6cd3b635",
+                "source_text": "The question asks for EXTERNAL_FACTUAL_VERIFICATION (whether the backup is *actually* encrypted). The source text explicitly states that 'No independent audit or system evidence is supplied.' Therefore, the provided packet does not contain sufficient information to verify the real-world factual status of the encryption; it only reports what a policy document claims. Since external verification cannot be performed based on this source alone, the answer is UNKNOWN.",
+                "profile": "technical-policy",
+                "profile_version": "0.2",
+                "context": {
+                  "purpose": "Faithful communication to a fresh recipient",
+                  "intended_recipient": "Independent reader"
+                }
+              },
+              "inventory": {
+                "schema": "language-understanding-inventory/0.1",
+                "offset_unit": "UNICODE_CODE_POINTS",
+                "standing": "HEURISTIC_UNVERIFIED",
+                "source": {
+                  "id": "u-e6d6416fe4a9ddf258ebdce74818006f6cd3b635",
+                  "sha256": "005e867d824fbac24da6df1c241f66a503d0e2be36a02c5ae6ca4555df18f92a",
+                  "text": "The question asks for EXTERNAL_FACTUAL_VERIFICATION (whether the backup is *actually* encrypted). The source text explicitly states that 'No independent audit or system evidence is supplied.' Therefore, the provided packet does not contain sufficient information to verify the real-world factual status of the encryption; it only reports what a policy document claims. Since external verification cannot be performed based on this source alone, the answer is UNKNOWN."
+                },
+                "profile": {
+                  "id": "technical-policy",
+                  "version": "0.2",
+                  "schema": "language-understanding-profile/0.1",
+                  "sha256": "12287d00977aa52dcc4b142c6bb2829bf72c4636ce7a9cde6caea4b7d2dd669b"
+                },
+                "engine": {
+                  "id": "spacy/blank-en+sentencizer",
+                  "version": "0.2.0",
+                  "nltk_version": "3.10.4",
+                  "spacy_version": "3.8.16",
+                  "trained_syntax_available": false,
+                  "trained_model_requested": "en_core_web_sm",
+                  "fallback_reason": "SPACY_MODEL_NOT_INSTALLED"
+                },
+                "segments": [
+                  {
+                    "id": "s1",
+                    "start": 0,
+                    "end": 97,
+                    "text": "The question asks for EXTERNAL_FACTUAL_VERIFICATION (whether the backup is *actually* encrypted)."
+                  },
+                  {
+                    "id": "s2",
+                    "start": 98,
+                    "end": 191,
+                    "text": "The source text explicitly states that 'No independent audit or system evidence is supplied.'"
+                  },
+                  {
+                    "id": "s3",
+                    "start": 192,
+                    "end": 368,
+                    "text": "Therefore, the provided packet does not contain sufficient information to verify the real-world factual status of the encryption; it only reports what a policy document claims."
+                  },
+                  {
+                    "id": "s4",
+                    "start": 369,
+                    "end": 467,
+                    "text": "Since external verification cannot be performed based on this source alone, the answer is UNKNOWN."
+                  }
+                ],
+                "meaning_units": [
+                  {
+                    "id": "m1",
+                    "source_segments": [
+                      "s1"
+                    ],
+                    "start": 0,
+                    "end": 97,
+                    "source_quote": "The question asks for EXTERNAL_FACTUAL_VERIFICATION (whether the backup is *actually* encrypted).",
+                    "proposed_meaning": "The question asks for EXTERNAL_FACTUAL_VERIFICATION (whether the backup is *actually* encrypted).",
+                    "classification": {
+                      "kind": "statement",
+                      "normative_force": "ASSERTED_IN_SOURCE",
+                      "condition_cues": [],
+                      "temporal_cues": [],
+                      "possible_unresolved_reference": false,
+                      "speaker": "",
+                      "prerequisites": [],
+                      "method": "LEXICAL_RULE_HEURISTIC",
+                      "review": "HEURISTIC_UNVERIFIED"
+                    },
+                    "provenance": "EXACT_SOURCE_SPAN"
+                  },
+                  {
+                    "id": "m2",
+                    "source_segments": [
+                      "s2"
+                    ],
+                    "start": 98,
+                    "end": 191,
+                    "source_quote": "The source text explicitly states that 'No independent audit or system evidence is supplied.'",
+                    "proposed_meaning": "The source text explicitly states that 'No independent audit or system evidence is supplied.'",
+                    "classification": {
+                      "kind": "statement",
+                      "normative_force": "ASSERTED_IN_SOURCE",
+                      "condition_cues": [],
+                      "temporal_cues": [],
+                      "possible_unresolved_reference": false,
+                      "speaker": "",
+                      "prerequisites": [],
+                      "method": "LEXICAL_RULE_HEURISTIC",
+                      "review": "HEURISTIC_UNVERIFIED"
+                    },
+                    "provenance": "EXACT_SOURCE_SPAN"
+                  },
+                  {
+                    "id": "m3",
+                    "source_segments": [
+                      "s3"
+                    ],
+                    "start": 192,
+                    "end": 320,
+                    "source_quote": "Therefore, the provided packet does not contain sufficient information to verify the real-world factual status of the encryption",
+                    "proposed_meaning": "Therefore, the provided packet does not contain sufficient information to verify the real-world factual status of the encryption",
+                    "classification": {
+                      "kind": "statement",
+                      "normative_force": "ASSERTED_IN_SOURCE",
+                      "condition_cues": [
+                        "provided"
+                      ],
+                      "temporal_cues": [],
+                      "possible_unresolved_reference": false,
+                      "speaker": "",
+                      "prerequisites": [],
+                      "method": "LEXICAL_RULE_HEURISTIC",
+                      "review": "HEURISTIC_UNVERIFIED"
+                    },
+                    "provenance": "EXACT_SOURCE_SPAN"
+                  },
+                  {
+                    "id": "m4",
+                    "source_segments": [
+                      "s3"
+                    ],
+                    "start": 322,
+                    "end": 368,
+                    "source_quote": "it only reports what a policy document claims.",
+                    "proposed_meaning": "it only reports what a policy document claims.",
+                    "classification": {
+                      "kind": "statement",
+                      "normative_force": "ASSERTED_IN_SOURCE",
+                      "condition_cues": [
+                        "only"
+                      ],
+                      "temporal_cues": [],
+                      "possible_unresolved_reference": true,
+                      "speaker": "",
+                      "prerequisites": [],
+                      "method": "LEXICAL_RULE_HEURISTIC",
+                      "review": "HEURISTIC_UNVERIFIED"
+                    },
+                    "provenance": "EXACT_SOURCE_SPAN"
+                  },
+                  {
+                    "id": "m5",
+                    "source_segments": [
+                      "s4"
+                    ],
+                    "start": 369,
+                    "end": 467,
+                    "source_quote": "Since external verification cannot be performed based on this source alone, the answer is UNKNOWN.",
+                    "proposed_meaning": "Since external verification cannot be performed based on this source alone, the answer is UNKNOWN.",
+                    "classification": {
+                      "kind": "unknown",
+                      "normative_force": "UNRESOLVED",
+                      "condition_cues": [],
+                      "temporal_cues": [],
+                      "possible_unresolved_reference": false,
+                      "speaker": "",
+                      "prerequisites": [],
+                      "method": "LEXICAL_RULE_HEURISTIC",
+                      "review": "HEURISTIC_UNVERIFIED"
+                    },
+                    "provenance": "EXACT_SOURCE_SPAN"
+                  }
+                ],
+                "relations": [],
+                "context": {
+                  "purpose": "Faithful communication to a fresh recipient",
+                  "intended_recipient": "Independent reader"
+                },
+                "coverage": {
+                  "standing": "NOT_EVALUATED",
+                  "source_supportedness": "NOT_EVALUATED",
+                  "semantic_completeness": "NOT_ESTABLISHED"
+                },
+                "warnings": [
+                  "Labels are lexical heuristics, not verified meaning or permissions.",
+                  "No cross-sentence relation, coreference, or semantic completeness checker is implemented.",
+                  "Semicolon splitting, prerequisite hints and speaker labels are rule-based candidates, not semantic analysis."
+                ]
+              },
+              "compiler": {
+                "profile": {
+                  "id": "technical-policy",
+                  "version": "0.2",
+                  "sha256": "12287d00977aa52dcc4b142c6bb2829bf72c4636ce7a9cde6caea4b7d2dd669b",
+                  "file_sha256": "9d961fac646c1c164019c55b1eaa3f75748f42b47e3aad7862bc50181cdd4a75",
+                  "path": "C:\\Projects\\project-language\\core\\understanding\\python\\profiles\\technical-policy.json"
+                },
+                "adapter": "language-understanding-child/0.1",
+                "python": "C:\\Projects\\project-language\\.venv\\Scripts\\python.exe",
+                "timeout_ms": 15000,
+                "max_input_bytes": 262144,
+                "max_output_bytes": 4194304,
+                "require_trained_syntax": false,
+                "source_hashes": {
+                  "src/understanding/cli.py": "fdbbaab6d1c51d077046100aef43fcb0fcfac5e278dba1fa30f3a0cddb229ba9",
+                  "src/understanding/pipeline.py": "713ddf811112278038b19aaa5995eba929a827e6dee7634d5d5e8d54cba5ed1d",
+                  "src/understanding/__init__.py": "c4b5f92990c64643e4907def83a7a62dd00c8bdd3dd738a8ab14c55d523a396f",
+                  "src/understanding/contracts.py": "ec17e9c381a22aed695663e4e27ed57f0cdd07491ec78355cb95855a2e08e7d7",
+                  "../schemas/request-v0.1.json": "0d1dc60bff65f0baf319fef34d6dd5e141c814d55ed7f865fed629cebd4578c2",
+                  "../schemas/inventory-v0.1.json": "aa4c284f4352141ec9fbcc56a51027bdba94e2e588affcaa739fcf2fd8340e5d",
+                  "pyproject.toml": "b8b9fb81e47e37041d1fbc7a1a660b35a5b57909a1b370b76826a539af4e8108"
+                },
+                "integration_hashes": {
+                  "./workflow.mjs": "3b435c25171ef5dd66785ad93b132c0ed67f833eab63bdd9bd0cff36f5e4bc25",
+                  "./analysis.mjs": "c0279d78149f90f6412875dbe0df5eb35f516a90cbd5a235023bb9a93a94ef95",
+                  "./decomposition.mjs": "42e5cbc7d12bb55d98d93c5223c8a5edf6eba9de3bfbfe2469ee9ca729c412cb",
+                  "../models/prompts.mjs": "5b16ac6b45b60727f8c1467bb6b934e14cd2d9726bb0d750d4f9e9d69cccd32b",
+                  "../models/source-anchors.mjs": "04d977f0a67397d568c2c84cf1f6767ea210d6bfb2ecb67c875935909258aa08"
+                }
+              },
+              "provenance": {
+                "arm": "A_SOURCE_ONLY",
+                "json_path": "/explanation",
+                "origin": "RECIPIENT_RESPONSE",
+                "source_hash": "9b36a4eeaf0bf24d90c29d59a6ee758c1a2e01b0bb4f8e95ca491eca9ae0a0a2",
+                "accepted_version": "2b212ee7e89ceb0cf4eaf29b144445d5a7a2288141802b60c247583fb53363f7",
+                "packet_hash": "5377d819029fbea01640811ad5ba3623ac2f0de5b35837ed0f6f18d2527af406",
+                "response_hash": "3735c80366ac2ee895ee58f23964df3bfc9289efddc4461399a9444852d31056"
+              },
+              "standing": "HEURISTIC_UNVERIFIED"
+            }
+          }
+        ]
+      }
+    ],
+    "comparisons": [
+      {
+        "arm": "A_SOURCE_ONLY",
+        "accepted_version": "2b212ee7e89ceb0cf4eaf29b144445d5a7a2288141802b60c247583fb53363f7",
+        "packet_hash": "5377d819029fbea01640811ad5ba3623ac2f0de5b35837ed0f6f18d2527af406",
+        "response_hash": "3735c80366ac2ee895ee58f23964df3bfc9289efddc4461399a9444852d31056",
+        "transferred": {
+          "schema": "language-meaning-transferred/0.1",
+          "accepted_version": "2b212ee7e89ceb0cf4eaf29b144445d5a7a2288141802b60c247583fb53363f7",
+          "source_inventory_hash": "7a5f4164ca22592fe3345b39fe23f3f219b18fe99189cb2bc82ec6428fa00dad",
+          "standing": "MECHANICAL_CANDIDATES_NOT_SEMANTIC_VERDICTS",
+          "embedded_source_present": true,
+          "embedded_source_is_not_understanding": true,
+          "units": [
+            {
+              "unit_id": "m1",
+              "quote": "The supplied policy document states that the production backup is encrypted at rest.",
+              "candidate_paths": [],
+              "analysis_ids": [],
+              "mechanical": "NO_DERIVED_TEXT_MATCH",
+              "assessment": "NOT_ASSESSED",
+              "review_flags": [],
+              "semantic_preservation": "NOT_ASSESSED"
+            },
+            {
+              "unit_id": "m2",
+              "quote": "No independent audit or system evidence is supplied.",
+              "candidate_paths": [],
+              "analysis_ids": [],
+              "mechanical": "NO_DERIVED_TEXT_MATCH",
+              "assessment": "NOT_ASSESSED",
+              "review_flags": [],
+              "semantic_preservation": "NOT_ASSESSED"
+            }
+          ],
+          "possible_additions_or_paraphrases": [],
+          "warnings": [
+            "No lexical match establishes preservation.",
+            "No match is not proof of meaning loss.",
+            "Embedded source copies are excluded from candidate derived preservation.",
+            "Unmatched derived wording may be a valid paraphrase, purpose statement, human clarification or inference; it is not automatically an unsupported addition."
+          ]
+        },
+        "reconstructed": {
+          "standing": "NOT_ASSESSED",
+          "reason": "No independently defined question requirements are registered."
+        }
+      }
+    ]
+  },
+  "studio": {
+    "schema": "language-studio-export/0.1",
+    "standing": "EXPLORATORY_DEVELOPMENT_NOT_VALIDATION",
+    "replay": "CAPTURED_OUTPUT_ONLY_NO_REGENERATION",
+    "comparison": {
+      "state": null,
+      "cases": [
+        {
+          "id": "lc02-d1",
+          "name": "Readiness and authority",
+          "standing": "EXPOSED_SYNTHETIC_DEVELOPMENT"
+        },
+        {
+          "id": "lc02-d2",
+          "name": "A straightforward boundary",
+          "standing": "EXPOSED_SYNTHETIC_DEVELOPMENT"
+        },
+        {
+          "id": "lc02-d3",
+          "name": "Mediation can invent certainty",
+          "standing": "EXPOSED_SYNTHETIC_DEVELOPMENT"
+        }
+      ],
+      "rubric": [
+        "correct_interpretation",
+        "important_information_retained",
+        "important_information_lost",
+        "unsupported_inferences",
+        "ambiguity_discovered",
+        "handling_unknowns",
+        "decision_quality",
+        "clarification_and_negotiated_correction"
+      ],
+      "evaluation_gate": {
+        "status": "PENDING_INDEPENDENT_CASE_AUTHOR_AND_REVIEW",
+        "cases": [],
+        "reason": "The implementation agent cannot certify its own cases as independently authored and previously unseen. No development case may be relabelled held-out."
+      },
+      "scope": {
+        "id": "lc02u-development-v1",
+        "case_suite": {
+          "id": "lc02-development-v1",
+          "digest": "17d692dd8a0255e2cc92ea6c7993d9ba53b610e3ee1d6b7dfd0598367aea189c",
+          "case_ids": [
+            "lc02-d1",
+            "lc02-d2",
+            "lc02-d3"
+          ],
+          "standing": "EXPOSED_DEVELOPMENT_NOT_CONFIRMATORY"
+        },
+        "understanding": {
+          "profile": {
+            "id": "technical-policy",
+            "version": "0.2",
+            "sha256": "12287d00977aa52dcc4b142c6bb2829bf72c4636ce7a9cde6caea4b7d2dd669b",
+            "file_sha256": "9d961fac646c1c164019c55b1eaa3f75748f42b47e3aad7862bc50181cdd4a75",
+            "path": "C:\\Projects\\project-language\\core\\understanding\\python\\profiles\\technical-policy.json"
+          },
+          "adapter": "language-understanding-child/0.1",
+          "python": "C:\\Projects\\project-language\\.venv\\Scripts\\python.exe",
+          "timeout_ms": 15000,
+          "max_input_bytes": 262144,
+          "max_output_bytes": 4194304,
+          "require_trained_syntax": false,
+          "source_hashes": {
+            "src/understanding/cli.py": "fdbbaab6d1c51d077046100aef43fcb0fcfac5e278dba1fa30f3a0cddb229ba9",
+            "src/understanding/pipeline.py": "713ddf811112278038b19aaa5995eba929a827e6dee7634d5d5e8d54cba5ed1d",
+            "src/understanding/__init__.py": "c4b5f92990c64643e4907def83a7a62dd00c8bdd3dd738a8ab14c55d523a396f",
+            "src/understanding/contracts.py": "ec17e9c381a22aed695663e4e27ed57f0cdd07491ec78355cb95855a2e08e7d7",
+            "../schemas/request-v0.1.json": "0d1dc60bff65f0baf319fef34d6dd5e141c814d55ed7f865fed629cebd4578c2",
+            "../schemas/inventory-v0.1.json": "aa4c284f4352141ec9fbcc56a51027bdba94e2e588affcaa739fcf2fd8340e5d",
+            "pyproject.toml": "b8b9fb81e47e37041d1fbc7a1a660b35a5b57909a1b370b76826a539af4e8108"
+          },
+          "integration_hashes": {
+            "./workflow.mjs": "3b435c25171ef5dd66785ad93b132c0ed67f833eab63bdd9bd0cff36f5e4bc25",
+            "./analysis.mjs": "c0279d78149f90f6412875dbe0df5eb35f516a90cbd5a235023bb9a93a94ef95",
+            "./decomposition.mjs": "42e5cbc7d12bb55d98d93c5223c8a5edf6eba9de3bfbfe2469ee9ca729c412cb",
+            "../models/prompts.mjs": "5b16ac6b45b60727f8c1467bb6b934e14cd2d9726bb0d750d4f9e9d69cccd32b",
+            "../models/source-anchors.mjs": "04d977f0a67397d568c2c84cf1f6767ea210d6bfb2ecb67c875935909258aa08"
+          }
+        },
+        "digest": "11502b2c9537821b29cc434aa286d310856004dcb9ca1caf6b4006993c565997"
+      }
+    },
+    "comparison_plan": {
+      "schema": "studio-remote-plan/0.1r",
+      "provider": "opencode-go",
+      "task_identity": {
+        "id": "lc02u-development-v1",
+        "case_suite": {
+          "id": "lc02-development-v1",
+          "digest": "17d692dd8a0255e2cc92ea6c7993d9ba53b610e3ee1d6b7dfd0598367aea189c",
+          "case_ids": [
+            "lc02-d1",
+            "lc02-d2",
+            "lc02-d3"
+          ],
+          "standing": "EXPOSED_DEVELOPMENT_NOT_CONFIRMATORY"
+        },
+        "understanding": {
+          "profile": {
+            "id": "technical-policy",
+            "version": "0.2",
+            "sha256": "12287d00977aa52dcc4b142c6bb2829bf72c4636ce7a9cde6caea4b7d2dd669b",
+            "file_sha256": "9d961fac646c1c164019c55b1eaa3f75748f42b47e3aad7862bc50181cdd4a75",
+            "path": "C:\\Projects\\project-language\\core\\understanding\\python\\profiles\\technical-policy.json"
+          },
+          "adapter": "language-understanding-child/0.1",
+          "python": "C:\\Projects\\project-language\\.venv\\Scripts\\python.exe",
+          "timeout_ms": 15000,
+          "max_input_bytes": 262144,
+          "max_output_bytes": 4194304,
+          "require_trained_syntax": false,
+          "source_hashes": {
+            "src/understanding/cli.py": "fdbbaab6d1c51d077046100aef43fcb0fcfac5e278dba1fa30f3a0cddb229ba9",
+            "src/understanding/pipeline.py": "713ddf811112278038b19aaa5995eba929a827e6dee7634d5d5e8d54cba5ed1d",
+            "src/understanding/__init__.py": "c4b5f92990c64643e4907def83a7a62dd00c8bdd3dd738a8ab14c55d523a396f",
+            "src/understanding/contracts.py": "ec17e9c381a22aed695663e4e27ed57f0cdd07491ec78355cb95855a2e08e7d7",
+            "../schemas/request-v0.1.json": "0d1dc60bff65f0baf319fef34d6dd5e141c814d55ed7f865fed629cebd4578c2",
+            "../schemas/inventory-v0.1.json": "aa4c284f4352141ec9fbcc56a51027bdba94e2e588affcaa739fcf2fd8340e5d",
+            "pyproject.toml": "b8b9fb81e47e37041d1fbc7a1a660b35a5b57909a1b370b76826a539af4e8108"
+          },
+          "integration_hashes": {
+            "./workflow.mjs": "3b435c25171ef5dd66785ad93b132c0ed67f833eab63bdd9bd0cff36f5e4bc25",
+            "./analysis.mjs": "c0279d78149f90f6412875dbe0df5eb35f516a90cbd5a235023bb9a93a94ef95",
+            "./decomposition.mjs": "42e5cbc7d12bb55d98d93c5223c8a5edf6eba9de3bfbfe2469ee9ca729c412cb",
+            "../models/prompts.mjs": "5b16ac6b45b60727f8c1467bb6b934e14cd2d9726bb0d750d4f9e9d69cccd32b",
+            "../models/source-anchors.mjs": "04d977f0a67397d568c2c84cf1f6767ea210d6bfb2ecb67c875935909258aa08"
+          }
+        },
+        "digest": "11502b2c9537821b29cc434aa286d310856004dcb9ca1caf6b4006993c565997"
+      },
+      "models": [
+        {
+          "role": "interpreter",
+          "model": "opencode-go/deepseek-v4.1-flash",
+          "metadata": {
+            "id": "opencode-go/deepseek-v4.1-flash",
+            "provider": "opencode-go",
+            "local": false,
+            "api_family": "openai-completions",
+            "base_url": "https://opencode.ai/inference/go/openai/v1",
+            "expected_route": "https://opencode.ai/inference/go/openai/v1/chat/completions",
+            "context_window": 1000000,
+            "output_limit": 384000,
+            "input_modalities": [
+              "text",
+              "image"
+            ],
+            "output_modalities": [
+              "text"
+            ],
+            "structured_output": "PROMPTED_JSON_STRICT_HOST_VALIDATION",
+            "reasoning": "Pi simple-stream default; no reasoning-token inference",
+            "price_per_million": {
+              "input": 0.3,
+              "output": 1.2,
+              "cacheRead": 0.006,
+              "cacheWrite": 0
+            },
+            "availability": "SCOPED_REGISTERED_NOT_LIVE_PROBED",
+            "qualification": "OFFLINE_TEST_REQUIRED",
+            "metadata_origin": "PINNED_PI_1.0.4_WITH_DOCUMENTED_ENDPOINT_OVERLAY",
+            "config_hash": "78020e5ed7246fa4f787cd8b1f72f721c41caba22e72a20fcf56f07937ebe7ad"
+          },
+          "output_tokens": 16384
+        },
+        {
+          "role": "challenger",
+          "model": "opencode-go/gpt-6-luna",
+          "metadata": {
+            "id": "opencode-go/gpt-6-luna",
+            "provider": "opencode-go",
+            "local": false,
+            "api_family": "openai-responses",
+            "base_url": "https://opencode.ai/inference/go/openai/v1",
+            "expected_route": "https://opencode.ai/inference/go/openai/v1/responses",
+            "context_window": 1050000,
+            "output_limit": 128000,
+            "input_modalities": [
+              "text",
+              "image"
+            ],
+            "output_modalities": [
+              "text"
+            ],
+            "structured_output": "PROMPTED_JSON_STRICT_HOST_VALIDATION",
+            "reasoning": "Pi simple-stream default; no reasoning-token inference",
+            "price_per_million": {
+              "input": 0.1,
+              "output": 0.5,
+              "cacheRead": 0.01,
+              "cacheWrite": 0.125
+            },
+            "availability": "SCOPED_REGISTERED_NOT_LIVE_PROBED",
+            "qualification": "OFFLINE_TEST_REQUIRED",
+            "metadata_origin": "PINNED_PI_1.0.4_WITH_DOCUMENTED_ENDPOINT_OVERLAY",
+            "config_hash": "78020e5ed7246fa4f787cd8b1f72f721c41caba22e72a20fcf56f07937ebe7ad"
+          },
+          "output_tokens": 16384
+        },
+        {
+          "role": "mediator",
+          "model": "opencode-go/deepseek-v4.1-flash",
+          "metadata": {
+            "id": "opencode-go/deepseek-v4.1-flash",
+            "provider": "opencode-go",
+            "local": false,
+            "api_family": "openai-completions",
+            "base_url": "https://opencode.ai/inference/go/openai/v1",
+            "expected_route": "https://opencode.ai/inference/go/openai/v1/chat/completions",
+            "context_window": 1000000,
+            "output_limit": 384000,
+            "input_modalities": [
+              "text",
+              "image"
+            ],
+            "output_modalities": [
+              "text"
+            ],
+            "structured_output": "PROMPTED_JSON_STRICT_HOST_VALIDATION",
+            "reasoning": "Pi simple-stream default; no reasoning-token inference",
+            "price_per_million": {
+              "input": 0.3,
+              "output": 1.2,
+              "cacheRead": 0.006,
+              "cacheWrite": 0
+            },
+            "availability": "SCOPED_REGISTERED_NOT_LIVE_PROBED",
+            "qualification": "OFFLINE_TEST_REQUIRED",
+            "metadata_origin": "PINNED_PI_1.0.4_WITH_DOCUMENTED_ENDPOINT_OVERLAY",
+            "config_hash": "78020e5ed7246fa4f787cd8b1f72f721c41caba22e72a20fcf56f07937ebe7ad"
+          },
+          "output_tokens": 16384
+        },
+        {
+          "role": "recipient",
+          "model": "opencode-go/qwen3.8-flash",
+          "metadata": {
+            "id": "opencode-go/qwen3.8-flash",
+            "provider": "opencode-go",
+            "local": false,
+            "api_family": "anthropic-messages",
+            "base_url": "https://opencode.ai/inference/go/anthropic",
+            "expected_route": "https://opencode.ai/inference/go/anthropic/v1/messages",
+            "context_window": 1000000,
+            "output_limit": 131072,
+            "input_modalities": [
+              "text",
+              "image"
+            ],
+            "output_modalities": [
+              "text"
+            ],
+            "structured_output": "PROMPTED_JSON_STRICT_HOST_VALIDATION",
+            "reasoning": "Pi simple-stream default; no reasoning-token inference",
+            "price_per_million": {
+              "input": 0.15,
+              "output": 0.47,
+              "cacheRead": 0.016,
+              "cacheWrite": 0.2
+            },
+            "availability": "SCOPED_REGISTERED_NOT_LIVE_PROBED",
+            "qualification": "OFFLINE_TEST_REQUIRED",
+            "metadata_origin": "PINNED_PI_1.0.4_WITH_DOCUMENTED_ENDPOINT_OVERLAY",
+            "config_hash": "78020e5ed7246fa4f787cd8b1f72f721c41caba22e72a20fcf56f07937ebe7ad"
+          },
+          "output_tokens": 16384
+        },
+        {
+          "role": "advisory_evaluator",
+          "model": "opencode-go/claude-haiku-5-5",
+          "metadata": {
+            "id": "opencode-go/claude-haiku-5-5",
+            "provider": "opencode-go",
+            "local": false,
+            "api_family": "anthropic-messages",
+            "base_url": "https://opencode.ai/inference/go/anthropic",
+            "expected_route": "https://opencode.ai/inference/go/anthropic/v1/messages",
+            "context_window": 1000000,
+            "output_limit": 128000,
+            "input_modalities": [
+              "text",
+              "image"
+            ],
+            "output_modalities": [
+              "text"
+            ],
+            "structured_output": "PROMPTED_JSON_STRICT_HOST_VALIDATION",
+            "reasoning": "Pi simple-stream default; no reasoning-token inference",
+            "price_per_million": {
+              "input": 0.1,
+              "output": 0.5,
+              "cacheRead": 0.01,
+              "cacheWrite": 0.125,
+              "tiers": [
+                {
+                  "inputTokensAbove": 100000,
+                  "input": 0.5,
+                  "output": 2.5,
+                  "cacheRead": 0.05,
+                  "cacheWrite": 0.625
+                }
+              ]
+            },
+            "availability": "SCOPED_REGISTERED_NOT_LIVE_PROBED",
+            "qualification": "OFFLINE_TEST_REQUIRED",
+            "metadata_origin": "MANAGED_PI_1.4.0_SCOPED_REGISTRATION",
+            "config_hash": "78020e5ed7246fa4f787cd8b1f72f721c41caba22e72a20fcf56f07937ebe7ad"
+          },
+          "output_tokens": 16384
+        }
+      ],
+      "settings": {
+        "max_requests": 12,
+        "budget_usd": 10,
+        "max_input_bytes": 60000,
+        "max_response_bytes": 33554432,
+        "timeout_ms": 180000,
+        "output_tokens": {
+          "interpreter": 16384,
+          "challenger": 16384,
+          "mediator": 16384,
+          "recipient": 16384,
+          "advisory_evaluator": 16384
+        },
+        "automatic_retries": 0
+      },
+      "config_hash": "78020e5ed7246fa4f787cd8b1f72f721c41caba22e72a20fcf56f07937ebe7ad",
+      "offline_qualification_identity": null,
+      "expected_workflow_calls": 3,
+      "with_mediation_calls": 4,
+      "with_comparison_calls": 5,
+      "maximum_actual_requests": 12,
+      "conservative_estimate_usd": 0.94152,
+      "per_request_reservation_usd": 0.07846,
+      "estimate_standing": "CATALOGUE_BOUND_NOT_INVOICE; UTF8_BYTES_AS_INPUT_TOKEN_BOUND",
+      "service_use": "OPERATOR_MUST_CONFIRM_GO_WORKLOAD_APPROPRIATENESS",
+      "fallback": false,
+      "hash": "c28e9cade3d39473c2a016c626b9413424a1ea6cfa04fb44bd71cf2644cdfb01",
+      "launcher_remote_enabled": true,
+      "credential_available": true,
+      "approval_required": false,
+      "execution_policy": "DIRECT_USER_REQUEST",
+      "approval_active": true,
+      "requests_used": 1,
+      "reserved_usd": 0.07846,
+      "last_errors": {},
+      "advisory_evaluator_status": "OPTIONAL_NOT_RUN"
+    },
+    "manual_plan": {
+      "schema": "studio-remote-plan/0.1r",
+      "provider": "opencode-go",
+      "task_identity": {
+        "id": "museum-loan-m12",
+        "digest": "e22911925db7424b874b94b44a60e9250a68e0f0b0b0db5d09713aa754fb28b4",
+        "source_hash": "277b9050c46b1df5f9794bda17829e2acf450e6c4afaf79a7e21cf4692447228",
+        "question_hash": "0f71abc5fbc41f4fb5e3474a0efa15eb02aa33fe6642e99a27688a1fa89fb390",
+        "reference_standing": "UNADJUDICATED_REFERENCE"
+      },
+      "models": [
+        {
+          "role": "interpreter",
+          "model": "opencode-go/deepseek-v4.1-flash",
+          "metadata": {
+            "id": "opencode-go/deepseek-v4.1-flash",
+            "provider": "opencode-go",
+            "local": false,
+            "api_family": "openai-completions",
+            "base_url": "https://opencode.ai/inference/go/openai/v1",
+            "expected_route": "https://opencode.ai/inference/go/openai/v1/chat/completions",
+            "context_window": 1000000,
+            "output_limit": 384000,
+            "input_modalities": [
+              "text",
+              "image"
+            ],
+            "output_modalities": [
+              "text"
+            ],
+            "structured_output": "PROMPTED_JSON_STRICT_HOST_VALIDATION",
+            "reasoning": "Pi simple-stream default; no reasoning-token inference",
+            "price_per_million": {
+              "input": 0.3,
+              "output": 1.2,
+              "cacheRead": 0.006,
+              "cacheWrite": 0
+            },
+            "availability": "SCOPED_REGISTERED_NOT_LIVE_PROBED",
+            "qualification": "OFFLINE_TEST_REQUIRED",
+            "metadata_origin": "PINNED_PI_1.0.4_WITH_DOCUMENTED_ENDPOINT_OVERLAY",
+            "config_hash": "78020e5ed7246fa4f787cd8b1f72f721c41caba22e72a20fcf56f07937ebe7ad"
+          },
+          "output_tokens": 16384
+        },
+        {
+          "role": "challenger",
+          "model": "opencode-go/gpt-6-luna",
+          "metadata": {
+            "id": "opencode-go/gpt-6-luna",
+            "provider": "opencode-go",
+            "local": false,
+            "api_family": "openai-responses",
+            "base_url": "https://opencode.ai/inference/go/openai/v1",
+            "expected_route": "https://opencode.ai/inference/go/openai/v1/responses",
+            "context_window": 1050000,
+            "output_limit": 128000,
+            "input_modalities": [
+              "text",
+              "image"
+            ],
+            "output_modalities": [
+              "text"
+            ],
+            "structured_output": "PROMPTED_JSON_STRICT_HOST_VALIDATION",
+            "reasoning": "Pi simple-stream default; no reasoning-token inference",
+            "price_per_million": {
+              "input": 0.1,
+              "output": 0.5,
+              "cacheRead": 0.01,
+              "cacheWrite": 0.125
+            },
+            "availability": "SCOPED_REGISTERED_NOT_LIVE_PROBED",
+            "qualification": "OFFLINE_TEST_REQUIRED",
+            "metadata_origin": "PINNED_PI_1.0.4_WITH_DOCUMENTED_ENDPOINT_OVERLAY",
+            "config_hash": "78020e5ed7246fa4f787cd8b1f72f721c41caba22e72a20fcf56f07937ebe7ad"
+          },
+          "output_tokens": 16384
+        },
+        {
+          "role": "mediator",
+          "model": "opencode-go/deepseek-v4.1-flash",
+          "metadata": {
+            "id": "opencode-go/deepseek-v4.1-flash",
+            "provider": "opencode-go",
+            "local": false,
+            "api_family": "openai-completions",
+            "base_url": "https://opencode.ai/inference/go/openai/v1",
+            "expected_route": "https://opencode.ai/inference/go/openai/v1/chat/completions",
+            "context_window": 1000000,
+            "output_limit": 384000,
+            "input_modalities": [
+              "text",
+              "image"
+            ],
+            "output_modalities": [
+              "text"
+            ],
+            "structured_output": "PROMPTED_JSON_STRICT_HOST_VALIDATION",
+            "reasoning": "Pi simple-stream default; no reasoning-token inference",
+            "price_per_million": {
+              "input": 0.3,
+              "output": 1.2,
+              "cacheRead": 0.006,
+              "cacheWrite": 0
+            },
+            "availability": "SCOPED_REGISTERED_NOT_LIVE_PROBED",
+            "qualification": "OFFLINE_TEST_REQUIRED",
+            "metadata_origin": "PINNED_PI_1.0.4_WITH_DOCUMENTED_ENDPOINT_OVERLAY",
+            "config_hash": "78020e5ed7246fa4f787cd8b1f72f721c41caba22e72a20fcf56f07937ebe7ad"
+          },
+          "output_tokens": 16384
+        },
+        {
+          "role": "recipient",
+          "model": "opencode-go/qwen3.8-flash",
+          "metadata": {
+            "id": "opencode-go/qwen3.8-flash",
+            "provider": "opencode-go",
+            "local": false,
+            "api_family": "anthropic-messages",
+            "base_url": "https://opencode.ai/inference/go/anthropic",
+            "expected_route": "https://opencode.ai/inference/go/anthropic/v1/messages",
+            "context_window": 1000000,
+            "output_limit": 131072,
+            "input_modalities": [
+              "text",
+              "image"
+            ],
+            "output_modalities": [
+              "text"
+            ],
+            "structured_output": "PROMPTED_JSON_STRICT_HOST_VALIDATION",
+            "reasoning": "Pi simple-stream default; no reasoning-token inference",
+            "price_per_million": {
+              "input": 0.15,
+              "output": 0.47,
+              "cacheRead": 0.016,
+              "cacheWrite": 0.2
+            },
+            "availability": "SCOPED_REGISTERED_NOT_LIVE_PROBED",
+            "qualification": "OFFLINE_TEST_REQUIRED",
+            "metadata_origin": "PINNED_PI_1.0.4_WITH_DOCUMENTED_ENDPOINT_OVERLAY",
+            "config_hash": "78020e5ed7246fa4f787cd8b1f72f721c41caba22e72a20fcf56f07937ebe7ad"
+          },
+          "output_tokens": 16384
+        },
+        {
+          "role": "advisory_evaluator",
+          "model": "opencode-go/claude-haiku-5-5",
+          "metadata": {
+            "id": "opencode-go/claude-haiku-5-5",
+            "provider": "opencode-go",
+            "local": false,
+            "api_family": "anthropic-messages",
+            "base_url": "https://opencode.ai/inference/go/anthropic",
+            "expected_route": "https://opencode.ai/inference/go/anthropic/v1/messages",
+            "context_window": 1000000,
+            "output_limit": 128000,
+            "input_modalities": [
+              "text",
+              "image"
+            ],
+            "output_modalities": [
+              "text"
+            ],
+            "structured_output": "PROMPTED_JSON_STRICT_HOST_VALIDATION",
+            "reasoning": "Pi simple-stream default; no reasoning-token inference",
+            "price_per_million": {
+              "input": 0.1,
+              "output": 0.5,
+              "cacheRead": 0.01,
+              "cacheWrite": 0.125,
+              "tiers": [
+                {
+                  "inputTokensAbove": 100000,
+                  "input": 0.5,
+                  "output": 2.5,
+                  "cacheRead": 0.05,
+                  "cacheWrite": 0.625
+                }
+              ]
+            },
+            "availability": "SCOPED_REGISTERED_NOT_LIVE_PROBED",
+            "qualification": "OFFLINE_TEST_REQUIRED",
+            "metadata_origin": "MANAGED_PI_1.4.0_SCOPED_REGISTRATION",
+            "config_hash": "78020e5ed7246fa4f787cd8b1f72f721c41caba22e72a20fcf56f07937ebe7ad"
+          },
+          "output_tokens": 16384
+        }
+      ],
+      "settings": {
+        "max_requests": 12,
+        "budget_usd": 10,
+        "max_input_bytes": 60000,
+        "max_response_bytes": 33554432,
+        "timeout_ms": 180000,
+        "output_tokens": {
+          "interpreter": 16384,
+          "challenger": 16384,
+          "mediator": 16384,
+          "recipient": 16384,
+          "advisory_evaluator": 16384
+        },
+        "automatic_retries": 0
+      },
+      "config_hash": "78020e5ed7246fa4f787cd8b1f72f721c41caba22e72a20fcf56f07937ebe7ad",
+      "offline_qualification_identity": null,
+      "expected_workflow_calls": 3,
+      "with_mediation_calls": 4,
+      "with_comparison_calls": 5,
+      "maximum_actual_requests": 12,
+      "conservative_estimate_usd": 0.94152,
+      "per_request_reservation_usd": 0.07846,
+      "estimate_standing": "CATALOGUE_BOUND_NOT_INVOICE; UTF8_BYTES_AS_INPUT_TOKEN_BOUND",
+      "service_use": "OPERATOR_MUST_CONFIRM_GO_WORKLOAD_APPROPRIATENESS",
+      "fallback": false,
+      "hash": "c1e6a81b14b40afd0ec1b50f3d90b0753d8f50ccdb0dac8d6d1cc3bfea65c9aa",
+      "launcher_remote_enabled": true,
+      "credential_available": true,
+      "approval_required": false,
+      "execution_policy": "DIRECT_USER_REQUEST",
+      "approval_active": true,
+      "requests_used": 1,
+      "reserved_usd": 0.07846,
+      "last_errors": {},
+      "advisory_evaluator_status": "OPTIONAL_NOT_RUN"
+    },
+    "comparison_mode": "opencode",
+    "exchange": {
+      "id": "ba54b727-66de-452d-9f19-752cf0499c7f",
+      "scenario": "museum-loan-m12",
+      "task_identity": {
+        "id": "museum-loan-m12",
+        "digest": "e22911925db7424b874b94b44a60e9250a68e0f0b0b0db5d09713aa754fb28b4",
+        "source_hash": "277b9050c46b1df5f9794bda17829e2acf450e6c4afaf79a7e21cf4692447228",
+        "question_hash": "0f71abc5fbc41f4fb5e3474a0efa15eb02aa33fe6642e99a27688a1fa89fb390",
+        "reference_standing": "UNADJUDICATED_REFERENCE"
+      },
+      "created_at": "2026-10-23T19:18:09.091Z",
+      "intent": "Communicate this source faithfully, preserving attribution, conditions, exceptions, scope and uncertainty. Do not grant action authority.",
+      "original_intent": "Communicate this source faithfully, preserving attribution, conditions, exceptions, scope and uncertainty. Do not grant action authority.",
+      "purpose": "Faithful communication to a fresh recipient",
+      "audience": "Independent reader",
+      "source": {
+        "id": "R1E-13-source-v1",
+        "text": "The supplied policy document states that the production backup is encrypted at rest. No independent audit or system evidence is supplied.",
+        "hash": "9b36a4eeaf0bf24d90c29d59a6ee758c1a2e01b0bb4f8e95ca491eca9ae0a0a2"
+      },
+      "versions": [],
+      "transfers": [],
+      "question_revealed": false
+    },
+    "events": [
+      {
+        "seq": 0,
+        "previous": null,
+        "at": "2026-10-23T19:18:09.086Z",
+        "type": "USER_SETTINGS_APPLIED",
+        "data": {
+          "understanding": {
+            "profile": "technical-policy",
+            "python_executable": "",
+            "timeout_ms": 15000
+          },
+          "version": 2,
+          "comparison_mode": "opencode",
+          "roles": {
+            "interpreter": "opencode-go/deepseek-v4.1-flash",
+            "challenger": "opencode-go/gpt-6-luna",
+            "mediator": "opencode-go/deepseek-v4.1-flash",
+            "recipient": "opencode-go/qwen3.8-flash",
+            "advisory_evaluator": "opencode-go/claude-haiku-5-5"
+          },
+          "limits": {
+            "max_requests": 12,
+            "budget_usd": 10,
+            "max_input_bytes": 60000,
+            "max_response_bytes": 33554432,
+            "timeout_ms": 180000,
+            "automatic_retries": 0,
+            "output_tokens": {
+              "interpreter": 16384,
+              "challenger": 16384,
+              "mediator": 16384,
+              "recipient": 16384,
+              "advisory_evaluator": 16384
+            }
+          },
+          "execution_policy": "DIRECT_USER_REQUEST"
+        },
+        "digest": "4f890dd7956961fa5515e469e10bac7f31c145f80182ff525d0bdf1c0a4e46c7"
+      },
+      {
+        "seq": 1,
+        "previous": "4f890dd7956961fa5515e469e10bac7f31c145f80182ff525d0bdf1c0a4e46c7",
+        "at": "2026-10-23T19:18:09.091Z",
+        "type": "STATE",
+        "data": {
+          "id": "ba54b727-66de-452d-9f19-752cf0499c7f",
+          "scenario": "museum-loan-m12",
+          "task_identity": {
+            "id": "museum-loan-m12",
+            "digest": "e22911925db7424b874b94b44a60e9250a68e0f0b0b0db5d09713aa754fb28b4",
+            "source_hash": "277b9050c46b1df5f9794bda17829e2acf450e6c4afaf79a7e21cf4692447228",
+            "question_hash": "0f71abc5fbc41f4fb5e3474a0efa15eb02aa33fe6642e99a27688a1fa89fb390",
+            "reference_standing": "UNADJUDICATED_REFERENCE"
+          },
+          "created_at": "2026-10-23T19:18:09.091Z",
+          "intent": "Communicate this source faithfully, preserving attribution, conditions, exceptions, scope and uncertainty. Do not grant action authority.",
+          "original_intent": "Communicate this source faithfully, preserving attribution, conditions, exceptions, scope and uncertainty. Do not grant action authority.",
+          "purpose": "Communicate museum handling policy",
+          "audience": "Independent reader",
+          "source": {
+            "id": "museum-policy-m12",
+            "text": "The supplied policy document states that the production backup is encrypted at rest. No independent audit or system evidence is supplied.",
+            "hash": "9b36a4eeaf0bf24d90c29d59a6ee758c1a2e01b0bb4f8e95ca491eca9ae0a0a2"
+          },
+          "versions": [],
+          "transfers": [],
+          "question_revealed": false
+        },
+        "digest": "9760422dd906058755af575bac73ca6816d6252c22b6fa10d6e3fc5bb8210f20"
+      },
+      {
+        "seq": 2,
+        "previous": "9760422dd906058755af575bac73ca6816d6252c22b6fa10d6e3fc5bb8210f20",
+        "at": "2026-10-23T19:18:09.102Z",
+        "type": "STATE",
+        "data": {
+          "id": "ba54b727-66de-452d-9f19-752cf0499c7f",
+          "scenario": "museum-loan-m12",
+          "task_identity": {
+            "id": "museum-loan-m12",
+            "digest": "e22911925db7424b874b94b44a60e9250a68e0f0b0b0db5d09713aa754fb28b4",
+            "source_hash": "277b9050c46b1df5f9794bda17829e2acf450e6c4afaf79a7e21cf4692447228",
+            "question_hash": "0f71abc5fbc41f4fb5e3474a0efa15eb02aa33fe6642e99a27688a1fa89fb390",
+            "reference_standing": "UNADJUDICATED_REFERENCE"
+          },
+          "created_at": "2026-10-23T19:18:09.091Z",
+          "intent": "Communicate this source faithfully, preserving attribution, conditions, exceptions, scope and uncertainty. Do not grant action authority.",
+          "original_intent": "Communicate this source faithfully, preserving attribution, conditions, exceptions, scope and uncertainty. Do not grant action authority.",
+          "purpose": "Faithful communication to a fresh recipient",
+          "audience": "Independent reader",
+          "source": {
+            "id": "R1E-13-source-v1",
+            "text": "The supplied policy document states that the production backup is encrypted at rest. No independent audit or system evidence is supplied.",
+            "hash": "9b36a4eeaf0bf24d90c29d59a6ee758c1a2e01b0bb4f8e95ca491eca9ae0a0a2"
+          },
+          "versions": [],
+          "transfers": [],
+          "question_revealed": false
+        },
+        "digest": "e34d52c64b8dd5adb540c0ed604122452f8a369d12e3c9d7f8ef42fd56ccb985"
+      },
+      {
+        "seq": 3,
+        "previous": "e34d52c64b8dd5adb540c0ed604122452f8a369d12e3c9d7f8ef42fd56ccb985",
+        "at": "2026-10-23T19:18:09.112Z",
+        "type": "UNDERSTANDING_PROCESS_STARTED",
+        "data": {
+          "trial_id": "R1E-13-A_SOURCE_ONLY",
+          "stage": "SOURCE",
+          "source_hash": "9b36a4eeaf0bf24d90c29d59a6ee758c1a2e01b0bb4f8e95ca491eca9ae0a0a2",
+          "profile": "technical-policy"
+        },
+        "digest": "c2e3baef470a0b788190c393e0b282659c68ff725fc706cf9692e1ba8ea08163"
+      },
+      {
+        "seq": 4,
+        "previous": "c2e3baef470a0b788190c393e0b282659c68ff725fc706cf9692e1ba8ea08163",
+        "at": "2026-10-23T19:18:11.126Z",
+        "type": "UNDERSTANDING_ARTIFACT",
+        "data": {
+          "id": "2c8aa1ef031a3b01358c42e72275a614dba9468227844ca6bab4f35fc07a2a84",
+          "schema": "language-understanding-artifact/0.1",
+          "trial_id": "R1E-13-A_SOURCE_ONLY",
+          "stage": "SOURCE",
+          "at": "2026-10-23T19:18:11.123Z",
+          "request": {
+            "source_id": "R1E-13-source-v1",
+            "source_text": "The supplied policy document states that the production backup is encrypted at rest. No independent audit or system evidence is supplied.",
+            "profile": "technical-policy",
+            "profile_version": "0.2",
+            "context": {
+              "purpose": "Faithful communication to a fresh recipient",
+              "intended_recipient": "Independent reader",
+              "declared_context": {}
+            }
+          },
+          "inventory": {
+            "schema": "language-understanding-inventory/0.1",
+            "offset_unit": "UNICODE_CODE_POINTS",
+            "standing": "HEURISTIC_UNVERIFIED",
+            "source": {
+              "id": "R1E-13-source-v1",
+              "sha256": "9b36a4eeaf0bf24d90c29d59a6ee758c1a2e01b0bb4f8e95ca491eca9ae0a0a2",
+              "text": "The supplied policy document states that the production backup is encrypted at rest. No independent audit or system evidence is supplied."
+            },
+            "profile": {
+              "id": "technical-policy",
+              "version": "0.2",
+              "schema": "language-understanding-profile/0.1",
+              "sha256": "12287d00977aa52dcc4b142c6bb2829bf72c4636ce7a9cde6caea4b7d2dd669b"
+            },
+            "engine": {
+              "id": "spacy/blank-en+sentencizer",
+              "version": "0.2.0",
+              "nltk_version": "3.10.4",
+              "spacy_version": "3.8.16",
+              "trained_syntax_available": false,
+              "trained_model_requested": "en_core_web_sm",
+              "fallback_reason": "SPACY_MODEL_NOT_INSTALLED"
+            },
+            "segments": [
+              {
+                "id": "s1",
+                "start": 0,
+                "end": 84,
+                "text": "The supplied policy document states that the production backup is encrypted at rest."
+              },
+              {
+                "id": "s2",
+                "start": 85,
+                "end": 137,
+                "text": "No independent audit or system evidence is supplied."
+              }
+            ],
+            "meaning_units": [
+              {
+                "id": "m1",
+                "source_segments": [
+                  "s1"
+                ],
+                "start": 0,
+                "end": 84,
+                "source_quote": "The supplied policy document states that the production backup is encrypted at rest.",
+                "proposed_meaning": "The supplied policy document states that the production backup is encrypted at rest.",
+                "classification": {
+                  "kind": "statement",
+                  "normative_force": "ASSERTED_IN_SOURCE",
+                  "condition_cues": [],
+                  "temporal_cues": [],
+                  "possible_unresolved_reference": false,
+                  "speaker": "",
+                  "prerequisites": [],
+                  "method": "LEXICAL_RULE_HEURISTIC",
+                  "review": "HEURISTIC_UNVERIFIED"
+                },
+                "provenance": "EXACT_SOURCE_SPAN"
+              },
+              {
+                "id": "m2",
+                "source_segments": [
+                  "s2"
+                ],
+                "start": 85,
+                "end": 137,
+                "source_quote": "No independent audit or system evidence is supplied.",
+                "proposed_meaning": "No independent audit or system evidence is supplied.",
+                "classification": {
+                  "kind": "statement",
+                  "normative_force": "ASSERTED_IN_SOURCE",
+                  "condition_cues": [],
+                  "temporal_cues": [],
+                  "possible_unresolved_reference": false,
+                  "speaker": "",
+                  "prerequisites": [],
+                  "method": "LEXICAL_RULE_HEURISTIC",
+                  "review": "HEURISTIC_UNVERIFIED"
+                },
+                "provenance": "EXACT_SOURCE_SPAN"
+              }
+            ],
+            "relations": [],
+            "context": {
+              "purpose": "Faithful communication to a fresh recipient",
+              "intended_recipient": "Independent reader",
+              "declared_context": {}
+            },
+            "coverage": {
+              "standing": "NOT_EVALUATED",
+              "source_supportedness": "NOT_EVALUATED",
+              "semantic_completeness": "NOT_ESTABLISHED"
+            },
+            "warnings": [
+              "Labels are lexical heuristics, not verified meaning or permissions.",
+              "No cross-sentence relation, coreference, or semantic completeness checker is implemented.",
+              "Semicolon splitting, prerequisite hints and speaker labels are rule-based candidates, not semantic analysis."
+            ]
+          },
+          "compiler": {
+            "profile": {
+              "id": "technical-policy",
+              "version": "0.2",
+              "sha256": "12287d00977aa52dcc4b142c6bb2829bf72c4636ce7a9cde6caea4b7d2dd669b",
+              "file_sha256": "9d961fac646c1c164019c55b1eaa3f75748f42b47e3aad7862bc50181cdd4a75",
+              "path": "C:\\Projects\\project-language\\core\\understanding\\python\\profiles\\technical-policy.json"
+            },
+            "adapter": "language-understanding-child/0.1",
+            "python": "C:\\Projects\\project-language\\.venv\\Scripts\\python.exe",
+            "timeout_ms": 15000,
+            "max_input_bytes": 262144,
+            "max_output_bytes": 4194304,
+            "require_trained_syntax": false,
+            "source_hashes": {
+              "src/understanding/cli.py": "fdbbaab6d1c51d077046100aef43fcb0fcfac5e278dba1fa30f3a0cddb229ba9",
+              "src/understanding/pipeline.py": "713ddf811112278038b19aaa5995eba929a827e6dee7634d5d5e8d54cba5ed1d",
+              "src/understanding/__init__.py": "c4b5f92990c64643e4907def83a7a62dd00c8bdd3dd738a8ab14c55d523a396f",
+              "src/understanding/contracts.py": "ec17e9c381a22aed695663e4e27ed57f0cdd07491ec78355cb95855a2e08e7d7",
+              "../schemas/request-v0.1.json": "0d1dc60bff65f0baf319fef34d6dd5e141c814d55ed7f865fed629cebd4578c2",
+              "../schemas/inventory-v0.1.json": "aa4c284f4352141ec9fbcc56a51027bdba94e2e588affcaa739fcf2fd8340e5d",
+              "pyproject.toml": "b8b9fb81e47e37041d1fbc7a1a660b35a5b57909a1b370b76826a539af4e8108"
+            },
+            "integration_hashes": {
+              "./workflow.mjs": "3b435c25171ef5dd66785ad93b132c0ed67f833eab63bdd9bd0cff36f5e4bc25",
+              "./analysis.mjs": "c0279d78149f90f6412875dbe0df5eb35f516a90cbd5a235023bb9a93a94ef95",
+              "./decomposition.mjs": "42e5cbc7d12bb55d98d93c5223c8a5edf6eba9de3bfbfe2469ee9ca729c412cb",
+              "../models/prompts.mjs": "5b16ac6b45b60727f8c1467bb6b934e14cd2d9726bb0d750d4f9e9d69cccd32b",
+              "../models/source-anchors.mjs": "04d977f0a67397d568c2c84cf1f6767ea210d6bfb2ecb67c875935909258aa08"
+            }
+          },
+          "provenance": {
+            "source_hash": "9b36a4eeaf0bf24d90c29d59a6ee758c1a2e01b0bb4f8e95ca491eca9ae0a0a2"
+          },
+          "standing": "HEURISTIC_UNVERIFIED"
+        },
+        "digest": "76cf360373fbeaef125181a0eb7aecb1589fbb7b22442f0e02cc5760c0748ea1"
+      },
+      {
+        "seq": 5,
+        "previous": "76cf360373fbeaef125181a0eb7aecb1589fbb7b22442f0e02cc5760c0748ea1",
+        "at": "2026-10-23T19:18:11.136Z",
+        "type": "BATCH_DELIVERY_SEALED",
+        "data": {
+          "arm": "A_SOURCE_ONLY",
+          "packet": {
+            "schema": "language-delivery/0.1",
+            "purpose": "Faithful communication to a fresh recipient",
+            "audience": "Independent reader",
+            "contract_version": "lc02-r1/source-relative/1",
+            "answer_scope": "EXTERNAL_FACTUAL_VERIFICATION",
+            "source_truth": "UNVERIFIED",
+            "source_truth_scope": "EXTERNAL_FACTUAL_VERIFICATION_ONLY",
+            "interpretation_standing": "FALLIBLE_AID_NOT_SOURCE",
+            "action_authority": false,
+            "source": {
+              "id": "R1E-13-source-v1",
+              "text": "The supplied policy document states that the production backup is encrypted at rest. No independent audit or system evidence is supplied.",
+              "hash": "9b36a4eeaf0bf24d90c29d59a6ee758c1a2e01b0bb4f8e95ca491eca9ae0a0a2"
+            }
+          },
+          "packet_hash": "5377d819029fbea01640811ad5ba3623ac2f0de5b35837ed0f6f18d2527af406",
+          "question": {
+            "id": "R1E-13-question-v1",
+            "text": "Is the production backup actually encrypted at rest?",
+            "scope": "EXTERNAL_FACTUAL_VERIFICATION"
+          },
+          "action_authority": false
+        },
+        "digest": "fc5d5071109cf05aa03d67aa1ca2f624dd9d7e8b1ef56fc19553955b5a387942"
+      },
+      {
+        "seq": 6,
+        "previous": "fc5d5071109cf05aa03d67aa1ca2f624dd9d7e8b1ef56fc19553955b5a387942",
+        "at": "2026-10-23T19:18:11.148Z",
+        "type": "MODEL_REQUEST",
+        "data": {
+          "role": "recipient",
+          "model": "opencode-go/qwen3.8-flash",
+          "system": "Answer the supplied question from the source embedded in the delivered packet. The packet may also contain a fallible interpretation. The interpretation is an aid, not the source and not evidence of external truth. Return YES, NO, UNKNOWN or SOURCE_CONFLICT with explanation and exact source anchors only when source text is available. Unknown is not permission. No tools or actions. Three scopes are distinct. (a) SOURCE_RELATIVE: what the supplied document or hypothetical scenario states or entails. (b) EXTERNAL_FACTUAL_VERIFICATION: whether that document accurately describes the real world. (c) ACTION_AUTHORITY: whether an actual actor or system is permitted to execute an operation now. source_truth: UNVERIFIED means only that the document has not been independently checked against the external world. It does not prevent a source-relative answer. Do not cite it as a reason to answer UNKNOWN about what the document itself states or entails. The interpretation is a fallible aid, not the source. A doubt, unknown, qualification or inference added by an interpreter is not a gap in the source unless the exact source text leaves the question-relevant condition unresolved. Do not add a condition that the source does not contain. Do not treat a later sentence as adding a new condition merely because it does not repeat an earlier one. If the source explicitly resolves a question-relevant condition, it is resolved even when an interpretation lists it as open. This packet grants no action authority and no external verification. For a SOURCE_RELATIVE question, use the labels as follows. YES: the source states or entails the proposition asked about. NO: the source states its negation, expressly prohibits it, or does not establish the requested permission/condition; explain which of these applies. NO is not automatically a universal prohibition. UNKNOWN: the source leaves a question-relevant fact, condition or authority unresolved, or contains a genuine ambiguity that the text does not settle. UNKNOWN is not a synonym for lack of external verification. SOURCE_CONFLICT: the source contains unresolved contradictory provisions or statements of equal standing and supplies no precedence rule. Do not use SOURCE_CONFLICT for ordinary missing information. If source_anchors is supplied, copy an appropriate complete anchor object from that catalogue verbatim rather than calculating numeric positions yourself. The catalogue contains source locations only, not evidence that a claim follows from a quotation. You may cite a whole sentence supporting a smaller meaning. Source anchors use zero-based UTF-16 code-unit offsets into the exact ORIGINAL_SOURCE text, with an exclusive end. Every anchor must satisfy source.text.slice(start,end) === anchor.text, with the original source ID and hash. Do not guess positions or normalize punctuation or whitespace. If you cannot reproduce source_hash exactly, use an empty string for source_hash and still supply the exact source_id, start, end and text; the host resolves the canonical hash from its own source identity. Never fabricate a span or text. Recipients may return citations: [] when exact offsets cannot be established; explain the answer without fabricated anchors. Return only JSON matching this schema: {\"$schema\":\"https://json-schema.org/draft/2020-12/schema\",\"type\":\"object\",\"properties\":{\"decision\":{\"type\":\"string\",\"enum\":[\"YES\",\"NO\",\"UNKNOWN\",\"SOURCE_CONFLICT\"]},\"explanation\":{\"type\":\"string\"},\"citations\":{\"type\":\"array\",\"items\":{\"type\":\"object\",\"properties\":{\"origin\":{\"type\":\"string\",\"const\":\"ORIGINAL_SOURCE\"},\"source_id\":{\"type\":\"string\"},\"source_hash\":{\"type\":\"string\"},\"start\":{\"type\":\"integer\",\"minimum\":0,\"maximum\":9007199254740991},\"end\":{\"type\":\"integer\",\"exclusiveMinimum\":0,\"maximum\":9007199254740991},\"text\":{\"type\":\"string\",\"minLength\":1}},\"required\":[\"origin\",\"source_id\",\"source_hash\",\"start\",\"end\",\"text\"],\"additionalProperties\":false}}},\"required\":[\"decision\",\"explanation\",\"citations\"],\"additionalProperties\":false}",
+          "input": {
+            "packet": {
+              "schema": "language-delivery/0.1",
+              "purpose": "Faithful communication to a fresh recipient",
+              "audience": "Independent reader",
+              "contract_version": "lc02-r1/source-relative/1",
+              "answer_scope": "EXTERNAL_FACTUAL_VERIFICATION",
+              "source_truth": "UNVERIFIED",
+              "source_truth_scope": "EXTERNAL_FACTUAL_VERIFICATION_ONLY",
+              "interpretation_standing": "FALLIBLE_AID_NOT_SOURCE",
+              "action_authority": false,
+              "source": {
+                "id": "R1E-13-source-v1",
+                "text": "The supplied policy document states that the production backup is encrypted at rest. No independent audit or system evidence is supplied.",
+                "hash": "9b36a4eeaf0bf24d90c29d59a6ee758c1a2e01b0bb4f8e95ca491eca9ae0a0a2"
+              }
+            },
+            "question": {
+              "id": "R1E-13-question-v1",
+              "text": "Is the production backup actually encrypted at rest?",
+              "scope": "EXTERNAL_FACTUAL_VERIFICATION"
+            },
+            "source_anchors": {
+              "schema": "language-source-anchor-catalogue/0.1",
+              "offset_unit": "UTF16_CODE_UNITS",
+              "standing": "EXACT_SOURCE_LOCATIONS_NOT_SEMANTIC_SUPPORT",
+              "anchors": [
+                {
+                  "origin": "ORIGINAL_SOURCE",
+                  "source_id": "R1E-13-source-v1",
+                  "source_hash": "9b36a4eeaf0bf24d90c29d59a6ee758c1a2e01b0bb4f8e95ca491eca9ae0a0a2",
+                  "start": 0,
+                  "end": 137,
+                  "text": "The supplied policy document states that the production backup is encrypted at rest. No independent audit or system evidence is supplied."
+                },
+                {
+                  "origin": "ORIGINAL_SOURCE",
+                  "source_id": "R1E-13-source-v1",
+                  "source_hash": "9b36a4eeaf0bf24d90c29d59a6ee758c1a2e01b0bb4f8e95ca491eca9ae0a0a2",
+                  "start": 0,
+                  "end": 84,
+                  "text": "The supplied policy document states that the production backup is encrypted at rest."
+                },
+                {
+                  "origin": "ORIGINAL_SOURCE",
+                  "source_id": "R1E-13-source-v1",
+                  "source_hash": "9b36a4eeaf0bf24d90c29d59a6ee758c1a2e01b0bb4f8e95ca491eca9ae0a0a2",
+                  "start": 85,
+                  "end": 137,
+                  "text": "No independent audit or system evidence is supplied."
+                }
+              ]
+            }
+          },
+          "user": "{\"packet\":{\"schema\":\"language-delivery/0.1\",\"purpose\":\"Faithful communication to a fresh recipient\",\"audience\":\"Independent reader\",\"contract_version\":\"lc02-r1/source-relative/1\",\"answer_scope\":\"EXTERNAL_FACTUAL_VERIFICATION\",\"source_truth\":\"UNVERIFIED\",\"source_truth_scope\":\"EXTERNAL_FACTUAL_VERIFICATION_ONLY\",\"interpretation_standing\":\"FALLIBLE_AID_NOT_SOURCE\",\"action_authority\":false,\"source\":{\"id\":\"R1E-13-source-v1\",\"text\":\"The supplied policy document states that the production backup is encrypted at rest. No independent audit or system evidence is supplied.\",\"hash\":\"9b36a4eeaf0bf24d90c29d59a6ee758c1a2e01b0bb4f8e95ca491eca9ae0a0a2\"}},\"question\":{\"id\":\"R1E-13-question-v1\",\"text\":\"Is the production backup actually encrypted at rest?\",\"scope\":\"EXTERNAL_FACTUAL_VERIFICATION\"},\"source_anchors\":{\"schema\":\"language-source-anchor-catalogue/0.1\",\"offset_unit\":\"UTF16_CODE_UNITS\",\"standing\":\"EXACT_SOURCE_LOCATIONS_NOT_SEMANTIC_SUPPORT\",\"anchors\":[{\"origin\":\"ORIGINAL_SOURCE\",\"source_id\":\"R1E-13-source-v1\",\"source_hash\":\"9b36a4eeaf0bf24d90c29d59a6ee758c1a2e01b0bb4f8e95ca491eca9ae0a0a2\",\"start\":0,\"end\":137,\"text\":\"The supplied policy document states that the production backup is encrypted at rest. No independent audit or system evidence is supplied.\"},{\"origin\":\"ORIGINAL_SOURCE\",\"source_id\":\"R1E-13-source-v1\",\"source_hash\":\"9b36a4eeaf0bf24d90c29d59a6ee758c1a2e01b0bb4f8e95ca491eca9ae0a0a2\",\"start\":0,\"end\":84,\"text\":\"The supplied policy document states that the production backup is encrypted at rest.\"},{\"origin\":\"ORIGINAL_SOURCE\",\"source_id\":\"R1E-13-source-v1\",\"source_hash\":\"9b36a4eeaf0bf24d90c29d59a6ee758c1a2e01b0bb4f8e95ca491eca9ae0a0a2\",\"start\":85,\"end\":137,\"text\":\"No independent audit or system evidence is supplied.\"}]}}",
+          "output_schema": {
+            "$schema": "https://json-schema.org/draft/2020-12/schema",
+            "type": "object",
+            "properties": {
+              "decision": {
+                "type": "string",
+                "enum": [
+                  "YES",
+                  "NO",
+                  "UNKNOWN",
+                  "SOURCE_CONFLICT"
+                ]
+              },
+              "explanation": {
+                "type": "string"
+              },
+              "citations": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "origin": {
+                      "type": "string",
+                      "const": "ORIGINAL_SOURCE"
+                    },
+                    "source_id": {
+                      "type": "string"
+                    },
+                    "source_hash": {
+                      "type": "string"
+                    },
+                    "start": {
+                      "type": "integer",
+                      "minimum": 0,
+                      "maximum": 9007199254740991
+                    },
+                    "end": {
+                      "type": "integer",
+                      "exclusiveMinimum": 0,
+                      "maximum": 9007199254740991
+                    },
+                    "text": {
+                      "type": "string",
+                      "minLength": 1
+                    }
+                  },
+                  "required": [
+                    "origin",
+                    "source_id",
+                    "source_hash",
+                    "start",
+                    "end",
+                    "text"
+                  ],
+                  "additionalProperties": false
+                }
+              }
+            },
+            "required": [
+              "decision",
+              "explanation",
+              "citations"
+            ],
+            "additionalProperties": false
+          },
+          "session_id": "5e212c15-11c3-4f1f-bb99-f2a9206f4a02",
+          "hash": "a04d1195fedffeffc1848963233dd0398dc0dd61ba993a1aa932f43f13df13b7",
+          "prompt_hash": "a04d1195fedffeffc1848963233dd0398dc0dd61ba993a1aa932f43f13df13b7",
+          "standing": "HOSTED_OPENCODE_GO",
+          "api_family": "anthropic-messages",
+          "settings": {
+            "max_requests": 12,
+            "budget_usd": 10,
+            "max_input_bytes": 60000,
+            "max_response_bytes": 33554432,
+            "timeout_ms": 180000,
+            "output_tokens": {
+              "interpreter": 16384,
+              "challenger": 16384,
+              "mediator": 16384,
+              "recipient": 16384,
+              "advisory_evaluator": 16384
+            },
+            "automatic_retries": 0
+          },
+          "reservation_usd": 0.07846,
+          "plan_hash": "c1e6a81b14b40afd0ec1b50f3d90b0753d8f50ccdb0dac8d6d1cc3bfea65c9aa",
+          "attempt_number": 1
+        },
+        "digest": "8e5f0fc762dc8881aa29c6fa4baee35e7e6ae8bdb13cc3cab055dfe51b87d9f9"
+      },
+      {
+        "seq": 7,
+        "previous": "8e5f0fc762dc8881aa29c6fa4baee35e7e6ae8bdb13cc3cab055dfe51b87d9f9",
+        "at": "2026-10-23T19:18:11.154Z",
+        "type": "PROVIDER_REQUEST",
+        "data": {
+          "request_hash": "a04d1195fedffeffc1848963233dd0398dc0dd61ba993a1aa932f43f13df13b7",
+          "model": "opencode-go/qwen3.8-flash",
+          "api": "anthropic-messages",
+          "url": "https://opencode.ai/inference/go/anthropic/v1/messages?beta=true",
+          "method": "POST",
+          "body": "{\"model\":\"qwen3.8-flash\",\"messages\":[{\"role\":\"user\",\"content\":[{\"type\":\"text\",\"text\":\"{\\\"packet\\\":{\\\"schema\\\":\\\"language-delivery/0.1\\\",\\\"purpose\\\":\\\"Faithful communication to a fresh recipient\\\",\\\"audience\\\":\\\"Independent reader\\\",\\\"contract_version\\\":\\\"lc02-r1/source-relative/1\\\",\\\"answer_scope\\\":\\\"EXTERNAL_FACTUAL_VERIFICATION\\\",\\\"source_truth\\\":\\\"UNVERIFIED\\\",\\\"source_truth_scope\\\":\\\"EXTERNAL_FACTUAL_VERIFICATION_ONLY\\\",\\\"interpretation_standing\\\":\\\"FALLIBLE_AID_NOT_SOURCE\\\",\\\"action_authority\\\":false,\\\"source\\\":{\\\"id\\\":\\\"R1E-13-source-v1\\\",\\\"text\\\":\\\"The supplied policy document states that the production backup is encrypted at rest. No independent audit or system evidence is supplied.\\\",\\\"hash\\\":\\\"9b36a4eeaf0bf24d90c29d59a6ee758c1a2e01b0bb4f8e95ca491eca9ae0a0a2\\\"}},\\\"question\\\":{\\\"id\\\":\\\"R1E-13-question-v1\\\",\\\"text\\\":\\\"Is the production backup actually encrypted at rest?\\\",\\\"scope\\\":\\\"EXTERNAL_FACTUAL_VERIFICATION\\\"},\\\"source_anchors\\\":{\\\"schema\\\":\\\"language-source-anchor-catalogue/0.1\\\",\\\"offset_unit\\\":\\\"UTF16_CODE_UNITS\\\",\\\"standing\\\":\\\"EXACT_SOURCE_LOCATIONS_NOT_SEMANTIC_SUPPORT\\\",\\\"anchors\\\":[{\\\"origin\\\":\\\"ORIGINAL_SOURCE\\\",\\\"source_id\\\":\\\"R1E-13-source-v1\\\",\\\"source_hash\\\":\\\"9b36a4eeaf0bf24d90c29d59a6ee758c1a2e01b0bb4f8e95ca491eca9ae0a0a2\\\",\\\"start\\\":0,\\\"end\\\":137,\\\"text\\\":\\\"The supplied policy document states that the production backup is encrypted at rest. No independent audit or system evidence is supplied.\\\"},{\\\"origin\\\":\\\"ORIGINAL_SOURCE\\\",\\\"source_id\\\":\\\"R1E-13-source-v1\\\",\\\"source_hash\\\":\\\"9b36a4eeaf0bf24d90c29d59a6ee758c1a2e01b0bb4f8e95ca491eca9ae0a0a2\\\",\\\"start\\\":0,\\\"end\\\":84,\\\"text\\\":\\\"The supplied policy document states that the production backup is encrypted at rest.\\\"},{\\\"origin\\\":\\\"ORIGINAL_SOURCE\\\",\\\"source_id\\\":\\\"R1E-13-source-v1\\\",\\\"source_hash\\\":\\\"9b36a4eeaf0bf24d90c29d59a6ee758c1a2e01b0bb4f8e95ca491eca9ae0a0a2\\\",\\\"start\\\":85,\\\"end\\\":137,\\\"text\\\":\\\"No independent audit or system evidence is supplied.\\\"}]}}\"}]}],\"max_tokens\":16384,\"stream\":true,\"system\":[{\"type\":\"text\",\"text\":\"Answer the supplied question from the source embedded in the delivered packet. The packet may also contain a fallible interpretation. The interpretation is an aid, not the source and not evidence of external truth. Return YES, NO, UNKNOWN or SOURCE_CONFLICT with explanation and exact source anchors only when source text is available. Unknown is not permission. No tools or actions. Three scopes are distinct. (a) SOURCE_RELATIVE: what the supplied document or hypothetical scenario states or entails. (b) EXTERNAL_FACTUAL_VERIFICATION: whether that document accurately describes the real world. (c) ACTION_AUTHORITY: whether an actual actor or system is permitted to execute an operation now. source_truth: UNVERIFIED means only that the document has not been independently checked against the external world. It does not prevent a source-relative answer. Do not cite it as a reason to answer UNKNOWN about what the document itself states or entails. The interpretation is a fallible aid, not the source. A doubt, unknown, qualification or inference added by an interpreter is not a gap in the source unless the exact source text leaves the question-relevant condition unresolved. Do not add a condition that the source does not contain. Do not treat a later sentence as adding a new condition merely because it does not repeat an earlier one. If the source explicitly resolves a question-relevant condition, it is resolved even when an interpretation lists it as open. This packet grants no action authority and no external verification. For a SOURCE_RELATIVE question, use the labels as follows. YES: the source states or entails the proposition asked about. NO: the source states its negation, expressly prohibits it, or does not establish the requested permission/condition; explain which of these applies. NO is not automatically a universal prohibition. UNKNOWN: the source leaves a question-relevant fact, condition or authority unresolved, or contains a genuine ambiguity that the text does not settle. UNKNOWN is not a synonym for lack of external verification. SOURCE_CONFLICT: the source contains unresolved contradictory provisions or statements of equal standing and supplies no precedence rule. Do not use SOURCE_CONFLICT for ordinary missing information. If source_anchors is supplied, copy an appropriate complete anchor object from that catalogue verbatim rather than calculating numeric positions yourself. The catalogue contains source locations only, not evidence that a claim follows from a quotation. You may cite a whole sentence supporting a smaller meaning. Source anchors use zero-based UTF-16 code-unit offsets into the exact ORIGINAL_SOURCE text, with an exclusive end. Every anchor must satisfy source.text.slice(start,end) === anchor.text, with the original source ID and hash. Do not guess positions or normalize punctuation or whitespace. If you cannot reproduce source_hash exactly, use an empty string for source_hash and still supply the exact source_id, start, end and text; the host resolves the canonical hash from its own source identity. Never fabricate a span or text. Recipients may return citations: [] when exact offsets cannot be established; explain the answer without fabricated anchors. Return only JSON matching this schema: {\\\"$schema\\\":\\\"https://json-schema.org/draft/2020-12/schema\\\",\\\"type\\\":\\\"object\\\",\\\"properties\\\":{\\\"decision\\\":{\\\"type\\\":\\\"string\\\",\\\"enum\\\":[\\\"YES\\\",\\\"NO\\\",\\\"UNKNOWN\\\",\\\"SOURCE_CONFLICT\\\"]},\\\"explanation\\\":{\\\"type\\\":\\\"string\\\"},\\\"citations\\\":{\\\"type\\\":\\\"array\\\",\\\"items\\\":{\\\"type\\\":\\\"object\\\",\\\"properties\\\":{\\\"origin\\\":{\\\"type\\\":\\\"string\\\",\\\"const\\\":\\\"ORIGINAL_SOURCE\\\"},\\\"source_id\\\":{\\\"type\\\":\\\"string\\\"},\\\"source_hash\\\":{\\\"type\\\":\\\"string\\\"},\\\"start\\\":{\\\"type\\\":\\\"integer\\\",\\\"minimum\\\":0,\\\"maximum\\\":9007199254740991},\\\"end\\\":{\\\"type\\\":\\\"integer\\\",\\\"exclusiveMinimum\\\":0,\\\"maximum\\\":9007199254740991},\\\"text\\\":{\\\"type\\\":\\\"string\\\",\\\"minLength\\\":1}},\\\"required\\\":[\\\"origin\\\",\\\"source_id\\\",\\\"source_hash\\\",\\\"start\\\",\\\"end\\\",\\\"text\\\"],\\\"additionalProperties\\\":false}}},\\\"required\\\":[\\\"decision\\\",\\\"explanation\\\",\\\"citations\\\"],\\\"additionalProperties\\\":false}\"}],\"thinking\":{\"type\":\"disabled\"}}",
+          "body_hash": "4df1c6e248cd085d2df441c83be933a4478abdaf6f10d67460779c3de5feac05",
+          "input_bytes": 6211,
+          "session_id": "5e212c15-11c3-4f1f-bb99-f2a9206f4a02",
+          "public_headers": {
+            "user-agent": "language-studio/0.1r",
+            "x-opencode-session": "5e212c15-11c3-4f1f-bb99-f2a9206f4a02"
+          },
+          "authentication": "PROCESS_ENV_ONLY_REDACTED"
+        },
+        "digest": "e87f9134cfd125227474f7bee614f312400dbbdb2eea0aefde29c884a93ad18a"
+      },
+      {
+        "seq": 8,
+        "previous": "e87f9134cfd125227474f7bee614f312400dbbdb2eea0aefde29c884a93ad18a",
+        "at": "2026-10-23T19:18:15.110Z",
+        "type": "MODEL_RESULT",
+        "data": {
+          "role": "recipient",
+          "model": "opencode-go/qwen3.8-flash",
+          "request_hash": "a04d1195fedffeffc1848963233dd0398dc0dd61ba993a1aa932f43f13df13b7",
+          "raw": "{\n  \"decision\": \"UNKNOWN\",\n  \"explanation\": \"The question asks for EXTERNAL_FACTUAL_VERIFICATION (whether the backup is *actually* encrypted). The source text explicitly states that 'No independent audit or system evidence is supplied.' Therefore, the provided packet does not contain sufficient information to verify the real-world factual status of the encryption; it only reports what a policy document claims. Since external verification cannot be performed based on this source alone, the answer is UNKNOWN.\",\n  \"citations\": [\n    {\n      \"origin\": \"ORIGINAL_SOURCE\",\n      \"source_id\": \"R1E-13-source-v1\",\n      \"source_hash\": \"9b36a4eeaf0bf24d90c29d59a6ee758c1a2e01b0bb4f8e95ca491eca9ae0a0a2\",\n      \"start\": 85,\n      \"end\": 137,\n      \"text\": \"No independent audit or system evidence is supplied.\"\n    }\n  ]\n}",
+          "output": {
+            "decision": "UNKNOWN",
+            "explanation": "The question asks for EXTERNAL_FACTUAL_VERIFICATION (whether the backup is *actually* encrypted). The source text explicitly states that 'No independent audit or system evidence is supplied.' Therefore, the provided packet does not contain sufficient information to verify the real-world factual status of the encryption; it only reports what a policy document claims. Since external verification cannot be performed based on this source alone, the answer is UNKNOWN.",
+            "citations": [
+              {
+                "origin": "ORIGINAL_SOURCE",
+                "source_id": "R1E-13-source-v1",
+                "source_hash": "9b36a4eeaf0bf24d90c29d59a6ee758c1a2e01b0bb4f8e95ca491eca9ae0a0a2",
+                "start": 85,
+                "end": 137,
+                "text": "No independent audit or system evidence is supplied."
+              }
+            ]
+          },
+          "usage": {
+            "input": 1412,
+            "output": 240,
+            "cacheRead": 0,
+            "cacheWrite": 0,
+            "totalTokens": 1652,
+            "cost": {
+              "input": 0.0002118,
+              "output": 0.00011279999999999999,
+              "cacheRead": 0,
+              "cacheWrite": 0,
+              "total": 0.0003246
+            },
+            "cacheWrite1h": 0
+          },
+          "usage_origin": "PROVIDER_REPORTED",
+          "latency_ms": 3963.692600000184,
+          "retries": 0,
+          "http_attempts": 1,
+          "transport": {
+            "wire_bytes": 9849,
+            "wire_chunks": 115,
+            "max_stream_bytes": 33554432,
+            "completion_bytes": 818
+          },
+          "status": "VALID_SCHEMA",
+          "semantic": "REQUIRES_REVIEW",
+          "standing": "HOSTED_OPENCODE_GO",
+          "billing": "PROVIDER_USAGE_ESTIMATE_NOT_VERIFIED_INVOICE"
+        },
+        "digest": "b0a47156944ab8204cf934e579dca20e96954bcf4ea3a61c48d6db03bb76557f"
+      },
+      {
+        "seq": 9,
+        "previous": "b0a47156944ab8204cf934e579dca20e96954bcf4ea3a61c48d6db03bb76557f",
+        "at": "2026-10-23T19:18:15.121Z",
+        "type": "UNDERSTANDING_PROCESS_STARTED",
+        "data": {
+          "trial_id": "R1E-13-A_SOURCE_ONLY",
+          "stage": "DELIVERY_AND_RESPONSE",
+          "arm": "A_SOURCE_ONLY",
+          "packet_hash": "5377d819029fbea01640811ad5ba3623ac2f0de5b35837ed0f6f18d2527af406",
+          "response_hash": "3735c80366ac2ee895ee58f23964df3bfc9289efddc4461399a9444852d31056"
+        },
+        "digest": "84637f838dde7079c439dc1afcf1e70cdff0e04b545e26f324c29f0abd988306"
+      },
+      {
+        "seq": 10,
+        "previous": "84637f838dde7079c439dc1afcf1e70cdff0e04b545e26f324c29f0abd988306",
+        "at": "2026-10-23T19:18:16.942Z",
+        "type": "UNDERSTANDING_ARTIFACT",
+        "data": {
+          "id": "b791865f6f6e59d7a27d15dd86719ef990281897129e281390417ff50b50427e",
+          "schema": "language-understanding-artifact/0.1",
+          "trial_id": "R1E-13-A_SOURCE_ONLY",
+          "stage": "DELIVERY_FIELD",
+          "at": "2026-10-23T19:18:16.939Z",
+          "request": {
+            "source_id": "u-55e5b8056dd6440e909fddea89535d77f81ab412",
+            "source_text": "The supplied policy document states that the production backup is encrypted at rest. No independent audit or system evidence is supplied.",
+            "profile": "technical-policy",
+            "profile_version": "0.2",
+            "context": {
+              "purpose": "Faithful communication to a fresh recipient",
+              "intended_recipient": "Independent reader"
+            }
+          },
+          "inventory": {
+            "schema": "language-understanding-inventory/0.1",
+            "offset_unit": "UNICODE_CODE_POINTS",
+            "standing": "HEURISTIC_UNVERIFIED",
+            "source": {
+              "id": "u-55e5b8056dd6440e909fddea89535d77f81ab412",
+              "sha256": "9b36a4eeaf0bf24d90c29d59a6ee758c1a2e01b0bb4f8e95ca491eca9ae0a0a2",
+              "text": "The supplied policy document states that the production backup is encrypted at rest. No independent audit or system evidence is supplied."
+            },
+            "profile": {
+              "id": "technical-policy",
+              "version": "0.2",
+              "schema": "language-understanding-profile/0.1",
+              "sha256": "12287d00977aa52dcc4b142c6bb2829bf72c4636ce7a9cde6caea4b7d2dd669b"
+            },
+            "engine": {
+              "id": "spacy/blank-en+sentencizer",
+              "version": "0.2.0",
+              "nltk_version": "3.10.4",
+              "spacy_version": "3.8.16",
+              "trained_syntax_available": false,
+              "trained_model_requested": "en_core_web_sm",
+              "fallback_reason": "SPACY_MODEL_NOT_INSTALLED"
+            },
+            "segments": [
+              {
+                "id": "s1",
+                "start": 0,
+                "end": 84,
+                "text": "The supplied policy document states that the production backup is encrypted at rest."
+              },
+              {
+                "id": "s2",
+                "start": 85,
+                "end": 137,
+                "text": "No independent audit or system evidence is supplied."
+              }
+            ],
+            "meaning_units": [
+              {
+                "id": "m1",
+                "source_segments": [
+                  "s1"
+                ],
+                "start": 0,
+                "end": 84,
+                "source_quote": "The supplied policy document states that the production backup is encrypted at rest.",
+                "proposed_meaning": "The supplied policy document states that the production backup is encrypted at rest.",
+                "classification": {
+                  "kind": "statement",
+                  "normative_force": "ASSERTED_IN_SOURCE",
+                  "condition_cues": [],
+                  "temporal_cues": [],
+                  "possible_unresolved_reference": false,
+                  "speaker": "",
+                  "prerequisites": [],
+                  "method": "LEXICAL_RULE_HEURISTIC",
+                  "review": "HEURISTIC_UNVERIFIED"
+                },
+                "provenance": "EXACT_SOURCE_SPAN"
+              },
+              {
+                "id": "m2",
+                "source_segments": [
+                  "s2"
+                ],
+                "start": 85,
+                "end": 137,
+                "source_quote": "No independent audit or system evidence is supplied.",
+                "proposed_meaning": "No independent audit or system evidence is supplied.",
+                "classification": {
+                  "kind": "statement",
+                  "normative_force": "ASSERTED_IN_SOURCE",
+                  "condition_cues": [],
+                  "temporal_cues": [],
+                  "possible_unresolved_reference": false,
+                  "speaker": "",
+                  "prerequisites": [],
+                  "method": "LEXICAL_RULE_HEURISTIC",
+                  "review": "HEURISTIC_UNVERIFIED"
+                },
+                "provenance": "EXACT_SOURCE_SPAN"
+              }
+            ],
+            "relations": [],
+            "context": {
+              "purpose": "Faithful communication to a fresh recipient",
+              "intended_recipient": "Independent reader"
+            },
+            "coverage": {
+              "standing": "NOT_EVALUATED",
+              "source_supportedness": "NOT_EVALUATED",
+              "semantic_completeness": "NOT_ESTABLISHED"
+            },
+            "warnings": [
+              "Labels are lexical heuristics, not verified meaning or permissions.",
+              "No cross-sentence relation, coreference, or semantic completeness checker is implemented.",
+              "Semicolon splitting, prerequisite hints and speaker labels are rule-based candidates, not semantic analysis."
+            ]
+          },
+          "compiler": {
+            "profile": {
+              "id": "technical-policy",
+              "version": "0.2",
+              "sha256": "12287d00977aa52dcc4b142c6bb2829bf72c4636ce7a9cde6caea4b7d2dd669b",
+              "file_sha256": "9d961fac646c1c164019c55b1eaa3f75748f42b47e3aad7862bc50181cdd4a75",
+              "path": "C:\\Projects\\project-language\\core\\understanding\\python\\profiles\\technical-policy.json"
+            },
+            "adapter": "language-understanding-child/0.1",
+            "python": "C:\\Projects\\project-language\\.venv\\Scripts\\python.exe",
+            "timeout_ms": 15000,
+            "max_input_bytes": 262144,
+            "max_output_bytes": 4194304,
+            "require_trained_syntax": false,
+            "source_hashes": {
+              "src/understanding/cli.py": "fdbbaab6d1c51d077046100aef43fcb0fcfac5e278dba1fa30f3a0cddb229ba9",
+              "src/understanding/pipeline.py": "713ddf811112278038b19aaa5995eba929a827e6dee7634d5d5e8d54cba5ed1d",
+              "src/understanding/__init__.py": "c4b5f92990c64643e4907def83a7a62dd00c8bdd3dd738a8ab14c55d523a396f",
+              "src/understanding/contracts.py": "ec17e9c381a22aed695663e4e27ed57f0cdd07491ec78355cb95855a2e08e7d7",
+              "../schemas/request-v0.1.json": "0d1dc60bff65f0baf319fef34d6dd5e141c814d55ed7f865fed629cebd4578c2",
+              "../schemas/inventory-v0.1.json": "aa4c284f4352141ec9fbcc56a51027bdba94e2e588affcaa739fcf2fd8340e5d",
+              "pyproject.toml": "b8b9fb81e47e37041d1fbc7a1a660b35a5b57909a1b370b76826a539af4e8108"
+            },
+            "integration_hashes": {
+              "./workflow.mjs": "3b435c25171ef5dd66785ad93b132c0ed67f833eab63bdd9bd0cff36f5e4bc25",
+              "./analysis.mjs": "c0279d78149f90f6412875dbe0df5eb35f516a90cbd5a235023bb9a93a94ef95",
+              "./decomposition.mjs": "42e5cbc7d12bb55d98d93c5223c8a5edf6eba9de3bfbfe2469ee9ca729c412cb",
+              "../models/prompts.mjs": "5b16ac6b45b60727f8c1467bb6b934e14cd2d9726bb0d750d4f9e9d69cccd32b",
+              "../models/source-anchors.mjs": "04d977f0a67397d568c2c84cf1f6767ea210d6bfb2ecb67c875935909258aa08"
+            }
+          },
+          "provenance": {
+            "arm": "A_SOURCE_ONLY",
+            "json_path": "/source/text",
+            "origin": "ORIGINAL_SOURCE_EMBEDDED",
+            "source_hash": "9b36a4eeaf0bf24d90c29d59a6ee758c1a2e01b0bb4f8e95ca491eca9ae0a0a2",
+            "accepted_version": "2b212ee7e89ceb0cf4eaf29b144445d5a7a2288141802b60c247583fb53363f7",
+            "packet_hash": "5377d819029fbea01640811ad5ba3623ac2f0de5b35837ed0f6f18d2527af406",
+            "response_hash": "3735c80366ac2ee895ee58f23964df3bfc9289efddc4461399a9444852d31056"
+          },
+          "standing": "HEURISTIC_UNVERIFIED"
+        },
+        "digest": "cd27f226c0a932b2f7aa15c01c9ab6f9729577a1f21938176fb35168d4b11295"
+      },
+      {
+        "seq": 11,
+        "previous": "cd27f226c0a932b2f7aa15c01c9ab6f9729577a1f21938176fb35168d4b11295",
+        "at": "2026-10-23T19:18:16.949Z",
+        "type": "UNDERSTANDING_ARTIFACT",
+        "data": {
+          "id": "2c47358103e690932438929a347dda1df490f1f28010c22e9ea03caf538c6c3c",
+          "schema": "language-understanding-artifact/0.1",
+          "trial_id": "R1E-13-A_SOURCE_ONLY",
+          "stage": "RECIPIENT_FIELD",
+          "at": "2026-10-23T19:18:16.946Z",
+          "request": {
+            "source_id": "u-1afa1e911896d7b03a72a4f088d1982c0ce6c3c1",
+            "source_text": "UNKNOWN",
+            "profile": "technical-policy",
+            "profile_version": "0.2",
+            "context": {
+              "purpose": "Faithful communication to a fresh recipient",
+              "intended_recipient": "Independent reader"
+            }
+          },
+          "inventory": {
+            "schema": "language-understanding-inventory/0.1",
+            "offset_unit": "UNICODE_CODE_POINTS",
+            "standing": "HEURISTIC_UNVERIFIED",
+            "source": {
+              "id": "u-1afa1e911896d7b03a72a4f088d1982c0ce6c3c1",
+              "sha256": "23759997b3c59884dc4c0ff5320d6301b0e7f63bf0f6483a7b54d7d43bc5ccd1",
+              "text": "UNKNOWN"
+            },
+            "profile": {
+              "id": "technical-policy",
+              "version": "0.2",
+              "schema": "language-understanding-profile/0.1",
+              "sha256": "12287d00977aa52dcc4b142c6bb2829bf72c4636ce7a9cde6caea4b7d2dd669b"
+            },
+            "engine": {
+              "id": "spacy/blank-en+sentencizer",
+              "version": "0.2.0",
+              "nltk_version": "3.10.4",
+              "spacy_version": "3.8.16",
+              "trained_syntax_available": false,
+              "trained_model_requested": "en_core_web_sm",
+              "fallback_reason": "SPACY_MODEL_NOT_INSTALLED"
+            },
+            "segments": [
+              {
+                "id": "s1",
+                "start": 0,
+                "end": 7,
+                "text": "UNKNOWN"
+              }
+            ],
+            "meaning_units": [
+              {
+                "id": "m1",
+                "source_segments": [
+                  "s1"
+                ],
+                "start": 0,
+                "end": 7,
+                "source_quote": "UNKNOWN",
+                "proposed_meaning": "UNKNOWN",
+                "classification": {
+                  "kind": "unknown",
+                  "normative_force": "UNRESOLVED",
+                  "condition_cues": [],
+                  "temporal_cues": [],
+                  "possible_unresolved_reference": false,
+                  "speaker": "",
+                  "prerequisites": [],
+                  "method": "LEXICAL_RULE_HEURISTIC",
+                  "review": "HEURISTIC_UNVERIFIED"
+                },
+                "provenance": "EXACT_SOURCE_SPAN"
+              }
+            ],
+            "relations": [],
+            "context": {
+              "purpose": "Faithful communication to a fresh recipient",
+              "intended_recipient": "Independent reader"
+            },
+            "coverage": {
+              "standing": "NOT_EVALUATED",
+              "source_supportedness": "NOT_EVALUATED",
+              "semantic_completeness": "NOT_ESTABLISHED"
+            },
+            "warnings": [
+              "Labels are lexical heuristics, not verified meaning or permissions.",
+              "No cross-sentence relation, coreference, or semantic completeness checker is implemented.",
+              "Semicolon splitting, prerequisite hints and speaker labels are rule-based candidates, not semantic analysis."
+            ]
+          },
+          "compiler": {
+            "profile": {
+              "id": "technical-policy",
+              "version": "0.2",
+              "sha256": "12287d00977aa52dcc4b142c6bb2829bf72c4636ce7a9cde6caea4b7d2dd669b",
+              "file_sha256": "9d961fac646c1c164019c55b1eaa3f75748f42b47e3aad7862bc50181cdd4a75",
+              "path": "C:\\Projects\\project-language\\core\\understanding\\python\\profiles\\technical-policy.json"
+            },
+            "adapter": "language-understanding-child/0.1",
+            "python": "C:\\Projects\\project-language\\.venv\\Scripts\\python.exe",
+            "timeout_ms": 15000,
+            "max_input_bytes": 262144,
+            "max_output_bytes": 4194304,
+            "require_trained_syntax": false,
+            "source_hashes": {
+              "src/understanding/cli.py": "fdbbaab6d1c51d077046100aef43fcb0fcfac5e278dba1fa30f3a0cddb229ba9",
+              "src/understanding/pipeline.py": "713ddf811112278038b19aaa5995eba929a827e6dee7634d5d5e8d54cba5ed1d",
+              "src/understanding/__init__.py": "c4b5f92990c64643e4907def83a7a62dd00c8bdd3dd738a8ab14c55d523a396f",
+              "src/understanding/contracts.py": "ec17e9c381a22aed695663e4e27ed57f0cdd07491ec78355cb95855a2e08e7d7",
+              "../schemas/request-v0.1.json": "0d1dc60bff65f0baf319fef34d6dd5e141c814d55ed7f865fed629cebd4578c2",
+              "../schemas/inventory-v0.1.json": "aa4c284f4352141ec9fbcc56a51027bdba94e2e588affcaa739fcf2fd8340e5d",
+              "pyproject.toml": "b8b9fb81e47e37041d1fbc7a1a660b35a5b57909a1b370b76826a539af4e8108"
+            },
+            "integration_hashes": {
+              "./workflow.mjs": "3b435c25171ef5dd66785ad93b132c0ed67f833eab63bdd9bd0cff36f5e4bc25",
+              "./analysis.mjs": "c0279d78149f90f6412875dbe0df5eb35f516a90cbd5a235023bb9a93a94ef95",
+              "./decomposition.mjs": "42e5cbc7d12bb55d98d93c5223c8a5edf6eba9de3bfbfe2469ee9ca729c412cb",
+              "../models/prompts.mjs": "5b16ac6b45b60727f8c1467bb6b934e14cd2d9726bb0d750d4f9e9d69cccd32b",
+              "../models/source-anchors.mjs": "04d977f0a67397d568c2c84cf1f6767ea210d6bfb2ecb67c875935909258aa08"
+            }
+          },
+          "provenance": {
+            "arm": "A_SOURCE_ONLY",
+            "json_path": "/decision",
+            "origin": "RECIPIENT_RESPONSE",
+            "source_hash": "9b36a4eeaf0bf24d90c29d59a6ee758c1a2e01b0bb4f8e95ca491eca9ae0a0a2",
+            "accepted_version": "2b212ee7e89ceb0cf4eaf29b144445d5a7a2288141802b60c247583fb53363f7",
+            "packet_hash": "5377d819029fbea01640811ad5ba3623ac2f0de5b35837ed0f6f18d2527af406",
+            "response_hash": "3735c80366ac2ee895ee58f23964df3bfc9289efddc4461399a9444852d31056"
+          },
+          "standing": "HEURISTIC_UNVERIFIED"
+        },
+        "digest": "e110d60322567e44ff7ce64cc9d88cf8464c3d144f6ade3487bd1273c241e9d0"
+      },
+      {
+        "seq": 12,
+        "previous": "e110d60322567e44ff7ce64cc9d88cf8464c3d144f6ade3487bd1273c241e9d0",
+        "at": "2026-10-23T19:18:16.957Z",
+        "type": "UNDERSTANDING_ARTIFACT",
+        "data": {
+          "id": "3839a97f91fb19866007c5c9b34b1f8ec53d8f0f2f220d8aa809a96e6d2aa7cc",
+          "schema": "language-understanding-artifact/0.1",
+          "trial_id": "R1E-13-A_SOURCE_ONLY",
+          "stage": "RECIPIENT_FIELD",
+          "at": "2026-10-23T19:18:16.954Z",
+          "request": {
+            "source_id": "u-e6d6416fe4a9ddf258ebdce74818006f6cd3b635",
+            "source_text": "The question asks for EXTERNAL_FACTUAL_VERIFICATION (whether the backup is *actually* encrypted). The source text explicitly states that 'No independent audit or system evidence is supplied.' Therefore, the provided packet does not contain sufficient information to verify the real-world factual status of the encryption; it only reports what a policy document claims. Since external verification cannot be performed based on this source alone, the answer is UNKNOWN.",
+            "profile": "technical-policy",
+            "profile_version": "0.2",
+            "context": {
+              "purpose": "Faithful communication to a fresh recipient",
+              "intended_recipient": "Independent reader"
+            }
+          },
+          "inventory": {
+            "schema": "language-understanding-inventory/0.1",
+            "offset_unit": "UNICODE_CODE_POINTS",
+            "standing": "HEURISTIC_UNVERIFIED",
+            "source": {
+              "id": "u-e6d6416fe4a9ddf258ebdce74818006f6cd3b635",
+              "sha256": "005e867d824fbac24da6df1c241f66a503d0e2be36a02c5ae6ca4555df18f92a",
+              "text": "The question asks for EXTERNAL_FACTUAL_VERIFICATION (whether the backup is *actually* encrypted). The source text explicitly states that 'No independent audit or system evidence is supplied.' Therefore, the provided packet does not contain sufficient information to verify the real-world factual status of the encryption; it only reports what a policy document claims. Since external verification cannot be performed based on this source alone, the answer is UNKNOWN."
+            },
+            "profile": {
+              "id": "technical-policy",
+              "version": "0.2",
+              "schema": "language-understanding-profile/0.1",
+              "sha256": "12287d00977aa52dcc4b142c6bb2829bf72c4636ce7a9cde6caea4b7d2dd669b"
+            },
+            "engine": {
+              "id": "spacy/blank-en+sentencizer",
+              "version": "0.2.0",
+              "nltk_version": "3.10.4",
+              "spacy_version": "3.8.16",
+              "trained_syntax_available": false,
+              "trained_model_requested": "en_core_web_sm",
+              "fallback_reason": "SPACY_MODEL_NOT_INSTALLED"
+            },
+            "segments": [
+              {
+                "id": "s1",
+                "start": 0,
+                "end": 97,
+                "text": "The question asks for EXTERNAL_FACTUAL_VERIFICATION (whether the backup is *actually* encrypted)."
+              },
+              {
+                "id": "s2",
+                "start": 98,
+                "end": 191,
+                "text": "The source text explicitly states that 'No independent audit or system evidence is supplied.'"
+              },
+              {
+                "id": "s3",
+                "start": 192,
+                "end": 368,
+                "text": "Therefore, the provided packet does not contain sufficient information to verify the real-world factual status of the encryption; it only reports what a policy document claims."
+              },
+              {
+                "id": "s4",
+                "start": 369,
+                "end": 467,
+                "text": "Since external verification cannot be performed based on this source alone, the answer is UNKNOWN."
+              }
+            ],
+            "meaning_units": [
+              {
+                "id": "m1",
+                "source_segments": [
+                  "s1"
+                ],
+                "start": 0,
+                "end": 97,
+                "source_quote": "The question asks for EXTERNAL_FACTUAL_VERIFICATION (whether the backup is *actually* encrypted).",
+                "proposed_meaning": "The question asks for EXTERNAL_FACTUAL_VERIFICATION (whether the backup is *actually* encrypted).",
+                "classification": {
+                  "kind": "statement",
+                  "normative_force": "ASSERTED_IN_SOURCE",
+                  "condition_cues": [],
+                  "temporal_cues": [],
+                  "possible_unresolved_reference": false,
+                  "speaker": "",
+                  "prerequisites": [],
+                  "method": "LEXICAL_RULE_HEURISTIC",
+                  "review": "HEURISTIC_UNVERIFIED"
+                },
+                "provenance": "EXACT_SOURCE_SPAN"
+              },
+              {
+                "id": "m2",
+                "source_segments": [
+                  "s2"
+                ],
+                "start": 98,
+                "end": 191,
+                "source_quote": "The source text explicitly states that 'No independent audit or system evidence is supplied.'",
+                "proposed_meaning": "The source text explicitly states that 'No independent audit or system evidence is supplied.'",
+                "classification": {
+                  "kind": "statement",
+                  "normative_force": "ASSERTED_IN_SOURCE",
+                  "condition_cues": [],
+                  "temporal_cues": [],
+                  "possible_unresolved_reference": false,
+                  "speaker": "",
+                  "prerequisites": [],
+                  "method": "LEXICAL_RULE_HEURISTIC",
+                  "review": "HEURISTIC_UNVERIFIED"
+                },
+                "provenance": "EXACT_SOURCE_SPAN"
+              },
+              {
+                "id": "m3",
+                "source_segments": [
+                  "s3"
+                ],
+                "start": 192,
+                "end": 320,
+                "source_quote": "Therefore, the provided packet does not contain sufficient information to verify the real-world factual status of the encryption",
+                "proposed_meaning": "Therefore, the provided packet does not contain sufficient information to verify the real-world factual status of the encryption",
+                "classification": {
+                  "kind": "statement",
+                  "normative_force": "ASSERTED_IN_SOURCE",
+                  "condition_cues": [
+                    "provided"
+                  ],
+                  "temporal_cues": [],
+                  "possible_unresolved_reference": false,
+                  "speaker": "",
+                  "prerequisites": [],
+                  "method": "LEXICAL_RULE_HEURISTIC",
+                  "review": "HEURISTIC_UNVERIFIED"
+                },
+                "provenance": "EXACT_SOURCE_SPAN"
+              },
+              {
+                "id": "m4",
+                "source_segments": [
+                  "s3"
+                ],
+                "start": 322,
+                "end": 368,
+                "source_quote": "it only reports what a policy document claims.",
+                "proposed_meaning": "it only reports what a policy document claims.",
+                "classification": {
+                  "kind": "statement",
+                  "normative_force": "ASSERTED_IN_SOURCE",
+                  "condition_cues": [
+                    "only"
+                  ],
+                  "temporal_cues": [],
+                  "possible_unresolved_reference": true,
+                  "speaker": "",
+                  "prerequisites": [],
+                  "method": "LEXICAL_RULE_HEURISTIC",
+                  "review": "HEURISTIC_UNVERIFIED"
+                },
+                "provenance": "EXACT_SOURCE_SPAN"
+              },
+              {
+                "id": "m5",
+                "source_segments": [
+                  "s4"
+                ],
+                "start": 369,
+                "end": 467,
+                "source_quote": "Since external verification cannot be performed based on this source alone, the answer is UNKNOWN.",
+                "proposed_meaning": "Since external verification cannot be performed based on this source alone, the answer is UNKNOWN.",
+                "classification": {
+                  "kind": "unknown",
+                  "normative_force": "UNRESOLVED",
+                  "condition_cues": [],
+                  "temporal_cues": [],
+                  "possible_unresolved_reference": false,
+                  "speaker": "",
+                  "prerequisites": [],
+                  "method": "LEXICAL_RULE_HEURISTIC",
+                  "review": "HEURISTIC_UNVERIFIED"
+                },
+                "provenance": "EXACT_SOURCE_SPAN"
+              }
+            ],
+            "relations": [],
+            "context": {
+              "purpose": "Faithful communication to a fresh recipient",
+              "intended_recipient": "Independent reader"
+            },
+            "coverage": {
+              "standing": "NOT_EVALUATED",
+              "source_supportedness": "NOT_EVALUATED",
+              "semantic_completeness": "NOT_ESTABLISHED"
+            },
+            "warnings": [
+              "Labels are lexical heuristics, not verified meaning or permissions.",
+              "No cross-sentence relation, coreference, or semantic completeness checker is implemented.",
+              "Semicolon splitting, prerequisite hints and speaker labels are rule-based candidates, not semantic analysis."
+            ]
+          },
+          "compiler": {
+            "profile": {
+              "id": "technical-policy",
+              "version": "0.2",
+              "sha256": "12287d00977aa52dcc4b142c6bb2829bf72c4636ce7a9cde6caea4b7d2dd669b",
+              "file_sha256": "9d961fac646c1c164019c55b1eaa3f75748f42b47e3aad7862bc50181cdd4a75",
+              "path": "C:\\Projects\\project-language\\core\\understanding\\python\\profiles\\technical-policy.json"
+            },
+            "adapter": "language-understanding-child/0.1",
+            "python": "C:\\Projects\\project-language\\.venv\\Scripts\\python.exe",
+            "timeout_ms": 15000,
+            "max_input_bytes": 262144,
+            "max_output_bytes": 4194304,
+            "require_trained_syntax": false,
+            "source_hashes": {
+              "src/understanding/cli.py": "fdbbaab6d1c51d077046100aef43fcb0fcfac5e278dba1fa30f3a0cddb229ba9",
+              "src/understanding/pipeline.py": "713ddf811112278038b19aaa5995eba929a827e6dee7634d5d5e8d54cba5ed1d",
+              "src/understanding/__init__.py": "c4b5f92990c64643e4907def83a7a62dd00c8bdd3dd738a8ab14c55d523a396f",
+              "src/understanding/contracts.py": "ec17e9c381a22aed695663e4e27ed57f0cdd07491ec78355cb95855a2e08e7d7",
+              "../schemas/request-v0.1.json": "0d1dc60bff65f0baf319fef34d6dd5e141c814d55ed7f865fed629cebd4578c2",
+              "../schemas/inventory-v0.1.json": "aa4c284f4352141ec9fbcc56a51027bdba94e2e588affcaa739fcf2fd8340e5d",
+              "pyproject.toml": "b8b9fb81e47e37041d1fbc7a1a660b35a5b57909a1b370b76826a539af4e8108"
+            },
+            "integration_hashes": {
+              "./workflow.mjs": "3b435c25171ef5dd66785ad93b132c0ed67f833eab63bdd9bd0cff36f5e4bc25",
+              "./analysis.mjs": "c0279d78149f90f6412875dbe0df5eb35f516a90cbd5a235023bb9a93a94ef95",
+              "./decomposition.mjs": "42e5cbc7d12bb55d98d93c5223c8a5edf6eba9de3bfbfe2469ee9ca729c412cb",
+              "../models/prompts.mjs": "5b16ac6b45b60727f8c1467bb6b934e14cd2d9726bb0d750d4f9e9d69cccd32b",
+              "../models/source-anchors.mjs": "04d977f0a67397d568c2c84cf1f6767ea210d6bfb2ecb67c875935909258aa08"
+            }
+          },
+          "provenance": {
+            "arm": "A_SOURCE_ONLY",
+            "json_path": "/explanation",
+            "origin": "RECIPIENT_RESPONSE",
+            "source_hash": "9b36a4eeaf0bf24d90c29d59a6ee758c1a2e01b0bb4f8e95ca491eca9ae0a0a2",
+            "accepted_version": "2b212ee7e89ceb0cf4eaf29b144445d5a7a2288141802b60c247583fb53363f7",
+            "packet_hash": "5377d819029fbea01640811ad5ba3623ac2f0de5b35837ed0f6f18d2527af406",
+            "response_hash": "3735c80366ac2ee895ee58f23964df3bfc9289efddc4461399a9444852d31056"
+          },
+          "standing": "HEURISTIC_UNVERIFIED"
+        },
+        "digest": "a2660bfc1d61eda77523dc61a31715438aa784f20e1f59d735cc468f8011b520"
+      },
+      {
+        "seq": 13,
+        "previous": "a2660bfc1d61eda77523dc61a31715438aa784f20e1f59d735cc468f8011b520",
+        "at": "2026-10-23T19:18:16.961Z",
+        "type": "UNDERSTANDING_SECOND_PASS",
+        "data": {
+          "trial_id": "R1E-13-A_SOURCE_ONLY",
+          "arm": "A_SOURCE_ONLY",
+          "accepted_version": "2b212ee7e89ceb0cf4eaf29b144445d5a7a2288141802b60c247583fb53363f7",
+          "packet_hash": "5377d819029fbea01640811ad5ba3623ac2f0de5b35837ed0f6f18d2527af406",
+          "response_hash": "3735c80366ac2ee895ee58f23964df3bfc9289efddc4461399a9444852d31056",
+          "transferred": {
+            "schema": "language-meaning-transferred/0.1",
+            "accepted_version": "2b212ee7e89ceb0cf4eaf29b144445d5a7a2288141802b60c247583fb53363f7",
+            "source_inventory_hash": "7a5f4164ca22592fe3345b39fe23f3f219b18fe99189cb2bc82ec6428fa00dad",
+            "standing": "MECHANICAL_CANDIDATES_NOT_SEMANTIC_VERDICTS",
+            "embedded_source_present": true,
+            "embedded_source_is_not_understanding": true,
+            "units": [
+              {
+                "unit_id": "m1",
+                "quote": "The supplied policy document states that the production backup is encrypted at rest.",
+                "candidate_paths": [],
+                "analysis_ids": [],
+                "mechanical": "NO_DERIVED_TEXT_MATCH",
+                "assessment": "NOT_ASSESSED",
+                "review_flags": [],
+                "semantic_preservation": "NOT_ASSESSED"
+              },
+              {
+                "unit_id": "m2",
+                "quote": "No independent audit or system evidence is supplied.",
+                "candidate_paths": [],
+                "analysis_ids": [],
+                "mechanical": "NO_DERIVED_TEXT_MATCH",
+                "assessment": "NOT_ASSESSED",
+                "review_flags": [],
+                "semantic_preservation": "NOT_ASSESSED"
+              }
+            ],
+            "possible_additions_or_paraphrases": [],
+            "warnings": [
+              "No lexical match establishes preservation.",
+              "No match is not proof of meaning loss.",
+              "Embedded source copies are excluded from candidate derived preservation.",
+              "Unmatched derived wording may be a valid paraphrase, purpose statement, human clarification or inference; it is not automatically an unsupported addition."
+            ]
+          },
+          "reconstructed": {
+            "standing": "NOT_ASSESSED",
+            "reason": "No independently defined question requirements are registered."
+          }
+        },
+        "digest": "6ccf45204bbe03c85cd31586078cd01aaab9a05845cccc45dfc8fb7766d51bd4"
+      }
+    ],
+    "models": [
+      {
+        "id": "fixture",
+        "provider": "fixture",
+        "local": false,
+        "api_family": "scripted",
+        "qualification": "SCRIPTED_NOT_MODEL_RESULT",
+        "availability": "AVAILABLE_OFFLINE",
+        "output_limit": null,
+        "price_per_million": null
+      },
+      {
+        "id": "opencode-go/deepseek-v4.1-flash",
+        "provider": "opencode-go",
+        "local": false,
+        "api_family": "openai-completions",
+        "base_url": "https://opencode.ai/inference/go/openai/v1",
+        "expected_route": "https://opencode.ai/inference/go/openai/v1/chat/completions",
+        "context_window": 1000000,
+        "output_limit": 384000,
+        "input_modalities": [
+          "text",
+          "image"
+        ],
+        "output_modalities": [
+          "text"
+        ],
+        "structured_output": "PROMPTED_JSON_STRICT_HOST_VALIDATION",
+        "reasoning": "Pi simple-stream default; no reasoning-token inference",
+        "price_per_million": {
+          "input": 0.3,
+          "output": 1.2,
+          "cacheRead": 0.006,
+          "cacheWrite": 0
+        },
+        "availability": "SCOPED_REGISTERED_NOT_LIVE_PROBED",
+        "qualification": "OFFLINE_TEST_REQUIRED",
+        "metadata_origin": "PINNED_PI_1.0.4_WITH_DOCUMENTED_ENDPOINT_OVERLAY",
+        "config_hash": "78020e5ed7246fa4f787cd8b1f72f721c41caba22e72a20fcf56f07937ebe7ad"
+      },
+      {
+        "id": "opencode-go/gpt-6-luna",
+        "provider": "opencode-go",
+        "local": false,
+        "api_family": "openai-responses",
+        "base_url": "https://opencode.ai/inference/go/openai/v1",
+        "expected_route": "https://opencode.ai/inference/go/openai/v1/responses",
+        "context_window": 1050000,
+        "output_limit": 128000,
+        "input_modalities": [
+          "text",
+          "image"
+        ],
+        "output_modalities": [
+          "text"
+        ],
+        "structured_output": "PROMPTED_JSON_STRICT_HOST_VALIDATION",
+        "reasoning": "Pi simple-stream default; no reasoning-token inference",
+        "price_per_million": {
+          "input": 0.1,
+          "output": 0.5,
+          "cacheRead": 0.01,
+          "cacheWrite": 0.125
+        },
+        "availability": "SCOPED_REGISTERED_NOT_LIVE_PROBED",
+        "qualification": "OFFLINE_TEST_REQUIRED",
+        "metadata_origin": "PINNED_PI_1.0.4_WITH_DOCUMENTED_ENDPOINT_OVERLAY",
+        "config_hash": "78020e5ed7246fa4f787cd8b1f72f721c41caba22e72a20fcf56f07937ebe7ad"
+      },
+      {
+        "id": "opencode-go/qwen3.8-flash",
+        "provider": "opencode-go",
+        "local": false,
+        "api_family": "anthropic-messages",
+        "base_url": "https://opencode.ai/inference/go/anthropic",
+        "expected_route": "https://opencode.ai/inference/go/anthropic/v1/messages",
+        "context_window": 1000000,
+        "output_limit": 131072,
+        "input_modalities": [
+          "text",
+          "image"
+        ],
+        "output_modalities": [
+          "text"
+        ],
+        "structured_output": "PROMPTED_JSON_STRICT_HOST_VALIDATION",
+        "reasoning": "Pi simple-stream default; no reasoning-token inference",
+        "price_per_million": {
+          "input": 0.15,
+          "output": 0.47,
+          "cacheRead": 0.016,
+          "cacheWrite": 0.2
+        },
+        "availability": "SCOPED_REGISTERED_NOT_LIVE_PROBED",
+        "qualification": "OFFLINE_TEST_REQUIRED",
+        "metadata_origin": "PINNED_PI_1.0.4_WITH_DOCUMENTED_ENDPOINT_OVERLAY",
+        "config_hash": "78020e5ed7246fa4f787cd8b1f72f721c41caba22e72a20fcf56f07937ebe7ad"
+      },
+      {
+        "id": "opencode-go/claude-haiku-5-5",
+        "provider": "opencode-go",
+        "local": false,
+        "api_family": "anthropic-messages",
+        "base_url": "https://opencode.ai/inference/go/anthropic",
+        "expected_route": "https://opencode.ai/inference/go/anthropic/v1/messages",
+        "context_window": 1000000,
+        "output_limit": 128000,
+        "input_modalities": [
+          "text",
+          "image"
+        ],
+        "output_modalities": [
+          "text"
+        ],
+        "structured_output": "PROMPTED_JSON_STRICT_HOST_VALIDATION",
+        "reasoning": "Pi simple-stream default; no reasoning-token inference",
+        "price_per_million": {
+          "input": 0.1,
+          "output": 0.5,
+          "cacheRead": 0.01,
+          "cacheWrite": 0.125,
+          "tiers": [
+            {
+              "inputTokensAbove": 100000,
+              "input": 0.5,
+              "output": 2.5,
+              "cacheRead": 0.05,
+              "cacheWrite": 0.625
+            }
+          ]
+        },
+        "availability": "SCOPED_REGISTERED_NOT_LIVE_PROBED",
+        "qualification": "OFFLINE_TEST_REQUIRED",
+        "metadata_origin": "MANAGED_PI_1.4.0_SCOPED_REGISTRATION",
+        "config_hash": "78020e5ed7246fa4f787cd8b1f72f721c41caba22e72a20fcf56f07937ebe7ad"
+      }
+    ],
+    "assignments": {
+      "interpreter": "opencode-go/deepseek-v4.1-flash",
+      "challenger": "opencode-go/gpt-6-luna",
+      "mediator": "opencode-go/deepseek-v4.1-flash",
+      "recipient": "opencode-go/qwen3.8-flash",
+      "advisory_evaluator": "opencode-go/claude-haiku-5-5"
+    },
+    "remote_plan": {
+      "schema": "studio-remote-plan/0.1r",
+      "provider": "opencode-go",
+      "task_identity": {
+        "id": "museum-loan-m12",
+        "digest": "e22911925db7424b874b94b44a60e9250a68e0f0b0b0db5d09713aa754fb28b4",
+        "source_hash": "277b9050c46b1df5f9794bda17829e2acf450e6c4afaf79a7e21cf4692447228",
+        "question_hash": "0f71abc5fbc41f4fb5e3474a0efa15eb02aa33fe6642e99a27688a1fa89fb390",
+        "reference_standing": "UNADJUDICATED_REFERENCE"
+      },
+      "models": [
+        {
+          "role": "interpreter",
+          "model": "opencode-go/deepseek-v4.1-flash",
+          "metadata": {
+            "id": "opencode-go/deepseek-v4.1-flash",
+            "provider": "opencode-go",
+            "local": false,
+            "api_family": "openai-completions",
+            "base_url": "https://opencode.ai/inference/go/openai/v1",
+            "expected_route": "https://opencode.ai/inference/go/openai/v1/chat/completions",
+            "context_window": 1000000,
+            "output_limit": 384000,
+            "input_modalities": [
+              "text",
+              "image"
+            ],
+            "output_modalities": [
+              "text"
+            ],
+            "structured_output": "PROMPTED_JSON_STRICT_HOST_VALIDATION",
+            "reasoning": "Pi simple-stream default; no reasoning-token inference",
+            "price_per_million": {
+              "input": 0.3,
+              "output": 1.2,
+              "cacheRead": 0.006,
+              "cacheWrite": 0
+            },
+            "availability": "SCOPED_REGISTERED_NOT_LIVE_PROBED",
+            "qualification": "OFFLINE_TEST_REQUIRED",
+            "metadata_origin": "PINNED_PI_1.0.4_WITH_DOCUMENTED_ENDPOINT_OVERLAY",
+            "config_hash": "78020e5ed7246fa4f787cd8b1f72f721c41caba22e72a20fcf56f07937ebe7ad"
+          },
+          "output_tokens": 16384
+        },
+        {
+          "role": "challenger",
+          "model": "opencode-go/gpt-6-luna",
+          "metadata": {
+            "id": "opencode-go/gpt-6-luna",
+            "provider": "opencode-go",
+            "local": false,
+            "api_family": "openai-responses",
+            "base_url": "https://opencode.ai/inference/go/openai/v1",
+            "expected_route": "https://opencode.ai/inference/go/openai/v1/responses",
+            "context_window": 1050000,
+            "output_limit": 128000,
+            "input_modalities": [
+              "text",
+              "image"
+            ],
+            "output_modalities": [
+              "text"
+            ],
+            "structured_output": "PROMPTED_JSON_STRICT_HOST_VALIDATION",
+            "reasoning": "Pi simple-stream default; no reasoning-token inference",
+            "price_per_million": {
+              "input": 0.1,
+              "output": 0.5,
+              "cacheRead": 0.01,
+              "cacheWrite": 0.125
+            },
+            "availability": "SCOPED_REGISTERED_NOT_LIVE_PROBED",
+            "qualification": "OFFLINE_TEST_REQUIRED",
+            "metadata_origin": "PINNED_PI_1.0.4_WITH_DOCUMENTED_ENDPOINT_OVERLAY",
+            "config_hash": "78020e5ed7246fa4f787cd8b1f72f721c41caba22e72a20fcf56f07937ebe7ad"
+          },
+          "output_tokens": 16384
+        },
+        {
+          "role": "mediator",
+          "model": "opencode-go/deepseek-v4.1-flash",
+          "metadata": {
+            "id": "opencode-go/deepseek-v4.1-flash",
+            "provider": "opencode-go",
+            "local": false,
+            "api_family": "openai-completions",
+            "base_url": "https://opencode.ai/inference/go/openai/v1",
+            "expected_route": "https://opencode.ai/inference/go/openai/v1/chat/completions",
+            "context_window": 1000000,
+            "output_limit": 384000,
+            "input_modalities": [
+              "text",
+              "image"
+            ],
+            "output_modalities": [
+              "text"
+            ],
+            "structured_output": "PROMPTED_JSON_STRICT_HOST_VALIDATION",
+            "reasoning": "Pi simple-stream default; no reasoning-token inference",
+            "price_per_million": {
+              "input": 0.3,
+              "output": 1.2,
+              "cacheRead": 0.006,
+              "cacheWrite": 0
+            },
+            "availability": "SCOPED_REGISTERED_NOT_LIVE_PROBED",
+            "qualification": "OFFLINE_TEST_REQUIRED",
+            "metadata_origin": "PINNED_PI_1.0.4_WITH_DOCUMENTED_ENDPOINT_OVERLAY",
+            "config_hash": "78020e5ed7246fa4f787cd8b1f72f721c41caba22e72a20fcf56f07937ebe7ad"
+          },
+          "output_tokens": 16384
+        },
+        {
+          "role": "recipient",
+          "model": "opencode-go/qwen3.8-flash",
+          "metadata": {
+            "id": "opencode-go/qwen3.8-flash",
+            "provider": "opencode-go",
+            "local": false,
+            "api_family": "anthropic-messages",
+            "base_url": "https://opencode.ai/inference/go/anthropic",
+            "expected_route": "https://opencode.ai/inference/go/anthropic/v1/messages",
+            "context_window": 1000000,
+            "output_limit": 131072,
+            "input_modalities": [
+              "text",
+              "image"
+            ],
+            "output_modalities": [
+              "text"
+            ],
+            "structured_output": "PROMPTED_JSON_STRICT_HOST_VALIDATION",
+            "reasoning": "Pi simple-stream default; no reasoning-token inference",
+            "price_per_million": {
+              "input": 0.15,
+              "output": 0.47,
+              "cacheRead": 0.016,
+              "cacheWrite": 0.2
+            },
+            "availability": "SCOPED_REGISTERED_NOT_LIVE_PROBED",
+            "qualification": "OFFLINE_TEST_REQUIRED",
+            "metadata_origin": "PINNED_PI_1.0.4_WITH_DOCUMENTED_ENDPOINT_OVERLAY",
+            "config_hash": "78020e5ed7246fa4f787cd8b1f72f721c41caba22e72a20fcf56f07937ebe7ad"
+          },
+          "output_tokens": 16384
+        },
+        {
+          "role": "advisory_evaluator",
+          "model": "opencode-go/claude-haiku-5-5",
+          "metadata": {
+            "id": "opencode-go/claude-haiku-5-5",
+            "provider": "opencode-go",
+            "local": false,
+            "api_family": "anthropic-messages",
+            "base_url": "https://opencode.ai/inference/go/anthropic",
+            "expected_route": "https://opencode.ai/inference/go/anthropic/v1/messages",
+            "context_window": 1000000,
+            "output_limit": 128000,
+            "input_modalities": [
+              "text",
+              "image"
+            ],
+            "output_modalities": [
+              "text"
+            ],
+            "structured_output": "PROMPTED_JSON_STRICT_HOST_VALIDATION",
+            "reasoning": "Pi simple-stream default; no reasoning-token inference",
+            "price_per_million": {
+              "input": 0.1,
+              "output": 0.5,
+              "cacheRead": 0.01,
+              "cacheWrite": 0.125,
+              "tiers": [
+                {
+                  "inputTokensAbove": 100000,
+                  "input": 0.5,
+                  "output": 2.5,
+                  "cacheRead": 0.05,
+                  "cacheWrite": 0.625
+                }
+              ]
+            },
+            "availability": "SCOPED_REGISTERED_NOT_LIVE_PROBED",
+            "qualification": "OFFLINE_TEST_REQUIRED",
+            "metadata_origin": "MANAGED_PI_1.4.0_SCOPED_REGISTRATION",
+            "config_hash": "78020e5ed7246fa4f787cd8b1f72f721c41caba22e72a20fcf56f07937ebe7ad"
+          },
+          "output_tokens": 16384
+        }
+      ],
+      "settings": {
+        "max_requests": 12,
+        "budget_usd": 10,
+        "max_input_bytes": 60000,
+        "max_response_bytes": 33554432,
+        "timeout_ms": 180000,
+        "output_tokens": {
+          "interpreter": 16384,
+          "challenger": 16384,
+          "mediator": 16384,
+          "recipient": 16384,
+          "advisory_evaluator": 16384
+        },
+        "automatic_retries": 0
+      },
+      "config_hash": "78020e5ed7246fa4f787cd8b1f72f721c41caba22e72a20fcf56f07937ebe7ad",
+      "offline_qualification_identity": null,
+      "expected_workflow_calls": 3,
+      "with_mediation_calls": 4,
+      "with_comparison_calls": 5,
+      "maximum_actual_requests": 12,
+      "conservative_estimate_usd": 0.94152,
+      "per_request_reservation_usd": 0.07846,
+      "estimate_standing": "CATALOGUE_BOUND_NOT_INVOICE; UTF8_BYTES_AS_INPUT_TOKEN_BOUND",
+      "service_use": "OPERATOR_MUST_CONFIRM_GO_WORKLOAD_APPROPRIATENESS",
+      "fallback": false,
+      "hash": "c1e6a81b14b40afd0ec1b50f3d90b0753d8f50ccdb0dac8d6d1cc3bfea65c9aa",
+      "launcher_remote_enabled": true,
+      "credential_available": true,
+      "approval_required": false,
+      "execution_policy": "DIRECT_USER_REQUEST",
+      "approval_active": true,
+      "requests_used": 1,
+      "reserved_usd": 0.07846,
+      "last_errors": {},
+      "advisory_evaluator_status": "OPTIONAL_NOT_RUN"
+    },
+    "guided": {
+      "stage": "start",
+      "primary": "Start Test"
+    },
+    "external_actions": "DISABLED",
+    "head": "6ccf45204bbe03c85cd31586078cd01aaab9a05845cccc45dfc8fb7766d51bd4"
+  }
+}

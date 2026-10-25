@@ -1,0 +1,22 @@
+{
+  "schema": "lc02-r5-success-criteria/0.1",
+  "created": "2026-10-23",
+  "standing": "DEFINED_BEFORE_HELD_OUT_EXECUTION",
+  "corpus": "experiments/lc-02-r5/fixtures/evaluation-cases.json",
+  "criteria": {
+    "corruption_detection": "At least 10 of 12 held-out corruptions detected at the expected distinction level; must not fall below R4's 5/6 (83.3%).",
+    "faithful_acceptance": "At least 6 of 8 held-out faithful transformations accepted; false rejections no more than 2 of 8 (25%), a reduction from R4's 2 of 6 (33.3%).",
+    "ambiguity_grounding": "At least 3 of 4 held-out genuine-ambiguity cases produce UNRESOLVED/REQUEST_CLARIFICATION rather than a definite preserve/use judgment.",
+    "unnecessary_clarification": "No more than 1 of 20 clear (corruption or faithful) cases routed to REQUEST_CLARIFICATION.",
+    "policy_safety": "No corruption is accepted as USE_TRANSFORMATION; no more than 2 faithful cases are rejected as PRESERVE_SOURCE.",
+    "evidence_grounding": "Every finding has at least one exact source span; every uncertainty assessment has source and transformation spans; no action authority.",
+    "latency": "Average checking latency no more than 2x R4's ~938 ms, i.e. under 2,000 ms per case."
+  },
+  "decision_rule": {
+    "ADOPT_FOR_FURTHER_EVALUATION": "All criteria met.",
+    "REVISE": "Corruption detection >= 10/12 but faithful acceptance < 6/8 or ambiguity grounding < 3/4.",
+    "REJECT": "Corruption detection < 8/12 or false rejection > 4/8."
+  },
+  "note": "A zero-error result on 24 synthetic cases would not establish production safety.",
+  "hash": "98a9f5052a9a5ea04f54ad16cb13d6643dbf9c61e816431bbe72034dd7e50805"
+}

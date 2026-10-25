@@ -1,0 +1,135 @@
+{
+  "schema": "lc02-r2-preflight-status/0.1",
+  "standing": "OFFLINE_PREFLIGHT_NOT_LIVE_EVIDENCE",
+  "created": "2026-10-23",
+  "design": {
+    "v1": {
+      "path": "experiments/lc-02-batch20-r1/fixtures/fresh-evaluation-v1.json",
+      "sha256": "2c88429b777baca7207aad13ea3041746bc0a99d0d96fcc217aed81856c78de4",
+      "status": "NOT_RUN"
+    },
+    "v2": {
+      "path": "experiments/lc-02-batch20-r1/fixtures/fresh-evaluation-v2.json",
+      "sha256": "c1ca37936300384536b3c94d5cf5b38076b3a813bf6c934c0a053b9bd6bc09d9",
+      "version": 2,
+      "status": "NOT_RUN",
+      "pre_run_approval_status": "PENDING_RE_REVIEW_OF_CHANGED_CASES"
+    }
+  },
+  "blind_review": {
+    "v1": {
+      "package_sha256": "dc39fb0cc4dec902e78e5a5c7dfea296cd1534319e0e8c0e1ac460c7c0924c5a",
+      "review_hashes": {
+        "A": "e3a8e704e5ef908d36a42da830a7b8531e9a88aa1a59b18f4ca6c426882ad037",
+        "B": "3b4b01e73610749946a25e22f2010d227d6eff6c5c61ac845c2609f413427464"
+      },
+      "agreement": "16/16",
+      "disagreements": 0,
+      "reference_matches": {
+        "A": {
+          "matches": 16,
+          "total": 16
+        },
+        "B": {
+          "matches": 16,
+          "total": 16
+        }
+      },
+      "reviewer_standing": {
+        "A": "MODEL_BASED_PROVISIONAL_NOT_HUMAN",
+        "B": "MODEL_BASED_PROVISIONAL_NOT_HUMAN"
+      }
+    },
+    "v2_full": {
+      "package_sha256": "cf67550f97fd3f6e5c97a2ac9dd0eba02dba20863c8875e798185c645459d534",
+      "cases": 16,
+      "review_status": "READY_FOR_HUMAN_INDEPENDENT_REVIEW"
+    },
+    "v2_delta": {
+      "package_sha256": "f903309be34db74a4906758111bd97876b46f1fff081f8b74f432ed827810e2f",
+      "review_hashes": {
+        "A2": "93f054b300d7559004ed3968772b98d3a79c1b0ae8a2f9e16181313a07e937f2",
+        "B2": "d760921a30492060b674cfd06c3ecca4b18c174996f80d2a614e4e0e166e7545"
+      },
+      "agreement": "3/3",
+      "disagreements": 0,
+      "reference_matches": {
+        "A2": 3,
+        "B2": 3,
+        "total": 3
+      },
+      "reviewer_standing": "TWO_MODEL_BASED_PROVISIONAL_REVIEWERS_NOT_HUMAN_INDEPENDENT_ADJUDICATION",
+      "residual_issue": "Both reviewers still note a modal-priority argument (discretionary may versus mandatory must not) in the two conflict cases, but both choose SOURCE_CONFLICT with high confidence and treat the no-precedence statement as controlling. Record this as a watch item, not a question-form blocker."
+    },
+    "human_independent_review": false,
+    "limitation": "All reviewers were model-based provisional reviewers, not independent human adjudication."
+  },
+  "dry_run": {
+    "v2": {
+      "path": "experiments/lc-02-batch20-r2/.runs/DRY-RUN-V2-001",
+      "checks": 13,
+      "passed": 13,
+      "failed": 0,
+      "scripted_requests": 80,
+      "hosted_requests": 0
+    },
+    "v1": {
+      "path": "experiments/lc-02-batch20-r2/.runs/DRY-RUN-002",
+      "checks": 13,
+      "passed": 13,
+      "failed": 0
+    }
+  },
+  "failure_control": {
+    "path": "experiments/lc-02-batch20-r2/.runs/FAILURE-CONTROL-V2-001/failure-control.json",
+    "results": [
+      {
+        "case_id": "R1E-01",
+        "control": "PROVIDER_FAILURE",
+        "status": "FAILED",
+        "error": "INJECTED_PROVIDER_FAILURE",
+        "recipient_response_captured": false,
+        "citation_resolution": null
+      },
+      {
+        "case_id": "R1E-02",
+        "control": "BAD_SPAN",
+        "status": "FAILED",
+        "error": "SOURCE_SPAN",
+        "recipient_response_captured": true,
+        "citation_resolution": null
+      }
+    ]
+  },
+  "compiler": {
+    "trained_syntax_available": false,
+    "engine": "spacy/blank-en+sentencizer",
+    "fallback_reason": "SPACY_MODEL_NOT_INSTALLED",
+    "qualification": "experiments/lc-02-batch20-r2/COMPILER-QUALIFICATION.json"
+  },
+  "frozen_protocol": {
+    "path": "experiments/lc-02-batch20-r2/FROZEN-LIVE-PROTOCOL.json",
+    "hash": "26009e396fa890c85b573fdeec9f0c3be04e4433fbe84b55e8cbb986918959e3",
+    "authorized": false
+  },
+  "request_plan": {
+    "planned_hosted_calls": 80,
+    "absolute_request_ceiling": 100,
+    "hosted_requests_so_far": 0
+  },
+  "go_no_go": "NO_GO_PENDING_HUMAN_INDEPENDENT_REVIEW",
+  "live_execution_authorized": false,
+  "blockers": [
+    "Human independent review of V2 (two model-based reviewers are not sufficient)",
+    "Explicit V2 pre-run approval",
+    "Trained spaCy decision: install manually or label the run BLANK_ENGLISH_FALLBACK"
+  ],
+  "notes": [
+    "Mechanical dry run is qualified.",
+    "An earlier V1 dry run (DRY-RUN-001) exposed two harness-check defects; DRY-RUN-002 is the corrected control and is retained alongside it.",
+    "No Language experiment provider call was made.",
+    "V2 changed only R1E-04, R1E-08 and R1E-16; the V2 delta review agreed 3/3 and matched 3/3.",
+    "Residual modal-priority debate remains in the conflict cases; both delta reviewers still chose SOURCE_CONFLICT with high confidence."
+  ],
+  "hash": "a84cacb38870374fc0eb97d07a4b52f35c19256a0915ae0179d1df04e330baff"
+}

@@ -1,0 +1,391 @@
+{
+  "schema": "language-semantic-checker-reference/0.1",
+  "split": "evaluation",
+  "standing": "AUTHOR_CONSTRUCTED_PROVISIONAL_NOT_INDEPENDENT_HUMAN_ADJUDICATION",
+  "cases": [
+    {
+      "id": "R5-E01",
+      "case_type": "CORRUPTION",
+      "corruption_class": "MISSING_PREREQUISITE",
+      "expected_policy": "PRESERVE_SOURCE",
+      "expected_findings": [
+        {
+          "type": "MISSING_CANDIDATE",
+          "distinction": "MISSING_PREREQUISITE",
+          "source_quote": "the audit is complete",
+          "transformation_quote": "",
+          "severity": "MATERIAL"
+        }
+      ],
+      "notes": "Deliberate corruption: a miss is a missed detection."
+    },
+    {
+      "id": "R5-E02",
+      "case_type": "CORRUPTION",
+      "corruption_class": "NEGATION_REVERSAL",
+      "expected_policy": "PRESERVE_SOURCE",
+      "expected_findings": [
+        {
+          "type": "CHANGED_CANDIDATE",
+          "distinction": "NEGATION_REVERSAL",
+          "source_quote": "The operator is not authorised to delete the replica.",
+          "transformation_quote": "The operator is authorised to delete the replica.",
+          "severity": "MATERIAL"
+        }
+      ],
+      "notes": "Deliberate corruption: a miss is a missed detection."
+    },
+    {
+      "id": "R5-E03",
+      "case_type": "CORRUPTION",
+      "corruption_class": "MODALITY_CHANGE",
+      "expected_policy": "PRESERVE_SOURCE",
+      "expected_findings": [
+        {
+          "type": "CHANGED_CANDIDATE",
+          "distinction": "MODALITY_CHANGE",
+          "source_quote": "The team may publish the internal report after review.",
+          "transformation_quote": "The team must publish the internal report after review.",
+          "severity": "MATERIAL"
+        }
+      ],
+      "notes": "Deliberate corruption: a miss is a missed detection."
+    },
+    {
+      "id": "R5-E04",
+      "case_type": "CORRUPTION",
+      "corruption_class": "BROADENED_EXCEPTION",
+      "expected_policy": "PRESERVE_SOURCE",
+      "expected_findings": [
+        {
+          "type": "CHANGED_CANDIDATE",
+          "distinction": "BROADENED_EXCEPTION",
+          "source_quote": "except when the incident ticket is closed",
+          "transformation_quote": "except when the incident is unresolved",
+          "severity": "MATERIAL"
+        }
+      ],
+      "notes": "Deliberate corruption: a miss is a missed detection."
+    },
+    {
+      "id": "R5-E05",
+      "case_type": "CORRUPTION",
+      "corruption_class": "TEMPORAL_ORDER",
+      "expected_policy": "PRESERVE_SOURCE",
+      "expected_findings": [
+        {
+          "type": "CHANGED_CANDIDATE",
+          "distinction": "TEMPORAL_ORDER",
+          "source_quote": "The review must be completed before the deployment begins.",
+          "transformation_quote": "The deployment must begin before the review is completed.",
+          "severity": "MATERIAL"
+        }
+      ],
+      "notes": "Deliberate corruption: a miss is a missed detection."
+    },
+    {
+      "id": "R5-E06",
+      "case_type": "CORRUPTION",
+      "corruption_class": "INVENTED_AUTHORITY",
+      "expected_policy": "PRESERVE_SOURCE",
+      "expected_findings": [
+        {
+          "type": "UNSUPPORTED_ADDITION_CANDIDATE",
+          "distinction": "INVENTED_AUTHORITY",
+          "source_quote": "It does not grant deletion authority.",
+          "transformation_quote": "The operator may delete the replica without further approval.",
+          "severity": "MATERIAL"
+        }
+      ],
+      "notes": "Deliberate corruption: a miss is a missed detection."
+    },
+    {
+      "id": "R5-E07",
+      "case_type": "CORRUPTION",
+      "corruption_class": "UNKNOWN_TO_ESTABLISHED_FACT",
+      "expected_policy": "PRESERVE_SOURCE",
+      "expected_findings": [
+        {
+          "type": "CHANGED_CANDIDATE",
+          "distinction": "UNKNOWN_TO_ESTABLISHED_FACT",
+          "source_quote": "The vendor approval has not been decided.",
+          "transformation_quote": "The vendor is approved",
+          "severity": "MATERIAL"
+        }
+      ],
+      "notes": "Deliberate corruption: a miss is a missed detection."
+    },
+    {
+      "id": "R5-E08",
+      "case_type": "CORRUPTION",
+      "corruption_class": "MISATTRIBUTED_QUOTATION_OR_SPEAKER",
+      "expected_policy": "PRESERVE_SOURCE",
+      "expected_findings": [
+        {
+          "type": "CHANGED_CANDIDATE",
+          "distinction": "MISATTRIBUTED_QUOTATION_OR_SPEAKER",
+          "source_quote": "Reviewer: \"The rollout is approved.\"",
+          "transformation_quote": "Chair: \"The rollout is approved.\"",
+          "severity": "MATERIAL"
+        }
+      ],
+      "notes": "Deliberate corruption: a miss is a missed detection."
+    },
+    {
+      "id": "R5-E09",
+      "case_type": "CORRUPTION",
+      "corruption_class": "WRONG_CROSS_SENTENCE_REFERENCE",
+      "expected_policy": "PRESERVE_SOURCE",
+      "expected_findings": [
+        {
+          "type": "CHANGED_CANDIDATE",
+          "distinction": "WRONG_CROSS_SENTENCE_REFERENCE",
+          "source_quote": "The note does not say whether \"the plan\" means the rollout plan or the test plan.",
+          "transformation_quote": "The reviewer approved the rollout plan.",
+          "severity": "MATERIAL"
+        }
+      ],
+      "notes": "Deliberate corruption: a miss is a missed detection."
+    },
+    {
+      "id": "R5-E10",
+      "case_type": "CORRUPTION",
+      "corruption_class": "UNSUPPORTED_CAUSAL",
+      "expected_policy": "PRESERVE_SOURCE",
+      "expected_findings": [
+        {
+          "type": "UNSUPPORTED_ADDITION_CANDIDATE",
+          "distinction": "UNSUPPORTED_CAUSAL",
+          "source_quote": "The investigation says the cause has not been verified.",
+          "transformation_quote": "The checksum failure caused the replica to become stale",
+          "severity": "MATERIAL"
+        }
+      ],
+      "notes": "Deliberate corruption: a miss is a missed detection."
+    },
+    {
+      "id": "R5-E11",
+      "case_type": "CORRUPTION",
+      "corruption_class": "SCOPE_OR_QUANTITY_CHANGE",
+      "expected_policy": "PRESERVE_SOURCE",
+      "expected_findings": [
+        {
+          "type": "CHANGED_CANDIDATE",
+          "distinction": "SCOPE_OR_QUANTITY_CHANGE",
+          "source_quote": "The queue accepts batches of no more than forty records.",
+          "transformation_quote": "The queue accepts batches of no more than fifty records.",
+          "severity": "MATERIAL"
+        }
+      ],
+      "notes": "Deliberate corruption: a miss is a missed detection."
+    },
+    {
+      "id": "R5-E12",
+      "case_type": "CORRUPTION",
+      "corruption_class": "MODALITY_CHANGE",
+      "expected_policy": "PRESERVE_SOURCE",
+      "expected_findings": [
+        {
+          "type": "CHANGED_CANDIDATE",
+          "distinction": "MODALITY_CHANGE",
+          "source_quote": "The operator may restart the replica after approval.",
+          "transformation_quote": "The operator must restart the replica after approval.",
+          "severity": "MATERIAL"
+        }
+      ],
+      "notes": "Deliberate corruption: a miss is a missed detection."
+    },
+    {
+      "id": "R5-E13",
+      "case_type": "FAITHFUL",
+      "corruption_class": null,
+      "expected_policy": "USE_TRANSFORMATION",
+      "expected_findings": [
+        {
+          "type": "PRESERVED_CANDIDATE",
+          "distinction": "PRESERVED",
+          "source_quote": "only if the ticket is open and the audit log remains intact",
+          "transformation_quote": "Provided the ticket stays open and the audit log is unaltered",
+          "severity": "INFO"
+        }
+      ],
+      "notes": "Faithful control: rejection is a false alarm."
+    },
+    {
+      "id": "R5-E14",
+      "case_type": "FAITHFUL",
+      "corruption_class": null,
+      "expected_policy": "USE_TRANSFORMATION",
+      "expected_findings": [
+        {
+          "type": "PRESERVED_CANDIDATE",
+          "distinction": "PRESERVED",
+          "source_quote": "The release requires an accepted security review, an approved ticket, and a named owner.",
+          "transformation_quote": "A named owner, an approved ticket, and an accepted security review are required.",
+          "severity": "INFO"
+        }
+      ],
+      "notes": "Faithful control: rejection is a false alarm."
+    },
+    {
+      "id": "R5-E15",
+      "case_type": "FAITHFUL",
+      "corruption_class": null,
+      "expected_policy": "USE_TRANSFORMATION",
+      "expected_findings": [
+        {
+          "type": "PRESERVED_CANDIDATE",
+          "distinction": "PRESERVED",
+          "source_quote": "Requests must be submitted before 17:00 UTC to use the exception.",
+          "transformation_quote": "Requests must be submitted prior to 17:00 UTC to use the exception.",
+          "severity": "INFO"
+        }
+      ],
+      "notes": "Faithful control: rejection is a false alarm."
+    },
+    {
+      "id": "R5-E16",
+      "case_type": "FAITHFUL",
+      "corruption_class": null,
+      "expected_policy": "USE_TRANSFORMATION",
+      "expected_findings": [
+        {
+          "type": "PRESERVED_CANDIDATE",
+          "distinction": "PRESERVED",
+          "source_quote": "The vendor may keep the copy for fourteen days only if the privacy review is complete.",
+          "transformation_quote": "Subject to completion of the privacy review, the vendor may keep the copy for no more than fourteen days",
+          "severity": "INFO"
+        }
+      ],
+      "notes": "Faithful control: rejection is a false alarm."
+    },
+    {
+      "id": "R5-E17",
+      "case_type": "FAITHFUL",
+      "corruption_class": null,
+      "expected_policy": "USE_TRANSFORMATION",
+      "expected_findings": [
+        {
+          "type": "PRESERVED_CANDIDATE",
+          "distinction": "PRESERVED",
+          "source_quote": "operators may copy the backup credential into a temporary isolated terminal",
+          "transformation_quote": "operators are allowed to duplicate the recovery key into a standalone diagnostic terminal",
+          "severity": "INFO"
+        }
+      ],
+      "notes": "Faithful control: rejection is a false alarm."
+    },
+    {
+      "id": "R5-E18",
+      "case_type": "FAITHFUL",
+      "corruption_class": null,
+      "expected_policy": "USE_TRANSFORMATION",
+      "expected_findings": [
+        {
+          "type": "PRESERVED_CANDIDATE",
+          "distinction": "PRESERVED",
+          "source_quote": "The incident desk may page the engineer when lag exceeds twenty seconds for five minutes.",
+          "transformation_quote": "The incident desk may page the engineer because the dashboard shows nine minutes above the threshold.",
+          "severity": "INFO"
+        }
+      ],
+      "notes": "Faithful control: rejection is a false alarm."
+    },
+    {
+      "id": "R5-E19",
+      "case_type": "FAITHFUL",
+      "corruption_class": null,
+      "expected_policy": "USE_TRANSFORMATION",
+      "expected_findings": [
+        {
+          "type": "PRESERVED_CANDIDATE",
+          "distinction": "PRESERVED",
+          "source_quote": "The release may proceed only if the security review is accepted and the ticket is approved.",
+          "transformation_quote": "Provided the security review is accepted and the ticket is approved, the release may proceed",
+          "severity": "INFO"
+        }
+      ],
+      "notes": "Faithful control: rejection is a false alarm."
+    },
+    {
+      "id": "R5-E20",
+      "case_type": "FAITHFUL",
+      "corruption_class": null,
+      "expected_policy": "USE_TRANSFORMATION",
+      "expected_findings": [
+        {
+          "type": "PRESERVED_CANDIDATE",
+          "distinction": "PRESERVED",
+          "source_quote": "The archive team must not delete legal-hold records.",
+          "transformation_quote": "Legal-hold records must not be deleted by the archive team.",
+          "severity": "INFO"
+        }
+      ],
+      "notes": "Faithful control: rejection is a false alarm."
+    },
+    {
+      "id": "R5-E21",
+      "case_type": "AMBIGUITY",
+      "corruption_class": null,
+      "expected_policy": "REQUEST_CLARIFICATION",
+      "expected_findings": [
+        {
+          "type": "UNRESOLVED",
+          "distinction": "SOURCE_AMBIGUITY",
+          "source_quote": "The privacy team has not decided whether vendor replication is authorised.",
+          "transformation_quote": "It remains unclear whether vendor replication is authorised.",
+          "severity": "MINOR"
+        }
+      ],
+      "notes": "Genuine ambiguity: clarification/abstention is appropriate."
+    },
+    {
+      "id": "R5-E22",
+      "case_type": "AMBIGUITY",
+      "corruption_class": null,
+      "expected_policy": "REQUEST_CLARIFICATION",
+      "expected_findings": [
+        {
+          "type": "UNRESOLVED",
+          "distinction": "SOURCE_AMBIGUITY",
+          "source_quote": "It is unclear whether 18:00 is the request timestamp or only the recording time.",
+          "transformation_quote": "It is unclear whether the request was timestamped after 17:00",
+          "severity": "MINOR"
+        }
+      ],
+      "notes": "Genuine ambiguity: clarification/abstention is appropriate."
+    },
+    {
+      "id": "R5-E23",
+      "case_type": "AMBIGUITY",
+      "corruption_class": null,
+      "expected_policy": "REQUEST_CLARIFICATION",
+      "expected_findings": [
+        {
+          "type": "UNRESOLVED",
+          "distinction": "SOURCE_AMBIGUITY",
+          "source_quote": "The note does not say whether \"the plan\" means the rollout plan or the test plan.",
+          "transformation_quote": "It remains unclear which plan the reviewer approved.",
+          "severity": "MINOR"
+        }
+      ],
+      "notes": "Genuine ambiguity: clarification/abstention is appropriate."
+    },
+    {
+      "id": "R5-E24",
+      "case_type": "AMBIGUITY",
+      "corruption_class": null,
+      "expected_policy": "REQUEST_CLARIFICATION",
+      "expected_findings": [
+        {
+          "type": "UNRESOLVED",
+          "distinction": "SOURCE_AMBIGUITY",
+          "source_quote": "The policy requires a signed known-good image.",
+          "transformation_quote": "It is unclear whether the image is known-good",
+          "severity": "MINOR"
+        }
+      ],
+      "notes": "Genuine ambiguity: clarification/abstention is appropriate."
+    }
+  ]
+}

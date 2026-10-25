@@ -1,0 +1,7 @@
+{
+  "status": "PASS",
+  "expected_plan_hash": "b9e3fdc5595f7397c4507047cb717a789b7eb63aa89e1da9335ae1eaac8c01d6",
+  "launcher_remote_enabled": false,
+  "live_provider_requests": 0,
+  "stdout": "Language Studio · loopback local development · no external actions · remote DISABLED\nhttp://127.0.0.1:58528\n"
+}

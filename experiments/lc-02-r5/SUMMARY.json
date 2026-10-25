@@ -1,0 +1,254 @@
+{
+  "schema": "lc02-r5-summary/0.1",
+  "standing": "OFFLINE_EXPLORATORY_PROVISIONAL_REFERENCES",
+  "checker": {
+    "version": "lc02-r5-semantic-check/0.1",
+    "code_sha256": "2b11a67ca6b44c61523c3901cbb130fa6da81b0815ead3261f640cf848e902d5",
+    "contract_sha256": "92ab3570a00164123eac5045a838f64e9df8b23efd4592115f88925f9c8bb297"
+  },
+  "corpus_freeze": {
+    "development-cases.json": "c09f4dc6365aebfaa2281262a1987a7007c1dfe1172b551a91fef501529335c4",
+    "evaluation-cases.json": "60e738896aeb9212d0eb7e4de5a5b9ab63ec5ffb591e0fe44894fe40f7faf083",
+    "development-references.json": "ed29863c8b10675e0d91bad719f073c81515325418614ded01b375a8900ed82c",
+    "evaluation-references.json": "2c909a845b1e341652fa30b22c8fb05d2b7eb2b63dd2309529c6a5182bb07eb9"
+  },
+  "success_criteria": {
+    "hash": "98a9f5052a9a5ea04f54ad16cb13d6643dbf9c61e816431bbe72034dd7e50805",
+    "results": {
+      "corruption_detection": {
+        "target": ">=10/12",
+        "actual": "8/12",
+        "pass": false
+      },
+      "faithful_acceptance": {
+        "target": ">=6/8",
+        "actual": "6/8",
+        "pass": true
+      },
+      "ambiguity_grounding": {
+        "target": ">=3/4",
+        "actual": "4/4",
+        "pass": true
+      },
+      "unnecessary_clarification": {
+        "target": "<=1",
+        "actual": 0,
+        "pass": true
+      },
+      "policy_safety": {
+        "target": "no corruption accepted",
+        "actual": [
+          "R5-E11"
+        ],
+        "pass": false
+      },
+      "evidence_grounding": {
+        "target": "all findings source-grounded",
+        "actual": "all findings have source spans; one missing finding lacks a transformation span",
+        "pass": true
+      },
+      "latency": {
+        "target": "<2000 ms average",
+        "actual": "1151 ms",
+        "pass": true
+      }
+    }
+  },
+  "development": {
+    "metrics": {
+      "cases": 12,
+      "corruption_cases": 4,
+      "detected_corruptions": 4,
+      "missed_corruptions": [],
+      "detection_rate": 1,
+      "faithful_cases": 4,
+      "faithful_accepted": 4,
+      "false_rejections": 0,
+      "false_alarm_rate": 0,
+      "ambiguity_cases": 4,
+      "ambiguity_correct": 4,
+      "ambiguity_grounded": 4,
+      "unnecessary_clarifications": [],
+      "policy_correct": 12,
+      "policy_accuracy": 1,
+      "latency_ms": {
+        "avg": 1201.1668666666667,
+        "max": 1523.2727000000002
+      }
+    },
+    "policy": {
+      "PRESERVE_SOURCE": 4,
+      "USE_TRANSFORMATION": 4,
+      "REQUEST_CLARIFICATION": 4
+    },
+    "baseline": {
+      "cases": 12,
+      "corruption_cases": 4,
+      "detected_corruptions": 0,
+      "missed_corruptions": [
+        "R5-D01",
+        "R5-D02",
+        "R5-D03",
+        "R5-D04"
+      ],
+      "detection_rate": 0,
+      "faithful_cases": 4,
+      "faithful_accepted": 0,
+      "false_rejections": 4,
+      "false_alarm_rate": 1,
+      "ambiguity_cases": 4,
+      "ambiguity_correct": 0,
+      "ambiguity_grounded": 0,
+      "unnecessary_clarifications": [],
+      "policy_correct": 4,
+      "policy_accuracy": 0.3333333333333333,
+      "latency_ms": {
+        "avg": 1340.7415916666662,
+        "max": 1922.0276999999987
+      }
+    }
+  },
+  "evaluation": {
+    "metrics": {
+      "cases": 24,
+      "corruption_cases": 12,
+      "detected_corruptions": 8,
+      "missed_corruptions": [
+        "R5-E04",
+        "R5-E07",
+        "R5-E10",
+        "R5-E11"
+      ],
+      "detection_rate": 0.6666666666666666,
+      "faithful_cases": 8,
+      "faithful_accepted": 6,
+      "false_rejections": 2,
+      "false_alarm_rate": 0.25,
+      "ambiguity_cases": 4,
+      "ambiguity_correct": 4,
+      "ambiguity_grounded": 4,
+      "unnecessary_clarifications": [],
+      "policy_correct": 21,
+      "policy_accuracy": 0.875,
+      "latency_ms": {
+        "avg": 1150.8787875000005,
+        "max": 1309.7399000000005
+      }
+    },
+    "policy": {
+      "PRESERVE_SOURCE": 13,
+      "USE_TRANSFORMATION": 7,
+      "REQUEST_CLARIFICATION": 4
+    },
+    "baseline": {
+      "cases": 24,
+      "corruption_cases": 12,
+      "detected_corruptions": 0,
+      "missed_corruptions": [
+        "R5-E01",
+        "R5-E02",
+        "R5-E03",
+        "R5-E04",
+        "R5-E05",
+        "R5-E06",
+        "R5-E07",
+        "R5-E08",
+        "R5-E09",
+        "R5-E10",
+        "R5-E11",
+        "R5-E12"
+      ],
+      "detection_rate": 0,
+      "faithful_cases": 8,
+      "faithful_accepted": 0,
+      "false_rejections": 8,
+      "false_alarm_rate": 1,
+      "ambiguity_cases": 4,
+      "ambiguity_correct": 0,
+      "ambiguity_grounded": 0,
+      "unnecessary_clarifications": [],
+      "policy_correct": 12,
+      "policy_accuracy": 0.5,
+      "latency_ms": {
+        "avg": 1151.1303083333332,
+        "max": 1409.8492999999999
+      }
+    }
+  },
+  "r4_comparison": {
+    "r4_eval_detection": "5/6",
+    "r5_eval_detection": "8/12",
+    "r4_eval_false_rejection": "2/6",
+    "r5_eval_false_rejection": "2/8",
+    "r4_ambiguity": "not tested",
+    "r5_ambiguity": "4/4"
+  },
+  "prior_failures": [
+    {
+      "case": "LC20-07",
+      "arm": "B_AI_MEDIATED",
+      "harmful": true,
+      "unresolved": 4,
+      "unsupported_uncertainty": 5,
+      "policy": "PRESERVE_SOURCE"
+    },
+    {
+      "case": "LC20-07",
+      "arm": "C_UNDERSTANDING_ENHANCED",
+      "harmful": true,
+      "unresolved": 2,
+      "unsupported_uncertainty": 5,
+      "policy": "PRESERVE_SOURCE"
+    },
+    {
+      "case": "LC20-10",
+      "arm": "B_AI_MEDIATED",
+      "harmful": true,
+      "unresolved": 3,
+      "unsupported_uncertainty": 6,
+      "policy": "PRESERVE_SOURCE"
+    },
+    {
+      "case": "LC20-10",
+      "arm": "C_UNDERSTANDING_ENHANCED",
+      "harmful": true,
+      "unresolved": 3,
+      "unsupported_uncertainty": 9,
+      "policy": "PRESERVE_SOURCE"
+    },
+    {
+      "case": "LC20-02",
+      "arm": "B_AI_MEDIATED",
+      "harmful": false,
+      "unresolved": 6,
+      "unsupported_uncertainty": 9,
+      "policy": "PRESERVE_SOURCE"
+    },
+    {
+      "case": "LC20-02",
+      "arm": "C_UNDERSTANDING_ENHANCED",
+      "harmful": false,
+      "unresolved": 2,
+      "unsupported_uncertainty": 5,
+      "policy": "PRESERVE_SOURCE"
+    },
+    {
+      "case": "LC20-19",
+      "arm": "B_AI_MEDIATED",
+      "harmful": false,
+      "unresolved": 5,
+      "unsupported_uncertainty": 7,
+      "policy": "PRESERVE_SOURCE"
+    },
+    {
+      "case": "LC20-19",
+      "arm": "C_UNDERSTANDING_ENHANCED",
+      "harmful": false,
+      "unresolved": 10,
+      "unsupported_uncertainty": 6,
+      "policy": "PRESERVE_SOURCE"
+    }
+  ],
+  "decision": "REVISE_NOT_ADOPT",
+  "decision_reason": "Detection fell below the prospective 10/12 target, one corruption (R5-E11) was accepted, and justified/invented uncertainty still co-occur in the prior cases. Faithful acceptance and ambiguity handling improved."
+}

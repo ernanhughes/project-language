@@ -1,0 +1,10 @@
+{
+  "schema": "lc03-development-freeze/0.1",
+  "created": "2026-10-24",
+  "standing": "DEVELOPMENT_FIXTURE_ONLY_NOT_HELD_OUT",
+  "files": {
+    "incident-source.txt": "ca8d51cad443bb830c6a0a4e1d0a542aa24c3b8ff7ed26bd50ab23dcdae50857",
+    "development-cases.json": "345c9d8d46164382fce9cf5cd9e11868051684e947fc6b29bc62cfd0452b8e01"
+  },
+  "note": "Evaluation sources are not authored or frozen here."
+}

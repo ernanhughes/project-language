@@ -1,0 +1,16 @@
+{
+  "schema": "lc02-r7-criteria-freeze/0.1",
+  "created": "2026-10-24",
+  "standing": "FROZEN_BEFORE_HELD_OUT_EXECUTION",
+  "criteria": "SUCCESS-CRITERIA.json",
+  "criteria_sha256": "deb6401aa205e16bf410c9423c21dee535cbbddd65b7ffdab71040a36ffdb25e",
+  "model": {
+    "provider": "ollama-local",
+    "id": "qwen3.5:latest",
+    "digest": "6488c96fa5faab64bb65cbd30d4289e20e6130ef535a93ef9a49f42eda893ea7"
+  },
+  "prompt_version": "lc02-r7-review-prompt/0.4",
+  "artifacts_verified": true,
+  "held_out_executed": false,
+  "note": "The held-out split may be executed once after this freeze. No checker, reviewer prompt, corpus, reference, reconciliation rule or criterion may be changed after execution begins. Model execution is local-only; no hosted calls."
+}

@@ -1,0 +1,188 @@
+{
+  "schema": "language-understanding-inventory/0.1",
+  "source": {
+    "id": "migration",
+    "sha256": "c4078e63d0cd4b0b979f783f35eedf3953054b548f9407246c4ddc039ff482d2",
+    "text": "A green migration rehearsal is readiness evidence only and not permission to run a production migration. Production changes require the service owner's separate approval. An emergency rollback may precede review only for a signed known-good build with audit records retained. This emergency rollback never permits a new migration. Vendor replication approval is unknown.\n"
+  },
+  "profile": {
+    "id": "technical-policy",
+    "version": "0.1",
+    "schema": "language-understanding-profile/0.1"
+  },
+  "engine": {
+    "id": "spacy/blank-en+sentencizer",
+    "nltk_version": "3.9.2",
+    "spacy_version": "3.8.11",
+    "trained_syntax_available": false
+  },
+  "segments": [
+    {
+      "id": "s1",
+      "start": 0,
+      "end": 104,
+      "text": "A green migration rehearsal is readiness evidence only and not permission to run a production migration."
+    },
+    {
+      "id": "s2",
+      "start": 105,
+      "end": 170,
+      "text": "Production changes require the service owner's separate approval."
+    },
+    {
+      "id": "s3",
+      "start": 171,
+      "end": 275,
+      "text": "An emergency rollback may precede review only for a signed known-good build with audit records retained."
+    },
+    {
+      "id": "s4",
+      "start": 276,
+      "end": 330,
+      "text": "This emergency rollback never permits a new migration."
+    },
+    {
+      "id": "s5",
+      "start": 331,
+      "end": 370,
+      "text": "Vendor replication approval is unknown."
+    }
+  ],
+  "meaning_units": [
+    {
+      "id": "m1",
+      "source_segments": [
+        "s1"
+      ],
+      "start": 0,
+      "end": 54,
+      "source_quote": "A green migration rehearsal is readiness evidence only",
+      "proposed_meaning": "A green migration rehearsal is readiness evidence only",
+      "classification": {
+        "kind": "statement",
+        "normative_force": "ASSERTED_IN_SOURCE",
+        "condition_cues": [
+          "only"
+        ],
+        "temporal_cues": [],
+        "possible_unresolved_reference": false,
+        "method": "LEXICAL_RULE_HEURISTIC",
+        "review": "HEURISTIC_UNVERIFIED"
+      },
+      "provenance": "EXACT_SOURCE_SPAN"
+    },
+    {
+      "id": "m2",
+      "source_segments": [
+        "s1"
+      ],
+      "start": 59,
+      "end": 104,
+      "source_quote": "not permission to run a production migration.",
+      "proposed_meaning": "not permission to run a production migration.",
+      "classification": {
+        "kind": "authority_limit",
+        "normative_force": "DOES_NOT_CONFER_PERMISSION",
+        "condition_cues": [],
+        "temporal_cues": [],
+        "possible_unresolved_reference": false,
+        "method": "LEXICAL_RULE_HEURISTIC",
+        "review": "HEURISTIC_UNVERIFIED"
+      },
+      "provenance": "EXACT_SOURCE_SPAN"
+    },
+    {
+      "id": "m3",
+      "source_segments": [
+        "s2"
+      ],
+      "start": 105,
+      "end": 170,
+      "source_quote": "Production changes require the service owner's separate approval.",
+      "proposed_meaning": "Production changes require the service owner's separate approval.",
+      "classification": {
+        "kind": "requirement",
+        "normative_force": "REQUIRED",
+        "condition_cues": [],
+        "temporal_cues": [],
+        "possible_unresolved_reference": false,
+        "method": "LEXICAL_RULE_HEURISTIC",
+        "review": "HEURISTIC_UNVERIFIED"
+      },
+      "provenance": "EXACT_SOURCE_SPAN"
+    },
+    {
+      "id": "m4",
+      "source_segments": [
+        "s3"
+      ],
+      "start": 171,
+      "end": 275,
+      "source_quote": "An emergency rollback may precede review only for a signed known-good build with audit records retained.",
+      "proposed_meaning": "An emergency rollback may precede review only for a signed known-good build with audit records retained.",
+      "classification": {
+        "kind": "conditional_permission",
+        "normative_force": "PERMITTED_IN_SOURCE",
+        "condition_cues": [
+          "only",
+          "with"
+        ],
+        "temporal_cues": [],
+        "possible_unresolved_reference": false,
+        "method": "LEXICAL_RULE_HEURISTIC",
+        "review": "HEURISTIC_UNVERIFIED"
+      },
+      "provenance": "EXACT_SOURCE_SPAN"
+    },
+    {
+      "id": "m5",
+      "source_segments": [
+        "s4"
+      ],
+      "start": 276,
+      "end": 330,
+      "source_quote": "This emergency rollback never permits a new migration.",
+      "proposed_meaning": "This emergency rollback never permits a new migration.",
+      "classification": {
+        "kind": "authority_limit",
+        "normative_force": "DOES_NOT_CONFER_PERMISSION",
+        "condition_cues": [],
+        "temporal_cues": [],
+        "possible_unresolved_reference": true,
+        "method": "LEXICAL_RULE_HEURISTIC",
+        "review": "HEURISTIC_UNVERIFIED"
+      },
+      "provenance": "EXACT_SOURCE_SPAN"
+    },
+    {
+      "id": "m6",
+      "source_segments": [
+        "s5"
+      ],
+      "start": 331,
+      "end": 370,
+      "source_quote": "Vendor replication approval is unknown.",
+      "proposed_meaning": "Vendor replication approval is unknown.",
+      "classification": {
+        "kind": "unknown",
+        "normative_force": "UNRESOLVED",
+        "condition_cues": [],
+        "temporal_cues": [],
+        "possible_unresolved_reference": false,
+        "method": "LEXICAL_RULE_HEURISTIC",
+        "review": "HEURISTIC_UNVERIFIED"
+      },
+      "provenance": "EXACT_SOURCE_SPAN"
+    }
+  ],
+  "relations": [],
+  "coverage": {
+    "standing": "NOT_EVALUATED",
+    "source_supportedness": "NOT_EVALUATED",
+    "semantic_completeness": "NOT_ESTABLISHED"
+  },
+  "warnings": [
+    "Labels are lexical heuristics, not verified meaning or permissions.",
+    "No cross-sentence relation, coreference, or semantic completeness checker is implemented."
+  ]
+}

@@ -1,0 +1,681 @@
+{
+  "schema": "language-semantic-references/0.1",
+  "standing": "UNADJUDICATED_REFERENCE",
+  "author": {
+    "role": "SEPARATE_AI_BLIND_AUTHOR",
+    "agent": "blind_reference",
+    "independent_human_validation": false
+  },
+  "passages": [
+    {
+      "id": "lc02-d1",
+      "source": {
+        "id": "lc02-d1-source",
+        "text": "A green migration rehearsal is readiness evidence, not permission to run a production migration. Production changes require the service owner’s separate approval. An emergency rollback may precede review only for a signed known-good build with audit records retained. It never permits a new migration. Vendor replication approval is unknown.",
+        "sha256": "ae0c465f5f6eb6e1233d981f4d4933440f90d71283b21a41fd2fb4f44caeb671"
+      },
+      "units": [
+        {
+          "id": "lc02-d1-u1",
+          "text": "A green migration rehearsal is readiness evidence",
+          "act": "ASSERTION",
+          "force": "ASSERTED",
+          "actors": [],
+          "actions": [
+            "migration rehearsal supplies readiness evidence"
+          ],
+          "conditions": [],
+          "exceptions": [],
+          "temporal": [],
+          "ambiguities": [],
+          "spans": [
+            {
+              "start": 0,
+              "end": 49,
+              "text": "A green migration rehearsal is readiness evidence"
+            }
+          ]
+        },
+        {
+          "id": "lc02-d1-u2",
+          "text": "A green migration rehearsal is readiness evidence, not permission to run a production migration.",
+          "act": "AUTHORITY_BOUNDARY",
+          "force": "EXPLICIT_NON_AUTHORIZATION",
+          "actors": [],
+          "actions": [
+            "run production migration"
+          ],
+          "conditions": [],
+          "exceptions": [],
+          "temporal": [],
+          "ambiguities": [],
+          "spans": [
+            {
+              "start": 0,
+              "end": 96,
+              "text": "A green migration rehearsal is readiness evidence, not permission to run a production migration."
+            }
+          ]
+        },
+        {
+          "id": "lc02-d1-u3",
+          "text": "Production changes require the service owner’s separate approval.",
+          "act": "REQUIREMENT",
+          "force": "REQUIRED",
+          "actors": [
+            "service owner"
+          ],
+          "actions": [
+            "production changes"
+          ],
+          "conditions": [
+            "separate owner approval"
+          ],
+          "exceptions": [],
+          "temporal": [],
+          "ambiguities": [],
+          "spans": [
+            {
+              "start": 97,
+              "end": 162,
+              "text": "Production changes require the service owner’s separate approval."
+            }
+          ]
+        },
+        {
+          "id": "lc02-d1-u4",
+          "text": "An emergency rollback may precede review only for a signed known-good build with audit records retained.",
+          "act": "PERMISSION",
+          "force": "CONDITIONAL_PERMISSION",
+          "actors": [],
+          "actions": [
+            "emergency rollback"
+          ],
+          "conditions": [
+            "signed known-good build",
+            "audit records retained"
+          ],
+          "exceptions": [],
+          "temporal": [
+            "may precede review"
+          ],
+          "ambiguities": [],
+          "spans": [
+            {
+              "start": 163,
+              "end": 267,
+              "text": "An emergency rollback may precede review only for a signed known-good build with audit records retained."
+            }
+          ]
+        },
+        {
+          "id": "lc02-d1-u5",
+          "text": "It never permits a new migration.",
+          "act": "AUTHORITY_BOUNDARY",
+          "force": "EXPLICIT_NON_AUTHORIZATION",
+          "actors": [],
+          "actions": [
+            "new migration"
+          ],
+          "conditions": [],
+          "exceptions": [],
+          "temporal": [],
+          "ambiguities": [
+            "It most naturally refers to the rollback allowance."
+          ],
+          "spans": [
+            {
+              "start": 268,
+              "end": 301,
+              "text": "It never permits a new migration."
+            }
+          ]
+        },
+        {
+          "id": "lc02-d1-u6",
+          "text": "Vendor replication approval is unknown.",
+          "act": "UNKNOWN_STATUS",
+          "force": "UNKNOWN",
+          "actors": [],
+          "actions": [
+            "vendor replication approval"
+          ],
+          "conditions": [],
+          "exceptions": [],
+          "temporal": [],
+          "ambiguities": [],
+          "spans": [
+            {
+              "start": 302,
+              "end": 341,
+              "text": "Vendor replication approval is unknown."
+            }
+          ]
+        }
+      ],
+      "relations": [
+        {
+          "from": "lc02-d1-u3",
+          "to": "lc02-d1-u2",
+          "type": "SUPPORTS",
+          "spans": [
+            {
+              "start": 97,
+              "end": 162,
+              "text": "Production changes require the service owner’s separate approval."
+            },
+            {
+              "start": 0,
+              "end": 96,
+              "text": "A green migration rehearsal is readiness evidence, not permission to run a production migration."
+            }
+          ],
+          "uncertainty": "Approval requirement reinforces authority distinction; approval alone is not stated sufficient."
+        },
+        {
+          "from": "lc02-d1-u4",
+          "to": "lc02-d1-u3",
+          "type": "QUALIFIES",
+          "spans": [
+            {
+              "start": 163,
+              "end": 267,
+              "text": "An emergency rollback may precede review only for a signed known-good build with audit records retained."
+            },
+            {
+              "start": 97,
+              "end": 162,
+              "text": "Production changes require the service owner’s separate approval."
+            }
+          ],
+          "uncertainty": "Review and owner approval are not explicitly equated; no owner-approval waiver is inferred."
+        },
+        {
+          "from": "lc02-d1-u5",
+          "to": "lc02-d1-u4",
+          "type": "LIMITS",
+          "spans": [
+            {
+              "start": 268,
+              "end": 301,
+              "text": "It never permits a new migration."
+            },
+            {
+              "start": 163,
+              "end": 267,
+              "text": "An emergency rollback may precede review only for a signed known-good build with audit records retained."
+            }
+          ],
+          "uncertainty": "Pronoun referent inferred from context."
+        }
+      ],
+      "ambiguities": [
+        "Review and owner approval may be distinct.",
+        "Rollback conditions are necessary for preceding review; general production permission is not inferred."
+      ]
+    },
+    {
+      "id": "lc02v-dev-interview",
+      "source": {
+        "id": "lc02v-dev-interview-source",
+        "text": "During the interview, Mara reported that the facilities lead had approved opening the west gate. The interviewer did not see an approval record. Mara later said she had heard the claim from a contractor, rather than from the lead. The gate remained closed that afternoon.",
+        "sha256": "4e11700b5ee6a5217b93960cf690d20e962df0fbc4c32db389711396bfeb9d7c"
+      },
+      "units": [
+        {
+          "id": "lc02v-dev-interview-u1",
+          "text": "During the interview, Mara reported that the facilities lead had approved opening the west gate.",
+          "act": "REPORTED_CLAIM",
+          "force": "ATTRIBUTED_UNVERIFIED",
+          "actors": [
+            "Mara",
+            "facilities lead"
+          ],
+          "actions": [
+            "report approval of opening west gate"
+          ],
+          "conditions": [],
+          "exceptions": [],
+          "temporal": [
+            "during interview"
+          ],
+          "ambiguities": [],
+          "spans": [
+            {
+              "start": 0,
+              "end": 96,
+              "text": "During the interview, Mara reported that the facilities lead had approved opening the west gate."
+            }
+          ]
+        },
+        {
+          "id": "lc02v-dev-interview-u2",
+          "text": "The interviewer did not see an approval record.",
+          "act": "OBSERVATION_REPORT",
+          "force": "ASSERTED",
+          "actors": [
+            "interviewer"
+          ],
+          "actions": [
+            "did not see approval record"
+          ],
+          "conditions": [],
+          "exceptions": [],
+          "temporal": [],
+          "ambiguities": [],
+          "spans": [
+            {
+              "start": 97,
+              "end": 144,
+              "text": "The interviewer did not see an approval record."
+            }
+          ]
+        },
+        {
+          "id": "lc02v-dev-interview-u3",
+          "text": "Mara later said she had heard the claim from a contractor, rather than from the lead.",
+          "act": "REPORTED_SOURCE",
+          "force": "ATTRIBUTED",
+          "actors": [
+            "Mara",
+            "contractor",
+            "facilities lead"
+          ],
+          "actions": [
+            "hear claim from contractor"
+          ],
+          "conditions": [],
+          "exceptions": [],
+          "temporal": [
+            "later"
+          ],
+          "ambiguities": [],
+          "spans": [
+            {
+              "start": 145,
+              "end": 230,
+              "text": "Mara later said she had heard the claim from a contractor, rather than from the lead."
+            }
+          ]
+        },
+        {
+          "id": "lc02v-dev-interview-u4",
+          "text": "The gate remained closed that afternoon.",
+          "act": "STATE_REPORT",
+          "force": "ASSERTED",
+          "actors": [],
+          "actions": [
+            "gate remains closed"
+          ],
+          "conditions": [],
+          "exceptions": [],
+          "temporal": [
+            "that afternoon"
+          ],
+          "ambiguities": [],
+          "spans": [
+            {
+              "start": 231,
+              "end": 271,
+              "text": "The gate remained closed that afternoon."
+            }
+          ]
+        }
+      ],
+      "relations": [
+        {
+          "from": "lc02v-dev-interview-u2",
+          "to": "lc02v-dev-interview-u1",
+          "type": "LIMITS_EVIDENTIAL_SUPPORT",
+          "spans": [
+            {
+              "start": 97,
+              "end": 144,
+              "text": "The interviewer did not see an approval record."
+            },
+            {
+              "start": 0,
+              "end": 96,
+              "text": "During the interview, Mara reported that the facilities lead had approved opening the west gate."
+            }
+          ],
+          "uncertainty": "Non-observation does not establish absence of approval."
+        },
+        {
+          "from": "lc02v-dev-interview-u3",
+          "to": "lc02v-dev-interview-u1",
+          "type": "QUALIFIES_ATTRIBUTION",
+          "spans": [
+            {
+              "start": 145,
+              "end": 230,
+              "text": "Mara later said she had heard the claim from a contractor, rather than from the lead."
+            },
+            {
+              "start": 0,
+              "end": 96,
+              "text": "During the interview, Mara reported that the facilities lead had approved opening the west gate."
+            }
+          ],
+          "uncertainty": "Contractor source and accuracy remain unknown."
+        }
+      ],
+      "ambiguities": [
+        "Reported approval is not independently established.",
+        "Closure does not establish lack of permission or its cause."
+      ]
+    },
+    {
+      "id": "lc02v-dev-temporal",
+      "source": {
+        "id": "lc02v-dev-temporal-source",
+        "text": "The archive team may export the public catalogue after 18:00 on Friday. Until the privacy review is complete, entries containing personal contact details must be excluded. An on-call archivist may export those entries earlier only to restore a damaged internal index. This exception expires at noon on Saturday.",
+        "sha256": "7640cd264cf7d2a9e0a9fa6a17bed45e080a9c922851d0b0ee9d0b2915581d5a"
+      },
+      "units": [
+        {
+          "id": "lc02v-dev-temporal-u1",
+          "text": "The archive team may export the public catalogue after 18:00 on Friday.",
+          "act": "PERMISSION",
+          "force": "CONDITIONAL_PERMISSION",
+          "actors": [
+            "archive team"
+          ],
+          "actions": [
+            "export public catalogue"
+          ],
+          "conditions": [],
+          "exceptions": [],
+          "temporal": [
+            "after Friday 18:00"
+          ],
+          "ambiguities": [],
+          "spans": [
+            {
+              "start": 0,
+              "end": 71,
+              "text": "The archive team may export the public catalogue after 18:00 on Friday."
+            }
+          ]
+        },
+        {
+          "id": "lc02v-dev-temporal-u2",
+          "text": "Until the privacy review is complete, entries containing personal contact details must be excluded.",
+          "act": "REQUIREMENT",
+          "force": "REQUIRED",
+          "actors": [],
+          "actions": [
+            "exclude contact-detail entries"
+          ],
+          "conditions": [
+            "privacy review incomplete"
+          ],
+          "exceptions": [],
+          "temporal": [
+            "until privacy review complete"
+          ],
+          "ambiguities": [],
+          "spans": [
+            {
+              "start": 72,
+              "end": 171,
+              "text": "Until the privacy review is complete, entries containing personal contact details must be excluded."
+            }
+          ]
+        },
+        {
+          "id": "lc02v-dev-temporal-u3",
+          "text": "An on-call archivist may export those entries earlier only to restore a damaged internal index.",
+          "act": "EXCEPTION_PERMISSION",
+          "force": "CONDITIONAL_PERMISSION",
+          "actors": [
+            "on-call archivist"
+          ],
+          "actions": [
+            "export contact-detail entries"
+          ],
+          "conditions": [
+            "restore damaged internal index"
+          ],
+          "exceptions": [
+            "natural reading: exception to contact-detail exclusion"
+          ],
+          "temporal": [
+            "earlier"
+          ],
+          "ambiguities": [
+            "Earlier may mean before Friday 18:00 or before review completion."
+          ],
+          "spans": [
+            {
+              "start": 172,
+              "end": 267,
+              "text": "An on-call archivist may export those entries earlier only to restore a damaged internal index."
+            }
+          ]
+        },
+        {
+          "id": "lc02v-dev-temporal-u4",
+          "text": "This exception expires at noon on Saturday.",
+          "act": "TEMPORAL_LIMIT",
+          "force": "ASSERTED_LIMIT",
+          "actors": [],
+          "actions": [],
+          "conditions": [],
+          "exceptions": [],
+          "temporal": [
+            "Saturday noon expiry"
+          ],
+          "ambiguities": [],
+          "spans": [
+            {
+              "start": 268,
+              "end": 311,
+              "text": "This exception expires at noon on Saturday."
+            }
+          ]
+        }
+      ],
+      "relations": [
+        {
+          "from": "lc02v-dev-temporal-u2",
+          "to": "lc02v-dev-temporal-u1",
+          "type": "LIMITS",
+          "spans": [
+            {
+              "start": 72,
+              "end": 171,
+              "text": "Until the privacy review is complete, entries containing personal contact details must be excluded."
+            },
+            {
+              "start": 0,
+              "end": 71,
+              "text": "The archive team may export the public catalogue after 18:00 on Friday."
+            }
+          ],
+          "uncertainty": ""
+        },
+        {
+          "from": "lc02v-dev-temporal-u3",
+          "to": "lc02v-dev-temporal-u2",
+          "type": "EXCEPTION_TO",
+          "spans": [
+            {
+              "start": 172,
+              "end": 267,
+              "text": "An on-call archivist may export those entries earlier only to restore a damaged internal index."
+            },
+            {
+              "start": 72,
+              "end": 171,
+              "text": "Until the privacy review is complete, entries containing personal contact details must be excluded."
+            }
+          ],
+          "uncertainty": "Those entries naturally refers to contact-detail entries; earlier has unresolved comparison point."
+        },
+        {
+          "from": "lc02v-dev-temporal-u4",
+          "to": "lc02v-dev-temporal-u3",
+          "type": "LIMITS",
+          "spans": [
+            {
+              "start": 268,
+              "end": 311,
+              "text": "This exception expires at noon on Saturday."
+            },
+            {
+              "start": 172,
+              "end": 267,
+              "text": "An on-call archivist may export those entries earlier only to restore a damaged internal index."
+            }
+          ],
+          "uncertainty": ""
+        }
+      ],
+      "ambiguities": [
+        "No timezone or calendar date is supplied.",
+        "Exception relation to Friday opening time is unresolved.",
+        "Review completion removes the stated exclusion condition; other authorization is not independently established."
+      ]
+    },
+    {
+      "id": "lc02v-dev-pronoun",
+      "source": {
+        "id": "lc02v-dev-pronoun-source",
+        "text": "Nadia told Elise that she could approve the repair after inspecting the pump. She asked Tomas to keep it offline until then. The supervisor recorded the conversation but did not identify who would inspect the pump.",
+        "sha256": "367f61c2a7ddbddf1e51e3b1bada53c1411a0212b8551449da3712250da19438"
+      },
+      "units": [
+        {
+          "id": "lc02v-dev-pronoun-u1",
+          "text": "Nadia told Elise that she could approve the repair after inspecting the pump.",
+          "act": "REPORTED_PERMISSION",
+          "force": "ATTRIBUTED_CONDITIONAL_PERMISSION",
+          "actors": [
+            "Nadia",
+            "Elise",
+            "unresolved she"
+          ],
+          "actions": [
+            "approve repair",
+            "inspect pump"
+          ],
+          "conditions": [
+            "inspection before approval"
+          ],
+          "exceptions": [],
+          "temporal": [
+            "after inspecting pump"
+          ],
+          "ambiguities": [
+            "She may refer to Nadia or Elise; inspector correspondingly unresolved."
+          ],
+          "spans": [
+            {
+              "start": 0,
+              "end": 77,
+              "text": "Nadia told Elise that she could approve the repair after inspecting the pump."
+            }
+          ]
+        },
+        {
+          "id": "lc02v-dev-pronoun-u2",
+          "text": "She asked Tomas to keep it offline until then.",
+          "act": "REQUEST",
+          "force": "REQUESTED",
+          "actors": [
+            "Tomas",
+            "unresolved She"
+          ],
+          "actions": [
+            "keep it offline"
+          ],
+          "conditions": [],
+          "exceptions": [],
+          "temporal": [
+            "until then"
+          ],
+          "ambiguities": [
+            "She may be Nadia or Elise.",
+            "It most naturally means pump.",
+            "Then may mean inspection or approval."
+          ],
+          "spans": [
+            {
+              "start": 78,
+              "end": 124,
+              "text": "She asked Tomas to keep it offline until then."
+            }
+          ]
+        },
+        {
+          "id": "lc02v-dev-pronoun-u3",
+          "text": "The supervisor recorded the conversation but did not identify who would inspect the pump.",
+          "act": "RECORD_REPORT",
+          "force": "ASSERTED",
+          "actors": [
+            "supervisor"
+          ],
+          "actions": [
+            "record conversation"
+          ],
+          "conditions": [],
+          "exceptions": [],
+          "temporal": [],
+          "ambiguities": [
+            "Inspector identity remains unresolved."
+          ],
+          "spans": [
+            {
+              "start": 125,
+              "end": 214,
+              "text": "The supervisor recorded the conversation but did not identify who would inspect the pump."
+            }
+          ]
+        }
+      ],
+      "relations": [
+        {
+          "from": "lc02v-dev-pronoun-u2",
+          "to": "lc02v-dev-pronoun-u1",
+          "type": "TEMPORAL_DEPENDENCY",
+          "spans": [
+            {
+              "start": 78,
+              "end": 124,
+              "text": "She asked Tomas to keep it offline until then."
+            },
+            {
+              "start": 0,
+              "end": 77,
+              "text": "Nadia told Elise that she could approve the repair after inspecting the pump."
+            }
+          ],
+          "uncertainty": "Endpoint and pronoun referents unresolved; request is not an independently stated prohibition."
+        },
+        {
+          "from": "lc02v-dev-pronoun-u3",
+          "to": "lc02v-dev-pronoun-u1",
+          "type": "PRESERVES_UNCERTAINTY",
+          "spans": [
+            {
+              "start": 125,
+              "end": 214,
+              "text": "The supervisor recorded the conversation but did not identify who would inspect the pump."
+            },
+            {
+              "start": 0,
+              "end": 77,
+              "text": "Nadia told Elise that she could approve the repair after inspecting the pump."
+            }
+          ],
+          "uncertainty": ""
+        }
+      ],
+      "ambiguities": [
+        "Nadia’s authority to grant permission is unspecified.",
+        "Request compliance and outcome are unspecified."
+      ]
+    }
+  ]
+}

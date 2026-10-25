@@ -1,0 +1,529 @@
+{
+  "schema": "lc02-r2-blind-review-comparison/0.1",
+  "standing": "TWO_MODEL_BASED_PROVISIONAL_REVIEWERS_NOT_HUMAN_INDEPENDENT_ADJUDICATION",
+  "design_sha256": "2c88429b777baca7207aad13ea3041746bc0a99d0d96fcc217aed81856c78de4",
+  "review_hashes": {
+    "A": "e3a8e704e5ef908d36a42da830a7b8531e9a88aa1a59b18f4ca6c426882ad037",
+    "B": "3b4b01e73610749946a25e22f2010d227d6eff6c5c61ac845c2609f413427464"
+  },
+  "validation": "PASS",
+  "reviewer_standing": {
+    "A": "MODEL_BASED_PROVISIONAL_NOT_HUMAN",
+    "B": "MODEL_BASED_PROVISIONAL_NOT_HUMAN"
+  },
+  "agreements": 16,
+  "disagreements": 0,
+  "disagreement_cases": [],
+  "flagged_cases": [
+    "R1E-01",
+    "R1E-02",
+    "R1E-03",
+    "R1E-04",
+    "R1E-05",
+    "R1E-06",
+    "R1E-07",
+    "R1E-08",
+    "R1E-09",
+    "R1E-10",
+    "R1E-11",
+    "R1E-12",
+    "R1E-13",
+    "R1E-14",
+    "R1E-15",
+    "R1E-16"
+  ],
+  "design_issues": [
+    {
+      "id": "R1E-04",
+      "issue": "META_QUESTION_AMBIGUITY",
+      "detail": "Both reviewers chose SOURCE_CONFLICT but both noted that the word \"unambiguously\" permits a reasonable NO answer. Rewrite the question to ask for the status of the permission rather than whether it is unambiguous."
+    },
+    {
+      "id": "R1E-08",
+      "issue": "LOW_CONFIDENCE_PRESENT_TENSE",
+      "detail": "Reviewer B reads the dashboard statement as present-tense but asks whether it could be historical. The source says \"shows\" and the question says \"now\"; consider making the current-episode wording explicit before v2."
+    },
+    {
+      "id": "R1E-16",
+      "issue": "META_QUESTION_AMBIGUITY",
+      "detail": "Both reviewers chose SOURCE_CONFLICT but noted that the yes/no form \"May the auditor access\" permits NO or UNKNOWN. Rewrite the question to ask for the status under the document."
+    }
+  ],
+  "reference_comparison": {
+    "A": {
+      "matches": 16,
+      "total": 16
+    },
+    "B": {
+      "matches": 16,
+      "total": 16
+    }
+  },
+  "cases": [
+    {
+      "id": "R1E-01",
+      "case_class": "FULLY_SPECIFIED_PERMISSION",
+      "scope": "SOURCE_RELATIVE",
+      "expected": "YES",
+      "A": "YES",
+      "B": "YES",
+      "agreement": "AGREE",
+      "expected_match": {
+        "A": true,
+        "B": true
+      },
+      "confidence": {
+        "A": 5,
+        "B": 5
+      },
+      "flags": [
+        "A:AMBIGUITY_REPORTED",
+        "B:AMBIGUITY_REPORTED"
+      ],
+      "ambiguity": {
+        "A": "None material. The only possible issue is whether 'unavailable' in the monitoring statement matches the policy's sense of unavailable, but the text presents it as the applicable measurement.",
+        "B": "None material; 'may' is read as permission, which is what the question asks."
+      },
+      "explanations": {
+        "A": "The permission is conditioned on the primary region being unavailable for ten continuous minutes. The monitoring figure of twelve continuous minutes satisfies that threshold, and the source expressly says no other condition applies.",
+        "B": "The stated permission is conditioned on the primary region being unavailable for ten continuous minutes. The communication states it has been unavailable for twelve continuous minutes and that no other condition applies, so the condition for permission is satisfied."
+      }
+    },
+    {
+      "id": "R1E-02",
+      "case_class": "FULLY_SPECIFIED_PROHIBITION",
+      "scope": "SOURCE_RELATIVE",
+      "expected": "NO",
+      "A": "NO",
+      "B": "NO",
+      "agreement": "AGREE",
+      "expected_match": {
+        "A": true,
+        "B": true
+      },
+      "confidence": {
+        "A": 5,
+        "B": 5
+      },
+      "flags": [
+        "A:AMBIGUITY_REPORTED",
+        "B:AMBIGUITY_REPORTED"
+      ],
+      "ambiguity": {
+        "A": "A removable drive is naturally a form of removable media; no plausible reading of the text makes the proposed drive exempt.",
+        "B": "None material."
+      },
+      "explanations": {
+        "A": "The policy expressly prohibits copying the staging database to removable media, so it does not permit the proposed copy. The prohibition applies directly; the operator's proposal does not create an exception.",
+        "B": "The policy expressly prohibits copying the staging database to removable media, and the proposed removable drive is removable media. This is an express prohibition, not merely an absence of permission."
+      }
+    },
+    {
+      "id": "R1E-03",
+      "case_class": "FULLY_SPECIFIED_UNKNOWN",
+      "scope": "SOURCE_RELATIVE",
+      "expected": "UNKNOWN",
+      "A": "UNKNOWN",
+      "B": "UNKNOWN",
+      "agreement": "AGREE",
+      "expected_match": {
+        "A": true,
+        "B": true
+      },
+      "confidence": {
+        "A": 5,
+        "B": 5
+      },
+      "flags": [
+        "A:AMBIGUITY_REPORTED",
+        "B:AMBIGUITY_REPORTED"
+      ],
+      "ambiguity": {
+        "A": "None; the source expressly disclaims the relevant fact rather than implying either answer.",
+        "B": "None material; silence about return is not evidence either way."
+      },
+      "explanations": {
+        "A": "The communication gives only a due date and expressly says the record does not state whether the vendor returned the questionnaire. Return is therefore unresolved, and no supplied document fills the gap.",
+        "B": "The communication gives a due date but expressly says the record does not state whether the vendor returned the questionnaire, and no other document is supplied. Return is therefore unresolved; the due date alone does not establish return."
+      }
+    },
+    {
+      "id": "R1E-04",
+      "case_class": "FULLY_SPECIFIED_CONFLICT",
+      "scope": "SOURCE_RELATIVE",
+      "expected": "SOURCE_CONFLICT",
+      "A": "SOURCE_CONFLICT",
+      "B": "SOURCE_CONFLICT",
+      "agreement": "AGREE",
+      "expected_match": {
+        "A": true,
+        "B": true
+      },
+      "confidence": {
+        "A": 4,
+        "B": 4
+      },
+      "flags": [
+        "A:AMBIGUITY_REPORTED",
+        "B:AMBIGUITY_REPORTED"
+      ],
+      "ambiguity": {
+        "A": "One could read the question's word 'unambiguously' as calling for NO because the text is not unambiguous. However, the unresolved equal-standing contradiction is precisely the SOURCE_CONFLICT pattern, which better identifies why no single permission can be derived.",
+        "B": "Because the question asks whether the excerpt 'unambiguously permit[s],' a reader could answer NO on the ground that the prohibition prevents unambiguous permission. I use SOURCE_CONFLICT because the communication presents unresolved contradictory provisions of equal standing with no precedence rule, which matches the defined label."
+      },
+      "explanations": {
+        "A": "Two provisions of the same section and effective date directly contradict each other: one permits deletion after retention review, the other forbids deleting any expired draft. The excerpt states no precedence rule, so it does not unambiguously permit the deletion.",
+        "B": "The excerpt contains a permission and a direct prohibition on the same subject, with the same effective date, and expressly supplies no precedence rule. The contradiction is unresolved on the face of the text, so it does not unambiguously permit deletion."
+      }
+    },
+    {
+      "id": "R1E-05",
+      "case_class": "GENUINE_AMBIGUITY",
+      "scope": "SOURCE_RELATIVE",
+      "expected": "UNKNOWN",
+      "A": "UNKNOWN",
+      "B": "UNKNOWN",
+      "agreement": "AGREE",
+      "expected_match": {
+        "A": true,
+        "B": true
+      },
+      "confidence": {
+        "A": 4,
+        "B": 5
+      },
+      "flags": [
+        "A:AMBIGUITY_REPORTED",
+        "B:AMBIGUITY_REPORTED"
+      ],
+      "ambiguity": {
+        "A": "The sentence 'The request was submitted in the portal on 3 March' could be read as fixing the submission date, but the next sentence explicitly denies that 3 March is necessarily the submission date. That tension is the ambiguity, and it is unresolved.",
+        "B": "The communication itself identifies the unresolved date ambiguity, so UNKNOWN reflects that ambiguity rather than a gap in my reading."
+      },
+      "explanations": {
+        "A": "The exception requires submission before 1 March, but the only date given is 3 March, and the record expressly leaves open whether that date is the submission date or merely the synchronization date. If it is the submission date, the request is too late; if it is the sync date, the submission date is unstated. The text does not settle which.",
+        "B": "The exception turns on the submission date, but the communication expressly leaves unresolved whether 3 March is the submission date or only the synchronization date. If it is the synchronization date, the actual submission date could be earlier and could fall before 1 March; the text does not settle this."
+      }
+    },
+    {
+      "id": "R1E-06",
+      "case_class": "AUTHORITY_DENIAL",
+      "scope": "SOURCE_RELATIVE",
+      "expected": "NO",
+      "A": "NO",
+      "B": "NO",
+      "agreement": "AGREE",
+      "expected_match": {
+        "A": true,
+        "B": true
+      },
+      "confidence": {
+        "A": 5,
+        "B": 5
+      },
+      "flags": [
+        "A:AMBIGUITY_REPORTED",
+        "B:AMBIGUITY_REPORTED"
+      ],
+      "ambiguity": {
+        "A": "None material; a proposal is not a grant of authority.",
+        "B": "'Not authorised' denies authority rather than using the word 'prohibited,' but either way it does not grant the requested authorisation."
+      },
+      "explanations": {
+        "A": "The policy expressly states the archive team is not authorised to delete legal-hold records. The proposal to delete such a record does not supply any authorisation.",
+        "B": "The policy expressly states that the archive team is not authorised to delete legal-hold records, and the proposed action is deletion of a legal-hold record. The policy therefore does not authorise the proposed deletion."
+      }
+    },
+    {
+      "id": "R1E-07",
+      "case_class": "GENUINE_AMBIGUITY",
+      "scope": "SOURCE_RELATIVE",
+      "expected": "UNKNOWN",
+      "A": "UNKNOWN",
+      "B": "UNKNOWN",
+      "agreement": "AGREE",
+      "expected_match": {
+        "A": true,
+        "B": true
+      },
+      "confidence": {
+        "A": 5,
+        "B": 5
+      },
+      "flags": [
+        "A:AMBIGUITY_REPORTED",
+        "B:AMBIGUITY_REPORTED"
+      ],
+      "ambiguity": {
+        "A": "The referential ambiguity of 'the plan' is the central unresolved point; the text does not choose between the two candidates.",
+        "B": "The referent of 'the plan' is explicitly ambiguous in the source; the interview question does not resolve it."
+      },
+      "explanations": {
+        "A": "The source says the chair approved 'the plan' but expressly notes that the note does not identify whether that means the rollout plan or the test plan. The referent of 'the plan' is therefore unresolved, so approval of the rollout plan specifically is not established.",
+        "B": "The chair approved 'the plan,' but the note expressly leaves unresolved whether that phrase means the rollout plan or the test plan. Approval of the rollout plan therefore cannot be established from the communication."
+      }
+    },
+    {
+      "id": "R1E-08",
+      "case_class": "COMPLETE_BUT_DISTRACTED",
+      "scope": "SOURCE_RELATIVE",
+      "expected": "YES",
+      "A": "YES",
+      "B": "YES",
+      "agreement": "AGREE",
+      "expected_match": {
+        "A": true,
+        "B": true
+      },
+      "confidence": {
+        "A": 5,
+        "B": 4
+      },
+      "flags": [
+        "A:AMBIGUITY_REPORTED",
+        "B:AMBIGUITY_REPORTED"
+      ],
+      "ambiguity": {
+        "A": "None material. The badge discussion is expressly irrelevant, and the on-call rotation sentence describes delivery rather than adding a condition.",
+        "B": "The dashboard reading is stated in the present tense; I read it as describing the current uninterrupted episode. If it were a stale historical episode, the 'now' question could be less certain, but the text gives no such indication."
+      },
+      "explanations": {
+        "A": "The policy permits paging when replication lag stays above 20 seconds for at least 5 continuous minutes. The dashboard shows 9 uninterrupted minutes above that threshold, which exceeds the condition. The remaining sentences do not add any unmet condition.",
+        "B": "Permission requires replication lag above 20 seconds for at least 5 continuous minutes. The dashboard shows 9 uninterrupted minutes above 20 seconds, which satisfies that threshold. The unrelated badge discussion does not affect this condition."
+      }
+    },
+    {
+      "id": "R1E-09",
+      "case_class": "QUALIFIED_EXCEPTION",
+      "scope": "SOURCE_RELATIVE",
+      "expected": "NO",
+      "A": "NO",
+      "B": "NO",
+      "agreement": "AGREE",
+      "expected_match": {
+        "A": true,
+        "B": true
+      },
+      "confidence": {
+        "A": 5,
+        "B": 5
+      },
+      "flags": [
+        "A:AMBIGUITY_REPORTED",
+        "B:AMBIGUITY_REPORTED"
+      ],
+      "ambiguity": {
+        "A": "None material; the source negates the specific proposed method rather than merely staying silent about it.",
+        "B": "None material."
+      },
+      "explanations": {
+        "A": "The exception permits copying the key into an isolated terminal but expressly does not allow sending it by email. The proposed email is therefore outside the exception's permission.",
+        "B": "The exception expressly does not allow sending the key by email. Emailing the key therefore falls outside the exception and is not permitted by it."
+      }
+    },
+    {
+      "id": "R1E-10",
+      "case_class": "SPEAKER_SCOPE",
+      "scope": "SOURCE_RELATIVE",
+      "expected": "NO",
+      "A": "NO",
+      "B": "NO",
+      "agreement": "AGREE",
+      "expected_match": {
+        "A": true,
+        "B": true
+      },
+      "confidence": {
+        "A": 5,
+        "B": 5
+      },
+      "flags": [
+        "A:AMBIGUITY_REPORTED",
+        "B:AMBIGUITY_REPORTED"
+      ],
+      "ambiguity": {
+        "A": "The answer could be read as 'not yet' pending clearance rather than a permanent prohibition, but either way the present question is answered No on the supplied facts.",
+        "B": "None material; the answer is an express refusal at this time."
+      },
+      "explanations": {
+        "A": "When asked whether the draft may be circulated to the client, the lead answers 'No' and conditions the client copy on legal clearance. No clearance is reported, so client circulation is not permitted on this communication.",
+        "B": "The lead directly answered 'No' to the question whether the draft may be circulated to the client and stated that the client copy needs legal clearance. No clearance is stated to have been obtained."
+      }
+    },
+    {
+      "id": "R1E-11",
+      "case_class": "SPEAKER_SCOPE",
+      "scope": "SOURCE_RELATIVE",
+      "expected": "YES",
+      "A": "YES",
+      "B": "YES",
+      "agreement": "AGREE",
+      "expected_match": {
+        "A": true,
+        "B": true
+      },
+      "confidence": {
+        "A": 5,
+        "B": 5
+      },
+      "flags": [
+        "A:AMBIGUITY_REPORTED",
+        "B:AMBIGUITY_REPORTED"
+      ],
+      "ambiguity": {
+        "A": "None material. The approval is specific to internal circulation and does not extend to the client.",
+        "B": "None material."
+      },
+      "explanations": {
+        "A": "The lead expressly approves internal circulation in direct response to the question about circulating the draft internally.",
+        "B": "The lead expressly approved internal circulation in response to the question whether the draft may be circulated internally."
+      }
+    },
+    {
+      "id": "R1E-12",
+      "case_class": "TEMPORAL_BOUNDARY",
+      "scope": "SOURCE_RELATIVE",
+      "expected": "NO",
+      "A": "NO",
+      "B": "NO",
+      "agreement": "AGREE",
+      "expected_match": {
+        "A": true,
+        "B": true
+      },
+      "confidence": {
+        "A": 5,
+        "B": 5
+      },
+      "flags": [
+        "A:AMBIGUITY_REPORTED",
+        "B:AMBIGUITY_REPORTED"
+      ],
+      "ambiguity": {
+        "A": "The treatment of a request stamped exactly 17:00:00 is not specified, but this request is one second later and plainly falls within 'after 17:00 UTC'.",
+        "B": "None material; 17:00:01 is plainly after 17:00."
+      },
+      "explanations": {
+        "A": "The request is timestamped 17:00:01 UTC, which is after the 17:00 UTC close, so it requires fresh approval. The source states no fresh approval is recorded, so the exception may not be used without it.",
+        "B": "The request is timestamped 17:00:01 UTC, which is after the 17:00 UTC closing time. A request after that time requires fresh approval, and no fresh approval is recorded, so the exception may not be used without it."
+      }
+    },
+    {
+      "id": "R1E-13",
+      "case_class": "EXTERNAL_VERIFICATION",
+      "scope": "EXTERNAL_FACTUAL_VERIFICATION",
+      "expected": "UNKNOWN",
+      "A": "UNKNOWN",
+      "B": "UNKNOWN",
+      "agreement": "AGREE",
+      "expected_match": {
+        "A": true,
+        "B": true
+      },
+      "confidence": {
+        "A": 4,
+        "B": 5
+      },
+      "flags": [
+        "A:AMBIGUITY_REPORTED",
+        "B:AMBIGUITY_REPORTED"
+      ],
+      "ambiguity": {
+        "A": "A reader might treat an authoritative policy statement as sufficient evidence of the fact, but under the stated external-verification scope it establishes only what the document claims.",
+        "B": "A reader might answer YES by treating the document's assertion as proof, but that would conflate what the document says with external reality, which this question scope expressly separates."
+      },
+      "explanations": {
+        "A": "The question asks about the external world, not about what the document says. The only support for encryption at rest is the policy document's own assertion, and the source expressly notes that no independent audit or system evidence is supplied. An assertion is not verification.",
+        "B": "This is an external factual verification question. The only support for encryption at rest is the document's own assertion, and the communication expressly says no independent audit or system evidence is supplied. An assertion in a policy document does not establish the actual state of the production backup."
+      }
+    },
+    {
+      "id": "R1E-14",
+      "case_class": "SOURCE_RELATIVE_SCOPE_PAIR",
+      "scope": "SOURCE_RELATIVE",
+      "expected": "YES",
+      "A": "YES",
+      "B": "YES",
+      "agreement": "AGREE",
+      "expected_match": {
+        "A": true,
+        "B": true
+      },
+      "confidence": {
+        "A": 5,
+        "B": 5
+      },
+      "flags": [
+        "A:AMBIGUITY_REPORTED",
+        "B:AMBIGUITY_REPORTED"
+      ],
+      "ambiguity": {
+        "A": "None; the absence of independent evidence affects truth, not whether the document makes the statement.",
+        "B": "None material; this is a source-relative question about the document's statement, not its truth."
+      },
+      "explanations": {
+        "A": "This is a source-relative question about what the document states. The communication directly reports that the supplied policy document states the production backup is encrypted at rest, regardless of whether that statement is externally verified.",
+        "B": "This question asks only what the supplied document states. The communication directly reports that the document states the production backup is encrypted at rest; the absence of independent evidence does not change what the document states."
+      }
+    },
+    {
+      "id": "R1E-15",
+      "case_class": "MULTI_CONDITION",
+      "scope": "SOURCE_RELATIVE",
+      "expected": "NO",
+      "A": "NO",
+      "B": "NO",
+      "agreement": "AGREE",
+      "expected_match": {
+        "A": true,
+        "B": true
+      },
+      "confidence": {
+        "A": 5,
+        "B": 5
+      },
+      "flags": [
+        "A:AMBIGUITY_REPORTED",
+        "B:AMBIGUITY_REPORTED"
+      ],
+      "ambiguity": {
+        "A": "None material; 'only if ... and ...' plainly requires both conditions.",
+        "B": "None material; 'only if ... and ...' requires both conditions."
+      },
+      "explanations": {
+        "A": "Deployment is permitted only if both the security review is accepted and the change ticket is approved. The review is accepted, but the ticket is expressly not approved and no other approval applies, so the conjunctive condition fails.",
+        "B": "Deployment is permitted only if both the security review is accepted and the change ticket is approved. The review is accepted, but the ticket is not approved and no other approval applies, so the conjunctive condition for deployment is not satisfied."
+      }
+    },
+    {
+      "id": "R1E-16",
+      "case_class": "FULLY_SPECIFIED_CONFLICT",
+      "scope": "SOURCE_RELATIVE",
+      "expected": "SOURCE_CONFLICT",
+      "A": "SOURCE_CONFLICT",
+      "B": "SOURCE_CONFLICT",
+      "agreement": "AGREE",
+      "expected_match": {
+        "A": true,
+        "B": true
+      },
+      "confidence": {
+        "A": 5,
+        "B": 5
+      },
+      "flags": [
+        "A:AMBIGUITY_REPORTED",
+        "B:AMBIGUITY_REPORTED"
+      ],
+      "ambiguity": {
+        "A": "One could label this NO on the theory that a prohibition should be read conservatively, but the source supplies no such precedence rule and the equal-standing conflict is express.",
+        "B": "A reader could answer UNKNOWN because the document does not resolve the conflict, but SOURCE_CONFLICT is the defined label for unresolved contradictory provisions of equal standing with no precedence rule."
+      },
+      "explanations": {
+        "A": "Clause 7 permits access and Clause 9, of the same effective date, forbids it. The document expressly states that neither clause takes precedence, leaving two equal-standing provisions in unresolved contradiction. No single permission or prohibition can be derived.",
+        "B": "Clause 7 permits access and Clause 9 prohibits the same access, both have the same effective date, and the document expressly states that neither clause takes precedence. The document therefore contains unresolved contradictory provisions of equal standing with no precedence rule."
+      }
+    }
+  ],
+  "go_no_go": "CONDITIONAL_NO_GO_V1_NEEDS_V2"
+}
